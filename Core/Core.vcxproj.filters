@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\Integral">
+      <UniqueIdentifier>{7f4cf67c-16ce-4935-af93-f7b372dd9813}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Algebra">
+      <UniqueIdentifier>{8f887963-c106-447e-a38f-d1a1e56a81c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\BasicFunction">
+      <UniqueIdentifier>{f7688f68-e02f-438d-9c05-0b0847fa380b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Mesh">
+      <UniqueIdentifier>{0d416301-508f-48cf-8a33-2a7b8f3ed251}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Base">
+      <UniqueIdentifier>{1ac31826-0bd1-4181-b12a-eeb4e8f730b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Post">
+      <UniqueIdentifier>{97a15558-5b41-43e6-b3f1-44600d37e806}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\AIMAssist">
+      <UniqueIdentifier>{727c40aa-aec5-4d50-be40-d92496a8d8c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\googleTest">
+      <UniqueIdentifier>{078620b5-0e75-4e20-bf09-575c61b9b7a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\CoreAPI">
+      <UniqueIdentifier>{7854526b-8c11-471a-aa1c-9f369cd9b3a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Mesh">
+      <UniqueIdentifier>{9aa00535-5a13-4dd6-b358-94d6db94c750}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Impedance">
+      <UniqueIdentifier>{e1e55d2e-535a-430c-b9b7-84d907c55119}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\BasicFunction">
+      <UniqueIdentifier>{8d427fee-f719-4369-8919-44e72b0e530f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Integral">
+      <UniqueIdentifier>{cfb09217-9764-4969-bb60-e46616481059}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Post">
+      <UniqueIdentifier>{c5dcdffc-08c5-42a0-9bd8-2a21b0c3ec83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Assist">
+      <UniqueIdentifier>{3da0f184-1f25-457a-a8a2-737b805bc485}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Assist">
+      <UniqueIdentifier>{0d4135d2-d521-4b8a-b07f-f80fc6e26ebf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solution">
+      <UniqueIdentifier>{da926f83-82b4-4fd6-8115-81b5a405e802}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solution">
+      <UniqueIdentifier>{7be470a7-44a9-4391-9ffb-7585a25d8014}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Source">
+      <UniqueIdentifier>{0a922198-13f3-4aa9-be3d-81face75608d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Source">
+      <UniqueIdentifier>{eb14685a-2506-4187-86d0-9c1a4fbd590e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImpAIM.h">
+      <Filter>头文件\Algebra</Filter>
+    </ClInclude>
+    <ClInclude Include="ImpMoM.h">
+      <Filter>头文件\Algebra</Filter>
+    </ClInclude>
+    <ClInclude Include="Data.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Green.h">
+      <Filter>头文件\Integral</Filter>
+    </ClInclude>
+    <ClInclude Include="RWG.h">
+      <Filter>头文件\BasicFunction</Filter>
+    </ClInclude>
+    <ClInclude Include="Segment.h">
+      <Filter>头文件\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>头文件\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="IBasicFunction.h">
+      <Filter>头文件\BasicFunction</Filter>
+    </ClInclude>
+    <ClInclude Include="IImpedance.h">
+      <Filter>头文件\Algebra</Filter>
+    </ClInclude>
+    <ClInclude Include="FarField.h">
+      <Filter>头文件\Post</Filter>
+    </ClInclude>
+    <ClInclude Include="IEKernel.h">
+      <Filter>头文件\Integral</Filter>
+    </ClInclude>
+    <ClInclude Include="Radiation.h">
+      <Filter>头文件\Post</Filter>
+    </ClInclude>
+    <ClInclude Include="Const.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Cuboid.h">
+      <Filter>头文件\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Tetrahedra.h">
+      <Filter>头文件\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>头文件\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Integration.h">
+      <Filter>头文件\Integral</Filter>
+    </ClInclude>
+    <ClInclude Include="EquationKernel.h">
+      <Filter>头文件\Integral</Filter>
+    </ClInclude>
+    <ClInclude Include="FFT1d.h">
+      <Filter>头文件\AIMAssist</Filter>
+    </ClInclude>
+    <ClInclude Include="Teoplitzcd.h">
+      <Filter>头文件\AIMAssist</Filter>
+    </ClInclude>
+    <ClInclude Include="TeoplitzAssist.h">
+      <Filter>头文件\AIMAssist</Filter>
+    </ClInclude>
+    <ClInclude Include="MatrixSetting.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreAPI.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ModalGeometry.h">
+      <Filter>头文件\Assist</Filter>
+    </ClInclude>
+    <ClInclude Include="TxtReader.h">
+      <Filter>头文件\Assist</Filter>
+    </ClInclude>
+    <ClInclude Include="Card.h">
+      <Filter>头文件\Assist</Filter>
+    </ClInclude>
+    <ClInclude Include="IterationSolver.h">
+      <Filter>头文件\Solution</Filter>
+    </ClInclude>
+    <ClInclude Include="Planewave.h">
+      <Filter>头文件\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="IntegrationRWG.h">
+      <Filter>头文件\Integral</Filter>
+    </ClInclude>
+    <ClInclude Include="RequestConfiguration.h">
+      <Filter>头文件\Post</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>头文件\Assist</Filter>
+    </ClInclude>
+    <ClInclude Include="MultipoleExpansioner.h">
+      <Filter>头文件\AIMAssist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\googleTest\testMain.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ISolver.h">
+      <Filter>头文件\Solution</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Data.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\googleTest\testMain.cpp">
+      <Filter>源文件\googleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\googleTest\TeoplitzcdTest.cpp">
+      <Filter>源文件\googleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="MatrixSetting.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\googleTest\MatrixSettingTest.cpp">
+      <Filter>源文件\googleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="MoMTest.cpp">
+      <Filter>源文件\googleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\googleTest\BaseClassTest.cpp">
+      <Filter>源文件\googleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\googleTest\ComponentListTest.cpp">
+      <Filter>源文件\googleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="CreatMesh.cpp">
+      <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>源文件\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicFunctionAPI.cpp">
+      <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImpAIM.cpp">
+      <Filter>源文件\Impedance</Filter>
+    </ClCompile>
+    <ClCompile Include="ImpMoM.cpp">
+      <Filter>源文件\Impedance</Filter>
+    </ClCompile>
+    <ClCompile Include="SetGreenFunction.cpp">
+      <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\googleTest\GreenFunctionTest.cpp">
+      <Filter>源文件\googleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="PreCalculateSelfTriangleImpedance.cpp">
+      <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="RWG.cpp">
+      <Filter>源文件\BasicFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="CreatImpedancecpp.cpp">
+      <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="SetRightHand.cpp">
+      <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="FillImpedance.cpp">
+      <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\googleTest\CalculateImpedanceTest.cpp">
+      <Filter>源文件\googleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Solve.cpp">
+      <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="CalculateRequest.cpp">
+      <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="IEKernel.cpp">
+      <Filter>源文件\Integral</Filter>
+    </ClCompile>
+    <ClCompile Include="Green.cpp">
+      <Filter>源文件\Integral</Filter>
+    </ClCompile>
+    <ClCompile Include="EquationKernel.cpp">
+      <Filter>源文件\Integral</Filter>
+    </ClCompile>
+    <ClCompile Include="IntegrationRWG.cpp">
+      <Filter>源文件\Integral</Filter>
+    </ClCompile>
+    <ClCompile Include="FarField.cpp">
+      <Filter>源文件\Post</Filter>
+    </ClCompile>
+    <ClCompile Include="Teoplitzcd.cpp">
+      <Filter>源文件\Assist</Filter>
+    </ClCompile>
+    <ClCompile Include="TeoplitzAssist.cpp">
+      <Filter>源文件\Assist</Filter>
+    </ClCompile>
+    <ClCompile Include="TxtReader.cpp">
+      <Filter>源文件\Assist</Filter>
+    </ClCompile>
+    <ClCompile Include="Radiation.cpp">
+      <Filter>源文件\Post</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FFT1d.cpp">
+      <Filter>源文件\Assist</Filter>
+    </ClCompile>
+    <ClCompile Include="EMCParameterInitialization.cpp">
+      <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="ModalGeometry.cpp">
+      <Filter>源文件\Assist</Filter>
+    </ClCompile>
+    <ClCompile Include="ReleaseMemory.cpp">
+      <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="Planewave.cpp">
+      <Filter>源文件\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>源文件\Assist</Filter>
+    </ClCompile>
+    <ClCompile Include="MultipoleExpansioner.cpp">
+      <Filter>源文件\Assist</Filter>
+    </ClCompile>
+    <ClCompile Include="IterationSolver.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ISolver.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

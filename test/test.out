@@ -1,0 +1,41 @@
+The Project Name:	test
+Mesh is From:	E:\ZMC\Code\C_program\MUL\test\MeshTest.nas
+Frequency:	3.000000e+08
+Use Method:	AIM
+Lower Point of Box is (-0.599,-0.599,-0.600)
+Upper Point of Box is (+0.599,+0.598,+0.600)
+Creat Mesh costs	0.006000 s
+Memory Cost	0.104767 Mb
+
+Mesh
+The number of BasicFuntions is:	1287
+Load BasicFuntions costs:	         0 s
+Free Space Green Function is choosen
+Pre-compute SelfTriangle Impedance costs:	0.009 s
+
+Method AIM
+Lower Point of AIMBox is (-0.649,-0.649,-0.650)
+Upper Point of AIMBox is (+0.649,+0.648,+0.650)
+AIM Interval:	0.05 ¦Ë
+Dimension:	3
+LayerNumber:	(27,27,27)
+AIM Order:	2
+AIM Threshold:	0.30 ¦Ë
+AIM NearFieldEps:	1.000000e-02
+Multipole Expansion costs time:	0.058s
+Near-Matrix Setting by TFS Time is:	0.592s
+Triplet and NearField have 420508 and 105127 elements.
+Precondition cost:	0.612s
+Near Field by TFS TotalTime is:	0.847s
+RightHand
+Set RightHand is cost:	0.003000 s
+Memory Cost	0.019638 Mb
+Solve Matrix with BiCGSTAB
+The Maxiteration is:	0
+The Tolerance is:	1.000000e-04
+The Final Iteration is:	17
+The results tolerance is:	9.3170e-05
+Iteration is cost:	1.099000 s
+The Save File Path is	E:\ZMC\Code\C_program\MUL\test\test.bf
+Calcuate the FarField RCS
+Calculate FarField:	Vertical

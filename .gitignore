@@ -1,0 +1,37 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/.vs/MUL/v15/Browse.VC.opendb
+/dotBasicFunction/Debug
+/dotBasicFunction/Debug
+/TestResults/01bcbc46-6010-4837-ba1e-a3448e399a64
+/Debug
+/Base/Debug
+/Excitation/Debug
+/Impeadance/Debug
+/Integral/Debug
+/SecondTest
+/Core/x64
+/Configuration/bin/Debug
+/Configuration/obj
+/include
+/test/unused
+/x64
+/.vs
+/AIM
+/Bin/Debug
+/Configuration/Properties
+/Configuration/Resources
+/Core/gtest.lib
+/Core/gtestd.lib
+/Core/gtest.lib
+/Core/gtestd.lib
+/Temp
+/AIMflowchart.mmap
+/AIMStructure.mmap
+/Computational Electromagnetics.mmap
+/Temp
+/Configuration
+/MulSecond.EAP
+*.EAP

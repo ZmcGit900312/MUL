@@ -1,0 +1,106 @@
+   Multiplication [1:51.393] Success
+Read Mesh File Success!
+Mulitpole Expansion...
+Construct Teoplitz Matrix...
+Teoplitz si ffting...
+Matrix Far Field Random Setting Test:
+Number:	1
+Impedance: 168,  778
+Distance:	0.937768(lam)
+reference:	(-0.00166087,0.00878815)
+Near:		(-0.00167606,0.00878692)
+Number:	2
+Impedance: 124,  976
+Distance:	1.12369(lam)
+reference:	(0.00163964,0.0013001)
+Near:		(0.00164222,0.0012983)
+Number:	3
+Impedance: 396,  617
+Distance:	1.151(lam)
+reference:	(-0.00377724,-0.00203947)
+Near:		(-0.00377713,-0.00203823)
+Number:	4
+Impedance: 929, 1227
+Distance:	1.00805(lam)
+reference:	(0.00189559,0.00694799)
+Near:		(0.00190942,0.00695902)
+Number:	5
+Impedance:  47, 1073
+Distance:	0.998497(lam)
+reference:	(0.000731831,0.00100676)
+Near:		(0.000725675,0.000992059)
+Number:	6
+Impedance: 159,  737
+Distance:	0.457216(lam)
+reference:	(-0.0108603,-0.000817369)
+Near:		(-0.0108134,-0.00079507)
+Number:	7
+Impedance: 377,  355
+Distance:	1.10149(lam)
+reference:	(0.0085517,0.0083941)
+Near:		(0.00856329,0.00838517)
+Number:	8
+Impedance: 658,   87
+Distance:	1.17817(lam)
+reference:	(0.00288721,0.00101108)
+Near:		(0.00289185,0.00100246)
+Number:	9
+Impedance: 365,   86
+Distance:	1.04533(lam)
+reference:	(-0.00287945,-0.00492898)
+Near:		(-0.002866,-0.0049167)
+Number:	10
+Impedance: 546,  549
+Distance:	0.981926(lam)
+reference:	(0.000270999,0.00432797)
+Near:		(0.000272273,0.00432358)
+Number:	11
+Impedance: 234,  512
+Distance:	0.935255(lam)
+reference:	(0.000629488,-0.00646255)
+Near:		(0.000636306,-0.00645295)
+Number:	12
+Impedance: 133, 1032
+Distance:	1.08379(lam)
+reference:	(-0.00280756,-0.00301991)
+Near:		(-0.0028065,-0.00302663)
+Number:	13
+Impedance: 715,  151
+Distance:	0.91493(lam)
+reference:	(0.000683323,0.00158637)
+Near:		(0.000677329,0.00156924)
+Number:	14
+Impedance: 243,  601
+Distance:	0.956027(lam)
+reference:	(0.000462495,0.00627167)
+Near:		(0.00045695,0.00624219)
+Number:	15
+Impedance: 870,  510
+Distance:	0.944372(lam)
+reference:	(-0.00162788,0.00702094)
+Near:		(-0.00161315,0.00703604)
+Number:	16
+Impedance: 326,  813
+Distance:	1.08731(lam)
+reference:	(-0.00363698,-0.0042346)
+Near:		(-0.00364832,-0.00423644)
+Number:	17
+Impedance: 660, 1229
+Distance:	1.01153(lam)
+reference:	(0.00223185,0.00580873)
+Near:		(0.00223531,0.00582442)
+Number:	18
+Impedance: 319,  399
+Distance:	0.712635(lam)
+reference:	(-0.00352072,0.0026787)
+Near:		(-0.00351217,0.0026826)
+Number:	19
+Impedance: 420,  898
+Distance:	0.614998(lam)
+reference:	(-0.00353161,0.00351167)
+Near:		(-0.00354302,0.00347159)
+Number:	20
+Impedance: 972,   66
+Distance:	0.722856(lam)
+reference:	(0.00486297,-0.00381879)
+Near:		(0.00480652,-0.00380508)
