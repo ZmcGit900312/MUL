@@ -194,12 +194,14 @@ namespace Configuration
             }
             //Solution
             {
-                Ccg hxj = new Ccg();
-                hxj.SolutionType=(uint)SolutionTypeComboBox.SelectedIndex;
-                hxj.Maxiteration = uint.Parse(MaxIterationsText.Text);
-                hxj.Tolerance = double.Parse(StopCriterionText.Text);
-                hxj.MaxStopTolerance = double.Parse(StopMaxText.Text);
-                hxj.PreConditionType = (uint)PreconditionComboBox.SelectedIndex;
+                Ccg hxj = new Ccg
+                {
+                    SolutionType = (uint) SolutionTypeComboBox.SelectedIndex,
+                    Maxiteration = uint.Parse(MaxIterationsText.Text),
+                    Tolerance = double.Parse(StopCriterionText.Text),
+                    MaxStopTolerance = double.Parse(StopMaxText.Text),
+                    PreConditionType = (uint)PreconditionComboBox.SelectedIndex
+                };
                 InsertContext(hxj);
             }
 

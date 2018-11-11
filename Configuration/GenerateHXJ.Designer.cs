@@ -58,6 +58,7 @@
             this.AddMeshButton = new System.Windows.Forms.Button();
             this.MethodTabPage = new System.Windows.Forms.TabPage();
             this.AIMPanel = new System.Windows.Forms.Panel();
+            this.FillingType = new System.Windows.Forms.CheckBox();
             this.Dimension3D = new System.Windows.Forms.RadioButton();
             this.Dimension2D = new System.Windows.Forms.RadioButton();
             this.DimensionLable = new System.Windows.Forms.Label();
@@ -136,7 +137,6 @@
             this.PWNameText = new System.Windows.Forms.TextBox();
             this.SourceNameLabel = new System.Windows.Forms.Label();
             this.RunButton = new System.Windows.Forms.Button();
-            this.FillingType = new System.Windows.Forms.CheckBox();
             this.TableControl.SuspendLayout();
             this.MeshTabPage.SuspendLayout();
             this.MeshFileGroupBox.SuspendLayout();
@@ -494,6 +494,18 @@
             this.AIMPanel.Name = "AIMPanel";
             this.AIMPanel.Size = new System.Drawing.Size(533, 324);
             this.AIMPanel.TabIndex = 43;
+            // 
+            // FillingType
+            // 
+            this.FillingType.AutoSize = true;
+            this.FillingType.Checked = true;
+            this.FillingType.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.FillingType.Location = new System.Drawing.Point(13, 269);
+            this.FillingType.Name = "FillingType";
+            this.FillingType.Size = new System.Drawing.Size(224, 24);
+            this.FillingType.TabIndex = 49;
+            this.FillingType.Text = "Triangle Filling Strategy";
+            this.FillingType.UseVisualStyleBackColor = true;
             // 
             // Dimension3D
             // 
@@ -869,15 +881,17 @@
             // 
             this.PreconditionComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PreconditionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PreconditionComboBox.FormattingEnabled = true;
+            this.PreconditionComboBox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.PreconditionComboBox.Items.AddRange(new object[] {
-            "No preconditioning",
-            "Block-Jacobi preconditioning using inverses"});
+            "No preconditioning (0)",
+            "Block-Jacobi preconditioning using inverses (64)",
+            "Incomplete LU decomposition (ILU) (128)"});
             this.PreconditionComboBox.Location = new System.Drawing.Point(6, 157);
             this.PreconditionComboBox.Name = "PreconditionComboBox";
             this.PreconditionComboBox.Size = new System.Drawing.Size(580, 28);
             this.PreconditionComboBox.TabIndex = 21;
-            this.PreconditionComboBox.Text = "No preconditioning";
             // 
             // IterationPanel
             // 
@@ -961,6 +975,7 @@
             // 
             this.SolutionTypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.SolutionTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SolutionTypeComboBox.FormattingEnabled = true;
             this.SolutionTypeComboBox.Items.AddRange(new object[] {
             "Bi-CGSTAB",
@@ -969,7 +984,6 @@
             this.SolutionTypeComboBox.Name = "SolutionTypeComboBox";
             this.SolutionTypeComboBox.Size = new System.Drawing.Size(580, 28);
             this.SolutionTypeComboBox.TabIndex = 0;
-            this.SolutionTypeComboBox.Text = "Bi-CGSTAB";
             // 
             // FrequencyTablePage
             // 
@@ -1435,18 +1449,6 @@
             this.RunButton.UseVisualStyleBackColor = false;
             this.RunButton.Click += new System.EventHandler(this.RunButton_Click);
             // 
-            // FillingType
-            // 
-            this.FillingType.AutoSize = true;
-            this.FillingType.Checked = true;
-            this.FillingType.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.FillingType.Location = new System.Drawing.Point(13, 269);
-            this.FillingType.Name = "FillingType";
-            this.FillingType.Size = new System.Drawing.Size(224, 24);
-            this.FillingType.TabIndex = 49;
-            this.FillingType.Text = "Triangle Filling Strategy";
-            this.FillingType.UseVisualStyleBackColor = true;
-            // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1567,7 +1569,6 @@
         private System.Windows.Forms.Label StopCriterionLable;
         private System.Windows.Forms.Label MaxIterationsLable;
         private System.Windows.Forms.ComboBox SolutionTypeComboBox;
-        private System.Windows.Forms.ComboBox PreconditionComboBox;
         private System.Windows.Forms.TabPage FrequencyTablePage;
         private System.Windows.Forms.Label FrequencyLable;
         private System.Windows.Forms.TextBox FrequecyText;
@@ -1614,6 +1615,7 @@
         private System.Windows.Forms.Label EllipticityLable;
         private System.Windows.Forms.Button RunButton;
         private System.Windows.Forms.CheckBox FillingType;
+        private System.Windows.Forms.ComboBox PreconditionComboBox;
     }
 }
 

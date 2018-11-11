@@ -396,12 +396,8 @@
     <ClCompile Include="TxtReader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\test\MeshTest.nas" />
-    <None Include="..\test\RCSVertical.dat" />
-    <None Include="..\test\sphere06.nas" />
-    <None Include="..\test\test.hxj" />
-    <None Include="..\test\test.out" />
-    <None Include="..\test\Vertical_RCS.dat" />
+    <None Include="..\SourceData\RCSVertical.dat" />
+    <None Include="..\SourceData\sphere06.nas" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

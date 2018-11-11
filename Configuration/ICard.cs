@@ -58,7 +58,7 @@ namespace Configuration
     {
         public Card Type => Card.CG;
         public uint SolutionType { get; set; } = 0;//BiCG-Stab=10
-        public uint PreConditionType { get; set; } = 0;//Jacobi=8
+        public uint PreConditionType { get; set; } = 0;//Jacobi=64,ILU=128
         public uint Maxiteration { get; set; } = 0;
         public double Tolerance { get; set; } = 1.0e-4;
         public double MaxStopTolerance { get; set; } = 10;

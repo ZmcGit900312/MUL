@@ -319,22 +319,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\test\MeshTest.nas">
+    <None Include="..\SourceData\RCSVertical.dat">
       <Filter>资源文件</Filter>
     </None>
-    <None Include="..\test\RCSVertical.dat">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="..\test\sphere06.nas">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="..\test\test.hxj">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="..\test\test.out">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="..\test\Vertical_RCS.dat">
+    <None Include="..\SourceData\sphere06.nas">
       <Filter>资源文件</Filter>
     </None>
   </ItemGroup>
