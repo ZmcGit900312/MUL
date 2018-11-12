@@ -8,8 +8,7 @@
 class MulEnvironment :public testing::Environment
 {
 public:
-	char* configurationFileName = "E:/ZMC/Code/C_program/MUL/test/test.hxj";
-
+	char* configurationFileName = "E:/ZMC/Code/C_program/MUL/SourceData/test.hxj";
 	void SetUp() override
 	{
 		Core::LogInitial();

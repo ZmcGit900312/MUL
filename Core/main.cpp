@@ -14,7 +14,7 @@ void main(int argc,char* argv[])
 	cout << "***********************************************\n";
 
 #ifdef _DEBUG
-	char* configurationFileName = "E:/ZMC/Code/C_program/MUL/test/test.hxj";
+	char* configurationFileName = "E:/ZMC/Code/C_program/MUL/SourceData/test.hxj";
 	//const char* bfFileName = SystemConfiguration::BasicFunctionFileName.c_str();
 	argc = 2;
 	cout	<< "**********************************\n"

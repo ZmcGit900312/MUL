@@ -322,7 +322,7 @@
     <None Include="..\SourceData\RCSVertical.dat">
       <Filter>资源文件</Filter>
     </None>
-    <None Include="..\SourceData\sphere06.nas">
+    <None Include="..\SourceData\MeshTest.nas">
       <Filter>资源文件</Filter>
     </None>
   </ItemGroup>

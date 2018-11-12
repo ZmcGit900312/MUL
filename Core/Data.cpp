@@ -16,7 +16,7 @@ Solution::ISolver* ComponentList::Solver=nullptr;
 
 #pragma region SystemConfiguration
 //Initial Global static variable in SystemConfiguration
-string SystemConfiguration::ProjectName="test";
+string SystemConfiguration::ProjectName="SourceData";
 string SystemConfiguration::ProjectDir="C:/";
 string SystemConfiguration::MeshFileName;
 string SystemConfiguration::BasicFunctionFileName = ProjectDir + ProjectName + ".bf";
