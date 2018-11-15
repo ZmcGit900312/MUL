@@ -317,6 +317,9 @@
     <ClCompile Include="ISolver.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\googleTest\ExcitationTest.cpp">
+      <Filter>源文件\googleTest</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SourceData\RCSVertical.dat">

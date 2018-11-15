@@ -56,13 +56,15 @@ namespace Core
 		list<element> SetImpedance(Triangle&field, Triangle&source) const;
 
 		/**
-		 * \brief 
-		 * \param field 
-		 * \param source 
-		 * \param val 
+		 * \brief It is used for AIM in TFS
+		 * \param field Field Triangle
+		 * \param source Source Triangle
+		 * \param val The marked RWG BasicFunctions
 		 * \return 
 		 */
 		void SetImpedance(Triangle&field, Triangle&source, list<element>& val) const;
+
+		dcomplex SetRightHand(RWG* source, Vector3d ki, Vector3d e);
 	private:
 		/**
 		* \brief Impedance between two different triangles as the RWG index

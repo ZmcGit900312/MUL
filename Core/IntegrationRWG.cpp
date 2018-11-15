@@ -157,7 +157,7 @@ list<element> EFRImp::SetImpedance(Triangle & field, Triangle & source) const
 	return UnsingularTriangleIntegration(field,source,_w4,_k,_eta);
 }
 
-void Core::EFRImp::SetImpedance(Triangle & field, Triangle & source, list<element>& val) const
+void EFRImp::SetImpedance(Triangle & field, Triangle & source, list<element>& val) const
 {
 	const short K = 4;
 
@@ -193,6 +193,21 @@ void Core::EFRImp::SetImpedance(Triangle & field, Triangle & source, list<elemen
 		local1 = field.ID(local1).second;
 		local2 = source.ID(local2).second;
 	}
+}
+
+dcomplex EFRImp::SetRightHand(RWG * source, Vector3d ki, Vector3d e)
+{
+	const short K = 4;
+	complex<double> plus(0),minus(0);
+	Triangle& tplus = source->TrianglePlus();
+	Triangle& tminus = source->TriangleMinus();
+	for (int i = 0; i < K; ++i)
+	{//Source Triangle
+		Vector3d pt1 = tplus.Quad4()[i],pt2=tminus.Quad4()[i];
+		plus += _w4[i] * exp(-1i*k*pt1.dot(ki))*e.dot(source->CurrentPlus(pt1));
+		minus+= _w4[i] * exp(-1i*k*pt2.dot(ki))*e.dot(source->CurrentMinus(pt2));
+	}
+	return plus*tplus.Area()+minus*tminus.Area();
 }
 
 dcomplex EFRImp::UnsingularRWGIntegration(Triangle & field, Triangle & source, const Vector3d fieldFreePt, const Vector3d sourceFreePt, double w[4], double k)

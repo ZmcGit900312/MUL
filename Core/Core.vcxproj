@@ -343,6 +343,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\googleTest\ComponentListTest.cpp" />
+    <ClCompile Include="..\googleTest\ExcitationTest.cpp" />
     <ClCompile Include="..\googleTest\GreenFunctionTest.cpp" />
     <ClCompile Include="..\googleTest\MatrixSettingTest.cpp" />
     <ClCompile Include="..\googleTest\CalculateImpedanceTest.cpp" />

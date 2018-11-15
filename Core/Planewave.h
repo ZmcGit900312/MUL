@@ -41,10 +41,13 @@ namespace Core
 			void Compute();
 			Vector3d GetKi()const { return _ki; }
 			Vector3d GetEi()const {return _ei; }
+
 			/**
-			* \brief Set Exciation(righthand)
-			*/
-			VectorXcd SetExcitation(IGreen* green,const vector<IBasicFunction*>&bfVector)const;
+			 * \brief Set Exciation(righthand)
+			 * \param bfVector 
+			 * \return Excitation
+			 */
+			VectorXcd SetExcitation(const vector<IBasicFunction*>&bfVector)const;
 		private:
 			/**
 			 * \brief Rotate the vector with axis Y by theta firstly and with axix Z by phi

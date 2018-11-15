@@ -12,9 +12,7 @@ int Core::SetRightHand()
 	ResultL->info("RightHand");
 
 	const clock_t start = clock();
-	ComponentList::ImpService->GetExcitation() =
-		ComponentList::RightHand.SetExcitation(ComponentList::Green, ComponentList::BFvector);
-	//ComponentList::ImpService->SetExcitation();
+	ComponentList::ImpService->GetExcitation() =ComponentList::RightHand.SetExcitation(ComponentList::BFvector);
 	const clock_t end = clock();
 
 	const double time = double(end - start) / CLOCKS_PER_SEC;
