@@ -210,6 +210,34 @@ dcomplex EFRImp::SetRightHand(RWG * source, Vector3d ki, Vector3d e)
 	return plus*tplus.Area()+minus*tminus.Area();
 }
 
+Vector3cd Core::EFRImp::Radiation(Triangle & source, Vector3d ob, dcomplex current[3])
+{
+	const short K = 4;
+	Vector3cd efield{ 0,0,0 };
+	//Free Space
+	
+	const double Phi = 2.0 / (k*k);
+	const dcomplex coef = -1i*k*eta0*0.125*M_1_PI;
+
+	for (int i = 0; i < K; ++i)
+	{
+		Vector3d pt = source.Quad4()[i];
+		Vector3d rv(ob - pt);
+		double R = rv.norm(),trans=R*k;
+		//Green
+		dcomplex gScalar = _w4[i]*exp(-1i*trans)/R;
+		Vector3cd gGradient(rv*(dcomplex(1,trans)*gScalar)/(R*R));
+
+		for (short j = 0;j < 3;j++)
+		{
+			if (source.RWGSign[j] == 0)continue;
+			Vector3cd kernel((pt - source.Node(j))*gScalar - Phi * gGradient);
+			efield += current[j] * source.Edge(j).second*(source.RWGSign[j] * kernel);
+		}
+	}
+	return coef*efield;
+}
+
 dcomplex EFRImp::UnsingularRWGIntegration(Triangle & field, Triangle & source, const Vector3d fieldFreePt, const Vector3d sourceFreePt, double w[4], double k)
 {
 	const short K = 4;

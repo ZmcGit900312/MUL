@@ -18,7 +18,7 @@ namespace Core
 	namespace Request
 	{
 		/**
-		* \brief 远场Sphere版本
+		* \brief 远场Sphere版本 计算效率太低
 		* 优化更好，提供GetEField和GetRCS来给出RCS和电场
 		*/
 		class FF
@@ -48,11 +48,11 @@ namespace Core
 			* \brief Calculate the E field of the specific direction(theta,phi)
 			* \param theta rad
 			* \param phi rad
-			* \return Vector3cd Efield
+			* \return Vector3cd EfieldE
 			*/
 			Vector3cd EField(const double theta, const double phi) const;
 
-
+			Vector3cd EFieldModify(const double theta, const double phi)const;
 			bool WriteTxt(char* destfile) const;
 			/**
 			* \brief Radius of farfield observation
@@ -64,6 +64,7 @@ namespace Core
 
 			Mesh* _mesh;
 			vector<IBasicFunction*>*_bf;
+			IGreen* _green;
 			//Integration Kernel and Integration
 			const double Interval = 1;
 			const int ThetaNum = 179, PhiNum = 360;
@@ -73,6 +74,10 @@ namespace Core
 			MatrixXd _rcs;
 			RadiationKernel* _plus = nullptr, *_minus = nullptr;
 		};
+
+
+
+
 	}
 	
 	

@@ -1,5 +1,5 @@
 #pragma once
-//辐射场积分核
+//辐射场积分核 not used
 #include <Eigen/Core>
 #include "Green.h"
 #include "IBasicFunction.h"

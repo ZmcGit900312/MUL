@@ -64,7 +64,16 @@ namespace Core
 		 */
 		void SetImpedance(Triangle&field, Triangle&source, list<element>& val) const;
 
+		/**
+		 * \brief Calculate the specific RWG RightHand
+		 * \param source BasicFunction
+		 * \param ki The direction of wave propagation
+		 * \param e The direction of E field
+		 * \return 
+		 */
 		dcomplex SetRightHand(RWG* source, Vector3d ki, Vector3d e);
+
+		Vector3cd Radiation(Triangle & source, Vector3d ob, dcomplex current[3]);
 	private:
 		/**
 		* \brief Impedance between two different triangles as the RWG index

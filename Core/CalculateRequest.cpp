@@ -28,6 +28,7 @@ int Core::CalculateRequest(const bool IsReadFromFile)
 		ofstream ofs;
 		ofs.flags(ios::left);
 
+		const clock_t start = clock();
 		for (const auto value : SystemConfiguration::PostConfig)
 		{
 			const string savename = SystemConfiguration::ProjectDir + '\\' + value.FarFileName + "_RCS.dat";
@@ -43,7 +44,7 @@ int Core::CalculateRequest(const bool IsReadFromFile)
 			const double phiI = value.PhiIncrement;
 			const unsigned thetaNum = value.ThetaNum;
 			const unsigned phiNum = value.PhiNum;
-
+			const double Sum = 0.01*thetaNum * phiNum;
 			for (unsigned th = 0; th < thetaNum; ++th)
 			{
 				for (unsigned ph = 0; ph < phiNum; ++ph)
@@ -52,12 +53,16 @@ int Core::CalculateRequest(const bool IsReadFromFile)
 					const double phi = phiS + ph*phiI;
 					Vector3cd temp = post.EField(theta*M_PI_180, phi*M_PI_180);
 					ofs << setw(7) << theta << setw(7) << phi << setw(12) << coef*temp.squaredNorm() << '\n';
+					cout << "Progress:" << setw(10) << (th*phiNum+ph+1) / Sum << "%\r";
 				}
 			}
 			ofs.flush();
 			ofs.close();
 		}
 		RuntimeL->info("Finish");
+		const clock_t end = clock();
+		double timecost = double(end - start) / CLOCKS_PER_SEC;
+		Console->info("FarField Calculate cost {}s", timecost);
 		RuntimeL->flush();
 		return 0;
 	}
