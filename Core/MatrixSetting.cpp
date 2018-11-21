@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "MatrixSetting.h"
 #include "Const.h"
-#include <iostream>
-#include <iomanip>
 
 using namespace std;
 using namespace AIMAssist;

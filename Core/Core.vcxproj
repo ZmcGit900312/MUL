@@ -250,7 +250,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <MinimalRebuild>true</MinimalRebuild>
+      <MinimalRebuild>false</MinimalRebuild>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
@@ -295,7 +295,8 @@
       <DebugInformationFormat>None</DebugInformationFormat>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
-      <MinimalRebuild>true</MinimalRebuild>
+      <MinimalRebuild>false</MinimalRebuild>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -385,6 +386,12 @@
     <ClCompile Include="SetGreenFunction.cpp" />
     <ClCompile Include="SetRightHand.cpp" />
     <ClCompile Include="Solve.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Gtest_Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Gtest_Debug|x64'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="TeoplitzAssist.cpp" />
     <ClCompile Include="Teoplitzcd.cpp" />
     <ClCompile Include="TxtReader.cpp" />

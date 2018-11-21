@@ -1,9 +1,6 @@
 #include "stdafx.h"
 #include "RWG.h"
 #include "Green.h"
-#include <fstream>
-#include <ctime>
-#include <iomanip>
 #define RWGMemory 20
 
 using namespace Core;

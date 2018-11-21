@@ -317,6 +317,9 @@
     <ClCompile Include="IterationSolver.cpp">
       <Filter>源文件\Solution</Filter>
     </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SourceData\MeshTest.nas">

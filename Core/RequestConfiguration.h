@@ -6,7 +6,6 @@
 ///////////////////////////////////////////////////////////
 
 #pragma once
-#include <iostream>
 
 namespace Core
 {
@@ -19,7 +18,7 @@ namespace Core
 			unsigned ThetaNum = 1, PhiNum = 1;
 			double ThetaStart = 0, PhiStart = 0;
 			double ThetaIncrement = 1, PhiIncrement = 1;
-			string FarFileName;
+			std::string FarFileName;
 		};
 	}
 }

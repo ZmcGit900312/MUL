@@ -4,7 +4,7 @@
 #ifndef GTEST
 #include "CoreAPI.h"
 #include "Data.h"
-#include <windows.h>
+
 
 
 void main(int argc,char* argv[])

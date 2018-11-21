@@ -3,10 +3,8 @@
 #include "Data.h"
 #include "IntegrationRWG.h"
 #include "FarField.h"
-#include <iomanip>
 #include "gtest/gtest.h"
 #include "CoreAPI.h"
-#include "Const.h"
 using namespace Core;
 using namespace Eigen;
 
@@ -63,7 +61,7 @@ TEST_F(RequestTest, BaseTest)
 		{
 			const double theta = 0 + th * 1;
 			const double phi = 0 + ph * 1;
-			Vector3cd temp = post.EFieldModify(theta*M_PI_180, phi*M_PI_180);
+			Vector3cd temp = post.EFieldBenchMark(theta*M_PI_180, phi*M_PI_180);
 			Console->debug("({0},{1}) = {2:12.7e} m^2", theta,phi,coef * temp.squaredNorm());
 		}
 	}
@@ -91,7 +89,7 @@ TEST_F(RequestTest, FarFieldTest)
 			const double theta = 0 + th * 1;
 			const double phi = 0 + ph * 1;
 			Vector3cd efield(post.EField(theta*M_PI_180, phi*M_PI_180));
-			Vector3cd efieldRef(post.EFieldModify(theta*M_PI_180, phi*M_PI_180));
+			Vector3cd efieldRef(post.EFieldBenchMark(theta*M_PI_180, phi*M_PI_180));
 			EXPECT_NEAR(efieldRef.norm(), efield.norm(), 1.0e-5) << "error in FarField Request (th,phi)=" << theta << phi;
 			//cout << "Ref:\t" << efieldRef.transpose() << '\n' << "Cal:\t" << efield.transpose() << endl;
 			Console->debug("({0},{1}) = {2:12.7e} m^2,{3:12.7e} m^2", theta, phi, 

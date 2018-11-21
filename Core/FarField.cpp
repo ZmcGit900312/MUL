@@ -9,118 +9,83 @@
 #include "FarField.h"
 #include "Const.h"
 #include "Data.h"
-#include <fstream>
-#include <sstream>
-#include<functional>
-#include <ctime>
-#include <iomanip>
 #include "RWG.h"
 #include "IntegrationRWG.h"
+#include "Log.h"
 
 using namespace std;
 using namespace placeholders;
 
-Request::FF::FF(IGreen *green, vector<IBasicFunction*>*bf, Mesh *mesh) :
-	_mesh(mesh), _bf(bf),_green(green)
+Request::FF::FF(vector<IBasicFunction*>*bf, Mesh *mesh) :
+	_mesh(mesh), _bf(bf)
 {
-	_plus = new RadiationKernelp(green);
-	_minus = new RadiationKernelm(green);
-	//_ra = new RadiationTest(green);
-	_efield.resize(ThetaNum, PhiNum);
-	_rcs.resize(ThetaNum, PhiNum);
 	Vector3d D{ ComponentList::Geometry.GetLimitationBoundary(7) - ComponentList::Geometry.GetLimitationBoundary(0) };
 	Radius = 100*D.squaredNorm() /Lambda;//2D^2/lam
-	ITR::SetQuad(4);
-
+	_coef = 4 * M_PI*Radius*Radius;
 }
 
 
-bool Request::FF::WriteTxt(char * destfile) const
+//bool Request::FF::WriteTxt(char * destfile) const
+//{
+//	if (!destfile)return false;
+//	
+//	ofstream outEfieldS(destfile, ios_base::out);
+//
+//	outEfieldS << "This is the FarField data,include E and RCS" << endl;
+//
+//	int thetaStart = 0, _thetaEnd = 180;
+//	int phiStart = 0, phiEnd = 360;
+//	int thetaNum = ThetaNum + 2,phiNum=PhiNum+1;
+//
+//	//里面有些变量问题
+//	outEfieldS << "Theta:\r\tfrom" << thetaStart << "\tto\t" << _thetaEnd << "\t" << thetaNum << endl;
+//	outEfieldS << "Phi:\r\tfrom" << phiStart << "\tto\t" << phiEnd << "\t" << phiNum << endl;
+//	outEfieldS << "Distance:" << Radius << "m" << endl;
+//	outEfieldS << "Theta\tPhi\t\tEfieldx\t\tEfieldy\t\tEfieldz\t\tRCS m\t\t" << endl;
+//
+//	for (int iTheta =0; iTheta <thetaNum; ++iTheta)
+//	{
+//		for (int iPhi = 0; iPhi <phiNum; ++iPhi)
+//		{
+//			Vector3cd efield{GetEField(iTheta, iPhi) };
+//			outEfieldS << thetaStart + Interval*iTheta << "\t" << phiStart + Interval*iPhi;
+//			outEfieldS << "\t" << efield.x() << "\t\t";
+//			outEfieldS << "\t" << efield.y()  << "\t\t";
+//			outEfieldS << "\t" << efield.z()  << "\t\t";
+//			outEfieldS << "\t" << GetRCS(iTheta, iPhi) << endl;
+//		}
+//	}
+//	outEfieldS.close();
+//	return true;
+//}
+
+
+
+void Request::FF::SetEField(FarFieldConfiguration& config, ofstream& ofs) const
 {
-	if (!destfile)return false;
-	if (!_efield.rows()*_efield.cols())return false;
-	
-	ofstream outEfieldS(destfile, ios_base::out);
+	Console->info("Calculate Request: {}",config.FarFileName);
+	ResultL->info("Calculate Request: {}", config.FarFileName);
+	const int thetaNum = config.ThetaNum;
+	const int phiNum = config.PhiNum;
+	const double thetaS = config.ThetaStart;
+	const double phiS = config.PhiStart;
+	const double thetaI = config.ThetaIncrement;
+	const double phiI = config.PhiIncrement;
+	const double Sum = 0.01*thetaNum * phiNum;
 
-	outEfieldS << "This is the FarField data,include E and RCS" << endl;
-
-	int thetaStart = 0, _thetaEnd = 180;
-	int phiStart = 0, phiEnd = 360;
-	int thetaNum = ThetaNum + 2,phiNum=PhiNum+1;
-
-	//里面有些变量问题
-	outEfieldS << "Theta:\r\tfrom" << thetaStart << "\tto\t" << _thetaEnd << "\t" << thetaNum << endl;
-	outEfieldS << "Phi:\r\tfrom" << phiStart << "\tto\t" << phiEnd << "\t" << phiNum << endl;
-	outEfieldS << "Distance:" << Radius << "m" << endl;
-	outEfieldS << "Theta\tPhi\t\tEfieldx\t\tEfieldy\t\tEfieldz\t\tRCS m\t\t" << endl;
-
-	for (int iTheta =0; iTheta <thetaNum; ++iTheta)
+	ofs << setw(7) << "Theta" << setw(7) << "Phi" << setw(12) << "RCS(m2)" << endl;
+	for (int th = 0; th < thetaNum; ++th)
 	{
-		for (int iPhi = 0; iPhi <phiNum; ++iPhi)
+		for (int ph = 0; ph < phiNum; ++ph)
 		{
-			Vector3cd efield{GetEField(iTheta, iPhi) };
-			outEfieldS << thetaStart + Interval*iTheta << "\t" << phiStart + Interval*iPhi;
-			outEfieldS << "\t" << efield.x() << "\t\t";
-			outEfieldS << "\t" << efield.y()  << "\t\t";
-			outEfieldS << "\t" << efield.z()  << "\t\t";
-			outEfieldS << "\t" << GetRCS(iTheta, iPhi) << endl;
+			const double theta = thetaS + th * thetaI;
+			const double phi = phiS + ph * phiI;
+			Vector3cd temp = EField(theta*M_PI_180, phi*M_PI_180);
+			ofs << setw(7) << theta << setw(7) << phi << setw(12) << _coef * temp.squaredNorm() << '\n';
+			cout << "Progress:" << setw(10) << (th*phiNum + ph + 1) / Sum << "%\r";
 		}
 	}
-	outEfieldS.close();
-	return true;
-}
 
-
-Vector3cd Request::FF::GetEField(const int theta, const int phi)const
-{
-	switch (theta)
-	{
-	case 0:
-		return _theta0;
-	case 180:
-		return _theta180;
-	default:
-		return _efield(theta-1, phi%360);
-	}
-}
-
-double Request::FF::GetRCS(const int theta, const int phi)const
-{
-	switch (theta)
-	{
-	case 0:
-		return _rcs0;
-	case 180:
-		return _rcs180;
-	default:
-		return _rcs(theta-1, phi%360);
-	}
-}
-
-
-void Request::FF::SetEField()
-{
-	cout << "\nBegin to Calculate the 3D pattern...\n";
-
-	const clock_t start = clock();
-
-	_theta0 = EField(0, 0);
-	_theta180 = EField(M_PI, 0);
-	_rcs0 = 4 * M_PI*Radius*Radius*_theta0.squaredNorm();
-	_rcs180 = 4 * M_PI*Radius*Radius*_theta180.squaredNorm();
-	for(int iTheta=1;iTheta<=ThetaNum;++iTheta)
-	{
-		for (int iPhi = 1; iPhi <= PhiNum; ++iPhi)
-		{
-			const Vector3cd temp(EField(double(iTheta*Interval* M_PI_180),double(iPhi*Interval*M_PI_180)));
-			_efield(iTheta - 1, iPhi - 1) = temp;
-			_rcs(iTheta-1, iPhi-1)= 4 * M_PI*Radius*Radius*temp.squaredNorm();
-		}
-		cout << "Progress:" << setw(10) << double(iTheta)/ ThetaNum << "%\r";
-	}
-	const clock_t end = clock();
-	const double time = double(end - start) / CLOCKS_PER_SEC;
-	cout << "\n3D FarField cost\t=" << time << " s\nFinish!\n";
 }
 
 
@@ -141,16 +106,15 @@ Vector3cd Request::FF::EField(const double theta, const double phi) const
 	return efield;
 }
 
-Vector3cd Core::Request::FF::EFieldModify(const double theta, const double phi) const
+Vector3cd Core::Request::FF::EFieldBenchMark(const double theta, const double phi) const
 {
 	const Vector3d ob(Radius*cos(phi)*sin(theta), Radius*sin(phi)*sin(theta), Radius*cos(theta));
 	Vector3cd efield{ 0,0,0 };
-
+	auto _green = ComponentList::Green;
 	for (auto bf = _bf->begin(),ed=_bf->end(); bf!=ed; ++bf)//迭代器部分估计会有问题
 	{
 		auto zmc = static_cast<RWG*>(*bf);
 		const short K = 4;
-		complex<double> plus(0), minus(0);
 		Triangle& tplus = zmc->TrianglePlus();
 		Triangle& tminus = zmc->TriangleMinus();
 		Vector3cd temp{ 0,0,0 };

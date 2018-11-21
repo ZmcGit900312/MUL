@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "CoreAPI.h"
 #include "Data.h"
-#include <ctime>
 #include "RWG.h"
 #include"Log.h"
 

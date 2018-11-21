@@ -4,8 +4,6 @@
 #include "EquationKernel.h"
 #include "IntegrationRWG.h"
 #include "Data.h"
-#include <ctime>
-#include <iomanip>
 using namespace std;
 
 void ImpMoM::FillImpedance()

@@ -1,7 +1,5 @@
 #include "stdafx.h"
 #include "TxtReader.h"
-#include <fstream>
-#include <sstream>
 
 using namespace std;
 

@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "Mesh.h"
 #include <fstream>
-#include <string>
-#include <ctime>
 #include "Log.h"
 
 using namespace std;

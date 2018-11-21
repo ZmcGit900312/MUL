@@ -14,7 +14,10 @@
 #include <fstream>
 #include <istream>
 #include <sstream>
-
+#include <ctime>
+#include<functional>
+#include <iomanip>
+#include <string>
 #ifdef NDEBUG
 #define EIGEN_NO_DEBUG
 #define EIGEN_USE_MKL_ALL

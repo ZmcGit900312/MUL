@@ -120,7 +120,7 @@ TEST(TeoplitzcdTest,PaddingAndUnpadding)
 	VectorXcd x(VectorXcd::LinSpaced(8, 1, 8));
 	Teoplitzcd tp(layerNum);
 	TeoplitzAssist computer(tp);
-	const long fftnum = computer.Length();
+	const unsigned long fftnum = computer.Length();
 	Console->debug("Three Levels [2,2,2] Teopltiz Matrix:");
 	cout << "\tx\t=\t[" << x.transpose().real() << "]\n";
 	//padding
@@ -128,7 +128,7 @@ TEST(TeoplitzcdTest,PaddingAndUnpadding)
 		VectorXcd xPad(VectorXcd::Zero(fftnum));
 		computer.Padding(x, xPad);
 		//tp.padding(x, xPad);
-		for(unsigned i=0;i<fftnum;++i)
+		for(unsigned long i=0;i<fftnum;++i)
 		{
 			switch (i)
 			{
@@ -188,7 +188,7 @@ TEST(TeoplitzcdTest, Multiplication1)
 	computer.MultiplyTeoplitz(tpfft, x);
 	cout << "\tref\t=\t[" <<ref.transpose().real()<< "]\n";
 	cout << "\tresult\t=\t[" << x.transpose().real() << "]" << endl;
-	for (unsigned i = 0; i < L; ++i)EXPECT_DOUBLE_EQ(ref(i).real(), x(i).real())<<"Error in term: "<<i;
+	for (int i = 0; i < L; ++i)EXPECT_DOUBLE_EQ(ref(i).real(), x(i).real())<<"Error in term: "<<i;
 }
 
 TEST(TeoplitzcdTest,Multiplication2)
@@ -222,7 +222,7 @@ TEST(TeoplitzcdTest,Multiplication2)
 
 	cout << "\tref\t=\t[" << ref.transpose().real() << "]\n";
 	cout << "\tresult\t=\t[" << x.transpose().real() << "]" << endl;
-	for (unsigned i = 0; i < L; ++i)EXPECT_DOUBLE_EQ(ref(i).real(), x(i).real()) << "Error in term: " << i;
+	for (int i = 0; i < L; ++i)EXPECT_DOUBLE_EQ(ref(i).real(), x(i).real()) << "Error in term: " << i;
 }
 
 TEST(TeoplitzcdTest,Mulitplication3)
