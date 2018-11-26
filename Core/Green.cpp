@@ -7,10 +7,35 @@
 #include "stdafx.h"
 #include "Green.h"
 #include "Const.h"
+#include "Log.h"
 
 using namespace Core;
 using namespace std;
 using namespace Eigen;
+
+
+
+
+IGreen::GC IGreen::_gc;
+IGreen* IGreen::_green = nullptr;
+
+void Core::IGreen::FactoryGreen(GreenConfiguration * config)
+{
+	switch (config->GreenType)
+	{
+	case 1:
+		throw spdlog::spdlog_ex("Other GreenFunction is not developing!");
+	default:
+		_green = new FreeSpaceKernel();
+		Console->info("Free Space Green Function is choosen");
+		ResultL->info("Free Space Green Function is choosen");
+		RuntimeL->info("Finish");
+		RuntimeL->flush();
+	}
+}
+
+
+
 
 /**
 * ±êÁ¿º¯Êý
@@ -50,3 +75,5 @@ complex<double> FreeSpaceKernel::SuperHyperSingularity(Vector3d SingularPoint){
 
 	return  NULL;
 }
+
+

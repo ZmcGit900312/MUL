@@ -37,7 +37,7 @@ protected:
 			srand(static_cast<unsigned>(time(nullptr)));
 			aimComputer = new MatrixSetting(SystemConfiguration::ImpConfig, ComponentList::ImpService);
 			aimComputer->MultipoleExpansion(ComponentList::BFvector);
-			aimComputer->TeoplitzSet(ComponentList::Green);
+			aimComputer->TeoplitzSet(IGreen::GetInstance());
 			Console->debug("Teoplitz is ffting");
 			aimComputer->GreenMatrixSet();
 
@@ -67,12 +67,6 @@ protected:
 			delete ComponentList::ImpService;
 			ComponentList::ImpService = nullptr;
 			Console->debug("Release Matrix");
-		}
-		if (ComponentList::Green)
-		{
-			delete ComponentList::Green;
-			ComponentList::Green = nullptr;
-			Console->debug("Release GreenFunction");
 		}
 		if (Tools::TeoplitzMultiplicator)
 		{

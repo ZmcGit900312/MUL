@@ -1789,3 +1789,31 @@
 [Mon Nov 26 20:16:51 2018 Mon][info] Release Request
 [Mon Nov 26 20:16:51 2018 Mon][info] Release Solver
 [Mon Nov 26 20:16:51 2018 Mon][info] Finish
+[Mon Nov 26 21:00:15 2018 Mon][info] Run EMCParmeterInitialization()
+[Mon Nov 26 21:00:15 2018 Mon][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Mon Nov 26 21:00:15 2018 Mon][info] Finish
+[Mon Nov 26 21:00:22 2018 Mon][info] Run SetGreenFunction()
+[Mon Nov 26 21:00:42 2018 Mon][info] Finish
+[Mon Nov 26 21:12:46 2018 Mon][info] Run EMCParmeterInitialization()
+[Mon Nov 26 21:12:46 2018 Mon][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Mon Nov 26 21:12:46 2018 Mon][info] Finish
+[Mon Nov 26 21:12:46 2018 Mon][info] Run SetGreenFunction()
+[Mon Nov 26 21:12:46 2018 Mon][info] Finish
+[Mon Nov 26 21:16:07 2018 Mon][info] Run EMCParmeterInitialization()
+[Mon Nov 26 21:16:07 2018 Mon][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Mon Nov 26 21:16:07 2018 Mon][info] Finish
+[Mon Nov 26 21:16:07 2018 Mon][info] Run SetGreenFunction()
+[Mon Nov 26 21:16:07 2018 Mon][info] Finish
+[Mon Nov 26 21:16:28 2018 Mon][info] Run ReleaseMemory()
+[Mon Nov 26 21:16:28 2018 Mon][info] Release Request
+[Mon Nov 26 21:16:28 2018 Mon][info] Release Solver
+[Mon Nov 26 21:16:28 2018 Mon][info] Finish
+[Mon Nov 26 21:18:34 2018 Mon][info] Run EMCParmeterInitialization()
+[Mon Nov 26 21:18:34 2018 Mon][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Mon Nov 26 21:18:34 2018 Mon][info] Finish
+[Mon Nov 26 21:18:34 2018 Mon][info] Run SetGreenFunction()
+[Mon Nov 26 21:18:34 2018 Mon][info] Finish
+[Mon Nov 26 21:18:34 2018 Mon][info] Run ReleaseMemory()
+[Mon Nov 26 21:18:34 2018 Mon][info] Release Request
+[Mon Nov 26 21:18:34 2018 Mon][info] Release Solver
+[Mon Nov 26 21:18:34 2018 Mon][info] Finish

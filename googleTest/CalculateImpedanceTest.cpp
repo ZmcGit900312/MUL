@@ -40,12 +40,6 @@ public:
 			ComponentList::ImpService = nullptr;
 			Console->debug("Release Matrix");
 		}
-		if (ComponentList::Green)
-		{
-			delete ComponentList::Green;
-			ComponentList::Green = nullptr;
-			Console->debug("Release GreenFunction");
-		}
 	}
 };
 

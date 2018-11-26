@@ -10,18 +10,8 @@ int Core::SetGreenFunction()
 	RuntimeL->info("Run SetGreenFunction()");
 	try
 	{
-		switch (SystemConfiguration::GreenConfig.GreenType)
-		{
-		case 1:
-			throw spdlog::spdlog_ex("Other GreenFunction is not developing!");
-		default:
-			ComponentList::Green = new FreeSpaceKernel();
-			Console->info("Free Space Green Function is choosen");
-			ResultL->info("Free Space Green Function is choosen");
-			RuntimeL->info("Finish");
-			RuntimeL->flush();
-			return 0;
-		}
+		IGreen::FactoryGreen(&SystemConfiguration::GreenConfig);
+		return 0;
 	}
 	catch (spd::spdlog_ex&ex)
 	{

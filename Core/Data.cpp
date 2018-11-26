@@ -6,7 +6,6 @@
 
 vector<IBasicFunction*> ComponentList::BFvector;
 IImpService* ComponentList::ImpService = nullptr;
-IGreen* ComponentList::Green = nullptr;
 
 Source::Planewave ComponentList::RightHand;
 Solution::ISolver* ComponentList::Solver=nullptr;

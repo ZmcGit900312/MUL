@@ -26,12 +26,6 @@ int Core::ReleaseMemory()
 		ComponentList::ImpService = nullptr;
 		RuntimeL->info("Release Matrix");
 	}
-	if (ComponentList::Green)
-	{
-		delete ComponentList::Green;
-		ComponentList::Green = nullptr;
-		RuntimeL->info("Release GreenFunction");
-	}
 	if (Tools::TeoplitzMultiplicator)
 	{
 		delete Tools::TeoplitzMultiplicator;

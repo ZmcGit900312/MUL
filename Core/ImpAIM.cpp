@@ -26,7 +26,7 @@ void ImpAIM::FillImpedance()
 	Console->info("Mulitpole Expansion");
 	filler.MultipoleExpansion(ComponentList::BFvector);
 	Console->info("Construct Teoplitz Matrix");
-	filler.TeoplitzSet(ComponentList::Green);
+	filler.TeoplitzSet(IGreen::GetInstance());
 	Console->debug("Teoplitz is ffting...");
 	filler.GreenMatrixSet();
 	switch (_fillingStrategy)

@@ -36,12 +36,6 @@ public:
 			ComponentList::BFvector.shrink_to_fit();
 			Console->debug("Release BasicFunction");
 		}
-		if (ComponentList::Green)
-		{
-			delete ComponentList::Green;
-			ComponentList::Green = nullptr;
-			Console->debug("Release GreenFunction");
-		}
 	}
 };
 

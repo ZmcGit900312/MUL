@@ -15,7 +15,6 @@ namespace Core
 	{
 		static vector<IBasicFunction*> BFvector;//手动释放资源
 		static IImpService* ImpService;
-		static IGreen* Green;
 		
 		static Source::Planewave RightHand;
 		static Solution::ISolver* Solver;

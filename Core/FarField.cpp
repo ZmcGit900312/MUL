@@ -111,7 +111,7 @@ Vector3cd Core::Request::FarField::EFieldBenchMark(const double theta, const dou
 {
 	const Vector3d ob(Radius*cos(phi)*sin(theta), Radius*sin(phi)*sin(theta), Radius*cos(theta));
 	Vector3cd efield{ 0,0,0 };
-	auto _green = ComponentList::Green;
+	auto _green = IGreen::GetInstance();
 	for (auto bf = _bf->begin(),ed=_bf->end(); bf!=ed; ++bf)//迭代器部分估计会有问题
 	{
 		auto zmc = static_cast<RWG*>(*bf);

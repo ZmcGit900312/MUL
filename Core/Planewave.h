@@ -5,10 +5,6 @@
 #include <Eigen/Core>
 #include "IBasicFunction.h"
 
-namespace Core {
-	__interface IGreen;
-}
-
 using namespace Eigen;
 namespace Core
 {
