@@ -21,10 +21,6 @@ protected:
 
 	static void TearDownTestCase()
 	{
-		if (ComponentList::MeshService) {
-			delete ComponentList::MeshService; ComponentList::MeshService = nullptr;
-			Console->debug("Release Mesh");
-		}
 	}
 
 	//Releae BasicFunction every case if exist
@@ -52,7 +48,7 @@ TEST_F(ComponentListTest, MeshTest)
 	const Vector3d refNode[3] = { Vector3d(3.673940397E-17,.0,-.6) ,Vector3d(4.357205165E-01,2.975630966E-02,-4.114148680E-01) ,
 		Vector3d(6.799550077E-02, -3.339034976E-01,4.938472093E-01) };
 
-	Mesh* mesh = ComponentList::MeshService;
+	Mesh* mesh = Mesh::GetInstance();
 	//ASSERT_FALSE(mesh->IsLock()) << "Mesh is Locked";
 	EXPECT_EQ(431, mesh->GetNode()) << "Error in Mesh.GetNode()";
 	EXPECT_EQ(858, mesh->GetTriangle()) << "Error in Mesh.GetTriangle()";

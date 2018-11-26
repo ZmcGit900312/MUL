@@ -12,20 +12,21 @@
 #include "RWG.h"
 #include "IntegrationRWG.h"
 #include "Log.h"
+#include "ModalGeometry.h"
 
 using namespace std;
 using namespace placeholders;
 
-Request::FF::FF(vector<IBasicFunction*>*bf, Mesh *mesh) :
+Request::FarField::FarField(vector<IBasicFunction*>*bf, Mesh *mesh) :
 	_mesh(mesh), _bf(bf)
 {
-	Vector3d D{ ComponentList::Geometry.GetLimitationBoundary(7) - ComponentList::Geometry.GetLimitationBoundary(0) };
+	Vector3d D{ Assist::ModalGeometry::GetInstance()->GetLimitationBoundary(7) - Assist::ModalGeometry::GetInstance()->GetLimitationBoundary(0) };
 	Radius = 100*D.squaredNorm() /Lambda;//2D^2/lam
 	_coef = 4 * M_PI*Radius*Radius;
 }
 
 
-//bool Request::FF::WriteTxt(char * destfile) const
+//bool Request::FarField::WriteTxt(char * destfile) const
 //{
 //	if (!destfile)return false;
 //	
@@ -61,7 +62,7 @@ Request::FF::FF(vector<IBasicFunction*>*bf, Mesh *mesh) :
 
 
 
-void Request::FF::SetEField(FarFieldConfiguration& config, ofstream& ofs) const
+void Request::FarField::SetEField(FarFieldConfiguration& config, ofstream& ofs) const
 {
 	Console->info("Calculate Request: {}",config.FarFileName);
 	ResultL->info("Calculate Request: {}", config.FarFileName);
@@ -89,7 +90,7 @@ void Request::FF::SetEField(FarFieldConfiguration& config, ofstream& ofs) const
 }
 
 
-Vector3cd Request::FF::EField(const double theta, const double phi) const
+Vector3cd Request::FarField::EField(const double theta, const double phi) const
 {
 	const Vector3d observation(Radius*cos(phi)*sin(theta),Radius*sin(phi)*sin(theta),Radius*cos(theta));
 	Vector3cd efield{0,0,0};
@@ -106,7 +107,7 @@ Vector3cd Request::FF::EField(const double theta, const double phi) const
 	return efield;
 }
 
-Vector3cd Core::Request::FF::EFieldBenchMark(const double theta, const double phi) const
+Vector3cd Core::Request::FarField::EFieldBenchMark(const double theta, const double phi) const
 {
 	const Vector3d ob(Radius*cos(phi)*sin(theta), Radius*sin(phi)*sin(theta), Radius*cos(theta));
 	Vector3cd efield{ 0,0,0 };

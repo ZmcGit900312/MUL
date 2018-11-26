@@ -9,10 +9,10 @@ int Core::ReleaseMemory()
 	RuntimeL->info("Run ReleaseMemory()");
 	cout << "\n";
 	Console->info("Release the memory");
-	if (ComponentList::MeshService) {
-		delete ComponentList::MeshService; ComponentList::MeshService = nullptr;
+	/*if (Mesh::GetInstance()) {
+		delete Mesh::GetInstance(); Mesh::GetInstance() = nullptr;
 		RuntimeL->info("Release Mesh");
-	}
+	}*/
 	if (ComponentList::BFvector.size()>0)
 	{
 		for (auto element : ComponentList::BFvector) { delete element; }

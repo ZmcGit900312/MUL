@@ -38,17 +38,17 @@ complex<double> Core::EquationKernel::SetImpedance(IBasicFunction *source, IBasi
 
 
 	dcomplex d1 = ImpK::DoubleIntegration(pp,
-		ComponentList::MeshService->GetTriangle(source->LimitPlus()),
-		ComponentList::MeshService->GetTriangle(field->LimitPlus()));
+		Mesh::GetInstance()->GetTriangle(source->LimitPlus()),
+		Mesh::GetInstance()->GetTriangle(field->LimitPlus()));
 	dcomplex d2 = ImpK::DoubleIntegration(pm,
-		ComponentList::MeshService->GetTriangle(source->LimitMinus()),
-		ComponentList::MeshService->GetTriangle(field->LimitPlus()));
+		Mesh::GetInstance()->GetTriangle(source->LimitMinus()),
+		Mesh::GetInstance()->GetTriangle(field->LimitPlus()));
 	dcomplex d3 = ImpK::DoubleIntegration(mp,
-		ComponentList::MeshService->GetTriangle(source->LimitPlus()),
-		ComponentList::MeshService->GetTriangle(field->LimitMinus()));
+		Mesh::GetInstance()->GetTriangle(source->LimitPlus()),
+		Mesh::GetInstance()->GetTriangle(field->LimitMinus()));
 	dcomplex d4 = ImpK::DoubleIntegration(mm,
-		ComponentList::MeshService->GetTriangle(source->LimitMinus()),
-		ComponentList::MeshService->GetTriangle(field->LimitMinus()));
+		Mesh::GetInstance()->GetTriangle(source->LimitMinus()),
+		Mesh::GetInstance()->GetTriangle(field->LimitMinus()));
 	return 1i*k*eta*(d1+d2+d3+d4);
 }
 
@@ -56,7 +56,7 @@ complex<double> Core::EquationKernel::SetRightHand(IBasicFunction *source) const
 {
 	pp->ReSetBasicFunction(source);
 	mm->ReSetBasicFunction(source);
-	return ImpK::SingleIntegration(pp,ComponentList::MeshService->GetTriangle(source->LimitPlus()))
-	+ ImpK::SingleIntegration(mm,ComponentList::MeshService->GetTriangle(source->LimitMinus())) ;
+	return ImpK::SingleIntegration(pp,Mesh::GetInstance()->GetTriangle(source->LimitPlus()))
+	+ ImpK::SingleIntegration(mm,Mesh::GetInstance()->GetTriangle(source->LimitMinus())) ;
 }
 

@@ -183,6 +183,12 @@
     <ClInclude Include="ISolver.h">
       <Filter>头文件\Solution</Filter>
     </ClInclude>
+    <ClInclude Include="IMeshRead.h">
+      <Filter>头文件\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="NasRead.h">
+      <Filter>头文件\Mesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Data.cpp">
@@ -319,6 +325,9 @@
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="NasRead.cpp">
+      <Filter>源文件\Mesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

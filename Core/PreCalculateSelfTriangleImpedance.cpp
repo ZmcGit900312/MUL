@@ -13,8 +13,8 @@ int Core::PreCalculateSelfTriangleImpedance()
 	RuntimeL->info("Begin to pre-compute the SelfTriangle Impedance");
 	const clock_t start = clock();
 #pragma region RWGSET
-	for (auto i = ComponentList::MeshService->TriangleVector()->begin(),
-		e= ComponentList::MeshService->TriangleVector()->end(); i != e; ++i)
+	for (auto i = Mesh::GetInstance()->TriangleVector()->begin(),
+		e= Mesh::GetInstance()->TriangleVector()->end(); i != e; ++i)
 	{
 		EFRImp::SetSelfImpedanceTriangle(*i, W13, k, eta);
 	}

@@ -20,11 +20,11 @@ namespace Core
 		* \brief 远场Sphere版本 计算效率太低
 		* 优化更好，提供GetEField和GetRCS来给出RCS和电场
 		*/
-		class FF
+		class FarField
 		{
 		public:
-			FF(vector<IBasicFunction*>*, Mesh*);
-			~FF() {}
+			FarField(vector<IBasicFunction*>*, Mesh*);
+			~FarField() {}
 			/**
 			* \brief Calculate 3D RCS
 			*/

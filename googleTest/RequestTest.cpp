@@ -29,10 +29,6 @@ public:
 
 	static void TearDownTestCase()
 	{
-		if (ComponentList::MeshService) {
-			delete ComponentList::MeshService; ComponentList::MeshService = nullptr;
-			Console->debug("Release Mesh");
-		}
 		if (ComponentList::BFvector.size() > 0)
 		{
 			for (auto element : ComponentList::BFvector) { delete element; }
@@ -51,7 +47,7 @@ public:
 
 TEST_F(RequestTest, BaseTest)
 {
-	Request::FF post(ComponentList::Green, &ComponentList::BFvector, ComponentList::MeshService);
+	Request::FarField post(&ComponentList::BFvector, Mesh::GetInstance());
 	const double coef = post.Radius*post.Radius * 4 * M_PI / (1 * 1);
 	const int thetaNum = 181, phiNum = 1;
 	const clock_t start = clock();
@@ -74,7 +70,7 @@ TEST_F(RequestTest, BaseTest)
 
 TEST_F(RequestTest, FarFieldTest)
 {
-	Request::FF post(ComponentList::Green, &ComponentList::BFvector, ComponentList::MeshService);
+	Request::FarField post(&ComponentList::BFvector, Mesh::GetInstance());
 	const double coef = post.Radius*post.Radius * 4 * M_PI / (1 * 1);
 	const int thetaNum = 181, phiNum = 1;
 	const clock_t start = clock();
@@ -107,7 +103,7 @@ TEST_F(RequestTest, FarFieldTest)
 
 TEST_F(RequestTest, FarFieldTimeTest)
 {
-	Request::FF post(ComponentList::Green, &ComponentList::BFvector, ComponentList::MeshService);
+	Request::FarField post(&ComponentList::BFvector,Mesh::GetInstance());
 	const double coef = post.Radius*post.Radius * 4 * M_PI / (1 * 1);
 	const int thetaNum = 181, phiNum = 1;
 	Console->info("Vertical RCS Node={0}*{1}={2}",thetaNum,phiNum,thetaNum*phiNum);

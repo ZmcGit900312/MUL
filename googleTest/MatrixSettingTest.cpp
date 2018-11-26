@@ -55,10 +55,6 @@ protected:
 
 	static void TearDownTestCase()
 	{
-		if (ComponentList::MeshService) {
-			delete ComponentList::MeshService; ComponentList::MeshService = nullptr;
-			Console->debug("Release Mesh");
-		}
 		if (ComponentList::BFvector.size() > 0)
 		{
 			for (auto element : ComponentList::BFvector) { delete element; }
@@ -285,7 +281,7 @@ TEST_F(MatrixSettingTestData, TFSNearFieldSet)
 		const size_t unknowns = SystemConfiguration::ImpConfig.ImpSize;
 		const double threshold = SystemConfiguration::ImpConfig.Threshold*Lambda;
 		Console->debug("Matrix Near Field TFS Setting Test:");
-		auto mesh = *ComponentList::MeshService;
+		auto mesh = Mesh::GetInstance();
 
 		//Triplet
 		typedef Triplet<dcomplex> T;
@@ -296,7 +292,7 @@ TEST_F(MatrixSettingTestData, TFSNearFieldSet)
 		Console->info("Set Near Field");
 
 		const size_t estimatedSize = unknowns*unknowns / 25;
-		const size_t Sum = (mesh.GetTriangle() + 1)*mesh.GetTriangle();
+		const size_t Sum = (mesh->GetTriangle() + 1)*mesh->GetTriangle();
 		size_t currentProgress = 0;
 		//cout << "Reserve the NearPart of Impedance...\n";
 		//Reserve
@@ -305,7 +301,7 @@ TEST_F(MatrixSettingTestData, TFSNearFieldSet)
 		//Set Near Field Triplets
 		const clock_t start = clock();
 		int count = 0;
-		for (auto row = mesh.TriangleVector()->begin(), ed = mesh.TriangleVector()->end(); row != ed; ++row, ++count)
+		for (auto row = mesh->TriangleVector()->begin(), ed = mesh->TriangleVector()->end(); row != ed; ++row, ++count)
 		{
 			list<element> Z;
 			for (auto col = row + 1; col != ed; ++col)
@@ -375,7 +371,7 @@ TEST_F(MatrixSettingTestData, TFSNearFieldSet)
 				}
 
 			}
-			currentProgress += 200 * (mesh.GetTriangle() - count);
+			currentProgress += 200 * (mesh->GetTriangle() - count);
 			cout << "Progress:" << setw(10) << currentProgress / Sum << "%\r";
 		}
 		tripletsNearPart.shrink_to_fit();
@@ -423,7 +419,7 @@ TEST_F(MatrixSettingTestData, AIMCalculate)
 	try
 	{
 		if (NotAIM)throw spd::spdlog_ex("AIMCalculate is not Testing");
-		aimComputer->TriangleFillingStrategy(*ComponentList::MeshService, ComponentList::BFvector);
+		aimComputer->TriangleFillingStrategy(*Mesh::GetInstance(), ComponentList::BFvector);
 		ASSERT_EQ(0, Core::SetRightHand()) << "Error in Set RightHand";
 		auto info = Core::Solve();
 		EXPECT_EQ(0, info) << "Error in Solve Matrix with BicgStab";

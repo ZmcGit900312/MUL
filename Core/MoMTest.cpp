@@ -39,10 +39,6 @@ public:
 
 	static void TearDownTestCase()
 	{
-		if (ComponentList::MeshService) {
-			delete ComponentList::MeshService; ComponentList::MeshService = nullptr;
-			Console->debug("Release Mesh");
-		}
 		if (ComponentList::BFvector.size()>0)
 		{
 			for (auto element : ComponentList::BFvector) { delete element; }
@@ -76,7 +72,7 @@ TEST_F(MoMTest, ImpedanceTest)
 		EFRImp compute(k, W4, W7, eta);
 		//验证阻抗矩阵
 		MatrixXcd& Imp = static_cast<ImpMoM*>(ComponentList::ImpService)->LocalMatrix();
-		auto mesh = ComponentList::MeshService;
+		auto mesh = Mesh::GetInstance();
 		auto& bf = ComponentList::BFvector;
 		//元素（153,451）比较
 		const int row = 152, col = 450;

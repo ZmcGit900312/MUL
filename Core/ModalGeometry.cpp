@@ -2,6 +2,7 @@
 #include "ModalGeometry.h"
 #include "Log.h"
 
+Assist::ModalGeometry Assist::ModalGeometry::_instance;
 
 void Assist::ModalGeometry::SetLimitationBoundary(Mesh * mesh)
 {

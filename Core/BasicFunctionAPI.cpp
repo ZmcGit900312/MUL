@@ -11,11 +11,11 @@ int Core::CreatBasicFunction(const bool isCreat)
 	{
 		cout << "\n";
 		
-		Mesh* mesh = ComponentList::MeshService;
+		Mesh* mesh = Mesh::GetInstance();
 
 		const int basicFunctionType = 0;//ÒÔºóÀ©Õ¹BasicFunction type
 
-		if (ComponentList::MeshService->IsLock())throw spdlog::spdlog_ex("Mesh is lock!");
+		if (Mesh::GetInstance()->IsLock())throw spdlog::spdlog_ex("Mesh is lock!");
 
 		if (isCreat) {
 			Console->info("Initial BasicFunction");
@@ -64,7 +64,7 @@ int Core::LoadBasicFunction(const char* loadFileName)
 		if (ifs.is_open())
 		{
 			ResultL->info("\nMesh");
-			Mesh* mesh = ComponentList::MeshService;
+			Mesh* mesh = Mesh::GetInstance();
 			ComponentList::BFvector.clear();
 			pair<int, Vector3d> tempNode[4];
 			int info[7] = { 0,0,0,0,0,0,0 }, BFTYPE = 0;//BFTYPE=0:RWG

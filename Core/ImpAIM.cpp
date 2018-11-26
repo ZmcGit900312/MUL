@@ -35,7 +35,7 @@ void ImpAIM::FillImpedance()
 			filler.NearCorrection(ComponentList::BFvector);
 			break;
 		default:
-			filler.TriangleFillingStrategy(*ComponentList::MeshService, ComponentList::BFvector);
+			filler.TriangleFillingStrategy(*Mesh::GetInstance(), ComponentList::BFvector);
 	}
 
 	const clock_t end = clock();

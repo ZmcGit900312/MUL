@@ -2,7 +2,6 @@
 
 #ifndef PLANEWAVE_H
 #define PLANEWAVE_H
-#include <string>
 #include <Eigen/Core>
 #include "IBasicFunction.h"
 
@@ -36,7 +35,7 @@ namespace Core
 			std::string ExcitationName;
 
 			/**
-			 * \brief Compute the k direction and E direction
+			 * \brief Compute the k direction and E direction in (-Theta) direction
 			 */
 			void Compute();
 			Vector3d GetKi()const { return _ki; }

@@ -1,6 +1,5 @@
 #pragma once
 #include "Mesh.h"
-#include "ModalGeometry.h"
 #include "IBasicFunction.h"
 #include "IImpedance.h"
 #include "Green.h"
@@ -14,11 +13,9 @@ namespace Core
 {
 	struct ComponentList 
 	{
-		static Mesh* MeshService;
 		static vector<IBasicFunction*> BFvector;//手动释放资源
 		static IImpService* ImpService;
 		static IGreen* Green;
-		static Assist::ModalGeometry Geometry;
 		
 		static Source::Planewave RightHand;
 		static Solution::ISolver* Solver;

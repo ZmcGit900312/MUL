@@ -21,8 +21,7 @@ void Source::Planewave::Compute()
 	//Original Ei=Vector3d(-sin(theta)*cos(phi),-sin(theta)*sin(phi),cos(theta))
 	_ei = Vector3d(cos(theta)*cos(phi), cos(theta)*sin(phi), sin(theta));
 	//_ei = Rotation(theta, phi, Vector3d{ -cos(eta),sin(eta),0.0 });
-	E0 = Magnitude*exp(-
-		1i*Phase*M_PI_180);
+	E0 = Magnitude*exp(-1i*Phase*M_PI_180);
 }
 
 Vector3d Source::Planewave::Rotation(const double theta, const double phi, const Vector3d & v)

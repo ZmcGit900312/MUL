@@ -20,7 +20,7 @@ int Core::CalculateRequest(const bool IsReadFromFile)
 			if (CreatBasicFunction(false))throw spd::spdlog_ex("Error in Request");
 			if (SetGreenFunction())throw spd::spdlog_ex("Green Function is null");
 		}
-		Request::FF post(&ComponentList::BFvector, ComponentList::MeshService);
+		Request::FarField post(&ComponentList::BFvector, Mesh::GetInstance());
 		
 		
 		ofstream ofs;

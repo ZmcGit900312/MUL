@@ -9,7 +9,7 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Gtest_Debug|x64'">
-    <LocalDebuggerCommandArguments>--gtest_filter=RequestTest.*</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>--gtest_filter=ComponentListTest.MeshTest</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Gtest_Release|x64'">

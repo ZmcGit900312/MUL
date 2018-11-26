@@ -30,3 +30,5 @@
 /SourceData/Horizon_RCS.dat
 /SourceData/RCSTest.dat
 /SourceData/Sphere_RCS.dat
+/include/Eigen
+/include/unsupported

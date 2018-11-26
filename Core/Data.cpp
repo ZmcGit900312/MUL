@@ -4,11 +4,9 @@
 
 #pragma region ComponentList
 
-Mesh* ComponentList::MeshService = nullptr;
 vector<IBasicFunction*> ComponentList::BFvector;
 IImpService* ComponentList::ImpService = nullptr;
 IGreen* ComponentList::Green = nullptr;
-Assist::ModalGeometry ComponentList::Geometry;
 
 Source::Planewave ComponentList::RightHand;
 Solution::ISolver* ComponentList::Solver=nullptr;

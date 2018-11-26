@@ -2,8 +2,9 @@
 #include "CoreAPI.h"
 #include "ImpAIM.h"
 #include "ImpMoM.h"
-#include "MultipoleExpansioner.h"
 #include "Log.h"
+#include "ModalGeometry.h"
+
 int Core::CreatImpedance()
 {
 	Vector3d delta;
@@ -17,9 +18,11 @@ int Core::CreatImpedance()
 			Console->info("Initial AIM Matrix");
 			ResultL->info("\nMethod AIM");
 			//Configuration
-			SystemConfiguration::ImpConfig.Box[0] = ComponentList::Geometry.GetLimitationBoundary(0)
-				- (SystemConfiguration::ImpConfig.GridOrder - 1)*SystemConfiguration::ImpConfig.Interval*Vector3d::Ones();
-			SystemConfiguration::ImpConfig.Box[1] = ComponentList::Geometry.GetLimitationBoundary(7)
+			SystemConfiguration::ImpConfig.Box[0] = 
+				Assist::ModalGeometry::GetInstance()->GetLimitationBoundary(0)
+			- (SystemConfiguration::ImpConfig.GridOrder - 1)*SystemConfiguration::ImpConfig.Interval*Vector3d::Ones();
+			SystemConfiguration::ImpConfig.Box[1] = 
+				Assist::ModalGeometry::GetInstance()->GetLimitationBoundary(7)
 				+ (SystemConfiguration::ImpConfig.GridOrder - 1)* SystemConfiguration::ImpConfig.Interval*Vector3d::Ones();
 
 			Console->info("AIMBox is from ({0:+5.3f},{1:+5.3f},{2:+5.3f}) to ({3:+5.3f},{4:+5.3f},{5:+5.3f})",

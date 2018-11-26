@@ -11,8 +11,8 @@ void ImpMoM::FillImpedance()
 	
 	EFRImp compute(k, W4, W7, eta);
 
-	const auto beginTriangle = ComponentList::MeshService->TriangleVector()->begin();
-	const auto endTriangle = ComponentList::MeshService->TriangleVector()->cend();
+	const auto beginTriangle = Mesh::GetInstance()->TriangleVector()->begin();
+	const auto endTriangle = Mesh::GetInstance()->TriangleVector()->cend();
 
 	
 	const clock_t start = clock();
@@ -42,7 +42,7 @@ void ImpMoM::FillImpedance()
 				_imp(col , row ) += val;
 			}
 		}
-		cout << "Progress:" << setw(8) << i->ID()+1 << "of " << ComponentList::MeshService->GetTriangle() << "\r";
+		cout << "Progress:" << setw(8) << i->ID()+1 << "of " << Mesh::GetInstance()->GetTriangle() << "\r";
 	}
 	const clock_t end = clock();
 	_time = double(end - start) / CLOCKS_PER_SEC;

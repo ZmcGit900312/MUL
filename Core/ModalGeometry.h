@@ -10,8 +10,9 @@ namespace Core
 		class ModalGeometry
 		{
 		public:
-			ModalGeometry(){}
 			~ModalGeometry(){}
+			static ModalGeometry* GetInstance() { return &_instance; }
+
 			/**
 			 * \brief Get the limitation Boundary
 			 * \param val Index of limitation
@@ -25,10 +26,15 @@ namespace Core
 			 */
 			void SetLimitationBoundary(Mesh* mesh);
 		private:
+			ModalGeometry() = default;
+			ModalGeometry operator = (ModalGeometry&) = delete;
+			ModalGeometry(ModalGeometry&) = delete;
 			/**
 			 * \brief 0~7 from low to upper limitatioin
 			 */
 			Vector3d _boundaryLimitaion[8];
+
+			static ModalGeometry _instance;
 		};
 	}
 }
