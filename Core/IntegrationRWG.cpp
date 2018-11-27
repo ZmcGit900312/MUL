@@ -1,6 +1,7 @@
 #include "stdafx.h"
+#define _USE_MATH_DEFINES
 #include "IntegrationRWG.h"
-#include "Const.h"
+#include <math.h>
 
 Core::EFRImp::EFRImp(const double k, double * w4, double * w7, const double eta):
 _k(k),_eta(eta),_w4(w4),_w7(w7){}
@@ -165,14 +166,14 @@ void EFRImp::SetImpedance(Triangle & field, Triangle & source, list<element>& va
 	Vector3cd m2{ 0,0,0 }, m3{ 0,0,0 };
 	//Three vertexes of field and source triangle
 
-	const double Phi = 4.0 / (k*k);
+	const double Phi = 4.0 / (_k*_k);
 
 	for (int i = 0; i<K; ++i)
 	{//Field Triangle
 		for (int j = 0; j<K; ++j)
 		{//Source Triangle
 			double R = (field.Quad4()[i] - source.Quad4()[j]).norm();
-			const dcomplex gij = _w4[i] * _w4[j] * exp(-1i*k*R) / R;
+			const dcomplex gij = _w4[i] * _w4[j] * exp(-1i*_k*R) / R;
 
 			m4 += gij;
 			m1 += field.Quad4()[i].dot(source.Quad4()[j])*gij;
@@ -185,7 +186,7 @@ void EFRImp::SetImpedance(Triangle & field, Triangle & source, list<element>& va
 	for (auto i = val.begin(); i != val.end(); ++i)
 	{
 		int& local1 = std::get<0>(*i), &local2 = std::get<1>(*i);
-		const dcomplex value = 1i*0.0625*k*eta*M_1_PI*(m1 -
+		const dcomplex value = 1i*0.0625*_k*_eta*M_1_PI*(m1 -
 			field.Node(local1).dot(m3) - source.Node(local2).dot(m2) +
 			(field.Node(local1).dot(source.Node(local2)) - Phi)*m4)
 		*field.Edge(local1).second* source.Edge(local2).second;
@@ -204,8 +205,8 @@ dcomplex EFRImp::SetRightHand(RWG * source, Vector3d ki, Vector3d e)
 	for (int i = 0; i < K; ++i)
 	{//Source Triangle
 		Vector3d pt1 = tplus.Quad4()[i],pt2=tminus.Quad4()[i];
-		plus += _w4[i] * exp(-1i*k*pt1.dot(ki))*e.dot(source->CurrentPlus(pt1));
-		minus+= _w4[i] * exp(-1i*k*pt2.dot(ki))*e.dot(source->CurrentMinus(pt2));
+		plus += _w4[i] * exp(-1i*_k*pt1.dot(ki))*e.dot(source->CurrentPlus(pt1));
+		minus+= _w4[i] * exp(-1i*_k*pt2.dot(ki))*e.dot(source->CurrentMinus(pt2));
 	}
 	return plus*tplus.Area()+minus*tminus.Area();
 }
@@ -216,14 +217,14 @@ Vector3cd Core::EFRImp::Radiation(Triangle & source, Vector3d ob, dcomplex curre
 	Vector3cd efield{ 0,0,0 };
 	//Free Space
 	
-	const double Phi = 2.0 / (k*k);
-	const dcomplex coef = -1i*k*eta0*0.125*M_1_PI;
+	const double Phi = 2.0 / (_k*_k);
+	const dcomplex coef = -1i*_k*_eta*0.125*M_1_PI;
 
 	for (int i = 0; i < K; ++i)
 	{
 		Vector3d pt = source.Quad4()[i];
 		Vector3d rv(ob - pt);
-		double R = rv.norm(),trans=R*k;
+		double R = rv.norm(),trans=R*_k;
 		//Green
 		dcomplex gScalar = _w4[i]*exp(-1i*trans)/R;
 		Vector3cd gGradient(rv*(dcomplex(1,trans)*gScalar)/(R*R));

@@ -7,13 +7,14 @@
 #include "stdafx.h"
 #include "Const.h"
 #include "IEKernel.h"
+#include "Data.h"
 using namespace Core;
 
 #pragma region EFIE
 
 IE::return_type1 EFIEpp::operator()(const Vector3d pt)
 {
-	return exp(-1i*k*pt.dot(Ki))*Ei.dot(_source->CurrentPlus(pt));
+	return exp(-1i*k*pt.dot(SystemConfig.SourceConfig.Ki))*SystemConfig.SourceConfig.Ei.dot(_source->CurrentPlus(pt));
 }
 
 IE::return_type2 EFIEpp::operator()(const Vector3d pt1,const Vector3d pt2)
@@ -24,7 +25,7 @@ IE::return_type2 EFIEpp::operator()(const Vector3d pt1,const Vector3d pt2)
 
 IE::return_type1 EFIEpm::operator()(const Vector3d pt)
 {
-	return exp(-1i*k*pt.dot(Ki))*Ei.dot(_source->CurrentPlus(pt));
+	return exp(-1i*k*pt.dot(SystemConfig.SourceConfig.Ki))*SystemConfig.SourceConfig.Ei.dot(_source->CurrentPlus(pt));
 }
 
 IE::return_type2 EFIEpm::operator()(const Vector3d pt1, const Vector3d pt2)
@@ -35,7 +36,7 @@ IE::return_type2 EFIEpm::operator()(const Vector3d pt1, const Vector3d pt2)
 
 IE::return_type1 EFIEmp::operator()(const Vector3d pt)
 {
-	return exp(-1i*k*pt.dot(Ki))*Ei.dot(_source->CurrentMinus(pt));
+	return exp(-1i*k*pt.dot(SystemConfig.SourceConfig.Ki))*SystemConfig.SourceConfig.Ei.dot(_source->CurrentMinus(pt));
 }
 
 IE::return_type2 EFIEmp::operator()(const Vector3d pt1, const Vector3d pt2)
@@ -46,7 +47,7 @@ IE::return_type2 EFIEmp::operator()(const Vector3d pt1, const Vector3d pt2)
 
 IE::return_type1 EFIEmm::operator()(const Vector3d pt)
 {
-	return exp(-1i*k*pt.dot(Ki))*Ei.dot(_source->CurrentMinus(pt));
+	return exp(-1i*k*pt.dot(SystemConfig.SourceConfig.Ki))*SystemConfig.SourceConfig.Ei.dot(_source->CurrentMinus(pt));
 }
 
 IE::return_type2 EFIEmm::operator()(const Vector3d pt1, const Vector3d pt2)

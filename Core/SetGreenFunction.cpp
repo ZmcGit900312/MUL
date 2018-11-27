@@ -10,7 +10,7 @@ int Core::SetGreenFunction()
 	RuntimeL->info("Run SetGreenFunction()");
 	try
 	{
-		IGreen::FactoryGreen(&SystemConfiguration::GreenConfig);
+		IGreen::FactoryGreen(&SystemConfig.GreenConfig);
 		return 0;
 	}
 	catch (spd::spdlog_ex&ex)

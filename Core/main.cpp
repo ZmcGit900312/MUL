@@ -15,7 +15,7 @@ void main(int argc,char* argv[])
 
 #ifdef _DEBUG
 	char* configurationFileName = "E:/ZMC/Code/C_program/MUL/SourceData/test.hxj";
-	//const char* bfFileName = SystemConfiguration::BasicFunctionFileName.c_str();
+	//const char* bfFileName = SystemConfig.BasicFunctionFileName.c_str();
 	argc = 2;
 	cout	<< "**********************************\n"
 			<< "*    THIS IS Under DEBUG MODE    *\n" 
@@ -24,8 +24,6 @@ void main(int argc,char* argv[])
 	char* configurationFileName = argv[1];
 
 #endif
-	
-	Core::LogInitial();
 
 	while (argc>1)
 	{
@@ -42,7 +40,7 @@ void main(int argc,char* argv[])
 			if (Core::FillImpedance())throw runtime_error("Error in Fill Impedance");
 			if (Core::SetRightHand())throw runtime_error("Error in Set RightHand");
 			if (Core::Solve())throw runtime_error("Error in Solve Matrix with BicgStab");
-			if (Core::SaveBasicFunction(SystemConfiguration::BasicFunctionFileName.c_str()))throw runtime_error("Error in save BasicFunction");
+			if (Core::SaveBasicFunction(SystemConfig.BasicFunctionFileName.c_str()))throw runtime_error("Error in save BasicFunction");
 			if (Core::CalculateRequest())throw runtime_error("Error in Calculate the FarField");
 			ReleaseMemory();
 			const clock_t end = clock();

@@ -6,22 +6,9 @@
 
 vector<IBasicFunction*> ComponentList::BFvector;
 IImpService* ComponentList::ImpService = nullptr;
-
-Source::Planewave ComponentList::RightHand;
-Solution::ISolver* ComponentList::Solver=nullptr;
+SystemConfiguration Core::SystemConfig;
 #pragma endregion 
-
-#pragma region SystemConfiguration
-//Initial Global static variable in SystemConfiguration
-string SystemConfiguration::ProjectName="SourceData";
-string SystemConfiguration::ProjectDir="C:/";
-string SystemConfiguration::MeshFileName;
-string SystemConfiguration::BasicFunctionFileName = ProjectDir + ProjectName + ".bf";
-ImpConfiguration SystemConfiguration::ImpConfig;
-GreenConfiguration SystemConfiguration::GreenConfig;
-Solution::SolverConfiguration SystemConfiguration::SolverConfig;
-list<Request::FarFieldConfiguration> SystemConfiguration::PostConfig;
-
-#pragma endregion
 //Tools
 AIMAssist::TeoplitzAssist* Tools::TeoplitzMultiplicator = nullptr;
+
+Solution::ISolver* Core::Solver=nullptr;

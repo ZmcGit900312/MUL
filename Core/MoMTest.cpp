@@ -17,7 +17,7 @@ public:
 	{
 		try
 		{
-			if (SystemConfiguration::ImpConfig.impType != MoM)throw spd::spdlog_ex("MoMTest is not Running");
+			if (SystemConfig.ImpConfig.impType != MoM)throw spd::spdlog_ex("MoMTest is not Running");
 			ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
 			ASSERT_EQ(0, Core::CreatBasicFunction(false)) << "Error in Load BasicFunction";
 			ASSERT_EQ(0, Core::SetGreenFunction()) << "Error in set Green Function";
@@ -132,7 +132,7 @@ TEST_F(MoMTest,SolveTest)
 		ASSERT_EQ(0, info) << "Error in Solve Matrix with BicgStab";
 		if (info == 0)
 		{
-			EXPECT_EQ(0, Core::SaveBasicFunction(SystemConfiguration::BasicFunctionFileName.c_str())) << "Error in save BasicFunction";
+			EXPECT_EQ(0, Core::SaveBasicFunction(SystemConfig.BasicFunctionFileName.c_str())) << "Error in save BasicFunction";
 			EXPECT_EQ(0, Core::CalculateRequest()) << "Error in Calculate the FarField";
 		}
 	}

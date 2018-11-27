@@ -1,40 +1,40 @@
 #pragma once
-#include "Mesh.h"
 #include "IBasicFunction.h"
 #include "IImpedance.h"
 #include "Green.h"
 #include "RequestConfiguration.h"
 #include <list>
 #include "TeoplitzAssist.h"
-#include "Planewave.h"
 #include "ISolver.h"
-
+#include "Excitation.h"
 namespace Core
 {
 	struct ComponentList 
 	{
 		static vector<IBasicFunction*> BFvector;//手动释放资源
 		static IImpService* ImpService;
-		
-		static Source::Planewave RightHand;
-		static Solution::ISolver* Solver;
 	};
 
 	struct SystemConfiguration
-	{
-		static string ProjectName;
-		static string ProjectDir;
-		static string MeshFileName;
-		static string BasicFunctionFileName;
-		static ImpConfiguration ImpConfig;
-		static GreenConfiguration GreenConfig;
-		static Solution::SolverConfiguration SolverConfig;
-		static list<Request::FarFieldConfiguration> PostConfig;
+	{	
+		string ProjectName = "SourceData";
+		string ProjectDir = "C:/";
+		string MeshFileName;
+		string BasicFunctionFileName= ProjectDir + ProjectName + ".bf";
+		ImpConfiguration ImpConfig;
+		GreenConfiguration GreenConfig;
+		Source::ExcitationConfiguration SourceConfig;
+		Solution::SolverConfiguration SolverConfig;
+		list<Request::FarFieldConfiguration> PostConfig;
 	};
 	
+	extern SystemConfiguration SystemConfig;
+
 	struct Tools
 	{
 		static AIMAssist::TeoplitzAssist* TeoplitzMultiplicator;
 	};
+
+	extern Solution::ISolver*Solver;
 }
 

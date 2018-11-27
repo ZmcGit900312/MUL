@@ -88,8 +88,6 @@ namespace Core
 	* \return 0 Success
 	*/
 	int ReleaseMemory();
-
-	void LogInitial();
 #pragma endregion OTHERAPI
 }
 

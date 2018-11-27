@@ -100,7 +100,7 @@ TEST_F(ComponentListTest, BasicFunctionSetTest)
 		//Minus TriangleID
 		EXPECT_EQ(refTriangleID[i][1] - 1, bfptr[refRWGID[i]]->LimitMinus()) << "Minus Triangle error in RWG id\t" << refRWGID[i];
 	}
-	EXPECT_EQ(0, Core::SaveBasicFunction(SystemConfiguration::BasicFunctionFileName.c_str())) << "Error in save BasicFunction";
+	EXPECT_EQ(0, Core::SaveBasicFunction(SystemConfig.BasicFunctionFileName.c_str())) << "Error in save BasicFunction";
 }
 
 TEST_F(ComponentListTest, BasicFunctionLoadTest)
@@ -122,6 +122,6 @@ TEST_F(ComponentListTest, BasicFunctionLoadTest)
 		//Minus TriangleID
 		EXPECT_EQ(refTriangleID[i][1] - 1, bfptr[refRWGID[i]]->LimitMinus()) << "Minus Triangle error in RWG id\t" << refRWGID[i];
 	}
-	EXPECT_EQ(0, Core::SaveBasicFunction(SystemConfiguration::BasicFunctionFileName.c_str())) << "Error in save BasicFunction";
+	EXPECT_EQ(0, Core::SaveBasicFunction(SystemConfig.BasicFunctionFileName.c_str())) << "Error in save BasicFunction";
 }
 #endif

@@ -24,7 +24,7 @@ protected:
 	{
 		try
 		{
-			if (SystemConfiguration::ImpConfig.impType != AIM)throw spd::spdlog_ex("AIMTest is not Running");
+			if (SystemConfig.ImpConfig.impType != AIM)throw spd::spdlog_ex("AIMTest is not Running");
 			ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
 			ASSERT_EQ(0, Core::CreatBasicFunction(false)) << "Error in Load BasicFunction";
 			ASSERT_EQ(0, Core::SetGreenFunction()) << "Error in set Green Function";
@@ -35,7 +35,7 @@ protected:
 			Console->debug("Allocate the MatrixSetting oject");
 			//Random initial
 			srand(static_cast<unsigned>(time(nullptr)));
-			aimComputer = new MatrixSetting(SystemConfiguration::ImpConfig, ComponentList::ImpService);
+			aimComputer = new MatrixSetting(SystemConfig.ImpConfig, ComponentList::ImpService);
 			aimComputer->MultipoleExpansion(ComponentList::BFvector);
 			aimComputer->TeoplitzSet(IGreen::GetInstance());
 			Console->debug("Teoplitz is ffting");
@@ -112,8 +112,8 @@ TEST_F(MatrixSettingTestData, Multiplication)
 		auto& bf = ComponentList::BFvector;
 		ImpAIM* imp = static_cast<ImpAIM*>(ComponentList::ImpService);
 
-		const size_t unknowns = SystemConfiguration::ImpConfig.ImpSize;
-		const double threshold = SystemConfiguration::ImpConfig.Threshold*Lambda;
+		const size_t unknowns = SystemConfig.ImpConfig.ImpSize;
+		const double threshold = SystemConfig.ImpConfig.Threshold*Lambda;
 
 		Console->debug("Matrix Far Field Random Setting Test:");
 		for (int count = 0; count < 20;)
@@ -165,8 +165,8 @@ TEST_F(MatrixSettingTestData, Multiplication2)
 		auto& bf = ComponentList::BFvector;
 		ImpAIM* imp = static_cast<ImpAIM*>(ComponentList::ImpService);
 
-		const size_t unknowns = SystemConfiguration::ImpConfig.ImpSize;
-		const double threshold = SystemConfiguration::ImpConfig.Threshold*Lambda;
+		const size_t unknowns = SystemConfig.ImpConfig.ImpSize;
+		const double threshold = SystemConfig.ImpConfig.Threshold*Lambda;
 
 		Console->debug("Matrix Far Field Random Setting Test:");
 
@@ -241,8 +241,8 @@ TEST_F(MatrixSettingTestData, NearField)
 		if (NotAIM)throw spd::spdlog_ex("NearField is not Testing");
 		auto& bf = ComponentList::BFvector;
 
-		const size_t unknowns = SystemConfiguration::ImpConfig.ImpSize;
-		const double threshold = SystemConfiguration::ImpConfig.Threshold*Lambda;
+		const size_t unknowns = SystemConfig.ImpConfig.ImpSize;
+		const double threshold = SystemConfig.ImpConfig.Threshold*Lambda;
 		Console->debug("Matrix Near Field Random Setting Test:");
 		for (int count = 0; count < 20;)
 		{
@@ -272,15 +272,16 @@ TEST_F(MatrixSettingTestData, TFSNearFieldSet)
 		if (NotAIM)throw spd::spdlog_ex("NearField is not Testing");
 		auto& bf = ComponentList::BFvector;
 
-		const size_t unknowns = SystemConfiguration::ImpConfig.ImpSize;
-		const double threshold = SystemConfiguration::ImpConfig.Threshold*Lambda;
+		const size_t unknowns = SystemConfig.ImpConfig.ImpSize;
+		const double threshold = SystemConfig.ImpConfig.Threshold*Lambda;
 		Console->debug("Matrix Near Field TFS Setting Test:");
 		auto mesh = Mesh::GetInstance();
 
 		//Triplet
 		typedef Triplet<dcomplex> T;
-
-		SparseMatrix<dcomplex> imp;
+		int num = unknowns;
+		SparseMatrix<dcomplex> imp{ num, num };
+		
 #pragma region TFS
 		{
 		Console->info("Set Near Field");
@@ -419,7 +420,7 @@ TEST_F(MatrixSettingTestData, AIMCalculate)
 		EXPECT_EQ(0, info) << "Error in Solve Matrix with BicgStab";
 		if (info == 0)
 		{
-			EXPECT_EQ(0, Core::SaveBasicFunction(SystemConfiguration::BasicFunctionFileName.c_str())) << "Error in save BasicFunction";
+			EXPECT_EQ(0, Core::SaveBasicFunction(SystemConfig.BasicFunctionFileName.c_str())) << "Error in save BasicFunction";
 			EXPECT_EQ(0, Core::CalculateRequest()) << "Error in Calculate the FarField";
 		}
 	}

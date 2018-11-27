@@ -29,20 +29,20 @@ int Core::CreatBasicFunction(const bool isCreat)
 			default:
 				Console->info("Choose RWG Function as BasicFunction\n");
 				ResultL->info("Choose RWG Function as BasicFunction\n");
-				if(LoadBasicFunction(SystemConfiguration::BasicFunctionFileName.c_str()))SystemConfiguration::ImpConfig.ImpSize =
+				if(LoadBasicFunction(SystemConfig.BasicFunctionFileName.c_str()))SystemConfig.ImpConfig.ImpSize =
 					RWG::CreatRWGBasicFunctionList(mesh, &ComponentList::BFvector);
 			}
 			const clock_t end = clock();
 			const double _time = double(end - start) / CLOCKS_PER_SEC;
-			Console->info("The number of BasicFuntions is:\t{0:d}", SystemConfiguration::ImpConfig.ImpSize);
+			Console->info("The number of BasicFuntions is:\t{0:d}", SystemConfig.ImpConfig.ImpSize);
 			Console->info("Initial BasicFuntions costs:\t{0:10.9} s",_time);
-			ResultL->info("The number of BasicFuntions is:\t{0:d}", SystemConfiguration::ImpConfig.ImpSize);
+			ResultL->info("The number of BasicFuntions is:\t{0:d}", SystemConfig.ImpConfig.ImpSize);
 			ResultL->info("Initial BasicFuntions costs:\t{0:10.9} s", _time);
 			RuntimeL->info("Finish");
 			RuntimeL->flush();
 			return 0;
 		}		
-		return LoadBasicFunction(SystemConfiguration::BasicFunctionFileName.c_str());
+		return LoadBasicFunction(SystemConfig.BasicFunctionFileName.c_str());
 	}
 	catch (spd::spdlog_ex&ex)
 	{
@@ -70,9 +70,9 @@ int Core::LoadBasicFunction(const char* loadFileName)
 			int info[7] = { 0,0,0,0,0,0,0 }, BFTYPE = 0;//BFTYPE=0:RWG
 			dcomplex current = { 0,1 };
 			ifs.read(reinterpret_cast<char*>(&BFTYPE), sizeof(int));
-			ifs.read(reinterpret_cast<char*>(&SystemConfiguration::ImpConfig.ImpSize), sizeof(int));
+			ifs.read(reinterpret_cast<char*>(&SystemConfig.ImpConfig.ImpSize), sizeof(int));
 			const clock_t start = clock();
-			const auto unknowns = SystemConfiguration::ImpConfig.ImpSize;
+			const auto unknowns = SystemConfig.ImpConfig.ImpSize;
 			for (int i = 0; i < unknowns; ++i)
 			{
 				//Save Format 
@@ -87,7 +87,7 @@ int Core::LoadBasicFunction(const char* loadFileName)
 			}
 			ifs.clear();
 			ifs.close();
-			//SystemConfiguration::ImpConfig.ImpSize = ComponentList::BFList.size();
+			//SystemConfig.ImpConfig.ImpSize = ComponentList::BFList.size();
 			const clock_t end = clock();
 			const double _time = double(end - start) / CLOCKS_PER_SEC;
 			Console->info("The number of BasicFuntions is:\t{0:d}", unknowns);

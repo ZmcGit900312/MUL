@@ -27,9 +27,9 @@ int Core::CalculateRequest(const bool IsReadFromFile)
 		ofs.flags(ios::left);
 
 		const clock_t start = clock();
-		for (auto value : SystemConfiguration::PostConfig)
+		for (auto value : SystemConfig.PostConfig)
 		{
-			const string savename = SystemConfiguration::ProjectDir + '\\' + value.FarFileName + "_RCS.dat";
+			const string savename = SystemConfig.ProjectDir + '\\' + value.FarFileName + "_RCS.dat";
 			ofs.open(savename, ios_base::out);
 			if (!ofs.is_open())throw spd::spdlog_ex("Save RCS Directory Error in " + savename);
 

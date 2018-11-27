@@ -8,6 +8,9 @@
 #include "Log.h"
 using namespace std;
 
+
+
+
 static void SetFF(list<string>::const_iterator& ptr);
 
 static void SetA0(list<string>::const_iterator& ptr);
@@ -24,7 +27,7 @@ int Core::EMCParameterInitialization(char* configurationFileName)
 		{
 			auto zmc = TReader.GetContext().cbegin();
 			const auto ed = TReader.GetContext().cend();
-			SystemConfiguration::PostConfig.clear();
+			SystemConfig.PostConfig.clear();
 			Console->info("Read Configuration");
 			string outfileName;
 			while (zmc != ed)
@@ -34,26 +37,26 @@ int Core::EMCParameterInitialization(char* configurationFileName)
 				{
 				case IM:
 					++zmc; ++zmc;
-					SystemConfiguration::MeshFileName = *zmc++;
-					SystemConfiguration::ProjectDir = *zmc++;
-					SystemConfiguration::ProjectName = *zmc++;
-					SystemConfiguration::BasicFunctionFileName = SystemConfiguration::ProjectDir
-						+ '\\' + SystemConfiguration::ProjectName + ".bf";
+					SystemConfig.MeshFileName = *zmc++;
+					SystemConfig.ProjectDir = *zmc++;
+					SystemConfig.ProjectName = *zmc++;
+					SystemConfig.BasicFunctionFileName = SystemConfig.ProjectDir
+						+ '\\' + SystemConfig.ProjectName + ".bf";
 
-					outfileName = SystemConfiguration::ProjectDir + "\\" + SystemConfiguration::ProjectName + ".out";
+					outfileName = SystemConfig.ProjectDir + "\\" + SystemConfig.ProjectName + ".out";
 					remove(outfileName.c_str());
 					ResultL = spd::basic_logger_mt("result", outfileName);
 					ResultL->set_pattern("%v");
 					
-					ResultL->info("The Project Name:\t{}", SystemConfiguration::ProjectName);
-					ResultL->info("Mesh is From:\t{}", SystemConfiguration::MeshFileName);
+					ResultL->info("The Project Name:\t{}", SystemConfig.ProjectName);
+					ResultL->info("Mesh is From:\t{}", SystemConfig.MeshFileName);
 
-					Console->info("Project Directory:\t{}", SystemConfiguration::ProjectDir);
-					Console->info("Project Name:\t{}", SystemConfiguration::ProjectName);
-					Console->info("Mesh File Path:\t{}", SystemConfiguration::MeshFileName);
-					/*cout << "\n\tProject Directory:\t" << SystemConfiguration::ProjectDir
-					<<"\n\tProject Name:\t"<< SystemConfiguration::ProjectName
-					<<"\n\tMesh File Path:\t" << SystemConfiguration::MeshFileName << "\n";*/
+					Console->info("Project Directory:\t{}", SystemConfig.ProjectDir);
+					Console->info("Project Name:\t{}", SystemConfig.ProjectName);
+					Console->info("Mesh File Path:\t{}", SystemConfig.MeshFileName);
+					/*cout << "\n\tProject Directory:\t" << SystemConfig.ProjectDir
+					<<"\n\tProject Name:\t"<< SystemConfig.ProjectName
+					<<"\n\tMesh File Path:\t" << SystemConfig.MeshFileName << "\n";*/
 					break;
 				case FR:
 					Frequency = stod(*zmc++);
@@ -67,13 +70,13 @@ int Core::EMCParameterInitialization(char* configurationFileName)
 				case AM:
 					Console->info("Use Method:\tAIM");
 					ResultL->info("Use Method:\tAIM");
-					SystemConfiguration::ImpConfig.GridOrder = stoi(*zmc++);
-					SystemConfiguration::ImpConfig.Interval = stod(*zmc++);
-					SystemConfiguration::ImpConfig.Threshold = stod(*zmc++);
-					SystemConfiguration::ImpConfig.NearCorrectionEps = stod(*zmc++);
-					SystemConfiguration::ImpConfig.Dimension = stoi(*zmc++);
-					SystemConfiguration::ImpConfig.impType = AIM;
-					SystemConfiguration::ImpConfig.FillingStrategy = stoi(*zmc++);
+					SystemConfig.ImpConfig.GridOrder = stoi(*zmc++);
+					SystemConfig.ImpConfig.Interval = stod(*zmc++);
+					SystemConfig.ImpConfig.Threshold = stod(*zmc++);
+					SystemConfig.ImpConfig.NearCorrectionEps = stod(*zmc++);
+					SystemConfig.ImpConfig.Dimension = stoi(*zmc++);
+					SystemConfig.ImpConfig.impType = EImpedance(AIM);
+					SystemConfig.ImpConfig.FillingStrategy = stoi(*zmc++);
 					break;
 				case A0:SetA0(zmc);
 					break;
@@ -101,23 +104,23 @@ int Core::EMCParameterInitialization(char* configurationFileName)
 //Plane wave
 static void SetA0(list<string>::const_iterator& ptr)
 {
-	ComponentList::RightHand.ThetaNum = stoi(*ptr++);
-	ComponentList::RightHand.PhiNum = stoi(*ptr++);
-	ComponentList::RightHand.ThetaStart = stod(*ptr++);
-	ComponentList::RightHand.PhiStart = stod(*ptr++);
-	ComponentList::RightHand.ThetaIncrement = stod(*ptr++);
-	ComponentList::RightHand.PhiIncrement = stod(*ptr++);
-	ComponentList::RightHand.Polarisation = stoi(*ptr++);
-	ComponentList::RightHand.Magnitude = stod(*ptr++);
-	ComponentList::RightHand.Phase = stod(*ptr++);
-	ComponentList::RightHand.Eta = stod(*ptr++);
-	ComponentList::RightHand.RotationX = stod(*ptr++);
-	ComponentList::RightHand.RotationY = stod(*ptr++);
-	ComponentList::RightHand.RotationZ = stod(*ptr++);
-	ComponentList::RightHand.ExcitationName = *ptr++;
-	ComponentList::RightHand.Compute();
-	Ei = ComponentList::RightHand.GetEi();
-	Ki = ComponentList::RightHand.GetKi();
+	SystemConfig.SourceConfig.ThetaNum = stoi(*ptr++);
+	SystemConfig.SourceConfig.PhiNum = stoi(*ptr++);
+	SystemConfig.SourceConfig.ThetaStart = stod(*ptr++);
+	SystemConfig.SourceConfig.PhiStart = stod(*ptr++);
+	SystemConfig.SourceConfig.ThetaIncrement = stod(*ptr++);
+	SystemConfig.SourceConfig.PhiIncrement = stod(*ptr++);
+	SystemConfig.SourceConfig.Polarisation = stoi(*ptr++);
+	SystemConfig.SourceConfig.Magnitude = stod(*ptr++);
+	SystemConfig.SourceConfig.Phase = stod(*ptr++);
+	SystemConfig.SourceConfig.Eta = stod(*ptr++);
+	SystemConfig.SourceConfig.RotationX = stod(*ptr++);
+	SystemConfig.SourceConfig.RotationY = stod(*ptr++);
+	SystemConfig.SourceConfig.RotationZ = stod(*ptr++);
+	SystemConfig.SourceConfig.ExcitationName = *ptr++;
+	SystemConfig.SourceConfig.SetDirection();
+	/*Ei = SystemConfig.SourceConfig.Ei;
+	Ki = SystemConfig.SourceConfig.Ki;*/
 }
 
 static void SetFF(list<string>::const_iterator& ptr)
@@ -133,18 +136,17 @@ static void SetFF(list<string>::const_iterator& ptr)
 	hxjFF.PhiIncrement = stod(*ptr++);
 	hxjFF.FarFileName = *ptr++;
 
-	SystemConfiguration::PostConfig.push_back(hxjFF);
+	SystemConfig.PostConfig.push_back(hxjFF);
 }
 
 //Solver
 static void SetCG(list<string>::const_iterator& ptr)
 {
 	++ptr;
-	//SystemConfiguration::SolverConfig.Sol = Solution::ESolutionType(stoi(*ptr++));
+	//SystemConfig.SolverConfig.Sol = Solution::ESolutionType(stoi(*ptr++));
 	++ptr;
-	//SystemConfiguration::SolverConfig.Precond = Solution::ILU;
-	SystemConfiguration::SolverConfig.Maxiteration = stoi(*ptr++);
-	SystemConfiguration::SolverConfig.Tolerance = stod(*ptr++);
-	SystemConfiguration::SolverConfig.MaxStopTolerance = stod(*ptr++);
-	ComponentList::Solver=FSolver(SystemConfiguration::SolverConfig, SystemConfiguration::ImpConfig.impType);
+	//SystemConfig.SolverConfig.Precond = Solution::ILU;
+	SystemConfig.SolverConfig.Maxiteration = stoi(*ptr++);
+	SystemConfig.SolverConfig.Tolerance = stod(*ptr++);
+	SystemConfig.SolverConfig.MaxStopTolerance = stod(*ptr++);
 }

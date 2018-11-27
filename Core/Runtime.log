@@ -1817,3 +1817,474 @@
 [Mon Nov 26 21:18:34 2018 Mon][info] Release Request
 [Mon Nov 26 21:18:34 2018 Mon][info] Release Solver
 [Mon Nov 26 21:18:34 2018 Mon][info] Finish
+[Tue Nov 27 15:21:26 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 15:21:26 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 15:22:15 2018 Tue][info] Finish
+[Tue Nov 27 15:22:15 2018 Tue][info] Creat Mesh
+[Tue Nov 27 15:22:15 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 15:22:15 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 15:22:15 2018 Tue][info] Finish
+[Tue Nov 27 15:22:15 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 15:22:15 2018 Tue][info] Finish
+[Tue Nov 27 15:23:04 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 15:23:04 2018 Tue][info] Release BasicFunction
+[Tue Nov 27 15:23:04 2018 Tue][info] Release Request
+[Tue Nov 27 15:23:04 2018 Tue][info] Release Solver
+[Tue Nov 27 15:23:04 2018 Tue][info] Finish
+[Tue Nov 27 16:10:13 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 16:10:13 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 16:10:20 2018 Tue][info] Finish
+[Tue Nov 27 16:10:20 2018 Tue][warning] AIMTest is not Running
+[Tue Nov 27 16:10:20 2018 Tue][warning] AIMCalculate is not Testing
+[Tue Nov 27 16:10:20 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 16:10:20 2018 Tue][info] Finish
+[Tue Nov 27 16:15:07 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 16:15:07 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 16:15:27 2018 Tue][info] Finish
+[Tue Nov 27 16:15:27 2018 Tue][warning] AIMTest is not Running
+[Tue Nov 27 16:15:27 2018 Tue][warning] AIMCalculate is not Testing
+[Tue Nov 27 16:15:27 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 16:15:27 2018 Tue][info] Finish
+[Tue Nov 27 16:15:51 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 16:15:51 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 16:15:51 2018 Tue][info] Finish
+[Tue Nov 27 16:17:29 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 16:17:29 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 16:17:29 2018 Tue][info] Finish
+[Tue Nov 27 16:37:37 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 16:37:37 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 16:38:07 2018 Tue][info] Finish
+[Tue Nov 27 17:02:37 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 17:02:37 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 17:03:06 2018 Tue][info] Finish
+[Tue Nov 27 17:04:40 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 17:04:40 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 17:04:47 2018 Tue][info] Finish
+[Tue Nov 27 17:04:47 2018 Tue][info] Creat Mesh
+[Tue Nov 27 17:04:47 2018 Tue][error] Failed to open meshFile 
+[Tue Nov 27 17:08:45 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 17:08:45 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 17:08:51 2018 Tue][info] Finish
+[Tue Nov 27 17:08:51 2018 Tue][info] Creat Mesh
+[Tue Nov 27 17:08:51 2018 Tue][error] Failed to open meshFile 
+[Tue Nov 27 17:13:12 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 17:13:12 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 17:13:12 2018 Tue][info] Finish
+[Tue Nov 27 17:13:12 2018 Tue][info] Creat Mesh
+[Tue Nov 27 17:13:12 2018 Tue][error] Failed to open meshFile 
+[Tue Nov 27 17:39:23 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 17:39:23 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 17:40:08 2018 Tue][info] Finish
+[Tue Nov 27 17:40:08 2018 Tue][info] Creat Mesh
+[Tue Nov 27 17:40:08 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 17:40:08 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 17:40:08 2018 Tue][info] Finish
+[Tue Nov 27 17:40:08 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 17:40:08 2018 Tue][info] Finish
+[Tue Nov 27 17:40:17 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 17:40:17 2018 Tue][info] Release BasicFunction
+[Tue Nov 27 17:40:17 2018 Tue][info] Release Request
+[Tue Nov 27 17:40:17 2018 Tue][info] Finish
+[Tue Nov 27 17:44:21 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 17:44:21 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 17:44:21 2018 Tue][info] Finish
+[Tue Nov 27 17:45:10 2018 Tue][info] Creat Mesh
+[Tue Nov 27 17:45:10 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 17:45:10 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 17:45:10 2018 Tue][info] Finish
+[Tue Nov 27 17:45:10 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 17:45:10 2018 Tue][info] Finish
+[Tue Nov 27 17:45:10 2018 Tue][info] Begin to pre-compute the SelfTriangle Impedance
+[Tue Nov 27 17:45:11 2018 Tue][info] Finish Pre-compute
+[Tue Nov 27 17:45:11 2018 Tue][info] Run CreatImpedance()
+[Tue Nov 27 17:45:11 2018 Tue][info] Finish
+[Tue Nov 27 17:46:11 2018 Tue][info] Run SetRightHand()
+[Tue Nov 27 17:46:11 2018 Tue][info] Finish
+[Tue Nov 27 17:46:11 2018 Tue][info] Run Solve()
+[Tue Nov 27 17:46:30 2018 Tue][info] Finish
+[Tue Nov 27 17:46:30 2018 Tue][info] Run SaveBasicFunction()
+[Tue Nov 27 17:46:30 2018 Tue][info] Finish
+[Tue Nov 27 17:46:30 2018 Tue][info] Run CalculateRequest()
+[Tue Nov 27 17:47:04 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 17:47:04 2018 Tue][info] Release Request
+[Tue Nov 27 17:47:04 2018 Tue][info] Finish
+[Tue Nov 27 19:20:12 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 19:20:12 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 19:22:42 2018 Tue][info] Finish
+[Tue Nov 27 19:22:44 2018 Tue][info] Creat Mesh
+[Tue Nov 27 19:22:44 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 19:22:44 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 19:22:44 2018 Tue][info] Finish
+[Tue Nov 27 19:22:44 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 19:22:44 2018 Tue][info] Finish
+[Tue Nov 27 19:22:44 2018 Tue][info] Begin to pre-compute the SelfTriangle Impedance
+[Tue Nov 27 19:22:45 2018 Tue][info] Finish Pre-compute
+[Tue Nov 27 19:22:45 2018 Tue][info] Run CreatImpedance()
+[Tue Nov 27 19:22:45 2018 Tue][info] Finish
+[Tue Nov 27 19:23:47 2018 Tue][info] Run SetRightHand()
+[Tue Nov 27 19:23:47 2018 Tue][info] Finish
+[Tue Nov 27 19:23:47 2018 Tue][info] Run Solve()
+[Tue Nov 27 19:24:05 2018 Tue][info] Finish
+[Tue Nov 27 19:24:05 2018 Tue][info] Run SaveBasicFunction()
+[Tue Nov 27 19:24:05 2018 Tue][info] Finish
+[Tue Nov 27 19:24:05 2018 Tue][info] Run CalculateRequest()
+[Tue Nov 27 19:24:30 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 19:24:30 2018 Tue][info] Release Request
+[Tue Nov 27 19:24:30 2018 Tue][info] Finish
+[2018-11-27 20:14:35.765] [runtime] [info] Run EMCParmeterInitialization()
+[2018-11-27 20:14:35.765] [runtime] [info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[2018-11-27 20:14:42.063] [runtime] [info] Finish
+[2018-11-27 20:14:46.744] [runtime] [info] Creat Mesh
+[2018-11-27 20:14:46.841] [runtime] [info] Finish Creat Mesh
+[2018-11-27 20:14:46.842] [runtime] [info] Run LoadBasicFunction()
+[2018-11-27 20:14:46.852] [runtime] [info] Finish
+[2018-11-27 20:14:46.852] [runtime] [info] Run SetGreenFunction()
+[2018-11-27 20:14:46.852] [runtime] [info] Finish
+[2018-11-27 20:14:46.853] [runtime] [info] Begin to pre-compute the SelfTriangle Impedance
+[2018-11-27 20:14:47.817] [runtime] [info] Finish Pre-compute
+[2018-11-27 20:14:47.817] [runtime] [info] Run CreatImpedance()
+[2018-11-27 20:14:47.822] [runtime] [info] Finish
+[2018-11-27 20:15:47.747] [runtime] [info] Run SetRightHand()
+[2018-11-27 20:15:47.783] [runtime] [info] Finish
+[2018-11-27 20:15:47.783] [runtime] [info] Run Solve()
+[2018-11-27 20:16:06.382] [runtime] [info] Finish
+[2018-11-27 20:16:06.384] [runtime] [info] Run SaveBasicFunction()
+[2018-11-27 20:16:06.395] [runtime] [info] Finish
+[2018-11-27 20:16:06.395] [runtime] [info] Run CalculateRequest()
+[2018-11-27 20:16:36.769] [runtime] [info] Run ReleaseMemory()
+[2018-11-27 20:16:36.770] [runtime] [info] Release Request
+[2018-11-27 20:16:36.771] [runtime] [info] Finish
+[Tue Nov 27 20:18:11 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 20:18:11 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 20:18:20 2018 Tue][info] Finish
+[Tue Nov 27 20:18:21 2018 Tue][info] Creat Mesh
+[Tue Nov 27 20:18:21 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 20:18:21 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 20:18:21 2018 Tue][info] Finish
+[Tue Nov 27 20:18:21 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 20:18:21 2018 Tue][info] Finish
+[Tue Nov 27 20:18:21 2018 Tue][info] Begin to pre-compute the SelfTriangle Impedance
+[Tue Nov 27 20:18:22 2018 Tue][info] Finish Pre-compute
+[Tue Nov 27 20:18:22 2018 Tue][info] Run CreatImpedance()
+[Tue Nov 27 20:18:22 2018 Tue][info] Finish
+[Tue Nov 27 20:19:26 2018 Tue][info] Run SetRightHand()
+[Tue Nov 27 20:19:26 2018 Tue][info] Finish
+[Tue Nov 27 20:19:26 2018 Tue][info] Run Solve()
+[Tue Nov 27 20:19:44 2018 Tue][info] Finish
+[Tue Nov 27 20:19:44 2018 Tue][info] Run SaveBasicFunction()
+[Tue Nov 27 20:19:44 2018 Tue][info] Finish
+[Tue Nov 27 20:19:44 2018 Tue][info] Run CalculateRequest()
+[Tue Nov 27 20:20:20 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 20:20:20 2018 Tue][info] Release Request
+[Tue Nov 27 20:20:20 2018 Tue][info] Finish
+[Tue Nov 27 20:27:10 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 20:27:10 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 20:27:10 2018 Tue][info] Finish
+[Tue Nov 27 20:27:10 2018 Tue][info] Creat Mesh
+[Tue Nov 27 20:27:10 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 20:27:10 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 20:27:10 2018 Tue][info] Finish
+[Tue Nov 27 20:27:10 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 20:27:10 2018 Tue][info] Finish
+[Tue Nov 27 20:27:10 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 20:27:10 2018 Tue][info] Release Request
+[Tue Nov 27 20:27:10 2018 Tue][info] Finish
+[Tue Nov 27 20:27:54 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 20:27:54 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 20:27:54 2018 Tue][info] Finish
+[Tue Nov 27 20:27:54 2018 Tue][info] Creat Mesh
+[Tue Nov 27 20:27:54 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 20:27:54 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 20:27:54 2018 Tue][info] Finish
+[Tue Nov 27 20:27:54 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 20:27:54 2018 Tue][info] Finish
+[Tue Nov 27 20:27:54 2018 Tue][info] Begin to pre-compute the SelfTriangle Impedance
+[Tue Nov 27 20:27:54 2018 Tue][info] Finish Pre-compute
+[Tue Nov 27 20:27:54 2018 Tue][info] Run CreatImpedance()
+[Tue Nov 27 20:27:54 2018 Tue][info] Finish
+[Tue Nov 27 20:27:56 2018 Tue][info] Run SetRightHand()
+[Tue Nov 27 20:27:56 2018 Tue][info] Finish
+[Tue Nov 27 20:27:56 2018 Tue][info] Run Solve()
+[Tue Nov 27 20:27:57 2018 Tue][info] Finish
+[Tue Nov 27 20:27:57 2018 Tue][info] Run SaveBasicFunction()
+[Tue Nov 27 20:27:57 2018 Tue][info] Finish
+[Tue Nov 27 20:27:57 2018 Tue][info] Run CalculateRequest()
+[Tue Nov 27 20:27:57 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 20:27:57 2018 Tue][info] Release Request
+[Tue Nov 27 20:27:57 2018 Tue][info] Finish
+[Tue Nov 27 20:29:22 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 20:29:22 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 20:29:22 2018 Tue][info] Finish
+[Tue Nov 27 20:29:22 2018 Tue][info] Creat Mesh
+[Tue Nov 27 20:29:22 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 20:29:22 2018 Tue][info] Run CreatBasicFuntion()
+[Tue Nov 27 20:29:22 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 20:29:22 2018 Tue][info] Finish
+[Tue Nov 27 20:29:22 2018 Tue][info] Finish
+[Tue Nov 27 20:29:22 2018 Tue][info] Run SaveBasicFunction()
+[Tue Nov 27 20:29:22 2018 Tue][info] Finish
+[Tue Nov 27 20:29:22 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 20:29:22 2018 Tue][info] Finish
+[Tue Nov 27 20:29:22 2018 Tue][info] Run SaveBasicFunction()
+[Tue Nov 27 20:29:22 2018 Tue][info] Finish
+[Tue Nov 27 20:29:22 2018 Tue][info] Creat Mesh
+[Tue Nov 27 20:29:22 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 20:29:22 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 20:29:22 2018 Tue][info] Finish
+[Tue Nov 27 20:29:22 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 20:29:22 2018 Tue][info] Finish
+[Tue Nov 27 20:29:22 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 20:29:22 2018 Tue][info] Finish
+[Tue Nov 27 20:29:22 2018 Tue][info] Creat Mesh
+[Tue Nov 27 20:29:22 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 20:29:22 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 20:29:22 2018 Tue][info] Finish
+[Tue Nov 27 20:29:22 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 20:29:22 2018 Tue][info] Finish
+[Tue Nov 27 20:29:22 2018 Tue][info] Begin to pre-compute the SelfTriangle Impedance
+[Tue Nov 27 20:29:22 2018 Tue][info] Finish Pre-compute
+[Tue Nov 27 20:29:22 2018 Tue][info] Run CreatImpedance()
+[Tue Nov 27 20:29:22 2018 Tue][info] Finish
+[Tue Nov 27 20:31:24 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 20:31:24 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 20:31:24 2018 Tue][info] Finish
+[Tue Nov 27 20:31:24 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 20:31:24 2018 Tue][info] Release Request
+[Tue Nov 27 20:31:24 2018 Tue][info] Finish
+[Tue Nov 27 20:33:32 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 20:33:32 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 20:33:32 2018 Tue][info] Finish
+[Tue Nov 27 20:33:32 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 20:33:32 2018 Tue][info] Release Request
+[Tue Nov 27 20:33:32 2018 Tue][info] Finish
+[Tue Nov 27 20:34:55 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 20:34:55 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 20:34:55 2018 Tue][info] Finish
+[Tue Nov 27 20:34:55 2018 Tue][info] Creat Mesh
+[Tue Nov 27 20:34:55 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 20:34:55 2018 Tue][info] Run CreatBasicFuntion()
+[Tue Nov 27 20:34:55 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 20:34:55 2018 Tue][info] Finish
+[Tue Nov 27 20:34:55 2018 Tue][info] Finish
+[Tue Nov 27 20:34:55 2018 Tue][info] Run SaveBasicFunction()
+[Tue Nov 27 20:34:55 2018 Tue][info] Finish
+[Tue Nov 27 20:34:55 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 20:34:55 2018 Tue][info] Finish
+[Tue Nov 27 20:34:55 2018 Tue][info] Run SaveBasicFunction()
+[Tue Nov 27 20:34:55 2018 Tue][info] Finish
+[Tue Nov 27 20:34:55 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 20:34:55 2018 Tue][info] Release Request
+[Tue Nov 27 20:34:55 2018 Tue][info] Finish
+[Tue Nov 27 20:35:56 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 20:35:56 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 20:35:56 2018 Tue][info] Finish
+[Tue Nov 27 20:35:56 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 20:35:56 2018 Tue][info] Finish
+[Tue Nov 27 20:35:56 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 20:35:56 2018 Tue][info] Release Request
+[Tue Nov 27 20:35:56 2018 Tue][info] Finish
+[Tue Nov 27 20:37:02 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 20:37:02 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 20:37:02 2018 Tue][info] Finish
+[Tue Nov 27 20:37:03 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 20:37:03 2018 Tue][info] Release Request
+[Tue Nov 27 20:37:03 2018 Tue][info] Finish
+[Tue Nov 27 20:38:35 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 20:38:35 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 20:38:35 2018 Tue][info] Finish
+[Tue Nov 27 20:38:35 2018 Tue][info] Creat Mesh
+[Tue Nov 27 20:38:35 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 20:38:35 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 20:38:35 2018 Tue][info] Finish
+[Tue Nov 27 20:38:35 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 20:38:35 2018 Tue][info] Finish
+[Tue Nov 27 20:38:35 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 20:38:35 2018 Tue][info] Release BasicFunction
+[Tue Nov 27 20:38:35 2018 Tue][info] Release Request
+[Tue Nov 27 20:38:35 2018 Tue][info] Finish
+[Tue Nov 27 20:39:02 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 20:39:02 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 20:39:02 2018 Tue][info] Finish
+[Tue Nov 27 20:39:02 2018 Tue][info] Creat Mesh
+[Tue Nov 27 20:39:02 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 20:39:02 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 20:39:02 2018 Tue][info] Finish
+[Tue Nov 27 20:39:02 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 20:39:02 2018 Tue][info] Finish
+[Tue Nov 27 20:39:02 2018 Tue][info] Begin to pre-compute the SelfTriangle Impedance
+[Tue Nov 27 20:39:02 2018 Tue][info] Finish Pre-compute
+[Tue Nov 27 20:39:02 2018 Tue][info] Run CreatImpedance()
+[Tue Nov 27 20:39:02 2018 Tue][info] Finish
+[Tue Nov 27 20:40:49 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 20:40:49 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 20:40:49 2018 Tue][info] Finish
+[Tue Nov 27 20:40:49 2018 Tue][info] Creat Mesh
+[Tue Nov 27 20:40:49 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 20:40:49 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 20:40:49 2018 Tue][info] Finish
+[Tue Nov 27 20:40:49 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 20:40:49 2018 Tue][info] Finish
+[Tue Nov 27 20:40:49 2018 Tue][info] Begin to pre-compute the SelfTriangle Impedance
+[Tue Nov 27 20:40:49 2018 Tue][info] Finish Pre-compute
+[Tue Nov 27 20:40:49 2018 Tue][info] Run CreatImpedance()
+[Tue Nov 27 20:40:49 2018 Tue][info] Finish
+[Tue Nov 27 20:42:51 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 20:42:51 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 20:42:51 2018 Tue][info] Finish
+[Tue Nov 27 20:42:51 2018 Tue][info] Creat Mesh
+[Tue Nov 27 20:42:51 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 20:42:51 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 20:42:51 2018 Tue][info] Finish
+[Tue Nov 27 20:42:51 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 20:42:51 2018 Tue][info] Finish
+[Tue Nov 27 20:42:51 2018 Tue][info] Begin to pre-compute the SelfTriangle Impedance
+[Tue Nov 27 20:42:51 2018 Tue][info] Finish Pre-compute
+[Tue Nov 27 20:42:51 2018 Tue][info] Run CreatImpedance()
+[Tue Nov 27 20:42:51 2018 Tue][info] Finish
+[Tue Nov 27 20:42:54 2018 Tue][info] Run SetRightHand()
+[Tue Nov 27 20:42:54 2018 Tue][info] Finish
+[Tue Nov 27 20:42:54 2018 Tue][info] Run Solve()
+[Tue Nov 27 20:42:55 2018 Tue][info] Finish
+[Tue Nov 27 20:42:55 2018 Tue][info] Run SaveBasicFunction()
+[Tue Nov 27 20:42:55 2018 Tue][info] Finish
+[Tue Nov 27 20:42:55 2018 Tue][info] Run CalculateRequest()
+[Tue Nov 27 20:42:55 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 20:42:55 2018 Tue][info] Release Request
+[Tue Nov 27 20:42:55 2018 Tue][info] Finish
+[Tue Nov 27 20:43:49 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 20:43:49 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 20:43:49 2018 Tue][info] Finish
+[Tue Nov 27 20:43:49 2018 Tue][info] Creat Mesh
+[Tue Nov 27 20:43:49 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 20:43:49 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 20:43:49 2018 Tue][info] Finish
+[Tue Nov 27 20:43:49 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 20:43:49 2018 Tue][info] Finish
+[Tue Nov 27 20:43:50 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 20:43:50 2018 Tue][info] Release Request
+[Tue Nov 27 20:43:50 2018 Tue][info] Finish
+[Tue Nov 27 20:45:59 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 20:45:59 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 20:46:01 2018 Tue][info] Finish
+[Tue Nov 27 20:46:02 2018 Tue][info] Creat Mesh
+[Tue Nov 27 20:46:02 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 20:46:02 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 20:46:02 2018 Tue][info] Finish
+[Tue Nov 27 20:46:02 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 20:46:02 2018 Tue][info] Finish
+[Tue Nov 27 20:46:02 2018 Tue][info] Begin to pre-compute the SelfTriangle Impedance
+[Tue Nov 27 20:46:04 2018 Tue][info] Finish Pre-compute
+[Tue Nov 27 20:46:04 2018 Tue][info] Run CreatImpedance()
+[Tue Nov 27 20:46:04 2018 Tue][info] Finish
+[Tue Nov 27 20:47:29 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 20:47:29 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 20:47:32 2018 Tue][info] Finish
+[Tue Nov 27 20:47:34 2018 Tue][info] Creat Mesh
+[Tue Nov 27 20:47:35 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 20:47:35 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 20:47:35 2018 Tue][info] Finish
+[Tue Nov 27 20:47:35 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 20:47:35 2018 Tue][info] Finish
+[Tue Nov 27 20:47:35 2018 Tue][info] Begin to pre-compute the SelfTriangle Impedance
+[Tue Nov 27 20:47:36 2018 Tue][info] Finish Pre-compute
+[Tue Nov 27 20:47:36 2018 Tue][info] Run CreatImpedance()
+[Tue Nov 27 20:47:36 2018 Tue][info] Finish
+[Tue Nov 27 21:04:53 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 21:04:53 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 21:04:53 2018 Tue][info] Finish
+[Tue Nov 27 21:04:53 2018 Tue][info] Creat Mesh
+[Tue Nov 27 21:04:53 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 21:04:53 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 21:04:53 2018 Tue][info] Finish
+[Tue Nov 27 21:04:53 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 21:04:53 2018 Tue][info] Finish
+[Tue Nov 27 21:04:53 2018 Tue][info] Begin to pre-compute the SelfTriangle Impedance
+[Tue Nov 27 21:04:54 2018 Tue][info] Finish Pre-compute
+[Tue Nov 27 21:04:54 2018 Tue][info] Run CreatImpedance()
+[Tue Nov 27 21:04:54 2018 Tue][info] Finish
+[Tue Nov 27 21:05:18 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 21:05:18 2018 Tue][info] Release Request
+[Tue Nov 27 21:05:18 2018 Tue][info] Finish
+[Tue Nov 27 21:07:08 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 21:07:08 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 21:07:08 2018 Tue][info] Finish
+[Tue Nov 27 21:07:08 2018 Tue][info] Creat Mesh
+[Tue Nov 27 21:07:08 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 21:07:08 2018 Tue][info] Run CreatBasicFuntion()
+[Tue Nov 27 21:07:08 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 21:07:08 2018 Tue][info] Finish
+[Tue Nov 27 21:07:08 2018 Tue][info] Finish
+[Tue Nov 27 21:07:08 2018 Tue][info] Run SaveBasicFunction()
+[Tue Nov 27 21:07:08 2018 Tue][info] Finish
+[Tue Nov 27 21:07:08 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 21:07:08 2018 Tue][info] Finish
+[Tue Nov 27 21:07:08 2018 Tue][info] Run SaveBasicFunction()
+[Tue Nov 27 21:07:08 2018 Tue][info] Finish
+[Tue Nov 27 21:07:08 2018 Tue][info] Creat Mesh
+[Tue Nov 27 21:07:08 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 21:07:08 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 21:07:08 2018 Tue][info] Finish
+[Tue Nov 27 21:07:08 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 21:07:08 2018 Tue][info] Finish
+[Tue Nov 27 21:07:08 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 21:07:08 2018 Tue][info] Finish
+[Tue Nov 27 21:07:08 2018 Tue][info] Creat Mesh
+[Tue Nov 27 21:07:08 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 21:07:08 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 21:07:08 2018 Tue][info] Finish
+[Tue Nov 27 21:07:08 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 21:07:08 2018 Tue][info] Finish
+[Tue Nov 27 21:07:08 2018 Tue][info] Begin to pre-compute the SelfTriangle Impedance
+[Tue Nov 27 21:07:08 2018 Tue][info] Finish Pre-compute
+[Tue Nov 27 21:07:08 2018 Tue][info] Run CreatImpedance()
+[Tue Nov 27 21:07:08 2018 Tue][info] Finish
+[Tue Nov 27 21:07:12 2018 Tue][info] Run SetRightHand()
+[Tue Nov 27 21:07:12 2018 Tue][info] Finish
+[Tue Nov 27 21:07:12 2018 Tue][info] Run Solve()
+[Tue Nov 27 21:07:13 2018 Tue][info] Finish
+[Tue Nov 27 21:07:13 2018 Tue][info] Run SaveBasicFunction()
+[Tue Nov 27 21:07:13 2018 Tue][info] Finish
+[Tue Nov 27 21:07:13 2018 Tue][info] Run CalculateRequest()
+[Tue Nov 27 21:07:13 2018 Tue][info] Creat Mesh
+[Tue Nov 27 21:07:13 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 21:07:13 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 21:07:13 2018 Tue][info] Finish
+[Tue Nov 27 21:07:13 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 21:07:13 2018 Tue][info] Finish
+[Tue Nov 27 21:07:13 2018 Tue][info] Begin to pre-compute the SelfTriangle Impedance
+[Tue Nov 27 21:07:13 2018 Tue][info] Finish Pre-compute
+[Tue Nov 27 21:07:13 2018 Tue][info] Creat Mesh
+[Tue Nov 27 21:07:13 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 21:07:13 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 21:07:13 2018 Tue][info] Finish
+[Tue Nov 27 21:07:13 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 21:07:13 2018 Tue][info] Finish
+[Tue Nov 27 21:07:14 2018 Tue][warning] MoMTest is not Running
+[Tue Nov 27 21:07:14 2018 Tue][warning] ImpedanceTest is not Testing
+[Tue Nov 27 21:07:14 2018 Tue][warning] SolveTest is not Testing
+[Tue Nov 27 21:07:14 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 21:07:14 2018 Tue][info] Release Request
+[Tue Nov 27 21:07:14 2018 Tue][info] Finish
+[Tue Nov 27 21:30:27 2018 Tue][info] Run EMCParmeterInitialization()
+[Tue Nov 27 21:30:27 2018 Tue][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Tue Nov 27 21:30:27 2018 Tue][info] Finish
+[Tue Nov 27 21:30:27 2018 Tue][info] Creat Mesh
+[Tue Nov 27 21:30:27 2018 Tue][info] Finish Creat Mesh
+[Tue Nov 27 21:30:27 2018 Tue][info] Run LoadBasicFunction()
+[Tue Nov 27 21:30:27 2018 Tue][info] Finish
+[Tue Nov 27 21:30:27 2018 Tue][info] Run SetGreenFunction()
+[Tue Nov 27 21:30:27 2018 Tue][info] Finish
+[Tue Nov 27 21:30:27 2018 Tue][info] Begin to pre-compute the SelfTriangle Impedance
+[Tue Nov 27 21:30:28 2018 Tue][info] Finish Pre-compute
+[Tue Nov 27 21:30:28 2018 Tue][info] Run CreatImpedance()
+[Tue Nov 27 21:30:29 2018 Tue][info] Finish
+[Tue Nov 27 21:32:41 2018 Tue][info] Run SetRightHand()
+[Tue Nov 27 21:32:41 2018 Tue][info] Finish
+[Tue Nov 27 21:32:41 2018 Tue][info] Run Solve()
+[Tue Nov 27 21:32:52 2018 Tue][info] Finish
+[Tue Nov 27 21:32:52 2018 Tue][info] Run SaveBasicFunction()
+[Tue Nov 27 21:32:52 2018 Tue][info] Finish
+[Tue Nov 27 21:32:52 2018 Tue][info] Run CalculateRequest()
+[Tue Nov 27 21:33:15 2018 Tue][info] Run ReleaseMemory()
+[Tue Nov 27 21:33:15 2018 Tue][info] Release Request
+[Tue Nov 27 21:33:15 2018 Tue][info] Finish

@@ -1,5 +1,5 @@
 #ifndef TESTMAIN_H
-#define TESTMAIN_H
+#define TESTMAIN_
 #ifdef GTEST
 #include "gtest/gtest.h"
 #include "CoreAPI.h"
@@ -11,7 +11,6 @@ public:
 	char* configurationFileName = "E:/ZMC/Code/C_program/MUL/SourceData/test.hxj";
 	void SetUp() override
 	{
-		Core::LogInitial();
 		ASSERT_EQ(0, Core::EMCParameterInitialization(configurationFileName)) << "Error in API InitializationConfiguration";
 	}
 

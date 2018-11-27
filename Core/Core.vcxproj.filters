@@ -144,9 +144,6 @@
     <ClInclude Include="TeoplitzAssist.h">
       <Filter>头文件\AIMAssist</Filter>
     </ClInclude>
-    <ClInclude Include="MatrixSetting.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="CoreAPI.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -189,6 +186,12 @@
     <ClInclude Include="NasRead.h">
       <Filter>头文件\Mesh</Filter>
     </ClInclude>
+    <ClInclude Include="MatrixSetting.h">
+      <Filter>头文件\AIMAssist</Filter>
+    </ClInclude>
+    <ClInclude Include="Excitation.h">
+      <Filter>头文件\Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Data.cpp">
@@ -199,9 +202,6 @@
     </ClCompile>
     <ClCompile Include="..\googleTest\TeoplitzcdTest.cpp">
       <Filter>源文件\googleTest</Filter>
-    </ClCompile>
-    <ClCompile Include="MatrixSetting.cpp">
-      <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\googleTest\MatrixSettingTest.cpp">
       <Filter>源文件\googleTest</Filter>
@@ -328,6 +328,15 @@
     </ClCompile>
     <ClCompile Include="NasRead.cpp">
       <Filter>源文件\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Excitation.cpp">
+      <Filter>源文件\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MatrixSetting.cpp">
+      <Filter>源文件\Assist</Filter>
+    </ClCompile>
+    <ClCompile Include="Const.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

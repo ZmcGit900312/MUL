@@ -14,21 +14,20 @@ namespace spd = spdlog;
 
 namespace Core
 {
+	
+
+	extern shared_ptr<spd::logger> Console;
+	extern shared_ptr<spd::logger> RuntimeL;
+	extern shared_ptr<spd::logger> ResultL;
+
 	namespace Assist
 	{
-		struct Log
-		{
-			static shared_ptr<spd::logger> Console;
-			static shared_ptr<spd::logger> RuntimeLog;
-			static shared_ptr<spd::logger> ResultLog;
-		};
-		
-		void LogException(spd::spdlog_ex&ex);
-	}
 
-	static shared_ptr<spd::logger>& Console = Assist::Log::Console;
-	static shared_ptr<spd::logger>& RuntimeL = Assist::Log::RuntimeLog;
-	static shared_ptr<spd::logger>& ResultL = Assist::Log::ResultLog;
+		void LogException(spd::spdlog_ex&ex);
+
+
+	}
+	
 }
 
 

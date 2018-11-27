@@ -7,22 +7,22 @@ using namespace Eigen;
 namespace Core
 {
 
-	static double const Mu0 = M_PI*4e-7;
-	static double const Epsilon0 = 1e-9*M_1_PI / 36;
-	static double const eta0 = 120 * M_PI;
-	static double const c0 = 1/sqrt(Mu0*Epsilon0);
+	double const Mu0 = M_PI*4e-7;
+	double const Epsilon0 = 1e-9*M_1_PI / 36;
+	double const eta0 = 120 * M_PI;
+	double const c0 = 1/sqrt(Mu0*Epsilon0);
 
-	static Vector3d Ki{ 0,0,-1 };//incident direction
-	static Vector3d Ei{ 0,1,0 };//polarization direction
-	static double Mur = 1.0;
-	static double Epr = 1.0;
-	static double Mu = Mu0*Mur;
-	static double Epsilon = Epsilon0*Epr;
-	static double Frequency = 3e8;
-	static double Omega = 2* M_PI*Frequency;
-	static double k = Omega / c0;
-	static double Lambda = c0 / Frequency;
-	static double eta = eta0*Mur/Epr;
+	//static Vector3d Ki{ 0,0,-1 };//incident direction
+	//static Vector3d Ei{ 0,1,0 };//polarization direction
+	extern double Mur;
+	extern double Epr;
+	extern double Mu;
+	extern double Epsilon;
+	extern double Frequency;
+	extern double Omega;
+	extern double k;
+	extern double Lambda;
+	extern double eta;
 	
 	
 	//Quad

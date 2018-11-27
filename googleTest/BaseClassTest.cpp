@@ -33,7 +33,7 @@ TEST(BaseTest,TriangleClass) {
 
 TEST(BaseTest,TxtReaderClass)
 {
-	char* readFileName = "E:/ZMC/Code/C_program/MUL/test/test.hxj";
+	char* readFileName = "E:/ZMC/Code/C_program/MUL/SourceData/test.hxj";
 	char* writeFileName = "TxtReaderClassWriteTest.txt";
 	TxtReader TR;
 	Console->debug("Read File Test");

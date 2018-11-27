@@ -150,7 +150,7 @@ void MatrixSetting::NearCorrection(vector< IBasicFunction*>&bf)
 		100 * (double)_imp->GetNearFieldMatrix().nonZeros() / (_unknowns*_unknowns));
 
 	//Precondition
-	ComponentList::Solver->Precondition(_imp);
+	Solver->Precondition(_imp);
 	
 }
 
@@ -262,7 +262,7 @@ void Core::MatrixSetting::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFunc
 	tripletsNearPart.clear();
 	//PreCondition
 
-	ComponentList::Solver->Precondition(_imp);
+	Solver->Precondition(_imp);
 	//Near Correction
 	Console->debug("Begin to Correction");
 	start = clock();

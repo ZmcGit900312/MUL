@@ -21,7 +21,7 @@ ImpAIM::~ImpAIM()
 
 void ImpAIM::FillImpedance()
 { 
-	MatrixSetting filler(SystemConfiguration::ImpConfig, ComponentList::ImpService);
+	MatrixSetting filler(SystemConfig.ImpConfig, ComponentList::ImpService);
 	const clock_t start = clock();
 	Console->info("Mulitpole Expansion");
 	filler.MultipoleExpansion(ComponentList::BFvector);

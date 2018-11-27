@@ -7,7 +7,6 @@
 #include "Const.h"
 #include "IntegrationRWG.h"
 #include <array>
-#include "ImpMoM.h"
 #include "Log.h"
 using namespace Eigen;
 using namespace std;

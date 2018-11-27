@@ -3,6 +3,7 @@
 #include "IImpedance.h"
 #include "Data.h"
 #include "Log.h"
+#include "Planewave.h"
 
 int Core::SetRightHand()
 {
@@ -10,9 +11,10 @@ int Core::SetRightHand()
 	Console->info("Set the excitation");
 	RuntimeL->info("Run SetRightHand()");
 	ResultL->info("RightHand");
-
+	Source::Planewave source(&SystemConfig.SourceConfig);
+	
 	const clock_t start = clock();
-	ComponentList::ImpService->GetExcitation() =ComponentList::RightHand.SetExcitation(ComponentList::BFvector);
+	ComponentList::ImpService->GetExcitation() = source.SetExcitation(ComponentList::BFvector);
 	const clock_t end = clock();
 
 	const double time = double(end - start) / CLOCKS_PER_SEC;

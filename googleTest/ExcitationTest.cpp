@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "Data.h"
 #include "IntegrationRWG.h"
+#include "Planewave.h"
 #ifdef GTEST
 #include "gtest/gtest.h"
 #include "CoreAPI.h"
-#include "Const.h"
 using namespace Core;
 using namespace Eigen;
 
@@ -42,7 +42,8 @@ TEST_F(ExcitationTest, PlanewaveTest)
 		char* excitationName = "E:/ZMC/Code/C_program/MUL/SourceData/Excitation.txt";
 		//ki=(0,0,-1),ei=(0,1,0);
 		const size_t size = ComponentList::BFvector.size();
-		VectorXcd comp = ComponentList::RightHand.SetExcitation(ComponentList::BFvector);
+		Source::Planewave source(&SystemConfig.SourceConfig);
+		VectorXcd comp = source.SetExcitation(ComponentList::BFvector);
 		VectorXcd ref{ size };
 		ifstream ifile(excitationName, ios::in);
 
