@@ -201,6 +201,7 @@
     <ClInclude Include="Excitation.h" />
     <ClInclude Include="FarField.h" />
     <ClInclude Include="FFT1d.h" />
+    <ClInclude Include="GmshFile.h" />
     <ClInclude Include="Green.h" />
     <ClInclude Include="IBasicFunction.h" />
     <ClInclude Include="IEKernel.h" />
@@ -232,7 +233,7 @@
     <ClInclude Include="TxtReader.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\googleTest\ComponentListTest.cpp" />
+    <ClCompile Include="..\googleTest\BasicFunctionTest.cpp" />
     <ClCompile Include="..\googleTest\ExcitationTest.cpp" />
     <ClCompile Include="..\googleTest\GreenFunctionTest.cpp" />
     <ClCompile Include="..\googleTest\MatrixSettingTest.cpp" />
@@ -245,6 +246,7 @@
     <ClCompile Include="Const.cpp" />
     <ClCompile Include="EMCParameterInitialization.cpp" />
     <ClCompile Include="Excitation.cpp" />
+    <ClCompile Include="GmshFile.cpp" />
     <ClCompile Include="ISolver.cpp" />
     <ClCompile Include="IterationSolver.cpp" />
     <ClCompile Include="Log.cpp" />
@@ -263,6 +265,7 @@
     <ClCompile Include="Green.cpp" />
     <ClCompile Include="ImpAIM.cpp" />
     <ClCompile Include="ImpMoM.cpp" />
+    <ClCompile Include="MeshTest.cpp" />
     <ClCompile Include="MultipoleExpansioner.cpp" />
     <ClCompile Include="NasRead.cpp" />
     <ClCompile Include="Planewave.cpp" />

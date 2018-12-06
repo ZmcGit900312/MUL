@@ -192,6 +192,9 @@
     <ClInclude Include="Excitation.h">
       <Filter>头文件\Source</Filter>
     </ClInclude>
+    <ClInclude Include="GmshFile.h">
+      <Filter>头文件\Mesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Data.cpp">
@@ -210,9 +213,6 @@
       <Filter>源文件\googleTest</Filter>
     </ClCompile>
     <ClCompile Include="..\googleTest\BaseClassTest.cpp">
-      <Filter>源文件\googleTest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\googleTest\ComponentListTest.cpp">
       <Filter>源文件\googleTest</Filter>
     </ClCompile>
     <ClCompile Include="CreatMesh.cpp">
@@ -337,6 +337,15 @@
     </ClCompile>
     <ClCompile Include="Const.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GmshFile.cpp">
+      <Filter>源文件\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshTest.cpp">
+      <Filter>源文件\googleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\googleTest\BasicFunctionTest.cpp">
+      <Filter>源文件\googleTest</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

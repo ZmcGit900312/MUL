@@ -61,7 +61,6 @@ bool NasRead::Read(const char* fileName, Mesh* mesh){
 	}
 	throw spdlog::spdlog_ex("Failed to open meshFile " + string(fileName));
 	//END
-	return false;
 }
 
 

@@ -2288,3 +2288,12 @@
 [Tue Nov 27 21:33:15 2018 Tue][info] Run ReleaseMemory()
 [Tue Nov 27 21:33:15 2018 Tue][info] Release Request
 [Tue Nov 27 21:33:15 2018 Tue][info] Finish
+[Thu Dec 6 22:49:25 2018 Thu][info] Run EMCParmeterInitialization()
+[Thu Dec 6 22:49:25 2018 Thu][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Thu Dec 6 22:49:25 2018 Thu][info] Finish
+[Thu Dec 6 22:50:08 2018 Thu][info] Run ReleaseMemory()
+[Thu Dec 6 22:50:08 2018 Thu][info] Release Request
+[Thu Dec 6 22:50:08 2018 Thu][info] Finish
+[Thu Dec 6 22:55:01 2018 Thu][info] Run EMCParmeterInitialization()
+[Thu Dec 6 22:55:01 2018 Thu][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Thu Dec 6 22:55:01 2018 Thu][info] Finish
