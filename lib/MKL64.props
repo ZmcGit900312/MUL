@@ -8,6 +8,12 @@
     <IncludePath>$(MKL_INCLUDE);$(IncludePath)</IncludePath>
     <LibraryPath>$(LIB);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <UseIntelTBB>false</UseIntelTBB>
+    <UseIntelMKL>No</UseIntelMKL>
+    <UseILP64Interfaces>false</UseILP64Interfaces>
+    <UseMpiLibrary>INTELMPI</UseMpiLibrary>
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <Link>
       <AdditionalDependencies>$(MKL_LIB);%(AdditionalDependencies)</AdditionalDependencies>

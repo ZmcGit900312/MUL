@@ -116,11 +116,11 @@ class ImpAIM :public EigenBase<ImpAIM>, public IImpService
 	int _totalNum = _gridNum.prod();
 	int _dimension = _gridNum[2] == 1 ? 2 : 3;
 	int _cubicGridsNum = _gridNum[2] == 1 ? _gridOrder*_gridOrder : _gridOrder*_gridOrder*_gridOrder;
-	SparseMatrix<Scalar> _imp{ _impSize,_impSize };
-	SparseMatrix<Scalar>_gamax{ _totalNum, _impSize };
-	SparseMatrix<Scalar>_gamay{ _totalNum, _impSize };
-	SparseMatrix<Scalar>_gamaz{ _totalNum, _impSize };
-	SparseMatrix<Scalar>_gamad{ _totalNum, _impSize };
+	SparseMatrix<Scalar> _imp{ static_cast<intptr_t>(_impSize),static_cast<intptr_t>(_impSize) };
+	SparseMatrix<Scalar>_gamax{ _totalNum, static_cast<intptr_t>(_impSize) };
+	SparseMatrix<Scalar>_gamay{ _totalNum, static_cast<intptr_t>(_impSize) };
+	SparseMatrix<Scalar>_gamaz{ _totalNum, static_cast<intptr_t>(_impSize) };
+	SparseMatrix<Scalar>_gamad{ _totalNum, static_cast<intptr_t>(_impSize) };
 	VectorXcd _green;
 	VectorXcd _rightHand{ _impSize,1 };
 };

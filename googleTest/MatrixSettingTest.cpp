@@ -414,7 +414,11 @@ TEST_F(MatrixSettingTestData, AIMCalculate)
 	try
 	{
 		if (NotAIM)throw spd::spdlog_ex("AIMCalculate is not Testing");
+
+		if(SystemConfig.ImpConfig.FillingStrategy==1)
 		aimComputer->TriangleFillingStrategy(*Mesh::GetInstance(), ComponentList::BFvector);
+		else aimComputer->NearCorrection(ComponentList::BFvector);
+
 		ASSERT_EQ(0, Core::SetRightHand()) << "Error in Set RightHand";
 		auto info = Core::Solve();
 		EXPECT_EQ(0, info) << "Error in Solve Matrix with BicgStab";

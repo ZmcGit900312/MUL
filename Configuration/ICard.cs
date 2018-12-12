@@ -57,9 +57,9 @@ namespace Configuration
     public class Ccg : ICard
     {
         public Card Type => Card.CG;
-        public uint SolutionType { get; set; } = 0;//BiCG-Stab=10
-        public uint PreConditionType { get; set; } = 0;//Jacobi=64,ILU=128
-        public uint Maxiteration { get; set; } = 0;
+        public int SolutionType { get; set; } = 1;//BiCG-Stab=2
+        public int PreConditionType { get; set; } = 0;//Jacobi=64,ILU=128
+        public int Maxiteration { get; set; } = 0;
         public double Tolerance { get; set; } = 1.0e-4;
         public double MaxStopTolerance { get; set; } = 10;
 
@@ -73,8 +73,8 @@ namespace Configuration
     public class  Cff : ICard
     {
         public uint FieldType { get; set; } = 0;//RCS
-        public uint ThetaNum { get; set; } = 1;
-        public uint PhiNum { get; set; }= 1;
+        public int ThetaNum { get; set; } = 1;
+        public int PhiNum { get; set; }= 1;
         public double ThetaStart { get; set; } = 0;
         public double PhiStart { get; set; }= 0;
         public double ThetaIncrement { get; set; }= 1;
@@ -106,7 +106,7 @@ namespace Configuration
         public double RotationZ { get; set; }=0;
         
         //FileName
-        public string ExcitationName { get; set; }
+        public string ExcitationName { get; set; } = "Planewave";
         public void Write(StreamWriter sw) => sw.WriteLine("{0}\t{1}\t{2}\t{3:f}\t{4:f}\t{5:f}\t{6:f}\t{7}\t{8:f}\t{9:f}\t{10:f}\t{11:f}\t{12:f}\t{13:f}\t{14}",
                     (int)Type, ThetaNum, PhiNum, ThetaStart, PhiStart, ThetaIncrement, PhiIncrement,
                     Polarisation,Magnitude,Phase,Eta,RotationX,RotationY,RotationZ, ExcitationName);
@@ -119,7 +119,7 @@ namespace Configuration
         public double Interval { get; set; } = 0.05;
         public double Threshold { get; set; }= 0.3;
         public double NearCorrectionEps { get; set; }= 1.0e-3;
-        public uint Dimension { get; set; } = 3;
+        public int Dimension { get; set; } = 3;
         public int FillingStrategy { get; set; } = 1;
         public void Write(StreamWriter sw) => sw.WriteLine("{0}\t{1}\t{2:f}\t{3:f}\t{4:E}\t{5}\t{6}", 
             (int)Type,Order,Interval,Threshold,NearCorrectionEps,Dimension,FillingStrategy);

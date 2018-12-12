@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #define _USE_MATH_DEFINES
 #include "IntegrationRWG.h"
-#include <math.h>
+#include "Const.h"
 
 Core::EFRImp::EFRImp(const double k, double * w4, double * w7, const double eta):
 _k(k),_eta(eta),_w4(w4),_w7(w7){}

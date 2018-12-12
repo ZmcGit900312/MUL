@@ -14,8 +14,8 @@ namespace Core
 {
 	namespace Solution
 	{
-		enum ESolutionType{LU,BiCGStab=10};
-		enum EPreconditionerType{Identity,Jacobi=8,ILU=9};
+		enum ESolutionType{BiCGStab, LU,};
+		enum EPreconditionerType{Identity,Jacobi,ILU};
 		struct SolverConfiguration
 		{
 			ESolutionType Sol = BiCGStab;

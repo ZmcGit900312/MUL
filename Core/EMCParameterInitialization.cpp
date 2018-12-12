@@ -6,6 +6,7 @@
 #include "Card.h"
 #include "FarField.h"
 #include "Log.h"
+#include <mkl.h>
 using namespace std;
 
 
@@ -88,6 +89,8 @@ int Core::EMCParameterInitialization(char* configurationFileName)
 				default:break;
 				}
 			}
+
+			MKL_Set_Dynamic(true);
 			RuntimeL->info("Finish");
 			RuntimeL->flush();
 			return 0;
@@ -142,10 +145,10 @@ static void SetFF(list<string>::const_iterator& ptr)
 //Solver
 static void SetCG(list<string>::const_iterator& ptr)
 {
-	++ptr;
-	//SystemConfig.SolverConfig.Sol = Solution::ESolutionType(stoi(*ptr++));
-	++ptr;
-	//SystemConfig.SolverConfig.Precond = Solution::ILU;
+	//++ptr;
+	SystemConfig.SolverConfig.Sol = Solution::ESolutionType(stoi(*ptr++));
+	//++ptr;
+	SystemConfig.SolverConfig.Precond = Solution::EPreconditionerType(stoi(*ptr++));
 	SystemConfig.SolverConfig.Maxiteration = stoi(*ptr++);
 	SystemConfig.SolverConfig.Tolerance = stod(*ptr++);
 	SystemConfig.SolverConfig.MaxStopTolerance = stod(*ptr++);

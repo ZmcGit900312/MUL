@@ -1,12 +1,13 @@
 #pragma once
 #define _USE_MATH_DEFINES
 #include <Eigen\Core>
-#include <math.h>
+//#include <math.h>
 #define M_PI_180 0.017453292519943
 using namespace Eigen;
 namespace Core
 {
-
+	double const M_PI = 3.1415926535897932384626;
+	double const M_1_PI = 1.0 / M_PI;
 	double const Mu0 = M_PI*4e-7;
 	double const Epsilon0 = 1e-9*M_1_PI / 36;
 	double const eta0 = 120 * M_PI;

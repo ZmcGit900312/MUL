@@ -16,33 +16,32 @@ int Core::CreatBasicFunction(const bool isCreat)
 		const int basicFunctionType = 0;//ÒÔºóÀ©Õ¹BasicFunction type
 
 		if (Mesh::GetInstance()->IsLock())throw spdlog::spdlog_ex("Mesh is lock!");
+		Console->info("Initial BasicFunction");
 
-		if (isCreat) {
-			Console->info("Initial BasicFunction");
-			ResultL->info("\nMesh");
-			RuntimeL->info("Run CreatBasicFuntion()");
+		switch (basicFunctionType)
+		{
+		case 1:
+			throw spdlog::spdlog_ex("Other BasicFunction is not developing!");
+		default:
+			Console->info("Choose RWG Function as BasicFunction\n");
+			ResultL->info("Choose RWG Function as BasicFunction\n");
+			
+		}
+
+		if (LoadBasicFunction(SystemConfig.BasicFunctionFileName.c_str()))
+		{
 			const clock_t start = clock();
-			switch (basicFunctionType)
-			{
-			case 1:
-				throw spdlog::spdlog_ex("Other BasicFunction is not developing!");
-			default:
-				Console->info("Choose RWG Function as BasicFunction\n");
-				ResultL->info("Choose RWG Function as BasicFunction\n");
-				if(LoadBasicFunction(SystemConfig.BasicFunctionFileName.c_str()))SystemConfig.ImpConfig.ImpSize =
-					RWG::CreatRWGBasicFunctionList(mesh, &ComponentList::BFvector);
-			}
+			SystemConfig.ImpConfig.ImpSize =
+				RWG::CreatRWGBasicFunctionList(mesh, &ComponentList::BFvector);
 			const clock_t end = clock();
 			const double _time = double(end - start) / CLOCKS_PER_SEC;
 			Console->info("The number of BasicFuntions is:\t{0:d}", SystemConfig.ImpConfig.ImpSize);
-			Console->info("Initial BasicFuntions costs:\t{0:10.9} s",_time);
+			Console->info("Initial BasicFuntions costs:\t{0:10.9} s", _time);
 			ResultL->info("The number of BasicFuntions is:\t{0:d}", SystemConfig.ImpConfig.ImpSize);
 			ResultL->info("Initial BasicFuntions costs:\t{0:10.9} s", _time);
-			RuntimeL->info("Finish");
-			RuntimeL->flush();
-			return 0;
 		}		
-		return LoadBasicFunction(SystemConfig.BasicFunctionFileName.c_str());
+		return 0;
+			
 	}
 	catch (spd::spdlog_ex&ex)
 	{
@@ -63,7 +62,7 @@ int Core::LoadBasicFunction(const char* loadFileName)
 	{
 		if (ifs.is_open())
 		{
-			ResultL->info("\nMesh");
+			
 			Mesh* mesh = Mesh::GetInstance();
 			ComponentList::BFvector.clear();
 			pair<int, Vector3d> tempNode[4];

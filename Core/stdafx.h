@@ -5,6 +5,11 @@
 
 #pragma once
 #define EIGEN_USE_MKL_ALL
+
+#ifdef NDEBUG
+#define EIGEN_NO_DEBUG
+#endif
+
 #include "targetver.h"
 
 #define WIN32_LEAN_AND_MEAN             // 从 Windows 头中排除极少使用的资料
@@ -18,10 +23,7 @@
 #include<functional>
 #include <iomanip>
 #include <string>
-#ifdef NDEBUG
-#define EIGEN_NO_DEBUG
-#define EIGEN_USE_MKL_ALL
-#endif
+
 
 #ifdef GTEST
 #include "gtest/gtest.h"

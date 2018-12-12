@@ -132,8 +132,8 @@ void MatrixSetting::NearCorrection(vector< IBasicFunction*>&bf)
 		const dcomplex ref = _compute.SetImpedance(field, field);
 		tripletsNearPart.push_back(T(row, row, ref - comp));
 		//_imp->GetNearFieldMatrix().insert(row, row) = ref - comp;
-		currentProgress += 200 * (_unknowns-row);
-		cout <<"Progress:"<< setw(10) << currentProgress / Sum << "%\r";
+		currentProgress += 2*(_unknowns-row);
+		cout <<"Progress:"<< setw(10) << 100 * static_cast<double>(currentProgress) / Sum << "%\r";
 	}
 	tripletsNearPart.shrink_to_fit();
 	_imp->GetNearFieldMatrix().reserve(tripletsNearPart.size());
@@ -146,6 +146,7 @@ void MatrixSetting::NearCorrection(vector< IBasicFunction*>&bf)
 	cout << "\r";
 	Console->info("Near Field FillingTime is:\t{}s", timecost);
 	ResultL->info("Near Field FillingTime is:\t{}s", timecost);
+	Console->info("Triplet and NearField have {0} and {1} elements.", tripletsNearPart.size(), _imp->GetNearFieldMatrix().nonZeros());
 	Console->info("Nonzeros have {0} and take {1}%.", _imp->GetNearFieldMatrix().nonZeros(),
 		100 * (double)_imp->GetNearFieldMatrix().nonZeros() / (_unknowns*_unknowns));
 

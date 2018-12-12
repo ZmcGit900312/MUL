@@ -16,7 +16,9 @@ Core::Solution::ISolver * Core::Solution::FSolver(SolverConfiguration & config, 
 			switch(config.Precond) 
 			{ 
 				case Identity:Console->warn("MoM with Identity is not recommand");
-				default: return new BiCGStabMoMJacobi(config);
+				default:
+					Console->info("Preconditioning chooses Jacobi");
+				return new BiCGStabMoMJacobi(config);
 			}
 		}
 	}
@@ -24,10 +26,12 @@ Core::Solution::ISolver * Core::Solution::FSolver(SolverConfiguration & config, 
 	switch(config.Precond)
 	{
 	case ILU:
+		Console->info("Preconditioning chooses IncompletLU Decomposition");
 		return new BiCGStabAIMILU(config);
 	case Jacobi:
 		Console->warn("AIM with Jacobi is not Developed and replaced by Identity");
 	default: 
+		Console->info("Preconditioning chooses Identity");
 		return new BiCGStabAIMIdentity(config);
 	}
 }
