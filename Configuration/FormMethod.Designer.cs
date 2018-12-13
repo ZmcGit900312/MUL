@@ -44,7 +44,7 @@
             this.MulRadioButton = new System.Windows.Forms.RadioButton();
             this.MoMRadioButton = new System.Windows.Forms.RadioButton();
             this.AIMRadioButton = new System.Windows.Forms.RadioButton();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.ApplyButton = new System.Windows.Forms.Button();
             this.AIMPanel.SuspendLayout();
             this.SuspendLayout();
@@ -258,17 +258,17 @@
             this.AIMRadioButton.UseVisualStyleBackColor = true;
             this.AIMRadioButton.CheckedChanged += new System.EventHandler(this.AIMRadioButton_CheckedChanged);
             // 
-            // CancelButton
+            // CloseButton
             // 
-            this.CancelButton.BackColor = System.Drawing.Color.MistyRose;
-            this.CancelButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
-            this.CancelButton.Location = new System.Drawing.Point(328, 410);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(94, 39);
-            this.CancelButton.TabIndex = 51;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = false;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CloseButton.BackColor = System.Drawing.Color.MistyRose;
+            this.CloseButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
+            this.CloseButton.Location = new System.Drawing.Point(328, 410);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(94, 39);
+            this.CloseButton.TabIndex = 51;
+            this.CloseButton.Text = "Close";
+            this.CloseButton.UseVisualStyleBackColor = false;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // ApplyButton
             // 
@@ -288,17 +288,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 461);
             this.ControlBox = false;
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.ApplyButton);
             this.Controls.Add(this.FillingType);
             this.Controls.Add(this.AIMPanel);
             this.Controls.Add(this.MulRadioButton);
             this.Controls.Add(this.MoMRadioButton);
             this.Controls.Add(this.AIMRadioButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormMethod";
-            this.Text = "Method";
+            this.Text = "インピーダンス";
             this.AIMPanel.ResumeLayout(false);
             this.AIMPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -324,7 +325,7 @@
         private System.Windows.Forms.RadioButton MulRadioButton;
         private System.Windows.Forms.RadioButton MoMRadioButton;
         private System.Windows.Forms.RadioButton AIMRadioButton;
-        private System.Windows.Forms.Button CancelButton ;
+        private System.Windows.Forms.Button CloseButton ;
         private System.Windows.Forms.Button ApplyButton;
     }
 }

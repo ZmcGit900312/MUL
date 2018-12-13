@@ -37,7 +37,7 @@
             this.StopCriterionLable = new System.Windows.Forms.Label();
             this.MaxIterationsLable = new System.Windows.Forms.Label();
             this.SolutionTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.ApplyButton = new System.Windows.Forms.Button();
             this.IterationPanel.SuspendLayout();
             this.SuspendLayout();
@@ -147,17 +147,17 @@
             this.SolutionTypeComboBox.Size = new System.Drawing.Size(400, 28);
             this.SolutionTypeComboBox.TabIndex = 22;
             // 
-            // CancelButton
+            // CloseButton
             // 
-            this.CancelButton.BackColor = System.Drawing.Color.MistyRose;
-            this.CancelButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
-            this.CancelButton.Location = new System.Drawing.Point(328, 410);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(94, 39);
-            this.CancelButton.TabIndex = 53;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = false;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CloseButton.BackColor = System.Drawing.Color.MistyRose;
+            this.CloseButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
+            this.CloseButton.Location = new System.Drawing.Point(328, 410);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(94, 39);
+            this.CloseButton.TabIndex = 53;
+            this.CloseButton.Text = "Close";
+            this.CloseButton.UseVisualStyleBackColor = false;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // ApplyButton
             // 
@@ -171,21 +171,22 @@
             this.ApplyButton.UseVisualStyleBackColor = false;
             this.ApplyButton.Click += new System.EventHandler(this.ApplyButton_Click);
             // 
-            // Solution
+            // FormSolution
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 461);
             this.ControlBox = false;
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.ApplyButton);
             this.Controls.Add(this.PreconditionComboBox);
             this.Controls.Add(this.IterationPanel);
             this.Controls.Add(this.SolutionTypeComboBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormSolution";
-            this.Text = "FormSolution";
+            this.Text = "解決";
             this.IterationPanel.ResumeLayout(false);
             this.IterationPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -203,7 +204,7 @@
         private System.Windows.Forms.Label StopCriterionLable;
         private System.Windows.Forms.Label MaxIterationsLable;
         private System.Windows.Forms.ComboBox SolutionTypeComboBox;
-        private new System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Button ApplyButton;
     }
 }

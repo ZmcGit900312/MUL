@@ -7,7 +7,7 @@
 
 
 
-void main(int argc,char* argv[])
+int main(int argc,char* argv[])
  {
 	cout << "***********************************************\n";
 	cout << "*      CEM Verison Alpha 0.0.0 in C++         *\n";
@@ -35,12 +35,17 @@ void main(int argc,char* argv[])
 			if (Core::CreatMesh())throw runtime_error("Error in Creat Mesh");
 			if (Core::CreatBasicFunction())throw runtime_error("Error in Creat BasicFunction");
 			if (Core::SetGreenFunction())throw runtime_error("Error in set Green Function");
-			if (Core::PreCalculateSelfTriangleImpedance())throw runtime_error("Error in Pre-compute the SelfTriangle Impedance");
-			if (Core::CreatImpedance())throw runtime_error("Error in Initial the Impedance class");
-			if (Core::FillImpedance())throw runtime_error("Error in Fill Impedance");
-			if (Core::SetRightHand())throw runtime_error("Error in Set RightHand");
-			if (Core::Solve())throw runtime_error("Error in Solve Matrix with BicgStab");
-			if (Core::SaveBasicFunction(SystemConfig.BasicFunctionFileName.c_str()))throw runtime_error("Error in save BasicFunction");
+			if(argc<3)
+			{
+				//Contruct and Solve Matrix
+				if (Core::PreCalculateSelfTriangleImpedance())throw runtime_error("Error in Pre-compute the SelfTriangle Impedance");
+				if (Core::CreatImpedance())throw runtime_error("Error in Initial the Impedance class");
+				if (Core::FillImpedance())throw runtime_error("Error in Fill Impedance");
+				if (Core::SetRightHand())throw runtime_error("Error in Set RightHand");
+				if (Core::Solve())throw runtime_error("Error in Solve Matrix with BicgStab");
+				if (Core::SaveBasicFunction(SystemConfig.BasicFunctionFileName.c_str()))throw runtime_error("Error in save BasicFunction");
+			}
+			
 			if (Core::CalculateRequest())throw runtime_error("Error in Calculate the FarField");
 			ReleaseMemory();
 			const clock_t end = clock();
@@ -48,7 +53,7 @@ void main(int argc,char* argv[])
 
 			cout << "\n********************************\nThe total time costs\t=" << time << " s" << endl;
 			system("pause");
-			return;
+			return 0;
 		}
 		catch (runtime_error error)
 		{
@@ -57,7 +62,7 @@ void main(int argc,char* argv[])
 			cout << "\nTry Again? Enter y or n:\n";
 			char choose;
 			cin >> choose;
-			if (!cin || choose == 'n' || choose == 'N')return;
+			if (!cin || choose == 'n' || choose == 'N')return 1;
 		}
 	}
 	cout << "Please don't run this *.exe directly!\n";

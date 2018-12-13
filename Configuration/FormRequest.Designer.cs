@@ -51,17 +51,13 @@
             this.FSradioButton = new System.Windows.Forms.RadioButton();
             this.NCradioButton = new System.Windows.Forms.RadioButton();
             this.RequestNameLable = new System.Windows.Forms.Label();
-            this.FarFieldNameText = new System.Windows.Forms.TextBox();
-            this.CancelButton = new System.Windows.Forms.Button();
-            this.ApplyButton = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.AddButton = new System.Windows.Forms.Button();
-            this.DeleteButton = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.FarFieldComboBox = new System.Windows.Forms.ComboBox();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.AddButton = new System.Windows.Forms.Button();
             this.FarFieldDirectionPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.FieldPositiongroupBox.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // FarFieldDirectionPanel
@@ -69,6 +65,7 @@
             this.FarFieldDirectionPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FarFieldDirectionPanel.BackColor = System.Drawing.Color.Transparent;
+            this.FarFieldDirectionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FarFieldDirectionPanel.Controls.Add(this.SphereButton);
             this.FarFieldDirectionPanel.Controls.Add(this.PhiIncrementText);
             this.FarFieldDirectionPanel.Controls.Add(this.ThetaIncrementText);
@@ -93,10 +90,10 @@
             // 
             this.SphereButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SphereButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
-            this.SphereButton.Location = new System.Drawing.Point(293, 274);
+            this.SphereButton.Location = new System.Drawing.Point(291, 261);
             this.SphereButton.Margin = new System.Windows.Forms.Padding(4);
             this.SphereButton.Name = "SphereButton";
-            this.SphereButton.Size = new System.Drawing.Size(100, 40);
+            this.SphereButton.Size = new System.Drawing.Size(110, 40);
             this.SphereButton.TabIndex = 16;
             this.SphereButton.Text = "Sphere";
             this.SphereButton.UseVisualStyleBackColor = true;
@@ -111,7 +108,7 @@
             this.PhiIncrementText.Margin = new System.Windows.Forms.Padding(4);
             this.PhiIncrementText.MaxLength = 20;
             this.PhiIncrementText.Name = "PhiIncrementText";
-            this.PhiIncrementText.Size = new System.Drawing.Size(155, 27);
+            this.PhiIncrementText.Size = new System.Drawing.Size(153, 27);
             this.PhiIncrementText.TabIndex = 50;
             this.PhiIncrementText.Text = "1.0";
             // 
@@ -124,7 +121,7 @@
             this.ThetaIncrementText.Margin = new System.Windows.Forms.Padding(4);
             this.ThetaIncrementText.MaxLength = 20;
             this.ThetaIncrementText.Name = "ThetaIncrementText";
-            this.ThetaIncrementText.Size = new System.Drawing.Size(155, 27);
+            this.ThetaIncrementText.Size = new System.Drawing.Size(153, 27);
             this.ThetaIncrementText.TabIndex = 49;
             this.ThetaIncrementText.Text = "1.0";
             // 
@@ -132,10 +129,10 @@
             // 
             this.VerticalButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.VerticalButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
-            this.VerticalButton.Location = new System.Drawing.Point(160, 274);
+            this.VerticalButton.Location = new System.Drawing.Point(148, 261);
             this.VerticalButton.Margin = new System.Windows.Forms.Padding(4);
             this.VerticalButton.Name = "VerticalButton";
-            this.VerticalButton.Size = new System.Drawing.Size(100, 40);
+            this.VerticalButton.Size = new System.Drawing.Size(110, 40);
             this.VerticalButton.TabIndex = 15;
             this.VerticalButton.Text = "Vertical";
             this.VerticalButton.UseVisualStyleBackColor = true;
@@ -150,7 +147,7 @@
             this.PhiStartText.Margin = new System.Windows.Forms.Padding(4);
             this.PhiStartText.MaxLength = 20;
             this.PhiStartText.Name = "PhiStartText";
-            this.PhiStartText.Size = new System.Drawing.Size(155, 27);
+            this.PhiStartText.Size = new System.Drawing.Size(153, 27);
             this.PhiStartText.TabIndex = 48;
             this.PhiStartText.Text = "0.0";
             // 
@@ -158,10 +155,10 @@
             // 
             this.HorizonButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.HorizonButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
-            this.HorizonButton.Location = new System.Drawing.Point(10, 274);
+            this.HorizonButton.Location = new System.Drawing.Point(10, 261);
             this.HorizonButton.Margin = new System.Windows.Forms.Padding(4);
             this.HorizonButton.Name = "HorizonButton";
-            this.HorizonButton.Size = new System.Drawing.Size(100, 40);
+            this.HorizonButton.Size = new System.Drawing.Size(110, 40);
             this.HorizonButton.TabIndex = 14;
             this.HorizonButton.Text = "Horizon";
             this.HorizonButton.UseVisualStyleBackColor = true;
@@ -176,7 +173,7 @@
             this.ThetaStartText.Margin = new System.Windows.Forms.Padding(4);
             this.ThetaStartText.MaxLength = 20;
             this.ThetaStartText.Name = "ThetaStartText";
-            this.ThetaStartText.Size = new System.Drawing.Size(155, 27);
+            this.ThetaStartText.Size = new System.Drawing.Size(153, 27);
             this.ThetaStartText.TabIndex = 47;
             this.ThetaStartText.Text = "0.0";
             // 
@@ -244,7 +241,7 @@
             this.PhiNumText.Margin = new System.Windows.Forms.Padding(4);
             this.PhiNumText.MaxLength = 20;
             this.PhiNumText.Name = "PhiNumText";
-            this.PhiNumText.Size = new System.Drawing.Size(155, 27);
+            this.PhiNumText.Size = new System.Drawing.Size(153, 27);
             this.PhiNumText.TabIndex = 13;
             this.PhiNumText.Text = "360";
             // 
@@ -268,7 +265,7 @@
             this.ThetaNumText.Margin = new System.Windows.Forms.Padding(4);
             this.ThetaNumText.MaxLength = 20;
             this.ThetaNumText.Name = "ThetaNumText";
-            this.ThetaNumText.Size = new System.Drawing.Size(155, 27);
+            this.ThetaNumText.Size = new System.Drawing.Size(153, 27);
             this.ThetaNumText.TabIndex = 7;
             this.ThetaNumText.Text = "181";
             // 
@@ -276,6 +273,7 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.RCSradioButton);
             this.panel1.Location = new System.Drawing.Point(17, 211);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -363,111 +361,81 @@
             this.RequestNameLable.TabIndex = 47;
             this.RequestNameLable.Text = "FarField Name";
             // 
-            // FarFieldNameText
+            // CloseButton
             // 
-            this.FarFieldNameText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.FarFieldNameText.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
-            this.FarFieldNameText.Location = new System.Drawing.Point(177, 17);
-            this.FarFieldNameText.Margin = new System.Windows.Forms.Padding(4);
-            this.FarFieldNameText.MaxLength = 40;
-            this.FarFieldNameText.Name = "FarFieldNameText";
-            this.FarFieldNameText.Size = new System.Drawing.Size(248, 27);
-            this.FarFieldNameText.TabIndex = 48;
-            this.FarFieldNameText.Text = "FarField";
-            // 
-            // CancelButton
-            // 
-            this.CancelButton.BackColor = System.Drawing.Color.MistyRose;
-            this.CancelButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
-            this.CancelButton.Location = new System.Drawing.Point(331, 701);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(94, 39);
-            this.CancelButton.TabIndex = 59;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = false;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
-            // 
-            // ApplyButton
-            // 
-            this.ApplyButton.BackColor = System.Drawing.Color.MistyRose;
-            this.ApplyButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
-            this.ApplyButton.Location = new System.Drawing.Point(17, 701);
-            this.ApplyButton.Name = "ApplyButton";
-            this.ApplyButton.Size = new System.Drawing.Size(94, 39);
-            this.ApplyButton.TabIndex = 58;
-            this.ApplyButton.Text = "Apply";
-            this.ApplyButton.UseVisualStyleBackColor = false;
-            this.ApplyButton.Click += new System.EventHandler(this.ApplyButton_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.FarFieldComboBox);
-            this.panel2.Controls.Add(this.DeleteButton);
-            this.panel2.Controls.Add(this.AddButton);
-            this.panel2.Location = new System.Drawing.Point(17, 605);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(407, 75);
-            this.panel2.TabIndex = 60;
-            // 
-            // AddButton
-            // 
-            this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
-            this.AddButton.Location = new System.Drawing.Point(10, 16);
-            this.AddButton.Margin = new System.Windows.Forms.Padding(4);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(90, 40);
-            this.AddButton.TabIndex = 51;
-            this.AddButton.Text = "Add";
-            this.AddButton.UseVisualStyleBackColor = true;
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
-            // 
-            // DeleteButton
-            // 
-            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
-            this.DeleteButton.Location = new System.Drawing.Point(303, 16);
-            this.DeleteButton.Margin = new System.Windows.Forms.Padding(4);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(90, 40);
-            this.DeleteButton.TabIndex = 52;
-            this.DeleteButton.Text = "Delete";
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            this.CloseButton.BackColor = System.Drawing.Color.MistyRose;
+            this.CloseButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
+            this.CloseButton.Location = new System.Drawing.Point(315, 608);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(110, 40);
+            this.CloseButton.TabIndex = 59;
+            this.CloseButton.Text = "Close";
+            this.CloseButton.UseVisualStyleBackColor = false;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // FarFieldComboBox
             // 
             this.FarFieldComboBox.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
             this.FarFieldComboBox.FormattingEnabled = true;
-            this.FarFieldComboBox.Location = new System.Drawing.Point(107, 16);
+            this.FarFieldComboBox.Location = new System.Drawing.Point(152, 17);
+            this.FarFieldComboBox.MaxLength = 40;
             this.FarFieldComboBox.Name = "FarFieldComboBox";
-            this.FarFieldComboBox.Size = new System.Drawing.Size(189, 28);
+            this.FarFieldComboBox.Size = new System.Drawing.Size(273, 28);
+            this.FarFieldComboBox.Sorted = true;
             this.FarFieldComboBox.TabIndex = 53;
+            this.FarFieldComboBox.SelectedIndexChanged += new System.EventHandler(this.FarFieldComboBox_SelectedIndexChanged);
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteButton.BackColor = System.Drawing.Color.MistyRose;
+            this.DeleteButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
+            this.DeleteButton.Location = new System.Drawing.Point(166, 608);
+            this.DeleteButton.Margin = new System.Windows.Forms.Padding(4);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(110, 40);
+            this.DeleteButton.TabIndex = 52;
+            this.DeleteButton.Text = "Delete";
+            this.DeleteButton.UseVisualStyleBackColor = false;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // AddButton
+            // 
+            this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddButton.BackColor = System.Drawing.Color.MistyRose;
+            this.AddButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
+            this.AddButton.Location = new System.Drawing.Point(17, 608);
+            this.AddButton.Margin = new System.Windows.Forms.Padding(4);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(110, 40);
+            this.AddButton.TabIndex = 51;
+            this.AddButton.Text = "Add/Save";
+            this.AddButton.UseVisualStyleBackColor = false;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // FormRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 761);
+            this.ClientSize = new System.Drawing.Size(439, 661);
             this.ControlBox = false;
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.ApplyButton);
+            this.Controls.Add(this.FarFieldComboBox);
+            this.Controls.Add(this.DeleteButton);
+            this.Controls.Add(this.CloseButton);
+            this.Controls.Add(this.AddButton);
             this.Controls.Add(this.FarFieldDirectionPanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.FieldPositiongroupBox);
             this.Controls.Add(this.RequestNameLable);
-            this.Controls.Add(this.FarFieldNameText);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormRequest";
-            this.Text = "Request";
+            this.Text = "リクエスト";
             this.FarFieldDirectionPanel.ResumeLayout(false);
             this.FarFieldDirectionPanel.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.FieldPositiongroupBox.ResumeLayout(false);
             this.FieldPositiongroupBox.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -498,10 +466,7 @@
         private System.Windows.Forms.RadioButton FSradioButton;
         private System.Windows.Forms.RadioButton NCradioButton;
         private System.Windows.Forms.Label RequestNameLable;
-        private System.Windows.Forms.TextBox FarFieldNameText;
-        private new System.Windows.Forms.Button CancelButton;
-        private System.Windows.Forms.Button ApplyButton;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.ComboBox FarFieldComboBox;

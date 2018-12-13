@@ -50,12 +50,20 @@ bool GmshFile::Read(const char* fileName, Mesh* mesh)
 			size_t nodeNum = 0, lineNum = 0, TriangleNum = 0;
 			int eleType, physicType, entityType, geoID;
 
-			for (size_t zmc = 0;zmc < eleNum;zmc++)
+			for (size_t zmc = 0;zmc < eleNum;)
 			{
 				fp >> zmc >> eleType >> physicType >> entityType >> geoID;
-				if (eleType == 15)continue;//Node
+				if (eleType == 15)
+				{
+					fp >> nodeNum;//skip
+					continue;//Node
+				}
 
-				if (eleType == 1)continue;//Line
+				if (eleType == 1)
+				{
+					fp >> lineNum >> lineNum;//Line
+					continue;
+				}
 
 				if (eleType == 2)//Triangle
 				{
@@ -63,22 +71,25 @@ bool GmshFile::Read(const char* fileName, Mesh* mesh)
 					triID[0] = TriangleNum++;
 					triID[1] = static_cast<int>(physicType);
 					fp >> triID[2] >> triID[3] >> triID[4];
+					triID[2] -= 1;triID[3] -= 1;triID[4] -= 1;
+
 					mesh->TriangleVector()->push_back(Triangle(triID, mesh->GetNode(triID[2]), mesh->GetNode(triID[3]), mesh->GetNode(triID[4])));
+					
 				}
 
 			}
 			continue;
 		}
 
-		if (buffer == "Periodic")continue;
+		if (buffer == "$Periodic")continue;
 
-		if (buffer == "NodeData")continue;
+		if (buffer == "$NodeData")continue;
 
-		if (buffer == "ElementData")continue;
+		if (buffer == "$ElementData")continue;
 
-		if (buffer == "ElementNodeData")continue;
+		if (buffer == "$ElementNodeData")continue;
 
-		if (buffer == "InterpolationScheme")continue;
+		if (buffer == "$InterpolationScheme")continue;
 		 
 	}
 

@@ -21,6 +21,7 @@ namespace Core
 		string ProjectDir = "C:/";
 		string MeshFileName;
 		string BasicFunctionFileName= ProjectDir + ProjectName + ".bf";
+		int BasicFunctionType = 0;
 		ImpConfiguration ImpConfig;
 		GreenConfiguration GreenConfig;
 		Source::ExcitationConfiguration SourceConfig;

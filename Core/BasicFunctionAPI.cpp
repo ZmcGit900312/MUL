@@ -13,12 +13,10 @@ int Core::CreatBasicFunction(const bool isCreat)
 		
 		Mesh* mesh = Mesh::GetInstance();
 
-		const int basicFunctionType = 0;//ÒÔºóÀ©Õ¹BasicFunction type
-
 		if (Mesh::GetInstance()->IsLock())throw spdlog::spdlog_ex("Mesh is lock!");
 		Console->info("Initial BasicFunction");
 
-		switch (basicFunctionType)
+		switch (SystemConfig.BasicFunctionType)
 		{
 		case 1:
 			throw spdlog::spdlog_ex("Other BasicFunction is not developing!");

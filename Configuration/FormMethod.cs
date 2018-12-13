@@ -13,12 +13,12 @@ namespace Configuration
 {
     public partial class FormMethod : Form
     {
-        public static Cam CardMD { get; set; }=new Cam();
+        public static Cam Impedance { get; set; }=new Cam();
 
         public FormMethod()
         {
             InitializeComponent();
-            AIMRadioButton.PerformClick();
+            AIMRadioButton.Checked=true;
         }
 
         private void MoMRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -28,7 +28,7 @@ namespace Configuration
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
-            if(AIMRadioButton.Checked)CardMD = new Cam
+            if(AIMRadioButton.Checked)Impedance = new Cam
             {
                 Order = OrderCombox.SelectedIndex + 2,
                 Interval = double.Parse(IntervalText.Text),
@@ -40,7 +40,7 @@ namespace Configuration
             Close();
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
+        private void CloseButton_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -50,12 +50,12 @@ namespace Configuration
             AIMPanel.Enabled = AIMRadioButton.Checked;
             if (AIMPanel.Enabled)
             {
-                IntervalText.Text = CardMD.Interval.ToString();
-                ThresholdText.Text = CardMD.Threshold.ToString();
-                NearTolerance.Text = CardMD.NearCorrectionEps.ToString();
-                Dimension3D.Checked = CardMD.Dimension == 3;
-                FillingType.Checked = CardMD.FillingStrategy == 1;
-                OrderCombox.SelectedIndex = CardMD.Order - 2;
+                IntervalText.Text = Impedance.Interval.ToString();
+                ThresholdText.Text = Impedance.Threshold.ToString();
+                NearTolerance.Text = Impedance.NearCorrectionEps.ToString();
+                Dimension3D.Checked = Impedance.Dimension == 3;
+                FillingType.Checked = Impedance.FillingStrategy == 1;
+                OrderCombox.SelectedIndex = Impedance.Order - 2;
             }
         }
     }

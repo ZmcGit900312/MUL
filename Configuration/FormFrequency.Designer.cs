@@ -1,6 +1,6 @@
 ﻿namespace Configuration
 {
-    partial class FormParameter
+    partial class FormFrequency
     {
         /// <summary>
         /// Required designer variable.
@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.ApplyButton = new System.Windows.Forms.Button();
             this.FrequencyLable = new System.Windows.Forms.Label();
             this.FrequecyText = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // CancelButton
+            // CloseButton
             // 
-            this.CancelButton.BackColor = System.Drawing.Color.MistyRose;
-            this.CancelButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
-            this.CancelButton.Location = new System.Drawing.Point(328, 410);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(94, 39);
-            this.CancelButton.TabIndex = 55;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = false;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CloseButton.BackColor = System.Drawing.Color.MistyRose;
+            this.CloseButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
+            this.CloseButton.Location = new System.Drawing.Point(328, 410);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(94, 39);
+            this.CloseButton.TabIndex = 55;
+            this.CloseButton.Text = "Close";
+            this.CloseButton.UseVisualStyleBackColor = false;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // ApplyButton
             // 
@@ -79,7 +79,7 @@
             this.FrequecyText.TabIndex = 56;
             this.FrequecyText.Text = "3.0e8";
             // 
-            // FormParameter
+            // FormFrequency
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -87,10 +87,11 @@
             this.ControlBox = false;
             this.Controls.Add(this.FrequencyLable);
             this.Controls.Add(this.FrequecyText);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.ApplyButton);
-            this.Name = "FormParameter";
-            this.Text = "Parameter";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Name = "FormFrequency";
+            this.Text = "周波数";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,7 +99,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Button ApplyButton;
         private System.Windows.Forms.Label FrequencyLable;
         private System.Windows.Forms.TextBox FrequecyText;

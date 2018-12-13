@@ -10,23 +10,23 @@ using System.Windows.Forms;
 
 namespace Configuration
 {
-    public partial class FormParameter : Form
+    public partial class FormFrequency : Form
     {
-        public static Cfr Para { get; set; }=new Cfr();
+        public static Cfr fre { get; set; }=new Cfr();
 
-        public FormParameter()
+        public FormFrequency()
         {
             InitializeComponent();
-            FrequecyText.Text = Para.Frequency.ToString();
+            FrequecyText.Text = fre.Frequency.ToString();
         }
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
-            Para.Frequency = double.Parse(FrequecyText.Text);
+            fre.Frequency = double.Parse(FrequecyText.Text);
             Close();
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
+        private void CloseButton_Click(object sender, EventArgs e)
         {
             Close();
         }

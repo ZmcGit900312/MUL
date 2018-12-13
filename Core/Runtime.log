@@ -2705,3 +2705,75 @@
 [Tue Dec 11 19:57:20 2018 Tue][info] Run ReleaseMemory()
 [Tue Dec 11 19:57:20 2018 Tue][info] Release Request
 [Tue Dec 11 19:57:20 2018 Tue][info] Finish
+[Fri Dec 14 01:22:18 2018 Fri][info] Run EMCParmeterInitialization()
+[Fri Dec 14 01:22:18 2018 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Dec 14 01:22:55 2018 Fri][info] Finish
+[Fri Dec 14 01:23:01 2018 Fri][info] Creat Mesh
+[Fri Dec 14 01:23:01 2018 Fri][info] Finish Creat Mesh
+[Fri Dec 14 01:23:17 2018 Fri][info] Run LoadBasicFunction()
+[Fri Dec 14 01:23:17 2018 Fri][info] Finish
+[Fri Dec 14 01:23:17 2018 Fri][info] Run SetGreenFunction()
+[Fri Dec 14 01:23:17 2018 Fri][info] Finish
+[Fri Dec 14 01:23:17 2018 Fri][info] Run CalculateRequest()
+[Fri Dec 14 01:23:27 2018 Fri][info] Run ReleaseMemory()
+[Fri Dec 14 01:23:27 2018 Fri][info] Release BasicFunction
+[Fri Dec 14 01:23:27 2018 Fri][info] Release Request
+[Fri Dec 14 01:23:27 2018 Fri][info] Finish
+[Fri Dec 14 01:24:36 2018 Fri][info] Run EMCParmeterInitialization()
+[Fri Dec 14 01:24:36 2018 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Dec 14 01:25:24 2018 Fri][info] Finish
+[Fri Dec 14 01:25:24 2018 Fri][info] Creat Mesh
+[Fri Dec 14 01:25:24 2018 Fri][info] Finish Creat Mesh
+[Fri Dec 14 01:25:30 2018 Fri][info] Run LoadBasicFunction()
+[Fri Dec 14 01:25:30 2018 Fri][info] Finish
+[Fri Dec 14 01:25:30 2018 Fri][info] Run SetGreenFunction()
+[Fri Dec 14 01:25:30 2018 Fri][info] Finish
+[Fri Dec 14 01:25:30 2018 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Dec 14 01:25:30 2018 Fri][info] Finish Pre-compute
+[Fri Dec 14 01:25:30 2018 Fri][info] Run CreatImpedance()
+[Fri Dec 14 01:25:39 2018 Fri][info] Finish
+[Fri Dec 14 01:25:39 2018 Fri][info] Run FillImpedance()
+[Fri Dec 14 01:26:06 2018 Fri][info] Finish
+[Fri Dec 14 01:26:06 2018 Fri][info] Run SetRightHand()
+[Fri Dec 14 01:26:06 2018 Fri][info] Finish
+[Fri Dec 14 01:26:06 2018 Fri][info] Run Solve()
+[Fri Dec 14 01:26:09 2018 Fri][info] Finish
+[Fri Dec 14 01:26:09 2018 Fri][info] Run SaveBasicFunction()
+[Fri Dec 14 01:26:09 2018 Fri][info] Finish
+[Fri Dec 14 01:26:09 2018 Fri][info] Run CalculateRequest()
+[Fri Dec 14 01:26:18 2018 Fri][info] Run ReleaseMemory()
+[Fri Dec 14 01:26:18 2018 Fri][info] Release BasicFunction
+[Fri Dec 14 01:26:18 2018 Fri][info] Release Matrix
+[Fri Dec 14 01:26:18 2018 Fri][info] Release TeoplitzMultiplicator
+[Fri Dec 14 01:26:18 2018 Fri][info] Release Request
+[Fri Dec 14 01:26:18 2018 Fri][info] Finish
+[Fri Dec 14 02:33:32 2018 Fri][info] Run EMCParmeterInitialization()
+[Fri Dec 14 02:33:32 2018 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Dec 14 02:34:32 2018 Fri][info] Finish
+[Fri Dec 14 02:43:32 2018 Fri][info] Run EMCParmeterInitialization()
+[Fri Dec 14 02:43:32 2018 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Dec 14 02:43:35 2018 Fri][info] Finish
+[Fri Dec 14 02:48:14 2018 Fri][info] Run EMCParmeterInitialization()
+[Fri Dec 14 02:48:14 2018 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Dec 14 02:48:17 2018 Fri][info] Finish
+[Fri Dec 14 02:55:33 2018 Fri][info] Run EMCParmeterInitialization()
+[Fri Dec 14 02:55:33 2018 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Dec 14 02:55:33 2018 Fri][info] Finish
+[Fri Dec 14 02:56:51 2018 Fri][info] Run EMCParmeterInitialization()
+[Fri Dec 14 02:56:51 2018 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Dec 14 02:56:51 2018 Fri][info] Finish
+[Fri Dec 14 03:24:51 2018 Fri][info] Run EMCParmeterInitialization()
+[Fri Dec 14 03:24:51 2018 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Dec 14 03:24:51 2018 Fri][info] Finish
+[Fri Dec 14 03:28:39 2018 Fri][info] Run EMCParmeterInitialization()
+[Fri Dec 14 03:28:39 2018 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Dec 14 03:28:39 2018 Fri][info] Finish
+[Fri Dec 14 03:31:02 2018 Fri][info] Run EMCParmeterInitialization()
+[Fri Dec 14 03:31:02 2018 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Dec 14 03:31:02 2018 Fri][info] Finish
+[Fri Dec 14 03:33:24 2018 Fri][info] Run EMCParmeterInitialization()
+[Fri Dec 14 03:33:24 2018 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Dec 14 03:33:24 2018 Fri][info] Finish
+[Fri Dec 14 03:33:35 2018 Fri][info] Run ReleaseMemory()
+[Fri Dec 14 03:33:35 2018 Fri][info] Release Request
+[Fri Dec 14 03:33:35 2018 Fri][info] Finish

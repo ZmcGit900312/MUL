@@ -80,17 +80,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormBasicFunction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBasicFunction.Designer.cs">
+      <DependentUpon>FormBasicFunction.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormExcitation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormExcitation.Designer.cs">
       <DependentUpon>FormExcitation.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMesh.cs">
+    <Compile Include="FormFile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMesh.Designer.cs">
-      <DependentUpon>FormMesh.cs</DependentUpon>
+    <Compile Include="FormFile.Designer.cs">
+      <DependentUpon>FormFile.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMethod.cs">
       <SubType>Form</SubType>
@@ -98,11 +104,11 @@
     <Compile Include="FormMethod.Designer.cs">
       <DependentUpon>FormMethod.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormParameter.cs">
+    <Compile Include="FormFrequency.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormParameter.Designer.cs">
-      <DependentUpon>FormParameter.cs</DependentUpon>
+    <Compile Include="FormFrequency.Designer.cs">
+      <DependentUpon>FormFrequency.cs</DependentUpon>
     </Compile>
     <Compile Include="FormRequest.cs">
       <SubType>Form</SubType>
@@ -125,17 +131,20 @@
     <Compile Include="ICard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormBasicFunction.resx">
+      <DependentUpon>FormBasicFunction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormExcitation.resx">
       <DependentUpon>FormExcitation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMesh.resx">
-      <DependentUpon>FormMesh.cs</DependentUpon>
+    <EmbeddedResource Include="FormFile.resx">
+      <DependentUpon>FormFile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMethod.resx">
       <DependentUpon>FormMethod.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormParameter.resx">
-      <DependentUpon>FormParameter.cs</DependentUpon>
+    <EmbeddedResource Include="FormFrequency.resx">
+      <DependentUpon>FormFrequency.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRequest.resx">
       <DependentUpon>FormRequest.cs</DependentUpon>

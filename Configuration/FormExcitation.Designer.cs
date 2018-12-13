@@ -65,7 +65,7 @@
             this.LeftRadioButton = new System.Windows.Forms.RadioButton();
             this.PWNameText = new System.Windows.Forms.TextBox();
             this.SourceNameLabel = new System.Windows.Forms.Label();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.ApplyButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.PlanewaveTablePage.SuspendLayout();
@@ -232,7 +232,7 @@
             this.LoopPWGroupBox.Name = "LoopPWGroupBox";
             this.LoopPWGroupBox.Size = new System.Drawing.Size(497, 223);
             this.LoopPWGroupBox.TabIndex = 4;
-            this.LoopPWGroupBox.TabStop = false;  
+            this.LoopPWGroupBox.TabStop = false;
             // 
             // PWPhiIncrementText
             // 
@@ -509,7 +509,7 @@
             this.PWNameText.Name = "PWNameText";
             this.PWNameText.Size = new System.Drawing.Size(222, 27);
             this.PWNameText.TabIndex = 1;
-            this.PWNameText.Text = "Planewave1";
+            this.PWNameText.Text = "Planewave";
             // 
             // SourceNameLabel
             // 
@@ -520,17 +520,17 @@
             this.SourceNameLabel.TabIndex = 0;
             this.SourceNameLabel.Text = "Source name";
             // 
-            // CancelButton
+            // CloseButton
             // 
-            this.CancelButton.BackColor = System.Drawing.Color.MistyRose;
-            this.CancelButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
-            this.CancelButton.Location = new System.Drawing.Point(432, 810);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(94, 39);
-            this.CancelButton.TabIndex = 57;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = false;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CloseButton.BackColor = System.Drawing.Color.MistyRose;
+            this.CloseButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
+            this.CloseButton.Location = new System.Drawing.Point(432, 810);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(94, 39);
+            this.CloseButton.TabIndex = 57;
+            this.CloseButton.Text = "Close";
+            this.CloseButton.UseVisualStyleBackColor = false;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // ApplyButton
             // 
@@ -550,11 +550,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 861);
             this.ControlBox = false;
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.ApplyButton);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormExcitation";
-            this.Text = "Excitation";
+            this.Text = "励起";
             this.tabControl1.ResumeLayout(false);
             this.PlanewaveTablePage.ResumeLayout(false);
             this.PlanewaveTablePage.PerformLayout();
@@ -609,7 +610,7 @@
         private System.Windows.Forms.RadioButton LeftRadioButton;
         private System.Windows.Forms.TextBox PWNameText;
         private System.Windows.Forms.Label SourceNameLabel;
-        private new System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Button ApplyButton;
     }
 }

@@ -85,6 +85,10 @@ int Core::EMCParameterInitialization(char* configurationFileName)
 					break;
 				case CG:SetCG(zmc);
 					break;
+				case OS:
+					SystemConfig.BasicFunctionType=stoi(*zmc++);//RWG Type
+					SystemConfig.BasicFunctionFileName = *zmc++;
+					break;
 				case EN:zmc = ed; break;
 				default:break;
 				}

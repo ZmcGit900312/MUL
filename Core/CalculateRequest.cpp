@@ -14,12 +14,12 @@ int Core::CalculateRequest(const bool IsReadFromFile)
 	ResultL->info("Calcuate the FarField RCS");
 	try
 	{
-		if (IsReadFromFile)
+		/*if (IsReadFromFile)
 		{
 			if (CreatMesh())throw spd::spdlog_ex("Error in Request");
 			if (CreatBasicFunction(false))throw spd::spdlog_ex("Error in Request");
 			if (SetGreenFunction())throw spd::spdlog_ex("Green Function is null");
-		}
+		}*/
 		Request::FarField post(&ComponentList::BFvector, Mesh::GetInstance());
 		
 		

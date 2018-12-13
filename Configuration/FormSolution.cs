@@ -27,20 +27,18 @@ namespace Configuration
         private void ApplyButton_Click(object sender, EventArgs e)
         {
             Sol.SolutionType = SolutionTypeComboBox.SelectedIndex;
-            if (Sol.SolutionType == 1)
+            if (Sol.SolutionType == 0)
             {
                 Sol.Maxiteration = int.Parse(MaxIterationsText.Text);
                 Sol.Tolerance = double.Parse(StopCriterionText.Text);
                 Sol.MaxStopTolerance = double.Parse(StopMaxText.Text);
-                Sol.PreConditionType = FormMethod.CardMD.FillingStrategy == 1 ? PreconditionComboBox.SelectedIndex : 0;
+                Sol.PreConditionType = PreconditionComboBox.SelectedIndex;
             }
           
             Close();
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void CloseButton_Click(object sender, EventArgs e)=>Close();
+        
     }
 }
