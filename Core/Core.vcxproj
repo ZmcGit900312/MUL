@@ -198,6 +198,11 @@
       <MinimalRebuild>false</MinimalRebuild>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <UseMSVC>false</UseMSVC>
+      <Parallelization>true</Parallelization>
+      <UseIntelOptimizedHeaders>true</UseIntelOptimizedHeaders>
+      <OpenMP>GenerateParallelCode</OpenMP>
+      <UseProcessorExtensions>AVX2</UseProcessorExtensions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -212,7 +217,6 @@
     <ClInclude Include="CoreAPI.h" />
     <ClInclude Include="Cuboid.h" />
     <ClInclude Include="Data.h" />
-    <ClInclude Include="EquationKernel.h" />
     <ClInclude Include="Excitation.h" />
     <ClInclude Include="FarField.h" />
     <ClInclude Include="FFT1d.h" />
@@ -224,7 +228,6 @@
     <ClInclude Include="IMeshRead.h" />
     <ClInclude Include="ImpAIM.h" />
     <ClInclude Include="ImpMoM.h" />
-    <ClInclude Include="Integration.h" />
     <ClInclude Include="IntegrationRWG.h" />
     <ClInclude Include="ISolver.h" />
     <ClInclude Include="IterationSolver.h" />
@@ -236,6 +239,7 @@
     <ClInclude Include="Planewave.h" />
     <ClInclude Include="RequestConfiguration.h" />
     <ClInclude Include="Radiation.h" />
+    <ClInclude Include="RWGTriangle.h" />
     <ClInclude Include="Segment.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="RWG.h" />
@@ -272,7 +276,6 @@
     <ClCompile Include="CreatImpedancecpp.cpp" />
     <ClCompile Include="CreatMesh.cpp" />
     <ClCompile Include="Data.cpp" />
-    <ClCompile Include="EquationKernel.cpp" />
     <ClCompile Include="FFT1d.cpp" />
     <ClCompile Include="FillImpedance.cpp" />
     <ClCompile Include="IEKernel.cpp" />
@@ -293,6 +296,7 @@
     <ClCompile Include="PreCalculateSelfTriangleImpedance.cpp" />
     <ClCompile Include="Radiation.cpp" />
     <ClCompile Include="RWG.cpp" />
+    <ClCompile Include="RWGTriangle.cpp" />
     <ClCompile Include="SetGreenFunction.cpp" />
     <ClCompile Include="SetRightHand.cpp" />
     <ClCompile Include="Solve.cpp" />

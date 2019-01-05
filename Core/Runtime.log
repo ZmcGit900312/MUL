@@ -2777,3 +2777,572 @@
 [Fri Dec 14 03:33:35 2018 Fri][info] Run ReleaseMemory()
 [Fri Dec 14 03:33:35 2018 Fri][info] Release Request
 [Fri Dec 14 03:33:35 2018 Fri][info] Finish
+[Fri Jan 4 17:34:01 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 17:34:01 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 17:34:01 2019 Fri][info] Finish
+[Fri Jan 4 17:34:16 2019 Fri][info] Creat Mesh
+[Fri Jan 4 17:34:16 2019 Fri][info] Finish Creat Mesh
+[Fri Jan 4 17:35:50 2019 Fri][info] Run ReleaseMemory()
+[Fri Jan 4 17:35:50 2019 Fri][info] Release Request
+[Fri Jan 4 17:35:50 2019 Fri][info] Finish
+[Fri Jan 4 17:52:22 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 17:52:22 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 17:52:22 2019 Fri][info] Finish
+[Fri Jan 4 17:55:11 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 17:55:11 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 17:55:11 2019 Fri][info] Finish
+[Fri Jan 4 17:56:25 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 17:56:25 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 17:56:25 2019 Fri][info] Finish
+[Fri Jan 4 17:56:35 2019 Fri][info] Run ReleaseMemory()
+[Fri Jan 4 17:56:35 2019 Fri][info] Release Request
+[Fri Jan 4 17:56:35 2019 Fri][info] Finish
+[Fri Jan 4 18:00:51 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 18:00:51 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 18:00:51 2019 Fri][info] Finish
+[Fri Jan 4 18:00:56 2019 Fri][info] Run ReleaseMemory()
+[Fri Jan 4 18:00:56 2019 Fri][info] Release Request
+[Fri Jan 4 18:00:56 2019 Fri][info] Finish
+[Fri Jan 4 18:17:48 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 18:17:48 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 18:17:48 2019 Fri][info] Finish
+[Fri Jan 4 18:17:56 2019 Fri][info] Run ReleaseMemory()
+[Fri Jan 4 18:17:56 2019 Fri][info] Release Request
+[Fri Jan 4 18:17:56 2019 Fri][info] Finish
+[Fri Jan 4 18:19:03 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 18:19:03 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 18:19:03 2019 Fri][info] Finish
+[Fri Jan 4 18:19:07 2019 Fri][info] Run ReleaseMemory()
+[Fri Jan 4 18:19:07 2019 Fri][info] Release Request
+[Fri Jan 4 18:19:07 2019 Fri][info] Finish
+[Fri Jan 4 22:19:50 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 22:19:50 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 22:19:50 2019 Fri][info] Finish
+[Fri Jan 4 22:19:51 2019 Fri][info] Run ReleaseMemory()
+[Fri Jan 4 22:19:51 2019 Fri][info] Release Request
+[Fri Jan 4 22:19:51 2019 Fri][info] Finish
+[Fri Jan 4 22:22:35 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 22:22:35 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 22:22:35 2019 Fri][info] Finish
+[Fri Jan 4 22:22:35 2019 Fri][info] Run ReleaseMemory()
+[Fri Jan 4 22:22:35 2019 Fri][info] Release Request
+[Fri Jan 4 22:22:35 2019 Fri][info] Finish
+[Fri Jan 4 22:23:12 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 22:23:12 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 22:23:12 2019 Fri][info] Finish
+[Fri Jan 4 22:23:17 2019 Fri][info] Creat Mesh
+[Fri Jan 4 22:23:17 2019 Fri][info] Finish Creat Mesh
+[Fri Jan 4 22:23:18 2019 Fri][info] Run LoadBasicFunction()
+[Fri Jan 4 22:23:18 2019 Fri][info] Finish
+[Fri Jan 4 22:23:18 2019 Fri][info] Run SaveBasicFunction()
+[Fri Jan 4 22:23:18 2019 Fri][info] Finish
+[Fri Jan 4 22:23:18 2019 Fri][info] Run LoadBasicFunction()
+[Fri Jan 4 22:23:19 2019 Fri][info] Finish
+[Fri Jan 4 22:23:19 2019 Fri][info] Run SaveBasicFunction()
+[Fri Jan 4 22:23:19 2019 Fri][info] Finish
+[Fri Jan 4 22:23:19 2019 Fri][info] Run ReleaseMemory()
+[Fri Jan 4 22:23:19 2019 Fri][info] Release Request
+[Fri Jan 4 22:23:19 2019 Fri][info] Finish
+[Fri Jan 4 22:24:37 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 22:24:37 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 22:24:37 2019 Fri][info] Finish
+[Fri Jan 4 22:24:41 2019 Fri][info] Creat Mesh
+[Fri Jan 4 22:24:41 2019 Fri][info] Finish Creat Mesh
+[Fri Jan 4 22:24:42 2019 Fri][info] Run LoadBasicFunction()
+[Fri Jan 4 22:24:42 2019 Fri][info] Finish
+[Fri Jan 4 22:24:42 2019 Fri][info] Run SaveBasicFunction()
+[Fri Jan 4 22:24:42 2019 Fri][info] Finish
+[Fri Jan 4 22:24:42 2019 Fri][info] Run LoadBasicFunction()
+[Fri Jan 4 22:24:42 2019 Fri][info] Finish
+[Fri Jan 4 22:24:42 2019 Fri][info] Run SaveBasicFunction()
+[Fri Jan 4 22:24:42 2019 Fri][info] Finish
+[Fri Jan 4 22:24:42 2019 Fri][info] Creat Mesh
+[Fri Jan 4 22:24:42 2019 Fri][info] Finish Creat Mesh
+[Fri Jan 4 22:24:42 2019 Fri][info] Run LoadBasicFunction()
+[Fri Jan 4 22:24:42 2019 Fri][info] Finish
+[Fri Jan 4 22:24:42 2019 Fri][info] Run SetGreenFunction()
+[Fri Jan 4 22:24:42 2019 Fri][info] Finish
+[Fri Jan 4 22:24:46 2019 Fri][info] Run SetGreenFunction()
+[Fri Jan 4 22:24:46 2019 Fri][info] Finish
+[Fri Jan 4 22:24:46 2019 Fri][info] Creat Mesh
+[Fri Jan 4 22:24:46 2019 Fri][info] Finish Creat Mesh
+[Fri Jan 4 22:24:46 2019 Fri][info] Run LoadBasicFunction()
+[Fri Jan 4 22:24:46 2019 Fri][info] Finish
+[Fri Jan 4 22:24:46 2019 Fri][info] Run SetGreenFunction()
+[Fri Jan 4 22:24:46 2019 Fri][info] Finish
+[Fri Jan 4 22:24:46 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jan 4 22:24:46 2019 Fri][info] Finish Pre-compute
+[Fri Jan 4 22:24:46 2019 Fri][info] Run CreatImpedance()
+[Fri Jan 4 22:24:49 2019 Fri][info] Finish
+[Fri Jan 4 22:27:14 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 22:27:14 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 22:27:14 2019 Fri][info] Finish
+[Fri Jan 4 22:27:14 2019 Fri][info] Run SetGreenFunction()
+[Fri Jan 4 22:27:14 2019 Fri][info] Finish
+[Fri Jan 4 22:27:14 2019 Fri][info] Run ReleaseMemory()
+[Fri Jan 4 22:27:14 2019 Fri][info] Release Request
+[Fri Jan 4 22:27:14 2019 Fri][info] Finish
+[Fri Jan 4 22:27:46 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 22:27:46 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 22:27:46 2019 Fri][info] Finish
+[Fri Jan 4 22:27:47 2019 Fri][info] Run ReleaseMemory()
+[Fri Jan 4 22:27:47 2019 Fri][info] Release Request
+[Fri Jan 4 22:27:47 2019 Fri][info] Finish
+[Fri Jan 4 22:29:39 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 22:29:39 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 22:29:39 2019 Fri][info] Finish
+[Fri Jan 4 22:29:44 2019 Fri][info] Run ReleaseMemory()
+[Fri Jan 4 22:29:44 2019 Fri][info] Release Request
+[Fri Jan 4 22:29:44 2019 Fri][info] Finish
+[Fri Jan 4 22:30:46 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 22:30:46 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 22:30:46 2019 Fri][info] Finish
+[Fri Jan 4 22:30:46 2019 Fri][info] Creat Mesh
+[Fri Jan 4 22:30:46 2019 Fri][info] Finish Creat Mesh
+[Fri Jan 4 22:30:46 2019 Fri][info] Run LoadBasicFunction()
+[Fri Jan 4 22:30:46 2019 Fri][info] Finish
+[Fri Jan 4 22:30:46 2019 Fri][info] Run SetGreenFunction()
+[Fri Jan 4 22:30:46 2019 Fri][info] Finish
+[Fri Jan 4 22:30:46 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jan 4 22:30:47 2019 Fri][info] Finish Pre-compute
+[Fri Jan 4 22:53:53 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 22:53:53 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 22:53:53 2019 Fri][info] Finish
+[Fri Jan 4 22:53:53 2019 Fri][info] Creat Mesh
+[Fri Jan 4 22:53:53 2019 Fri][info] Finish Creat Mesh
+[Fri Jan 4 22:53:53 2019 Fri][info] Run LoadBasicFunction()
+[Fri Jan 4 22:53:53 2019 Fri][info] Finish
+[Fri Jan 4 22:53:53 2019 Fri][info] Run SetGreenFunction()
+[Fri Jan 4 22:53:53 2019 Fri][info] Finish
+[Fri Jan 4 22:53:53 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jan 4 22:53:54 2019 Fri][info] Finish Pre-compute
+[Fri Jan 4 22:54:32 2019 Fri][info] Run ReleaseMemory()
+[Fri Jan 4 22:54:32 2019 Fri][info] Release Request
+[Fri Jan 4 22:54:32 2019 Fri][info] Finish
+[Fri Jan 4 22:56:23 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 22:56:23 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 22:56:23 2019 Fri][info] Finish
+[Fri Jan 4 22:56:23 2019 Fri][info] Creat Mesh
+[Fri Jan 4 22:56:23 2019 Fri][info] Finish Creat Mesh
+[Fri Jan 4 22:56:23 2019 Fri][info] Run LoadBasicFunction()
+[Fri Jan 4 22:56:23 2019 Fri][info] Finish
+[Fri Jan 4 22:56:23 2019 Fri][info] Run SetGreenFunction()
+[Fri Jan 4 22:56:23 2019 Fri][info] Finish
+[Fri Jan 4 22:56:23 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jan 4 22:56:24 2019 Fri][info] Finish Pre-compute
+[Fri Jan 4 22:56:24 2019 Fri][info] Run ReleaseMemory()
+[Fri Jan 4 22:56:24 2019 Fri][info] Release Request
+[Fri Jan 4 22:56:24 2019 Fri][info] Finish
+[Fri Jan 4 22:57:16 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 22:57:16 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 22:57:16 2019 Fri][info] Finish
+[Fri Jan 4 22:57:16 2019 Fri][info] Creat Mesh
+[Fri Jan 4 22:57:16 2019 Fri][info] Finish Creat Mesh
+[Fri Jan 4 22:57:16 2019 Fri][info] Run LoadBasicFunction()
+[Fri Jan 4 22:57:16 2019 Fri][info] Finish
+[Fri Jan 4 22:57:16 2019 Fri][info] Run SetGreenFunction()
+[Fri Jan 4 22:57:16 2019 Fri][info] Finish
+[Fri Jan 4 22:57:16 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jan 4 22:57:17 2019 Fri][info] Finish Pre-compute
+[Fri Jan 4 22:57:17 2019 Fri][info] Run CreatImpedance()
+[Fri Jan 4 22:57:19 2019 Fri][info] Finish
+[Fri Jan 4 22:58:24 2019 Fri][info] Run SetRightHand()
+[Fri Jan 4 22:58:24 2019 Fri][info] Finish
+[Fri Jan 4 22:58:24 2019 Fri][info] Run Solve()
+[Fri Jan 4 22:58:34 2019 Fri][info] Finish
+[Fri Jan 4 22:58:34 2019 Fri][info] Run SaveBasicFunction()
+[Fri Jan 4 22:58:34 2019 Fri][info] Finish
+[Fri Jan 4 22:58:34 2019 Fri][info] Run CalculateRequest()
+[Fri Jan 4 22:59:02 2019 Fri][info] Run ReleaseMemory()
+[Fri Jan 4 22:59:02 2019 Fri][info] Release Request
+[Fri Jan 4 22:59:02 2019 Fri][info] Finish
+[Fri Jan 4 22:59:59 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Jan 4 22:59:59 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Jan 4 22:59:59 2019 Fri][info] Finish
+[Fri Jan 4 22:59:59 2019 Fri][info] Creat Mesh
+[Fri Jan 4 22:59:59 2019 Fri][info] Finish Creat Mesh
+[Fri Jan 4 22:59:59 2019 Fri][info] Run LoadBasicFunction()
+[Fri Jan 4 22:59:59 2019 Fri][info] Finish
+[Fri Jan 4 22:59:59 2019 Fri][info] Run SetGreenFunction()
+[Fri Jan 4 22:59:59 2019 Fri][info] Finish
+[Fri Jan 4 23:00:03 2019 Fri][info] Run ReleaseMemory()
+[Fri Jan 4 23:00:03 2019 Fri][info] Release BasicFunction
+[Fri Jan 4 23:00:03 2019 Fri][info] Release Request
+[Fri Jan 4 23:00:03 2019 Fri][info] Finish
+[Sat Jan 5 14:33:47 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 14:33:47 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 14:33:47 2019 Sat][info] Finish
+[Sat Jan 5 14:33:47 2019 Sat][info] Creat Mesh
+[Sat Jan 5 14:33:48 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 14:33:48 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 14:33:48 2019 Sat][info] Finish
+[Sat Jan 5 14:33:48 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 14:33:48 2019 Sat][info] Finish
+[Sat Jan 5 14:40:14 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 14:40:14 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 14:40:14 2019 Sat][info] Finish
+[Sat Jan 5 14:40:14 2019 Sat][info] Creat Mesh
+[Sat Jan 5 14:40:14 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 14:40:14 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 14:40:14 2019 Sat][info] Finish
+[Sat Jan 5 14:40:14 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 14:40:14 2019 Sat][info] Finish
+[Sat Jan 5 14:41:18 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 14:41:18 2019 Sat][info] Release BasicFunction
+[Sat Jan 5 14:41:18 2019 Sat][info] Release Request
+[Sat Jan 5 14:41:18 2019 Sat][info] Finish
+[Sat Jan 5 14:42:13 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 14:42:13 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 14:42:13 2019 Sat][info] Finish
+[Sat Jan 5 14:42:13 2019 Sat][info] Creat Mesh
+[Sat Jan 5 14:42:13 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 14:42:13 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 14:42:13 2019 Sat][info] Finish
+[Sat Jan 5 14:42:13 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 14:42:13 2019 Sat][info] Finish
+[Sat Jan 5 14:43:46 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 14:43:46 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 14:43:46 2019 Sat][info] Finish
+[Sat Jan 5 14:43:46 2019 Sat][info] Creat Mesh
+[Sat Jan 5 14:43:46 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 14:43:46 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 14:43:46 2019 Sat][info] Finish
+[Sat Jan 5 14:43:46 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 14:43:46 2019 Sat][info] Finish
+[Sat Jan 5 14:44:00 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 14:44:00 2019 Sat][info] Release BasicFunction
+[Sat Jan 5 14:44:00 2019 Sat][info] Release Request
+[Sat Jan 5 14:44:00 2019 Sat][info] Finish
+[Sat Jan 5 15:30:23 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 15:30:23 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 15:30:23 2019 Sat][info] Finish
+[Sat Jan 5 15:30:23 2019 Sat][info] Creat Mesh
+[Sat Jan 5 15:30:23 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 15:30:23 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 15:30:23 2019 Sat][info] Finish
+[Sat Jan 5 15:30:23 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 15:30:23 2019 Sat][info] Finish
+[Sat Jan 5 15:59:50 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 15:59:50 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 15:59:50 2019 Sat][info] Finish
+[Sat Jan 5 15:59:50 2019 Sat][info] Creat Mesh
+[Sat Jan 5 15:59:50 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 15:59:50 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 15:59:50 2019 Sat][info] Finish
+[Sat Jan 5 15:59:50 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 15:59:50 2019 Sat][info] Finish
+[Sat Jan 5 16:02:18 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 16:02:18 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 16:02:18 2019 Sat][info] Finish
+[Sat Jan 5 16:02:18 2019 Sat][info] Creat Mesh
+[Sat Jan 5 16:02:18 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 16:02:18 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 16:02:18 2019 Sat][info] Finish
+[Sat Jan 5 16:02:18 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 16:02:18 2019 Sat][info] Finish
+[Sat Jan 5 16:05:27 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 16:05:27 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 16:05:27 2019 Sat][info] Finish
+[Sat Jan 5 16:05:27 2019 Sat][info] Creat Mesh
+[Sat Jan 5 16:05:27 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 16:05:27 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 16:05:27 2019 Sat][info] Finish
+[Sat Jan 5 16:05:27 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 16:05:27 2019 Sat][info] Finish
+[Sat Jan 5 16:06:44 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 16:06:44 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 16:06:44 2019 Sat][info] Finish
+[Sat Jan 5 16:06:44 2019 Sat][info] Creat Mesh
+[Sat Jan 5 16:06:44 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 16:06:44 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 16:06:44 2019 Sat][info] Finish
+[Sat Jan 5 16:06:44 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 16:06:44 2019 Sat][info] Finish
+[Sat Jan 5 16:09:09 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 16:09:09 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 16:09:09 2019 Sat][info] Finish
+[Sat Jan 5 16:09:09 2019 Sat][info] Creat Mesh
+[Sat Jan 5 16:09:09 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 16:09:09 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 16:09:09 2019 Sat][info] Finish
+[Sat Jan 5 16:09:09 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 16:09:09 2019 Sat][info] Finish
+[Sat Jan 5 16:09:44 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 16:09:44 2019 Sat][info] Release BasicFunction
+[Sat Jan 5 16:09:44 2019 Sat][info] Release Request
+[Sat Jan 5 16:09:44 2019 Sat][info] Finish
+[Sat Jan 5 16:14:40 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 16:14:40 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 16:14:40 2019 Sat][info] Finish
+[Sat Jan 5 16:14:40 2019 Sat][info] Creat Mesh
+[Sat Jan 5 16:14:40 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 16:14:40 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 16:14:40 2019 Sat][info] Finish
+[Sat Jan 5 16:14:40 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 16:14:40 2019 Sat][info] Finish
+[Sat Jan 5 16:14:40 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 16:14:40 2019 Sat][info] Release BasicFunction
+[Sat Jan 5 16:14:40 2019 Sat][info] Release Request
+[Sat Jan 5 16:14:40 2019 Sat][info] Finish
+[Sat Jan 5 16:16:40 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 16:16:40 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 16:16:40 2019 Sat][info] Finish
+[Sat Jan 5 16:16:40 2019 Sat][info] Creat Mesh
+[Sat Jan 5 16:16:40 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 16:16:40 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 16:16:40 2019 Sat][info] Finish
+[Sat Jan 5 16:16:40 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 16:16:40 2019 Sat][info] Finish
+[Sat Jan 5 16:16:40 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 16:16:40 2019 Sat][info] Release BasicFunction
+[Sat Jan 5 16:16:40 2019 Sat][info] Release Request
+[Sat Jan 5 16:16:40 2019 Sat][info] Finish
+[Sat Jan 5 16:18:04 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 16:18:04 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 16:18:04 2019 Sat][info] Finish
+[Sat Jan 5 16:18:04 2019 Sat][info] Creat Mesh
+[Sat Jan 5 16:18:04 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 16:18:04 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 16:18:04 2019 Sat][info] Finish
+[Sat Jan 5 16:18:04 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 16:18:04 2019 Sat][info] Finish
+[Sat Jan 5 16:22:40 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 16:22:40 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 16:22:40 2019 Sat][info] Finish
+[Sat Jan 5 16:22:40 2019 Sat][info] Creat Mesh
+[Sat Jan 5 16:22:40 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 16:22:40 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 16:22:40 2019 Sat][info] Finish
+[Sat Jan 5 16:22:40 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 16:22:40 2019 Sat][info] Finish
+[Sat Jan 5 16:23:06 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 16:23:06 2019 Sat][info] Release BasicFunction
+[Sat Jan 5 16:23:06 2019 Sat][info] Release Request
+[Sat Jan 5 16:23:06 2019 Sat][info] Finish
+[Sat Jan 5 16:24:25 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 16:24:25 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 16:24:25 2019 Sat][info] Finish
+[Sat Jan 5 16:24:25 2019 Sat][info] Creat Mesh
+[Sat Jan 5 16:24:25 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 16:24:25 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 16:24:25 2019 Sat][info] Finish
+[Sat Jan 5 16:24:25 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 16:24:25 2019 Sat][info] Finish
+[Sat Jan 5 16:24:27 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 16:24:27 2019 Sat][info] Release BasicFunction
+[Sat Jan 5 16:24:27 2019 Sat][info] Release Request
+[Sat Jan 5 16:24:27 2019 Sat][info] Finish
+[Sat Jan 5 16:24:52 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 16:24:52 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 16:24:52 2019 Sat][info] Finish
+[Sat Jan 5 16:24:52 2019 Sat][info] Creat Mesh
+[Sat Jan 5 16:24:52 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 16:24:52 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 16:24:52 2019 Sat][info] Finish
+[Sat Jan 5 16:24:52 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 16:24:52 2019 Sat][info] Finish
+[Sat Jan 5 16:31:18 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 16:31:18 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 16:31:18 2019 Sat][info] Finish
+[Sat Jan 5 16:31:18 2019 Sat][info] Creat Mesh
+[Sat Jan 5 16:31:18 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 16:31:18 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 16:31:18 2019 Sat][info] Finish
+[Sat Jan 5 16:31:18 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 16:31:18 2019 Sat][info] Finish
+[Sat Jan 5 16:31:18 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 16:31:18 2019 Sat][info] Release BasicFunction
+[Sat Jan 5 16:31:18 2019 Sat][info] Release Request
+[Sat Jan 5 16:31:18 2019 Sat][info] Finish
+[Sat Jan 5 17:20:03 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 17:20:03 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 17:20:03 2019 Sat][info] Finish
+[Sat Jan 5 17:20:03 2019 Sat][info] Creat Mesh
+[Sat Jan 5 17:20:03 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 17:20:03 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 17:20:03 2019 Sat][info] Finish
+[Sat Jan 5 17:20:03 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 17:20:03 2019 Sat][info] Finish
+[Sat Jan 5 17:20:03 2019 Sat][warning] Can't open Excitation.csv
+[Sat Jan 5 17:20:03 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 17:20:03 2019 Sat][info] Release BasicFunction
+[Sat Jan 5 17:20:03 2019 Sat][info] Release Request
+[Sat Jan 5 17:20:03 2019 Sat][info] Finish
+[Sat Jan 5 17:25:30 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 17:25:30 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 17:25:30 2019 Sat][info] Finish
+[Sat Jan 5 17:25:30 2019 Sat][info] Creat Mesh
+[Sat Jan 5 17:25:30 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 17:25:30 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 17:25:30 2019 Sat][info] Finish
+[Sat Jan 5 17:25:30 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 17:25:30 2019 Sat][info] Finish
+[Sat Jan 5 17:26:12 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 17:26:12 2019 Sat][info] Release BasicFunction
+[Sat Jan 5 17:26:12 2019 Sat][info] Release Request
+[Sat Jan 5 17:26:12 2019 Sat][info] Finish
+[Sat Jan 5 17:27:27 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 17:27:27 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 17:27:27 2019 Sat][info] Finish
+[Sat Jan 5 17:27:27 2019 Sat][info] Creat Mesh
+[Sat Jan 5 17:27:27 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 17:27:27 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 17:27:27 2019 Sat][info] Finish
+[Sat Jan 5 17:27:27 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 17:27:27 2019 Sat][info] Finish
+[Sat Jan 5 17:29:13 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 17:29:13 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 17:29:13 2019 Sat][info] Finish
+[Sat Jan 5 17:29:13 2019 Sat][info] Creat Mesh
+[Sat Jan 5 17:29:13 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 17:29:13 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 17:29:13 2019 Sat][info] Finish
+[Sat Jan 5 17:29:13 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 17:29:13 2019 Sat][info] Finish
+[Sat Jan 5 17:30:02 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 17:30:02 2019 Sat][info] Release BasicFunction
+[Sat Jan 5 17:30:02 2019 Sat][info] Release Request
+[Sat Jan 5 17:30:02 2019 Sat][info] Finish
+[Sat Jan 5 17:36:53 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 17:36:53 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 17:36:53 2019 Sat][info] Finish
+[Sat Jan 5 17:36:53 2019 Sat][info] Creat Mesh
+[Sat Jan 5 17:36:53 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 17:36:53 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 17:36:53 2019 Sat][info] Finish
+[Sat Jan 5 17:36:53 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 17:36:53 2019 Sat][info] Finish
+[Sat Jan 5 17:38:08 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 17:38:08 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 17:38:08 2019 Sat][info] Finish
+[Sat Jan 5 17:38:08 2019 Sat][info] Creat Mesh
+[Sat Jan 5 17:38:08 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 17:38:08 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 17:38:08 2019 Sat][info] Finish
+[Sat Jan 5 17:38:08 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 17:38:08 2019 Sat][info] Finish
+[Sat Jan 5 17:38:14 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 17:38:14 2019 Sat][info] Release BasicFunction
+[Sat Jan 5 17:38:14 2019 Sat][info] Release Request
+[Sat Jan 5 17:38:14 2019 Sat][info] Finish
+[Sat Jan 5 18:10:06 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 18:10:06 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 18:10:06 2019 Sat][info] Finish
+[Sat Jan 5 18:10:06 2019 Sat][info] Creat Mesh
+[Sat Jan 5 18:10:06 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 18:10:06 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 18:10:06 2019 Sat][info] Finish
+[Sat Jan 5 18:10:06 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 18:10:06 2019 Sat][info] Finish
+[Sat Jan 5 18:10:06 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 18:10:06 2019 Sat][info] Release BasicFunction
+[Sat Jan 5 18:10:06 2019 Sat][info] Release Request
+[Sat Jan 5 18:10:06 2019 Sat][info] Finish
+[Sat Jan 5 20:27:49 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 20:27:49 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 20:27:49 2019 Sat][info] Finish
+[Sat Jan 5 20:27:49 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 20:27:49 2019 Sat][info] Release Request
+[Sat Jan 5 20:27:49 2019 Sat][info] Finish
+[Sat Jan 5 20:28:34 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 20:28:34 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 20:28:34 2019 Sat][info] Finish
+[Sat Jan 5 20:28:37 2019 Sat][info] Creat Mesh
+[Sat Jan 5 20:28:37 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 20:28:38 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 20:28:38 2019 Sat][info] Release Request
+[Sat Jan 5 20:28:38 2019 Sat][info] Finish
+[Sat Jan 5 21:36:59 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 21:36:59 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 21:36:59 2019 Sat][info] Finish
+[Sat Jan 5 21:37:05 2019 Sat][info] Creat Mesh
+[Sat Jan 5 21:37:05 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 21:37:05 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 21:37:05 2019 Sat][info] Release Request
+[Sat Jan 5 21:37:05 2019 Sat][info] Finish
+[Sat Jan 5 21:38:16 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 21:38:16 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 21:38:16 2019 Sat][info] Finish
+[Sat Jan 5 21:38:20 2019 Sat][info] Creat Mesh
+[Sat Jan 5 21:38:20 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 21:38:22 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 21:38:22 2019 Sat][info] Finish
+[Sat Jan 5 21:38:22 2019 Sat][info] Run SaveBasicFunction()
+[Sat Jan 5 21:38:22 2019 Sat][info] Finish
+[Sat Jan 5 21:38:22 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 21:38:22 2019 Sat][info] Finish
+[Sat Jan 5 21:38:22 2019 Sat][info] Run SaveBasicFunction()
+[Sat Jan 5 21:38:22 2019 Sat][info] Finish
+[Sat Jan 5 21:38:22 2019 Sat][info] Creat Mesh
+[Sat Jan 5 21:38:22 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 21:38:22 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 21:38:22 2019 Sat][info] Finish
+[Sat Jan 5 21:38:22 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 21:38:22 2019 Sat][info] Finish
+[Sat Jan 5 21:38:22 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 21:38:22 2019 Sat][info] Finish
+[Sat Jan 5 21:38:22 2019 Sat][info] Creat Mesh
+[Sat Jan 5 21:38:22 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 21:38:22 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 21:38:22 2019 Sat][info] Finish
+[Sat Jan 5 21:38:22 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 21:38:22 2019 Sat][info] Finish
+[Sat Jan 5 21:38:22 2019 Sat][info] Begin to pre-compute the SelfTriangle Impedance
+[Sat Jan 5 21:38:23 2019 Sat][info] Finish Pre-compute
+[Sat Jan 5 21:38:23 2019 Sat][info] Run CreatImpedance()
+[Sat Jan 5 21:38:27 2019 Sat][info] Finish
+[Sat Jan 5 21:39:37 2019 Sat][info] Run SetRightHand()
+[Sat Jan 5 21:39:37 2019 Sat][info] Finish
+[Sat Jan 5 21:39:37 2019 Sat][info] Run Solve()
+[Sat Jan 5 21:39:48 2019 Sat][info] Finish
+[Sat Jan 5 21:39:48 2019 Sat][info] Run SaveBasicFunction()
+[Sat Jan 5 21:39:48 2019 Sat][info] Finish
+[Sat Jan 5 21:39:48 2019 Sat][info] Run CalculateRequest()
+[Sat Jan 5 21:40:15 2019 Sat][info] Creat Mesh
+[Sat Jan 5 21:40:15 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 21:40:15 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 21:40:15 2019 Sat][info] Finish
+[Sat Jan 5 21:40:15 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 21:40:15 2019 Sat][info] Finish
+[Sat Jan 5 21:40:15 2019 Sat][info] Begin to pre-compute the SelfTriangle Impedance
+[Sat Jan 5 21:40:16 2019 Sat][info] Finish Pre-compute
+[Sat Jan 5 21:40:16 2019 Sat][info] Creat Mesh
+[Sat Jan 5 21:40:16 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 21:40:16 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 21:40:16 2019 Sat][info] Finish
+[Sat Jan 5 21:40:16 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 21:40:16 2019 Sat][info] Finish
+[Sat Jan 5 21:41:02 2019 Sat][warning] MoMTest is not Running
+[Sat Jan 5 21:41:02 2019 Sat][warning] ImpedanceTest is not Testing
+[Sat Jan 5 21:41:02 2019 Sat][warning] SolveTest is not Testing
+[Sat Jan 5 21:41:02 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 21:41:02 2019 Sat][info] Release Request
+[Sat Jan 5 21:41:02 2019 Sat][info] Finish
+[Sat Jan 5 22:07:26 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 22:07:26 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 22:07:26 2019 Sat][info] Finish
+[Sat Jan 5 22:07:26 2019 Sat][info] Creat Mesh
+[Sat Jan 5 22:07:26 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 22:07:26 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 22:07:26 2019 Sat][info] Finish
+[Sat Jan 5 22:07:26 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 22:07:26 2019 Sat][info] Finish
+[Sat Jan 5 22:07:26 2019 Sat][info] Begin to pre-compute the SelfTriangle Impedance
+[Sat Jan 5 22:07:26 2019 Sat][info] Finish Pre-compute
+[Sat Jan 5 22:07:26 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 22:07:26 2019 Sat][info] Release Request
+[Sat Jan 5 22:07:26 2019 Sat][info] Finish
+[Sat Jan 5 22:17:38 2019 Sat][info] Run EMCParmeterInitialization()
+[Sat Jan 5 22:17:38 2019 Sat][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Sat Jan 5 22:17:38 2019 Sat][info] Finish
+[Sat Jan 5 22:17:38 2019 Sat][info] Creat Mesh
+[Sat Jan 5 22:17:38 2019 Sat][info] Finish Creat Mesh
+[Sat Jan 5 22:17:38 2019 Sat][info] Run LoadBasicFunction()
+[Sat Jan 5 22:17:38 2019 Sat][info] Finish
+[Sat Jan 5 22:17:38 2019 Sat][info] Run SetGreenFunction()
+[Sat Jan 5 22:17:38 2019 Sat][info] Finish
+[Sat Jan 5 22:17:38 2019 Sat][info] Begin to pre-compute the SelfTriangle Impedance
+[Sat Jan 5 22:17:38 2019 Sat][info] Finish Pre-compute
+[Sat Jan 5 22:17:38 2019 Sat][info] Run ReleaseMemory()
+[Sat Jan 5 22:17:38 2019 Sat][info] Release Request
+[Sat Jan 5 22:17:38 2019 Sat][info] Finish

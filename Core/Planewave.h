@@ -5,6 +5,7 @@
 #include <Eigen/Core>
 #include "IBasicFunction.h"
 #include "Excitation.h"
+#include <vector>
 
 
 using namespace Eigen;

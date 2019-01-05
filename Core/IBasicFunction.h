@@ -1,6 +1,5 @@
 #pragma once
 #include <Eigen/Core>
-#include "Mesh.h"
 using namespace Eigen;
 
 namespace Core
@@ -57,7 +56,7 @@ namespace Core
 		 * \brief 以二进制形式储存当下的基函数信息
 		 * \param ofs 写入的文件流
 		 */
-		virtual void SaveBinary(ofstream &ofs) = 0;
+		virtual void SaveBinary(std::ofstream &ofs) = 0;
 	};
 
 }

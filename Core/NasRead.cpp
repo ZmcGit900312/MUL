@@ -8,6 +8,7 @@
 #include "stdafx.h"
 #include "NasRead.h"
 #include "Log.h"
+#include "RWGTriangle.h"
 
 bool NasRead::Read(const char* fileName, Mesh* mesh){
 	if (!fileName)throw spdlog::spdlog_ex("MeshFile is nullptr!");
@@ -19,8 +20,8 @@ bool NasRead::Read(const char* fileName, Mesh* mesh){
 		mesh->Erase();
 
 		mesh->GridVector()->reserve(10000);
-		mesh->TriangleVector()->reserve(10000);
-
+		//mesh->TriangleVector()->reserve(10000);
+		mesh->TriangleMock.reserve(10000);
 		string buffer;
 		double x = 0, y = 0, z = 0;
 		int triID[5], nodeID = 0;
@@ -45,7 +46,8 @@ bool NasRead::Read(const char* fileName, Mesh* mesh){
 				triID[2] = stoi(buffer.substr(24, 8)) - 1;//node a
 				triID[3] = stoi(buffer.substr(32, 8)) - 1;//node b
 				triID[4] = stoi(buffer.substr(40, 8)) - 1;//node c
-				mesh->TriangleVector()->push_back(Triangle(triID, mesh->GetNode(triID[2]), mesh->GetNode(triID[3]), mesh->GetNode(triID[4])));
+				//mesh->TriangleVector()->push_back(Triangle(triID, mesh->GetNode(triID[2]), mesh->GetNode(triID[3]), mesh->GetNode(triID[4])));
+				mesh->TriangleMock.push_back(new RWGTriangle(mesh->GetNode(triID[2]), mesh->GetNode(triID[3]), mesh->GetNode(triID[4]), triID[0], triID[2], triID[3], triID[4], triID[1],-1));
 				break;
 			default:
 				break;

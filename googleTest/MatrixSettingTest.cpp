@@ -296,11 +296,13 @@ TEST_F(MatrixSettingTestData, TFSNearFieldSet)
 		//Set Near Field Triplets
 		const clock_t start = clock();
 		int count = 0;
-		for (auto row = mesh->TriangleVector()->begin(), ed = mesh->TriangleVector()->end(); row != ed; ++row, ++count)
+		for (auto r = mesh->TriangleMock.begin(), ed = mesh->TriangleMock.end();r != ed;++r, ++currentProgress)
 		{
 			list<element> Z;
-			for (auto col = row + 1; col != ed; ++col)
+			RWGTriangle* row = dynamic_cast<RWGTriangle*>(*r);
+			for (auto c = r + 1;c != ed;++c)
 			{
+				RWGTriangle* col = dynamic_cast<RWGTriangle*>(*c);
 				Vector3d distance = row->Centre() - col->Centre();
 				if (distance.norm()>threshold*1.3)continue;
 
@@ -308,11 +310,11 @@ TEST_F(MatrixSettingTestData, TFSNearFieldSet)
 				for (short i = 0; i < 3; i++)
 				{
 					if (!row->RWGSign[i])continue;
-					const auto field = static_cast<RWG*>(bf[row->ID(i).second]);
+					const auto field = static_cast<RWG*>(bf[row->RWGID(i)]);
 					for (short j = 0; j < 3; j++)
 					{
 						if (!col->RWGSign[j])continue;
-						const auto source = static_cast<RWG*>(bf[col->ID(j).second]);
+						const auto source = static_cast<RWG*>(bf[col->RWGID(j)]);
 						Vector3d edgeDistance = field->Centre() - source->Centre();
 						if (edgeDistance.norm() > threshold)
 						{
@@ -323,7 +325,7 @@ TEST_F(MatrixSettingTestData, TFSNearFieldSet)
 					}
 				}
 				if (Z.size() == 0)continue;
-				_compute.SetImpedance(*row, *col, Z);
+				_compute.SetImpedance(row, col, Z);
 				//Set LowerTriangle
 				for (auto i = Z.cbegin(); i != Z.cend(); ++i)
 				{
@@ -351,12 +353,12 @@ TEST_F(MatrixSettingTestData, TFSNearFieldSet)
 				for (short i = 0; i < 3; i++)
 				{
 					if (!row->RWGSign[i])continue;
-					auto source = row->ID(i).second;
+					auto source = row->RWGID(i);
 					tripletsNearPart.push_back(T(source, source, row->Z(source, source)));
 					for (short j = i + 1; j < 3; j++)
 					{
 						if (!row->RWGSign[j])continue;
-						auto field = row->ID(j).second;
+						auto field = row->RWGID(j);
 						if (source<field)
 						{
 							tripletsNearPart.push_back(T(field, source, row->Z(field, source)));
@@ -366,7 +368,7 @@ TEST_F(MatrixSettingTestData, TFSNearFieldSet)
 				}
 
 			}
-			currentProgress += 200 * (mesh->GetTriangle() - count);
+			currentProgress += 100 * (mesh->GetTriangle() - count);
 			cout << "Progress:" << setw(10) << currentProgress / Sum << "%\r";
 		}
 		tripletsNearPart.shrink_to_fit();

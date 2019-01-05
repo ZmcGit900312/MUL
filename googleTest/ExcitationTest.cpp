@@ -39,12 +39,12 @@ TEST_F(ExcitationTest, PlanewaveTest)
 	try
 	{
 		Console->debug("Right Hand Test");
-		char* excitationName = "E:/ZMC/Code/C_program/MUL/SourceData/Excitation.txt";
+		char* excitationName = "E:/ZMC/Code/C_program/MUL/SourceData/Excitation.csv";
 		//ki=(0,0,-1),ei=(0,1,0);
-		const size_t size = ComponentList::BFvector.size();
-		Source::Planewave source(&SystemConfig.SourceConfig);
-		VectorXcd comp = source.SetExcitation(ComponentList::BFvector);
-		VectorXcd ref{ size };
+		//const size_t size = ComponentList::BFvector.size();
+		size_t size=0;
+		
+		VectorXcd ref;
 		ifstream ifile(excitationName, ios::in);
 
 		//Read Excitation
@@ -54,20 +54,53 @@ TEST_F(ExcitationTest, PlanewaveTest)
 			buffer << ifile.rdbuf();
 			ifile.close();
 			//Split the words
-			string word;
-			buffer >> word;
-			int l = stoi(word), zmc = 0;
-			while (buffer >> word)
-			{
-				ref[zmc].real(stod(word));
-				buffer >> word;
-				ref[zmc++].imag(stod(word));
-			}
-		}
+			string line,word;
+			
+			//Read Title
+			Vector3d direction;
+			getline(buffer, line);
+			getline(buffer, word,',');
+			int type = stoi(word);
+			getline(buffer, word, ',');
+			direction.x()=stod(word);
+			getline(buffer, word, ',');
+			direction.y() = stod(word);
+			getline(buffer, word);
+			direction.z() = stod(word);
+			SystemConfig.SourceConfig.Ki = direction;
 
+			Vector3d pol;
+			getline(buffer, line);
+			getline(buffer, word, ',');
+			getline(buffer, word, ',');
+			pol.x() = stod(word);
+			getline(buffer, word, ',');
+			pol.y() = stod(word);
+			getline(buffer, word);
+			pol.z() = stod(word);
+			SystemConfig.SourceConfig.Ei = pol;
+			getline(buffer, word);
+			size = stoi(word);
+			ref.resize(size);
+
+			for(size_t zmc=0;zmc<size;zmc++)
+			{
+				getline(buffer, word, ',');
+				ref[zmc].real(stod(word));
+				getline(buffer, word);
+				ref[zmc].imag(stod(word));
+			}
+			
+		}
+		else throw spdlog::spdlog_ex("Can't open Excitation.csv");
+
+		Console->info("Direction:[{0} {1} {2}]", SystemConfig.SourceConfig.Ki.x(), SystemConfig.SourceConfig.Ki.y(), SystemConfig.SourceConfig.Ki.z());
+		Console->info("Polarization:[{0} {1} {2}]", SystemConfig.SourceConfig.Ei.x(), SystemConfig.SourceConfig.Ei.y(), SystemConfig.SourceConfig.Ei.z());
+		Source::Planewave source(&SystemConfig.SourceConfig);
+		VectorXcd comp = source.SetExcitation(ComponentList::BFvector);
 		for (auto i = 0; i < size; ++i)
 		{
-			EXPECT_NEAR(0, norm(ref(i) - comp(i)) / norm(ref(i)), 5.0e-3) << "Error in Excitation term\t" << i;
+			EXPECT_NEAR(0, norm(ref(i) - comp(i)) / norm(ref(i)), 0.005) << "Error in Excitation term\t" << i;
 		}
 	}
 	catch (spd::spdlog_ex&ex)
@@ -75,6 +108,7 @@ TEST_F(ExcitationTest, PlanewaveTest)
 		Console->warn(ex.what());
 		RuntimeL->warn(ex.what());
 		RuntimeL->flush();
+		FAIL();
 	}
 }
 

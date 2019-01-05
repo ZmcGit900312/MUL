@@ -129,12 +129,6 @@
     <ClInclude Include="Triangle.h">
       <Filter>头文件\Base</Filter>
     </ClInclude>
-    <ClInclude Include="Integration.h">
-      <Filter>头文件\Integral</Filter>
-    </ClInclude>
-    <ClInclude Include="EquationKernel.h">
-      <Filter>头文件\Integral</Filter>
-    </ClInclude>
     <ClInclude Include="FFT1d.h">
       <Filter>头文件\AIMAssist</Filter>
     </ClInclude>
@@ -194,6 +188,9 @@
     </ClInclude>
     <ClInclude Include="GmshFile.h">
       <Filter>头文件\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="RWGTriangle.h">
+      <Filter>头文件\BasicFunction</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -261,9 +258,6 @@
       <Filter>源文件\Integral</Filter>
     </ClCompile>
     <ClCompile Include="Green.cpp">
-      <Filter>源文件\Integral</Filter>
-    </ClCompile>
-    <ClCompile Include="EquationKernel.cpp">
       <Filter>源文件\Integral</Filter>
     </ClCompile>
     <ClCompile Include="IntegrationRWG.cpp">
@@ -346,6 +340,9 @@
     </ClCompile>
     <ClCompile Include="..\googleTest\BasicFunctionTest.cpp">
       <Filter>源文件\googleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="RWGTriangle.cpp">
+      <Filter>源文件\BasicFunction</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

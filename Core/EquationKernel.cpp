@@ -2,6 +2,7 @@
 #include "EquationKernel.h"
 #include "Const.h"
 #include "Data.h"
+#include "Mesh.h"
 
 using namespace Core;
 Core::EquationKernel::EquationKernel(IGreen *green, int eqtype)

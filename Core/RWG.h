@@ -4,20 +4,19 @@
 //  Created on:      04-05ÔÂ-2018 15:56:35
 //  Original author: ZhengMX
 ///////////////////////////////////////////////////////////
-
-#pragma once
+#ifndef RWG_H
+#define RWG_H
 #include "IBasicFunction.h"
-#include "Triangle.h"
-#include <map>
+#include "RWGTriangle.h"
+#include "Mesh.h"
 using namespace std;
 
 namespace Core {
-	class Mesh;
 
 	class RWG :public IBasicFunction
 	{
 	public:
-		RWG(const size_t id,const pair<int, Vector3d> node[4], Triangle& tplus, Triangle& tminus);
+		RWG(const size_t id,const pair<int, Vector3d> node[4], Triangle* tplus, Triangle* tminus);
 		~RWG() { _tplus = nullptr, _tminus = nullptr; }
 
 		//Get Private Variable API
@@ -25,8 +24,8 @@ namespace Core {
 		double Length()const { return _edgeLength; }
 		Vector3d Node(const int val)const { return _node[val].second; }
 		Vector3d Centre()const { return _centre; }
-		Triangle& TrianglePlus() const { return *_tplus; }
-		Triangle& TriangleMinus() const { return *_tminus; }
+		RWGTriangle* TrianglePlus()const{ return _tplus; }
+		RWGTriangle* TriangleMinus() const { return _tminus; }
 		dcomplex& Current()override { return _current; }
 
 		//Current and Charge Function 
@@ -64,6 +63,14 @@ namespace Core {
 		Vector3d _centre;
 		complex<double> _current{ 0,0 };
 		double _edgeLength;
-		Triangle *_tplus, *_tminus;	
+		RWGTriangle *_tplus, *_tminus;	
 	};
+
+
+
 }
+
+
+
+
+#endif

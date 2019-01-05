@@ -29,22 +29,23 @@ namespace Core
 		//feature
 		size_t GetNode() const { return _grids.size(); }
 		size_t GetSegment() const { return _segments.size(); }
-		size_t GetTriangle() const { return _triangles.size(); }
+		size_t GetTriangle() const { return TriangleMock.size(); }
 		size_t GetCuboid()const { return _cuboids.size(); }
 		size_t GetTetrahedra()const { return _tetrahedras.size(); }
 			
 		Vector3d& GetNode(const int val) { return _grids[val]; }
 		Segment& GetSegment(const int val) { return _segments[val]; }
-		Triangle& GetTriangle(const int val) { return _triangles[val]; }
+		//Triangle& GetTriangle(const int val) { return _triangles[val]; }
 		Cuboid& GetCuboid(const int val) { return _cuboids[val]; }
 		Tetrahedra& GetTetrahedra(const int val) { return _tetrahedras[val]; }
-
+		Triangle* GetTriangle(const int val) { return TriangleMock[val]; }
 		
 		vector<Vector3d>* GridVector() { return &_grids; }
 		vector<Segment>* SegmentVector() { return &_segments; }
-		vector<Triangle>* TriangleVector() { return &_triangles; }
+		//vector<Triangle>* TriangleVector() { return &_triangles; }
 		vector<Cuboid>* CuboidVector() { return &_cuboids; }
 		vector<Tetrahedra>* TetrahedraVector() { return &_tetrahedras; }
+		vector<Triangle*> TriangleMock;
 	private:
 		Mesh() = default;
 		Mesh operator=(Mesh&) = delete;

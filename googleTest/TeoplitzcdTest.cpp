@@ -19,6 +19,7 @@ TEST(TeoplitzcdTest,SingleLevelInitial)
 	Teoplitzcd tp1;
 	Teoplitzcd tp2(layerNum);
 	Console->debug("***Single Level Teoplitz Test***");
+
 	//tp1 Test
 	Console->debug("Empty Construct Test:");
 	EXPECT_EQ(0, tp1.rows()) << "\tError in tp1.rows()";

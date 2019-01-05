@@ -11,15 +11,16 @@ void ImpMoM::FillImpedance()
 	
 	EFRImp compute(k, W4, W7, eta);
 
-	const auto beginTriangle = Mesh::GetInstance()->TriangleVector()->begin();
-	const auto endTriangle = Mesh::GetInstance()->TriangleVector()->cend();
+	const auto beginTriangle = Mesh::GetInstance()->TriangleMock.begin();
+	const auto endTriangle = Mesh::GetInstance()->TriangleMock.cend();
 
 	
 	const clock_t start = clock();
 	//Face-to-Face Set Impedance
 	for (auto i =beginTriangle; i!= endTriangle; ++i)
 	{
-		auto selfList=compute.SetImpedance(*i);
+		RWGTriangle* izmc = dynamic_cast<RWGTriangle*>(*i);
+		auto selfList=compute.SetImpedance(izmc);
 		for (auto zmc = selfList.begin(); zmc!= selfList.end(); ++zmc)
 		{
 			const int row = get<0>(*zmc);
@@ -32,7 +33,8 @@ void ImpMoM::FillImpedance()
 
 		for(auto j= beginTriangle;j!=i;++j)
 		{
-			auto coupleList =compute.SetImpedance(*i, *j);
+			RWGTriangle* jzmc = dynamic_cast<RWGTriangle*>(*j);
+			auto coupleList =compute.SetImpedance(izmc, jzmc);
 			for (auto zmc = coupleList.begin(); zmc != coupleList.end(); ++zmc)
 			{
 				const int row = get<0>(*zmc);
@@ -42,7 +44,7 @@ void ImpMoM::FillImpedance()
 				_imp(col , row ) += val;
 			}
 		}
-		cout << "Progress:" << setw(8) << i->ID()+1 << "of " << Mesh::GetInstance()->GetTriangle() << "\r";
+		cout << "Progress:" << setw(8) << izmc->ID()+1 << "of " << Mesh::GetInstance()->GetTriangle() << "\r";
 	}
 	const clock_t end = clock();
 	_time = double(end - start) / CLOCKS_PER_SEC;

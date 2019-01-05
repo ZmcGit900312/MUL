@@ -55,38 +55,38 @@ TEST_F(MeshTest, NasFileTest)
 
 	Console->debug("Get Triangle Test");
 	//T1 Test
-	Triangle* ptrT = &mesh->GetTriangle(refTriangle1[0]);
+	Triangle* ptrT = mesh->GetTriangle(refTriangle1[0]);
 	EXPECT_EQ(refTriangle1[1], ptrT->Material()) << "Error in T1 Matrials";
-	EXPECT_EQ(refTriangle1[2], ptrT->ID(0).first) << "Error in T1 Node1 ID";
-	EXPECT_EQ(refTriangle1[3], ptrT->ID(1).first) << "Error in T1 Node2 ID";
-	EXPECT_EQ(refTriangle1[4], ptrT->ID(2).first) << "Error in T1 Node3 ID";
+	EXPECT_EQ(refTriangle1[2], ptrT->NodeID(0)) << "Error in T1 Node1 ID";
+	EXPECT_EQ(refTriangle1[3], ptrT->NodeID(1)) << "Error in T1 Node2 ID";
+	EXPECT_EQ(refTriangle1[4], ptrT->NodeID(2)) << "Error in T1 Node3 ID";
 
 	//T2 Test
-	ptrT = &mesh->GetTriangle(refTriangle2[0]);
+	ptrT = mesh->GetTriangle(refTriangle2[0]);
 	EXPECT_EQ(refTriangle2[1], ptrT->Material()) << "Error in T2 Matrials";
-	EXPECT_EQ(refTriangle2[2], ptrT->ID(0).first) << "Error in T2 Node1 ID";
-	EXPECT_EQ(refTriangle2[3], ptrT->ID(1).first) << "Error in T2 Node2 ID";
-	EXPECT_EQ(refTriangle2[4], ptrT->ID(2).first) << "Error in T2 Node3 ID";
+	EXPECT_EQ(refTriangle2[2], ptrT->NodeID(0)) << "Error in T2 Node1 ID";
+	EXPECT_EQ(refTriangle2[3], ptrT->NodeID(1)) << "Error in T2 Node2 ID";
+	EXPECT_EQ(refTriangle2[4], ptrT->NodeID(2)) << "Error in T2 Node3 ID";
 
 	//T3 Test
-	ptrT = &mesh->GetTriangle(refTriangle3[0]);
+	ptrT =mesh->GetTriangle(refTriangle3[0]);
 	EXPECT_EQ(refTriangle3[1], ptrT->Material()) << "Error in T3 Matrials";
-	EXPECT_EQ(refTriangle3[2], ptrT->ID(0).first) << "Error in T3 Node1 ID";
-	EXPECT_EQ(refTriangle3[3], ptrT->ID(1).first) << "Error in T3 Node2 ID";
-	EXPECT_EQ(refTriangle3[4], ptrT->ID(2).first) << "Error in T3 Node3 ID";
+	EXPECT_EQ(refTriangle3[2], ptrT->NodeID(0)) << "Error in T3 Node1 ID";
+	EXPECT_EQ(refTriangle3[3], ptrT->NodeID(1)) << "Error in T3 Node2 ID";
+	EXPECT_EQ(refTriangle3[4], ptrT->NodeID(2)) << "Error in T3 Node3 ID";
 
 	delete reader;
 }
 
 
-TEST_F(MeshTest, GmshFileTest)
+TEST_F(MeshTest,GmshFileTest)
 {
 	IMeshRead *reader = new GmshFile;//Here should be changed
 	string fileName = "E://ZMC//Code//C_program//MUL//SourceData//Almond.msh";
 	reader->Read(fileName.c_str(), mesh);
 	size_t n1=1-1, n2=413-1, n3 =548-1;
-	size_t Tn1[5] = { 0,2,361,173,399 }, Tn2[5] = { 68,2,11,10,305 },
-		Tn3[5] = { 757,2,335,548,336 };
+	size_t Tn1[6] = { 0,2,1,361,173,399 }, Tn2[6] = { 68,2,9,11,10,305 },
+		Tn3[6] = { 757,2,96,335,548,336 };
 	Vector3d p1(0.1472184, 0, 0), p548(-0.1021170907556316, 0.00430012959761235, 0.003628428341918363),
 		p413(0.1232896343136452,-0.004533095014169125,0.004583644674046934);
 	//Node
@@ -107,23 +107,26 @@ TEST_F(MeshTest, GmshFileTest)
 	EXPECT_NEAR(p548.z(), Node.z(), 1.0e-4) << "Error in Node " << n3 << ":z from Mesh";
 
 	//Triangle
-	Triangle* ptrT = &mesh->GetTriangle(Tn1[0]);
+	Triangle* ptrT = mesh->GetTriangle(Tn1[0]);
 	EXPECT_EQ(Tn1[1], ptrT->Material()) << "Error in T1 Matrials";
-	EXPECT_EQ(Tn1[2]-1, ptrT->ID(0).first) << "Error in T1 Node1 ID";
-	EXPECT_EQ(Tn1[3]-1, ptrT->ID(1).first) << "Error in T1 Node2 ID";
-	EXPECT_EQ(Tn1[4]-1, ptrT->ID(2).first) << "Error in T1 Node3 ID";
+	EXPECT_EQ(Tn1[2], ptrT->Entity()) << "Error in T1 Entity";
+	EXPECT_EQ(Tn1[3]-1, ptrT->NodeID(0)) << "Error in T1 Node1 ID";
+	EXPECT_EQ(Tn1[4]-1, ptrT->NodeID(1)) << "Error in T1 Node2 ID";
+	EXPECT_EQ(Tn1[5]-1, ptrT->NodeID(2)) << "Error in T1 Node3 ID";
 
-	ptrT = &mesh->GetTriangle(Tn2[0]);
+	ptrT = mesh->GetTriangle(Tn2[0]);
 	EXPECT_EQ(Tn2[1], ptrT->Material()) << "Error in T2 Matrials";
-	EXPECT_EQ(Tn2[2] - 1, ptrT->ID(0).first) << "Error in T2 Node1 ID";
-	EXPECT_EQ(Tn2[3] - 1, ptrT->ID(1).first) << "Error in T2 Node2 ID";
-	EXPECT_EQ(Tn2[4] - 1, ptrT->ID(2).first) << "Error in T2 Node3 ID";
+	EXPECT_EQ(Tn2[2], ptrT->Entity()) << "Error in T2 Entity";
+	EXPECT_EQ(Tn2[3] - 1, ptrT->NodeID(0)) << "Error in T2 Node1 ID";
+	EXPECT_EQ(Tn2[4] - 1, ptrT->NodeID(1)) << "Error in T2 Node2 ID";
+	EXPECT_EQ(Tn2[5] - 1, ptrT->NodeID(2)) << "Error in T2 Node3 ID";
 
-	ptrT = &mesh->GetTriangle(Tn3[0]);
+	ptrT = mesh->GetTriangle(Tn3[0]);
 	EXPECT_EQ(Tn3[1], ptrT->Material()) << "Error in T3 Matrials";
-	EXPECT_EQ(Tn3[2] - 1, ptrT->ID(0).first) << "Error in T3 Node1 ID";
-	EXPECT_EQ(Tn3[3] - 1, ptrT->ID(1).first) << "Error in T3 Node2 ID";
-	EXPECT_EQ(Tn3[4] - 1, ptrT->ID(2).first) << "Error in T3 Node3 ID";
+	EXPECT_EQ(Tn3[2], ptrT->Entity()) << "Error in T3 Entity";
+	EXPECT_EQ(Tn3[3] - 1, ptrT->NodeID(0)) << "Error in T3 Node1 ID";
+	EXPECT_EQ(Tn3[4] - 1, ptrT->NodeID(1)) << "Error in T3 Node2 ID";
+	EXPECT_EQ(Tn3[5] - 1, ptrT->NodeID(2)) << "Error in T3 Node3 ID";
 	delete reader;
 }
 #endif

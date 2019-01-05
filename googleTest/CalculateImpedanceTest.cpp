@@ -112,8 +112,8 @@ TEST_F(CalculateImpedanceTest, SelfTriangleTest)
 	for (int zmc = 0; zmc < 3; ++zmc)
 	{
 		Console->debug("Triangle ID is:\t{}", triangleID[zmc]);
-		EFRImp::SetSelfImpedanceTriangle(Mesh::GetInstance()->GetTriangle(triangleID[zmc]), W13, k, eta);
-		auto resultList = compute.SetImpedance(Mesh::GetInstance()->GetTriangle(triangleID[zmc]));
+		EFRImp::SetSelfImpedanceTriangle(dynamic_cast<RWGTriangle*>(Mesh::GetInstance()->GetTriangle(triangleID[zmc])), W13, k, eta);
+		auto resultList = compute.SetImpedance(dynamic_cast<RWGTriangle*>(Mesh::GetInstance()->GetTriangle(triangleID[zmc])));
 		for (auto i = resultList.cbegin(); i != resultList.cend(); ++i)
 		{
 			const int rowi = std::get<0>(*i), coli = std::get<1>(*i);
@@ -140,8 +140,8 @@ TEST_F(CalculateImpedanceTest, SelfTriangleTest)
 	{
 		const int t1 = triangleID[zmc], t2 = triangleID[(zmc + 1) % 3];
 		Console->debug("Two Triangles ID are\t{0} and {1}", t1, t2);
-		auto resultList = compute.SetImpedance(Mesh::GetInstance()->GetTriangle(t1),
-			Mesh::GetInstance()->GetTriangle(t2));
+		auto resultList = compute.SetImpedance(dynamic_cast<RWGTriangle*>(Mesh::GetInstance()->GetTriangle(t1)),
+			dynamic_cast<RWGTriangle*>(Mesh::GetInstance()->GetTriangle(t2)));
 		for (auto i = resultList.cbegin(); i != resultList.cend(); ++i)
 		{
 			const int rowi = std::get<0>(*i), coli = std::get<1>(*i);

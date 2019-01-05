@@ -36,10 +36,10 @@ MatrixXd MultipoleExpansioner::MultiExpansionRight(RWG * bf) const
 	MatrixXd rightQ(_gridNum, _dimension + 1);
 	rightQ.setZero();
 
-	Matrix<Vector3d, 1, 7> epPlus = bf->TrianglePlus().Quad7().array() - bf->Centre();
-	Matrix<Vector3d, 1, 7> epMinus = bf->TriangleMinus().Quad7().array() - bf->Centre();
-	Matrix<Vector3d, 1, 7> rhoplus = bf->TrianglePlus().Quad7().array() - bf->Node(0),
-		rhominus = bf->TriangleMinus().Quad7().array() - bf->Node(1);
+	Matrix<Vector3d, 1, 7> epPlus = bf->TrianglePlus()->Quad7().array() - bf->Centre();
+	Matrix<Vector3d, 1, 7> epMinus = bf->TriangleMinus()->Quad7().array() - bf->Centre();
+	Matrix<Vector3d, 1, 7> rhoplus = bf->TrianglePlus()->Quad7().array() - bf->Node(0),
+		rhominus = bf->TriangleMinus()->Quad7().array() - bf->Node(1);
 	int count = 0;
 	if (_dimension==3)
 	{

@@ -95,13 +95,14 @@ Vector3cd Request::FarField::EField(const double theta, const double phi) const
 	const Vector3d observation(Radius*cos(phi)*sin(theta),Radius*sin(phi)*sin(theta),Radius*cos(theta));
 	Vector3cd efield{0,0,0};
 	EFRImp compute(k, W4, W7, eta);
-	for (auto zmc = _mesh->TriangleVector()->begin(), ed = _mesh->TriangleVector()->end();zmc != ed;++zmc)
+	for (auto zmc = _mesh->TriangleMock.begin(), ed = _mesh->TriangleMock.end();zmc != ed;++zmc)
 	{
 		dcomplex current[3] = { {0,0},{0,0},{0,0} };
-		current[0] = zmc->RWGSign[0] ? static_cast<RWG*>(_bf->at(zmc->ID(0).second))->Current() : 0;
-		current[1] = zmc->RWGSign[1] ? static_cast<RWG*>(_bf->at(zmc->ID(1).second))->Current() : 0;
-		current[2] = zmc->RWGSign[2] ? static_cast<RWG*>(_bf->at(zmc->ID(2).second))->Current() : 0;
-		efield += compute.Radiation(*zmc, observation,current);
+		RWGTriangle* temp = dynamic_cast<RWGTriangle*>(*zmc);
+		current[0] = temp->RWGSign[0] ? static_cast<RWG*>(_bf->at(temp->RWGID(0)))->Current() : 0;
+		current[1] = temp->RWGSign[1] ? static_cast<RWG*>(_bf->at(temp->RWGID(1)))->Current() : 0;
+		current[2] = temp->RWGSign[2] ? static_cast<RWG*>(_bf->at(temp->RWGID(2)))->Current() : 0;
+		efield += compute.Radiation(temp, observation,current);
 	}
 	
 	return efield;
@@ -116,17 +117,19 @@ Vector3cd Core::Request::FarField::EFieldBenchMark(const double theta, const dou
 	{
 		auto zmc = static_cast<RWG*>(*bf);
 		const short K = 4;
-		Triangle& tplus = zmc->TrianglePlus();
-		Triangle& tminus = zmc->TriangleMinus();
+		RWGTriangle* tplus = zmc->TrianglePlus();
+		RWGTriangle* tminus = zmc->TriangleMinus();
+
+		
 		Vector3cd temp{ 0,0,0 };
 		for (int i = 0; i < K; ++i)
 		{//Source Triangle
-			Vector3d pt1 = tplus.Quad4()[i], pt2 = tminus.Quad4()[i];
+			Vector3d pt1 = tplus->Quad4()[i], pt2 = tminus->Quad4()[i];
 			Vector3cd eplus = -1i*Omega*Mu*_green->Scalar(pt1, ob)*zmc->CurrentPlus(pt1) +
 				1i / (Omega*Epsilon)*zmc->ChargePlus(pt1)*_green->Gradient(pt1, ob);
 			Vector3cd eminus = -1i*Omega*Mu*_green->Scalar(pt2, ob)*zmc->CurrentMinus(pt2) +
 				1i / (Omega*Epsilon)*zmc->ChargeMinus(pt2)*_green->Gradient(pt2, ob);
-			temp += W4[i]*eplus* tplus.Area() + W4[i]*eminus* tminus.Area();
+			temp += W4[i]*eplus* tplus->Area() + W4[i]*eminus* tminus->Area();
 		}
 		efield += zmc->Current()*temp;
 	}

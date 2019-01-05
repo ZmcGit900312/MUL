@@ -72,25 +72,25 @@ TEST_F(MoMTest, ImpedanceTest)
 		const int row = 152, col = 450;
 		dcomplex pp, pm, mp, mm;
 
-		auto T228 = compute.SetImpedance(mesh->GetTriangle(227));
+		auto T228 = compute.SetImpedance(dynamic_cast<RWGTriangle*>(mesh->GetTriangle(227)));
 		for (auto zmc = T228.begin(); zmc != T228.end(); ++zmc)
 		{
 			const int i = get<0>(*zmc), j = get<1>(*zmc);
 			if (row + col == i + j) { mm = get<2>(*zmc); break; }
 		}
-		auto T66_227 = compute.SetImpedance(mesh->GetTriangle(65), mesh->GetTriangle(226));
+		auto T66_227 = compute.SetImpedance(dynamic_cast<RWGTriangle*>(mesh->GetTriangle(65)), dynamic_cast<RWGTriangle*>(mesh->GetTriangle(226)));
 		for (auto zmc = T66_227.begin(); zmc != T66_227.end(); ++zmc)
 		{
 			const int i = get<0>(*zmc), j = get<1>(*zmc);
 			if (row + col == i + j&&col - row == abs(i - j)) { pp = get<2>(*zmc); break; }
 		}
-		auto T66_228 = compute.SetImpedance(mesh->GetTriangle(65), mesh->GetTriangle(227));
+		auto T66_228 = compute.SetImpedance(dynamic_cast<RWGTriangle*>(mesh->GetTriangle(65)), dynamic_cast<RWGTriangle*>(mesh->GetTriangle(227)));
 		for (auto zmc = T66_228.begin(); zmc != T66_228.end(); ++zmc)
 		{
 			const int i = get<0>(*zmc), j = get<1>(*zmc);
 			if (row + col == i + j&&col - row == abs(i - j)) { pm = get<2>(*zmc); break; }
 		}
-		auto T228_227 = compute.SetImpedance(mesh->GetTriangle(227), mesh->GetTriangle(226));
+		auto T228_227 = compute.SetImpedance(dynamic_cast<RWGTriangle*>(mesh->GetTriangle(227)), dynamic_cast<RWGTriangle*>(mesh->GetTriangle(226)));
 		for (auto zmc = T228_227.begin(); zmc != T228_227.end(); ++zmc)
 		{
 			const int i = get<0>(*zmc), j = get<1>(*zmc);

@@ -4,11 +4,11 @@
 
 #pragma region ComponentList
 
-vector<IBasicFunction*> ComponentList::BFvector;
-IImpService* ComponentList::ImpService = nullptr;
-SystemConfiguration Core::SystemConfig;
+vector<Core::IBasicFunction*> Core::ComponentList::BFvector;
+Core::IImpService* Core::ComponentList::ImpService = nullptr;
+Core::SystemConfiguration Core::SystemConfig;
 #pragma endregion 
 //Tools
-AIMAssist::TeoplitzAssist* Tools::TeoplitzMultiplicator = nullptr;
+Core::AIMAssist::TeoplitzAssist* Core::Tools::TeoplitzMultiplicator = nullptr;
 
-Solution::ISolver* Core::Solver=nullptr;
+Core::Solution::ISolver* Core::Solver=nullptr;

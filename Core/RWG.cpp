@@ -9,28 +9,25 @@ using namespace std;
 
 #pragma region RWG
 
-RWG::RWG(const size_t id, const pair<int, Vector3d> node[4], Triangle & tplus, Triangle & tminus):
-_id(id), _tplus(&tplus),_tminus(&tminus)
+RWG::RWG(const size_t id, const pair<int, Vector3d> node[4], Triangle* tplus, Triangle* tminus):
+_id(id), _tplus(dynamic_cast<RWGTriangle*>(tplus)),_tminus(dynamic_cast<RWGTriangle*>(tminus))
 {
 	
 	_node[0] = node[0];
 	_node[1] = node[1];
 	_node[2] = node[2];
 	_node[3] = node[3];
-	for (short i = 0; i < 3; ++i)
 	{
-		auto& tp = tplus.ID(i),&tm = tminus.ID(i);
-		if(node[0].first==tp.first)
-		{
-			tp.second = id;
-			tplus.RWGSign[i] = 1;
-		}
-		if (node[1].first == tm.first)
-		{
-			tm.second = id;
-			tminus.RWGSign[i] = -1;
-		}
+		int bindId = _tplus->NodeID(0) == node[0].first ? 0 : _tplus->NodeID(1) == node[0].first ? 1 : 2;
+		//_tplus->RWGId[bindId] = id;
+		_tplus->RWGSign[bindId] = 1;
+		_tplus->Rn[bindId] = this;
+		bindId = _tminus->NodeID(0) == node[1].first ? 0 : _tminus->NodeID(1) == node[1].first ? 1 : 2;
+		//_tminus->RWGId[bindId] = id;
+		_tminus->RWGSign[bindId] = -1;
+		_tminus->Rn[bindId] = this;
 	}
+	
 	_centre = (_node[2].second + _node[3].second) / 2.0;
 	_edgeLength = (_node[2].second - _node[3].second).norm();
 }
@@ -74,7 +71,7 @@ size_t RWG::CreatRWGBasicFunctionList(Mesh* mesh, vector<IBasicFunction*>* RWGLi
 	RWGList->clear();
 	RWGList->reserve(static_cast<size_t>(triangleNum)*1.5);
 
-	for (auto plus = mesh->TriangleVector()->begin(), ed = mesh->TriangleVector()->end(); plus != ed; ++plus)
+	for (auto plus = mesh->TriangleMock.begin(), ed = mesh->TriangleMock.end(); plus != ed; ++plus)
 	{
 		for (auto minus = plus + 1; minus != ed; ++minus)
 		{
@@ -84,7 +81,7 @@ size_t RWG::CreatRWGBasicFunctionList(Mesh* mesh, vector<IBasicFunction*>* RWGLi
 			{
 				for (int p2 = 0; p2 < 3; p2++)
 				{
-					if (plus->ID(p1).first == minus->ID(p2).first)
+					if ((*plus)->NodeID(p1) == (*minus)->NodeID(p2))
 					{
 						T1[commonEdgeCount] = p1;
 						T2[commonEdgeCount] = p2;
@@ -98,60 +95,20 @@ size_t RWG::CreatRWGBasicFunctionList(Mesh* mesh, vector<IBasicFunction*>* RWGLi
 			T1[2] = 3 - T1[0] - T1[1];
 			T2[2] = 3 - T2[0] - T2[1];
 			//node plus id;
-			const int npid = plus->ID(T1[2]).first; 
-			const int nmid = minus->ID(T2[2]).first;
-			const int nlid = plus->ID(T1[0]).first;
-			const int nrid = plus->ID(T1[1]).first;
+			const int npid = (*plus)->NodeID(T1[2]);
+			const int nmid = (*minus)->NodeID(T2[2]);
+			const int nlid = (*plus)->NodeID(T1[0]);
+			const int nrid = (*plus)->NodeID(T1[1]);
 
 			tempNode[0] = { npid,mesh->GetNode(npid) };
 			tempNode[1] = { nmid,mesh->GetNode(nmid) };
 			tempNode[2] = { nlid,mesh->GetNode(nlid) };
 			tempNode[3] = { nrid,mesh->GetNode(nrid) };
+
 			RWGList->push_back(new RWG(unknowns++, tempNode, *plus, *minus));
 		}
 		cout << "Progress:" << setw(10) << 100 * static_cast<double>(currentProgress++) / triangleNum << "%\r";
 	}
-	//Triangle* plus = nullptr, *minus = nullptr;
-	//for (int i = 0; i < triangleNum; i++)
-	//{
-	//	plus = &mesh->GetTriangle(i);
-	//	for (int j = i + 1; j < triangleNum; ++j)
-	//	{
-	//		short commonEdgeCount = 0;
-	//		minus = &mesh->GetTriangle(j);
-
-	//		//Find the common edge
-	//		for (int p1 = 0; p1 < 3 && commonEdgeCount < 2; p1++)
-	//		{
-	//			for (int p2 = 0; p2 < 3; p2++)
-	//			{
-	//				if (plus->ID(p1).first == minus->ID(p2).first)
-	//				{
-	//					T1[commonEdgeCount] = p1;
-	//					T2[commonEdgeCount] = p2;
-	//					++commonEdgeCount; break;
-	//				}
-	//			}
-	//		}
-
-	//		if (commonEdgeCount != 2)continue;
-	//		//Set BasicFunction
-	//		T1[2] = 3 - T1[0] - T1[1];
-	//		T2[2] = 3 - T2[0] - T2[1];
-	//		//node plus id;
-	//		const int npid = plus->ID(T1[2]).first; 
-	//		const int nmid = minus->ID(T2[2]).first;
-	//		const int nlid = plus->ID(T1[0]).first;
-	//		const int nrid = plus->ID(T1[1]).first;
-
-	//		tempNode[0] = { npid,mesh->GetNode(npid) };
-	//		tempNode[1] = { nmid,mesh->GetNode(nmid) };
-	//		tempNode[2] = { nlid,mesh->GetNode(nlid) };
-	//		tempNode[3] = { nrid,mesh->GetNode(nrid) };
-	//		RWGList->push_back(new RWG(unknowns++, tempNode, *plus, *minus));
-	//	}
-	//	cout << "Progress:" << setw(10) << 100 * static_cast<double>(i) / triangleNum << "%\r";
-	//}
 	return static_cast<size_t>(RWGList->size());
 }
 

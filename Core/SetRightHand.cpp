@@ -12,7 +12,12 @@ int Core::SetRightHand()
 	RuntimeL->info("Run SetRightHand()");
 	ResultL->info("RightHand");
 	Source::Planewave source(&SystemConfig.SourceConfig);
-	
+
+	Console->info("Direction:[{0} {1} {2}]", SystemConfig.SourceConfig.Ki.x(), SystemConfig.SourceConfig.Ki.y(), SystemConfig.SourceConfig.Ki.z());
+	Console->info("Polarization:[{0} {1} {2}]", SystemConfig.SourceConfig.Ei.x(), SystemConfig.SourceConfig.Ei.y(), SystemConfig.SourceConfig.Ei.z());
+	ResultL->info("Direction:[{0} {1} {2}]", SystemConfig.SourceConfig.Ki.x(), SystemConfig.SourceConfig.Ki.y(), SystemConfig.SourceConfig.Ki.z());
+	ResultL->info("Polarization:[{0} {1} {2}]", SystemConfig.SourceConfig.Ei.x(), SystemConfig.SourceConfig.Ei.y(), SystemConfig.SourceConfig.Ei.z());
+
 	const clock_t start = clock();
 	ComponentList::ImpService->GetExcitation() = source.SetExcitation(ComponentList::BFvector);
 	const clock_t end = clock();

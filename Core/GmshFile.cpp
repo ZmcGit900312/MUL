@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GmshFile.h"
 #include "Log.h"
+#include "RWG.h"
 
 
 bool GmshFile::Read(const char* fileName, Mesh* mesh)
@@ -46,7 +47,7 @@ bool GmshFile::Read(const char* fileName, Mesh* mesh)
 		{
 			size_t eleNum = 0;
 			fp >> eleNum;
-			mesh->TriangleVector()->reserve(eleNum);
+			mesh->TriangleMock.reserve(eleNum);
 			size_t nodeNum = 0, lineNum = 0, TriangleNum = 0;
 			int eleType, physicType, entityType, geoID;
 
@@ -67,14 +68,12 @@ bool GmshFile::Read(const char* fileName, Mesh* mesh)
 
 				if (eleType == 2)//Triangle
 				{
-					int triID[5];
-					triID[0] = TriangleNum++;
-					triID[1] = static_cast<int>(physicType);
-					fp >> triID[2] >> triID[3] >> triID[4];
-					triID[2] -= 1;triID[3] -= 1;triID[4] -= 1;
+					size_t node1, node2, node3;
+					fp >> node1 >> node2 >> node3;
+					node1 -= 1, node2 -= 1, node3 -= 1;
 
-					mesh->TriangleVector()->push_back(Triangle(triID, mesh->GetNode(triID[2]), mesh->GetNode(triID[3]), mesh->GetNode(triID[4])));
-					
+					mesh->TriangleMock.push_back(
+						new RWGTriangle(mesh->GetNode(node1), mesh->GetNode(node2), mesh->GetNode(node3), TriangleNum++, node1, node2, node3, physicType, geoID));
 				}
 
 			}

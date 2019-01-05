@@ -32,7 +32,7 @@ namespace Core
 		 * \param k wavenumber
 		 * \param eta Freespace Impedance
  		 */
-		static void SetSelfImpedanceTriangle(Triangle &t, double w[13],double k, double eta=120*3.1415926);
+		static void SetSelfImpedanceTriangle(RWGTriangle *t, double w[13],double k, double eta=120*3.1415926);
 
 		/**
 		 * \brief Fill Impedance Matrix in RWG index
@@ -46,14 +46,14 @@ namespace Core
 		 * \param t Specific triangle 
 		 * \return The list of self-impedance service for same  RWG
 		 */
-		list<element> SetImpedance(Triangle& t) const;
+		list<element> SetImpedance(RWGTriangle* t) const;
 		/**
 		 * \brief Integration of Triangle
 		 * \param field Field Triangle
 		 * \param source Source Triangle
 		 * \return The list of couple-impedance service for differnet RWG
 		 */
-		list<element> SetImpedance(Triangle&field, Triangle&source) const;
+		list<element> SetImpedance(RWGTriangle*field, RWGTriangle*source) const;
 
 		/**
 		 * \brief It is used for AIM in TFS
@@ -62,7 +62,7 @@ namespace Core
 		 * \param val The marked RWG BasicFunctions
 		 * \return 
 		 */
-		void SetImpedance(Triangle&field, Triangle&source, list<element>& val) const;
+		void SetImpedance(RWGTriangle*field, RWGTriangle*source, list<element>& val) const;
 
 		/**
 		 * \brief Calculate the specific RWG RightHand
@@ -73,7 +73,7 @@ namespace Core
 		 */
 		dcomplex SetRightHand(RWG* source, Vector3d ki, Vector3d e);
 
-		Vector3cd Radiation(Triangle & source, Vector3d ob, dcomplex current[3]);
+		Vector3cd Radiation(RWGTriangle* source, Vector3d ob, dcomplex current[3]);
 	private:
 		/**
 		* \brief Impedance between two different triangles as the RWG index
@@ -85,7 +85,7 @@ namespace Core
 		* \param k wavenumber
 		* \return The couple-impedance between two different triangle
 		*/
-		static dcomplex UnsingularRWGIntegration(Triangle&field, Triangle&source, const Vector3d fieldFreePt, const Vector3d sourceFreePt,
+		static dcomplex UnsingularRWGIntegration(RWGTriangle*field, RWGTriangle*source, const Vector3d fieldFreePt, const Vector3d sourceFreePt,
 			double w[4], double k);
 
 		/**
@@ -97,7 +97,7 @@ namespace Core
 		* \param eta Freespace Impedance
 		* \return The list of all the couple-impedance including the position, at most 9 elements
 		*/
-		static list<element> UnsingularTriangleIntegration(Triangle &field, Triangle&source, double w[4], double k, double eta);
+		static list<element> UnsingularTriangleIntegration(RWGTriangle*field, RWGTriangle*source, double w[4], double k, double eta);
 
 		double _k;
 		double _eta;

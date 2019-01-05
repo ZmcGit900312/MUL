@@ -6,9 +6,9 @@
 
 TEST(CoreAPITEST,GreenFunctionTest)
 {
-	EXPECT_EQ(0,SetGreenFunction());
+	EXPECT_EQ(0,Core::SetGreenFunction());
 
-	auto func = IGreen::GetInstance();
+	auto func = Core::IGreen::GetInstance();
 
 	Vector3d pt0{ 0,0,0 }, pt1{ 0,0,1 }, pt2{ 1.3,0,0 }, pt3{ 0,3.3,0 };
 	dcomplex ref1{ 0.07957747, 0.0 }, 
