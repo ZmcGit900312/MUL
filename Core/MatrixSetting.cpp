@@ -162,7 +162,7 @@ void Core::MatrixSetting::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFunc
 		throw spd::spdlog_ex("Error in NearCorrection: Please Call MultipoleExpansion first");
 
 	const size_t estimatedSize = _unknowns*_unknowns / 25;
-	const size_t triangleNum = static_cast<size_t>(mesh.GetTriangle());
+	const size_t triangleNum = static_cast<size_t>(mesh.TriangleSize());
 	size_t currentProgress = 0;
 	//cout << "Reserve the NearPart of Impedance...\n";
 	//Reserve
@@ -171,7 +171,7 @@ void Core::MatrixSetting::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFunc
 	//Set Near Field Triplets
 	clock_t start = clock();
 	
-	for(auto r=mesh.TriangleMock.begin(),ed=mesh.TriangleMock.end();r!=ed;++r,++currentProgress)
+	for(auto r=mesh.TriangleVector.begin(),ed=mesh.TriangleVector.end();r!=ed;++r,++currentProgress)
 	{		
 		list<element> Z;
 		RWGTriangle* row = dynamic_cast<RWGTriangle*>(*r);
@@ -229,7 +229,7 @@ void Core::MatrixSetting::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFunc
 			{
 				if (!row->RWGSign[i])continue;
 				const auto source = row->RWGID(i);
-				tripletsNearPart.push_back(T(source, source, row->Z(source, source)));
+				tripletsNearPart.push_back(T(source, source, row->Z(source)));
 				for (short j = i+1; j < 3; j++)
 				{
 					if (!row->RWGSign[j])continue;

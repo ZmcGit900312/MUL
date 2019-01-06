@@ -67,11 +67,11 @@ size_t RWG::CreatRWGBasicFunctionList(Mesh* mesh, vector<IBasicFunction*>* RWGLi
 	
 	size_t unknowns = 0;
 	size_t currentProgress = 0;
-	const size_t triangleNum =mesh->GetTriangle();
+	const size_t triangleNum =mesh->TriangleSize();
 	RWGList->clear();
 	RWGList->reserve(static_cast<size_t>(triangleNum)*1.5);
 
-	for (auto plus = mesh->TriangleMock.begin(), ed = mesh->TriangleMock.end(); plus != ed; ++plus)
+	for (auto plus = mesh->TriangleVector.begin(), ed = mesh->TriangleVector.end(); plus != ed; ++plus)
 	{
 		for (auto minus = plus + 1; minus != ed; ++minus)
 		{

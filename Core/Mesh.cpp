@@ -7,39 +7,42 @@ Mesh Mesh::_instance;
 Mesh::~Mesh()
 {
 	_grids.clear();
-	_segments.clear();
-	_triangles.clear();
-	_cuboids.clear();
-	_tetrahedras.clear();
-	
-
 	_grids.shrink_to_fit();
-	_segments.shrink_to_fit();
-	_triangles.shrink_to_fit();
-	_cuboids.shrink_to_fit();
-	_tetrahedras.shrink_to_fit();
 
-	if(!TriangleMock.empty())
-	{
-		for (auto element : TriangleMock)delete element;
-		TriangleMock.clear();
-		TriangleMock.shrink_to_fit();
-	}
+	this->Erase();
+
 }
 
 void Core::Mesh::Erase()
 {
 	_grids.clear();
-	_segments.clear();
-	_triangles.clear();
-	_cuboids.clear();
-	_tetrahedras.clear();
 
-	if (!TriangleMock.empty())
+	if (!SegmentVector.empty())
 	{
-		for (auto element : TriangleMock)delete element;
-		TriangleMock.clear();
-		TriangleMock.shrink_to_fit();
+		for (auto element : SegmentVector)delete element;
+		SegmentVector.clear();
+		SegmentVector.shrink_to_fit();
+	}
+
+	if (!CuboidVector.empty())
+	{
+		for (auto element : CuboidVector)delete element;
+		CuboidVector.clear();
+		CuboidVector.shrink_to_fit();
+	}
+
+	if (!TetrahedraVector.empty())
+	{
+		for (auto element : TetrahedraVector)delete element;
+		TetrahedraVector.clear();
+		TetrahedraVector.shrink_to_fit();
+	}
+
+	if (!TriangleVector.empty())
+	{
+		for (auto element : TriangleVector)delete element;
+		TriangleVector.clear();
+		TriangleVector.shrink_to_fit();
 	}
 }
 
@@ -50,7 +53,7 @@ void Core::Mesh::Erase()
  * \param Q13 标准三角形13求积点
  * \return 是否完成求积点计算
  */
-bool TriangleQuad(Mesh * mesh, double Q4[3][4], double Q7[3][7], double Q13[3][13])
+bool Core::TriangleQuad(Mesh * mesh,const double Q4[3][4],const double Q7[3][7],const double Q13[3][13])
 {
 	MatrixXd q4(3, 4), q7(3, 7), q13(3, 13);
 	for (int row = 0; row < 3; ++row)
@@ -60,7 +63,7 @@ bool TriangleQuad(Mesh * mesh, double Q4[3][4], double Q7[3][7], double Q13[3][1
 		for (int col = 0; col < 13; ++col)q13(row, col) = Q13[row][col];
 	}
 
-	for (auto i = mesh->TriangleMock.begin(),ed= mesh->TriangleMock.end(); i != ed; ++i)
+	for (auto i = mesh->TriangleVector.begin(),ed= mesh->TriangleVector.end(); i != ed; ++i)
 	{
 		MatrixXd temp4 = (*i)->Vertex()*q4;
 		MatrixXd temp7 = (*i)->Vertex()*q7;

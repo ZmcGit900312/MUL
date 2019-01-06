@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Planewave.h"
 #include "Const.h"
-#include "EquationKernel.h"
 #include "IntegrationRWG.h"
 
 using namespace Core;

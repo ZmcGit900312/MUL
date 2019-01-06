@@ -7,7 +7,6 @@
 
 #pragma once
 #include "RequestConfiguration.h"
-#include "Radiation.h"
 #include "IBasicFunction.h"
 #include "Mesh.h"
 

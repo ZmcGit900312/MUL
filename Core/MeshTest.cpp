@@ -45,8 +45,8 @@ TEST_F(MeshTest, NasFileTest)
 
 	reader->Read(fileName.c_str(), mesh);
 	//ASSERT_FALSE(mesh->IsLock()) << "Mesh is Locked";
-	EXPECT_EQ(431, mesh->GetNode()) << "Error in Mesh.GetNode()";
-	EXPECT_EQ(858, mesh->GetTriangle()) << "Error in Mesh.GetTriangle()";
+	EXPECT_EQ(431, mesh->NodeSize()) << "Error in Mesh.GetNode()";
+	EXPECT_EQ(858, mesh->TriangleSize()) << "Error in Mesh.GetTriangle()";
 	Console->debug("Get Node Test");
 	for (int i = 0; i < 2; ++i)
 	{

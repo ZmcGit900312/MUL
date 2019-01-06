@@ -47,7 +47,7 @@ bool GmshFile::Read(const char* fileName, Mesh* mesh)
 		{
 			size_t eleNum = 0;
 			fp >> eleNum;
-			mesh->TriangleMock.reserve(eleNum);
+			mesh->TriangleVector.reserve(eleNum);
 			size_t nodeNum = 0, lineNum = 0, TriangleNum = 0;
 			int eleType, physicType, entityType, geoID;
 
@@ -72,7 +72,7 @@ bool GmshFile::Read(const char* fileName, Mesh* mesh)
 					fp >> node1 >> node2 >> node3;
 					node1 -= 1, node2 -= 1, node3 -= 1;
 
-					mesh->TriangleMock.push_back(
+					mesh->TriangleVector.push_back(
 						new RWGTriangle(mesh->GetNode(node1), mesh->GetNode(node2), mesh->GetNode(node3), TriangleNum++, node1, node2, node3, physicType, geoID));
 				}
 

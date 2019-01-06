@@ -287,7 +287,7 @@ TEST_F(MatrixSettingTestData, TFSNearFieldSet)
 		Console->info("Set Near Field");
 
 		const size_t estimatedSize = unknowns*unknowns / 25;
-		const size_t Sum = (mesh->GetTriangle() + 1)*mesh->GetTriangle();
+		const size_t Sum = (mesh->TriangleSize() + 1)*mesh->TriangleSize();
 		size_t currentProgress = 0;
 		//cout << "Reserve the NearPart of Impedance...\n";
 		//Reserve
@@ -296,7 +296,7 @@ TEST_F(MatrixSettingTestData, TFSNearFieldSet)
 		//Set Near Field Triplets
 		const clock_t start = clock();
 		int count = 0;
-		for (auto r = mesh->TriangleMock.begin(), ed = mesh->TriangleMock.end();r != ed;++r, ++currentProgress)
+		for (auto r = mesh->TriangleVector.begin(), ed = mesh->TriangleVector.end();r != ed;++r, ++currentProgress)
 		{
 			list<element> Z;
 			RWGTriangle* row = dynamic_cast<RWGTriangle*>(*r);
@@ -354,7 +354,7 @@ TEST_F(MatrixSettingTestData, TFSNearFieldSet)
 				{
 					if (!row->RWGSign[i])continue;
 					auto source = row->RWGID(i);
-					tripletsNearPart.push_back(T(source, source, row->Z(source, source)));
+					tripletsNearPart.push_back(T(source, source, row->Z(source)));
 					for (short j = i + 1; j < 3; j++)
 					{
 						if (!row->RWGSign[j])continue;
@@ -368,7 +368,7 @@ TEST_F(MatrixSettingTestData, TFSNearFieldSet)
 				}
 
 			}
-			currentProgress += 100 * (mesh->GetTriangle() - count);
+			currentProgress += 100 * (mesh->TriangleSize() - count);
 			cout << "Progress:" << setw(10) << currentProgress / Sum << "%\r";
 		}
 		tripletsNearPart.shrink_to_fit();

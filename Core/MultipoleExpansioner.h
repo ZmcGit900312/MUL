@@ -17,14 +17,14 @@ namespace Core
 		{
 		public:
 			MultipoleExpansioner(){};
-			MultipoleExpansioner(const ImpConfiguration& configuration, double w7[7]) { Reset(configuration,w7); }
+			MultipoleExpansioner(const ImpConfiguration& configuration,const double w7[7]) { Reset(configuration,w7); }
 			~MultipoleExpansioner(){}
 			/**
 			* \brief 初始化多级展开配置
 			* \param configuration AIM配置
 			* \param w7 求积系数
 			*/
-			void Reset(const ImpConfiguration& configuration, double w7[7]);
+			void Reset(const ImpConfiguration& configuration,const double w7[7]);
 
 			/**
 			* \brief Inverse of Vandermon Matrix
@@ -61,7 +61,7 @@ namespace Core
 
 			inline size_t GetGridNum()const { return _gridNum; }
 		private:
-			double* W7=nullptr;
+			double const* W7;
 			Vector3d _boxStart;
 			VectorXi _index;
 			size_t _order=2;

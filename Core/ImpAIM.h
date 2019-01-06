@@ -111,7 +111,7 @@ class ImpAIM :public EigenBase<ImpAIM>, public IImpService
 	int _gridOrder;
 	int _fillingStrategy=1;
 	double _time = 0.0, _threshold, _memory = 0.0;
-	double _sparsity;
+	double _sparsity=1.0;
 	Vector3i _gridNum;
 	int _totalNum = _gridNum.prod();
 	int _dimension = _gridNum[2] == 1 ? 2 : 3;

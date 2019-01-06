@@ -2,7 +2,6 @@
 
 
 #pragma once
-#include "Triangle.h"
 #include <Eigen/Core>
 #include "RWG.h"
 #include <list>
@@ -22,7 +21,7 @@ namespace Core
 	{
 	public:
 
-		EFRImp(const double k,double*w4,double*w7,const double eta=120*3.1415926);
+		EFRImp(const double k,double const w4[],double const w7[],const double eta=120*3.1415926);
 		~EFRImp(){};
 		
 		/**
@@ -32,7 +31,7 @@ namespace Core
 		 * \param k wavenumber
 		 * \param eta Freespace Impedance
  		 */
-		static void SetSelfImpedanceTriangle(RWGTriangle *t, double w[13],double k, double eta=120*3.1415926);
+		static void SetSelfImpedanceTriangle(RWGTriangle *t,const double w13[13],double k, double eta=120*3.1415926);
 
 		/**
 		 * \brief Fill Impedance Matrix in RWG index
@@ -85,8 +84,7 @@ namespace Core
 		* \param k wavenumber
 		* \return The couple-impedance between two different triangle
 		*/
-		static dcomplex UnsingularRWGIntegration(RWGTriangle*field, RWGTriangle*source, const Vector3d fieldFreePt, const Vector3d sourceFreePt,
-			double w[4], double k);
+		static dcomplex UnsingularRWGIntegration(RWGTriangle*field, RWGTriangle*source, const Vector3d fieldFreePt, const Vector3d sourceFreePt,double const* w, double k);
 
 		/**
 		* \brief Based on Face-to-Face technology, set all the couple-impedance defined on two different triangles, at most 9 elements
@@ -97,11 +95,11 @@ namespace Core
 		* \param eta Freespace Impedance
 		* \return The list of all the couple-impedance including the position, at most 9 elements
 		*/
-		static list<element> UnsingularTriangleIntegration(RWGTriangle*field, RWGTriangle*source, double w[4], double k, double eta);
+		static list<element> UnsingularTriangleIntegration(RWGTriangle*field, RWGTriangle*source, double const*w, double k, double eta);
 
-		double _k;
-		double _eta;
-		double* _w4, *_w7;
+		double const _k;
+		double const _eta;
+		double const* _w4, *_w7;
 	};
 }
 

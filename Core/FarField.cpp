@@ -74,7 +74,7 @@ void Request::FarField::SetEField(FarFieldConfiguration& config, ofstream& ofs) 
 	const double phiI = config.PhiIncrement;
 	const double Sum = 0.01*thetaNum * phiNum;
 
-	ofs << setw(7) << "Theta" << setw(7) << "Phi" << setw(12) << "RCS(m2)" << endl;
+	ofs << "Theta" <<',' << "Phi" <<','<< "RCS(m2)" << '\n';
 	for (int th = 0; th < thetaNum; ++th)
 	{
 		for (int ph = 0; ph < phiNum; ++ph)
@@ -82,7 +82,8 @@ void Request::FarField::SetEField(FarFieldConfiguration& config, ofstream& ofs) 
 			const double theta = thetaS + th * thetaI;
 			const double phi = phiS + ph * phiI;
 			Vector3cd temp = EField(theta*M_PI_180, phi*M_PI_180);
-			ofs << setw(7) << theta << setw(7) << phi << setw(12) << _coef * temp.squaredNorm() << '\n';
+			//ofs << setw(7) << theta << setw(7) << phi << setw(12) << _coef * temp.squaredNorm() << '\n';
+			ofs <<theta << ',' << phi << ','<< _coef * temp.squaredNorm() << '\n';
 			cout << "Progress:" << setw(10) << (th*phiNum + ph + 1) / Sum << "%\r";
 		}
 	}
@@ -95,7 +96,7 @@ Vector3cd Request::FarField::EField(const double theta, const double phi) const
 	const Vector3d observation(Radius*cos(phi)*sin(theta),Radius*sin(phi)*sin(theta),Radius*cos(theta));
 	Vector3cd efield{0,0,0};
 	EFRImp compute(k, W4, W7, eta);
-	for (auto zmc = _mesh->TriangleMock.begin(), ed = _mesh->TriangleMock.end();zmc != ed;++zmc)
+	for (auto zmc = _mesh->TriangleVector.begin(), ed = _mesh->TriangleVector.end();zmc != ed;++zmc)
 	{
 		dcomplex current[3] = { {0,0},{0,0},{0,0} };
 		RWGTriangle* temp = dynamic_cast<RWGTriangle*>(*zmc);

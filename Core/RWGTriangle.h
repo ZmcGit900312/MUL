@@ -16,13 +16,26 @@ namespace Core
 
 
 		~RWGTriangle();
-
-		dcomplex& Z(const short val) { return _selfImp[val].second; }
-		dcomplex& Z(const size_t i, const size_t j);
-		dcomplex& Z(const size_t val);//还有问题的，关于selfTriangleSet
-		size_t RWGID(const int val)const;
+		//Impedance API
+		//dcomplex& Z(const short val) { return _selfImp[val].second; }
+		dcomplex Z(const size_t i, const size_t j)const;
+		dcomplex Z(const size_t index)const;//还有问题的，关于selfTriangleSet
+		/**
+		 * \brief Set SelfImpedance in Local Index
+		 * \param val RWG selfImpedance
+		 * \param index index=0,1,2(Local index)
+		 */
+		void SetZ(const dcomplex val, const short index);
+		/**
+		 * \brief Set CoupleImpedance in Local Index
+		 * \param val RWG CoupleImpedance
+		 * \param i i=0,1,2(Local index)
+		 * \param j j=0,1,2(Local index)
+		 */
+		void SetZ(const dcomplex val, const short i, const short j);
 		
-
+		//RWG info
+		size_t RWGID(const int val)const;
 		RWG*Rn[3]={nullptr,nullptr,nullptr};
 		int RWGSign[3] = { 0,0,0 };
 		

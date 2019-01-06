@@ -1,10 +1,12 @@
 #include "stdafx.h"
+
 #ifdef GTEST
 #include "Data.h"
 #include "IntegrationRWG.h"
 #include "FarField.h"
 #include "gtest/gtest.h"
 #include "CoreAPI.h"
+#include "Const.h"
 using namespace Core;
 using namespace Eigen;
 
@@ -68,10 +70,10 @@ TEST_F(RequestTest, FarFieldTest)
 	const double coef = post.Radius*post.Radius * 4 * M_PI / (1 * 1);
 	const int thetaNum = 181, phiNum = 1;
 	const clock_t start = clock();
-	ofstream ofs("E:/ZMC/Code/C_program/MUL/SourceData/RCSTest.dat",ios_base::out);
+	ofstream ofs("E:/ZMC/Code/C_program/MUL/SourceData/RCSTest.csv",ios_base::out);
 	ofs.flags(ios::left);
-	if (!ofs.is_open())GTEST_FAIL()<<"Can't construct RCSTest.dat file!";
-	ofs << setw(7) << "Theta" << setw(7) << "Phi" << setw(12) << "RCS(m2)" << endl;
+	if (!ofs.is_open())GTEST_FAIL()<<"Can't construct RCSTest.csv file!";
+	ofs << "Theta" << ',' << "Phi" << ',' << "RCS(m2)" << '\n';
 	for (int ph = 0; ph < phiNum; ++ph)
 	{
 		for (int th = 0;th < thetaNum; ++th)
@@ -84,7 +86,7 @@ TEST_F(RequestTest, FarFieldTest)
 			//cout << "Ref:\t" << efieldRef.transpose() << '\n' << "Cal:\t" << efield.transpose() << endl;
 			Console->debug("({0},{1}) = {2:12.7e} m^2,{3:12.7e} m^2", theta, phi, 
 				coef * efieldRef.squaredNorm(),coef * efield.squaredNorm());
-			ofs << setw(7) << theta << setw(7) << phi << setw(12) << coef * efield.squaredNorm() << '\n';
+			ofs << theta << ',' << phi << ',' << coef * efield.squaredNorm() << "\n";
 		}
 	}
 	ofs.flush();

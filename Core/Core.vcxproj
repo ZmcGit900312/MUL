@@ -238,7 +238,6 @@
     <ClInclude Include="NasRead.h" />
     <ClInclude Include="Planewave.h" />
     <ClInclude Include="RequestConfiguration.h" />
-    <ClInclude Include="Radiation.h" />
     <ClInclude Include="RWGTriangle.h" />
     <ClInclude Include="Segment.h" />
     <ClInclude Include="Mesh.h" />
@@ -294,7 +293,6 @@
     <ClCompile Include="ModalGeometry.cpp" />
     <ClCompile Include="MoMTest.cpp" />
     <ClCompile Include="PreCalculateSelfTriangleImpedance.cpp" />
-    <ClCompile Include="Radiation.cpp" />
     <ClCompile Include="RWG.cpp" />
     <ClCompile Include="RWGTriangle.cpp" />
     <ClCompile Include="SetGreenFunction.cpp" />

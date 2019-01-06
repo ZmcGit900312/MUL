@@ -4,7 +4,7 @@
 
 using AIMAssist::MultipoleExpansioner;
 
-void MultipoleExpansioner::Reset(const ImpConfiguration & configuration, double w7[7])
+void MultipoleExpansioner::Reset(const ImpConfiguration & configuration, double const w7[7])
 {
 	_boxStart = configuration.Box[0];
 	_dimension = configuration.Dimension;

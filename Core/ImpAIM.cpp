@@ -4,7 +4,6 @@
 #include <time.h>
 #include "ImpAIM.h"
 #include "Data.h"
-#include "EquationKernel.h"
 #include "MatrixSetting.h"
 
 using namespace std;

@@ -3,18 +3,18 @@
 #include "IntegrationRWG.h"
 #include "Const.h"
 
-Core::EFRImp::EFRImp(const double k, double * w4, double * w7, const double eta):
+Core::EFRImp::EFRImp(const double k, double const w4[], double const w7[], const double eta):
 _k(k),_eta(eta),_w4(w4),_w7(w7){}
 
 
 //填充三角形的自耦项
-void EFRImp::SetSelfImpedanceTriangle(RWGTriangle * t, double w[13], const double k, const double eta)
+void EFRImp::SetSelfImpedanceTriangle(RWGTriangle * t, const double w[13], const double k, const double eta)
 {
 	const short K = 13;
 	//self impedance of unsingular 
 	//at most six different combination for one triangle
-	MatrixXcd Z11(K,K),Z22(K,K),Z33(K,K), Z12(K,K), Z13(K,K), Z23(K,K);
-	VectorXcd Zs11(K), Zs22(K), Zs33(K), Zs12(K), Zs13(K), Zs23(K);
+	MatrixXcd Z00(K,K),Z11(K,K),Z22(K,K), Z01(K,K), Z02(K,K), Z12(K,K);
+	VectorXcd Zs00(K), Zs11(K), Zs22(K), Zs01(K), Zs02(K), Zs12(K);
 	const double Phi = 4.0 / (k*k);
 	//Triangle t and its quad7  t.Node(0) t.Node(1)) t.Node(2);
 
@@ -33,29 +33,30 @@ void EFRImp::SetSelfImpedanceTriangle(RWGTriangle * t, double w[13], const doubl
 			Vector3d rho1j(t->Quad13()[j] - t->Node(0)), rho2j(t->Quad13()[j] - t->Node(1)), rho3j(t->Quad13()[j] - t->Node(2));
 			double R = (t->Quad13()[i] - t->Quad13()[j]).norm();
 			dcomplex g = -0.5*k*k*R + 1i*k / 6.0*(k*k*R*R - 6);
-
-			//Set at most Six Impedance
-			Z11(i,j) = w[i] * w[j] * (rho1i.dot(rho1j) - Phi)*g;
+			const dcomplex wg = w[i] * w[j] * g;
+			//Set at most Six Impedance wg=w[i] * w[j] * g
+			Z00(i,j) = wg * (rho1i.dot(rho1j) - Phi);
+			Z00(j,i) = Z00(i,j);
+			Z11(i,j) = wg * (rho2i.dot(rho2j) - Phi);
 			Z11(j,i) = Z11(i,j);
-			Z22(i,j) = w[i] * w[j] * (rho2i.dot(rho2j) - Phi)*g;
+			Z22(i,j) = wg * (rho3i.dot(rho3j) - Phi);
 			Z22(j,i) = Z22(i,j);
-			Z33(i,j) = w[i] * w[j] * (rho3i.dot(rho3j) - Phi)*g;
-			Z33(j,i) = Z33(i,j);
-			Z12(i,j) = w[i] * w[j] * (rho1i.dot(rho2j) - Phi)*g;
+			Z01(i,j) = wg * (rho1i.dot(rho2j) - Phi);
+			Z01(j,i) = Z01(i,j);
+			Z02(i,j) = wg * (rho1i.dot(rho3j) - Phi);
+			Z02(j,i) = Z02(i,j);
+			Z12(i,j) = wg * (rho2i.dot(rho3j) - Phi);
 			Z12(j,i) = Z12(i,j);
-			Z13(i,j) = w[i] * w[j] * (rho1i.dot(rho3j) - Phi)*g;
-			Z13(j,i) = Z13(i,j);
-			Z23(i,j) = w[i] * w[j] * (rho2i.dot(rho3j) - Phi)*g;
-			Z23(j,i) = Z23(i,j);
 		}
 		//i=j
 		{
-			Z11(i, i) = -1i*k*w[i] * w[i] * (rho1i.dot(rho1i) - Phi);
-			Z22(i, i) = -1i*k*w[i] * w[i] * (rho2i.dot(rho2i) - Phi);
-			Z33(i, i) = -1i*k*w[i] * w[i] * (rho3i.dot(rho3i) - Phi);
-			Z12(i, i) = -1i*k*w[i] * w[i] * (rho1i.dot(rho2i) - Phi);
-			Z13(i, i) = -1i*k*w[i] * w[i] * (rho1i.dot(rho3i) - Phi);
-			Z23(i, i) = -1i*k*w[i] * w[i] * (rho2i.dot(rho3i) - Phi);
+			const dcomplex wk{0, -k*w[i] * w[i] };//weight=-1i*k*w[i] * w[i]
+			Z00(i, i) = wk * (rho1i.dot(rho1i) - Phi);
+			Z11(i, i) = wk * (rho2i.dot(rho2i) - Phi);
+			Z22(i, i) = wk * (rho3i.dot(rho3i) - Phi);
+			Z01(i, i) = wk * (rho1i.dot(rho2i) - Phi);
+			Z02(i, i) = wk * (rho1i.dot(rho3i) - Phi);
+			Z12(i, i) = wk * (rho2i.dot(rho3i) - Phi);
 		}
 		//Singular part of Integration 1/R for the specialfic Triangle t;
 		Vector3d r1(-rho1i), r2(-rho2i), r3(-rho3i);
@@ -69,24 +70,24 @@ void EFRImp::SetSelfImpedanceTriangle(RWGTriangle * t, double w[13], const doubl
 		double gSingular = P1*log((Rp1 + Lp1) / (Rm1 + Lm1)) + P2*log((Rp2 + Lp2) / (Rp1 + Lm2)) + P3*log((Rm1 + Lp3) / (Rp2 + Lm3));
 
 		gSingular *= w[i] / t->Area();
-		Zs11[i] = (rho1i.dot(t->Centre() - t->Node(0)) - Phi)*gSingular;
-		Zs22[i] = (rho2i.dot(t->Centre() - t->Node(1)) - Phi)*gSingular;
-		Zs33[i] = (rho3i.dot(t->Centre() - t->Node(2)) - Phi)*gSingular;
-		Zs12[i] = (rho1i.dot(t->Centre() - t->Node(1)) - Phi)*gSingular;
-		Zs13[i] = (rho1i.dot(t->Centre() - t->Node(2)) - Phi)*gSingular;
-		Zs23[i] = (rho2i.dot(t->Centre() - t->Node(2)) - Phi)*gSingular;
+		Zs00[i] = (rho1i.dot(t->Centre() - t->Node(0)) - Phi)*gSingular;
+		Zs11[i] = (rho2i.dot(t->Centre() - t->Node(1)) - Phi)*gSingular;
+		Zs22[i] = (rho3i.dot(t->Centre() - t->Node(2)) - Phi)*gSingular;
+		Zs01[i] = (rho1i.dot(t->Centre() - t->Node(1)) - Phi)*gSingular;
+		Zs02[i] = (rho1i.dot(t->Centre() - t->Node(2)) - Phi)*gSingular;
+		Zs12[i] = (rho2i.dot(t->Centre() - t->Node(2)) - Phi)*gSingular;
 
 	}
 	//1/(4*PI*4*A1*A2)
 	const dcomplex coef = 1i / 16.0*k*eta*M_1_PI;
 	const double edge0 = t->RWGSign[0] * t->Edge(0).second, edge1 = t->RWGSign[1] * t->Edge(1).second,
 		edge2 = t->RWGSign[2] * t->Edge(2).second;
-	t->Z(0) = coef *(Z11.sum() + Zs11.sum())*edge0*edge0;//*edge0^2
-	t->Z(1) = coef *(Z22.sum() + Zs22.sum() )*edge1 *edge1;//*edge1^2
-	t->Z(2) = coef *(Z33.sum() + Zs33.sum())*edge2*edge2;//*edge2^2
-	t->Z(3) = coef *(Z12.sum() + Zs12.sum())*edge0*edge1;//*edge0*edge1
-	t->Z(5) = coef *(Z23.sum() + Zs23.sum())*edge1 *edge2;//*edge1*edge2
-	t->Z(4) = coef *(Z13.sum() + Zs13.sum())*edge0*edge2;//*edge0*edge2	
+	t->SetZ(coef *(Z00.sum() + Zs00.sum())*edge0*edge0, 0);//edge0^2
+	t->SetZ(coef *(Z11.sum() + Zs11.sum())*edge1 *edge1, 1);//edge1 ^ 2
+	t->SetZ(coef *(Z22.sum() + Zs22.sum())*edge2*edge2, 2);//edge2^2
+	t->SetZ(coef *(Z01.sum() + Zs01.sum())*edge0*edge1, 0,1);//edge0*edge1
+	t->SetZ(coef *(Z02.sum() + Zs02.sum())*edge0*edge2, 0,2);//edge0*edge2
+	t->SetZ(coef *(Z12.sum() + Zs12.sum())*edge1 *edge2, 1,2);//edge1*edge2
 
 }
 
@@ -141,13 +142,13 @@ dcomplex EFRImp::SetImpedance(RWG * field, RWG * source)const
 list<element> EFRImp::SetImpedance(RWGTriangle * t) const
 {
 	list<element> Z;
-
-	if (t->RWGSign[0])Z.push_back({ t->RWGID(0),t->RWGID(0),t->Z(0) });
-	if (t->RWGSign[1])Z.push_back({ t->RWGID(1),t->RWGID(1),t->Z(1) });
-	if (t->RWGSign[2])Z.push_back({ t->RWGID(2),t->RWGID(2),t->Z(2) });
-	if (t->RWGSign[0] * t->RWGSign[1])Z.push_back({ t->RWGID(0),t->RWGID(1),t->Z(3) });
-	if (t->RWGSign[0] * t->RWGSign[2])Z.push_back({ t->RWGID(0),t->RWGID(2),t->Z(4) });
-	if (t->RWGSign[1] * t->RWGSign[2])Z.push_back({ t->RWGID(1),t->RWGID(2),t->Z(5) });
+	
+	if (t->Rn[0])Z.push_back({ t->RWGID(0),t->RWGID(0),t->Z(t->RWGID(0)) });
+	if (t->Rn[1])Z.push_back({ t->RWGID(1),t->RWGID(1),t->Z(t->RWGID(1)) });
+	if (t->Rn[2])Z.push_back({ t->RWGID(2),t->RWGID(2),t->Z(t->RWGID(2)) });
+	if (t->Rn[0]&& t->Rn[1])Z.push_back({ t->RWGID(0),t->RWGID(1),t->Z(t->RWGID(0),t->RWGID(1)) });
+	if (t->Rn[0]&& t->Rn[2])Z.push_back({ t->RWGID(0),t->RWGID(2),t->Z(t->RWGID(0),t->RWGID(2)) });
+	if (t->Rn[1]&& t->Rn[2])Z.push_back({ t->RWGID(1),t->RWGID(2),t->Z(t->RWGID(1),t->RWGID(2)) });
 	
 	return Z;
 }
@@ -237,7 +238,7 @@ Vector3cd Core::EFRImp::Radiation(RWGTriangle* source, Vector3d ob, dcomplex cur
 	return coef*efield;
 }
 
-dcomplex EFRImp::UnsingularRWGIntegration(RWGTriangle* field, RWGTriangle* source, const Vector3d fieldFreePt, const Vector3d sourceFreePt, double w[4], double k)
+dcomplex EFRImp::UnsingularRWGIntegration(RWGTriangle* field, RWGTriangle* source, const Vector3d fieldFreePt, const Vector3d sourceFreePt, double const* w, double k)
 {
 	const short K = 4;
 	complex<double> Z(0);
@@ -258,7 +259,7 @@ dcomplex EFRImp::UnsingularRWGIntegration(RWGTriangle* field, RWGTriangle* sourc
 	return 0.0625*Z;
 }
 
-list<element> EFRImp::UnsingularTriangleIntegration(RWGTriangle* field, RWGTriangle* source, double w[4], const double k, const double eta)
+list<element> EFRImp::UnsingularTriangleIntegration(RWGTriangle* field, RWGTriangle* source, double const*w, const double k, const double eta)
 {
 	const short K = 4;
 

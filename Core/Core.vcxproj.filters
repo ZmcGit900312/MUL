@@ -114,9 +114,6 @@
     <ClInclude Include="IEKernel.h">
       <Filter>头文件\Integral</Filter>
     </ClInclude>
-    <ClInclude Include="Radiation.h">
-      <Filter>头文件\Post</Filter>
-    </ClInclude>
     <ClInclude Include="Const.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -274,9 +271,6 @@
     </ClCompile>
     <ClCompile Include="TxtReader.cpp">
       <Filter>源文件\Assist</Filter>
-    </ClCompile>
-    <ClCompile Include="Radiation.cpp">
-      <Filter>源文件\Post</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>

@@ -3,7 +3,7 @@
 #include <Eigen/Core>
 #include "Green.h"
 #include "IBasicFunction.h"
-
+//Not use temporary
 namespace Core
 {
 	class IE 

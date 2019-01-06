@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "Mesh.h"
 #include "ImpMoM.h"
-#include "EquationKernel.h"
 #include "IntegrationRWG.h"
 #include "Data.h"
+#include "Const.h"
 using namespace std;
 
 void ImpMoM::FillImpedance()
@@ -11,8 +11,8 @@ void ImpMoM::FillImpedance()
 	
 	EFRImp compute(k, W4, W7, eta);
 
-	const auto beginTriangle = Mesh::GetInstance()->TriangleMock.begin();
-	const auto endTriangle = Mesh::GetInstance()->TriangleMock.cend();
+	const auto beginTriangle = Mesh::GetInstance()->TriangleVector.begin();
+	const auto endTriangle = Mesh::GetInstance()->TriangleVector.cend();
 
 	
 	const clock_t start = clock();
@@ -44,7 +44,7 @@ void ImpMoM::FillImpedance()
 				_imp(col , row ) += val;
 			}
 		}
-		cout << "Progress:" << setw(8) << izmc->ID()+1 << "of " << Mesh::GetInstance()->GetTriangle() << "\r";
+		cout << "Progress:" << setw(8) << izmc->ID()+1 << "of " << Mesh::GetInstance()->TriangleSize() << "\r";
 	}
 	const clock_t end = clock();
 	_time = double(end - start) / CLOCKS_PER_SEC;
