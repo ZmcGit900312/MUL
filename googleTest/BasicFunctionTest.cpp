@@ -82,7 +82,7 @@ TEST_F(ComponentListTest, BasicFunctionSetTest)
 	const int refTriangleID[5][2] = { 1,2, 2,118, 19,22, 55,751, 157,159 };
 	const int refRWGID[5] = { 0,4,45,127,332 };
 
-	ASSERT_EQ(0, CreatBasicFunction()) << "Error in Creat BasicFunction";
+	ASSERT_EQ(0, CreatBasicFunction(true)) << "Error in Creat BasicFunction";
 
 	vector<IBasicFunction*>& bfptr = ComponentList::BFvector;
 

@@ -1,10 +1,11 @@
 #include "stdafx.h"
-#include "Data.h"
-#include "IntegrationRWG.h"
-#include "Planewave.h"
+
 #ifdef GTEST
 #include "gtest/gtest.h"
 #include "CoreAPI.h"
+#include "Data.h"
+#include "IntegrationRWG.h"
+#include "Planewave.h"
 using namespace Core;
 using namespace Eigen;
 

@@ -19,7 +19,10 @@ namespace Core
 	class Triangle
 	{
 	public:
-		Triangle() = default;
+		//Triangle() = default;
+
+		explicit Triangle(Triangle&val):Triangle(val.Node(0),val.Node(1),val.Node(2),val.ID(),val.NodeID(0),val.NodeID(1),val.NodeID(2),val.Material(),val.Entity()){}
+
 		explicit Triangle(const Vector3d& pt1,const Vector3d& pt2,const Vector3d& pt3, size_t id=-1, size_t nodeId1=-1, size_t nodeId2=-1, size_t nodeId3=-1, int material=-1, int entity=-1):
 		_centre((pt1 + pt2 + pt3) / 3.0),_id(id),_material(material),_entity(entity)
 		{

@@ -1,5 +1,5 @@
 //特化的RWG阻抗积分
-
+//求积点的接口和命名方式需要修改
 
 #pragma once
 #include <Eigen/Core>

@@ -11,9 +11,11 @@ namespace Core
 	class RWGTriangle :public Core::Triangle
 	{
 	public:
-		explicit RWGTriangle(const Vector3d& pt1, const Vector3d& pt2, const Vector3d& pt3, size_t id, size_t nodeId1, size_t nodeId2, size_t nodeId3, int material, int entity) :
+		explicit RWGTriangle(const Vector3d& pt1, const Vector3d& pt2, const Vector3d& pt3, size_t id, size_t nodeId1, size_t nodeId2, size_t nodeId3, int material, int entity=-1) :
 			Triangle(pt1, pt2, pt3, id, nodeId1, nodeId2, nodeId3, material, entity){}
+		explicit RWGTriangle(Triangle&t):Triangle(t){}
 
+		RWGTriangle operator=(RWGTriangle&) = delete;
 
 		~RWGTriangle();
 		//Impedance API

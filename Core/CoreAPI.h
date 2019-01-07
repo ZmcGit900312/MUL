@@ -13,7 +13,7 @@ namespace Core
 	* \param isCreat Load or Creat BasicFunction. Default is true
 	* \return 0 is Success; 1 is Fail to construct BasicFunction.dat
 	*/
-	int CreatBasicFunction(const bool isCreat=true);
+	int CreatBasicFunction(const bool isCreat=false);
 	/**
 	* \brief Based on the binary file of BasicFunction.dat construct BasicFunction暂时只有RWG基函数
 	* \param loadFileName The filename to be load

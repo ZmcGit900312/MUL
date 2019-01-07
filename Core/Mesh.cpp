@@ -6,9 +6,6 @@ using namespace std;
 Mesh Mesh::_instance;
 Mesh::~Mesh()
 {
-	_grids.clear();
-	_grids.shrink_to_fit();
-
 	this->Erase();
 
 }
@@ -16,7 +13,7 @@ Mesh::~Mesh()
 void Core::Mesh::Erase()
 {
 	_grids.clear();
-
+	_grids.shrink_to_fit();
 	if (!SegmentVector.empty())
 	{
 		for (auto element : SegmentVector)delete element;
