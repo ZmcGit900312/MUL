@@ -26,7 +26,7 @@ int Core::CreatBasicFunction(const bool isCreat)
 			
 		}
 
-		if (LoadBasicFunction(SystemConfig.BasicFunctionFileName.c_str()))
+		if (isCreat||LoadBasicFunction(SystemConfig.BasicFunctionFileName.c_str()))
 		{
 			const clock_t start = clock();
 			SystemConfig.ImpConfig.ImpSize =
@@ -34,9 +34,9 @@ int Core::CreatBasicFunction(const bool isCreat)
 			const clock_t end = clock();
 			const double _time = double(end - start) / CLOCKS_PER_SEC;
 			Console->info("The number of BasicFuntions is:\t{0:d}", SystemConfig.ImpConfig.ImpSize);
-			Console->info("Initial BasicFuntions costs:\t{0:10.9} s", _time);
+			Console->info("Creat BasicFuntions costs:\t{0:10.9} s", _time);
 			ResultL->info("The number of BasicFuntions is:\t{0:d}", SystemConfig.ImpConfig.ImpSize);
-			ResultL->info("Initial BasicFuntions costs:\t{0:10.9} s", _time);
+			ResultL->info("Creat BasicFuntions costs:\t{0:10.9} s", _time);
 		}		
 		return 0;
 			
@@ -50,7 +50,6 @@ int Core::CreatBasicFunction(const bool isCreat)
 
 int Core::LoadBasicFunction(const char* loadFileName)
 {
-	Console->info("Load Basic Function");
 	RuntimeL->info("Run LoadBasicFunction()");
 	//GetCurrentDirectoryA(1000, buff);//获得当前工作目录
 	

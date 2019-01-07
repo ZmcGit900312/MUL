@@ -18,7 +18,15 @@ protected:
 	//TestSuite
 	static void SetUpTestCase()
 	{
-		ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
+		if(Mesh::GetInstance()->IsLock())ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
+		if (ComponentList::BFvector.size() > 0)
+		{
+			for (auto element : ComponentList::BFvector) { delete element; }
+			ComponentList::BFvector.clear();
+			ComponentList::BFvector.shrink_to_fit();
+			Console->debug("Release BasicFunction");
+		}
+		
 	}
 
 	static void TearDownTestCase()

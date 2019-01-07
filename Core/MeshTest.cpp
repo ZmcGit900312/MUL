@@ -22,6 +22,7 @@ protected:
 
 	static void TearDownTestCase()
 	{
+		mesh->Erase();
 	}
 
 public:

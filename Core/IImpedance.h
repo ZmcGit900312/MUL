@@ -16,8 +16,8 @@ namespace Core
 	struct ImpConfiguration
 	{
 		size_t ImpSize;
-		int GridOrder;
-		int Dimension;
+		int GridOrder=2;
+		int Dimension=3;
 		int xNumber, yNumber, zNumber;
 		double Threshold=0.3,Interval=0.05;
 		double NearCorrectionEps = 1.0e-3;

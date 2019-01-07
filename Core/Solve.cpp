@@ -43,13 +43,20 @@ int Core::Solve()
 		RuntimeL->info("Finish");
 		RuntimeL->flush();
 		Console->info("Release Solver");
-		if(Solver)delete Solver;
+		if (Solver) {
+			delete Solver;
+			Solver = nullptr;
+		}
 
 		return info;
 	}
 	catch (spd::spdlog_ex&ex)
 	{
 		Assist::LogException(ex);
+		if (Solver) {
+			delete Solver;
+			Solver = nullptr;
+		}
 		return info;
 	}
 	

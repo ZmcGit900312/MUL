@@ -17,9 +17,9 @@ public:
 	{
 		try
 		{
-			ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
-			ASSERT_EQ(0, Core::CreatBasicFunction(false)) << "Error in Load BasicFunction";
-			ASSERT_EQ(0, Core::SetGreenFunction()) << "Error in set Green Function";
+			if (Mesh::GetInstance()->IsLock())ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
+			if(ComponentList::BFvector.size()<1)ASSERT_EQ(0, Core::CreatBasicFunction(false)) << "Error in Load BasicFunction";
+			if (!Core::IGreen::GetInstance())EXPECT_EQ(0, Core::SetGreenFunction());
 		}
 		catch (spd::spdlog_ex&ex)
 		{
@@ -31,13 +31,6 @@ public:
 
 	static void TearDownTestCase()
 	{
-		if (ComponentList::BFvector.size() > 0)
-		{
-			for (auto element : ComponentList::BFvector) { delete element; }
-			ComponentList::BFvector.clear();
-			ComponentList::BFvector.shrink_to_fit();
-			Console->debug("Release BasicFunction");
-		}
 	}
 };
 

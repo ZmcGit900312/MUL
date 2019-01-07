@@ -44,6 +44,7 @@ void Core::Mesh::Erase()
 		TriangleVector.clear();
 		TriangleVector.shrink_to_fit();
 	}
+	_lock = true;
 }
 
 /**

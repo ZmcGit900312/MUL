@@ -11,23 +11,27 @@ using namespace Core;
 using namespace Eigen;
 using namespace AIMAssist;
 
-class MatrixSettingTestData :public testing::Test
+class AIMTest :public testing::Test
 {
 protected:
 	EFRImp _compute;
 	static MatrixSetting* aimComputer;
-	static bool NotAIM;
-	MatrixSettingTestData() :_compute(k, W4, W7, eta) {}
-	~MatrixSettingTestData() {}
+	AIMTest() :_compute(k, W4, W7, eta) {}
+	~AIMTest() {}
 
 	static void SetUpTestCase()
 	{
 		try
 		{
-			if (SystemConfig.ImpConfig.impType != AIM)throw spd::spdlog_ex("AIMTest is not Running");
-			ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
-			ASSERT_EQ(0, Core::CreatBasicFunction(false)) << "Error in Load BasicFunction";
-			ASSERT_EQ(0, Core::SetGreenFunction()) << "Error in set Green Function";
+			SystemConfig.ImpConfig.impType = AIM;
+			//SystemConfig.SolverConfig.Precond = Solution::ILU;
+			if (Mesh::GetInstance()->IsLock())
+			{
+				ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
+				ASSERT_EQ(0, Core::CreatBasicFunction(false)) << "Error in Load BasicFunction";
+			}
+			if (ComponentList::BFvector.size() < 1)ASSERT_EQ(0, Core::CreatBasicFunction(false)) << "Error in Load BasicFunction";
+			if (!Core::IGreen::GetInstance())EXPECT_EQ(0, Core::SetGreenFunction());
 			ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
 			ASSERT_EQ(0, Core::CreatImpedance()) << "Error in Initial the Impedance class";
 
@@ -41,12 +45,10 @@ protected:
 			Console->debug("Teoplitz is ffting");
 			aimComputer->GreenMatrixSet();
 
-
-			NotAIM = false;
 		}
 		catch (spd::spdlog_ex&ex)
 		{
-			NotAIM = true;
+
 			Console->warn(ex.what());
 			RuntimeL->warn(ex.what());
 			RuntimeL->flush();
@@ -55,13 +57,6 @@ protected:
 
 	static void TearDownTestCase()
 	{
-		if (ComponentList::BFvector.size() > 0)
-		{
-			for (auto element : ComponentList::BFvector) { delete element; }
-			ComponentList::BFvector.clear();
-			ComponentList::BFvector.shrink_to_fit();
-			Console->debug("Release BasicFunction");
-		}
 		if (ComponentList::ImpService)
 		{
 			delete ComponentList::ImpService;
@@ -74,7 +69,12 @@ protected:
 			Tools::TeoplitzMultiplicator = nullptr;
 			Console->debug("Release TeoplitzMultiplicator");
 		}
-		
+		if(Core::Solver)
+		{
+			delete Core::Solver;
+			Core::Solver = nullptr;
+		}
+
 		delete aimComputer;
 		aimComputer = nullptr;
 	}
@@ -100,15 +100,14 @@ protected:
 };
 
 
-MatrixSetting* MatrixSettingTestData::aimComputer = nullptr;
-bool MatrixSettingTestData::NotAIM = false;
+MatrixSetting* AIMTest::aimComputer = nullptr;
 
 
-TEST_F(MatrixSettingTestData, Multiplication)
+TEST_F(AIMTest, Multiplication)
 {
 	try
 	{
-		if (NotAIM)throw spd::spdlog_ex("Multiplication is not Testing");
+		//throw spd::spdlog_ex("Multiplication is not Testing");
 		auto& bf = ComponentList::BFvector;
 		ImpAIM* imp = static_cast<ImpAIM*>(ComponentList::ImpService);
 
@@ -149,7 +148,6 @@ TEST_F(MatrixSettingTestData, Multiplication)
 	}
 	catch (spd::spdlog_ex&ex)
 	{
-		NotAIM = true;
 		Console->warn(ex.what());
 		RuntimeL->warn(ex.what());
 		RuntimeL->flush();
@@ -157,11 +155,11 @@ TEST_F(MatrixSettingTestData, Multiplication)
 
 }
 
-TEST_F(MatrixSettingTestData, Multiplication2)
+TEST_F(AIMTest, Multiplication2)
 {
 	try
 	{
-		if (NotAIM)throw spd::spdlog_ex("Multiplication2 is not Testing");
+		//throw spd::spdlog_ex("Multiplication2 is not Testing");
 		auto& bf = ComponentList::BFvector;
 		ImpAIM* imp = static_cast<ImpAIM*>(ComponentList::ImpService);
 
@@ -194,7 +192,6 @@ TEST_F(MatrixSettingTestData, Multiplication2)
 	}
 	catch (spd::spdlog_ex&ex)
 	{
-		NotAIM = true;
 		Console->warn(ex.what());
 		RuntimeL->warn(ex.what());
 		RuntimeL->flush();
@@ -202,11 +199,11 @@ TEST_F(MatrixSettingTestData, Multiplication2)
 }
 
 
-TEST_F(MatrixSettingTestData, FarField)
+TEST_F(AIMTest, FarField)
 {
 	try
 	{
-		if (NotAIM)throw spd::spdlog_ex("FarField is not Testing");
+		//throw spd::spdlog_ex("FarField is not Testing");
 		auto& bf = ComponentList::BFvector;
 		Console->debug("Far Field Set Test:");
 		{
@@ -227,18 +224,17 @@ TEST_F(MatrixSettingTestData, FarField)
 	}
 	catch (spd::spdlog_ex&ex)
 	{
-		NotAIM = true;
 		Console->warn(ex.what());
 		RuntimeL->warn(ex.what());
 		RuntimeL->flush();
 	}
 }
 
-TEST_F(MatrixSettingTestData, NearField)
+TEST_F(AIMTest, NearField)
 {
 	try
 	{
-		if (NotAIM)throw spd::spdlog_ex("NearField is not Testing");
+		//throw spd::spdlog_ex("NearField is not Testing");
 		auto& bf = ComponentList::BFvector;
 
 		const size_t unknowns = SystemConfig.ImpConfig.ImpSize;
@@ -257,7 +253,6 @@ TEST_F(MatrixSettingTestData, NearField)
 	}
 	catch (spd::spdlog_ex&ex)
 	{
-		NotAIM = true;
 		Console->warn(ex.what());
 		RuntimeL->warn(ex.what());
 		RuntimeL->flush();
@@ -265,11 +260,11 @@ TEST_F(MatrixSettingTestData, NearField)
 
 }
 
-TEST_F(MatrixSettingTestData, TFSNearFieldSet)
+TEST_F(AIMTest, TFSNearFieldSet)
 {
 	try
 	{
-		if (NotAIM)throw spd::spdlog_ex("NearField is not Testing");
+		//throw spd::spdlog_ex("NearField is not Testing");
 		auto& bf = ComponentList::BFvector;
 
 		const size_t unknowns = SystemConfig.ImpConfig.ImpSize;
@@ -403,7 +398,7 @@ TEST_F(MatrixSettingTestData, TFSNearFieldSet)
 	}
 	catch (spd::spdlog_ex&ex)
 	{
-		NotAIM = true;
+		
 		Console->warn(ex.what());
 		RuntimeL->warn(ex.what());
 		RuntimeL->flush();
@@ -411,11 +406,11 @@ TEST_F(MatrixSettingTestData, TFSNearFieldSet)
 }
 
 
-TEST_F(MatrixSettingTestData, AIMCalculate)
+TEST_F(AIMTest, SolveTest)
 {
 	try
 	{
-		if (NotAIM)throw spd::spdlog_ex("AIMCalculate is not Testing");
+		//throw spd::spdlog_ex("AIMCalculate is not Testing");
 
 		if(SystemConfig.ImpConfig.FillingStrategy==1)
 		aimComputer->TriangleFillingStrategy(*Mesh::GetInstance(), ComponentList::BFvector);
@@ -432,7 +427,6 @@ TEST_F(MatrixSettingTestData, AIMCalculate)
 	}
 	catch (spd::spdlog_ex&ex)
 	{
-		NotAIM = true;
 		Console->warn(ex.what());
 		RuntimeL->warn(ex.what());
 		RuntimeL->flush();

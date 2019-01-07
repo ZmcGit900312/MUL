@@ -48,4 +48,6 @@ void ImpMoM::FillImpedance()
 	}
 	const clock_t end = clock();
 	_time = double(end - start) / CLOCKS_PER_SEC;
+	//Preconditioning
+	Solver->Precondition(this);
 }

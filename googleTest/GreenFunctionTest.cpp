@@ -6,7 +6,7 @@
 
 TEST(CoreAPITEST,GreenFunctionTest)
 {
-	EXPECT_EQ(0,Core::SetGreenFunction());
+	if(!Core::IGreen::GetInstance())EXPECT_EQ(0,Core::SetGreenFunction());
 
 	auto func = Core::IGreen::GetInstance();
 

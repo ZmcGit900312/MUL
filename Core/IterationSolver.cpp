@@ -67,7 +67,7 @@ int Core::Solution::BiCGStabAIMILU::Solve(VectorXcd & sol, VectorXcd & right)
 #pragma region MoM
 int Core::Solution::BiCGStabMoMJacobi::Precondition(IImpService *imp)
 {
-	Console->info("Calculate ILU Precondition...");
+	Console->info("Calculate Jacobi Precondition...");
 	const clock_t start = clock();
 	_bicg.compute(static_cast<ImpMoM*>(imp)->LocalMatrix());
 	const clock_t end = clock();

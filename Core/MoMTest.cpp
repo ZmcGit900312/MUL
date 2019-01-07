@@ -12,25 +12,26 @@ using namespace Eigen;
 class MoMTest:public testing::Test
 {
 public:
-	static bool NotMoM;
 	static void SetUpTestCase()
 	{
 		try
 		{
-			if (SystemConfig.ImpConfig.impType != MoM)throw spd::spdlog_ex("MoMTest is not Running");
-			ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
-			ASSERT_EQ(0, Core::CreatBasicFunction(false)) << "Error in Load BasicFunction";
-			ASSERT_EQ(0, Core::SetGreenFunction()) << "Error in set Green Function";
+			SystemConfig.ImpConfig.impType = MoM;
+			if (Mesh::GetInstance()->IsLock())
+			{
+				ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
+				ASSERT_EQ(0, Core::CreatBasicFunction(false)) << "Error in Load BasicFunction";
+			}
+			if (ComponentList::BFvector.size() < 1)ASSERT_EQ(0, Core::CreatBasicFunction(false)) << "Error in Load BasicFunction";
+			if (!Core::IGreen::GetInstance())EXPECT_EQ(0, Core::SetGreenFunction());
 			ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
 			ASSERT_EQ(0, Core::CreatImpedance()) << "Error in Initial the Impedance class";
 			ASSERT_EQ(0, Core::FillImpedance()) << "Error in Fill Impedance";
-			ASSERT_EQ(0, Core::SetRightHand()) << "Error in Set RightHand";
+			
 			srand(static_cast<unsigned>(time(nullptr)));
-			NotMoM = false;
 		}
 		catch (spd::spdlog_ex&ex)
 		{
-			NotMoM = true;
 			Console->warn(ex.what());
 			RuntimeL->warn(ex.what());
 			RuntimeL->flush();
@@ -39,30 +40,26 @@ public:
 
 	static void TearDownTestCase()
 	{
-		if (ComponentList::BFvector.size()>0)
-		{
-			for (auto element : ComponentList::BFvector) { delete element; }
-			ComponentList::BFvector.clear();
-			ComponentList::BFvector.shrink_to_fit();
-			Console->debug("Release BasicFunction");
-		}
 		if (ComponentList::ImpService)
 		{
 			delete ComponentList::ImpService;
 			ComponentList::ImpService = nullptr;
 			Console->debug("Release Matrix");
 		}
+		if (Solver)
+		{
+			delete Solver;
+			Solver = nullptr;
+			Console->debug("Release Solver");
+		}
 	}
 };
-bool MoMTest::NotMoM=false;
 
 TEST_F(MoMTest, ImpedanceTest)
 {
 	
 	try
 	{
-		if (NotMoM)throw spd::spdlog_ex("ImpedanceTest is not Testing");
-		//ASSERT_EQ(0, Core::FillImpedance()) << "Error in Fill Impedance";
 		EFRImp compute(k, W4, W7, eta);
 		//ÑéÖ¤×è¿¹¾ØÕó
 		MatrixXcd& Imp = static_cast<ImpMoM*>(ComponentList::ImpService)->LocalMatrix();
@@ -127,7 +124,7 @@ TEST_F(MoMTest,SolveTest)
 {
 	try
 	{
-		if (NotMoM)throw spd::spdlog_ex("SolveTest is not Testing");
+		ASSERT_EQ(0, Core::SetRightHand()) << "Error in Set RightHand";
 		auto info = Core::Solve();
 		ASSERT_EQ(0, info) << "Error in Solve Matrix with BicgStab";
 		if (info == 0)
