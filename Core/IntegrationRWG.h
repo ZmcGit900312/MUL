@@ -61,7 +61,7 @@ namespace Core
 		 * \param val The marked RWG BasicFunctions
 		 * \return 
 		 */
-		void SetImpedance(RWGTriangle*field, RWGTriangle*source, list<element>& val) const;
+		void SetImpedance(RWGTriangle*field, RWGTriangle*source, vector<element>& val) const;
 
 		/**
 		 * \brief Calculate the specific RWG RightHand

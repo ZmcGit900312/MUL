@@ -5,6 +5,7 @@
 #include "IImpedance.h"
 #include "Data.h"
 #include "Const.h"
+#include "Multiplicator.h"
 
 using namespace Eigen;
 using namespace std;
@@ -105,6 +106,10 @@ class ImpAIM :public EigenBase<ImpAIM>, public IImpService
 
 	VectorXcd& GetExcitation() override{ return _rightHand; }
 	void FillImpedance() override;
+
+	void MVP(VectorXcd&res)const { _fftTools->MVP(_green, res); }
+
+	AIMAssist::Multiplicator* _fftTools = nullptr;
 #pragma endregion Inherent
 	private:
 	size_t _impSize;
@@ -153,10 +158,15 @@ namespace Eigen
 				VectorXcd tempz{ lhs.GammaZMultiplication(rhs) };
 				VectorXcd tempd{ lhs.GammaDMultiplication(rhs) };
 
-				Tools::TeoplitzMultiplicator->MultiplyTeoplitz(lhs.CGetGreen(),tempx);
+				/*Tools::TeoplitzMultiplicator->MultiplyTeoplitz(lhs.CGetGreen(),tempx);
 				Tools::TeoplitzMultiplicator->MultiplyTeoplitz(lhs.CGetGreen(), tempy);
 				Tools::TeoplitzMultiplicator->MultiplyTeoplitz(lhs.CGetGreen(), tempz);
-				Tools::TeoplitzMultiplicator->MultiplyTeoplitz(lhs.CGetGreen(), tempd);
+				Tools::TeoplitzMultiplicator->MultiplyTeoplitz(lhs.CGetGreen(), tempd);*/
+
+				lhs.MVP(tempx);
+				lhs.MVP(tempy);
+				lhs.MVP(tempz);
+				lhs.MVP(tempd);
 
 				tempx = lhs.GammaXMultiplicationT(tempx);
 				tempy = lhs.GammaYMultiplicationT(tempy);

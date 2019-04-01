@@ -8,7 +8,7 @@
 #pragma once
 #include <Eigen\Core>
 #include "Teoplitzcd.h"
-#include "FFT1d.h"
+#include "FFTmd.h"
 #include <vector>
 
 using namespace Eigen;
@@ -36,7 +36,7 @@ namespace Core
 			std::vector<int>Index;	//Save the position of each element of Teoplitz used for Padding/Unpadding
 		private:
 			VectorXcd _workspace;
-			FFT1d _trans;
+			FFTmd _trans;
 			long _length;
 			unsigned _bias;
 		};

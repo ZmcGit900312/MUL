@@ -23,7 +23,7 @@ void TeoplitzAssist::Reset(Teoplitzcd & tp)
 	_length = 2;
 	while (_length<static_cast<long>(tp.Length()))_length <<= 1;
 	_workspace.resize(_length);
-	_trans.ResetFFT(_length);
+	_trans.Reset(1,&_length);
 	_bias = _length - tp.Offside();
 	Index.clear();
 	Index = tp.Index;

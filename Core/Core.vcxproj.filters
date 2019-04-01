@@ -126,9 +126,6 @@
     <ClInclude Include="Triangle.h">
       <Filter>头文件\Base</Filter>
     </ClInclude>
-    <ClInclude Include="FFT1d.h">
-      <Filter>头文件\AIMAssist</Filter>
-    </ClInclude>
     <ClInclude Include="Teoplitzcd.h">
       <Filter>头文件\AIMAssist</Filter>
     </ClInclude>
@@ -177,9 +174,6 @@
     <ClInclude Include="NasRead.h">
       <Filter>头文件\Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="MatrixSetting.h">
-      <Filter>头文件\AIMAssist</Filter>
-    </ClInclude>
     <ClInclude Include="Excitation.h">
       <Filter>头文件\Source</Filter>
     </ClInclude>
@@ -188,6 +182,18 @@
     </ClInclude>
     <ClInclude Include="RWGTriangle.h">
       <Filter>头文件\BasicFunction</Filter>
+    </ClInclude>
+    <ClInclude Include="FFTmd.h">
+      <Filter>头文件\AIMAssist</Filter>
+    </ClInclude>
+    <ClInclude Include="ConventionalMethod.h">
+      <Filter>头文件\AIMAssist</Filter>
+    </ClInclude>
+    <ClInclude Include="IMatrixFiller.h">
+      <Filter>头文件\AIMAssist</Filter>
+    </ClInclude>
+    <ClInclude Include="Multiplicator.h">
+      <Filter>头文件\AIMAssist</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -198,9 +204,6 @@
       <Filter>源文件\googleTest</Filter>
     </ClCompile>
     <ClCompile Include="..\googleTest\TeoplitzcdTest.cpp">
-      <Filter>源文件\googleTest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\googleTest\MatrixSettingTest.cpp">
       <Filter>源文件\googleTest</Filter>
     </ClCompile>
     <ClCompile Include="MoMTest.cpp">
@@ -275,9 +278,6 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="FFT1d.cpp">
-      <Filter>源文件\Assist</Filter>
-    </ClCompile>
     <ClCompile Include="EMCParameterInitialization.cpp">
       <Filter>源文件\CoreAPI</Filter>
     </ClCompile>
@@ -320,9 +320,6 @@
     <ClCompile Include="Excitation.cpp">
       <Filter>源文件\Source</Filter>
     </ClCompile>
-    <ClCompile Include="MatrixSetting.cpp">
-      <Filter>源文件\Assist</Filter>
-    </ClCompile>
     <ClCompile Include="Const.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -337,6 +334,21 @@
     </ClCompile>
     <ClCompile Include="RWGTriangle.cpp">
       <Filter>源文件\BasicFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="FFTmd.cpp">
+      <Filter>源文件\Assist</Filter>
+    </ClCompile>
+    <ClCompile Include="ConventionalMethod.cpp">
+      <Filter>源文件\Assist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\googleTest\ConventionalMethodTest.cpp">
+      <Filter>源文件\googleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="IMatrixFiller.cpp">
+      <Filter>源文件\Assist</Filter>
+    </ClCompile>
+    <ClCompile Include="Multiplicator.cpp">
+      <Filter>源文件\Assist</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

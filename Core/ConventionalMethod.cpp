@@ -1,35 +1,29 @@
 #include "stdafx.h"
-#include "MatrixSetting.h"
+#include "ConventionalMethod.h"
 #include "Const.h"
 
 using namespace std;
 using namespace AIMAssist;
 
 
-MatrixSetting::MatrixSetting(const ImpConfiguration& configuration,IImpService*impedance):
-VectorTp(Vector3i{ configuration.xNumber,configuration.yNumber,configuration.zNumber }),
-_layerNum(Vector3i{ configuration.xNumber,configuration.yNumber,configuration.zNumber }), 
-_compute(k, W4, W7,eta)
+ConventionalMethod::ConventionalMethod(const ImpConfiguration& configuration,IImpService*impedance):
+IMatrixFiller(configuration,impedance),VectorTp(Vector3i{ configuration.xNumber,configuration.yNumber,configuration.zNumber })
 {
 	MultiExpTool.Reset(configuration, W7);
-	_interval = configuration.Interval;
-	_unknowns = configuration.ImpSize;
-	_threshold = configuration.Threshold*Lambda;
-	_eps = configuration.NearCorrectionEps;
 	_gridNum = MultiExpTool.GetGridNum();
 	_localGreen.resize(_gridNum, _gridNum);
-	_imp = static_cast<ImpAIM*>(impedance);
-	Tools::TeoplitzMultiplicator = new TeoplitzAssist(VectorTp);
+	Console->info("Take the Single Level FFT Method");
+	//Tools::TeoplitzMultiplicator = new TeoplitzAssist(VectorTp);
 }
 
-MatrixSetting::~MatrixSetting()
+ConventionalMethod::~ConventionalMethod()
 {
 	_gama.clear(); 
 	_gama.shrink_to_fit();
 	_imp = nullptr;
 }
 
-void MatrixSetting::MultipoleExpansion(vector<IBasicFunction*>&bf)
+void ConventionalMethod::MultipoleExpansion(vector<IBasicFunction*>&bf)
 {
 	Console->debug("Mulitpole Expansion");
 	_gama.clear();
@@ -94,7 +88,7 @@ void MatrixSetting::MultipoleExpansion(vector<IBasicFunction*>&bf)
 	tripletsGamaD.clear(); tripletsGamaD.shrink_to_fit();
 }
 
-void MatrixSetting::NearCorrection(vector< IBasicFunction*>&bf)
+void ConventionalMethod::NearCorrection(vector< IBasicFunction*>&bf)
 {
 	Console->info("Near Field Set under Traditional Way");
 	if (_gama.size() < 1 || VectorTp.Length() < 1)
@@ -155,7 +149,7 @@ void MatrixSetting::NearCorrection(vector< IBasicFunction*>&bf)
 	
 }
 
-void Core::MatrixSetting::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFunction*>&bf)
+void Core::ConventionalMethod::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFunction*>&bf)
 {
 	Console->info("Near Field Set under TFS");
 	if (_gama.size() < 1 || VectorTp.Length() < 1)
@@ -169,11 +163,14 @@ void Core::MatrixSetting::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFunc
 	vector<T> tripletsNearPart;
 	tripletsNearPart.reserve(estimatedSize);
 	//Set Near Field Triplets
+
+	vector<element> Z;
+	Z.reserve(9);
 	clock_t start = clock();
 	
 	for(auto r=mesh.TriangleVector.begin(),ed=mesh.TriangleVector.end();r!=ed;++r,++currentProgress)
 	{		
-		list<element> Z;
+		//list<element> Z;
 		RWGTriangle* row = dynamic_cast<RWGTriangle*>(*r);
 		for(auto c=r+1;c!=ed;++c)
 		{
@@ -303,14 +300,20 @@ void Core::MatrixSetting::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFunc
 	Console->debug("Nonzeros have {0} and take {1}%.", _imp->GetNearFieldMatrix().nonZeros(), 100* sparsity);
 }
 
-void MatrixSetting::GreenMatrixSet()
+void ConventionalMethod::GreenMatrixSet(IGreen*green)
 {
-	_imp->GetGreen().resize(Tools::TeoplitzMultiplicator->Length());
-	_imp->GetGreen() = Tools::TeoplitzMultiplicator->TeoplitzFFT(VectorTp);
+	//_imp->GetGreen().resize(Tools::TeoplitzMultiplicator->Length());
+	//_imp->GetGreen() = Tools::TeoplitzMultiplicator->TeoplitzFFT(VectorTp);
+	GenerateGreenBase(green);
+	SingleFFTMultiplicator* tools = new SingleFFTMultiplicator();
+	tools->Reset(VectorTp);
+	_imp->GetGreen().resize(tools->Length());
+	_imp->GetGreen() = tools->TpFFT(VectorTp);
+	_imp->_fftTools = tools;
 }
 
 
-VectorXcd MatrixSetting::generateGreenVector(IGreen* green) const
+void ConventionalMethod::GenerateGreenBase(IGreen* green)
 {
 	Console->debug("Generate Green Base");
 	const unsigned totalNum = VectorTp.rows();
@@ -323,10 +326,10 @@ VectorXcd MatrixSetting::generateGreenVector(IGreen* green) const
 		greenBase(i) = green->Scalar(Vector3d::Zero(), temp);
 	}
 
-	return greenBase;
+	VectorTp.construct(greenBase);
 }
 //Need k 1i eta from const
-dcomplex MatrixSetting::GetFarFieldImpedacneAIM(const size_t row, const size_t col)
+dcomplex ConventionalMethod::GetFarFieldImpedacneAIM(const size_t row, const size_t col)
 {
 	gama& source = _gama[row],field = _gama[col];
 	for (int i = 0; i < _gridNum; ++i)
@@ -342,7 +345,7 @@ dcomplex MatrixSetting::GetFarFieldImpedacneAIM(const size_t row, const size_t c
 	const dcomplex tempz= field.gamaz.transpose()*(_localGreen*source.gamaz);
 	const dcomplex tempd = field.gamad.transpose()*(_localGreen*source.gamad);
 	
-	return 1i*k*eta*(tempx + tempy + tempz- tempd/ (k*k));
+	return (tempx + tempy + tempz- tempd/ (k*k))*1i*k*eta;
 }
 
 

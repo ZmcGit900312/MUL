@@ -28,7 +28,7 @@ namespace Core
 		//
 		VectorXcd generateGreenVector(IGreen* green) const;
 		dcomplex GetFarFieldImpedacneAIM(const size_t row, const size_t col);
-	
+
 		//Some Tools
 		AIMAssist::Teoplitzcd VectorTp;
 
@@ -49,11 +49,11 @@ namespace Core
 		const Vector3i _layerNum;
 		//Local Cubic
 		size_t _gridNum;
-		
+
 		//Temp memory
 		vector<gama> _gama;
 		MatrixXcd _localGreen;
-		
+
 		EFRImp _compute;
 		//Handle of AIM Impedance
 		ImpAIM* _imp;
@@ -61,5 +61,3 @@ namespace Core
 
 
 }
-
-

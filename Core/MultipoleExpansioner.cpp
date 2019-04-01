@@ -180,3 +180,110 @@ MatrixXd MultipoleExpansioner::operator()(RWG * bf)
 	return s12*rightQ;
 }
 
+//////////////////////VirtualME/////////////////////////////
+Core::AIMAssist::VirtualME::~VirtualME()
+{
+	Index.clear();
+	Index.shrink_to_fit();
+}
+
+void Core::AIMAssist::VirtualME::Reset(const ImpConfiguration & configuration, const double w7[7])
+{
+	_boxStart = configuration.Box[0];
+	_dimension = configuration.Dimension;
+	_interval = configuration.Interval;
+	_layer[2] = 2 * configuration.zNumber - 2;
+	_layer[1] = 2 * configuration.yNumber - 2;
+	_layer[0] = 2 * configuration.xNumber - 2;
+	_weight1 = _layer[0];
+	_weight2 = _layer[1] * _layer[0];
+
+	_order = configuration.GridOrder;
+	_gridNum = _dimension == 2 ? (_order + 1)*(_order + 1) : (_order + 1)*(_order + 1)*(_order + 1);
+	W7 = w7;
+	Index.reserve(_gridNum);
+}
+
+MatrixXd Core::AIMAssist::VirtualME::operator()(RWG * bf)
+{
+	Index.clear();
+	Vector3d centre(bf->Centre());
+	if (_dimension == 3)
+	{
+		Vector3d localStart = SearchGrids(centre);
+
+		const MatrixXd rightQ = MultiExpansionRight(bf);
+		const MatrixXd s1 = VanderInverse(centre.x(), localStart.x());
+		const MatrixXd s2 = VanderInverse(centre.y(), localStart.y());
+		//作为整块的矩阵放在后面
+		const MatrixXd s12 = kroneckerProduct(s2, s1);//这里需要矩阵直积s1Xs2
+		const MatrixXd s3 = VanderInverse(centre.z(), localStart.z());
+		const MatrixXd s123 = kroneckerProduct(s3, s12);
+		return s123 * rightQ;//coefficients
+	}
+	Vector2d localStart = SearchGrids(Vector2d{ centre.head(2) });
+
+	const MatrixXd rightQ = MultiExpansionRight(bf);
+	const MatrixXd s1 = VanderInverse(centre.x(), localStart.x());
+	const MatrixXd s2 = VanderInverse(centre.y(), localStart.y());
+	//作为整块的矩阵放在后面
+	const MatrixXd s12 = kroneckerProduct(s2, s1);//这里需要矩阵直积s1Xs2
+	return s12 * rightQ;
+}
+
+Vector3d Core::AIMAssist::VirtualME::SearchGrids(const Vector3d & centre)
+{
+	// 求解离待求点最近的格点;
+	if (_order > 4)throw spd::spdlog_ex("Order {} more than 4 is not Developing", (int)_order);
+
+	Vector3d localCentre((centre - _boxStart) / _interval);
+
+	Vector3d localStartIndex = _order % 2 ?
+		localStartIndex = floor(localCentre.array() - _order / 2) :
+		localStartIndex = round(localCentre.array() - _order / 2);
+
+	const size_t xStartIndex = size_t(localStartIndex.x()),
+		yStartIndex = size_t(localStartIndex.y()),
+		zStartIndex = size_t(localStartIndex.z()),
+		xEnd = xStartIndex + _order + 1,
+		yEnd = yStartIndex + _order + 1,
+		zEnd = zStartIndex + _order + 1;
+
+	for (auto zzmc = zStartIndex; zzmc < zEnd; ++zzmc)
+	{
+		for (auto yzmc = yStartIndex; yzmc < yEnd; ++yzmc)
+		{
+			for (auto xzmc = xStartIndex; xzmc < xEnd; ++xzmc)
+			{
+				Index.push_back(Vector4i{ xzmc,yzmc,zzmc,zzmc*_weight2 + yzmc * _weight1 + xzmc });
+			}
+		}
+	}
+	return _boxStart + _interval * localStartIndex;
+}
+
+Vector2d Core::AIMAssist::VirtualME::SearchGrids(const Vector2d & centre)
+{
+	// 求解离待求点最近的格点;
+	if (_order > 4)throw spd::spdlog_ex("Order {} more than 4 is not Developing", (int)_order);
+
+	Vector2d localCentre((centre - _boxStart.head<2>()) / _interval);
+
+	Vector2d localStartIndex = _order % 2 ?
+		localStartIndex = floor(localCentre.array() - _order / 2) :
+		localStartIndex = round(localCentre.array() - _order / 2);
+
+	const size_t xStartIndex = size_t(localStartIndex.x()),
+		yStartIndex = size_t(localStartIndex.y()),
+		xEnd = xStartIndex + _order + 1,
+		yEnd = yStartIndex + _order + 1;
+
+	for (auto yzmc = yStartIndex; yzmc < yEnd; ++yzmc)
+	{
+		for (auto xzmc = xStartIndex; xzmc < xEnd; ++xzmc)
+		{
+			Index.push_back(Vector4i{ xzmc,yzmc,0,yzmc * _weight1 + xzmc });
+		}
+	}
+	return _boxStart.head<2>() + _interval * localStartIndex;
+}

@@ -158,7 +158,7 @@ list<element> EFRImp::SetImpedance(RWGTriangle* field, RWGTriangle* source) cons
 	return UnsingularTriangleIntegration(field,source,_w4,_k,_eta);
 }
 
-void EFRImp::SetImpedance(RWGTriangle* field, RWGTriangle* source, list<element>& val) const
+void EFRImp::SetImpedance(RWGTriangle* field, RWGTriangle* source, vector<element>& val) const
 {
 	const short K = 4;
 

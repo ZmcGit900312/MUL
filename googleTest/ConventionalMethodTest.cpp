@@ -11,13 +11,13 @@ using namespace Core;
 using namespace Eigen;
 using namespace AIMAssist;
 
-class AIMTest :public testing::Test
+class ConventionalAIMTest :public testing::Test
 {
 protected:
 	EFRImp _compute;
 	static ConventionalMethod* aimComputer;
-	AIMTest() :_compute(k, W4, W7, eta) {}
-	~AIMTest() {}
+	ConventionalAIMTest() :_compute(k, W4, W7, eta) {}
+	~ConventionalAIMTest() {}
 
 	static void SetUpTestCase()
 	{
@@ -41,9 +41,7 @@ protected:
 			srand(static_cast<unsigned>(time(nullptr)));
 			aimComputer = new ConventionalMethod(SystemConfig.ImpConfig, ComponentList::ImpService);
 			aimComputer->MultipoleExpansion(ComponentList::BFvector);
-			aimComputer->TeoplitzSet(IGreen::GetInstance());
-			Console->debug("Teoplitz is ffting");
-			aimComputer->GreenMatrixSet();
+			aimComputer->GreenMatrixSet(IGreen::GetInstance());
 
 		}
 		catch (spd::spdlog_ex&ex)
@@ -85,7 +83,7 @@ protected:
 		Vector3d distance = source->Centre() - field->Centre();
 		const auto threshold = distance.norm() / Lambda;
 		const dcomplex ref = _compute.SetImpedance(field, source);
-		const dcomplex test = aimComputer->GetFarFieldImpedacneAIM(isource, ifield);
+		const dcomplex test = aimComputer->GetImpAIM(isource, ifield);
 		Console->debug("\nImpedance:\t({0},{1})\nDistance:\t{2}¦Ë\nreference:\t({3},{4})\nNear:\t\t({5},{6})",
 			isource, ifield, threshold, ref.real(), ref.imag(), test.real(), test.imag());
 		if (threshold > 0.3)
@@ -100,10 +98,10 @@ protected:
 };
 
 
-ConventionalMethod* AIMTest::aimComputer = nullptr;
+ConventionalMethod* ConventionalAIMTest::aimComputer = nullptr;
 
 
-TEST_F(AIMTest, Multiplication)
+TEST_F(ConventionalAIMTest, Multiplication)
 {
 	try
 	{
@@ -113,7 +111,7 @@ TEST_F(AIMTest, Multiplication)
 
 		const size_t unknowns = SystemConfig.ImpConfig.ImpSize;
 		const double threshold = SystemConfig.ImpConfig.Threshold*Lambda;
-
+		
 		Console->debug("Matrix Far Field Random Setting Test:");
 		for (int count = 0; count < 20;)
 		{
@@ -133,15 +131,15 @@ TEST_F(AIMTest, Multiplication)
 			VectorXcd vcoly = imp->GetGammaY().col(col);
 			VectorXcd vcolz = imp->GetGammaZ().col(col);
 			VectorXcd vcold = imp->GetGammaD().col(col);
-			Tools::TeoplitzMultiplicator->MultiplyTeoplitz(imp->CGetGreen(), vcolx);
-			Tools::TeoplitzMultiplicator->MultiplyTeoplitz(imp->CGetGreen(), vcoly);
-			Tools::TeoplitzMultiplicator->MultiplyTeoplitz(imp->CGetGreen(), vcolz);
-			Tools::TeoplitzMultiplicator->MultiplyTeoplitz(imp->CGetGreen(), vcold);
+			imp->MVP(vcolx);
+			imp->MVP(vcoly);
+			imp->MVP(vcolz);
+			imp->MVP(vcold);
 			dcomplex tempx = vrowx.dot(vcolx);
 			dcomplex tempy = vrowy.dot(vcoly);
 			dcomplex tempz = vrowz.dot(vcolz);
 			dcomplex tempd = vrowd.dot(vcold);
-			dcomplex test = 1i*k*eta*(tempx + tempy + tempz - tempd / (k*k));//Don't forget coefficient
+			dcomplex test = (tempx + tempy + tempz - tempd / (k*k))* 1i*k*eta;//Don't forget coefficient
 			Console->debug("\nNumber:\t{0}\nImpedance:\t({1},{2})\nDistance:\t{3}¦Ë\nreference:\t({4},{5})\nNear:\t\t({6},{7})",
 				++count, row, col, dnorm / Lambda, ref.real(), ref.imag(), test.real(), test.imag());
 		}
@@ -155,7 +153,7 @@ TEST_F(AIMTest, Multiplication)
 
 }
 
-TEST_F(AIMTest, Multiplication2)
+TEST_F(ConventionalAIMTest, Multiplication2)
 {
 	try
 	{
@@ -181,7 +179,7 @@ TEST_F(AIMTest, Multiplication2)
 			const dcomplex ref = _compute.SetImpedance(field, source);
 			VectorXcd x{ VectorXcd::Zero(unknowns) };
 			x(col) = 1.0;
-			VectorXcd test = *imp*x;
+			VectorXcd test=*imp*x ;
 			/*For x=0,except x(col)=1
 			 *The test is the col of all the impedance
 			 *test(row) = Impedance(row,col)
@@ -199,7 +197,7 @@ TEST_F(AIMTest, Multiplication2)
 }
 
 
-TEST_F(AIMTest, FarField)
+TEST_F(ConventionalAIMTest, FarField)
 {
 	try
 	{
@@ -230,7 +228,7 @@ TEST_F(AIMTest, FarField)
 	}
 }
 
-TEST_F(AIMTest, NearField)
+TEST_F(ConventionalAIMTest, NearField)
 {
 	try
 	{
@@ -260,7 +258,7 @@ TEST_F(AIMTest, NearField)
 
 }
 
-TEST_F(AIMTest, TFSNearFieldSet)
+TEST_F(ConventionalAIMTest, TFSNearFieldSet)
 {
 	try
 	{
@@ -409,7 +407,7 @@ TEST_F(AIMTest, TFSNearFieldSet)
 }
 
 
-TEST_F(AIMTest, SolveTest)
+TEST_F(ConventionalAIMTest, Solving)
 {
 	try
 	{

@@ -4,7 +4,7 @@
 #include <time.h>
 #include "ImpAIM.h"
 #include "Data.h"
-#include "MatrixSetting.h"
+#include "ConventionalMethod.h"
 
 using namespace std;
 
@@ -20,14 +20,12 @@ ImpAIM::~ImpAIM()
 
 void ImpAIM::FillImpedance()
 { 
-	MatrixSetting filler(SystemConfig.ImpConfig, ComponentList::ImpService);
+	ConventionalMethod filler(SystemConfig.ImpConfig, ComponentList::ImpService);
 	const clock_t start = clock();
 	Console->info("Mulitpole Expansion");
 	filler.MultipoleExpansion(ComponentList::BFvector);
 	Console->info("Construct Teoplitz Matrix");
-	filler.TeoplitzSet(IGreen::GetInstance());
-	Console->debug("Teoplitz is ffting...");
-	filler.GreenMatrixSet();
+	filler.GreenMatrixSet(IGreen::GetInstance());
 	switch (_fillingStrategy)
 	{
 		case 0:
