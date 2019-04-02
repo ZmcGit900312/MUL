@@ -46,11 +46,13 @@
             this.AIMRadioButton = new System.Windows.Forms.RadioButton();
             this.CloseButton = new System.Windows.Forms.Button();
             this.ApplyButton = new System.Windows.Forms.Button();
+            this.VirtualGridTechniqueCheckBox = new System.Windows.Forms.CheckBox();
             this.AIMPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // AIMPanel
             // 
+            this.AIMPanel.Controls.Add(this.VirtualGridTechniqueCheckBox);
             this.AIMPanel.Controls.Add(this.Dimension3D);
             this.AIMPanel.Controls.Add(this.Dimension2D);
             this.AIMPanel.Controls.Add(this.DimensionLable);
@@ -67,7 +69,7 @@
             this.AIMPanel.Location = new System.Drawing.Point(13, 45);
             this.AIMPanel.Margin = new System.Windows.Forms.Padding(4);
             this.AIMPanel.Name = "AIMPanel";
-            this.AIMPanel.Size = new System.Drawing.Size(408, 266);
+            this.AIMPanel.Size = new System.Drawing.Size(408, 307);
             this.AIMPanel.TabIndex = 47;
             // 
             // Dimension3D
@@ -207,7 +209,7 @@
             this.FillingType.Checked = true;
             this.FillingType.CheckState = System.Windows.Forms.CheckState.Checked;
             this.FillingType.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
-            this.FillingType.Location = new System.Drawing.Point(13, 327);
+            this.FillingType.Location = new System.Drawing.Point(13, 359);
             this.FillingType.Name = "FillingType";
             this.FillingType.Size = new System.Drawing.Size(224, 24);
             this.FillingType.TabIndex = 49;
@@ -282,6 +284,16 @@
             this.ApplyButton.UseVisualStyleBackColor = false;
             this.ApplyButton.Click += new System.EventHandler(this.ApplyButton_Click);
             // 
+            // VirtualGridTechniqueCheckBox
+            // 
+            this.VirtualGridTechniqueCheckBox.AutoSize = true;
+            this.VirtualGridTechniqueCheckBox.Location = new System.Drawing.Point(13, 272);
+            this.VirtualGridTechniqueCheckBox.Name = "VirtualGridTechniqueCheckBox";
+            this.VirtualGridTechniqueCheckBox.Size = new System.Drawing.Size(210, 24);
+            this.VirtualGridTechniqueCheckBox.TabIndex = 47;
+            this.VirtualGridTechniqueCheckBox.Text = "Virtual Grid Technique";
+            this.VirtualGridTechniqueCheckBox.UseVisualStyleBackColor = true;
+            // 
             // FormMethod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -327,5 +339,6 @@
         private System.Windows.Forms.RadioButton AIMRadioButton;
         private System.Windows.Forms.Button CloseButton ;
         private System.Windows.Forms.Button ApplyButton;
+        private System.Windows.Forms.CheckBox VirtualGridTechniqueCheckBox;
     }
 }

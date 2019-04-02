@@ -20,8 +20,8 @@ ImpAIM::~ImpAIM()
 
 void ImpAIM::FillImpedance()
 { 
-	ConventionalMethod filler(SystemConfig.ImpConfig, ComponentList::ImpService);
 	const clock_t start = clock();
+	/*ConventionalMethod filler(SystemConfig.ImpConfig, ComponentList::ImpService);	
 	Console->info("Mulitpole Expansion");
 	filler.MultipoleExpansion(ComponentList::BFvector);
 	Console->info("Construct Teoplitz Matrix");
@@ -33,7 +33,22 @@ void ImpAIM::FillImpedance()
 			break;
 		default:
 			filler.TriangleFillingStrategy(*Mesh::GetInstance(), ComponentList::BFvector);
+	}*/
+
+	IMatrixFiller* filler = IMatrixFiller::FMatrixFiller(SystemConfig.ImpConfig, this);
+	Console->info("Mulitpole Expansion");
+	filler->MultipoleExpansion(ComponentList::BFvector);
+	Console->info("Generate the Green Matrix");
+	filler->GreenMatrixSet(IGreen::GetInstance());
+	switch (_fillingStrategy)
+	{
+	case 0:
+		filler->NearCorrection(ComponentList::BFvector);
+		break;
+	default:
+		filler->TriangleFillingStrategy(*Mesh::GetInstance(), ComponentList::BFvector);
 	}
+	delete filler;
 
 	const clock_t end = clock();
 	_time = double(end - start) / CLOCKS_PER_SEC;

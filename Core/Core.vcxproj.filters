@@ -195,6 +195,9 @@
     <ClInclude Include="Multiplicator.h">
       <Filter>头文件\AIMAssist</Filter>
     </ClInclude>
+    <ClInclude Include="VirtualGrid.h">
+      <Filter>头文件\AIMAssist</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Data.cpp">
@@ -349,6 +352,12 @@
     </ClCompile>
     <ClCompile Include="Multiplicator.cpp">
       <Filter>源文件\Assist</Filter>
+    </ClCompile>
+    <ClCompile Include="VirtualGrid.cpp">
+      <Filter>源文件\Assist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\googleTest\VirtualGridTest.cpp">
+      <Filter>源文件\googleTest</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -306,8 +306,10 @@ namespace Configuration
         public double NearCorrectionEps { get; set; } = 1.0e-3;
         public int Dimension { get; set; } = 3;
         public int FillingStrategy { get; set; } = 1;
-        public void Write(StreamWriter sw) => sw.WriteLine("{0}\t{1}\t{2:f}\t{3:f}\t{4:E}\t{5}\t{6}",
-            (int)Type, Order, Interval, Threshold, NearCorrectionEps, Dimension, FillingStrategy);
+        public int VirtualGrid { get; set; } = 1;
+
+        public void Write(StreamWriter sw) => sw.WriteLine("{0}\t{1}\t{2:f}\t{3:f}\t{4:E}\t{5}\t{6}\t{7}",
+            (int)Type, Order, Interval, Threshold, NearCorrectionEps, Dimension, FillingStrategy,VirtualGrid);
 
         public void Read(string[] buffer)
         {
@@ -317,6 +319,7 @@ namespace Configuration
             NearCorrectionEps = double.Parse(buffer[4]);
             Dimension = int.Parse(buffer[5]);
             FillingStrategy = int.Parse(buffer[6]);
+            VirtualGrid = int.Parse(buffer[7]);
         }
     }
 }

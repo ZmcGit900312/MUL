@@ -22,6 +22,7 @@ namespace Core
 		double Threshold=0.3,Interval=0.05;
 		double NearCorrectionEps = 1.0e-3;
 		int FillingStrategy = 1;
+		int VirtualGridTechnique = 1;
 		Vector3d Box[2];
 		EImpedance impType=MoM ;
 	};

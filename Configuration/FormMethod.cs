@@ -35,7 +35,8 @@ namespace Configuration
                 NearCorrectionEps = double.Parse(NearTolerance.Text),
                 Threshold = double.Parse(ThresholdText.Text),
                 Dimension = Dimension2D.Checked ? 2 : 3,
-                FillingStrategy = FillingType.Checked ? 1 : 0
+                FillingStrategy = FillingType.Checked ? 1 : 0,
+                VirtualGrid=VirtualGridTechniqueCheckBox.Checked?1:0
             };
             Close();
         }
@@ -55,6 +56,7 @@ namespace Configuration
                 NearTolerance.Text = Impedance.NearCorrectionEps.ToString();
                 Dimension3D.Checked = Impedance.Dimension == 3;
                 FillingType.Checked = Impedance.FillingStrategy == 1;
+                VirtualGridTechniqueCheckBox.Checked = Impedance.VirtualGrid == 1;
                 OrderCombox.SelectedIndex = Impedance.Order - 2;
             }
         }

@@ -29,7 +29,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>Intel C++ Compiler 19.0</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Gtest_Debug|x64'" Label="Configuration">
@@ -261,6 +261,7 @@
     <ClInclude Include="Tetrahedra.h" />
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="TxtReader.h" />
+    <ClInclude Include="VirtualGrid.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\googleTest\BasicFunctionTest.cpp" />
@@ -272,6 +273,7 @@
     <ClCompile Include="..\googleTest\TeoplitzcdTest.cpp" />
     <ClCompile Include="..\googleTest\testMain.cpp" />
     <ClCompile Include="..\googleTest\BaseClassTest.cpp" />
+    <ClCompile Include="..\googleTest\VirtualGridTest.cpp" />
     <ClCompile Include="CalculateRequest.cpp" />
     <ClCompile Include="Const.cpp" />
     <ClCompile Include="EMCParameterInitialization.cpp" />
@@ -321,6 +323,7 @@
     <ClCompile Include="TeoplitzAssist.cpp" />
     <ClCompile Include="Teoplitzcd.cpp" />
     <ClCompile Include="TxtReader.cpp" />
+    <ClCompile Include="VirtualGrid.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SourceData\MeshTest.nas" />

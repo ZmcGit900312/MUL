@@ -30,7 +30,7 @@ int Core::CreatMesh()
 			throw spdlog::spdlog_ex("Calcuate the Quadrature Error,Please check the TriagnleQuad");
 
 		Console->info("Creat Mesh costs\t{:f} s",time);
-		ResultL->info("Creat Mesh costs\t{:f} s", time);
+		ResultL->info("\nCreat Mesh costs\t{:f} s\n", time);
 		/*Console->info("Memory Cost\t{:f} Mb", GetMemoryCost());
 		
 		ResultL->info("Memory Cost\t{:f} Mb", GetMemoryCost());*/

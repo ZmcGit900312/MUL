@@ -47,6 +47,7 @@ int Core::EMCParameterInitialization(char* configurationFileName)
 					outfileName = SystemConfig.ProjectDir + "\\" + SystemConfig.ProjectName + ".out";
 					remove(outfileName.c_str());
 					ResultL = spd::basic_logger_mt("result", outfileName);
+					ResultL->info("Begin to Calculate");
 					ResultL->set_pattern("%v");
 					
 					ResultL->info("The Project Name:\t{}", SystemConfig.ProjectName);
@@ -69,8 +70,7 @@ int Core::EMCParameterInitialization(char* configurationFileName)
 					Lambda = c0 / Frequency;
 					break;
 				case AM:
-					Console->info("Use Method:\tAIM");
-					ResultL->info("Use Method:\tAIM");
+					
 					SystemConfig.ImpConfig.GridOrder = stoi(*zmc++);
 					SystemConfig.ImpConfig.Interval = stod(*zmc++);
 					SystemConfig.ImpConfig.Threshold = stod(*zmc++);
@@ -78,6 +78,17 @@ int Core::EMCParameterInitialization(char* configurationFileName)
 					SystemConfig.ImpConfig.Dimension = stoi(*zmc++);
 					SystemConfig.ImpConfig.impType = EImpedance(AIM);
 					SystemConfig.ImpConfig.FillingStrategy = stoi(*zmc++);
+					SystemConfig.ImpConfig.VirtualGridTechnique = stoi(*zmc++);
+					if(SystemConfig.ImpConfig.VirtualGridTechnique==1)
+					{
+						Console->info("VirtualGrid Technique is used in AIM");
+						ResultL->info("VirtualGrid Technique is used in AIM\n");
+					}
+					else
+					{
+						Console->info("Conventional AIM is used");
+						ResultL->info("Conventional AIM is used\n");
+					}
 					break;
 				case A0:SetA0(zmc);
 					break;

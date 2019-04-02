@@ -128,11 +128,11 @@ TEST_F(VirtualGridTest, GreenBase)
 	fillingTool->GreenMatrixSet(green);
 	VectorXcd gb= fillingTool->GetGreenBase();
 	//max of xyz=[27 27 27]
-	Vector3i weight={ SystemConfig.ImpConfig.xNumber,SystemConfig.ImpConfig.xNumber*SystemConfig.ImpConfig.yNumber,1 };
-
+	//Vector3i weight={ SystemConfig.ImpConfig.xNumber,SystemConfig.ImpConfig.xNumber*SystemConfig.ImpConfig.yNumber,1 };
+	Vector3i weight = { 1,SystemConfig.ImpConfig.xNumber,SystemConfig.ImpConfig.xNumber*SystemConfig.ImpConfig.yNumber };
 	for(int i=1;i<=10;i++)
 	{
-		Vector3i greenBias{ rand() % SystemConfig.ImpConfig.xNumber,rand() % SystemConfig.ImpConfig.xNumber,rand() % SystemConfig.ImpConfig.xNumber };
+		Vector3i greenBias{ rand() % SystemConfig.ImpConfig.xNumber,rand() % SystemConfig.ImpConfig.yNumber,rand() % SystemConfig.ImpConfig.zNumber };
 		Index location = weight.dot(greenBias);
 		Console->debug("Green Bias is [{0:5d},{1:5d},{2:5d}]", greenBias.x(),greenBias.y(), greenBias.z());
 		dcomplex res = green->Scalar(Vector3d::Zero(), SystemConfig.ImpConfig.Interval*greenBias.cast<double>());
@@ -209,9 +209,9 @@ TEST_F(VirtualGridTest,Multiplication)
 	fillingTool->GreenMatrixSet(IGreen::GetInstance());
 	
 	//Initial multiplicator
-	MKL_LONG dim = 3, layer[3] = {2* SystemConfig.ImpConfig.xNumber-2,
+	MKL_LONG dim = 3, layer[3] = {2* SystemConfig.ImpConfig.zNumber-2,
 		2*SystemConfig.ImpConfig.yNumber-2,
-		2*SystemConfig.ImpConfig.zNumber-2 };
+		2*SystemConfig.ImpConfig.xNumber-2 };
 	_mvptool.Reset(dim, layer);
 	
 	

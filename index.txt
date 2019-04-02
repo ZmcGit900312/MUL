@@ -1,4 +1,0 @@
-{FFAD4AC3-627B-4c69-B870-B903A13408EB},Complete Composite Structure Diagram\Components
-{FE74FC56-D0D2-487c-82B0-D6F50FDF2843},Complete Composite Structure Diagram\Interfaces
-{A0018312-442A-4be1-BE97-852150E56946},Complete Composite Structure Diagram\Information Items
-{754A6F24-8BA4-4789-BB4F-E42558846890},Complete Composite Structure Diagram\Complete Composite Structure Diagram

@@ -11,7 +11,7 @@ _imp(static_cast<ImpAIM*>(impedance)){}
 
 IMatrixFiller * Core::IMatrixFiller::FMatrixFiller(const ImpConfiguration & configuration, IImpService * impedance)
 {
-	//if (configuration.VirtualGridTechnique == 1) return new VirtualGrid(configuration, impedance);
+	if (configuration.VirtualGridTechnique == 1) return new VirtualGrid(configuration, impedance);
 
 	return new ConventionalMethod(configuration, impedance);
 }

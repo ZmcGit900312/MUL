@@ -28,7 +28,7 @@ void Core::IGreen::FactoryGreen(GreenConfiguration * config)
 	default:
 		_green = new FreeSpaceKernel();
 		Console->info("Free Space Green Function is choosen");
-		ResultL->info("Free Space Green Function is choosen");
+		ResultL->info("\nFree Space Green Function is choosen\n");
 		RuntimeL->info("Finish");
 		RuntimeL->flush();
 	}
