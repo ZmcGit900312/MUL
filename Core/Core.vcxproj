@@ -116,6 +116,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <Profile>false</Profile>
+      <AdditionalLibraryDirectories>..\x64\Debug</AdditionalLibraryDirectories>
     </Link>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -274,6 +275,7 @@
     <ClCompile Include="..\googleTest\testMain.cpp" />
     <ClCompile Include="..\googleTest\BaseClassTest.cpp" />
     <ClCompile Include="..\googleTest\VirtualGridTest.cpp" />
+    <ClCompile Include="..\googleTest\XmlConfigurationTest.cpp" />
     <ClCompile Include="CalculateRequest.cpp" />
     <ClCompile Include="Const.cpp" />
     <ClCompile Include="EMCParameterInitialization.cpp" />
@@ -327,6 +329,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SourceData\MeshTest.nas" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\tinyxml2\tinyxml2.vcxproj">
+      <Project>{87bdbb3e-309c-4b4c-b67d-256fedc6c35c}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

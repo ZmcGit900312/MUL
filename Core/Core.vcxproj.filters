@@ -359,6 +359,9 @@
     <ClCompile Include="..\googleTest\VirtualGridTest.cpp">
       <Filter>源文件\googleTest</Filter>
     </ClCompile>
+    <ClCompile Include="..\googleTest\XmlConfigurationTest.cpp">
+      <Filter>源文件\googleTest</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SourceData\MeshTest.nas">
