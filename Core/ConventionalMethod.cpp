@@ -13,6 +13,7 @@ IMatrixFiller(configuration,impedance),VectorTp(Vector3i{ configuration.xNumber,
 	_gridNum = MultiExpTool.GetGridNum();
 	_localGreen.resize(_gridNum, _gridNum);
 	Console->info("Take the Single Level FFT Method");
+	ResultL->info("Take the Single Level FFT Method");
 	//Tools::TeoplitzMultiplicator = new TeoplitzAssist(VectorTp);
 }
 

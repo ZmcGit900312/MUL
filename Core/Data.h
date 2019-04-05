@@ -19,6 +19,7 @@ namespace Core
 	{	
 		string ProjectName = "SourceData";
 		string ProjectDir = "C:/";
+		string ReportFileName = "C:/";
 		string MeshFileName;
 		string BasicFunctionFileName= ProjectDir + ProjectName + ".bf";
 		int BasicFunctionType = 0;

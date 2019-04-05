@@ -14,7 +14,7 @@ namespace Core
 {
 	namespace Solution
 	{
-		enum ESolutionType{BiCGStab, LU,};
+		enum ESolutionType{BiCGStab, LU};
 		enum EPreconditionerType{Identity,Jacobi,ILU};
 		struct SolverConfiguration
 		{

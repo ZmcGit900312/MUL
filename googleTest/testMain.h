@@ -12,6 +12,7 @@ public:
 	void SetUp() override
 	{
 		ASSERT_EQ(0, Core::EMCParameterInitialization(configurationFileName)) << "Error in API InitializationConfiguration";
+		//ASSERT_EQ(0, Core::AnalysisConfigurationFile(configurationFileName)) << "Error in API InitializationConfiguration";
 	}
 
 	void TearDown() override

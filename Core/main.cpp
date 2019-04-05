@@ -14,7 +14,12 @@ int main(int argc,char* argv[])
 	cout << "***********************************************\n";
 
 #ifdef _DEBUG
+	
+#ifdef HXJ
 	char* configurationFileName = "E://ZMC//Code//C_program//MUL//SourceData//test.hxj";
+#else
+	char* configurationFileName = "E://ZMC//Code//C_program//MUL//SourceData//test.xml";
+#endif
 	//const char* bfFileName = SystemConfig.BasicFunctionFileName.c_str();
 	argc = 2;
 	cout	<< "**********************************\n"
@@ -30,8 +35,13 @@ int main(int argc,char* argv[])
 		try
 		{
 			const clock_t start = clock();
-			if (Core::EMCParameterInitialization(configurationFileName))throw runtime_error("Error in CoreAPI EMCParamenterInitialization");
-
+#ifdef HXJ
+			if (Core::EMCParameterInitialization(configurationFileName))
+				throw runtime_error("Error in CoreAPI EMCParamenterInitialization");
+#else
+			if (Core::AnalysisConfigurationFile(configurationFileName))
+				throw runtime_error("Error in CoreAPI AnalysisConfigurationFile");
+#endif
 			if (Core::CreatMesh())throw runtime_error("Error in Creat Mesh");
 			if (Core::CreatBasicFunction())throw runtime_error("Error in Creat BasicFunction");
 			if (Core::SetGreenFunction())throw runtime_error("Error in set Green Function");

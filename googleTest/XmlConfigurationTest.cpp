@@ -3,23 +3,22 @@
 #include "gtest/gtest.h"
 #include "Log.h"
 #include "Data.h"
+#include "CoreAPI.h"
 #include "tinyxml2/tinyxml2.h"
-#include <list>
 
-//#pragma comment(lib,"tinyxml2.lib")
 
 
 using namespace tinyxml2;
 using namespace std;
 
 
-TEST(TinyXml2, ConfigurationTest)
+TEST(TinyXml2, XmlClassExampleTest)
 {
 	EXPECT_TRUE(true);
 
 
 	XMLDocument doc;
-	char* name = "E:\\ZMC\\Code\\C#\\MUL\\TestResults\\test.xml";
+	char* name = "E:/ZMC/Code/C_program/MUL/SourceData/test.xml";
 	XMLError result = doc.LoadFile(name);
 	EXPECT_EQ(0, doc.ErrorID());
 
@@ -47,4 +46,11 @@ TEST(TinyXml2, ConfigurationTest)
 
 	doc.Print();
 }
+
+TEST(TinyXml2, ConfigurationTest)
+{
+	char* name = "E:/ZMC/Code/C_program/MUL/SourceData/test.xml";
+	ASSERT_EQ(0, Core::AnalysisConfigurationFile(name));
+}
+
 #endif

@@ -13,6 +13,7 @@ Core::VirtualGrid::VirtualGrid(const ImpConfiguration & configuration, IImpServi
 		_layerElementSizeAcu(i) = _layerElementSize.head(i + 1).prod();
 	}
 	Console->info("Take the Virtual Grids Technique");
+	ResultL->info("Take the Virtual Grids Technique");
 }
 
 VirtualGrid::~VirtualGrid()

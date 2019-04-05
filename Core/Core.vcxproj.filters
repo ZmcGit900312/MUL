@@ -242,9 +242,6 @@
     <ClCompile Include="RWG.cpp">
       <Filter>源文件\BasicFunction</Filter>
     </ClCompile>
-    <ClCompile Include="CreatImpedancecpp.cpp">
-      <Filter>源文件\CoreAPI</Filter>
-    </ClCompile>
     <ClCompile Include="SetRightHand.cpp">
       <Filter>源文件\CoreAPI</Filter>
     </ClCompile>
@@ -361,6 +358,12 @@
     </ClCompile>
     <ClCompile Include="..\googleTest\XmlConfigurationTest.cpp">
       <Filter>源文件\googleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="AnalysisConfigurationFile.cpp">
+      <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="CreatImpedance.cpp">
+      <Filter>源文件\CoreAPI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

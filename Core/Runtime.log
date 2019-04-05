@@ -5075,3 +5075,69 @@
 [Wed Apr 3 21:51:06 2019 Wed][info] Run ReleaseMemory()
 [Wed Apr 3 21:51:06 2019 Wed][info] Release Request
 [Wed Apr 3 21:51:06 2019 Wed][info] Finish
+[Thu Apr 4 13:30:07 2019 Thu][info] Run EMCParmeterInitialization()
+[Thu Apr 4 13:30:07 2019 Thu][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Thu Apr 4 13:30:07 2019 Thu][info] Finish
+[Thu Apr 4 13:36:20 2019 Thu][info] Run EMCParmeterInitialization()
+[Thu Apr 4 13:36:20 2019 Thu][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Thu Apr 4 13:36:20 2019 Thu][info] Finish
+[Thu Apr 4 13:39:41 2019 Thu][info] Run EMCParmeterInitialization()
+[Thu Apr 4 13:39:41 2019 Thu][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Thu Apr 4 13:39:41 2019 Thu][info] Finish
+[Thu Apr 4 14:02:32 2019 Thu][info] Run EMCParmeterInitialization()
+[Thu Apr 4 14:02:32 2019 Thu][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Thu Apr 4 14:02:32 2019 Thu][info] Finish
+[Thu Apr 4 14:09:50 2019 Thu][info] Run EMCParmeterInitialization()
+[Thu Apr 4 14:09:50 2019 Thu][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Thu Apr 4 14:09:50 2019 Thu][info] Finish
+[Thu Apr 4 14:11:12 2019 Thu][info] Run EMCParmeterInitialization()
+[Thu Apr 4 14:11:12 2019 Thu][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Thu Apr 4 14:11:12 2019 Thu][info] Finish
+[Thu Apr 4 14:13:17 2019 Thu][info] Run EMCParmeterInitialization()
+[Thu Apr 4 14:13:17 2019 Thu][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Thu Apr 4 14:13:17 2019 Thu][info] Finish
+[Thu Apr 4 14:15:18 2019 Thu][info] Run EMCParmeterInitialization()
+[Thu Apr 4 14:15:18 2019 Thu][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Thu Apr 4 14:15:18 2019 Thu][info] Finish
+[Thu Apr 4 14:16:50 2019 Thu][info] Run EMCParmeterInitialization()
+[Thu Apr 4 14:16:50 2019 Thu][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Thu Apr 4 14:16:50 2019 Thu][info] Finish
+[Thu Apr 4 14:18:45 2019 Thu][info] Run EMCParmeterInitialization()
+[Thu Apr 4 14:18:45 2019 Thu][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Thu Apr 4 14:18:45 2019 Thu][info] Finish
+[Thu Apr 4 14:24:52 2019 Thu][info] Run EMCParmeterInitialization()
+[Thu Apr 4 14:24:52 2019 Thu][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Thu Apr 4 14:24:52 2019 Thu][info] Finish
+[Thu Apr 4 14:25:36 2019 Thu][info] Run ReleaseMemory()
+[Thu Apr 4 14:25:36 2019 Thu][info] Release Request
+[Thu Apr 4 14:25:36 2019 Thu][info] Finish
+[Fri Apr 5 18:51:11 2019 Fri][info] Run EMCParmeterInitialization()
+[Fri Apr 5 18:51:11 2019 Fri][info] Configuration is from:	E:/ZMC/Code/C_program/MUL/SourceData/test.hxj
+[Fri Apr 5 18:51:11 2019 Fri][info] Finish
+[Fri Apr 5 18:53:21 2019 Fri][info] Run ReleaseMemory()
+[Fri Apr 5 18:53:21 2019 Fri][info] Release Request
+[Fri Apr 5 18:53:21 2019 Fri][info] Finish
+[Fri Apr 5 19:02:25 2019 Fri][info] Creat Mesh
+[Fri Apr 5 19:02:28 2019 Fri][info] Finish Creat Mesh
+[Fri Apr 5 19:02:28 2019 Fri][info] Run LoadBasicFunction()
+[Fri Apr 5 19:02:28 2019 Fri][info] Finish
+[Fri Apr 5 19:02:28 2019 Fri][info] Run SetGreenFunction()
+[Fri Apr 5 19:02:28 2019 Fri][info] Finish
+[Fri Apr 5 19:02:28 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Apr 5 19:02:28 2019 Fri][info] Finish Pre-compute
+[Fri Apr 5 19:02:28 2019 Fri][info] Run CreatImpedance()
+[Fri Apr 5 19:02:28 2019 Fri][info] Finish
+[Fri Apr 5 19:02:28 2019 Fri][info] Run FillImpedance()
+[Fri Apr 5 19:04:00 2019 Fri][info] Finish
+[Fri Apr 5 19:04:00 2019 Fri][info] Run SetRightHand()
+[Fri Apr 5 19:04:00 2019 Fri][info] Finish
+[Fri Apr 5 19:04:00 2019 Fri][info] Run Solve()
+[Fri Apr 5 19:04:06 2019 Fri][info] Finish
+[Fri Apr 5 19:04:06 2019 Fri][info] Run SaveBasicFunction()
+[Fri Apr 5 19:04:06 2019 Fri][info] Finish
+[Fri Apr 5 19:04:06 2019 Fri][info] Run CalculateRequest()
+[Fri Apr 5 19:04:19 2019 Fri][info] Run ReleaseMemory()
+[Fri Apr 5 19:04:19 2019 Fri][info] Release BasicFunction
+[Fri Apr 5 19:04:19 2019 Fri][info] Release Matrix
+[Fri Apr 5 19:04:19 2019 Fri][info] Release Request
+[Fri Apr 5 19:04:19 2019 Fri][info] Finish

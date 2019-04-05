@@ -131,6 +131,7 @@
     <Compile Include="ICard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlTool.cs" />
     <EmbeddedResource Include="FormBasicFunction.resx">
       <DependentUpon>FormBasicFunction.cs</DependentUpon>
     </EmbeddedResource>

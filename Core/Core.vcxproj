@@ -276,6 +276,7 @@
     <ClCompile Include="..\googleTest\BaseClassTest.cpp" />
     <ClCompile Include="..\googleTest\VirtualGridTest.cpp" />
     <ClCompile Include="..\googleTest\XmlConfigurationTest.cpp" />
+    <ClCompile Include="AnalysisConfigurationFile.cpp" />
     <ClCompile Include="CalculateRequest.cpp" />
     <ClCompile Include="Const.cpp" />
     <ClCompile Include="EMCParameterInitialization.cpp" />
@@ -290,7 +291,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Gtest_Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="BasicFunctionAPI.cpp" />
-    <ClCompile Include="CreatImpedancecpp.cpp" />
+    <ClCompile Include="CreatImpedance.cpp" />
     <ClCompile Include="CreatMesh.cpp" />
     <ClCompile Include="Data.cpp" />
     <ClCompile Include="FillImpedance.cpp" />

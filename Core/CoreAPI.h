@@ -83,6 +83,14 @@ namespace Core
 	* \return 0 Success
 	*/
 	int EMCParameterInitialization(char* filename);
+
+	/**
+	* \brief Read Initial Information and Initial the SystemConfiguration
+	* \param filename The name of configuration  *.xml
+	* \return 0 Success
+	*/
+	int AnalysisConfigurationFile(char* filename);
+
 	/**
 	* \brief Release the static data in ComponentList
 	* \return 0 Success

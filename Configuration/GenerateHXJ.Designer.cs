@@ -48,7 +48,7 @@
             this.ResultButton = new System.Windows.Forms.Button();
             this.BFButton = new System.Windows.Forms.Button();
             this.CardGroup = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.TestButton = new System.Windows.Forms.Button();
             this.CommandGroup = new System.Windows.Forms.GroupBox();
             this.statusStrip.SuspendLayout();
             this.CardGroup.SuspendLayout();
@@ -269,7 +269,7 @@
             // 
             // CardGroup
             // 
-            this.CardGroup.Controls.Add(this.button1);
+            this.CardGroup.Controls.Add(this.TestButton);
             this.CardGroup.Controls.Add(this.BFButton);
             this.CardGroup.Controls.Add(this.RequestButton);
             this.CardGroup.Controls.Add(this.SolutionButton);
@@ -285,17 +285,17 @@
             this.CardGroup.TabStop = false;
             this.CardGroup.Text = "カード";
             // 
-            // button1
+            // TestButton
             // 
-            this.button1.BackColor = System.Drawing.Color.MistyRose;
-            this.button1.Enabled = false;
-            this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(150, 92);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 50);
-            this.button1.TabIndex = 41;
-            this.button1.Text = "NotUse";
-            this.button1.UseVisualStyleBackColor = false;
+            this.TestButton.BackColor = System.Drawing.Color.MistyRose;
+            this.TestButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.TestButton.Location = new System.Drawing.Point(150, 92);
+            this.TestButton.Name = "TestButton";
+            this.TestButton.Size = new System.Drawing.Size(125, 50);
+            this.TestButton.TabIndex = 41;
+            this.TestButton.Text = "NotUse";
+            this.TestButton.UseVisualStyleBackColor = false;
+            this.TestButton.Click += new System.EventHandler(this.TestButton_Click);
             // 
             // CommandGroup
             // 
@@ -363,7 +363,7 @@
         private System.Windows.Forms.ToolStripStatusLabel HxjLocation;
         private System.Windows.Forms.GroupBox CardGroup;
         private System.Windows.Forms.GroupBox CommandGroup;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button TestButton;
     }
 }
 

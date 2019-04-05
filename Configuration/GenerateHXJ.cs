@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace Configuration
 {
@@ -14,25 +14,41 @@ namespace Configuration
         private string ConfigurationFullName { get; set; }
         private const string Corename = @"\Core.exe";
         private readonly string _root;
+
         public Start()
         {
             InitializeComponent();
+            XmlTool.Initial();
             _root= Directory.GetCurrentDirectory();
+#if DEBUG
+            TestButton.Enabled = true;
+#else
+            TestButton.Enabled=false;
+#endif
         }
 
         private void Start_Load(object sender, EventArgs e)
         {
             BatDir = _root + @"\Run.bat";
             CoreFullname = _root + Corename;
+            
         }
 
 
-        #region commandAPI
+#region commandAPI
         private void ResultButton_Click(object sender, EventArgs e)
         {
+#if HXJ
             string resultFile = FormFile.Files.ProjectDir + '\\' + FormFile.Files.ProjectName + ".out";
+#else
+            string resultFile;
+            XmlNode project = XmlTool.Root.SelectSingleNode("/Configuration/File/IN/Project");
+            if (project != null)resultFile = project.ChildNodes[2].InnerText;
+            else return;
+            
+#endif
             if (File.Exists(resultFile)) Process.Start("notepad.exe", resultFile);
-            else InformationText.Text = @"Not exist file:\n" + resultFile;
+            else InformationText.Text = @"Not exist file:" + resultFile;
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -43,12 +59,16 @@ namespace Configuration
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+#if HXJ
             SaveFileDialog configSaveFileDialog = new SaveFileDialog { Filter = @"小雪球 |*.hxj" };//定义文件保存位置
+#else
+            SaveFileDialog configSaveFileDialog = new SaveFileDialog { Filter = @"配置文件 |*.xml" };//定义文件保存位置
+#endif
             if (configSaveFileDialog.ShowDialog() == DialogResult.OK)//如果有保存路径
             {
                 SaveButton.Enabled = false;
                 ConfigurationFullName = configSaveFileDialog.FileName;
-
+#if HXJ
                 FormFile.Files.ProjectDir = Path.GetDirectoryName(configSaveFileDialog.FileName);
                 FormFile.Files.ProjectName = Path.GetFileNameWithoutExtension(configSaveFileDialog.FileName);
                 StreamWriter sw = File.CreateText(configSaveFileDialog.FileName);
@@ -66,6 +86,16 @@ namespace Configuration
                 sw.WriteLine((int)Card.EN);
                 sw.Flush();
                 sw.Close();
+#else
+                XmlNode project = XmlTool.Root.SelectSingleNode("/Configuration/File/IN/Project");
+
+                project.ChildNodes[0].InnerText = Path.GetFileNameWithoutExtension(configSaveFileDialog.FileName);
+                project.ChildNodes[1].InnerText = Path.GetDirectoryName(configSaveFileDialog.FileName);
+                project.ChildNodes[2].InnerText = 
+                    project.ChildNodes[1].InnerText + '\\' + project.FirstChild.InnerText + ".out";
+
+                XmlTool.Doc.Save(configSaveFileDialog.FileName);
+#endif
                 InformationText.Text = @"Configuration is written Successfully:";
                 InformationText.AppendText("\n" + configSaveFileDialog.FileName);
 #if DEBUG
@@ -86,7 +116,11 @@ namespace Configuration
 
         private void ValidateButton_Click(object sender, EventArgs e)
         {
+#if HXJ
             if (!File.Exists(FormFile.Files.MeshFile))
+#else
+            if(!File.Exists(FormFile.MeshCard.FirstChild.InnerText))
+#endif
             {
                 InformationText.Text = @"Mesh File is not exist!";
                 FileButton.BackColor = Color.Red;
@@ -94,14 +128,19 @@ namespace Configuration
             }
             else FileButton.BackColor = Color.Green;
 
-            if (FormMethod.Impedance.FillingStrategy == 0)
-            {
-                FormSolution.Sol.PreConditionType = 0;
-            }
-
+#if HXJ
+            if (FormMethod.Impedance.FillingStrategy == 0)FormSolution.Sol.PreConditionType = 0;
             BFButton.BackColor = FormBasicFunction.BasicFunction.BasicFunctionType >-1&&
                                  File.Exists(FormBasicFunction.BasicFunction.BasicFunctionName) ?
                                   Color.Green: Color.Yellow ;
+#else
+            if (FormMethod.MethodCard.FirstChild.InnerText != "1")
+                FormSolution.SolutionMod.FirstChild.ChildNodes[4].InnerText = "0";
+            BFButton.BackColor = int.Parse(FormBasicFunction.OSCard.FirstChild.InnerText) > -1 &&
+                                 File.Exists(FormBasicFunction.OSCard.LastChild.InnerText) ?
+                Color.Green : Color.Yellow;
+            
+#endif
 
             InformationText.Text = @"Configuration File is Corrected!";
             
@@ -116,12 +155,16 @@ namespace Configuration
 
         private void LoadButton_Click(object sender, EventArgs e)
         {
-
+#if HXJ
             OpenFileDialog configFileDialog = new OpenFileDialog { Filter = @"小雪球 |*.hxj" }; //定义新的文件打开位置控件
+#else
+            OpenFileDialog configFileDialog = new OpenFileDialog { Filter = @"配置文件 |*.xml" }; //定义新的文件打开位置控件
+#endif
             if (configFileDialog.ShowDialog() == DialogResult.OK)//如果有选择打开的文件
             {
                 InformationText.Clear();
                 InformationText.AppendText("Read Configuration File:\n" + configFileDialog.FileName + "\n");
+#if HXJ
                 StreamReader sd = new StreamReader(configFileDialog.FileName);
                 
                 FormRequest.FarField.Clear();
@@ -161,8 +204,22 @@ namespace Configuration
                     }
                 } while (hxj != Card.EN);
                 sd.Close();
-                HxjLocation.Text =@"$ "+configFileDialog.FileName;
+#else
+                XmlTool.Load(configFileDialog.FileName);                
+                //FormRequest.FarField.Clear();
+
+                //Hook
+                FormFile.MeshCard = (XmlElement)XmlTool.Root.SelectSingleNode("/Configuration/File/IN/Mesh");
+                FormBasicFunction.OSCard = (XmlElement)XmlTool.Root.SelectSingleNode("/Configuration/File/OS");
+                FormMethod.MethodCard = (XmlElement)XmlTool.Root.SelectSingleNode("/Configuration/Method");
+                FormFrequency.ParameterMod = (XmlElement)XmlTool.Root.SelectSingleNode("/Configuration/EMCPara");
+                FormExcitation.ExcitationMod = (XmlElement)XmlTool.Root.SelectSingleNode("/Configuration/Excitation");
+                FormSolution.SolutionMod = (XmlElement)XmlTool.Root.SelectSingleNode("/Configuration/Solution");
+                FormRequest.RequestMod = (XmlElement)XmlTool.Root.SelectSingleNode("/Configuration/Request");
+#endif
+                HxjLocation.Text =configFileDialog.FileName;
             }
+
         }
 
         //Insert in the dictionary if not exist
@@ -213,11 +270,9 @@ namespace Configuration
                 if (File.Exists(BatDir)) File.Delete(BatDir);
             }
         }
-        #endregion
+#endregion
 
-
-
-        #region CardAPI
+#region CardAPI
         //Item API
         private void Mesh_Click(object sender, EventArgs e)
         {
@@ -226,7 +281,11 @@ namespace Configuration
             InformationText.Clear();
             InformationText.Text = @"Click Mesh";
             FileButton.BackColor = Color.MistyRose;
+#if HXJ
             FormBasicFunction.BasicFunction.BasicFunctionType = -1;
+#else
+            FormBasicFunction.OSCard.FirstChild.InnerText = "-1";
+#endif
             BFButton.BackColor = Color.MistyRose;
         }
 
@@ -283,7 +342,15 @@ namespace Configuration
             InformationText.Text = @"Click BasicFunction";
             BFButton.BackColor = Color.MistyRose;
         }
-        #endregion
+
+        private void TestButton_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(ConfigurationFullName))
+                Process.Start("D:/Program Files/Softwares/UltraEdit/uedit64.exe", ConfigurationFullName);
+            else InformationText.Text = @"Not exist file:\n" + ConfigurationFullName;
+
+        }
+#endregion
 
         private void Generate_BatFile(string command)
         {
