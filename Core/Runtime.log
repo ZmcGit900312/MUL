@@ -5141,3 +5141,195 @@
 [Fri Apr 5 19:04:19 2019 Fri][info] Release Matrix
 [Fri Apr 5 19:04:19 2019 Fri][info] Release Request
 [Fri Apr 5 19:04:19 2019 Fri][info] Finish
+[Wed Apr 10 20:49:18 2019 Wed][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Wed Apr 10 20:49:18 2019 Wed][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Wed Apr 10 20:49:18 2019 Wed][info] Project Name:	test
+[Wed Apr 10 20:49:18 2019 Wed][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Wed Apr 10 20:49:18 2019 Wed][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Wed Apr 10 20:49:18 2019 Wed][info] Frequency:	3.000000e+08
+[Wed Apr 10 20:49:18 2019 Wed][info] Creat Mesh
+[Wed Apr 10 20:49:19 2019 Wed][info] Creat Mesh costs	0.113000 s
+[Wed Apr 10 20:49:19 2019 Wed][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Wed Apr 10 20:49:19 2019 Wed][info] Upper Point of Box is (+0.599,+0.598,+0.600
+)
+[Wed Apr 10 20:49:19 2019 Wed][info] Choose RWG Function as BasicFunction
+
+[Wed Apr 10 20:49:19 2019 Wed][info] The number of BasicFuntions is:	1287
+[Wed Apr 10 20:49:19 2019 Wed][info] Load BasicFuntions costs:	     0.006 s
+[Wed Apr 10 20:49:19 2019 Wed][info] Set Green Function
+[Wed Apr 10 20:49:19 2019 Wed][info] Free Space Green Function is choosen
+
+[Wed Apr 10 20:49:19 2019 Wed][info] Begin to pre-compute the SelfTriangle Impedance
+[Wed Apr 10 20:49:19 2019 Wed][info] Initial Solver
+[Wed Apr 10 20:49:19 2019 Wed][info] *************Initial AIM Matrix**************
+[Wed Apr 10 20:49:19 2019 Wed][info] AIMBox is from (-0.649,-0.649,-0.650) to (+0.649,+0.648,+0.650)
+[Wed Apr 10 20:49:19 2019 Wed][info] AIM Interval:	0.05 ¦Ë
+[Wed Apr 10 20:49:19 2019 Wed][info] Dimension:	3
+[Wed Apr 10 20:49:19 2019 Wed][info] LayerNumber:	(27,27,27)
+[Wed Apr 10 20:49:19 2019 Wed][info] AIM Order:	2
+[Wed Apr 10 20:49:19 2019 Wed][info] AIM Threshold:	0.30 ¦Ë
+[Wed Apr 10 20:49:19 2019 Wed][info] AIM NearFieldEps:	1.000000e-02
+[Wed Apr 10 20:49:19 2019 Wed][info] ************Fill Impedance Matrix************
+[Wed Apr 10 20:49:20 2019 Wed][info] Take the Single Level FFT Method
+[Wed Apr 10 20:49:21 2019 Wed][info] Multipole Expansion costs time:	1.077s
+[Wed Apr 10 20:49:25 2019 Wed][info] Near-Matrix Setting by TFS Time is:	3.72s
+[Wed Apr 10 20:49:25 2019 Wed][info] Triplet and NearField have 420508 and 105127 elements.
+[Wed Apr 10 20:49:44 2019 Wed][info] Precondition cost:	19.876s
+[Wed Apr 10 20:50:00 2019 Wed][info] Near Field by TFS TotalTime is:	19.516s
+[Wed Apr 10 20:50:00 2019 Wed][info] There are total 138996 in GamaMatrix
+[Wed Apr 10 20:50:00 2019 Wed][info] There are total 262144 in GreenMatrix
+[Wed Apr 10 20:50:00 2019 Wed][info] Nonzeros of NearField Element:	30407 in 1656369
+[Wed Apr 10 20:50:00 2019 Wed][info] Impedance Sparsity:	1.835762%
+[Wed Apr 10 20:50:00 2019 Wed][info] Whole Filling costs	40.924000 s
+[Wed Apr 10 20:50:00 2019 Wed][info] Memory Cost	6.584885 Mb
+[Wed Apr 10 20:50:00 2019 Wed][info] Plane wave Name::	T0P90
+[Wed Apr 10 20:50:00 2019 Wed][info] Direction:[0 0 -1]
+[Wed Apr 10 20:50:00 2019 Wed][info] Polarization:[6.12323e-17 1 0]
+[Wed Apr 10 20:50:00 2019 Wed][info] Set RightHand is cost:	0.018000 s
+[Wed Apr 10 20:50:00 2019 Wed][info] Memory Cost	0.019638 Mb
+[Wed Apr 10 20:50:00 2019 Wed][info] *********Solve Matrix with BiCGSTAB**********
+[Wed Apr 10 20:50:00 2019 Wed][info] The Maxiteration is:	0
+[Wed Apr 10 20:50:00 2019 Wed][info] The Tolerance is:	1.000000e-04
+[Wed Apr 10 20:50:11 2019 Wed][info] The Final Iteration is:	17
+[Wed Apr 10 20:50:11 2019 Wed][info] The results tolerance is:	9.3142e-05
+[Wed Apr 10 20:50:11 2019 Wed][info] Iteration is cost:	10.651000 s
+[Wed Apr 10 20:50:11 2019 Wed][info] Save BasicFunction in binary type
+[Wed Apr 10 20:50:11 2019 Wed][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Wed Apr 10 20:50:11 2019 Wed][info] Run CalculateRequest()
+[Wed Apr 10 20:50:11 2019 Wed][info] **********Calcuate the FarField RCS**********
+[Wed Apr 10 20:50:11 2019 Wed][info] Far Field Request::	Horizon
+[Wed Apr 10 20:50:24 2019 Wed][info] FarField Calculate cost 13.254000 s
+[Wed Apr 10 20:50:24 2019 Wed][info] *************Release the memory**************
+[Wed Apr 10 20:50:24 2019 Wed][info] Release BasicFunction
+[Wed Apr 10 20:50:24 2019 Wed][info] Release Matrix
+[Wed Apr 10 20:50:24 2019 Wed][info] Release Request
+[Wed Apr 10 20:50:24 2019 Wed][info] ---------------------END---------------------
+[Wed Apr 10 21:01:52 2019 Wed][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Wed Apr 10 21:01:52 2019 Wed][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Wed Apr 10 21:01:52 2019 Wed][info] Project Name:	test
+[Wed Apr 10 21:01:52 2019 Wed][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Wed Apr 10 21:01:52 2019 Wed][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Wed Apr 10 21:01:52 2019 Wed][info] Frequency:	3.000000e+08
+[Wed Apr 10 21:01:52 2019 Wed][info] ********************Mesh*********************
+[Wed Apr 10 21:01:52 2019 Wed][info] Creat Mesh costs	0.049000 s
+[Wed Apr 10 21:01:52 2019 Wed][info] ****************Geometry Info****************)
+[Wed Apr 10 21:01:52 2019 Wed][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Wed Apr 10 21:01:52 2019 Wed][info] Upper Point of Box is (+0.599,+0.598,+0.600
+)
+[Wed Apr 10 21:01:52 2019 Wed][info] Choose RWG Function as BasicFunction
+
+[Wed Apr 10 21:01:52 2019 Wed][info] The number of BasicFuntions is:	1287
+[Wed Apr 10 21:01:52 2019 Wed][info] Load BasicFuntions costs:	     0.006 s
+[Wed Apr 10 21:01:52 2019 Wed][info] Set Green Function
+[Wed Apr 10 21:01:52 2019 Wed][info] Free Space Green Function is choosen
+
+[Wed Apr 10 21:01:52 2019 Wed][info] Begin to pre-compute the SelfTriangle Impedance
+[Wed Apr 10 21:01:53 2019 Wed][info] Initial Solver
+[Wed Apr 10 21:01:53 2019 Wed][info] *************Initial AIM Matrix**************
+[Wed Apr 10 21:01:53 2019 Wed][info] AIMBox is from (-0.649,-0.649,-0.650) to (+0.649,+0.648,+0.650)
+[Wed Apr 10 21:01:53 2019 Wed][info] AIM Interval:	0.05 ¦Ë
+[Wed Apr 10 21:01:53 2019 Wed][info] Dimension:	3
+[Wed Apr 10 21:01:53 2019 Wed][info] LayerNumber:	(27,27,27)
+[Wed Apr 10 21:01:53 2019 Wed][info] AIM Order:	2
+[Wed Apr 10 21:01:53 2019 Wed][info] AIM Threshold:	0.30 ¦Ë
+[Wed Apr 10 21:01:53 2019 Wed][info] AIM NearFieldEps:	1.000000e-02
+[Wed Apr 10 21:01:53 2019 Wed][info] ************Fill Impedance Matrix************
+[Wed Apr 10 21:01:53 2019 Wed][info] Take the Single Level FFT Method
+[Wed Apr 10 21:01:54 2019 Wed][info] Multipole Expansion costs time:	1.052s
+[Wed Apr 10 21:01:58 2019 Wed][info] Near-Matrix Setting by TFS Time is:	3.281s
+[Wed Apr 10 21:01:58 2019 Wed][info] Triplet and NearField have 420508 and 105127 elements.
+[Wed Apr 10 21:02:18 2019 Wed][info] Precondition cost:	20.304s
+[Wed Apr 10 21:02:34 2019 Wed][info] Near Field by TFS TotalTime is:	19.533s
+[Wed Apr 10 21:02:34 2019 Wed][info] There are total 138996 in GamaMatrix
+[Wed Apr 10 21:02:34 2019 Wed][info] There are total 262144 in GreenMatrix
+[Wed Apr 10 21:02:34 2019 Wed][info] Nonzeros of NearField Element:	30407 in 1656369
+[Wed Apr 10 21:02:34 2019 Wed][info] Impedance Sparsity:	1.835762%
+[Wed Apr 10 21:02:34 2019 Wed][info] Whole Filling costs	41.340000 s
+[Wed Apr 10 21:02:34 2019 Wed][info] Memory Cost	6.584885 Mb
+[Wed Apr 10 21:02:34 2019 Wed][info] Plane wave Name::	T0P90
+[Wed Apr 10 21:02:34 2019 Wed][info] Direction:[0 0 -1]
+[Wed Apr 10 21:02:34 2019 Wed][info] Polarization:[6.12323e-17 1 0]
+[Wed Apr 10 21:02:34 2019 Wed][info] Set RightHand is cost:	0.044000 s
+[Wed Apr 10 21:02:34 2019 Wed][info] Memory Cost	0.019638 Mb
+[Wed Apr 10 21:02:34 2019 Wed][info] *********Solve Matrix with BiCGSTAB**********
+[Wed Apr 10 21:02:34 2019 Wed][info] The Maxiteration is:	0
+[Wed Apr 10 21:02:34 2019 Wed][info] The Tolerance is:	1.000000e-04
+[Wed Apr 10 21:02:45 2019 Wed][info] The Final Iteration is:	17
+[Wed Apr 10 21:02:45 2019 Wed][info] The results tolerance is:	9.3142e-05
+[Wed Apr 10 21:02:45 2019 Wed][info] Iteration is cost:	11.061000 s
+[Wed Apr 10 21:02:45 2019 Wed][info] Save BasicFunction in binary type
+[Wed Apr 10 21:02:45 2019 Wed][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Wed Apr 10 21:02:45 2019 Wed][info] Run CalculateRequest()
+[Wed Apr 10 21:02:45 2019 Wed][info] **********Calcuate the FarField RCS**********
+[Wed Apr 10 21:02:45 2019 Wed][info] Far Field Request::	Horizon
+[Wed Apr 10 21:03:00 2019 Wed][info] FarField Calculate cost 14.146000 s
+[Wed Apr 10 21:03:00 2019 Wed][info] *************Release the memory**************
+[Wed Apr 10 21:03:00 2019 Wed][info] Release BasicFunction
+[Wed Apr 10 21:03:00 2019 Wed][info] Release Matrix
+[Wed Apr 10 21:03:00 2019 Wed][info] Release Request
+[Wed Apr 10 21:03:00 2019 Wed][info] ---------------------END---------------------
+[Wed Apr 10 21:06:58 2019 Wed][info] *************Read Configuration**************
+[Wed Apr 10 21:06:58 2019 Wed][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Wed Apr 10 21:06:58 2019 Wed][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Wed Apr 10 21:06:58 2019 Wed][info] Project Name:	test
+[Wed Apr 10 21:06:58 2019 Wed][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Wed Apr 10 21:06:58 2019 Wed][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Wed Apr 10 21:06:58 2019 Wed][info] Frequency:	3.000000e+08
+[Wed Apr 10 21:06:58 2019 Wed][info] ********************Mesh*********************
+[Wed Apr 10 21:06:58 2019 Wed][info] Creat Mesh costs	0.038000 s
+[Wed Apr 10 21:06:58 2019 Wed][info] ****************Geometry Info****************)
+[Wed Apr 10 21:06:58 2019 Wed][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Wed Apr 10 21:06:58 2019 Wed][info] Upper Point of Box is (+0.599,+0.598,+0.600
+)
+[Wed Apr 10 21:06:58 2019 Wed][info] Choose RWG Function as BasicFunction
+
+[Wed Apr 10 21:06:58 2019 Wed][info] The number of BasicFuntions is:	1287
+[Wed Apr 10 21:06:58 2019 Wed][info] Load BasicFuntions costs:	     0.007 s
+[Wed Apr 10 21:06:58 2019 Wed][info] Set Green Function
+[Wed Apr 10 21:06:58 2019 Wed][info] Free Space Green Function is choosen
+
+[Wed Apr 10 21:06:58 2019 Wed][info] Begin to pre-compute the SelfTriangle Impedance
+[Wed Apr 10 21:06:59 2019 Wed][info] Initial Solver
+[Wed Apr 10 21:06:59 2019 Wed][info] *************Initial AIM Matrix**************
+[Wed Apr 10 21:06:59 2019 Wed][info] AIMBox is from (-0.649,-0.649,-0.650) to (+0.649,+0.648,+0.650)
+[Wed Apr 10 21:06:59 2019 Wed][info] AIM Interval:	0.05 ¦Ë
+[Wed Apr 10 21:06:59 2019 Wed][info] Dimension:	3
+[Wed Apr 10 21:06:59 2019 Wed][info] LayerNumber:	(27,27,27)
+[Wed Apr 10 21:06:59 2019 Wed][info] AIM Order:	2
+[Wed Apr 10 21:06:59 2019 Wed][info] AIM Threshold:	0.30 ¦Ë
+[Wed Apr 10 21:06:59 2019 Wed][info] AIM NearFieldEps:	1.000000e-02
+[Wed Apr 10 21:06:59 2019 Wed][info] ************Fill Impedance Matrix************
+[Wed Apr 10 21:06:59 2019 Wed][info] Take the Single Level FFT Method
+[Wed Apr 10 21:07:00 2019 Wed][info] Multipole Expansion costs time:	1.038s
+[Wed Apr 10 21:07:04 2019 Wed][info] Near-Matrix Setting by TFS Time is:	3.989s
+[Wed Apr 10 21:07:04 2019 Wed][info] Triplet and NearField have 420508 and 105127 elements.
+[Wed Apr 10 21:07:27 2019 Wed][info] Precondition cost:	22.407s
+[Wed Apr 10 21:07:43 2019 Wed][info] Near Field by TFS TotalTime is:	20.29s
+[Wed Apr 10 21:07:43 2019 Wed][info] There are total 138996 in GamaMatrix
+[Wed Apr 10 21:07:43 2019 Wed][info] There are total 262144 in GreenMatrix
+[Wed Apr 10 21:07:43 2019 Wed][info] Nonzeros of NearField Element:	30407 in 1656369
+[Wed Apr 10 21:07:43 2019 Wed][info] Impedance Sparsity:	1.835762%
+[Wed Apr 10 21:07:43 2019 Wed][info] Whole Filling costs	44.208000 s
+[Wed Apr 10 21:07:43 2019 Wed][info] Memory Cost	6.584885 Mb
+[Wed Apr 10 21:07:43 2019 Wed][info] Plane wave Name::	T0P90
+[Wed Apr 10 21:07:43 2019 Wed][info] Direction:[0 0 -1]
+[Wed Apr 10 21:07:43 2019 Wed][info] Polarization:[6.12323e-17 1 0]
+[Wed Apr 10 21:07:43 2019 Wed][info] Set RightHand is cost:	0.019000 s
+[Wed Apr 10 21:07:43 2019 Wed][info] Memory Cost	0.019638 Mb
+[Wed Apr 10 21:07:43 2019 Wed][info] *********Solve Matrix with BiCGSTAB**********
+[Wed Apr 10 21:07:43 2019 Wed][info] The Maxiteration is:	0
+[Wed Apr 10 21:07:43 2019 Wed][info] The Tolerance is:	1.000000e-04
+[Wed Apr 10 21:07:54 2019 Wed][info] The Final Iteration is:	17
+[Wed Apr 10 21:07:54 2019 Wed][info] The results tolerance is:	9.3142e-05
+[Wed Apr 10 21:07:54 2019 Wed][info] Iteration is cost:	11.624000 s
+[Wed Apr 10 21:07:54 2019 Wed][info] Save BasicFunction in binary type
+[Wed Apr 10 21:07:54 2019 Wed][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Wed Apr 10 21:07:54 2019 Wed][info] Run CalculateRequest()
+[Wed Apr 10 21:07:54 2019 Wed][info] **********Calcuate the FarField RCS**********
+[Wed Apr 10 21:07:54 2019 Wed][info] Far Field Request::	Horizon
+[Wed Apr 10 21:08:09 2019 Wed][info] FarField Calculate cost 14.193000 s
+[Wed Apr 10 21:08:09 2019 Wed][info] *************Release the memory**************
+[Wed Apr 10 21:08:09 2019 Wed][info] Release BasicFunction
+[Wed Apr 10 21:08:09 2019 Wed][info] Release Matrix
+[Wed Apr 10 21:08:09 2019 Wed][info] Release Request
+[Wed Apr 10 21:08:09 2019 Wed][info] ---------------------END---------------------

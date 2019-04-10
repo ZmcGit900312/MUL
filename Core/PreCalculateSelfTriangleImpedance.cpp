@@ -23,7 +23,7 @@ int Core::PreCalculateSelfTriangleImpedance()
 	//
 	Console->info("Pre-compute SelfTriangle Impedance costs:\t{} s", time);
 	ResultL->info("Pre-compute SelfTriangle Impedance costs:\t{} s", time);
-	RuntimeL->info("Finish Pre-compute");
+	
 	RuntimeL->flush();
 #pragma endregion 
 	return 0;

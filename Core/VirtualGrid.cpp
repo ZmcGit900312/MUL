@@ -13,6 +13,7 @@ Core::VirtualGrid::VirtualGrid(const ImpConfiguration & configuration, IImpServi
 		_layerElementSizeAcu(i) = _layerElementSize.head(i + 1).prod();
 	}
 	Console->info("Take the Virtual Grids Technique");
+	RuntimeL->info("Take the Virtual Grids Technique");
 	ResultL->info("Take the Virtual Grids Technique");
 }
 
@@ -88,6 +89,7 @@ void VirtualGrid::MultipoleExpansion(vector<IBasicFunction*>&bf)
 	const clock_t end = clock();
 	const double timecost = static_cast<double>(end - start) / CLOCKS_PER_SEC;
 	Console->info("Multipole Expansion costs time:\t{}s", timecost);
+	RuntimeL->info("Multipole Expansion costs time:\t{}s", timecost);
 	ResultL->info("Multipole Expansion costs time:\t{}s", timecost);
 
 	tripletsGamaX.clear(); tripletsGamaX.shrink_to_fit();
@@ -203,13 +205,20 @@ void Core::VirtualGrid::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFuncti
 	cout << "\r";
 	Console->info("Near-Matrix Setting by TFS Time is:\t{}s", timecost);
 	Console->info("Triplet and NearField have {0} and {1} elements.", tripletsNearPart.size(), _imp->GetNearFieldMatrix().nonZeros());
+	RuntimeL->info("Near-Matrix Setting by TFS Time is:\t{}s", timecost);
+	RuntimeL->info("Triplet and NearField have {0} and {1} elements.", tripletsNearPart.size(), _imp->GetNearFieldMatrix().nonZeros());
 	ResultL->info("Near-Matrix Setting by TFS Time is:\t{}s", timecost);
 	ResultL->info("Triplet and NearField have {0} and {1} elements.", tripletsNearPart.size(), _imp->GetNearFieldMatrix().nonZeros());
 
 	tripletsNearPart.clear();
-	//PreCondition
 
+	//PreCondition
+	Console->info("Calculate Preconditioning...");
 	Solver->Precondition(_imp);
+	Console->info("Precondition cost:\t{}s", Solver->GetPreconditionTime());
+	ResultL->info("Precondition cost:\t{}s", Solver->GetPreconditionTime());
+	RuntimeL->info("Precondition cost:\t{}s", Solver->GetPreconditionTime());
+	
 	//Near Correction
 	Console->debug("Begin to Correction");
 	start = clock();
@@ -243,6 +252,7 @@ void Core::VirtualGrid::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFuncti
 	cout << "\r";
 	const double sparsity = static_cast<double>(_imp->GetNearFieldMatrix().nonZeros()) / _unknowns / _unknowns;
 	Console->info("Near Field by TFS TotalTime is:\t{}s", timecost);
+	RuntimeL->info("Near Field by TFS TotalTime is:\t{}s", timecost);
 	ResultL->info("Near Field by TFS TotalTime is:\t{}s", timecost);
 	Console->debug("Nonzeros have {0} and take {1}%.", _imp->GetNearFieldMatrix().nonZeros(), 100 * sparsity);
 }
@@ -298,13 +308,18 @@ void Core::VirtualGrid::NearCorrection(vector<IBasicFunction*>& bf)
 	const double timecost = double(end - start) / CLOCKS_PER_SEC;
 	cout << "\r";
 	Console->info("Near Field FillingTime is:\t{}s", timecost);
+	RuntimeL->info("Near Field FillingTime is:\t{}s", timecost);
 	ResultL->info("Near Field FillingTime is:\t{}s", timecost);
 	Console->info("Triplet and NearField have {0} and {1} elements.", tripletsNearPart.size(), _imp->GetNearFieldMatrix().nonZeros());
 	Console->info("Nonzeros have {0} and take {1}%.", _imp->GetNearFieldMatrix().nonZeros(),
 		100 * (double)_imp->GetNearFieldMatrix().nonZeros() / (_unknowns*_unknowns));
 
-	//Precondition
+	//PreCondition
+	Console->info("Calculate Preconditioning...");
 	Solver->Precondition(_imp);
+	Console->info("Precondition cost:\t{}s", Solver->GetPreconditionTime());
+	ResultL->info("Precondition cost:\t{}s", Solver->GetPreconditionTime());
+	RuntimeL->info("Precondition cost:\t{}s", Solver->GetPreconditionTime());
 
 }
 

@@ -31,7 +31,7 @@ namespace Core
 		size_t SegmentSize() const { return SegmentVector.size(); }
 		size_t TriangleSize() const { return TriangleVector.size(); }
 		size_t CuboidSize()const { return CuboidVector.size(); }
-		size_t TetrahedraSize()const { return TriangleVector.size(); }
+		size_t TetrahedraSize()const { return TetrahedraVector.size(); }
 			
 		Vector3d& GetNode(const int index) { return _grids[index]; }
 		Segment* GetSegment(const int index) { return SegmentVector[index]; }

@@ -24,7 +24,7 @@
       <Threshold>0.3</Threshold>
       <NearTolerance>0.01</NearTolerance>
       <Dimension>3</Dimension>
-      <VirtualGrid>0</VirtualGrid>
+      <VirtualGrid>1</VirtualGrid>
     </AIM>
     <MoM Validate="0" />
   </Method>

@@ -6,7 +6,6 @@
 //AIM Identity
 int Core::Solution::BiCGStabAIMIdentity::Precondition(IImpService *imp)
 {
-	Console->info("Non Precondition used");
 	const clock_t start = clock();
 	_bicg.compute(*static_cast<ImpAIM*>(imp));
 	const clock_t end = clock();
@@ -35,13 +34,10 @@ int Core::Solution::BiCGStabAIMIdentity::Solve(VectorXcd & sol, VectorXcd & righ
 
 int Core::Solution::BiCGStabAIMILU::Precondition(IImpService *imp)
 {
-	Console->info("Calculate ILU Precondition...");
 	const clock_t start = clock();
 	_bicg.compute(*static_cast<ImpAIM*>(imp));
 	const clock_t end = clock();
 	_preTime = double(end - start) / CLOCKS_PER_SEC;
-	Console->info("Precondition cost:\t{}s", _preTime);
-	ResultL->info("Precondition cost:\t{}s", _preTime);
 	return 0;
 }
 
@@ -67,13 +63,10 @@ int Core::Solution::BiCGStabAIMILU::Solve(VectorXcd & sol, VectorXcd & right)
 #pragma region MoM
 int Core::Solution::BiCGStabMoMJacobi::Precondition(IImpService *imp)
 {
-	Console->info("Calculate Jacobi Precondition...");
 	const clock_t start = clock();
 	_bicg.compute(static_cast<ImpMoM*>(imp)->LocalMatrix());
 	const clock_t end = clock();
 	_preTime = double(end - start) / CLOCKS_PER_SEC;
-	Console->info("Precondition cost:\t{}s", _preTime);
-	ResultL->info("Precondition cost:\t{}s", _preTime);
 	return 0;
 }
 

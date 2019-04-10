@@ -198,6 +198,9 @@
     <ClInclude Include="VirtualGrid.h">
       <Filter>头文件\AIMAssist</Filter>
     </ClInclude>
+    <ClInclude Include="ResultReport.h">
+      <Filter>头文件\Post</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Data.cpp">
@@ -364,6 +367,9 @@
     </ClCompile>
     <ClCompile Include="CreatImpedance.cpp">
       <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultReport.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

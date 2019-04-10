@@ -8,9 +8,8 @@
 int Core::FillImpedance()
 {
 	cout << "\n";
-	Console->info("Fill Impedance Matrix");
-	ResultL->info("\nFill Impedance");
-	RuntimeL->info("Run FillImpedance()");
+	Console->info("{:*^45}","Fill Impedance Matrix");
+	RuntimeL->info("{:*^45}","Fill Impedance Matrix");
 	
 	ComponentList::ImpService->FillImpedance();
 	
@@ -18,7 +17,8 @@ int Core::FillImpedance()
 	Console->info("Memory Cost\t{:f} Mb", ComponentList::ImpService->GetMemoryCost());
 	ResultL->info("Whole Filling costs\t{:f} s", ComponentList::ImpService->GetTime());
 	ResultL->info("Memory Cost\t{:f} Mb", ComponentList::ImpService->GetMemoryCost());
-	RuntimeL->info("Finish");
+	RuntimeL->info("Whole Filling costs\t{:f} s", ComponentList::ImpService->GetTime());
+	RuntimeL->info("Memory Cost\t{:f} Mb", ComponentList::ImpService->GetMemoryCost());
 	RuntimeL->flush();
 	return 0;
 }

@@ -40,9 +40,4 @@ void Assist::ModalGeometry::SetLimitationBoundary(Mesh * mesh)
 	_boundaryLimitaion[5] = { upperX,lowerY,upperZ };
 	_boundaryLimitaion[6] = { lowerX,upperY,upperZ };
 	_boundaryLimitaion[7] = { upperX,upperY,upperZ };
-
-	Console->info("Box is from ({0:+5.3f},{1:+5.3f},{2:+5.3f}) to ({3:+5.3f},{4:+5.3f},{5:+5.3f})",
-		lowerX, lowerY, lowerZ, upperX, upperY, upperZ);
-	ResultL->info("Lower Point of Box is ({0:+5.3f},{1:+5.3f},{2:+5.3f})", lowerX, lowerY, lowerZ);
-	ResultL->info("Upper Point of Box is ({0:+5.3f},{1:+5.3f},{2:+5.3f})", upperX, upperY, upperZ);
 }

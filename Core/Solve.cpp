@@ -3,19 +3,20 @@
 #include "Data.h"
 #include "Log.h"
 #include "IterationSolver.h"
+#include "ResultReport.h"
 
 int Core::Solve()
-{
-	RuntimeL->info("Run Solve()");
+{	
 	cout << '\n';
 
-	Console->info("Solve Matrix with BiCGSTAB");
+	Console->info("{:*^45}","Solve Matrix with BiCGSTAB");
 	Console->info("The Maxiteration is:\t{}", SystemConfig.SolverConfig.Maxiteration);
 	Console->info("The Tolerance is:\t{:e}", SystemConfig.SolverConfig.Tolerance);
-	ResultL->info("Solve Matrix with BiCGSTAB");
-	ResultL->info("The Maxiteration is:\t{}", SystemConfig.SolverConfig.Maxiteration);
-	ResultL->info("The Tolerance is:\t{:e}", SystemConfig.SolverConfig.Tolerance);
+	RuntimeL->info("{:*^45}", "Solve Matrix with BiCGSTAB");
+	RuntimeL->info("The Maxiteration is:\t{}", SystemConfig.SolverConfig.Maxiteration);
+	RuntimeL->info("The Tolerance is:\t{:e}", SystemConfig.SolverConfig.Tolerance);
 
+	ResultReport::WriteSolutionInformation(&SystemConfig.SolverConfig);
 	const auto unknown = SystemConfig.ImpConfig.ImpSize;
 	VectorXcd current{ unknown };
 	int info = 0;
@@ -37,13 +38,15 @@ int Core::Solve()
 		
 		ResultL->info("The Final Iteration is:\t{}", sol->GetIteration());
 		ResultL->info("The results tolerance is:\t{:5.4e}", sol->GetTolerance());
-		ResultL->info("Iteration is cost:\t{:f} s", sol->GetSolveTime());
+		ResultL->info("Iteration is cost:\t{:f} s", sol->GetSolveTime());		
 		
-		
-		RuntimeL->info("Finish");
+		RuntimeL->info("The Final Iteration is:\t{}", sol->GetIteration());
+		RuntimeL->info("The results tolerance is:\t{:5.4e}", sol->GetTolerance());
+		RuntimeL->info("Iteration is cost:\t{:f} s", sol->GetSolveTime());
 		RuntimeL->flush();
-		Console->info("Release Solver");
+		
 		if (Solver) {
+			Console->info("Release Solver");
 			delete Solver;
 			Solver = nullptr;
 		}

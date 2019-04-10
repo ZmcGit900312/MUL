@@ -4,6 +4,7 @@
 #include "Data.h"
 #include "FarField.h"
 #include "Log.h"
+#include "ResultReport.h"
 #include <mkl.h>
 #include "tinyxml2/tinyxml2.h"
 
@@ -34,7 +35,7 @@ int Core::AnalysisConfigurationFile(char* filename)
 		XMLElement* root = doc.FirstChildElement();
 
 		Console->info("Read Configuration");
-
+		RuntimeL->info("{:*^45}", "Read Configuration");
 		Console->debug("{0} = {1}", root->FirstAttribute()->Name(), root->FirstAttribute()->Value());
 
 		
@@ -73,7 +74,7 @@ int Core::AnalysisConfigurationFile(char* filename)
 static int SetFileMod(XMLElement* mod)
 {
 	XMLElement* card = mod->FirstChildElement("IN");
-	Console->info("\nFile Input");
+	Console->info("{:*^45}", "File Input");
 	if(card->FirstAttribute()->BoolValue())
 	{
 		XMLElement* leaf = card->FirstChildElement("Mesh");
@@ -89,11 +90,13 @@ static int SetFileMod(XMLElement* mod)
 		Console->info("Project Directory:\t{}", SystemConfig.ProjectDir);
 		Console->info("Project Name:\t{}", SystemConfig.ProjectName);
 		Console->info("Output FileName:\t"+ SystemConfig.ReportFileName);
+
+		RuntimeL->info("Mesh File Path:\t{}", SystemConfig.MeshFileName);
+		RuntimeL->info("Project Directory:\t{}", SystemConfig.ProjectDir);
+		RuntimeL->info("Project Name:\t{}", SystemConfig.ProjectName);
+		RuntimeL->info("Output FileName:\t" + SystemConfig.ReportFileName);
 		//ResultL
-		remove(SystemConfig.ReportFileName.c_str());
-		ResultL = spd::basic_logger_mt("result", SystemConfig.ReportFileName);
-		ResultL->info("Begin to Calculate");
-		ResultL->set_pattern("%v");
+		ResultReport::InitialWriter(SystemConfig.ReportFileName);
 	}
 
 	card = mod->FirstChildElement("OS");
@@ -107,6 +110,7 @@ static int SetFileMod(XMLElement* mod)
 		+ '\\' + SystemConfig.ProjectName + ".bf";
 
 	Console->info("BasicFunction File Path:\t{}",SystemConfig.BasicFunctionFileName);
+	RuntimeL->info("BasicFunction File Path:\t{}", SystemConfig.BasicFunctionFileName);
 	return 0;
 }
 
@@ -125,7 +129,7 @@ static int SetMethodMod(XMLElement* mod)
 		SystemConfig.ImpConfig.impType = EImpedance(AIM);
 		SystemConfig.ImpConfig.VirtualGridTechnique = card->FirstChildElement("VirtualGrid")->IntText();
 
-		Console->debug("\nAIM Parameters::");
+		Console->debug("{:*^45}", "AIM Parameters::");
 		Console->debug("Order:\t{}", SystemConfig.ImpConfig.GridOrder);
 		Console->debug("Interval:\t{}", SystemConfig.ImpConfig.Interval);
 		Console->debug("Threshold:\t{}", SystemConfig.ImpConfig.Threshold);
@@ -154,6 +158,7 @@ static int SetEMCParameterMod(XMLElement* mod)
 		k = Omega / c0;
 		Lambda = c0 / Frequency;
 		Console->info("Frequency:\t{:e}", Frequency);
+		RuntimeL->info("Frequency:\t{:e}", Frequency);
 	}
 
 	return 0;
@@ -162,7 +167,7 @@ static int SetExcitationMod(XMLElement* mod)
 {
 	XMLElement* card = mod->FirstChildElement("A0");
 
-	Console->debug("\nExcitation");
+	Console->debug("{:*^45}", "Excitation");
 	if(card)
 	{
 		SystemConfig.SourceConfig.ExcitationName = card->FindAttribute("Name")->Value();
@@ -207,7 +212,7 @@ static int SetSolutionMod(XMLElement* mod)
 		SystemConfig.SolverConfig.Tolerance = card->FirstChildElement("Residum")->DoubleText();
 		SystemConfig.SolverConfig.MaxStopTolerance = card->FirstChildElement("StopTolerance")->DoubleText();
 
-		Console->debug("\nSolution Type::\tBiCG");
+		Console->debug("{:*^45}", "Solution Type::\tBiCG");
 		return 0;
 	}
 
@@ -216,7 +221,7 @@ static int SetSolutionMod(XMLElement* mod)
 }
 static int SetRequestMod(XMLElement* mod)
 {
-	Console->debug("\nRequest");
+	Console->debug("{:*^45}", "Request");
 	for(XMLElement* card=mod->FirstChildElement();card != nullptr;card = card->NextSiblingElement())
 	{
 		if(string{ "FF" }==card->Name())

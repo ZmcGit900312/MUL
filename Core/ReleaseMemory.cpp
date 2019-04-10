@@ -5,10 +5,10 @@
 
 int Core::ReleaseMemory()
 {
-	RuntimeL->info("Run ReleaseMemory()");
+	
 	cout << "\n";
-	Console->info("Release the memory");
-
+	Console->info("{:*^45}","Release the memory");
+	RuntimeL->info("{:*^45}", "Release the memory");
 	if (ComponentList::BFvector.size()>0)
 	{
 		for (auto element : ComponentList::BFvector) { delete element; }
@@ -34,9 +34,10 @@ int Core::ReleaseMemory()
 		RuntimeL->info("Release Request");
 	}
 	
-	Console->info("END");
+	Console->info("{:-^45}","END");
+	ResultL->info("{:-^45}", "END");
 	ResultL->flush();
-	RuntimeL->info("Finish");
+	RuntimeL->info("{:-^45}", "END");
 	RuntimeL->flush();
 	return 0;
 }

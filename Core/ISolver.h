@@ -29,7 +29,9 @@ namespace Core
 		{
 			int virtual Precondition(IImpService*) = 0;
 			int virtual  Solve(VectorXcd& sol,VectorXcd& right) = 0;
-
+			double GetTolerance()const = 0;
+			double GetPreconditionTime()const = 0;
+			double GetSolveTime()const = 0;
 		};
 
 		ISolver* FSolver(SolverConfiguration&config, EImpedance imptype); 

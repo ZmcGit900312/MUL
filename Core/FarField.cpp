@@ -11,7 +11,6 @@
 #include "Data.h"
 #include "RWG.h"
 #include "IntegrationRWG.h"
-#include "Log.h"
 #include "ModalGeometry.h"
 
 using namespace std;
@@ -64,8 +63,7 @@ Request::FarField::FarField(vector<IBasicFunction*>*bf, Mesh *mesh) :
 
 void Request::FarField::SetEField(FarFieldConfiguration& config, ofstream& ofs) const
 {
-	Console->info("Calculate Request: {}",config.FarFileName);
-	ResultL->info("Calculate Request: {}", config.FarFileName);
+	
 	const int thetaNum = config.ThetaNum;
 	const int phiNum = config.PhiNum;
 	const double thetaS = config.ThetaStart;

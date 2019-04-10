@@ -22,9 +22,9 @@ namespace Core
 
 			int SolveInfo()const { return _info; }
 			long long GetIteration()const { return _iteration; }
-			double GetTolerance()const { return _tolerance; }
-			double GetPreconditionTime()const { return _preTime; }
-			double GetSolveTime()const { return _solveTime; }
+			double GetTolerance()const override { return _tolerance; }
+			double GetPreconditionTime()const override { return _preTime; }
+			double GetSolveTime()const override { return _solveTime; }
 		protected:
 			SolverConfiguration* _config = nullptr;
 			int _info = 1;

@@ -7,6 +7,7 @@
 #include "FarField.h"
 #include "Log.h"
 #include <mkl.h>
+#include "ResultReport.h"
 using namespace std;
 
 
@@ -45,10 +46,8 @@ int Core::EMCParameterInitialization(char* configurationFileName)
 						+ '\\' + SystemConfig.ProjectName + ".bf";
 
 					outfileName = SystemConfig.ProjectDir + "\\" + SystemConfig.ProjectName + ".out";
-					remove(outfileName.c_str());
-					ResultL = spd::basic_logger_mt("result", outfileName);
-					ResultL->info("Begin to Calculate");
-					ResultL->set_pattern("%v");
+					//ResultL
+					ResultReport::InitialWriter(SystemConfig.ReportFileName);
 					
 					ResultL->info("The Project Name:\t{}", SystemConfig.ProjectName);
 					ResultL->info("Mesh is From:\t{}", SystemConfig.MeshFileName);
@@ -80,15 +79,8 @@ int Core::EMCParameterInitialization(char* configurationFileName)
 					SystemConfig.ImpConfig.FillingStrategy = stoi(*zmc++);
 					SystemConfig.ImpConfig.VirtualGridTechnique = stoi(*zmc++);
 					if(SystemConfig.ImpConfig.VirtualGridTechnique==1)
-					{
 						Console->info("VirtualGrid Technique is used in AIM");
-						ResultL->info("VirtualGrid Technique is used in AIM\n");
-					}
-					else
-					{
-						Console->info("Conventional AIM is used");
-						ResultL->info("Conventional AIM is used\n");
-					}
+					else Console->info("Conventional AIM is used");
 					break;
 				case A0:SetA0(zmc);
 					break;
