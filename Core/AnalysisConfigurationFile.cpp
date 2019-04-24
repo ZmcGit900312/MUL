@@ -159,6 +159,7 @@ static int SetEMCParameterMod(XMLElement* mod)
 		Lambda = c0 / Frequency;
 		Console->info("Frequency:\t{:e}", Frequency);
 		RuntimeL->info("Frequency:\t{:e}", Frequency);
+		ResultL->info("Frequency:\t{:e}", Frequency);
 	}
 
 	return 0;

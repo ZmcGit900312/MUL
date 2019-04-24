@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -123,35 +116,35 @@ namespace Configuration
             }
             else
             {
-                a0 = XmlTool.AddElementWithAttribute("A0", "Name", PWNameText.Text);
+                a0 = XmlTool.GetInstance.AddElementWithAttribute("A0", "Name", PWNameText.Text);
                 ExcitationMod.AppendChild(a0);
 
                 //Theta
-                XmlElement node = XmlTool.Doc.CreateElement("Theta");
+                XmlElement node = XmlTool.GetInstance.Doc.CreateElement("Theta");
                 a0.AppendChild(node);
-                node.AppendChild(XmlTool.AddElementWithText("ThetaNumber", PWThetaNumberText.Text));
-                node.AppendChild(XmlTool.AddElementWithText("ThetaStart", PWThetaStartText.Text));
-                node.AppendChild(XmlTool.AddElementWithText("ThetaIncrement", PWThetaIncrementText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("ThetaNumber", PWThetaNumberText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("ThetaStart", PWThetaStartText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("ThetaIncrement", PWThetaIncrementText.Text));
                 //Phi
-                node = XmlTool.Doc.CreateElement("Phi");
+                node = XmlTool.GetInstance.Doc.CreateElement("Phi");
                 a0.AppendChild(node);
-                node.AppendChild(XmlTool.AddElementWithText("PhiNumber", PWPhiNumberText.Text));
-                node.AppendChild(XmlTool.AddElementWithText("PhiStart", PWPhiStartText.Text));
-                node.AppendChild(XmlTool.AddElementWithText("PhiIncrement", PWPhiIncrementText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("PhiNumber", PWPhiNumberText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("PhiStart", PWPhiStartText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("PhiIncrement", PWPhiIncrementText.Text));
                 //Rotation
-                node = XmlTool.Doc.CreateElement("Rotation");
+                node = XmlTool.GetInstance.Doc.CreateElement("Rotation");
                 a0.AppendChild(node);
-                node.AppendChild(XmlTool.AddElementWithText("x", RXText.Text));
-                node.AppendChild(XmlTool.AddElementWithText("y", RYText.Text));
-                node.AppendChild(XmlTool.AddElementWithText("z", RZText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("x", RXText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("y", RYText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("z", RZText.Text));
                 //EField
-                node = XmlTool.Doc.CreateElement("EField");
+                node = XmlTool.GetInstance.Doc.CreateElement("EField");
                 a0.AppendChild(node);
-                node.AppendChild(XmlTool.AddElementWithText("Polarisation",
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("Polarisation",
                     LeftRadioButton.Checked ? "-1" :RightRadioButton.Checked ? "1" : "0"));
-                node.AppendChild(XmlTool.AddElementWithText("Eta", EtaText.Text));
-                node.AppendChild(XmlTool.AddElementWithText("Magenitude", MagenitudeText.Text));
-                node.AppendChild(XmlTool.AddElementWithText("Phase", PhaseText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("Eta", EtaText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("Magenitude", MagenitudeText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("Phase", PhaseText.Text));
             }
 #endif
                 Close();
@@ -159,36 +152,36 @@ namespace Configuration
         //Initialize Template
         internal static XmlElement InitialTemplate()
         {
-            ExcitationMod = XmlTool.Doc.CreateElement("Excitation");
+            ExcitationMod = XmlTool.GetInstance.Doc.CreateElement("Excitation");
 
             //A0
-            XmlElement a0 = XmlTool.AddElementWithAttribute("A0", "Name", "T0P90");
+            XmlElement a0 = XmlTool.GetInstance.AddElementWithAttribute("A0", "Name", "T0P90");
             ExcitationMod.AppendChild(a0);
             //Theta
-            XmlElement node = XmlTool.Doc.CreateElement("Theta");
+            XmlElement node = XmlTool.GetInstance.Doc.CreateElement("Theta");
             a0.AppendChild(node);
-            node.AppendChild(XmlTool.AddElementWithText("ThetaNumber", "1"));
-            node.AppendChild(XmlTool.AddElementWithText("ThetaStart", "0.0"));
-            node.AppendChild(XmlTool.AddElementWithText("ThetaIncrement", "1.0"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("ThetaNumber", "1"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("ThetaStart", "0.0"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("ThetaIncrement", "1.0"));
             //Phi
-            node = XmlTool.Doc.CreateElement("Phi");
+            node = XmlTool.GetInstance.Doc.CreateElement("Phi");
             a0.AppendChild(node);
-            node.AppendChild(XmlTool.AddElementWithText("PhiNumber", "1"));
-            node.AppendChild(XmlTool.AddElementWithText("PhiStart", "90.0"));
-            node.AppendChild(XmlTool.AddElementWithText("PhiIncrement", "1.0"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("PhiNumber", "1"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("PhiStart", "90.0"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("PhiIncrement", "1.0"));
             //Rotation
-            node = XmlTool.Doc.CreateElement("Rotation");
+            node = XmlTool.GetInstance.Doc.CreateElement("Rotation");
             a0.AppendChild(node);
-            node.AppendChild(XmlTool.AddElementWithText("x", "0.0"));
-            node.AppendChild(XmlTool.AddElementWithText("y", "0.0"));
-            node.AppendChild(XmlTool.AddElementWithText("z", "0.0"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("x", "0.0"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("y", "0.0"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("z", "0.0"));
             //EField
-            node = XmlTool.Doc.CreateElement("EField");
+            node = XmlTool.GetInstance.Doc.CreateElement("EField");
             a0.AppendChild(node);
-            node.AppendChild(XmlTool.AddElementWithText("Polarisation", "0"));
-            node.AppendChild(XmlTool.AddElementWithText("Eta", "0.0"));
-            node.AppendChild(XmlTool.AddElementWithText("Magenitude", "1.0"));
-            node.AppendChild(XmlTool.AddElementWithText("Phase", "0.0"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("Polarisation", "0"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("Eta", "0.0"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("Magenitude", "1.0"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("Phase", "0.0"));
             return ExcitationMod;
         }
     }

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -52,9 +45,9 @@ namespace Configuration
         //Initial Template
         internal static XmlElement InitialTemplate()
         {
-            ParameterMod = XmlTool.Doc.CreateElement("EMCPara");
-            XmlElement card = XmlTool.AddElementWithAttribute("FR", "Validate", "1");
-            card.AppendChild(XmlTool.AddElementWithText("SingleFrequency", "3.0e8"));
+            ParameterMod = XmlTool.GetInstance.Doc.CreateElement("EMCPara");
+            XmlElement card = XmlTool.GetInstance.AddElementWithAttribute("FR", "Validate", "1");
+            card.AppendChild(XmlTool.GetInstance.AddElementWithText("SingleFrequency", "3.0e8"));
             ParameterMod.AppendChild(card);
             return ParameterMod;
         }

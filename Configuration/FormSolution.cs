@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -73,13 +66,13 @@ namespace Configuration
         //Initial Template
         internal static XmlElement InitialTemplate()
         {
-            SolutionMod = XmlTool.Doc.CreateElement("Solution");
-            XmlElement card = XmlTool.AddElementWithAttribute("CG", "Validate", "1");
-            card.AppendChild(XmlTool.AddElementWithText("SolutionType", "0"));
-            card.AppendChild(XmlTool.AddElementWithText("Iterations", "0"));
-            card.AppendChild(XmlTool.AddElementWithText("StopTolerance", "10.0"));
-            card.AppendChild(XmlTool.AddElementWithText("Residum", "1.0e-4"));
-            card.AppendChild(XmlTool.AddElementWithText("Preconditioning", "2"));
+            SolutionMod = XmlTool.GetInstance.Doc.CreateElement("Solution");
+            XmlElement card = XmlTool.GetInstance.AddElementWithAttribute("CG", "Validate", "1");
+            card.AppendChild(XmlTool.GetInstance.AddElementWithText("SolutionType", "0"));
+            card.AppendChild(XmlTool.GetInstance.AddElementWithText("Iterations", "0"));
+            card.AppendChild(XmlTool.GetInstance.AddElementWithText("StopTolerance", "10.0"));
+            card.AppendChild(XmlTool.GetInstance.AddElementWithText("Residum", "1.0e-4"));
+            card.AppendChild(XmlTool.GetInstance.AddElementWithText("Preconditioning", "2"));
             SolutionMod.AppendChild(card);
             return SolutionMod;
         }

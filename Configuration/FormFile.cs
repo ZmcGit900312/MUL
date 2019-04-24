@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.Design.Serialization;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -19,6 +11,7 @@ namespace Configuration
         public static Cin Files { get; set; }=new Cin();
 #else
         internal static XmlElement MeshCard { get; set; }
+        internal static XmlNode Project { get; set; }
 #endif
 
         public FormFile()
@@ -45,8 +38,8 @@ namespace Configuration
             }
             else
             {
-                MeshCard = XmlTool.Doc.CreateElement("Mesh");
-                XmlTool.Root.FirstChild.AppendChild(MeshCard);
+                MeshCard = XmlTool.GetInstance.Doc.CreateElement("Mesh");
+                XmlTool.GetInstance.Root.FirstChild.AppendChild(MeshCard);
                 NasRadioButton.Checked = true;
             }      
 #endif
@@ -84,10 +77,21 @@ namespace Configuration
         //Initialize the Template
         internal static XmlElement InitialTemplate()
         {
-            MeshCard = XmlTool.AddElementWithAttribute("Mesh", "Type", "3");
-            MeshCard.AppendChild(XmlTool.AddElementWithText("FilePath",
+            XmlElement card= XmlTool.GetInstance.AddElementWithAttribute("IN", "Validate", "1");
+            //mesh---
+            
+            MeshCard = XmlTool.GetInstance.AddElementWithAttribute("Mesh", "Type", "3");
+            MeshCard.AppendChild(XmlTool.GetInstance.AddElementWithText("FilePath",
                 @"E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas"));
-            return MeshCard;
+            //project---
+            card.AppendChild(MeshCard);
+            
+            Project = XmlTool.GetInstance.Doc.CreateElement("Project");
+            Project.AppendChild(XmlTool.GetInstance.AddElementWithText("Name", "test"));
+            Project.AppendChild(XmlTool.GetInstance.AddElementWithText("Directory", @"E:\ZMC\Code\C_program\MUL\SourceData"));
+            Project.AppendChild(XmlTool.GetInstance.AddElementWithText("Report", @"E:\ZMC\Code\C_program\MUL\SourceData\test.out"));
+            card.AppendChild(Project);
+            return card;
         }
     }
 }

@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -40,8 +33,8 @@ namespace Configuration
             }
             else
             {
-                OSCard = XmlTool.Doc.CreateElement("OS");
-                XmlTool.Root.SelectSingleNode("/Configuration/File")?.AppendChild(OSCard);
+                OSCard = XmlTool.GetInstance.Doc.CreateElement("OS");
+                XmlTool.GetInstance.Root.SelectSingleNode("/Configuration/File")?.AppendChild(OSCard);
             }
 #endif
 
@@ -68,8 +61,8 @@ namespace Configuration
             if (BasicFunctionCheck.Checked && File.Exists(BFFileText.Text))
             {
                 OSCard.SetAttribute("Validate", "1");
-                OSCard.AppendChild(XmlTool.AddElementWithText("Type", RWGRadioButton.Checked?"0":"-1"));
-                OSCard.AppendChild(XmlTool.AddElementWithText("FilePath", BFFileText.Text));
+                OSCard.AppendChild(XmlTool.GetInstance.AddElementWithText("Type", RWGRadioButton.Checked?"0":"-1"));
+                OSCard.AppendChild(XmlTool.GetInstance.AddElementWithText("FilePath", BFFileText.Text));
             }
             else OSCard.SetAttribute("Validate", "0");
 #endif
@@ -89,9 +82,9 @@ namespace Configuration
         //Initialize the Template
         internal static XmlElement InitialTemplate()
         {
-            OSCard = XmlTool.AddElementWithAttribute("OS", "Validate", "1");
-            OSCard.AppendChild(XmlTool.AddElementWithText("Type", "0"));
-            OSCard.AppendChild(XmlTool.AddElementWithText("FilePath", @"E:\ZMC\Code\C_program\MUL\SourceData\test.bf"));
+            OSCard = XmlTool.GetInstance.AddElementWithAttribute("OS", "Validate", "1");
+            OSCard.AppendChild(XmlTool.GetInstance.AddElementWithText("Type", "0"));
+            OSCard.AppendChild(XmlTool.GetInstance.AddElementWithText("FilePath", @"E:\ZMC\Code\C_program\MUL\SourceData\test.bf"));
             return OSCard;
         }
     }

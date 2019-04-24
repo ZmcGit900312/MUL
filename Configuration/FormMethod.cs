@@ -25,7 +25,7 @@ namespace Configuration
 #if HXJ
             AIMRadioButton.Checked=true;
 #else
-            MethodCard = (XmlElement)XmlTool.Root.SelectSingleNode("/Configuration/Method");
+            MethodCard = (XmlElement)XmlTool.GetInstance.Root.SelectSingleNode("/Configuration/Method");
             if (MethodCard != null)
             {
                 FillingType.Checked=int.Parse(MethodCard.ChildNodes[0].InnerText) ==1;
@@ -120,20 +120,20 @@ namespace Configuration
         //Initialize the Template
         internal static XmlElement InitialTemplate()
         {
-            MethodCard = XmlTool.Doc.CreateElement("Method");
-            MethodCard.AppendChild(XmlTool.AddElementWithText("TriangleFillingStrategy", "1"));
+            MethodCard = XmlTool.GetInstance.Doc.CreateElement("Method");
+            MethodCard.AppendChild(XmlTool.GetInstance.AddElementWithText("TriangleFillingStrategy", "1"));
             //AM
 
-            XmlElement card = XmlTool.AddElementWithAttribute("AIM", "Validate", "1");
+            XmlElement card = XmlTool.GetInstance.AddElementWithAttribute("AIM", "Validate", "1");
             
-            card.AppendChild(XmlTool.AddElementWithText("Order", "2"));
-            card.AppendChild(XmlTool.AddElementWithText("Interval", "0.05"));
-            card.AppendChild(XmlTool.AddElementWithText("Threshold", "0.3"));
-            card.AppendChild(XmlTool.AddElementWithText("NearTolerance", "0.01"));
-            card.AppendChild(XmlTool.AddElementWithText("Dimension", "3"));
-            card.AppendChild(XmlTool.AddElementWithText("VirtualGrid", "1"));
+            card.AppendChild(XmlTool.GetInstance.AddElementWithText("Order", "2"));
+            card.AppendChild(XmlTool.GetInstance.AddElementWithText("Interval", "0.05"));
+            card.AppendChild(XmlTool.GetInstance.AddElementWithText("Threshold", "0.3"));
+            card.AppendChild(XmlTool.GetInstance.AddElementWithText("NearTolerance", "0.01"));
+            card.AppendChild(XmlTool.GetInstance.AddElementWithText("Dimension", "3"));
+            card.AppendChild(XmlTool.GetInstance.AddElementWithText("VirtualGrid", "1"));
             MethodCard.AppendChild(card);
-            MethodCard.AppendChild(XmlTool.AddElementWithAttribute("MoM", "Validate", "0"));
+            MethodCard.AppendChild(XmlTool.GetInstance.AddElementWithAttribute("MoM", "Validate", "0"));
 
             return MethodCard;
         }

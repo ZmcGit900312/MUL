@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ConfigurationTemplate"
+	targetNamespace="http://tempuri.org/ConfigurationTemplate.xsd"
+	elementFormDefault="qualified"
+	xmlns="http://tempuri.org/ConfigurationTemplate.xsd"
+	xmlns:mstns="http://tempuri.org/ConfigurationTemplate.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>	
+	
+	<!--Root Framwork-->
+	<xs:element name="Configuration">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="File"/>
+				<xs:element ref="Method"/>
+				<xs:element ref="EMCPara"/>
+				<xs:element ref="Excitation"/>
+				<xs:element ref="Solution"/>
+				<xs:element ref="Request"/>
+			</xs:sequence>		
+			<xs:attribute name="Date" type="xs:dateTime"/>
+		</xs:complexType>
+	</xs:element>
+
+	<!--File-->
+	<xs:element name="File">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="IN"/>
+				<xs:element ref="OS"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="IN">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Mesh"/>
+				<xs:element ref="Project"/>
+			</xs:sequence>
+			<xs:attribute name="Validate" type="xs:boolean" default="0"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="Mesh">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="FilePath" type="xs:string"/>
+			</xs:sequence>
+			<xs:attribute name="Type" type="xs:int" default="3"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Project">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Name" type="xs:string"/>
+				<xs:element name="Directory" type="xs:string"/>
+				<xs:element name="Report" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="OS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Type" type="xs:int" default="0"/>
+				<xs:element name="FilePath" type="xs:string"/>
+			</xs:sequence>
+			<xs:attribute name="Validate" type="xs:boolean" default="0"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<!--Method-->
+	<xs:element name="Method">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="TriangleFillingStrategy" type="xs:boolean" default="1"/>
+				<xs:element ref="AIM"/>
+				<xs:element ref="MoM"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="AIM">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Order" type="xs:int" default="2"/>
+				<xs:element name="Interval" type="xs:double" default="0.05"/>
+				<xs:element name="Threshold" type="xs:double" default="0.3"/>
+				<xs:element name="NearTolerance" type="xs:double" default="0.01"/>
+				<xs:element name="Dimension" type="xs:int" default="3"/>
+				<xs:element name="VirtualGrid" type="xs:boolean" default="1"/>
+			</xs:sequence>
+			<xs:attribute name="Validate" type="xs:boolean" default="0"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="MoM">
+		<xs:complexType>
+			<xs:attribute name="Validate" type="xs:boolean" default="0"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<!--EMCPara-->
+	<xs:element name="EMCPara">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="FR"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="FR">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SingleFrequency" type="xs:double" default="3.0e8"/>
+			</xs:sequence>
+			<xs:attribute name="Validate" type="xs:boolean" default="0"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<!--Excitation-->
+	<xs:element name="Excitation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="A0" type="PW" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="PW">
+		<xs:sequence>
+			<xs:element ref="Theta"/>
+			<xs:element ref ="Phi"/>
+			<xs:element ref="Rotation"/>
+			<xs:element ref="EField"/>
+		</xs:sequence>
+		<xs:attribute name="Name" type="xs:string" default="T90P180" use="optional"/>
+	</xs:complexType>
+
+	<xs:element name="Theta">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ThetaNumber" type="xs:int" default="1"/>
+				<xs:element name="ThetaStart" type="xs:double" default="90.0"/>
+				<xs:element name="ThetaIncrement" type="xs:double" default="1.0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="Phi">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PhiNumber" type="xs:int" default="1"/>
+				<xs:element name="PhiStart" type="xs:double" default="180.0"/>
+				<xs:element name="PhiIncrement" type="xs:double" default="1.0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="Rotation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="x" type="xs:double" default="0.0"/>
+				<xs:element name="y" type="xs:double" default="0.0"/>
+				<xs:element name="z" type="xs:double" default="0.0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="EField">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Polarisation" type="xs:int" default="0"/>
+				<xs:element name="Eta" type="xs:double" default="0.0"/>
+				<xs:element name="Magenitude" type="xs:double" default="1.0"/>
+				<xs:element name="Phase" type="xs:double" default="0.0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<!--Solution-->
+	<xs:element name="Solution">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CG"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="CG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SolutionType" type="xs:int" default="0"/>
+				<xs:element name="Iterations" type ="xs:int" default="0"/>
+				<xs:element name="StopTolerance" type="xs:double" default="10.0"/>
+				<xs:element name="Residum" type="xs:double" default="0.0001"/>
+				<xs:element name="Preconditioning" type="xs:int" default="2"/>
+			</xs:sequence>
+			<xs:attribute name="Validate" type="xs:boolean" default="0"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<!--Request-->
+	<xs:element name="Request">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="FF" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="FF">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Theta"/>
+				<xs:element ref="Phi"/>
+			</xs:sequence>
+			<xs:attribute name="FarField" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

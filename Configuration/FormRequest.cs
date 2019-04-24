@@ -114,7 +114,7 @@ namespace Configuration
             }
 #else
             string buffer = "/Configuration/Request/FF[@FarField='" + FarFieldComboBox.Text + "']";
-            XmlNode ff = XmlTool.Root.SelectSingleNode(buffer);
+            XmlNode ff = XmlTool.GetInstance.Root.SelectSingleNode(buffer);
 
             if (ff != null)
             {
@@ -130,25 +130,26 @@ namespace Configuration
             }
             else
             {
-                ff = XmlTool.AddElementWithAttribute("FF","FarField", FarFieldComboBox.Text);
+                ff = XmlTool.GetInstance.AddElementWithAttribute("FF","FarField", FarFieldComboBox.Text);
                 RequestMod.AppendChild(ff);
 
-                XmlElement node = XmlTool.Doc.CreateElement("Theta");
+                XmlElement node = XmlTool.GetInstance.Doc.CreateElement("Theta");
                 ff.AppendChild(node);
 
-                node.AppendChild(XmlTool.AddElementWithText("ThetaNumber", ThetaNumText.Text));
-                node.AppendChild(XmlTool.AddElementWithText("ThetaStart", ThetaStartText.Text));
-                node.AppendChild(XmlTool.AddElementWithText("ThetaIncrement", ThetaIncrementText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("ThetaNumber", ThetaNumText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("ThetaStart", ThetaStartText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("ThetaIncrement", ThetaIncrementText.Text));
 
                 //Phi
-                node = XmlTool.Doc.CreateElement("Phi");
+                node = XmlTool.GetInstance.Doc.CreateElement("Phi");
                 ff.AppendChild(node);
 
-                node.AppendChild(XmlTool.AddElementWithText("PhiNumber", PhiNumText.Text));
-                node.AppendChild(XmlTool.AddElementWithText("PhiStart", PhiStartText.Text));
-                node.AppendChild(XmlTool.AddElementWithText("PhiIncrement", PhiIncrementText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("PhiNumber", PhiNumText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("PhiStart", PhiStartText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("PhiIncrement", PhiIncrementText.Text));
 
                 FarFieldComboBox.Items.Add(FarFieldComboBox.Text);
+                FarFieldComboBox.BackColor = Color.DarkSeaGreen;
             }
 #endif
 
@@ -160,7 +161,7 @@ namespace Configuration
             FarField.Remove(FarFieldComboBox.Text);
 #else
             string buffer = "/Configuration/Request/FF[@FarField='" + FarFieldComboBox.Text + "']";
-            RequestMod.RemoveChild(XmlTool.Root.SelectSingleNode(buffer));
+            RequestMod.RemoveChild(XmlTool.GetInstance.Root.SelectSingleNode(buffer));
 #endif
             FarFieldComboBox.Items.Remove(FarFieldComboBox.Text);
             FarFieldComboBox.BackColor = Color.White;
@@ -186,7 +187,7 @@ namespace Configuration
 #endif
 #else
             string buffer = "/Configuration/Request/FF[@FarField='"+ FarFieldComboBox.Text + "']";
-            XmlNode ff =XmlTool.Root.SelectSingleNode(buffer);
+            XmlNode ff =XmlTool.GetInstance.Root.SelectSingleNode(buffer);
 
             if (ff == null) return;
 
@@ -204,27 +205,27 @@ namespace Configuration
 
         internal static XmlElement InitialTemplate()
         {
-            RequestMod = XmlTool.Doc.CreateElement("Request");
+            RequestMod = XmlTool.GetInstance.Doc.CreateElement("Request");
 
             //FF
-            XmlElement card = XmlTool.AddElementWithAttribute("FF", "FarField", "Horizon");
+            XmlElement card = XmlTool.GetInstance.AddElementWithAttribute("FF", "FarField", "Horizon");
             RequestMod.AppendChild(card);
 
             //Theta
-            XmlElement node = XmlTool.Doc.CreateElement("Theta");
+            XmlElement node = XmlTool.GetInstance.Doc.CreateElement("Theta");
             card.AppendChild(node);
 
-            node.AppendChild(XmlTool.AddElementWithText("ThetaNumber", "1"));
-            node.AppendChild(XmlTool.AddElementWithText("ThetaStart", "90.0"));
-            node.AppendChild(XmlTool.AddElementWithText("ThetaIncrement", "1.0"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("ThetaNumber", "1"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("ThetaStart", "90.0"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("ThetaIncrement", "1.0"));
 
             //Phi
-            node = XmlTool.Doc.CreateElement("Phi");
+            node = XmlTool.GetInstance.Doc.CreateElement("Phi");
             card.AppendChild(node);
 
-            node.AppendChild(XmlTool.AddElementWithText("PhiNumber", "361"));
-            node.AppendChild(XmlTool.AddElementWithText("PhiStart", "0.0"));
-            node.AppendChild(XmlTool.AddElementWithText("PhiIncrement", "1.0"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("PhiNumber", "361"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("PhiStart", "0.0"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("PhiIncrement", "1.0"));
             return RequestMod;
         }
     }

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuration xmlns="http://tempuri.org/ConfigurationTemplate.xsd"
+	  xmlns:xsi="http://tempuri.org/ConfigurationTemplate.xsd-instance">
+	<File>
+		<IN Validate="1">
+			<Mesh Type="0">
+				<FilePath/>
+			</Mesh>
+			<Project>
+				<Name/>
+				<Directory/>
+				<Report/>
+			</Project>
+		</IN>
+		<OS Validate="0">
+			<Type/>
+			
+		</OS>
+	</File>
+	<Method>
+		<TriangleFillingStrategy/>
+		<AIM Validate="1">
+			<Order/>
+			<Interval/>
+			<Threshold/>
+			<NearTolerance/>
+			<Dimension/>
+			<VirtualGrid/>
+		</AIM>
+		<MoM Validate="0"/>
+	</Method>
+	<EMCPara>
+		<FR Validate="1">
+			<SingleFrequency/>
+		</FR>
+	</EMCPara>
+	<Excitation>
+		<A0>
+			<Theta>
+				<ThetaNumber/>
+				<ThetaStart/>
+				<ThetaIncrement/>
+			</Theta>
+			<Phi>
+				<PhiNumber/>
+				<PhiStart/>
+				<PhiIncrement/>
+			</Phi>
+			<Rotation>
+				<x/><y/><z/>
+			</Rotation>
+			<EField>
+				<Polarisation/>
+				<Eta/>
+				<Magenitude/>
+				<Phase/>
+			</EField>
+		</A0>
+	</Excitation>
+	<Solution>
+		<CG>
+			<SolutionType/>
+			<Iterations/>
+			<StopTolerance/>
+			<Residum/>
+			<Preconditioning/>
+		</CG>
+	</Solution>
+	<Request>
+		<FF FarField="Horizon">
+			<Theta>
+				<ThetaNumber/>
+				<ThetaStart/>
+				<ThetaIncrement/>
+			</Theta>
+			<Phi>
+				<PhiNumber/>
+				<PhiStart/>
+				<PhiIncrement/>
+			</Phi>
+		</FF>
+	</Request>
+</Root>

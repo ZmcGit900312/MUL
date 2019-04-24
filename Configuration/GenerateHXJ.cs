@@ -17,9 +17,9 @@ namespace Configuration
 
         public Start()
         {
-            InitializeComponent();
-            XmlTool.Initial();
+            InitializeComponent();         
             _root= Directory.GetCurrentDirectory();
+            XmlTool.GetInstance.Initialization(@"E:\ZMC\Code\C_program\MUL\Configuration\Resources\ConfigurationTemplate.xsd");
 #if DEBUG
             TestButton.Enabled = true;
 #else
@@ -41,9 +41,8 @@ namespace Configuration
 #if HXJ
             string resultFile = FormFile.Files.ProjectDir + '\\' + FormFile.Files.ProjectName + ".out";
 #else
-            string resultFile;
-            XmlNode project = XmlTool.Root.SelectSingleNode("/Configuration/File/IN/Project");
-            if (project != null)resultFile = project.ChildNodes[2].InnerText;
+            string resultFile;           
+            if (FormFile.Project != null)resultFile = FormFile.Project.ChildNodes[2].InnerText;
             else return;
             
 #endif
@@ -87,14 +86,13 @@ namespace Configuration
                 sw.Flush();
                 sw.Close();
 #else
-                XmlNode project = XmlTool.Root.SelectSingleNode("/Configuration/File/IN/Project");
+                FormFile.Project.ChildNodes[0].InnerText = Path.GetFileNameWithoutExtension(configSaveFileDialog.FileName);
+                FormFile.Project.ChildNodes[1].InnerText = Path.GetDirectoryName(configSaveFileDialog.FileName);
+                FormFile.Project.ChildNodes[2].InnerText =
+                    FormFile.Project.ChildNodes[1].InnerText + '\\' + FormFile.Project.FirstChild.InnerText + ".out";
+                XmlTool.GetInstance.Root.Attributes["Date"].InnerText = DateTime.Now.ToString("s");
 
-                project.ChildNodes[0].InnerText = Path.GetFileNameWithoutExtension(configSaveFileDialog.FileName);
-                project.ChildNodes[1].InnerText = Path.GetDirectoryName(configSaveFileDialog.FileName);
-                project.ChildNodes[2].InnerText = 
-                    project.ChildNodes[1].InnerText + '\\' + project.FirstChild.InnerText + ".out";
-
-                XmlTool.Doc.Save(configSaveFileDialog.FileName);
+                XmlTool.GetInstance.Doc.Save(configSaveFileDialog.FileName);
 #endif
                 InformationText.Text = @"Configuration is written Successfully:";
                 InformationText.AppendText("\n" + configSaveFileDialog.FileName);
@@ -119,14 +117,14 @@ namespace Configuration
 #if HXJ
             if (!File.Exists(FormFile.Files.MeshFile))
 #else
+            RunButton.Enabled=false;
             if(!File.Exists(FormFile.MeshCard.FirstChild.InnerText))
 #endif
             {
                 InformationText.Text = @"Mesh File is not exist!";
                 FileButton.BackColor = Color.Red;
                 return;
-            }
-            else FileButton.BackColor = Color.Green;
+            }          
 
 #if HXJ
             if (FormMethod.Impedance.FillingStrategy == 0)FormSolution.Sol.PreConditionType = 0;
@@ -136,21 +134,25 @@ namespace Configuration
 #else
             if (FormMethod.MethodCard.FirstChild.InnerText != "1")
                 FormSolution.SolutionMod.FirstChild.ChildNodes[4].InnerText = "0";
-            BFButton.BackColor = int.Parse(FormBasicFunction.OSCard.FirstChild.InnerText) > -1 &&
-                                 File.Exists(FormBasicFunction.OSCard.LastChild.InnerText) ?
-                Color.Green : Color.Yellow;
+            //BFButton.BackColor = int.Parse(FormBasicFunction.OSCard.FirstChild.InnerText) > -1 &&
+            //                     File.Exists(FormBasicFunction.OSCard.LastChild.InnerText) ?
+            //    Color.Green : Color.Yellow;
             
 #endif
-
-            InformationText.Text = @"Configuration File is Corrected!";
             
-            ImpedanceButton.BackColor = Color.Green;
-            FRButton.BackColor = Color.Green;
-            ExcitationButton.BackColor = Color.Green;
-            SolutionButton.BackColor = Color.Green;
-            RequestButton.BackColor = Color.Green;
-            SaveButton.Enabled = true;
-            
+            if (XmlTool.GetInstance.Validate())
+            {
+                InformationText.Text = XmlTool.GetInstance.Error;
+                SaveButton.Enabled = false;
+                ValidateButton.BackColor = Color.Red;
+            }
+            else
+            {
+                InformationText.Text = @"Configuration File is Corrected!";
+                SaveButton.Enabled = true;
+                ValidateButton.BackColor = Color.MistyRose;
+            }
+         
         }
 
         private void LoadButton_Click(object sender, EventArgs e)
@@ -204,18 +206,19 @@ namespace Configuration
                     }
                 } while (hxj != Card.EN);
                 sd.Close();
-#else
-                XmlTool.Load(configFileDialog.FileName);                
+#else    
+
+                if (XmlTool.GetInstance.Load(configFileDialog.FileName))
+                {
+                    InformationText.Text = XmlTool.GetInstance.Error;
+                    LoadButton.BackColor = Color.Red;
+                    return;
+                }
                 //FormRequest.FarField.Clear();
 
-                //Hook
-                FormFile.MeshCard = (XmlElement)XmlTool.Root.SelectSingleNode("/Configuration/File/IN/Mesh");
-                FormBasicFunction.OSCard = (XmlElement)XmlTool.Root.SelectSingleNode("/Configuration/File/OS");
-                FormMethod.MethodCard = (XmlElement)XmlTool.Root.SelectSingleNode("/Configuration/Method");
-                FormFrequency.ParameterMod = (XmlElement)XmlTool.Root.SelectSingleNode("/Configuration/EMCPara");
-                FormExcitation.ExcitationMod = (XmlElement)XmlTool.Root.SelectSingleNode("/Configuration/Excitation");
-                FormSolution.SolutionMod = (XmlElement)XmlTool.Root.SelectSingleNode("/Configuration/Solution");
-                FormRequest.RequestMod = (XmlElement)XmlTool.Root.SelectSingleNode("/Configuration/Request");
+                InformationText.Text = @"Load Configuration Successfully!";                    
+                LoadButton.BackColor = Color.MistyRose;
+               
 #endif
                 HxjLocation.Text =configFileDialog.FileName;
             }

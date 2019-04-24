@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Configuration Date="04/05/2019 18:13:22">
+<Configuration xmlns="http://tempuri.org/ConfigurationTemplate.xsd" xmlns:xsi="http://tempuri.org/ConfigurationTemplate.xsd-instance" Date="2019-04-24T16:46:24">
   <File>
     <IN Validate="1">
       <Mesh Type="3">
@@ -12,7 +12,7 @@
       </Project>
     </IN>
     <OS Validate="1">
-      <Type>0</Type>
+      <Type>-1</Type>
       <FilePath>E:\ZMC\Code\C_program\MUL\SourceData\test.bf</FilePath>
     </OS>
   </File>
@@ -77,6 +77,30 @@
       <Phi>
         <PhiNumber>361</PhiNumber>
         <PhiStart>0.0</PhiStart>
+        <PhiIncrement>1.0</PhiIncrement>
+      </Phi>
+    </FF>
+    <FF FarField="VerticalPhi0">
+      <Theta>
+        <ThetaNumber>181</ThetaNumber>
+        <ThetaStart>0.0</ThetaStart>
+        <ThetaIncrement>1.0</ThetaIncrement>
+      </Theta>
+      <Phi>
+        <PhiNumber>1</PhiNumber>
+        <PhiStart>0.0</PhiStart>
+        <PhiIncrement>1.0</PhiIncrement>
+      </Phi>
+    </FF>
+    <FF FarField="VerticalPhi90">
+      <Theta>
+        <ThetaNumber>181</ThetaNumber>
+        <ThetaStart>0.0</ThetaStart>
+        <ThetaIncrement>1.0</ThetaIncrement>
+      </Theta>
+      <Phi>
+        <PhiNumber>1</PhiNumber>
+        <PhiStart>90</PhiStart>
         <PhiIncrement>1.0</PhiIncrement>
       </Phi>
     </FF>

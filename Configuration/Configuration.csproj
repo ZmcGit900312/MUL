@@ -179,6 +179,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\ConfigurationTemplate.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\Pokemo.jpg" />
   </ItemGroup>
   <ItemGroup>
