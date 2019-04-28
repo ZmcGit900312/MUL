@@ -9,14 +9,9 @@ int Core::Solve()
 {	
 	cout << '\n';
 
-	Console->info("{:*^45}","Solve Matrix with BiCGSTAB");
-	Console->info("The Maxiteration is:\t{}", SystemConfig.SolverConfig.Maxiteration);
-	Console->info("The Tolerance is:\t{:e}", SystemConfig.SolverConfig.Tolerance);
-	RuntimeL->info("{:*^45}", "Solve Matrix with BiCGSTAB");
-	RuntimeL->info("The Maxiteration is:\t{}", SystemConfig.SolverConfig.Maxiteration);
-	RuntimeL->info("The Tolerance is:\t{:e}", SystemConfig.SolverConfig.Tolerance);
-
-	ResultReport::WriteSolutionInformation(&SystemConfig.SolverConfig);
+	ResultReport::WriteSolutionInformation(&SystemConfig.SolverConfig, Console);
+	ResultReport::WriteSolutionInformation(&SystemConfig.SolverConfig, RuntimeLog);
+	ResultReport::WriteSolutionInformation(&SystemConfig.SolverConfig,ResultLog);
 	const auto unknown = SystemConfig.ImpConfig.ImpSize;
 	VectorXcd current{ unknown };
 	int info = 0;
@@ -36,14 +31,14 @@ int Core::Solve()
 		const auto sol = static_cast<Solution::IterativeSolver*>(Solver);
 		Console->info("Iteration is cost:\t{:f} s", sol->GetSolveTime());
 		
-		ResultL->info("The Final Iteration is:\t{}", sol->GetIteration());
-		ResultL->info("The results tolerance is:\t{:5.4e}", sol->GetTolerance());
-		ResultL->info("Iteration is cost:\t{:f} s", sol->GetSolveTime());		
+		ResultLog->info("The Final Iteration is:\t{}", sol->GetIteration());
+		ResultLog->info("The results tolerance is:\t{:5.4e}", sol->GetTolerance());
+		ResultLog->info("Iteration is cost:\t{:f} s", sol->GetSolveTime());		
 		
-		RuntimeL->info("The Final Iteration is:\t{}", sol->GetIteration());
-		RuntimeL->info("The results tolerance is:\t{:5.4e}", sol->GetTolerance());
-		RuntimeL->info("Iteration is cost:\t{:f} s", sol->GetSolveTime());
-		RuntimeL->flush();
+		RuntimeLog->info("The Final Iteration is:\t{}", sol->GetIteration());
+		RuntimeLog->info("The results tolerance is:\t{:5.4e}", sol->GetTolerance());
+		RuntimeLog->info("Iteration is cost:\t{:f} s", sol->GetSolveTime());
+		RuntimeLog->flush();
 		
 		if (Solver) {
 			Console->info("Release Solver");

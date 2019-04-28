@@ -249,7 +249,6 @@
     <ClInclude Include="Multiplicator.h" />
     <ClInclude Include="MultipoleExpansioner.h" />
     <ClInclude Include="NasRead.h" />
-    <ClInclude Include="Planewave.h" />
     <ClInclude Include="RequestConfiguration.h" />
     <ClInclude Include="ResultReport.h" />
     <ClInclude Include="RWGTriangle.h" />
@@ -280,7 +279,6 @@
     <ClCompile Include="AnalysisConfigurationFile.cpp" />
     <ClCompile Include="CalculateRequest.cpp" />
     <ClCompile Include="Const.cpp" />
-    <ClCompile Include="EMCParameterInitialization.cpp" />
     <ClCompile Include="Excitation.cpp" />
     <ClCompile Include="FFTmd.cpp" />
     <ClCompile Include="GmshFile.cpp" />
@@ -329,6 +327,7 @@
     <ClCompile Include="Teoplitzcd.cpp" />
     <ClCompile Include="TxtReader.cpp" />
     <ClCompile Include="VirtualGrid.cpp" />
+    <ClCompile Include="Voltage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SourceData\MeshTest.nas" />

@@ -8,11 +8,15 @@
 class MulEnvironment :public testing::Environment
 {
 public:
-	char* configurationFileName = "E:/ZMC/Code/C_program/MUL/SourceData/test.hxj";
 	void SetUp() override
 	{
+#ifdef HXJ
+		char* configurationFileName = "E:/ZMC/Code/C_program/MUL/SourceData/test.hxj";
 		ASSERT_EQ(0, Core::EMCParameterInitialization(configurationFileName)) << "Error in API InitializationConfiguration";
-		//ASSERT_EQ(0, Core::AnalysisConfigurationFile(configurationFileName)) << "Error in API InitializationConfiguration";
+#else
+		char* configurationFileName = "E:/ZMC/Code/C_program/MUL/SourceData/test.xml";
+		ASSERT_EQ(0, Core::AnalysisConfigurationFile(configurationFileName)) << "Error in API InitializationConfiguration";
+#endif
 	}
 
 	void TearDown() override

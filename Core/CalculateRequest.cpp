@@ -7,13 +7,13 @@
 
 int Core::CalculateRequest(const bool IsReadFromFile)
 {
-	RuntimeL->info("Run CalculateRequest()");
+	RuntimeLog->info("Run CalculateRequest()");
 	//TODO It should be changed for a new version, this function is not well
 
 	cout << "\n";
 	Console->info("{:*^45}", "Calcuate the FarField RCS");
-	RuntimeL->info("{:*^45}", "Calcuate the FarField RCS");
-	ResultL->info("{:*^45}", "FarField");
+	RuntimeLog->info("{:*^45}", "Calcuate the FarField RCS");
+	ResultLog->info("{:*^45}", "FarField");
 	try
 	{
 		/*if (IsReadFromFile)
@@ -33,10 +33,10 @@ int Core::CalculateRequest(const bool IsReadFromFile)
 		{
 			const string savename = SystemConfig.ProjectDir + '\\' + value.FarFileName + "_RCS.csv";
 			ofs.open(savename, ios_base::out);
-			if (!ofs.is_open())throw spd::spdlog_ex("Save RCS Directory Error in " + savename);
-			Console->info("Far Field Request::\t"+value.FarFileName);
-			RuntimeL->info("Far Field Request::\t" + value.FarFileName);
-			ResultReport::WriteRequestInformation(&value);
+			if (!ofs.is_open())throw spd::spdlog_ex("Save RCS Directory Error in " + savename);			
+			ResultReport::WriteRequestInformation(&value, Console);
+			ResultReport::WriteRequestInformation(&value, RuntimeLog);
+			ResultReport::WriteRequestInformation(&value,ResultLog);
 			post.SetEField(value, ofs);
 
 			ofs.flush();
@@ -45,9 +45,9 @@ int Core::CalculateRequest(const bool IsReadFromFile)
 		const clock_t end = clock();
 		double timecost = double(end - start) / CLOCKS_PER_SEC;
 		Console->info("FarField Calculate cost {:f} s", timecost);
-		RuntimeL->info("FarField Calculate cost {:f} s", timecost);
-		ResultL->info("FarField Calculate cost {:f} s", timecost);
-		RuntimeL->flush();
+		RuntimeLog->info("FarField Calculate cost {:f} s", timecost);
+		ResultLog->info("FarField Calculate cost {:f} s", timecost);
+		RuntimeLog->flush();
 		return 0;
 	}
 	catch (spd::spdlog_ex&ex)

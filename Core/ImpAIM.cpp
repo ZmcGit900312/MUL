@@ -60,13 +60,13 @@ void ImpAIM::FillImpedance()
 	Console->info("Nonzeros of NearField Element:\t{0} in {1}", _imp.nonZeros(), _impSize*_impSize);
 	Console->info("Impedance Sparsity:\t{:f}%",100*_sparsity);
 
-	RuntimeL->info("There are total {} in GamaMatrix", _gamax.nonZeros()*(_dimension + 1));
-	RuntimeL->info("There are total {} in GreenMatrix", _green.size());
-	RuntimeL->info("Nonzeros of NearField Element:\t{0} in {1}", _imp.nonZeros(), _impSize*_impSize);
-	RuntimeL->info("Impedance Sparsity:\t{:f}%", 100 * _sparsity);
+	RuntimeLog->info("There are total {} in GamaMatrix", _gamax.nonZeros()*(_dimension + 1));
+	RuntimeLog->info("There are total {} in GreenMatrix", _green.size());
+	RuntimeLog->info("Nonzeros of NearField Element:\t{0} in {1}", _imp.nonZeros(), _impSize*_impSize);
+	RuntimeLog->info("Impedance Sparsity:\t{:f}%", 100 * _sparsity);
 
-	ResultL->info("There are total {} in GamaMatrix", _gamax.nonZeros()*(_dimension + 1));
-	ResultL->info("There are total {} in GreenMatrix", _green.size());
-	ResultL->info("Nonzeros of NearField Element:\t{0} in {1}", _imp.nonZeros(), _impSize*_impSize);
-	ResultL->info("Impedance Sparsity:\t{:f}%", 100 * _sparsity);
+	ResultLog->info("There are total {} in GamaMatrix", _gamax.nonZeros()*(_dimension + 1));
+	ResultLog->info("There are total {} in GreenMatrix", _green.size());
+	ResultLog->info("Nonzeros of NearField Element:\t{0} in {1}", _imp.nonZeros(), _impSize*_impSize);
+	ResultLog->info("Impedance Sparsity:\t{:f}%", 100 * _sparsity);
 }

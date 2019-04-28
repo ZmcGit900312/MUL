@@ -25,7 +25,7 @@ namespace Core
 		int BasicFunctionType = 0;
 		ImpConfiguration ImpConfig;
 		GreenConfiguration GreenConfig;
-		Source::ExcitationConfiguration SourceConfig;
+		Source::ISource* SourceConfig=nullptr;
 		Solution::SolverConfiguration SolverConfig;
 		list<Request::FarFieldConfiguration> PostConfig;
 	};

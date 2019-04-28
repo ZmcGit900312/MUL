@@ -14,18 +14,11 @@ namespace Configuration
 {
     public partial class FormMethod : Form
     {
-#if HXJ
-        public static Cam Impedance { get; set; }=new Cam();
-#else
         internal static XmlElement MethodCard { get; set; }
-#endif
         public FormMethod()
         {
             InitializeComponent();
-#if HXJ
-            AIMRadioButton.Checked=true;
-#else
-            MethodCard = (XmlElement)XmlTool.GetInstance.Root.SelectSingleNode("/Configuration/Method");
+          
             if (MethodCard != null)
             {
                 FillingType.Checked=int.Parse(MethodCard.ChildNodes[0].InnerText) ==1;
@@ -40,7 +33,6 @@ namespace Configuration
                     return;
                 }
             }
-#endif
         }
 
         private void MoMRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -50,18 +42,7 @@ namespace Configuration
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
-#if HXJ
-            if(AIMRadioButton.Checked)Impedance = new Cam
-            {
-                Order = OrderCombox.SelectedIndex + 2,
-                Interval = double.Parse(IntervalText.Text),
-                NearCorrectionEps = double.Parse(NearTolerance.Text),
-                Threshold = double.Parse(ThresholdText.Text),
-                Dimension = Dimension2D.Checked ? 2 : 3,
-                FillingStrategy = FillingType.Checked ? 1 : 0,
-                VirtualGrid=VirtualGridTechniqueCheckBox.Checked?1:0
-            };
-#else
+
             MethodCard.ChildNodes[0].InnerText = FillingType.Checked ? "1" : "0";
             if (MoMRadioButton.Checked)
             {
@@ -83,7 +64,6 @@ namespace Configuration
                 aim.ChildNodes[5].InnerText = VirtualGridTechniqueCheckBox.Checked?"1":"0";
             }
 
-#endif
             Close();
         }
 
@@ -97,15 +77,7 @@ namespace Configuration
             AIMPanel.Enabled = AIMRadioButton.Checked;
             if (AIMPanel.Enabled)
             {
-#if HXJ
-                IntervalText.Text = Impedance.Interval.ToString();
-                ThresholdText.Text = Impedance.Threshold.ToString();
-                NearTolerance.Text = Impedance.NearCorrectionEps.ToString();
-                Dimension3D.Checked = Impedance.Dimension == 3;
-                FillingType.Checked = Impedance.FillingStrategy == 1;
-                VirtualGridTechniqueCheckBox.Checked = Impedance.VirtualGrid == 1;
-                OrderCombox.SelectedIndex = Impedance.Order - 2;
-#else
+
                 XmlNode aim = MethodCard.ChildNodes[1];
                 OrderCombox.SelectedIndex = int.Parse(aim.ChildNodes[0].InnerText)-2;
                 IntervalText.Text = aim.ChildNodes[1].InnerText;
@@ -113,7 +85,6 @@ namespace Configuration
                 NearTolerance.Text = aim.ChildNodes[3].InnerText;
                 Dimension3D.Checked = aim.ChildNodes[4].InnerText == "3";
                 VirtualGridTechniqueCheckBox.Checked = aim.ChildNodes[5].InnerText == "1";
-#endif
             }
         }
 

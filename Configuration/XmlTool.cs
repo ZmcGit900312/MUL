@@ -44,7 +44,7 @@ namespace Configuration
             {
                 case XmlSeverityType.Error:
                     IsError = true;
-                    Error += e.Message;
+                    Error = e.Message;
                     break;
                 case XmlSeverityType.Warning:
                     break;

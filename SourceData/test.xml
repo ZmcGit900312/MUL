@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Configuration xmlns="http://tempuri.org/ConfigurationTemplate.xsd" xmlns:xsi="http://tempuri.org/ConfigurationTemplate.xsd-instance" Date="2019-04-24T16:46:24">
+<Configuration xmlns="http://tempuri.org/ConfigurationTemplate.xsd" xmlns:xsi="http://tempuri.org/ConfigurationTemplate.xsd-instance" Date="2019-04-28T19:52:00">
   <File>
     <IN Validate="1">
       <Mesh Type="3">
@@ -34,7 +34,8 @@
     </FR>
   </EMCPara>
   <Excitation>
-    <A0 Name="T0P90">
+    <A0 Name="T0P270">
+      <Polarisation>0</Polarisation>
       <Theta>
         <ThetaNumber>1</ThetaNumber>
         <ThetaStart>0.0</ThetaStart>
@@ -42,7 +43,7 @@
       </Theta>
       <Phi>
         <PhiNumber>1</PhiNumber>
-        <PhiStart>90.0</PhiStart>
+        <PhiStart>270</PhiStart>
         <PhiIncrement>1.0</PhiIncrement>
       </Phi>
       <Rotation>
@@ -51,10 +52,10 @@
         <z>0.0</z>
       </Rotation>
       <EField>
-        <Polarisation>0</Polarisation>
         <Eta>0.0</Eta>
         <Magenitude>1.0</Magenitude>
         <Phase>0.0</Phase>
+        <Ellipitcity>0.0</Ellipitcity>
       </EField>
     </A0>
   </Excitation>

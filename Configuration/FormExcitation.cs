@@ -6,38 +6,23 @@ namespace Configuration
 {
     public partial class FormExcitation : Form
     {
-#if HXJ
-        public static Ca0 Planewave=new Ca0();
-#else
+
         internal static XmlElement ExcitationMod { get; set; } = null;
-#endif
+
         public FormExcitation()
         {
             InitializeComponent();
-#if HXJ
-            PWNameText.Text = Planewave.ExcitationName;
-            RXText.Text = Planewave.RotationX.ToString();
-            RYText.Text = Planewave.RotationY.ToString();
-            RZText.Text = Planewave.RotationZ.ToString();
-            MagenitudeText.Text = Planewave.Magnitude.ToString();
-            PhaseText.Text = Planewave.Phase.ToString();
-            EtaText.Text = Planewave.Eta.ToString();
-            PWThetaNumberText.Text = Planewave.ThetaNum.ToString();
-            PWPhiNumberText.Text = Planewave.PhiNum.ToString();
-            PWThetaStartText.Text = Planewave.ThetaStart.ToString();
-            PWPhiStartText.Text = Planewave.PhiStart.ToString();
-            PWThetaIncrementText.Text = Planewave.ThetaIncrement.ToString();
-            PWPhiIncrementText.Text = Planewave.PhiIncrement.ToString();
-            if (Planewave.Polarisation > 0) LeftRadioButton.Checked = true;
-            else if (Planewave.Polarisation < 0) RightRadioButton.Checked = true;
-            else LinearRadioButton.Checked = true;
-#else
+
             XmlNode a0 = ExcitationMod.ChildNodes[0];
             if (a0 != null)
             {
                 PWNameText.Text = a0.Attributes[0].InnerText;
+                int pol = int.Parse(a0.ChildNodes[0].InnerText);
+                if (pol > 0) LeftRadioButton.Checked = true;
+                else if (pol < 0) RightRadioButton.Checked = true;
+                else LinearRadioButton.Checked = true;
                 //Theta
-                XmlNode node = a0.ChildNodes[0];
+                XmlNode node = a0.ChildNodes[1];
                 PWThetaNumberText.Text = node.ChildNodes[0].InnerText;
                 PWThetaStartText.Text = node.ChildNodes[1].InnerText;
                 PWThetaIncrementText.Text = node.ChildNodes[2].InnerText;
@@ -53,15 +38,13 @@ namespace Configuration
                 RZText.Text = node.ChildNodes[2].InnerText;
                 //EField
                 node = node.NextSibling;
-                int pol = int.Parse(node.ChildNodes[0].InnerText);
-                if (pol > 0) LeftRadioButton.Checked = true;
-                else if (pol < 0) RightRadioButton.Checked = true;
-                else LinearRadioButton.Checked = true;
-                EtaText.Text = node.ChildNodes[1].InnerText;
-                MagenitudeText.Text = node.ChildNodes[2].InnerText;
-                PhaseText.Text = node.ChildNodes[3].InnerText;
+               
+                EtaText.Text = node.ChildNodes[0].InnerText;
+                MagenitudeText.Text = node.ChildNodes[1].InnerText;
+                PhaseText.Text = node.ChildNodes[2].InnerText;
+                EllipitcityText.Text = node.ChildNodes[3].InnerText;
             }
-#endif
+
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -71,28 +54,15 @@ namespace Configuration
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
-#if HXJ
-            Planewave.RotationX = double.Parse(RXText.Text);
-            Planewave.RotationY = double.Parse(RYText.Text);
-            Planewave.RotationZ = double.Parse(RZText.Text);
-            Planewave.ThetaNum = uint.Parse(PWThetaNumberText.Text);
-            Planewave.PhiNum = uint.Parse(PWPhiNumberText.Text);
-            Planewave.ThetaStart = double.Parse(PWThetaStartText.Text);
-            Planewave.PhiStart = double.Parse(PWPhiStartText.Text);
-            Planewave.ThetaIncrement = double.Parse(PWThetaIncrementText.Text);
-            Planewave.PhiIncrement = double.Parse(PWPhiIncrementText.Text);
-            Planewave.Magnitude = double.Parse(MagenitudeText.Text);
-            Planewave.Phase = double.Parse(PhaseText.Text);
-            Planewave.Eta = double.Parse(EtaText.Text);
-            Planewave.ExcitationName = PWNameText.Text;
-            Planewave.Polarisation = LeftRadioButton.Checked ? -1 : RightRadioButton.Checked ? 1 : 0;
-#else
             XmlNode a0 = ExcitationMod.ChildNodes[0];
             if (a0 != null)
             {
                 a0.Attributes[0].InnerText= PWNameText.Text;
-                //Theta
                 XmlNode node = a0.ChildNodes[0];
+                node.InnerText = LeftRadioButton.Checked ? "-1" :
+                    RightRadioButton.Checked ? "1" : "0";
+                //Theta
+                node = node.NextSibling;
                 node.ChildNodes[0].InnerText= PWThetaNumberText.Text;
                 node.ChildNodes[1].InnerText= PWThetaStartText.Text;
                 node.ChildNodes[2].InnerText= PWThetaIncrementText.Text;
@@ -108,17 +78,18 @@ namespace Configuration
                 node.ChildNodes[2].InnerText= RZText.Text;
                 //EField
                 node = node.NextSibling;
-                node.ChildNodes[0].InnerText = LeftRadioButton.Checked ? "-1" : 
-                    RightRadioButton.Checked ? "1" : "0";
-                node.ChildNodes[1].InnerText= EtaText.Text;
-                node.ChildNodes[2].InnerText= MagenitudeText.Text;
-                node.ChildNodes[3].InnerText= PhaseText.Text;
+                node.ChildNodes[0].InnerText= EtaText.Text;
+                node.ChildNodes[1].InnerText= MagenitudeText.Text;
+                node.ChildNodes[2].InnerText= PhaseText.Text;
+                node.ChildNodes[3].InnerText=EllipitcityText.Text;
             }
             else
             {
                 a0 = XmlTool.GetInstance.AddElementWithAttribute("A0", "Name", PWNameText.Text);
                 ExcitationMod.AppendChild(a0);
 
+                a0.AppendChild(XmlTool.GetInstance.AddElementWithText("Polarisation",
+                    LeftRadioButton.Checked ? "-1" : RightRadioButton.Checked ? "1" : "0"));
                 //Theta
                 XmlElement node = XmlTool.GetInstance.Doc.CreateElement("Theta");
                 a0.AppendChild(node);
@@ -140,13 +111,12 @@ namespace Configuration
                 //EField
                 node = XmlTool.GetInstance.Doc.CreateElement("EField");
                 a0.AppendChild(node);
-                node.AppendChild(XmlTool.GetInstance.AddElementWithText("Polarisation",
-                    LeftRadioButton.Checked ? "-1" :RightRadioButton.Checked ? "1" : "0"));
+                
                 node.AppendChild(XmlTool.GetInstance.AddElementWithText("Eta", EtaText.Text));
                 node.AppendChild(XmlTool.GetInstance.AddElementWithText("Magenitude", MagenitudeText.Text));
                 node.AppendChild(XmlTool.GetInstance.AddElementWithText("Phase", PhaseText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("Ellipitcity", EllipitcityText.Text));
             }
-#endif
                 Close();
         }
         //Initialize Template
@@ -157,6 +127,7 @@ namespace Configuration
             //A0
             XmlElement a0 = XmlTool.GetInstance.AddElementWithAttribute("A0", "Name", "T0P90");
             ExcitationMod.AppendChild(a0);
+            a0.AppendChild(XmlTool.GetInstance.AddElementWithText("Polarisation", "0"));
             //Theta
             XmlElement node = XmlTool.GetInstance.Doc.CreateElement("Theta");
             a0.AppendChild(node);
@@ -177,11 +148,11 @@ namespace Configuration
             node.AppendChild(XmlTool.GetInstance.AddElementWithText("z", "0.0"));
             //EField
             node = XmlTool.GetInstance.Doc.CreateElement("EField");
-            a0.AppendChild(node);
-            node.AppendChild(XmlTool.GetInstance.AddElementWithText("Polarisation", "0"));
+            a0.AppendChild(node);   
             node.AppendChild(XmlTool.GetInstance.AddElementWithText("Eta", "0.0"));
             node.AppendChild(XmlTool.GetInstance.AddElementWithText("Magenitude", "1.0"));
             node.AppendChild(XmlTool.GetInstance.AddElementWithText("Phase", "0.0"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("Ellipitcity", "0.0"));
             return ExcitationMod;
         }
     }

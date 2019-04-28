@@ -17,8 +17,8 @@ namespace Core
 	
 
 	extern shared_ptr<spd::logger> Console;
-	extern shared_ptr<spd::logger> RuntimeL;
-	extern shared_ptr<spd::logger> ResultL;
+	extern shared_ptr<spd::logger> RuntimeLog;
+	extern shared_ptr<spd::logger> ResultLog;
 
 	namespace Assist
 	{

@@ -82,7 +82,7 @@ namespace Core
 	* \param filename The name of configuration  *.hxj
 	* \return 0 Success
 	*/
-	int EMCParameterInitialization(char* filename);
+	//int EMCParameterInitialization(char* filename);
 
 	/**
 	* \brief Read Initial Information and Initial the SystemConfiguration

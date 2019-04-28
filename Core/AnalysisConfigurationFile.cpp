@@ -35,7 +35,7 @@ int Core::AnalysisConfigurationFile(char* filename)
 		XMLElement* root = doc.FirstChildElement();
 
 		Console->info("Read Configuration");
-		RuntimeL->info("{:*^45}", "Read Configuration");
+		RuntimeLog->info("{:*^45}", "Read Configuration");
 		Console->debug("{0} = {1}", root->FirstAttribute()->Name(), root->FirstAttribute()->Value());
 
 		
@@ -91,11 +91,11 @@ static int SetFileMod(XMLElement* mod)
 		Console->info("Project Name:\t{}", SystemConfig.ProjectName);
 		Console->info("Output FileName:\t"+ SystemConfig.ReportFileName);
 
-		RuntimeL->info("Mesh File Path:\t{}", SystemConfig.MeshFileName);
-		RuntimeL->info("Project Directory:\t{}", SystemConfig.ProjectDir);
-		RuntimeL->info("Project Name:\t{}", SystemConfig.ProjectName);
-		RuntimeL->info("Output FileName:\t" + SystemConfig.ReportFileName);
-		//ResultL
+		RuntimeLog->info("Mesh File Path:\t{}", SystemConfig.MeshFileName);
+		RuntimeLog->info("Project Directory:\t{}", SystemConfig.ProjectDir);
+		RuntimeLog->info("Project Name:\t{}", SystemConfig.ProjectName);
+		RuntimeLog->info("Output FileName:\t" + SystemConfig.ReportFileName);
+		//ResultLog
 		ResultReport::InitialWriter(SystemConfig.ReportFileName);
 	}
 
@@ -110,7 +110,7 @@ static int SetFileMod(XMLElement* mod)
 		+ '\\' + SystemConfig.ProjectName + ".bf";
 
 	Console->info("BasicFunction File Path:\t{}",SystemConfig.BasicFunctionFileName);
-	RuntimeL->info("BasicFunction File Path:\t{}", SystemConfig.BasicFunctionFileName);
+	RuntimeLog->info("BasicFunction File Path:\t{}", SystemConfig.BasicFunctionFileName);
 	return 0;
 }
 
@@ -158,48 +158,67 @@ static int SetEMCParameterMod(XMLElement* mod)
 		k = Omega / c0;
 		Lambda = c0 / Frequency;
 		Console->info("Frequency:\t{:e}", Frequency);
-		RuntimeL->info("Frequency:\t{:e}", Frequency);
-		ResultL->info("Frequency:\t{:e}", Frequency);
+		RuntimeLog->info("Frequency:\t{:e}", Frequency);
+		ResultLog->info("Frequency:\t{:e}", Frequency);
 	}
 
 	return 0;
 }
 static int SetExcitationMod(XMLElement* mod)
 {
-	XMLElement* card = mod->FirstChildElement("A0");
 
 	Console->debug("{:*^45}", "Excitation");
-	if(card)
+
+	for (XMLElement* card = mod->FirstChildElement();card != nullptr;card = card->NextSiblingElement())
 	{
-		SystemConfig.SourceConfig.ExcitationName = card->FindAttribute("Name")->Value();
+		string name=card->FindAttribute("Name")->Value();
+		if (card->Name() == string{ "A0" } )
+		{
+			int pol = card->FirstChildElement("Polarisation")->IntText();
+			XMLElement* leaf = card->FirstChildElement("Theta");
 
-		XMLElement* leaf = card->FirstChildElement("Theta");
-		SystemConfig.SourceConfig.ThetaNum = leaf->FirstChildElement("ThetaNumber")->IntText();
-		SystemConfig.SourceConfig.ThetaStart = leaf->FirstChildElement("ThetaStart")->DoubleText();
-		SystemConfig.SourceConfig.ThetaIncrement = leaf->FirstChildElement("ThetaIncrement")->DoubleText();
+			int thn = leaf->FirstChildElement("ThetaNumber")->IntText();
+			double ths = leaf->FirstChildElement("ThetaStart")->DoubleText(),
+				thi = leaf->FirstChildElement("ThetaIncrement")->DoubleText();
 
-		leaf = card->FirstChildElement("Phi");
-		SystemConfig.SourceConfig.PhiNum = leaf->FirstChildElement("PhiNumber")->IntText();
-		SystemConfig.SourceConfig.PhiStart = leaf->FirstChildElement("PhiStart")->DoubleText();
-		SystemConfig.SourceConfig.PhiIncrement = leaf->FirstChildElement("PhiIncrement")->DoubleText();
+			leaf = card->FirstChildElement("Phi");
+			int phn = leaf->FirstChildElement("PhiNumber")->IntText();
+			double phs = leaf->FirstChildElement("PhiStart")->DoubleText(),
+				phi = leaf->FirstChildElement("PhiIncrement")->DoubleText();
 
-		leaf = card->FirstChildElement("Rotation");
-		SystemConfig.SourceConfig.RotationX = leaf->FirstChildElement("x")->DoubleText();
-		SystemConfig.SourceConfig.RotationY = leaf->FirstChildElement("y")->DoubleText();
-		SystemConfig.SourceConfig.RotationZ = leaf->FirstChildElement("z")->DoubleText();
+			leaf = card->FirstChildElement("Rotation");
+			double rx = leaf->FirstChildElement("x")->DoubleText(),
+				ry = leaf->FirstChildElement("y")->DoubleText(),
+				rz = leaf->FirstChildElement("z")->DoubleText();
 
-		leaf = card->FirstChildElement("EField");
-		SystemConfig.SourceConfig.Polarisation = leaf->FirstChildElement("Polarisation")->IntText();
-		SystemConfig.SourceConfig.Magnitude = leaf->FirstChildElement("Magenitude")->DoubleText();
-		SystemConfig.SourceConfig.Phase = leaf->FirstChildElement("Phase")->DoubleText();
-		SystemConfig.SourceConfig.Eta = leaf->FirstChildElement("Eta")->DoubleText();
+			leaf = card->FirstChildElement("EField");
+			
+			double mag = leaf->FirstChildElement("Magenitude")->DoubleText(),
+				phase = leaf->FirstChildElement("Phase")->DoubleText(),
+				eta = leaf->FirstChildElement("Eta")->DoubleText(),
+				ell = leaf->FirstChildElement("Ellipitcity")->DoubleText();
+			//Source::SourceType st = pol > 0 ? Source::SourceType::EXCITATION_CIRC_RIGHT : pol < 0 ? Source::SourceType::EXCITATION_CIRC_LEFT : Source::SourceType::EXCITATION_LINEAR;
 
-		SystemConfig.SourceConfig.SetDirection();
+			SystemConfig.SourceConfig= new Source::PlaneWaveLinear(name, thn, phn, ths, phs,thi,  phi, mag,  phase,  eta, rx,  ry, rz);
+			return 0;
+		}
+		
+		if(card->Name()== string{ "AE" })
+		{
 
-		Console->debug("Plane wave Name::\t"+SystemConfig.SourceConfig.ExcitationName);
-		return 0;
-	}
-
+			auto vg = new Source::VoltageGap(name);			
+			for (XMLElement* leaf = card->FirstChildElement();leaf != nullptr;leaf = leaf->NextSiblingElement())
+			{
+				unsigned long ns=leaf->FirstChildElement("NegativeSide")->Int64Text(),
+				ps=leaf->FirstChildElement("PositiveSide")->Int64Text();				
+				double mag = leaf->FirstChildElement("Magenitude")->DoubleText(),
+					phase = leaf->FirstChildElement("Phase")->DoubleText();
+				vg->VoltageVector.push_back({ns,ps,mag*exp(1i*phase)});
+			}
+			SystemConfig.SourceConfig = vg;
+			return 0;
+		}
+	}	
 	return 4;
 }
 static int SetSolutionMod(XMLElement* mod)

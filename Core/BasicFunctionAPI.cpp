@@ -23,7 +23,7 @@ int Core::CreatBasicFunction(const bool isCreat)
 			throw spdlog::spdlog_ex("Other BasicFunction is not developing!");
 		default:
 			Console->info("Choose RWG Function as BasicFunction\n");
-			RuntimeL->info("Choose RWG Function as BasicFunction\n");
+			RuntimeLog->info("Choose RWG Function as BasicFunction\n");
 			
 			
 		}
@@ -37,10 +37,10 @@ int Core::CreatBasicFunction(const bool isCreat)
 			const double _time = double(end - start) / CLOCKS_PER_SEC;
 			Console->info("The number of BasicFuntions is:\t{0:d}", SystemConfig.ImpConfig.ImpSize);
 			Console->info("Creat BasicFuntions costs:\t{0:10.9} s", _time);
-			RuntimeL->info("The number of BasicFuntions is:\t{0:d}", SystemConfig.ImpConfig.ImpSize);
-			RuntimeL->info("Creat BasicFuntions costs:\t{0:10.9} s", _time);
-			ResultReport::WriteBasicFunctionInformation(SystemConfig.ImpConfig.ImpSize);
-			ResultL->info("Creat BasicFuntions costs:\t{0:10.9} s", _time);
+			RuntimeLog->info("The number of BasicFuntions is:\t{0:d}", SystemConfig.ImpConfig.ImpSize);
+			RuntimeLog->info("Creat BasicFuntions costs:\t{0:10.9} s", _time);
+			ResultReport::WriteBasicFunctionInformation(SystemConfig.ImpConfig.ImpSize,ResultLog);
+			ResultLog->info("Creat BasicFuntions costs:\t{0:10.9} s", _time);
 		}		
 		return 0;
 			
@@ -54,7 +54,7 @@ int Core::CreatBasicFunction(const bool isCreat)
 
 int Core::LoadBasicFunction(const char* loadFileName)
 {
-	//GetCurrentDirectoryA(1000, buff);//获得当前工作目录
+	//GetCurrentDirectoryA(1000, buff);//
 	
 	ifstream ifs(loadFileName, ios::in | ios::binary);
 	
@@ -91,11 +91,11 @@ int Core::LoadBasicFunction(const char* loadFileName)
 			const double _time = double(end - start) / CLOCKS_PER_SEC;
 			Console->info("The number of BasicFuntions is:\t{0:d}", unknowns);
 			Console->info("Load BasicFuntions costs:\t{0:10.9} s", _time);
-			ResultReport::WriteBasicFunctionInformation(unknowns);
-			ResultL->info("Load BasicFuntions costs:\t{0:10.9} s", _time);
-			RuntimeL->info("The number of BasicFuntions is:\t{0:d}", unknowns);
-			RuntimeL->info("Load BasicFuntions costs:\t{0:10.9} s", _time);
-			RuntimeL->flush();
+			ResultReport::WriteBasicFunctionInformation(unknowns,ResultLog);
+			ResultLog->info("Load BasicFuntions costs:\t{0:10.9} s", _time);
+			RuntimeLog->info("The number of BasicFuntions is:\t{0:d}", unknowns);
+			RuntimeLog->info("Load BasicFuntions costs:\t{0:10.9} s", _time);
+			RuntimeLog->flush();
 			/*cout << "The number of BasicFuntions is\t=\t" << unknowns << "\n";
 			cout << "Finish!\nLoad BasicFuntions costs\t" << _time << " s\n";*/
 			return 0;
@@ -114,9 +114,9 @@ int Core::SaveBasicFunction(const char * saveFileName)
 {
 	cout << '\n';
 	Console->info("Save BasicFunction in binary type");
-	RuntimeL->info("Save BasicFunction in binary type");
+	RuntimeLog->info("Save BasicFunction in binary type");
 	
-	//GetCurrentDirectoryA(1000, buff);//获得当前工作目录
+	//GetCurrentDirectoryA(1000, buff);//
 	ofstream ofs(saveFileName,ios::out|ios::binary| ios::trunc);
 	try
 	{
@@ -124,9 +124,9 @@ int Core::SaveBasicFunction(const char * saveFileName)
 		if (ofs.is_open())
 		{
 			Console->info("The Save File Path is\t"+string(saveFileName));
-			RuntimeL->info("The Save File Path is\t" + string(saveFileName));
-			ResultL->info("The Save File Path is\t" + string(saveFileName));
-			//RWG 代号0
+			RuntimeLog->info("The Save File Path is\t" + string(saveFileName));
+			ResultLog->info("The Save File Path is\t" + string(saveFileName));
+			//RWG
 			int RWG = 0;
 			int unknown = (int)ComponentList::BFvector.size();
 			ofs.write(reinterpret_cast<char*>(&RWG), sizeof(int));
@@ -136,7 +136,7 @@ int Core::SaveBasicFunction(const char * saveFileName)
 			ofs.flush();
 			ofs.close();
 			
-			RuntimeL->flush();
+			RuntimeLog->flush();
 			return 0;
 		}
 		throw spd::spdlog_ex("Save BasicFunction Error in Finding\t" + string(saveFileName));

@@ -8,22 +8,15 @@ int Core::SetGreenFunction()
 {
 	cout << "\n";
 	Console->info("Set Green Function");
-	RuntimeL->info("Set Green Function");
+	RuntimeLog->info("Set Green Function");
 	try
 	{
 		IGreen::FactoryGreen(&SystemConfig.GreenConfig);
-		ResultReport::WriteGreenFunctionInformation(&SystemConfig.GreenConfig);
+		ResultReport::WriteGreenFunctionInformation(&SystemConfig.GreenConfig,ResultLog);
+		ResultReport::WriteGreenFunctionInformation(&SystemConfig.GreenConfig,Console);
+		ResultReport::WriteGreenFunctionInformation(&SystemConfig.GreenConfig, RuntimeLog);
 
-		switch (SystemConfig.GreenConfig.GreenType)
-		{
-		case 1:
-			throw spdlog::spdlog_ex("Other GreenFunction is not developing!");
-		default:
-			Console->info("Free Space Green Function is choosen\n");
-			RuntimeL->info("Free Space Green Function is choosen\n");
-		}
-		
-		RuntimeL->flush();
+		RuntimeLog->flush();
 
 		return 0;
 	}

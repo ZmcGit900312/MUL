@@ -7,26 +7,19 @@ namespace Configuration
 {
     public partial class FormBasicFunction : Form
     {
-#if HXJ
-        public static Cos BasicFunction { get; set; }=new Cos();
-#else
         internal static XmlElement OSCard { get; set; }
-#endif
         public FormBasicFunction()
         {
             InitializeComponent();
-#if HXJ
-            BasicFunctionCheck.Checked = BasicFunction.BasicFunctionType != -1;
-            BasicFunctionGroupBox.Enabled = BasicFunctionCheck.Checked;
-            BFFileText.Text = BasicFunction.BasicFunctionName;//显示
-#else
+
             if (OSCard != null)
             {
                 BasicFunctionCheck.Checked = int.Parse(OSCard.Attributes["Validate"].Value) == 1;
                 BasicFunctionGroupBox.Enabled = BasicFunctionCheck.Checked;
                 if (BasicFunctionGroupBox.Enabled)
                 {
-                    RWGRadioButton.Checked = OSCard.ChildNodes[0].InnerText != "-1";
+                    //RWGRadioButton.Checked = OSCard.ChildNodes[0].InnerText != "-1";
+                    RWGRadioButton.Checked = true;
                     BFFileText.Text = OSCard.ChildNodes[1].InnerText;
                 }
 
@@ -36,7 +29,6 @@ namespace Configuration
                 OSCard = XmlTool.GetInstance.Doc.CreateElement("OS");
                 XmlTool.GetInstance.Root.SelectSingleNode("/Configuration/File")?.AppendChild(OSCard);
             }
-#endif
 
         }
 
@@ -49,14 +41,6 @@ namespace Configuration
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
-#if HXJ
-            if (BasicFunctionCheck.Checked&& File.Exists(BFFileText.Text))
-            {
-                BasicFunction.BasicFunctionName = BFFileText.Text;
-                if (RWGRadioButton.Checked) BasicFunction.BasicFunctionType = 0;        
-            }
-            else BasicFunction.BasicFunctionType = -1;//no check code
-#else
             OSCard.RemoveAll();
             if (BasicFunctionCheck.Checked && File.Exists(BFFileText.Text))
             {
@@ -65,7 +49,6 @@ namespace Configuration
                 OSCard.AppendChild(XmlTool.GetInstance.AddElementWithText("FilePath", BFFileText.Text));
             }
             else OSCard.SetAttribute("Validate", "0");
-#endif
             Close();
         }
 

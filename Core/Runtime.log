@@ -5333,3 +5333,447 @@
 [Wed Apr 10 21:08:09 2019 Wed][info] Release Matrix
 [Wed Apr 10 21:08:09 2019 Wed][info] Release Request
 [Wed Apr 10 21:08:09 2019 Wed][info] ---------------------END---------------------
+[Sat Apr 27 23:04:38 2019 Sat][error] Error=XML_ERROR_PARSING_TEXT ErrorID=8 (0x8) Line number=1
+[Sat Apr 27 23:06:32 2019 Sat][info] *************Read Configuration**************
+[Sat Apr 27 23:06:32 2019 Sat][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Sat Apr 27 23:06:32 2019 Sat][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Sat Apr 27 23:06:32 2019 Sat][info] Project Name:	test
+[Sat Apr 27 23:06:32 2019 Sat][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Sat Apr 27 23:06:32 2019 Sat][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Sat Apr 27 23:06:32 2019 Sat][info] Frequency:	3.000000e+08
+[Sat Apr 27 23:06:32 2019 Sat][error] Error in Read Excitation Module
+[Sat Apr 27 23:06:32 2019 Sat][info] *************Release the memory**************
+[Sat Apr 27 23:06:32 2019 Sat][info] ---------------------END---------------------
+[Sat Apr 27 23:10:20 2019 Sat][info] *************Read Configuration**************
+[Sat Apr 27 23:10:20 2019 Sat][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Sat Apr 27 23:10:20 2019 Sat][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Sat Apr 27 23:10:20 2019 Sat][info] Project Name:	test
+[Sat Apr 27 23:10:20 2019 Sat][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Sat Apr 27 23:10:20 2019 Sat][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Sat Apr 27 23:10:20 2019 Sat][info] Frequency:	3.000000e+08
+[Sat Apr 27 23:11:32 2019 Sat][info] ********************Mesh*********************
+[Sat Apr 27 23:11:32 2019 Sat][info] Creat Mesh costs	0.078000 s
+[Sat Apr 27 23:11:32 2019 Sat][info] ****************Geometry Info****************)
+[Sat Apr 27 23:11:32 2019 Sat][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Sat Apr 27 23:11:32 2019 Sat][info] Upper Point of Box is (+0.599,+0.598,+0.600
+)
+[Sat Apr 27 23:11:32 2019 Sat][info] Choose RWG Function as BasicFunction
+
+[Sat Apr 27 23:11:32 2019 Sat][info] The number of BasicFuntions is:	1287
+[Sat Apr 27 23:11:32 2019 Sat][info] Load BasicFuntions costs:	     0.006 s
+[Sat Apr 27 23:11:32 2019 Sat][info] Set Green Function
+[Sat Apr 27 23:11:32 2019 Sat][info] Free Space Green Function is choosen
+
+[Sat Apr 27 23:13:47 2019 Sat][info] *************Read Configuration**************
+[Sat Apr 27 23:13:47 2019 Sat][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Sat Apr 27 23:13:47 2019 Sat][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Sat Apr 27 23:13:47 2019 Sat][info] Project Name:	test
+[Sat Apr 27 23:13:47 2019 Sat][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Sat Apr 27 23:13:47 2019 Sat][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Sat Apr 27 23:13:47 2019 Sat][info] Frequency:	3.000000e+08
+[Sat Apr 27 23:13:54 2019 Sat][info] ********************Mesh*********************
+[Sat Apr 27 23:13:54 2019 Sat][info] Creat Mesh costs	0.055000 s
+[Sat Apr 27 23:13:54 2019 Sat][info] ****************Geometry Info****************)
+[Sat Apr 27 23:13:54 2019 Sat][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Sat Apr 27 23:13:54 2019 Sat][info] Upper Point of Box is (+0.599,+0.598,+0.600
+)
+[Sat Apr 27 23:13:54 2019 Sat][info] Choose RWG Function as BasicFunction
+
+[Sat Apr 27 23:13:54 2019 Sat][info] The number of BasicFuntions is:	1287
+[Sat Apr 27 23:13:54 2019 Sat][info] Load BasicFuntions costs:	     0.007 s
+[Sat Apr 27 23:13:54 2019 Sat][info] Set Green Function
+[Sat Apr 27 23:13:54 2019 Sat][info] Free Space Green Function is choosen
+
+[Sat Apr 27 23:14:17 2019 Sat][info] *************Release the memory**************
+[Sat Apr 27 23:14:17 2019 Sat][info] Release BasicFunction
+[Sat Apr 27 23:14:17 2019 Sat][info] Release Request
+[Sat Apr 27 23:14:17 2019 Sat][info] ---------------------END---------------------
+[Sun Apr 28 14:38:24 2019 Sun][info] *************Read Configuration**************
+[Sun Apr 28 14:38:24 2019 Sun][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Sun Apr 28 14:38:24 2019 Sun][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Sun Apr 28 14:38:24 2019 Sun][info] Project Name:	test
+[Sun Apr 28 14:38:24 2019 Sun][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Sun Apr 28 14:38:24 2019 Sun][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Sun Apr 28 14:38:24 2019 Sun][info] Frequency:	3.000000e+08
+[Sun Apr 28 14:39:07 2019 Sun][info] ********************Mesh*********************
+[Sun Apr 28 14:39:07 2019 Sun][info] Creat Mesh costs	0.056000 s
+[Sun Apr 28 14:39:07 2019 Sun][info] ****************Geometry Info****************)
+[Sun Apr 28 14:39:07 2019 Sun][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Sun Apr 28 14:39:07 2019 Sun][info] Upper Point of Box is (+0.599,+0.598,+0.600
+)
+[Sun Apr 28 14:39:07 2019 Sun][info] Choose RWG Function as BasicFunction
+
+[Sun Apr 28 14:39:07 2019 Sun][info] The number of BasicFuntions is:	1287
+[Sun Apr 28 14:39:07 2019 Sun][info] Load BasicFuntions costs:	     0.006 s
+[Sun Apr 28 14:39:07 2019 Sun][info] Set Green Function
+[Sun Apr 28 14:39:07 2019 Sun][info] Free Space Green Function is choosen
+
+[Sun Apr 28 14:39:36 2019 Sun][info] *************Release the memory**************
+[Sun Apr 28 14:39:36 2019 Sun][info] Release BasicFunction
+[Sun Apr 28 14:39:36 2019 Sun][info] Release Request
+[Sun Apr 28 14:39:36 2019 Sun][info] ---------------------END---------------------
+[Sun Apr 28 14:41:25 2019 Sun][info] *************Read Configuration**************
+[Sun Apr 28 14:41:25 2019 Sun][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Sun Apr 28 14:41:25 2019 Sun][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Sun Apr 28 14:41:25 2019 Sun][info] Project Name:	test
+[Sun Apr 28 14:41:25 2019 Sun][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Sun Apr 28 14:41:25 2019 Sun][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Sun Apr 28 14:41:25 2019 Sun][info] Frequency:	3.000000e+08
+[Sun Apr 28 14:41:25 2019 Sun][info] ********************Mesh*********************
+[Sun Apr 28 14:41:25 2019 Sun][info] Creat Mesh costs	0.044000 s
+[Sun Apr 28 14:41:25 2019 Sun][info] ****************Geometry Info****************)
+[Sun Apr 28 14:41:25 2019 Sun][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Sun Apr 28 14:41:25 2019 Sun][info] Upper Point of Box is (+0.599,+0.598,+0.600
+)
+[Sun Apr 28 14:41:26 2019 Sun][info] Choose RWG Function as BasicFunction
+
+[Sun Apr 28 14:41:26 2019 Sun][info] The number of BasicFuntions is:	1287
+[Sun Apr 28 14:41:26 2019 Sun][info] Load BasicFuntions costs:	     0.007 s
+[Sun Apr 28 14:41:26 2019 Sun][info] Set Green Function
+[Sun Apr 28 14:41:26 2019 Sun][info] Free Space Green Function is choosen
+
+[Sun Apr 28 14:41:26 2019 Sun][info] Begin to pre-compute the SelfTriangle Impedance
+[Sun Apr 28 14:41:26 2019 Sun][info] Initial Solver
+[Sun Apr 28 14:41:26 2019 Sun][info] *************Initial AIM Matrix**************
+[Sun Apr 28 14:41:26 2019 Sun][info] AIMBox is from (-0.649,-0.649,-0.650) to (+0.649,+0.648,+0.650)
+[Sun Apr 28 14:41:26 2019 Sun][info] AIM Interval:	0.05 ¦Ë
+[Sun Apr 28 14:41:26 2019 Sun][info] Dimension:	3
+[Sun Apr 28 14:41:26 2019 Sun][info] LayerNumber:	(27,27,27)
+[Sun Apr 28 14:41:26 2019 Sun][info] AIM Order:	2
+[Sun Apr 28 14:41:26 2019 Sun][info] AIM Threshold:	0.30 ¦Ë
+[Sun Apr 28 14:41:26 2019 Sun][info] AIM NearFieldEps:	1.000000e-02
+[Sun Apr 28 14:41:26 2019 Sun][info] Take the Virtual Grids Technique
+[Sun Apr 28 14:41:33 2019 Sun][info] Multipole Expansion costs time:	1.496s
+[Sun Apr 28 14:41:36 2019 Sun][info] Near-Matrix Setting by TFS Time is:	3.297s
+[Sun Apr 28 14:41:36 2019 Sun][info] Triplet and NearField have 420508 and 105127 elements.
+[Sun Apr 28 14:41:56 2019 Sun][info] Precondition cost:	19.705s
+[Sun Apr 28 14:42:57 2019 Sun][info] Near Field by TFS TotalTime is:	64.183s
+[Sun Apr 28 14:42:57 2019 Sun][info] *****************Excitation******************
+[Sun Apr 28 14:42:57 2019 Sun][info] Plane wave Name::	T0P270
+[Sun Apr 28 14:42:57 2019 Sun][info] Set RightHand is cost:	0.023000 s
+[Sun Apr 28 14:42:57 2019 Sun][info] Memory Cost	0.019638 Mb
+[Sun Apr 28 14:42:57 2019 Sun][info] *********Solve Matrix with BiCGSTAB**********
+[Sun Apr 28 14:42:57 2019 Sun][info] The Maxiteration is:	0
+[Sun Apr 28 14:42:57 2019 Sun][info] The Tolerance is:	1.000000e-04
+[Sun Apr 28 14:43:03 2019 Sun][info] The Final Iteration is:	17
+[Sun Apr 28 14:43:03 2019 Sun][info] The results tolerance is:	9.3142e-05
+[Sun Apr 28 14:43:03 2019 Sun][info] Iteration is cost:	6.013000 s
+[Sun Apr 28 14:43:03 2019 Sun][info] Save BasicFunction in binary type
+[Sun Apr 28 14:43:03 2019 Sun][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Sun Apr 28 14:43:03 2019 Sun][info] Run CalculateRequest()
+[Sun Apr 28 14:43:03 2019 Sun][info] **********Calcuate the FarField RCS**********
+[Sun Apr 28 14:43:03 2019 Sun][info] Far Field Request::	Horizon
+[Sun Apr 28 14:43:16 2019 Sun][info] Far Field Request::	VerticalPhi0
+[Sun Apr 28 14:43:23 2019 Sun][info] Far Field Request::	VerticalPhi90
+[Sun Apr 28 14:43:30 2019 Sun][info] FarField Calculate cost 26.887000 s
+[Sun Apr 28 14:43:30 2019 Sun][info] *************Release the memory**************
+[Sun Apr 28 14:43:30 2019 Sun][info] Release BasicFunction
+[Sun Apr 28 14:43:30 2019 Sun][info] Release Request
+[Sun Apr 28 14:43:30 2019 Sun][info] ---------------------END---------------------
+[Sun Apr 28 15:27:36 2019 Sun][info] *************Read Configuration**************
+[Sun Apr 28 15:27:36 2019 Sun][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Sun Apr 28 15:27:36 2019 Sun][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Sun Apr 28 15:27:36 2019 Sun][info] Project Name:	test
+[Sun Apr 28 15:27:36 2019 Sun][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Sun Apr 28 15:27:36 2019 Sun][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Sun Apr 28 15:27:36 2019 Sun][info] Frequency:	3.000000e+08
+[Sun Apr 28 15:27:37 2019 Sun][info] ********************Mesh*********************
+[Sun Apr 28 15:27:37 2019 Sun][info] Creat Mesh costs	0.028000 s
+[Sun Apr 28 15:27:37 2019 Sun][info] ****************Geometry Info****************)
+[Sun Apr 28 15:27:37 2019 Sun][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Sun Apr 28 15:27:37 2019 Sun][info] Upper Point of Box is (+0.599,+0.598,+0.600
+)
+[Sun Apr 28 15:27:37 2019 Sun][info] Choose RWG Function as BasicFunction
+
+[Sun Apr 28 15:27:37 2019 Sun][info] The number of BasicFuntions is:	1287
+[Sun Apr 28 15:27:37 2019 Sun][info] Load BasicFuntions costs:	     0.007 s
+[Sun Apr 28 15:27:37 2019 Sun][info] Set Green Function
+[Sun Apr 28 15:27:37 2019 Sun][info] Free Space Green Function is choosen
+
+[Sun Apr 28 15:27:37 2019 Sun][info] Begin to pre-compute the SelfTriangle Impedance
+[Sun Apr 28 15:27:37 2019 Sun][info] Initial Solver
+[Sun Apr 28 15:27:37 2019 Sun][info] *************Initial AIM Matrix**************
+[Sun Apr 28 15:27:37 2019 Sun][info] AIMBox is from (-0.649,-0.649,-0.650) to (+0.649,+0.648,+0.650)
+[Sun Apr 28 15:27:37 2019 Sun][info] AIM Interval:	0.05 ¦Ë
+[Sun Apr 28 15:27:37 2019 Sun][info] Dimension:	3
+[Sun Apr 28 15:27:37 2019 Sun][info] LayerNumber:	(27,27,27)
+[Sun Apr 28 15:27:37 2019 Sun][info] AIM Order:	2
+[Sun Apr 28 15:27:37 2019 Sun][info] AIM Threshold:	0.30 ¦Ë
+[Sun Apr 28 15:27:37 2019 Sun][info] AIM NearFieldEps:	1.000000e-02
+[Sun Apr 28 15:27:37 2019 Sun][info] Take the Virtual Grids Technique
+[Sun Apr 28 15:27:41 2019 Sun][info] Multipole Expansion costs time:	1.591s
+[Sun Apr 28 15:27:45 2019 Sun][info] Near-Matrix Setting by TFS Time is:	3.67s
+[Sun Apr 28 15:27:45 2019 Sun][info] Triplet and NearField have 420508 and 105127 elements.
+[Sun Apr 28 15:28:04 2019 Sun][info] Precondition cost:	19.814s
+[Sun Apr 28 15:29:05 2019 Sun][info] Near Field by TFS TotalTime is:	63.72s
+[Sun Apr 28 15:29:05 2019 Sun][info] *****************Excitation******************
+[Sun Apr 28 15:29:05 2019 Sun][info] Plane wave Name::	T0P270
+[Sun Apr 28 15:29:05 2019 Sun][info] Set RightHand is cost:	0.020000 s
+[Sun Apr 28 15:29:05 2019 Sun][info] Memory Cost	0.019638 Mb
+[Sun Apr 28 15:29:05 2019 Sun][info] *********Solve Matrix with BiCGSTAB**********
+[Sun Apr 28 15:29:05 2019 Sun][info] The Maxiteration is:	0
+[Sun Apr 28 15:29:05 2019 Sun][info] The Tolerance is:	1.000000e-04
+[Sun Apr 28 15:29:11 2019 Sun][info] The Final Iteration is:	17
+[Sun Apr 28 15:29:11 2019 Sun][info] The results tolerance is:	9.3142e-05
+[Sun Apr 28 15:29:11 2019 Sun][info] Iteration is cost:	6.226000 s
+[Sun Apr 28 15:29:11 2019 Sun][info] Save BasicFunction in binary type
+[Sun Apr 28 15:29:11 2019 Sun][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Sun Apr 28 15:29:11 2019 Sun][info] Run CalculateRequest()
+[Sun Apr 28 15:29:11 2019 Sun][info] **********Calcuate the FarField RCS**********
+[Sun Apr 28 15:29:11 2019 Sun][info] Far Field Request::	Horizon
+[Sun Apr 28 15:29:24 2019 Sun][info] Far Field Request::	VerticalPhi0
+[Sun Apr 28 15:29:31 2019 Sun][info] Far Field Request::	VerticalPhi90
+[Sun Apr 28 15:29:37 2019 Sun][info] FarField Calculate cost 26.396000 s
+[Sun Apr 28 15:29:37 2019 Sun][info] *************Release the memory**************
+[Sun Apr 28 15:29:37 2019 Sun][info] Release BasicFunction
+[Sun Apr 28 15:29:37 2019 Sun][info] Release Request
+[Sun Apr 28 15:29:37 2019 Sun][info] ---------------------END---------------------
+[Sun Apr 28 15:45:25 2019 Sun][info] *************Read Configuration**************
+[Sun Apr 28 15:45:25 2019 Sun][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Sun Apr 28 15:45:25 2019 Sun][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Sun Apr 28 15:45:25 2019 Sun][info] Project Name:	test
+[Sun Apr 28 15:45:25 2019 Sun][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Sun Apr 28 15:45:25 2019 Sun][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Sun Apr 28 15:45:25 2019 Sun][info] Frequency:	3.000000e+08
+[Sun Apr 28 15:45:26 2019 Sun][info] ********************Mesh*********************
+[Sun Apr 28 15:45:26 2019 Sun][info] Creat Mesh costs	0.041000 s
+[Sun Apr 28 15:45:26 2019 Sun][info] ****************Geometry Info****************)
+[Sun Apr 28 15:45:26 2019 Sun][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Sun Apr 28 15:45:26 2019 Sun][info] Upper Point of Box is (+0.599,+0.598,+0.600
+)
+[Sun Apr 28 15:45:26 2019 Sun][info] Choose RWG Function as BasicFunction
+
+[Sun Apr 28 15:45:26 2019 Sun][info] The number of BasicFuntions is:	1287
+[Sun Apr 28 15:45:26 2019 Sun][info] Load BasicFuntions costs:	     0.007 s
+[Sun Apr 28 15:45:26 2019 Sun][info] Set Green Function
+[Sun Apr 28 15:45:26 2019 Sun][info] Free Space Green Function is choosen
+
+[Sun Apr 28 15:45:26 2019 Sun][info] Begin to pre-compute the SelfTriangle Impedance
+[Sun Apr 28 15:45:27 2019 Sun][info] Initial Solver
+[Sun Apr 28 15:45:27 2019 Sun][info] *************Initial AIM Matrix**************
+[Sun Apr 28 15:45:27 2019 Sun][info] AIMBox is from (-0.649,-0.649,-0.650) to (+0.649,+0.648,+0.650)
+[Sun Apr 28 15:45:27 2019 Sun][info] AIM Interval:	0.05 ¦Ë
+[Sun Apr 28 15:45:27 2019 Sun][info] Dimension:	3
+[Sun Apr 28 15:45:27 2019 Sun][info] LayerNumber:	(27,27,27)
+[Sun Apr 28 15:45:27 2019 Sun][info] AIM Order:	2
+[Sun Apr 28 15:45:27 2019 Sun][info] AIM Threshold:	0.30 ¦Ë
+[Sun Apr 28 15:45:27 2019 Sun][info] AIM NearFieldEps:	1.000000e-02
+[Sun Apr 28 15:45:27 2019 Sun][info] Take the Virtual Grids Technique
+[Sun Apr 28 15:45:30 2019 Sun][info] Multipole Expansion costs time:	1.638s
+[Sun Apr 28 15:45:34 2019 Sun][info] Near-Matrix Setting by TFS Time is:	3.59s
+[Sun Apr 28 15:45:34 2019 Sun][info] Triplet and NearField have 420508 and 105127 elements.
+[Sun Apr 28 15:45:54 2019 Sun][info] Precondition cost:	19.931s
+[Sun Apr 28 15:46:53 2019 Sun][info] Near Field by TFS TotalTime is:	62.808s
+[Sun Apr 28 15:46:53 2019 Sun][info] *****************Excitation******************
+[Sun Apr 28 15:46:53 2019 Sun][info] ***************Excitation Info***************
+[Sun Apr 28 15:46:53 2019 Sun][info] Source Type:		PlanewaveLinear
+[Sun Apr 28 15:46:53 2019 Sun][info] Direction:[0.000 0.000 -1.000]
+[Sun Apr 28 15:46:53 2019 Sun][info] Polarization:[0.000 1.000 0.000]
+
+[Sun Apr 28 15:46:53 2019 Sun][info] Set RightHand is cost:	0.018000 s
+[Sun Apr 28 15:46:53 2019 Sun][info] Memory Cost	0.019638 Mb
+[Sun Apr 28 15:46:53 2019 Sun][info] *********Solve Matrix with BiCGSTAB**********
+[Sun Apr 28 15:46:53 2019 Sun][info] The Maxiteration is:	0
+[Sun Apr 28 15:46:53 2019 Sun][info] The Tolerance is:	1.000000e-04
+[Sun Apr 28 15:46:59 2019 Sun][info] The Final Iteration is:	17
+[Sun Apr 28 15:46:59 2019 Sun][info] The results tolerance is:	9.3142e-05
+[Sun Apr 28 15:46:59 2019 Sun][info] Iteration is cost:	6.147000 s
+[Sun Apr 28 15:46:59 2019 Sun][info] Save BasicFunction in binary type
+[Sun Apr 28 15:46:59 2019 Sun][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Sun Apr 28 15:46:59 2019 Sun][info] Run CalculateRequest()
+[Sun Apr 28 15:46:59 2019 Sun][info] **********Calcuate the FarField RCS**********
+[Sun Apr 28 15:46:59 2019 Sun][info] Far Field Request::	Horizon
+[Sun Apr 28 15:47:12 2019 Sun][info] Far Field Request::	VerticalPhi0
+[Sun Apr 28 15:47:19 2019 Sun][info] Far Field Request::	VerticalPhi90
+[Sun Apr 28 15:47:26 2019 Sun][info] FarField Calculate cost 26.305000 s
+[Sun Apr 28 15:47:26 2019 Sun][info] *************Release the memory**************
+[Sun Apr 28 15:47:26 2019 Sun][info] Release BasicFunction
+[Sun Apr 28 15:47:26 2019 Sun][info] Release Request
+[Sun Apr 28 15:47:26 2019 Sun][info] ---------------------END---------------------
+[Sun Apr 28 18:41:40 2019 Sun][info] *************Read Configuration**************
+[Sun Apr 28 18:41:40 2019 Sun][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Sun Apr 28 18:41:40 2019 Sun][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Sun Apr 28 18:41:40 2019 Sun][info] Project Name:	test
+[Sun Apr 28 18:41:40 2019 Sun][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Sun Apr 28 18:41:40 2019 Sun][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Sun Apr 28 18:41:40 2019 Sun][info] Frequency:	3.000000e+08
+[Sun Apr 28 18:42:44 2019 Sun][info] ********************Mesh*********************
+[Sun Apr 28 18:42:44 2019 Sun][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Sun Apr 28 18:42:44 2019 Sun][info] Number of Nodes:			         431
+[Sun Apr 28 18:42:44 2019 Sun][info] Number of Triangles:			         858
+[Sun Apr 28 18:42:44 2019 Sun][info] Number of Segments:			           0
+[Sun Apr 28 18:42:44 2019 Sun][info] Number of Cuboids:			           0
+[Sun Apr 28 18:42:44 2019 Sun][info] Number of Tetrahedras:			           0
+
+[Sun Apr 28 18:42:44 2019 Sun][info] Creat Mesh costs	0.028000 s
+[Sun Apr 28 18:42:44 2019 Sun][info] ****************Geometry Info****************)
+[Sun Apr 28 18:42:44 2019 Sun][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Sun Apr 28 18:42:44 2019 Sun][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Sun Apr 28 18:42:44 2019 Sun][info] Choose RWG Function as BasicFunction
+
+[Sun Apr 28 18:42:44 2019 Sun][info] The number of BasicFuntions is:	1287
+[Sun Apr 28 18:42:44 2019 Sun][info] Load BasicFuntions costs:	     0.007 s
+[Sun Apr 28 18:42:44 2019 Sun][info] Set Green Function
+[Sun Apr 28 18:42:44 2019 Sun][info] Free Space Green Function is choosen
+
+[Sun Apr 28 18:42:44 2019 Sun][info] Begin to pre-compute the SelfTriangle Impedance
+[Sun Apr 28 18:42:45 2019 Sun][info] Initial Solver
+[Sun Apr 28 18:42:45 2019 Sun][info] ***************AIM Parameters****************
+[Sun Apr 28 18:42:45 2019 Sun][info] Order:	2
+[Sun Apr 28 18:42:45 2019 Sun][info] Interval:	0.05
+[Sun Apr 28 18:42:45 2019 Sun][info] Threshold:	0.30
+[Sun Apr 28 18:42:45 2019 Sun][info] NearTolerance:	1.000000e-02
+[Sun Apr 28 18:42:45 2019 Sun][info] Dimension:	3
+[Sun Apr 28 18:42:45 2019 Sun][info] VirtualGrid:	1
+[Sun Apr 28 18:42:45 2019 Sun][info] TFS:	1
+[Sun Apr 28 18:42:45 2019 Sun][info] AIMBox is from (-0.649,-0.649,-0.650) to (+0.649,+0.648,+0.650)
+[Sun Apr 28 18:42:45 2019 Sun][info] LayerNumber:	(27,27,27)
+
+[Sun Apr 28 18:48:33 2019 Sun][info] *************Read Configuration**************
+[Sun Apr 28 18:48:33 2019 Sun][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Sun Apr 28 18:48:33 2019 Sun][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Sun Apr 28 18:48:33 2019 Sun][info] Project Name:	test
+[Sun Apr 28 18:48:33 2019 Sun][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Sun Apr 28 18:48:33 2019 Sun][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Sun Apr 28 18:48:33 2019 Sun][info] Frequency:	3.000000e+08
+[Sun Apr 28 18:48:33 2019 Sun][info] ********************Mesh*********************
+[Sun Apr 28 18:48:34 2019 Sun][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Sun Apr 28 18:48:34 2019 Sun][info] Number of Nodes:			         431
+[Sun Apr 28 18:48:34 2019 Sun][info] Number of Triangles:			         858
+[Sun Apr 28 18:48:34 2019 Sun][info] Number of Segments:			           0
+[Sun Apr 28 18:48:34 2019 Sun][info] Number of Cuboids:			           0
+[Sun Apr 28 18:48:34 2019 Sun][info] Number of Tetrahedras:			           0
+
+[Sun Apr 28 18:48:34 2019 Sun][info] Creat Mesh costs	0.029000 s
+[Sun Apr 28 18:48:34 2019 Sun][info] ****************Geometry Info****************)
+[Sun Apr 28 18:48:34 2019 Sun][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Sun Apr 28 18:48:34 2019 Sun][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Sun Apr 28 18:48:34 2019 Sun][info] Choose RWG Function as BasicFunction
+
+[Sun Apr 28 18:48:34 2019 Sun][info] The number of BasicFuntions is:	1287
+[Sun Apr 28 18:48:34 2019 Sun][info] Load BasicFuntions costs:	     0.006 s
+[Sun Apr 28 18:48:34 2019 Sun][info] Set Green Function
+[Sun Apr 28 18:48:34 2019 Sun][info] Free Space Green Function is choosen
+
+[Sun Apr 28 18:48:34 2019 Sun][info] Begin to pre-compute the SelfTriangle Impedance
+[Sun Apr 28 18:48:34 2019 Sun][info] Initial Solver
+[Sun Apr 28 18:48:34 2019 Sun][info] ***************AIM Parameters****************
+[Sun Apr 28 18:48:34 2019 Sun][info] Order:	2
+[Sun Apr 28 18:48:34 2019 Sun][info] Interval:	0.05
+[Sun Apr 28 18:48:34 2019 Sun][info] Threshold:	0.30
+[Sun Apr 28 18:48:34 2019 Sun][info] NearTolerance:	1.000000e-02
+[Sun Apr 28 18:48:34 2019 Sun][info] Dimension:	3
+[Sun Apr 28 18:48:34 2019 Sun][info] VirtualGrid:	1
+[Sun Apr 28 18:48:34 2019 Sun][info] TFS:	1
+[Sun Apr 28 18:48:34 2019 Sun][info] AIMBox is from (-0.649,-0.649,-0.650) to (+0.649,+0.648,+0.650)
+[Sun Apr 28 18:48:34 2019 Sun][info] LayerNumber:	(27,27,27)
+
+[Sun Apr 28 18:52:53 2019 Sun][info] *************Read Configuration**************
+[Sun Apr 28 18:52:53 2019 Sun][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Sun Apr 28 18:52:53 2019 Sun][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Sun Apr 28 18:52:53 2019 Sun][info] Project Name:	test
+[Sun Apr 28 18:52:53 2019 Sun][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Sun Apr 28 18:52:53 2019 Sun][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Sun Apr 28 18:52:53 2019 Sun][info] Frequency:	3.000000e+08
+[Sun Apr 28 18:52:53 2019 Sun][info] ********************Mesh*********************
+[Sun Apr 28 18:52:53 2019 Sun][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Sun Apr 28 18:52:53 2019 Sun][info] Number of Nodes:			         431
+[Sun Apr 28 18:52:53 2019 Sun][info] Number of Triangles:			         858
+[Sun Apr 28 18:52:53 2019 Sun][info] Number of Segments:			           0
+[Sun Apr 28 18:52:53 2019 Sun][info] Number of Cuboids:			           0
+[Sun Apr 28 18:52:53 2019 Sun][info] Number of Tetrahedras:			           0
+
+[Sun Apr 28 18:52:53 2019 Sun][info] Creat Mesh costs	0.028000 s
+[Sun Apr 28 18:52:53 2019 Sun][info] ****************Geometry Info****************)
+[Sun Apr 28 18:52:53 2019 Sun][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Sun Apr 28 18:52:53 2019 Sun][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Sun Apr 28 18:52:53 2019 Sun][info] Choose RWG Function as BasicFunction
+
+[Sun Apr 28 18:52:53 2019 Sun][info] The number of BasicFuntions is:	1287
+[Sun Apr 28 18:52:53 2019 Sun][info] Load BasicFuntions costs:	     0.006 s
+[Sun Apr 28 18:52:53 2019 Sun][info] Set Green Function
+[Sun Apr 28 18:52:53 2019 Sun][info] Free Space Green Function is choosen
+
+[Sun Apr 28 18:52:53 2019 Sun][info] Begin to pre-compute the SelfTriangle Impedance
+[Sun Apr 28 18:52:54 2019 Sun][info] Initial Solver
+[Sun Apr 28 18:52:54 2019 Sun][info] ***************AIM Parameters****************
+[Sun Apr 28 18:52:54 2019 Sun][info] Order:	2
+[Sun Apr 28 18:52:54 2019 Sun][info] Interval:	0.05
+[Sun Apr 28 18:52:54 2019 Sun][info] Threshold:	0.30
+[Sun Apr 28 18:52:54 2019 Sun][info] NearTolerance:	1.000000e-02
+[Sun Apr 28 18:52:54 2019 Sun][info] Dimension:	3
+[Sun Apr 28 18:52:54 2019 Sun][info] VirtualGrid:	1
+[Sun Apr 28 18:52:54 2019 Sun][info] TFS:	1
+[Sun Apr 28 18:52:54 2019 Sun][info] AIMBox is from (-0.649,-0.649,-0.650) to (+0.649,+0.648,+0.650)
+[Sun Apr 28 18:52:54 2019 Sun][info] LayerNumber:	(27,27,27)
+
+[Sun Apr 28 19:03:11 2019 Sun][info] *************Read Configuration**************
+[Sun Apr 28 19:03:11 2019 Sun][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Sun Apr 28 19:03:11 2019 Sun][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Sun Apr 28 19:03:11 2019 Sun][info] Project Name:	test
+[Sun Apr 28 19:03:11 2019 Sun][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Sun Apr 28 19:03:11 2019 Sun][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Sun Apr 28 19:03:11 2019 Sun][info] Frequency:	3.000000e+08
+[Sun Apr 28 19:03:12 2019 Sun][info] ********************Mesh*********************
+[Sun Apr 28 19:03:12 2019 Sun][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Sun Apr 28 19:03:12 2019 Sun][info] Number of Nodes:			         431
+[Sun Apr 28 19:03:12 2019 Sun][info] Number of Triangles:			         858
+[Sun Apr 28 19:03:12 2019 Sun][info] Number of Segments:			           0
+[Sun Apr 28 19:03:12 2019 Sun][info] Number of Cuboids:			           0
+[Sun Apr 28 19:03:12 2019 Sun][info] Number of Tetrahedras:			           0
+
+[Sun Apr 28 19:03:12 2019 Sun][info] Creat Mesh costs	0.029000 s
+[Sun Apr 28 19:03:12 2019 Sun][info] ****************Geometry Info****************)
+[Sun Apr 28 19:03:12 2019 Sun][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Sun Apr 28 19:03:12 2019 Sun][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Sun Apr 28 19:03:12 2019 Sun][info] Choose RWG Function as BasicFunction
+
+[Sun Apr 28 19:03:12 2019 Sun][info] The number of BasicFuntions is:	1287
+[Sun Apr 28 19:03:12 2019 Sun][info] Load BasicFuntions costs:	     0.009 s
+[Sun Apr 28 19:03:12 2019 Sun][info] Set Green Function
+[Sun Apr 28 19:03:12 2019 Sun][info] Free Space Green Function is choosen
+
+[Sun Apr 28 19:03:12 2019 Sun][info] Begin to pre-compute the SelfTriangle Impedance
+[Sun Apr 28 19:03:13 2019 Sun][info] Initial Solver
+[Sun Apr 28 19:03:13 2019 Sun][info] ***************AIM Parameters****************
+[Sun Apr 28 19:03:13 2019 Sun][info] Order:	2
+[Sun Apr 28 19:03:13 2019 Sun][info] Interval:	0.05
+[Sun Apr 28 19:03:13 2019 Sun][info] Threshold:	0.30
+[Sun Apr 28 19:03:13 2019 Sun][info] NearTolerance:	1.000000e-02
+[Sun Apr 28 19:03:13 2019 Sun][info] Dimension:	3
+[Sun Apr 28 19:03:13 2019 Sun][info] VirtualGrid:	1
+[Sun Apr 28 19:03:13 2019 Sun][info] TFS:	1
+[Sun Apr 28 19:03:13 2019 Sun][info] AIMBox is from (-0.649,-0.649,-0.650) to (+0.649,+0.648,+0.650)
+[Sun Apr 28 19:03:13 2019 Sun][info] LayerNumber:	(27,27,27)
+
+[Sun Apr 28 19:03:13 2019 Sun][info] Take the Virtual Grids Technique
+[Sun Apr 28 19:03:15 2019 Sun][info] Multipole Expansion costs time:	1.289s
+[Sun Apr 28 19:03:18 2019 Sun][info] Near-Matrix Setting by TFS Time is:	3.545s
+[Sun Apr 28 19:03:18 2019 Sun][info] Triplet and NearField have 420508 and 105127 elements.
+[Sun Apr 28 19:03:40 2019 Sun][info] Precondition cost:	21.285s
+[Sun Apr 28 19:04:43 2019 Sun][info] Near Field by TFS TotalTime is:	66.657s
+[Sun Apr 28 19:04:43 2019 Sun][info] *****************Excitation******************
+[Sun Apr 28 19:04:43 2019 Sun][info] ***************Excitation Info***************
+[Sun Apr 28 19:04:43 2019 Sun][info] Source Type:		Voltage
+[Sun Apr 28 19:05:50 2019 Sun][info] Set RightHand is cost:	66.940000 s
+[Sun Apr 28 19:05:50 2019 Sun][info] Memory Cost	0.019638 Mb
+[Sun Apr 28 19:05:50 2019 Sun][info] ****************Solution Info****************
+[Sun Apr 28 19:05:50 2019 Sun][info] Solution Type:	BiCGSTAB
+[Sun Apr 28 19:05:50 2019 Sun][info] Preconditioning Type:		Incomplete LU
+[Sun Apr 28 19:05:50 2019 Sun][info] The Maxiteration is:		0
+[Sun Apr 28 19:05:50 2019 Sun][info] The Tolerance is:		1.000000e-04
+[Sun Apr 28 19:05:57 2019 Sun][info] The Final Iteration is:	18
+[Sun Apr 28 19:05:57 2019 Sun][info] The results tolerance is:	2.3629e-05
+[Sun Apr 28 19:05:57 2019 Sun][info] Iteration is cost:	6.970000 s
+[Sun Apr 28 19:05:57 2019 Sun][info] Save BasicFunction in binary type
+[Sun Apr 28 19:05:57 2019 Sun][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Sun Apr 28 19:05:57 2019 Sun][info] Run CalculateRequest()
+[Sun Apr 28 19:05:57 2019 Sun][info] **********Calcuate the FarField RCS**********
+[Sun Apr 28 19:05:57 2019 Sun][info] RCS of Far Field::	Horizon
+[Sun Apr 28 19:06:10 2019 Sun][info] RCS of Far Field::	VerticalPhi0
+[Sun Apr 28 19:06:17 2019 Sun][info] RCS of Far Field::	VerticalPhi90
+[Sun Apr 28 19:06:23 2019 Sun][info] FarField Calculate cost 26.464000 s
+[Sun Apr 28 19:06:23 2019 Sun][info] *************Release the memory**************
+[Sun Apr 28 19:06:23 2019 Sun][info] Release BasicFunction
+[Sun Apr 28 19:06:23 2019 Sun][info] Release Request
+[Sun Apr 28 19:06:23 2019 Sun][info] ---------------------END---------------------

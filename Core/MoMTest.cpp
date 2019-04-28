@@ -33,8 +33,8 @@ public:
 		catch (spd::spdlog_ex&ex)
 		{
 			Console->warn(ex.what());
-			RuntimeL->warn(ex.what());
-			RuntimeL->flush();
+			RuntimeLog->warn(ex.what());
+			RuntimeLog->flush();
 		}
 	}
 
@@ -115,8 +115,8 @@ TEST_F(MoMTest, ImpedanceTest)
 	catch (spd::spdlog_ex&ex)
 	{
 		Console->warn(ex.what());
-		RuntimeL->warn(ex.what());
-		RuntimeL->flush();
+		RuntimeLog->warn(ex.what());
+		RuntimeLog->flush();
 	}
 }
 
@@ -136,8 +136,8 @@ TEST_F(MoMTest,SolveTest)
 	catch (spd::spdlog_ex&ex)
 	{
 		Console->warn(ex.what());
-		RuntimeL->warn(ex.what());
-		RuntimeL->flush();
+		RuntimeLog->warn(ex.what());
+		RuntimeLog->flush();
 	}
 }
 #endif

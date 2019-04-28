@@ -58,34 +58,12 @@ namespace Configuration
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-#if HXJ
-            SaveFileDialog configSaveFileDialog = new SaveFileDialog { Filter = @"小雪球 |*.hxj" };//定义文件保存位置
-#else
             SaveFileDialog configSaveFileDialog = new SaveFileDialog { Filter = @"配置文件 |*.xml" };//定义文件保存位置
-#endif
             if (configSaveFileDialog.ShowDialog() == DialogResult.OK)//如果有保存路径
             {
                 SaveButton.Enabled = false;
                 ConfigurationFullName = configSaveFileDialog.FileName;
-#if HXJ
-                FormFile.Files.ProjectDir = Path.GetDirectoryName(configSaveFileDialog.FileName);
-                FormFile.Files.ProjectName = Path.GetFileNameWithoutExtension(configSaveFileDialog.FileName);
-                StreamWriter sw = File.CreateText(configSaveFileDialog.FileName);
 
-                //Write
-                FormFile.Files.Write(sw);
-                if(FormBasicFunction.BasicFunction.BasicFunctionType>-1) FormBasicFunction.BasicFunction.Write(sw);
-                FormMethod.Impedance.Write(sw);
-                FormFrequency.fre.Write(sw);
-                FormExcitation.Planewave.Write(sw);
-                FormSolution.Sol.Write(sw);
-
-                foreach (var val in FormRequest.FarField)val.Value.Write(sw);
-                              
-                sw.WriteLine((int)Card.EN);
-                sw.Flush();
-                sw.Close();
-#else
                 FormFile.Project.ChildNodes[0].InnerText = Path.GetFileNameWithoutExtension(configSaveFileDialog.FileName);
                 FormFile.Project.ChildNodes[1].InnerText = Path.GetDirectoryName(configSaveFileDialog.FileName);
                 FormFile.Project.ChildNodes[2].InnerText =
@@ -93,7 +71,7 @@ namespace Configuration
                 XmlTool.GetInstance.Root.Attributes["Date"].InnerText = DateTime.Now.ToString("s");
 
                 XmlTool.GetInstance.Doc.Save(configSaveFileDialog.FileName);
-#endif
+
                 InformationText.Text = @"Configuration is written Successfully:";
                 InformationText.AppendText("\n" + configSaveFileDialog.FileName);
 #if DEBUG
@@ -114,31 +92,24 @@ namespace Configuration
 
         private void ValidateButton_Click(object sender, EventArgs e)
         {
-#if HXJ
-            if (!File.Exists(FormFile.Files.MeshFile))
-#else
+
             RunButton.Enabled=false;
-            if(!File.Exists(FormFile.MeshCard.FirstChild.InnerText))
-#endif
+            InformationText.Clear();
+            if (!File.Exists(FormFile.MeshCard.FirstChild.InnerText))
+
             {
                 InformationText.Text = @"Mesh File is not exist!";
                 FileButton.BackColor = Color.Red;
                 return;
             }          
 
-#if HXJ
-            if (FormMethod.Impedance.FillingStrategy == 0)FormSolution.Sol.PreConditionType = 0;
-            BFButton.BackColor = FormBasicFunction.BasicFunction.BasicFunctionType >-1&&
-                                 File.Exists(FormBasicFunction.BasicFunction.BasicFunctionName) ?
-                                  Color.Green: Color.Yellow ;
-#else
+
             if (FormMethod.MethodCard.FirstChild.InnerText != "1")
                 FormSolution.SolutionMod.FirstChild.ChildNodes[4].InnerText = "0";
             //BFButton.BackColor = int.Parse(FormBasicFunction.OSCard.FirstChild.InnerText) > -1 &&
             //                     File.Exists(FormBasicFunction.OSCard.LastChild.InnerText) ?
             //    Color.Green : Color.Yellow;
             
-#endif
             
             if (XmlTool.GetInstance.Validate())
             {
@@ -157,56 +128,13 @@ namespace Configuration
 
         private void LoadButton_Click(object sender, EventArgs e)
         {
-#if HXJ
-            OpenFileDialog configFileDialog = new OpenFileDialog { Filter = @"小雪球 |*.hxj" }; //定义新的文件打开位置控件
-#else
+
             OpenFileDialog configFileDialog = new OpenFileDialog { Filter = @"配置文件 |*.xml" }; //定义新的文件打开位置控件
-#endif
             if (configFileDialog.ShowDialog() == DialogResult.OK)//如果有选择打开的文件
             {
                 InformationText.Clear();
                 InformationText.AppendText("Read Configuration File:\n" + configFileDialog.FileName + "\n");
-#if HXJ
-                StreamReader sd = new StreamReader(configFileDialog.FileName);
-                
-                FormRequest.FarField.Clear();
-
-                Card hxj = Card.EN;
-                do
-                {
-                    var buffer = sd.ReadLine()?.Split();
-                    if (buffer != null)
-                    {
-                        hxj = (Card)int.Parse(buffer[0]);
-                        switch (hxj)
-                        {
-                            case Card.IN:
-                                FormFile.Files.Read(buffer);
-                                break;
-                            case Card.A0:
-                                FormExcitation.Planewave.Read(buffer);
-                                break;
-                            case Card.CG:
-                                FormSolution.Sol.Read(buffer);
-                                break;
-                            case Card.FF:                               
-                                FormRequest.FarField.Add(buffer[8],new Cff(buffer));
-                                break;
-                            case Card.FR:
-                                FormFrequency.fre.Read(buffer);
-                                break;
-                            case Card.AM:
-                                FormMethod.Impedance.Read(buffer);
-                                break;
-                            case Card.OS:
-                                FormBasicFunction.BasicFunction.Read(buffer);
-                                break;
-                            case Card.EN: break;
-                        }
-                    }
-                } while (hxj != Card.EN);
-                sd.Close();
-#else    
+ 
 
                 if (XmlTool.GetInstance.Load(configFileDialog.FileName))
                 {
@@ -219,7 +147,6 @@ namespace Configuration
                 InformationText.Text = @"Load Configuration Successfully!";                    
                 LoadButton.BackColor = Color.MistyRose;
                
-#endif
                 HxjLocation.Text =configFileDialog.FileName;
             }
 
@@ -284,11 +211,8 @@ namespace Configuration
             InformationText.Clear();
             InformationText.Text = @"Click Mesh";
             FileButton.BackColor = Color.MistyRose;
-#if HXJ
-            FormBasicFunction.BasicFunction.BasicFunctionType = -1;
-#else
+
             FormBasicFunction.OSCard.FirstChild.InnerText = "-1";
-#endif
             BFButton.BackColor = Color.MistyRose;
         }
 

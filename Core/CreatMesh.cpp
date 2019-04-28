@@ -12,7 +12,7 @@ int Core::CreatMesh()
 {
 	cout << "\n";
 	Console->info("{:*^45}", "Mesh");
-	RuntimeL->info("{:*^45}", "Mesh");
+	RuntimeLog->info("{:*^45}", "Mesh");
 	try
 	{
 #pragma region Mesh
@@ -25,46 +25,29 @@ int Core::CreatMesh()
 		const clock_t end = clock();
 		double time = double(end - start) / CLOCKS_PER_SEC;
 
+		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFileName, Console);
+		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFileName, RuntimeLog);		
+		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFileName,ResultLog);
 		Console->info("Creat Mesh costs\t{:f} s", time);
-		RuntimeL->info("Creat Mesh costs\t{:f} s", time);
-		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFileName);
-		ResultL->info("Creat Mesh costs\t{:f} s\n", time);
+		RuntimeLog->info("Creat Mesh costs\t{:f} s", time);
+		ResultLog->info("Creat Mesh costs\t{:f} s\n", time);
 #pragma endregion 
 
 #pragma region Geometry
 		//Initial Geometry
-		auto geo = Assist::ModalGeometry::GetInstance();
-		geo->SetLimitationBoundary(mesh);
-		
-		Console->info("{:*^45})", "Geometry Info");
-		Console->info("Lower Point of Box is ({0:+5.3f},{1:+5.3f},{2:+5.3f})",
-			geo->GetLimitationBoundary(0).x(),
-			geo->GetLimitationBoundary(0).y(),
-			geo->GetLimitationBoundary(0).z());
-		Console->info("Upper Point of Box is ({0:+5.3f},{1:+5.3f},{2:+5.3f})",
-			geo->GetLimitationBoundary(7).x(),
-			geo->GetLimitationBoundary(7).y(),
-			geo->GetLimitationBoundary(7).z());
-
-		RuntimeL->info("{:*^45})", "Geometry Info");
-		RuntimeL->info("Lower Point of Box is ({0:+5.3f},{1:+5.3f},{2:+5.3f})",
-			geo->GetLimitationBoundary(0).x(),
-			geo->GetLimitationBoundary(0).y(),
-			geo->GetLimitationBoundary(0).z());
-		RuntimeL->info("Upper Point of Box is ({0:+5.3f},{1:+5.3f},{2:+5.3f}\n)",
-			geo->GetLimitationBoundary(7).x(),
-			geo->GetLimitationBoundary(7).y(),
-			geo->GetLimitationBoundary(7).z());
-
-		ResultReport::WriteGeometeryInformation(Assist::ModalGeometry::GetInstance());
+		Assist::ModalGeometry::GetInstance()->SetLimitationBoundary(mesh);
+				
+		ResultReport::WriteGeometeryInformation(Assist::ModalGeometry::GetInstance(), Console);
+		ResultReport::WriteGeometeryInformation(Assist::ModalGeometry::GetInstance(), RuntimeLog);
+		ResultReport::WriteGeometeryInformation(Assist::ModalGeometry::GetInstance(),ResultLog);
 #pragma endregion 
 		Console->info("Calculate the quadratrue for each triangles...");
 		
 		if (!TriangleQuad(mesh,Quad4, Quad7, Quad13))
 			throw spdlog::spdlog_ex("Calcuate the Quadrature Error,Please check the TriagnleQuad");	
 		/*Console->info("Memory Cost\t{:f} Mb", GetMemoryCost());	
-		ResultL->info("Memory Cost\t{:f} Mb", GetMemoryCost());*/
-		RuntimeL->flush();
+		ResultLog->info("Memory Cost\t{:f} Mb", GetMemoryCost());*/
+		RuntimeLog->flush();
 		
 		return 0;
 	}

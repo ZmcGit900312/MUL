@@ -147,9 +147,6 @@
     <ClInclude Include="IterationSolver.h">
       <Filter>头文件\Solution</Filter>
     </ClInclude>
-    <ClInclude Include="Planewave.h">
-      <Filter>头文件\Source</Filter>
-    </ClInclude>
     <ClInclude Include="IntegrationRWG.h">
       <Filter>头文件\Integral</Filter>
     </ClInclude>
@@ -281,9 +278,6 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="EMCParameterInitialization.cpp">
-      <Filter>源文件\CoreAPI</Filter>
-    </ClCompile>
     <ClCompile Include="ModalGeometry.cpp">
       <Filter>源文件\Assist</Filter>
     </ClCompile>
@@ -370,6 +364,9 @@
     </ClCompile>
     <ClCompile Include="ResultReport.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Voltage.cpp">
+      <Filter>源文件\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

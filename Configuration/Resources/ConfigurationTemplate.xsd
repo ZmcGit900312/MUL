@@ -64,8 +64,8 @@
 	<xs:element name="OS">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="Type" type="xs:int" default="0"/>
-				<xs:element name="FilePath" type="xs:string"/>
+				<xs:element name="Type" type="xs:int" default="0" minOccurs="0"/>
+				<xs:element name="FilePath" type="xs:string" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="Validate" type="xs:boolean" default="0"/>
 		</xs:complexType>
@@ -92,7 +92,7 @@
 				<xs:element name="Dimension" type="xs:int" default="3"/>
 				<xs:element name="VirtualGrid" type="xs:boolean" default="1"/>
 			</xs:sequence>
-			<xs:attribute name="Validate" type="xs:boolean" default="0"/>
+			<xs:attribute name="Validate" type="xs:boolean" default="1"/>
 		</xs:complexType>
 	</xs:element>
 
@@ -123,14 +123,34 @@
 	<!--Excitation-->
 	<xs:element name="Excitation">
 		<xs:complexType>
-			<xs:sequence>
+			<xs:choice>
 				<xs:element name="A0" type="PW" minOccurs="0" maxOccurs="1"/>
-			</xs:sequence>
+				<xs:element name="AE" type="Voltage" minOccurs="0" maxOccurs="1"/>
+			</xs:choice>
 		</xs:complexType>
 	</xs:element>
 
+
+	<xs:complexType name="Voltage">
+			<xs:sequence>
+				<xs:element name="Port" minOccurs="1" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="NegativeSide" type="xs:unsignedLong" maxOccurs="1"/>
+							<xs:element name="PositiveSide" type="xs:unsignedLong" maxOccurs="1"/>
+							<xs:element name="Magenitude" type="xs:double" maxOccurs="1"/>
+							<xs:element name="Phase" type="xs:double" maxOccurs="1"/>
+						</xs:sequence>
+						<xs:attribute name="id" type="xs:int"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		<xs:attribute name="Name" type="xs:string" default="HXJ" use="optional"/>
+	</xs:complexType>
+	
 	<xs:complexType name="PW">
 		<xs:sequence>
+			<xs:element ref="Polarisation"/>
 			<xs:element ref="Theta"/>
 			<xs:element ref ="Phi"/>
 			<xs:element ref="Rotation"/>
@@ -139,6 +159,14 @@
 		<xs:attribute name="Name" type="xs:string" default="T90P180" use="optional"/>
 	</xs:complexType>
 
+	<xs:element name ="Polarisation">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:pattern value="-1|0|1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	
 	<xs:element name="Theta">
 		<xs:complexType>
 			<xs:sequence>
@@ -171,11 +199,11 @@
 
 	<xs:element name="EField">
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="Polarisation" type="xs:int" default="0"/>
+			<xs:sequence>				
 				<xs:element name="Eta" type="xs:double" default="0.0"/>
 				<xs:element name="Magenitude" type="xs:double" default="1.0"/>
 				<xs:element name="Phase" type="xs:double" default="0.0"/>
+				<xs:element name="Ellipitcity" type="xs:double" default="0"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

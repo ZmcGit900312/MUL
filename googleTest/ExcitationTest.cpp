@@ -5,7 +5,7 @@
 #include "CoreAPI.h"
 #include "Data.h"
 #include "IntegrationRWG.h"
-#include "Planewave.h"
+#include "Excitation.h"
 using namespace Core;
 using namespace Eigen;
 
@@ -24,8 +24,8 @@ public:
 		catch (spd::spdlog_ex&ex)
 		{
 			Console->warn(ex.what());
-			RuntimeL->warn(ex.what());
-			RuntimeL->flush();
+			RuntimeLog->warn(ex.what());
+			RuntimeLog->flush();
 		}
 	}
 
@@ -68,7 +68,7 @@ TEST_F(ExcitationTest, PlanewaveTest)
 			direction.y() = stod(word);
 			getline(buffer, word);
 			direction.z() = stod(word);
-			SystemConfig.SourceConfig.Ki = direction;
+			//SystemConfig.SourceConfig.Ki = direction;
 
 			Vector3d pol;
 			getline(buffer, line);
@@ -79,7 +79,7 @@ TEST_F(ExcitationTest, PlanewaveTest)
 			pol.y() = stod(word);
 			getline(buffer, word);
 			pol.z() = stod(word);
-			SystemConfig.SourceConfig.Ei = pol;
+			//SystemConfig.SourceConfig.Ei = pol;
 			getline(buffer, word);
 			size = stoi(word);
 			ref.resize(size);
@@ -91,14 +91,18 @@ TEST_F(ExcitationTest, PlanewaveTest)
 				getline(buffer, word);
 				ref[zmc].imag(stod(word));
 			}
+
+			Console->info("Direction:[{0} {1} {2}]", direction.x(), direction.y(), direction.z());
+			Console->info("Polarization:[{0} {1} {2}]", pol.x(), pol.y(), pol.z());
 			
 		}
 		else throw spdlog::spdlog_ex("Can't open Excitation.csv");
 
-		Console->info("Direction:[{0} {1} {2}]", SystemConfig.SourceConfig.Ki.x(), SystemConfig.SourceConfig.Ki.y(), SystemConfig.SourceConfig.Ki.z());
-		Console->info("Polarization:[{0} {1} {2}]", SystemConfig.SourceConfig.Ei.x(), SystemConfig.SourceConfig.Ei.y(), SystemConfig.SourceConfig.Ei.z());
-		Source::Planewave source(&SystemConfig.SourceConfig);
-		VectorXcd comp = source.SetExcitation(ComponentList::BFvector);
+		//Console->info("Direction:[{0} {1} {2}]", SystemConfig.SourceConfig.Ki.x(), SystemConfig.SourceConfig.Ki.y(), SystemConfig.SourceConfig.Ki.z());
+		//Console->info("Polarization:[{0} {1} {2}]", SystemConfig.SourceConfig.Ei.x(), SystemConfig.SourceConfig.Ei.y(), SystemConfig.SourceConfig.Ei.z());
+		
+		//Source::Planewave source(&SystemConfig.SourceConfig);
+		VectorXcd comp = SystemConfig.SourceConfig->SetExcitation(ComponentList::BFvector);
 		for (auto i = 0; i < size; ++i)
 		{
 			EXPECT_NEAR(0, norm(ref(i) - comp(i)) / norm(ref(i)), 0.005) << "Error in Excitation term\t" << i;
@@ -107,8 +111,8 @@ TEST_F(ExcitationTest, PlanewaveTest)
 	catch (spd::spdlog_ex&ex)
 	{
 		Console->warn(ex.what());
-		RuntimeL->warn(ex.what());
-		RuntimeL->flush();
+		RuntimeLog->warn(ex.what());
+		RuntimeLog->flush();
 		FAIL();
 	}
 }

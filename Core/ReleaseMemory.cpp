@@ -8,36 +8,40 @@ int Core::ReleaseMemory()
 	
 	cout << "\n";
 	Console->info("{:*^45}","Release the memory");
-	RuntimeL->info("{:*^45}", "Release the memory");
+	RuntimeLog->info("{:*^45}", "Release the memory");
 	if (ComponentList::BFvector.size()>0)
 	{
 		for (auto element : ComponentList::BFvector) { delete element; }
 		ComponentList::BFvector.clear();
 		ComponentList::BFvector.shrink_to_fit();
-		RuntimeL->info("Release BasicFunction");
+		RuntimeLog->info("Release BasicFunction");
 	}
 	if (ComponentList::ImpService)
 	{
 		delete ComponentList::ImpService;
 		ComponentList::ImpService = nullptr;
-		RuntimeL->info("Release Matrix");
+		RuntimeLog->info("Release Matrix");
 	}
 	if (Tools::TeoplitzMultiplicator)
 	{
 		delete Tools::TeoplitzMultiplicator;
 		Tools::TeoplitzMultiplicator = nullptr;
-		RuntimeL->info("Release TeoplitzMultiplicator");
+		RuntimeLog->info("Release TeoplitzMultiplicator");
 	}
 	if(SystemConfig.PostConfig.size()>0)
 	{
 		SystemConfig.PostConfig.clear();
-		RuntimeL->info("Release Request");
+		RuntimeLog->info("Release Request");
 	}
-	
+	if(SystemConfig.SourceConfig)
+	{
+		delete SystemConfig.SourceConfig;
+		SystemConfig.SourceConfig = nullptr;
+	}
 	Console->info("{:-^45}","END");
-	ResultL->info("{:-^45}", "END");
-	ResultL->flush();
-	RuntimeL->info("{:-^45}", "END");
-	RuntimeL->flush();
+	ResultLog->info("{:-^45}", "END");
+	ResultLog->flush();
+	RuntimeLog->info("{:-^45}", "END");
+	RuntimeLog->flush();
 	return 0;
 }
