@@ -31,7 +31,7 @@
             this.SourceCard = new System.Windows.Forms.TabControl();
             this.PlanewaveTablePage = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.EllipitcityText = new System.Windows.Forms.TextBox();
+            this.EllipticityText = new System.Windows.Forms.TextBox();
             this.EllipticityLable = new System.Windows.Forms.Label();
             this.EtaText = new System.Windows.Forms.TextBox();
             this.PhaseText = new System.Windows.Forms.TextBox();
@@ -65,10 +65,10 @@
             this.LeftRadioButton = new System.Windows.Forms.RadioButton();
             this.PWNameText = new System.Windows.Forms.TextBox();
             this.SourceNameLabel = new System.Windows.Forms.Label();
-            this.CloseButton = new System.Windows.Forms.Button();
-            this.ApplyButton = new System.Windows.Forms.Button();
             this.VoltageTablePage = new System.Windows.Forms.TabPage();
             this.ActivityButton = new System.Windows.Forms.RadioButton();
+            this.CloseButton = new System.Windows.Forms.Button();
+            this.ApplyButton = new System.Windows.Forms.Button();
             this.SourceCard.SuspendLayout();
             this.PlanewaveTablePage.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -109,7 +109,7 @@
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.EllipitcityText);
+            this.panel2.Controls.Add(this.EllipticityText);
             this.panel2.Controls.Add(this.EllipticityLable);
             this.panel2.Controls.Add(this.EtaText);
             this.panel2.Controls.Add(this.PhaseText);
@@ -122,18 +122,18 @@
             this.panel2.Size = new System.Drawing.Size(497, 142);
             this.panel2.TabIndex = 5;
             // 
-            // EllipitcityText
+            // EllipticityText
             // 
-            this.EllipitcityText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.EllipticityText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.EllipitcityText.Enabled = false;
-            this.EllipitcityText.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
-            this.EllipitcityText.Location = new System.Drawing.Point(268, 104);
-            this.EllipitcityText.Margin = new System.Windows.Forms.Padding(4);
-            this.EllipitcityText.Name = "EllipitcityText";
-            this.EllipitcityText.Size = new System.Drawing.Size(222, 27);
-            this.EllipitcityText.TabIndex = 69;
-            this.EllipitcityText.Text = "0.0";
+            this.EllipticityText.Enabled = false;
+            this.EllipticityText.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F);
+            this.EllipticityText.Location = new System.Drawing.Point(268, 104);
+            this.EllipticityText.Margin = new System.Windows.Forms.Padding(4);
+            this.EllipticityText.Name = "EllipticityText";
+            this.EllipticityText.Size = new System.Drawing.Size(222, 27);
+            this.EllipticityText.TabIndex = 69;
+            this.EllipticityText.Text = "0.0";
             // 
             // EllipticityLable
             // 
@@ -524,6 +524,28 @@
             this.SourceNameLabel.TabIndex = 0;
             this.SourceNameLabel.Text = "Source name";
             // 
+            // VoltageTablePage
+            // 
+            this.VoltageTablePage.Controls.Add(this.ActivityButton);
+            this.VoltageTablePage.Location = new System.Drawing.Point(4, 29);
+            this.VoltageTablePage.Name = "VoltageTablePage";
+            this.VoltageTablePage.Padding = new System.Windows.Forms.Padding(3);
+            this.VoltageTablePage.Size = new System.Drawing.Size(506, 759);
+            this.VoltageTablePage.TabIndex = 7;
+            this.VoltageTablePage.Text = "Voltage";
+            this.VoltageTablePage.UseVisualStyleBackColor = true;
+            // 
+            // ActivityButton
+            // 
+            this.ActivityButton.AutoSize = true;
+            this.ActivityButton.Location = new System.Drawing.Point(22, 24);
+            this.ActivityButton.Name = "ActivityButton";
+            this.ActivityButton.Size = new System.Drawing.Size(88, 24);
+            this.ActivityButton.TabIndex = 0;
+            this.ActivityButton.TabStop = true;
+            this.ActivityButton.Text = "Activity";
+            this.ActivityButton.UseVisualStyleBackColor = true;
+            // 
             // CloseButton
             // 
             this.CloseButton.BackColor = System.Drawing.Color.MistyRose;
@@ -547,28 +569,6 @@
             this.ApplyButton.Text = "Apply";
             this.ApplyButton.UseVisualStyleBackColor = false;
             this.ApplyButton.Click += new System.EventHandler(this.ApplyButton_Click);
-            // 
-            // VoltageTablePage
-            // 
-            this.VoltageTablePage.Controls.Add(this.ActivityButton);
-            this.VoltageTablePage.Location = new System.Drawing.Point(4, 29);
-            this.VoltageTablePage.Name = "VoltageTablePage";
-            this.VoltageTablePage.Padding = new System.Windows.Forms.Padding(3);
-            this.VoltageTablePage.Size = new System.Drawing.Size(506, 759);
-            this.VoltageTablePage.TabIndex = 7;
-            this.VoltageTablePage.Text = "Voltage";
-            this.VoltageTablePage.UseVisualStyleBackColor = true;
-            // 
-            // ActivityButton
-            // 
-            this.ActivityButton.AutoSize = true;
-            this.ActivityButton.Location = new System.Drawing.Point(22, 24);
-            this.ActivityButton.Name = "ActivityButton";
-            this.ActivityButton.Size = new System.Drawing.Size(88, 24);
-            this.ActivityButton.TabIndex = 0;
-            this.ActivityButton.TabStop = true;
-            this.ActivityButton.Text = "Activity";
-            this.ActivityButton.UseVisualStyleBackColor = true;
             // 
             // FormExcitation
             // 
@@ -604,7 +604,7 @@
         private System.Windows.Forms.TabControl SourceCard;
         private System.Windows.Forms.TabPage PlanewaveTablePage;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox EllipitcityText;
+        private System.Windows.Forms.TextBox EllipticityText;
         private System.Windows.Forms.Label EllipticityLable;
         private System.Windows.Forms.TextBox EtaText;
         private System.Windows.Forms.TextBox PhaseText;

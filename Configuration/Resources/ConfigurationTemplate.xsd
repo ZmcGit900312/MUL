@@ -203,7 +203,7 @@
 				<xs:element name="Eta" type="xs:double" default="0.0"/>
 				<xs:element name="Magenitude" type="xs:double" default="1.0"/>
 				<xs:element name="Phase" type="xs:double" default="0.0"/>
-				<xs:element name="Ellipitcity" type="xs:double" default="0"/>
+				<xs:element name="Ellipticity" type="xs:double" default="0"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

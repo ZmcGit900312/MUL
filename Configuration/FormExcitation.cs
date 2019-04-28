@@ -42,7 +42,7 @@ namespace Configuration
                 EtaText.Text = node.ChildNodes[0].InnerText;
                 MagenitudeText.Text = node.ChildNodes[1].InnerText;
                 PhaseText.Text = node.ChildNodes[2].InnerText;
-                EllipitcityText.Text = node.ChildNodes[3].InnerText;
+                EllipticityText.Text = node.ChildNodes[3].InnerText;
             }
 
         }
@@ -81,7 +81,7 @@ namespace Configuration
                 node.ChildNodes[0].InnerText= EtaText.Text;
                 node.ChildNodes[1].InnerText= MagenitudeText.Text;
                 node.ChildNodes[2].InnerText= PhaseText.Text;
-                node.ChildNodes[3].InnerText=EllipitcityText.Text;
+                node.ChildNodes[3].InnerText=EllipticityText.Text;
             }
             else
             {
@@ -115,7 +115,7 @@ namespace Configuration
                 node.AppendChild(XmlTool.GetInstance.AddElementWithText("Eta", EtaText.Text));
                 node.AppendChild(XmlTool.GetInstance.AddElementWithText("Magenitude", MagenitudeText.Text));
                 node.AppendChild(XmlTool.GetInstance.AddElementWithText("Phase", PhaseText.Text));
-                node.AppendChild(XmlTool.GetInstance.AddElementWithText("Ellipitcity", EllipitcityText.Text));
+                node.AppendChild(XmlTool.GetInstance.AddElementWithText("Ellipticity", EllipticityText.Text));
             }
                 Close();
         }
@@ -152,7 +152,7 @@ namespace Configuration
             node.AppendChild(XmlTool.GetInstance.AddElementWithText("Eta", "0.0"));
             node.AppendChild(XmlTool.GetInstance.AddElementWithText("Magenitude", "1.0"));
             node.AppendChild(XmlTool.GetInstance.AddElementWithText("Phase", "0.0"));
-            node.AppendChild(XmlTool.GetInstance.AddElementWithText("Ellipitcity", "0.0"));
+            node.AppendChild(XmlTool.GetInstance.AddElementWithText("Ellipticity", "0.0"));
             return ExcitationMod;
         }
     }

@@ -196,7 +196,7 @@ static int SetExcitationMod(XMLElement* mod)
 			double mag = leaf->FirstChildElement("Magenitude")->DoubleText(),
 				phase = leaf->FirstChildElement("Phase")->DoubleText(),
 				eta = leaf->FirstChildElement("Eta")->DoubleText(),
-				ell = leaf->FirstChildElement("Ellipitcity")->DoubleText();
+				ell = leaf->FirstChildElement("Ellipticity")->DoubleText();
 			//Source::SourceType st = pol > 0 ? Source::SourceType::EXCITATION_CIRC_RIGHT : pol < 0 ? Source::SourceType::EXCITATION_CIRC_LEFT : Source::SourceType::EXCITATION_LINEAR;
 
 			SystemConfig.SourceConfig= new Source::PlaneWaveLinear(name, thn, phn, ths, phs,thi,  phi, mag,  phase,  eta, rx,  ry, rz);
