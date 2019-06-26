@@ -20,21 +20,23 @@ Core::Source::Planewave::Planewave(std::string name, unsigned thn, unsigned phn,
 	Ki = Vector3d{ -sin(Theta)*cos(Phi),-sin(Theta)*sin(Phi),-cos(Theta) };
 	//Original Ei=Vector3d(-sin(theta)*cos(phi),-sin(theta)*sin(phi),cos(theta))
 	Ei = Vector3d(-cos(Theta)*cos(Phi), -cos(Theta)*sin(Phi), sin(Theta));
+	Hi = Vector3d(-sin(Phi),cos(Phi),0);
 	//_ei = Rotation(theta, phi, Vector3d{ -cos(eta),sin(eta),0.0 });
 	E0 = Magnitude * exp(1i*Phase*M_PI_180);
+	H0 = E0 / eta0;
 	//E=(E0+1i*ell*E0.cross(Ki))
 
 }
 
 VectorXcd Core::Source::PlaneWaveLinear::SetExcitation(const vector<IBasicFunction*>& bfVector) const
 {
-	EFRImp compute(k, W4, W7, eta);
+	RWGImpOperator compute(k, W4, W7, eta);
 	const size_t unknowns = bfVector.size();
 	VectorXcd righthand{ unknowns };
 	size_t zmc = 0;
 	for (auto it = bfVector.begin(), ed = bfVector.end();it != ed;++it)
 	{
-		righthand(zmc++) = compute.SetRightHand(static_cast<RWG*>(*it), Ki, Ei);
+		righthand(zmc++) = compute.SetIncidentFieldVector(static_cast<RWG*>(*it), Ki, Ei);
 	}
 
 	return righthand * E0;
@@ -55,14 +57,14 @@ VectorXcd Source::Planewave::SetExcitation(IGreen* green,const vector<IBasicFunc
 	//Unrolling expanding
 	for (size_t row = 0; row < limit; row+=4)
 	{
-		righthand(row) = integral1.SetRightHand(bfVector[row]);
-		righthand(row+1)= integral2.SetRightHand(bfVector[row+1]);
-		righthand(row+2) = integral3.SetRightHand(bfVector[row+2]);
-		righthand(row + 3) = integral4.SetRightHand(bfVector[row+3]);
+		righthand(row) = integral1.SetIncidentFieldVector(bfVector[row]);
+		righthand(row+1)= integral2.SetIncidentFieldVector(bfVector[row+1]);
+		righthand(row+2) = integral3.SetIncidentFieldVector(bfVector[row+2]);
+		righthand(row + 3) = integral4.SetIncidentFieldVector(bfVector[row+3]);
 	}
 	for (size_t row =limit ; row < unknowns; ++row)
 	{
-		righthand(row) = integral1.SetRightHand(bfVector[row]);
+		righthand(row) = integral1.SetIncidentFieldVector(bfVector[row]);
 	}
 
 

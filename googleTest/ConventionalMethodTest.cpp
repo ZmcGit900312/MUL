@@ -14,7 +14,7 @@ using namespace AIMAssist;
 class ConventionalAIMTest :public testing::Test
 {
 protected:
-	EFRImp _compute;
+	RWGImpOperator _compute;
 	static ConventionalMethod* aimComputer;
 	ConventionalAIMTest() :_compute(k, W4, W7, eta) {}
 	~ConventionalAIMTest() {}
@@ -82,7 +82,7 @@ protected:
 		const size_t isource = source->GetID(), ifield = field->GetID();
 		Vector3d distance = source->Centre() - field->Centre();
 		const auto threshold = distance.norm() / Lambda;
-		const dcomplex ref = _compute.SetImpedance(field, source);
+		const dcomplex ref = _compute.SetImpedanceL(field, source);
 		const dcomplex test = aimComputer->GetImpAIM(isource, ifield);
 		Console->debug("\nImpedance:\t({0},{1})\nDistance:\t{2}¦Ë\nreference:\t({3},{4})\nNear:\t\t({5},{6})",
 			isource, ifield, threshold, ref.real(), ref.imag(), test.real(), test.imag());
@@ -122,7 +122,7 @@ TEST_F(ConventionalAIMTest, Multiplication)
 			Vector3d distance = field->Centre() - source->Centre();
 			const double dnorm = distance.norm();
 			if (dnorm < threshold)continue;
-			dcomplex ref = _compute.SetImpedance(field, source);
+			dcomplex ref = _compute.SetImpedanceL(field, source);
 			VectorXcd vrowx = imp->GetGammaX().col(row);
 			VectorXcd vrowy = imp->GetGammaY().col(row);
 			VectorXcd vrowz = imp->GetGammaZ().col(row);
@@ -176,7 +176,7 @@ TEST_F(ConventionalAIMTest, Multiplication2)
 			const double dnorm = distance.norm();
 			if (dnorm < threshold)continue;
 
-			const dcomplex ref = _compute.SetImpedance(field, source);
+			const dcomplex ref = _compute.SetImpedanceL(field, source);
 			VectorXcd x{ VectorXcd::Zero(unknowns) };
 			x(col) = 1.0;
 			VectorXcd test=*imp*x ;
@@ -321,7 +321,7 @@ TEST_F(ConventionalAIMTest, TFSNearFieldSet)
 					}
 				}
 				if (Z.size() == 0)continue;
-				_compute.SetImpedance(row, col, Z);
+				_compute.OperatorL(row, col, Z);
 				//Set LowerTriangle
 				for (auto i = Z.cbegin(); i != Z.cend(); ++i)
 				{
@@ -384,7 +384,7 @@ TEST_F(ConventionalAIMTest, TFSNearFieldSet)
 		{
 			for (SparseMatrix<dcomplex>::InnerIterator it(imp, col); it; ++it)
 			{
-				const dcomplex ref = _compute.SetImpedance(static_cast<RWG*>(bf[it.row()]), static_cast<RWG*>(bf[it.col()]));
+				const dcomplex ref = _compute.SetImpedanceL(static_cast<RWG*>(bf[it.row()]), static_cast<RWG*>(bf[it.col()]));
 				//dcomplex diffTest = ref - it.value();
 				double eps = norm(ref - it.value()) / norm(it.value());
 				if (eps > 1.0e-9)

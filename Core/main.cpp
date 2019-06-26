@@ -51,7 +51,7 @@ int main(int argc,char* argv[])
 				if (Core::PreCalculateSelfTriangleImpedance())throw runtime_error("Error in Pre-compute the SelfTriangle Impedance");
 				if (Core::CreatImpedance())throw runtime_error("Error in Initial the Impedance class");
 				if (Core::FillImpedance())throw runtime_error("Error in Fill Impedance");
-				if (Core::SetRightHand())throw runtime_error("Error in Set RightHand");
+				if (Core::SetIncidentFieldVector())throw runtime_error("Error in Set RightHand");
 				if (Core::Solve())throw runtime_error("Error in Solve Matrix with BicgStab");
 				if (Core::SaveBasicFunction(SystemConfig.BasicFunctionFileName.c_str()))throw runtime_error("Error in save BasicFunction");
 			}

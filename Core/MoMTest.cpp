@@ -6,6 +6,7 @@
 #include "gtest/gtest.h"
 #include "CoreAPI.h"
 #include "Const.h"
+
 using namespace Core;
 using namespace Eigen;
 
@@ -60,7 +61,7 @@ TEST_F(MoMTest, ImpedanceTest)
 	
 	try
 	{
-		EFRImp compute(k, W4, W7, eta);
+		RWGImpOperator compute(k, W4, W7, eta);
 		//ÑéÖ¤×è¿¹¾ØÕó
 		MatrixXcd& Imp = static_cast<ImpMoM*>(ComponentList::ImpService)->LocalMatrix();
 		auto mesh = Mesh::GetInstance();
@@ -69,31 +70,31 @@ TEST_F(MoMTest, ImpedanceTest)
 		const int row = 152, col = 450;
 		dcomplex pp, pm, mp, mm;
 
-		auto T228 = compute.SetImpedance(dynamic_cast<RWGTriangle*>(mesh->GetTriangle(227)));
+		auto T228 = compute.OperatorL(dynamic_cast<RWGTriangle*>(mesh->GetTriangle(227)));
 		for (auto zmc = T228.begin(); zmc != T228.end(); ++zmc)
 		{
 			const int i = get<0>(*zmc), j = get<1>(*zmc);
 			if (row + col == i + j) { mm = get<2>(*zmc); break; }
 		}
-		auto T66_227 = compute.SetImpedance(dynamic_cast<RWGTriangle*>(mesh->GetTriangle(65)), dynamic_cast<RWGTriangle*>(mesh->GetTriangle(226)));
+		auto T66_227 = compute.SetImpedanceL(dynamic_cast<RWGTriangle*>(mesh->GetTriangle(65)), dynamic_cast<RWGTriangle*>(mesh->GetTriangle(226)));
 		for (auto zmc = T66_227.begin(); zmc != T66_227.end(); ++zmc)
 		{
 			const int i = get<0>(*zmc), j = get<1>(*zmc);
 			if (row + col == i + j&&col - row == abs(i - j)) { pp = get<2>(*zmc); break; }
 		}
-		auto T66_228 = compute.SetImpedance(dynamic_cast<RWGTriangle*>(mesh->GetTriangle(65)), dynamic_cast<RWGTriangle*>(mesh->GetTriangle(227)));
+		auto T66_228 = compute.SetImpedanceL(dynamic_cast<RWGTriangle*>(mesh->GetTriangle(65)), dynamic_cast<RWGTriangle*>(mesh->GetTriangle(227)));
 		for (auto zmc = T66_228.begin(); zmc != T66_228.end(); ++zmc)
 		{
 			const int i = get<0>(*zmc), j = get<1>(*zmc);
 			if (row + col == i + j&&col - row == abs(i - j)) { pm = get<2>(*zmc); break; }
 		}
-		auto T228_227 = compute.SetImpedance(dynamic_cast<RWGTriangle*>(mesh->GetTriangle(227)), dynamic_cast<RWGTriangle*>(mesh->GetTriangle(226)));
+		auto T228_227 = compute.SetImpedanceL(dynamic_cast<RWGTriangle*>(mesh->GetTriangle(227)), dynamic_cast<RWGTriangle*>(mesh->GetTriangle(226)));
 		for (auto zmc = T228_227.begin(); zmc != T228_227.end(); ++zmc)
 		{
 			const int i = get<0>(*zmc), j = get<1>(*zmc);
 			if (row + col == i + j&&col - row == abs(i - j)) { mp = get<2>(*zmc); break; }
 		}
-		const dcomplex ref = compute.SetImpedance(static_cast<RWG*>(bf[row]), static_cast<RWG*>(bf[col]));
+		const dcomplex ref = compute.SetImpedanceL(static_cast<RWG*>(bf[row]), static_cast<RWG*>(bf[col]));
 		const dcomplex comp = pp + pm + mp + mm;
 		EXPECT_NEAR(0, norm(comp - ref) / norm(ref), 1.0e-2) << "(153,451)ÔªËØ´íÎó";
 
@@ -105,7 +106,7 @@ TEST_F(MoMTest, ImpedanceTest)
 			const size_t c = rand() % unknowns;
 			const auto source = static_cast<RWG*>(bf[r]);
 			const auto field = static_cast<RWG*>(bf[c]);
-			const auto reference = compute.SetImpedance(field, source);
+			const auto reference = compute.SetImpedanceL(field, source);
 			EXPECT_NEAR(0, norm(reference - Imp(r, c)) / norm(reference), 1.0e-3) << "Error in Impedance\t" << r << "," << c;
 			const double temp = abs(reference);
 			if (temp > 5)
@@ -119,6 +120,8 @@ TEST_F(MoMTest, ImpedanceTest)
 		RuntimeLog->flush();
 	}
 }
+
+
 
 TEST_F(MoMTest,SolveTest)
 {
@@ -140,4 +143,5 @@ TEST_F(MoMTest,SolveTest)
 		RuntimeLog->flush();
 	}
 }
+
 #endif

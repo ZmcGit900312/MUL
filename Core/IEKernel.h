@@ -2,96 +2,111 @@
 
 #include <Eigen/Core>
 #include "Green.h"
-#include "IBasicFunction.h"
+#include "IntegrationRWG.h"
 //Not use temporary
 namespace Core
 {
-	class IE 
+	enum IETYPE { EFIE = 0, MFIE, CFIE, IBCEFIE, IBCMFIE, IBCCFIE };
+
+	//IE interface
+	class IE
 	{
 
 	public:
-
-		typedef dcomplex return_type1;
-		typedef dcomplex return_type2;
-		IE(IGreen* green) :_green(green) {}
-		void ReSetBasicFunction(IBasicFunction* source, IBasicFunction* field=nullptr)
-		{
-			_source = source; _field = field;
+		virtual ~IE() {}
+		/**
+		 * \brief Fill Impedance Matrix in triangle index(self)
+		 * \param t Specific triangle
+		 * \return The list of self-impedance service for same  RWG
+		 */
+		virtual vector<element> Set(RWGTriangle*t) = 0;
+		/**
+		 * \brief K operator with Different Triangle Pair
+		 * \param field Field Triangle
+		 * \param source Source Triangle
+		 * \param val The marked RWG basis functions
+		 */
+		virtual void Set(RWGTriangle*field, RWGTriangle*source, vector<element>& val) = 0;
+		/**
+		 * \brief Calculate the specific RWG RightHand
+		 * \param source BasisFunction
+		 * \param ki The direction of wave propagation
+		 * \param efield The direction of E field
+		 * \param hfield The direction of H field
+		 * \return Righthand 
+		 */
+		virtual dcomplex SetRight(RWG* source, Vector3d ki, Vector3d efield,Vector3d hfield=Vector3d::Zero()) const {
+			return _computerCore.SetIncidentFieldVector(source, ki, efield);
 		}
-		virtual return_type1 operator()(const Vector3d pt) = 0;
-		virtual return_type2 operator()(const Vector3d pt1,const Vector3d pt2) = 0;
-		virtual ~IE() { _green = nullptr; _source = nullptr; _field = nullptr; }
+		/**
+		 * \brief IE Factory 
+		 * \param ty IE  Type
+		 * \return IE*
+		 */
+		static IE* FIE(IETYPE ty);
 	protected:
+		IE(const double k, double const w4[], double const w7[],
+			const double eta) :_computerCore(k, w4, w7, eta) {}
 		
-		IBasicFunction *_source=nullptr, *_field=nullptr;
-		IGreen* _green = nullptr;
+		const RWGImpOperator _computerCore;
 	};
 
-#pragma region EFIE
-	class EFIEpp:public IE
+	class EFIEPEC :public IE
 	{
 	public:
-		EFIEpp(IGreen*green):IE(green){}
-		return_type1 operator()(const Vector3d pt)override;
-		return_type2 operator()(const Vector3d pt1,const Vector3d pt2)override;
+		virtual ~EFIEPEC() = default;
+
+		EFIEPEC(const double k, double const w4[], double const w7[],
+			const double eta = 120 * 3.1415926) :IE(k, w4, w7, eta) {}
+		inline vector<element> Set(RWGTriangle*t)override {
+			return _computerCore.OperatorL(t);
+		}
+		inline void Set(RWGTriangle*field, RWGTriangle*source, vector<element>& val)override {
+			_computerCore.OperatorL(field, source, val);
+		}		
 	};
 
-	class EFIEpm :public IE
+	class MFIEPEC :public IE
 	{
 	public:
-		EFIEpm(IGreen*green) :IE(green) {}
-		return_type1 operator()(const Vector3d pt)override;
-		return_type2 operator()(const Vector3d pt1, const Vector3d pt2)override;
+		virtual ~MFIEPEC() = default;
+
+		MFIEPEC(const double k, double const w4[], double const w7[],
+			const double eta = 120 * 3.1415926) :IE(k, w4, w7, eta) {}
+		inline vector<element> Set(RWGTriangle*t)override {
+			auto res = _computerCore.OperatorIdentity(t);
+
+			for(auto val=res.begin();val!=res.end();++val)
+			{
+				get<2>(*val) *= 0.5;
+				//dcomplex& value = get<2>(*val);
+				//value *= 0.5;
+			}			
+			return res;
+		}
+		inline void Set(RWGTriangle*field, RWGTriangle*source, vector<element>& res)override {
+			_computerCore.OperatorK(field, source, res);
+			for (auto val = res.begin();val != res.end();++val)
+			{
+				get<2>(*val) *= -1;
+				//dcomplex& value = get<2>(*val);
+				//value *= 0.5;
+			}
+		}
 	};
 
-	class EFIEmp :public IE
-	{
-	public:
-		EFIEmp(IGreen*green) :IE(green) {}
-		return_type1 operator()(const Vector3d pt)override;
-		return_type2 operator()(const Vector3d pt1, const Vector3d pt2)override;
-	};
 
-	class EFIEmm :public IE
+	class CFIEPEC :public IE
 	{
 	public:
-		EFIEmm(IGreen*green) :IE(green) {}
-		return_type1 operator()(const Vector3d pt)override;
-		return_type2 operator()(const Vector3d pt1, const Vector3d pt2)override;
-	};
-#pragma endregion EFIE
 
-#pragma region MFIE
-	class MFIEpp :public IE
-	{
-	public:
-		MFIEpp(IGreen*green) :IE(green) {}
-		return_type1 operator()(const Vector3d pt)override;
-		return_type2 operator()(const Vector3d pt1, const Vector3d pt2)override;
-	};
+		CFIEPEC(const double alpha,const double k, double const w4[], double const w7[], const double eta = 120 * 3.1415926);
+		virtual ~CFIEPEC();
+		inline vector<element> Set(RWGTriangle*t)override;
+		inline void Set(RWGTriangle*field, RWGTriangle*source, vector<element>& val)override;
 
-	class MFIEpm :public IE
-	{
-	public:
-		MFIEpm(IGreen*green) :IE(green) {}
-		return_type1 operator()(const Vector3d pt)override;
-		return_type2 operator()(const Vector3d pt1, const Vector3d pt2)override;
+		dcomplex SetRight(RWG* source, Vector3d ki, Vector3d efield, Vector3d hfield) const override;
+		double Eta = 0, Alpha = 0;
+	private:
 	};
-
-	class MFIEmp :public IE
-	{
-	public:
-		MFIEmp(IGreen*green) :IE(green) {}
-		return_type1 operator()(const Vector3d pt)override;
-		return_type2 operator()(const Vector3d pt1, const Vector3d pt2)override;
-	};
-
-	class MFIEmm :public IE
-	{
-	public:
-		MFIEmm(IGreen*green) :IE(green) {}
-		return_type1 operator()(const Vector3d pt)override;
-		return_type2 operator()(const Vector3d pt1, const Vector3d pt2)override;
-	};
-#pragma endregion EFIE
 }

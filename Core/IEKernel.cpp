@@ -5,66 +5,67 @@
 //  Original author: ZhengMX
 ///////////////////////////////////////////////////////////
 #include "stdafx.h"
-#include "Const.h"
+//#include "Const.h"
 #include "IEKernel.h"
-#include "Data.h"
+#include "Const.h"
+
 using namespace Core;
+using namespace std;
 
-#pragma region EFIE
-
-IE::return_type1 EFIEpp::operator()(const Vector3d pt)
+IE * Core::IE::FIE(IETYPE ty)
 {
-	return exp(-1i*k*pt.dot(SystemConfig.SourceConfig->Ki))*SystemConfig.SourceConfig->Ei.dot(_source->CurrentPlus(pt));
-}
-
-IE::return_type2 EFIEpp::operator()(const Vector3d pt1,const Vector3d pt2)
-{
-	return (_source->CurrentPlus(pt2).dot(_field->CurrentPlus(pt1)) -
-		_source->ChargePlus(pt2)*_field->ChargePlus(pt1) / k/k)*_green->Scalar(pt1, pt2);
-}
-
-IE::return_type1 EFIEpm::operator()(const Vector3d pt)
-{
-	return exp(-1i*k*pt.dot(SystemConfig.SourceConfig->Ki))*SystemConfig.SourceConfig->Ei.dot(_source->CurrentPlus(pt));
-}
-
-IE::return_type2 EFIEpm::operator()(const Vector3d pt1, const Vector3d pt2)
-{
-	return (_field->CurrentPlus(pt1).dot(_source->CurrentMinus(pt2)) -
-		_field->ChargePlus(pt1)*_source->ChargeMinus(pt2) / k / k)*_green->Scalar(pt1, pt2);
-}
-
-IE::return_type1 EFIEmp::operator()(const Vector3d pt)
-{
-	return exp(-1i*k*pt.dot(SystemConfig.SourceConfig->Ki))*SystemConfig.SourceConfig->Ei.dot(_source->CurrentMinus(pt));
-}
-
-IE::return_type2 EFIEmp::operator()(const Vector3d pt1, const Vector3d pt2)
-{
-	return (_field->CurrentMinus(pt1).dot(_source->CurrentPlus(pt2)) -
-		_field->ChargeMinus(pt1)*_source->ChargePlus(pt2) / k / k)*_green->Scalar(pt1, pt2);
-}
-
-IE::return_type1 EFIEmm::operator()(const Vector3d pt)
-{
-	return exp(-1i*k*pt.dot(SystemConfig.SourceConfig->Ki))*SystemConfig.SourceConfig->Ei.dot(_source->CurrentMinus(pt));
-}
-
-IE::return_type2 EFIEmm::operator()(const Vector3d pt1, const Vector3d pt2)
-{
-	return (_field->CurrentMinus(pt1).dot(_source->CurrentMinus(pt2)) -
-		_field->ChargeMinus(pt1)*_source->ChargeMinus(pt2) / k / k)*_green->Scalar(pt1, pt2);
-}
-
-#pragma endregion EFIE
-
-#pragma region MFIE
-IE::return_type2 MFIEpp::operator()(const Vector3d pt1, const Vector3d pt2)
-{
-	/*return (_source->CurrentPlus(pt2).cross(_green->Gradient(pt1, pt2))).dot
-	(_field->CurrentPlus(pt2).cross(_source->LimitPlus().normal()));*/
-	return 1i;
+	switch (ty)
+	{
+	case EFIE: return new EFIEPEC(k,W4,W7,eta);
+	case MFIE: return new MFIEPEC(k, W4, W7, eta);
+	case CFIE: return new CFIEPEC(alpha,k, W4, W7, eta);
+	case IBCEFIE: return nullptr;
+	case IBCMFIE: return nullptr;
+	case IBCCFIE: return nullptr;
+	default: return nullptr;
+	}
+	
 }
 
 
-#pragma endregion MFIE
+Core::CFIEPEC::CFIEPEC(const double alpha,const double k, double const w4[], double const w7[], const double eta):IE(k, w4, w7, eta),Eta(eta), Alpha(alpha){}
+
+Core::CFIEPEC::~CFIEPEC()
+{
+}
+
+inline vector<element> Core::CFIEPEC::Set(RWGTriangle * t)
+{
+	vector<element> res;
+	auto opL = _computerCore.OperatorL(t), opI = _computerCore.OperatorIdentity(t);
+	for(auto valL=opL.cbegin(),valI=opI.cbegin(),edL=opL.cend();valL!=edL;++valL,++valI)
+	{
+		int local1 = get<0>(*valL), local2 = get<1>(*valL);
+		dcomplex selfL = get<2>(*valL), selfI = get<2>(*valI);
+		dcomplex value = alpha * selfL + 0.5*(1 - alpha)*Eta*selfI;
+		res.push_back({ local1,local2, value});
+	}
+
+	return res;
+}
+
+inline void Core::CFIEPEC::Set(RWGTriangle * field, RWGTriangle * source, vector<element>& val)
+{
+	auto valcp = val;
+	_computerCore.OperatorL(field, source, val);
+	_computerCore.OperatorK(field, source, valcp);
+	for (auto valL = val.begin(), valK = valcp.begin(), edL = val.end();valL != edL;++valL, ++valK)
+	{
+		dcomplex& selfL = get<2>(*valL), &selfK = get<2>(*valK);
+		selfL = alpha * selfL - (1 - alpha)*Eta*selfK;
+	}
+
+	
+}
+
+dcomplex Core::CFIEPEC::SetRight(RWG * source, Vector3d ki, Vector3d efield, Vector3d hfield) const
+{
+	dcomplex VE = _computerCore.SetIncidentFieldVector(source,ki,efield)*alpha,
+	VH=Eta*(1-alpha)*_computerCore.SetIncidentFieldVector(source, ki, hfield);
+	return VE+VH;
+}

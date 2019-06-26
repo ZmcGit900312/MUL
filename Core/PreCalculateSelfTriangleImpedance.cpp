@@ -16,7 +16,7 @@ int Core::PreCalculateSelfTriangleImpedance()
 	for (auto i = Mesh::GetInstance()->TriangleVector.begin(),
 		e= Mesh::GetInstance()->TriangleVector.end(); i != e; ++i)
 	{
-		EFRImp::SetSelfImpedanceTriangle(dynamic_cast<RWGTriangle*>(*i), W13, k, eta);
+		RWGImpOperator::SetSelfTriangleOperatorL(dynamic_cast<RWGTriangle*>(*i), W13, k, eta);
 	}
 	const clock_t end = clock();
 	const double time = double(end - start) / CLOCKS_PER_SEC;

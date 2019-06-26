@@ -60,7 +60,7 @@ namespace Core
 		complex<double> HyperSingularity(Vector3d SingularPoint) override;//未完成
 		complex<double> SuperHyperSingularity(Vector3d SingularPoint) override;//未完成
 		complex<double> Scalar(Vector3d pt1, Vector3d pt2) override;
-		Vector3cd Gradient(Vector3d pt1, Vector3d pt2) override;
+		Vector3cd Gradient(const Vector3d SourcePoint, const Vector3d fieldPoint) override;
 	};
 #pragma endregion
 

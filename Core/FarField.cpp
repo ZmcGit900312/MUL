@@ -93,7 +93,7 @@ Vector3cd Request::FarField::EField(const double theta, const double phi) const
 {
 	const Vector3d observation(Radius*cos(phi)*sin(theta),Radius*sin(phi)*sin(theta),Radius*cos(theta));
 	Vector3cd efield{0,0,0};
-	EFRImp compute(k, W4, W7, eta);
+	RWGImpOperator compute(k, W4, W7, eta);
 	for (auto zmc = _mesh->TriangleVector.begin(), ed = _mesh->TriangleVector.end();zmc != ed;++zmc)
 	{
 		dcomplex current[3] = { {0,0},{0,0},{0,0} };
@@ -101,7 +101,7 @@ Vector3cd Request::FarField::EField(const double theta, const double phi) const
 		current[0] = temp->RWGSign[0] ? static_cast<RWG*>(_bf->at(temp->RWGID(0)))->Current() : 0;
 		current[1] = temp->RWGSign[1] ? static_cast<RWG*>(_bf->at(temp->RWGID(1)))->Current() : 0;
 		current[2] = temp->RWGSign[2] ? static_cast<RWG*>(_bf->at(temp->RWGID(2)))->Current() : 0;
-		efield += compute.Radiation(temp, observation,current);
+		efield += compute.OperatorLScatter(temp, observation,current);
 	}
 	
 	return efield;

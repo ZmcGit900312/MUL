@@ -39,7 +39,7 @@ namespace Core
 		size_t _gridNum=1;
 
 		ImpAIM* _imp=nullptr;
-		EFRImp _compute;
+		RWGImpOperator _compute;
 	};
 
 

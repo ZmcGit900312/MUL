@@ -2,13 +2,15 @@
 #define _USE_MATH_DEFINES
 #include "IntegrationRWG.h"
 #include "Const.h"
+#include "Green.h"
+#include <Eigen/Geometry>//包含cross操作
 
-Core::EFRImp::EFRImp(const double k, double const w4[], double const w7[], const double eta):
+Core::RWGImpOperator::RWGImpOperator(const double k, double const w4[], double const w7[], const double eta):
 _k(k),_eta(eta),_w4(w4),_w7(w7){}
 
 
 //填充三角形的自耦项
-void EFRImp::SetSelfImpedanceTriangle(RWGTriangle * t, const double w[13], const double k, const double eta)
+void RWGImpOperator::SetSelfTriangleOperatorL(RWGTriangle * t, const double w[13], const double k, const double eta)
 {
 	const short K = 13;
 	//self impedance of unsingular 
@@ -91,7 +93,7 @@ void EFRImp::SetSelfImpedanceTriangle(RWGTriangle * t, const double w[13], const
 
 }
 
-dcomplex EFRImp::SetImpedance(RWG * field, RWG * source)const
+dcomplex RWGImpOperator::SetImpedanceL(RWG * field, RWG * source)const
 {
 	dcomplex zpp, zpm, zmp, zmm;
 
@@ -139,9 +141,9 @@ dcomplex EFRImp::SetImpedance(RWG * field, RWG * source)const
 	return zpp+zpm+zmp+zmm;
 }
 
-list<element> EFRImp::SetImpedance(RWGTriangle * t) const
+vector<element> RWGImpOperator::OperatorL(RWGTriangle * t) const
 {
-	list<element> Z;
+	vector<element> Z;
 	
 	if (t->Rn[0])Z.push_back({ t->RWGID(0),t->RWGID(0),t->Z(t->RWGID(0)) });
 	if (t->Rn[1])Z.push_back({ t->RWGID(1),t->RWGID(1),t->Z(t->RWGID(1)) });
@@ -153,12 +155,7 @@ list<element> EFRImp::SetImpedance(RWGTriangle * t) const
 	return Z;
 }
 
-list<element> EFRImp::SetImpedance(RWGTriangle* field, RWGTriangle* source) const
-{
-	return UnsingularTriangleIntegration(field,source,_w4,_k,_eta);
-}
-
-void EFRImp::SetImpedance(RWGTriangle* field, RWGTriangle* source, vector<element>& val) const
+void RWGImpOperator::OperatorL(RWGTriangle* field, RWGTriangle* source, vector<element>& val) const
 {
 	const short K = 4;
 
@@ -196,7 +193,7 @@ void EFRImp::SetImpedance(RWGTriangle* field, RWGTriangle* source, vector<elemen
 	}
 }
 
-dcomplex EFRImp::SetRightHand(RWG * source, Vector3d ki, Vector3d e)
+dcomplex RWGImpOperator::SetIncidentFieldVector(RWG * source, Vector3d ki, Vector3d incfield) const
 {
 	const short K = 4;
 	complex<double> plus(0),minus(0);
@@ -204,13 +201,99 @@ dcomplex EFRImp::SetRightHand(RWG * source, Vector3d ki, Vector3d e)
 	for (int i = 0; i < K; ++i)
 	{//Source Triangle
 		Vector3d pt1 = tplus->Quad4()[i],pt2=tminus->Quad4()[i];
-		plus += _w4[i] * exp(-1i*_k*pt1.dot(ki))*e.dot(source->CurrentPlus(pt1));
-		minus+= _w4[i] * exp(-1i*_k*pt2.dot(ki))*e.dot(source->CurrentMinus(pt2));
+		plus += _w4[i] * exp(-1i*_k*pt1.dot(ki))*incfield.dot(source->CurrentPlus(pt1));
+		minus+= _w4[i] * exp(-1i*_k*pt2.dot(ki))*incfield.dot(source->CurrentMinus(pt2));
 	}
 	return plus*tplus->Area()+minus*tminus->Area();
 }
 
-Vector3cd Core::EFRImp::Radiation(RWGTriangle* source, Vector3d ob, dcomplex current[3])
+vector<element> Core::RWGImpOperator::OperatorIdentity(RWGTriangle * t) const
+{
+	const short K = 7;
+	vector<element> res;
+	dcomplex Z[3]={dcomplex(0),dcomplex(0),dcomplex(0)};//Z12,Z13,Z23
+	for (int i = 0; i < K; ++i)
+	{
+		Vector3d quad = t->Quad7()[i];
+		Vector3d rho1(quad - t->Node(0)),
+		rho2(quad - t->Node(1)), rho3(quad - t->Node(2));//场三角形的RHO向量
+		Vector3d nrho1 = t->Normal().cross(rho1),
+			nrho2 = t->Normal().cross(rho2);
+		Z[0] += _w7[i] * nrho1.dot(rho2);
+		Z[1] += _w7[i] * nrho1.dot(rho3);
+		Z[2] += _w7[i] * nrho2.dot(rho3);
+	}
+
+	//only three 
+	if (t->Rn[0] && t->Rn[1])res.push_back({ t->RWGID(0),t->RWGID(1),
+		0.25*t->Edge(0).second*t->Edge(1).second*t->RWGSign[0] * t->RWGSign[1]*Z[0] });
+	if (t->Rn[0] && t->Rn[2])res.push_back({ t->RWGID(0),t->RWGID(2),
+		0.25*t->Edge(0).second*t->Edge(2).second*t->RWGSign[0] * t->RWGSign[2]*Z[1] });
+	if (t->Rn[1] && t->Rn[2])res.push_back({ t->RWGID(1),t->RWGID(2),
+		0.25*t->Edge(1).second*t->Edge(2).second*t->RWGSign[1] * t->RWGSign[2]*Z[2] });
+
+	return res;
+}
+
+void Core::RWGImpOperator::OperatorK(RWGTriangle* field, RWGTriangle* source, vector<element>& val) const
+{
+	const short K = 4;
+
+	dcomplex k1 = 0;
+	Vector3cd k2{ 0,0,0 }, k3{ 0,0,0 },k4{0,0,0};
+	//Three vertexes of field and source triangle
+
+	for (int i = 0; i < K; ++i)
+	{//Field Triangle
+		for (int j = 0; j < K; ++j)
+		{//Source Triangle
+			Vector3cd gij = _w4[i] * _w4[j]*IGreen::GetInstance()->Gradient(field->Quad4()[i], source->Quad4()[j]);
+
+			k4 += gij;
+			k1 += source->Quad4()[j].cross(field->Quad4()[i]).dot(gij);
+			k2 += source->Quad4()[j].cross(gij);
+			k3 += gij.cross(field->Quad4()[i]);
+
+		}
+
+	}
+
+	for (auto i = val.begin(); i != val.end(); ++i)
+	{
+		int& local1 = std::get<0>(*i), &local2 = std::get<1>(*i);
+		const dcomplex value = 0.25*(
+			k1+ k2.dot(field->Node(local1))+ k3.dot(source->Node(local2))
+			+source->Node(local2).cross(field->Node(local1)).dot(k4)
+			)*field->Edge(local1).second* source->Edge(local2).second;
+		std::get<2>(*i) *= value;
+		local1 = field->RWGID(local1);
+		local2 = source->RWGID(local2);
+	}
+}
+
+Vector3cd Core::RWGImpOperator::OperatorKScatter(RWGTriangle * source, Vector3d ob, dcomplex current[3]) const
+{
+	const short K = 4;
+	Vector3cd field{ 0,0,0 };
+	//Free Space
+
+	for (int i = 0; i < K; ++i)
+	{
+		Vector3d pt = source->Quad4()[i];
+		//Green
+		Vector3cd gGradient(_w4[i]*IGreen::GetInstance()->Gradient(ob,pt));
+
+		for (short j = 0;j < 3;j++)
+		{
+			if (source->RWGSign[j] == 0)continue;
+			Vector3cd kernel(-(pt - source->Node(j)).cross(gGradient));
+			field += current[j] * source->Edge(j).second*(source->RWGSign[j] * kernel);
+		}
+	}
+	return 0.5 * field;
+}
+
+Vector3cd Core::RWGImpOperator::OperatorLScatter(RWGTriangle* source, Vector3d ob, dcomplex current[3])
 {
 	const short K = 4;
 	Vector3cd efield{ 0,0,0 };
@@ -238,7 +321,7 @@ Vector3cd Core::EFRImp::Radiation(RWGTriangle* source, Vector3d ob, dcomplex cur
 	return coef*efield;
 }
 
-dcomplex EFRImp::UnsingularRWGIntegration(RWGTriangle* field, RWGTriangle* source, const Vector3d fieldFreePt, const Vector3d sourceFreePt, double const* w, double k)
+dcomplex RWGImpOperator::UnsingularRWGIntegration(RWGTriangle* field, RWGTriangle* source, const Vector3d fieldFreePt, const Vector3d sourceFreePt, double const* w, double k)
 {
 	const short K = 4;
 	complex<double> Z(0);
@@ -259,25 +342,25 @@ dcomplex EFRImp::UnsingularRWGIntegration(RWGTriangle* field, RWGTriangle* sourc
 	return 0.0625*Z;
 }
 
-list<element> EFRImp::UnsingularTriangleIntegration(RWGTriangle* field, RWGTriangle* source, double const*w, const double k, const double eta)
+vector<element> RWGImpOperator::SetImpedanceL(RWGTriangle* field, RWGTriangle* source) const
 {
 	const short K = 4;
 
 	//Temporary Value and Impedance
-	list<element> Z;
+	vector<element> Z;
 
 	dcomplex m1 = 0, m4 = 0;
 	Vector3cd m2{0,0,0}, m3{0,0,0};
 	//Three vertexes of field and source triangle
 
-	const double Phi = 4.0 / (k*k);
+	const double Phi = 4.0 / (_k*_k);
 
 	for (int i = 0; i<K; ++i)
 	{//Field Triangle
 		for (int j = 0; j<K; ++j)
 		{//Source Triangle
 			double R = (field->Quad4()[i] - source->Quad4()[j]).norm();
-			const dcomplex gij = w[i] * w[j] * exp(-1i*k*R) / R;
+			const dcomplex gij = _w4[i] * _w4[j] * exp(-1i*_k*R) / R;
 
 			m4 += gij;
 			m1 += field->Quad4()[i].dot(source->Quad4()[j])*gij;
@@ -294,7 +377,7 @@ list<element> EFRImp::UnsingularTriangleIntegration(RWGTriangle* field, RWGTrian
 			const int coupleState =field->RWGSign[i]*source->RWGSign[j];
 			if (coupleState == 0)continue;
 			Z.push_back({ field->RWGID(i),source->RWGID(j),
-				1i*0.0625*k*eta*M_1_PI*(m1 - field->Node(i).dot(m3) - source->Node(j).dot(m2) +
+				1i*0.0625*_k*_eta*M_1_PI*(m1 - field->Node(i).dot(m3) - source->Node(j).dot(m2) +
 				(field->Node(i).dot(source->Node(j)) - Phi)*m4)*field->Edge(i).second* source->Edge(j).second });
 			if (coupleState < 0)std::get<2>(Z.back()) = -std::get<2>(Z.back());
 		}

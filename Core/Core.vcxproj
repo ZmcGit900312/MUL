@@ -270,6 +270,7 @@
     <ClCompile Include="..\googleTest\ExcitationTest.cpp" />
     <ClCompile Include="..\googleTest\GreenFunctionTest.cpp" />
     <ClCompile Include="..\googleTest\CalculateImpedanceTest.cpp" />
+    <ClCompile Include="..\googleTest\IETest.cpp" />
     <ClCompile Include="..\googleTest\RequestTest.cpp" />
     <ClCompile Include="..\googleTest\TeoplitzcdTest.cpp" />
     <ClCompile Include="..\googleTest\testMain.cpp" />

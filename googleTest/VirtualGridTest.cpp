@@ -14,7 +14,7 @@ using namespace AIMAssist;
 class VirtualGridTest:public testing::Test
 {
 protected:
-	EFRImp _compute;
+	RWGImpOperator _compute;
 	VirtualGridTest():_compute(k,W4,W7,eta){}
 	~VirtualGridTest(){}
 

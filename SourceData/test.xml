@@ -55,7 +55,7 @@
         <Eta>0.0</Eta>
         <Magenitude>1.0</Magenitude>
         <Phase>0.0</Phase>
-        <Ellipitcity>0.0</Ellipitcity>
+        <Ellipticity>0.0</Ellipticity>
       </EField>
     </A0>
   </Excitation>

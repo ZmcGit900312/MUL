@@ -368,6 +368,9 @@
     <ClCompile Include="Voltage.cpp">
       <Filter>源文件\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\googleTest\IETest.cpp">
+      <Filter>源文件\googleTest</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SourceData\MeshTest.nas">

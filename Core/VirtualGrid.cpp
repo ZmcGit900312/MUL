@@ -142,7 +142,7 @@ void Core::VirtualGrid::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFuncti
 				}
 			}
 			if (Z.size() == 0)continue;
-			_compute.SetImpedance(row, col, Z);
+			_compute.OperatorL(row, col, Z);
 			//Set LowerTriangle
 			for (auto i = Z.cbegin();i != Z.cend();++i)
 			{
@@ -283,7 +283,7 @@ void Core::VirtualGrid::NearCorrection(vector<IBasicFunction*>& bf)
 			Vector3d distance = field->Centre() - source->Centre();
 			if (distance.norm() > _threshold)continue;
 			const dcomplex comp = GetFarFieldImpedacneAIM(row, col);
-			const dcomplex ref = _compute.SetImpedance(field, source);
+			const dcomplex ref = _compute.SetImpedanceL(field, source);
 			const dcomplex difvalue = ref - comp;
 			if (norm(difvalue) / norm(ref) < _eps)continue;
 			tripletsNearPart.push_back(T(row, col, difvalue));
@@ -292,7 +292,7 @@ void Core::VirtualGrid::NearCorrection(vector<IBasicFunction*>& bf)
 			_imp->GetNearFieldMatrix().insert(col, row) = difvalue;*/
 		}
 		const dcomplex comp = GetFarFieldImpedacneAIM(row, row);
-		const dcomplex ref = _compute.SetImpedance(field, field);
+		const dcomplex ref = _compute.SetImpedanceL(field, field);
 		tripletsNearPart.push_back(T(row, row, ref - comp));
 		//_imp->GetNearFieldMatrix().insert(row, row) = ref - comp;
 		currentProgress += 2 * (_unknowns - row);

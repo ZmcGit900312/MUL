@@ -25,8 +25,8 @@ namespace Core
 		public:
 			virtual ~ISource() = default;
 			
-			dcomplex E0;
-			Vector3d Ki{ 0,0,-1 }, Ei{ 1,0,0 };
+			dcomplex E0,H0;
+			Vector3d Ki{ 0,0,-1 }, Ei{ 1,0,0 },Hi{1,0,0};
 			//ExcitationName
 			string Name;
 			/**
