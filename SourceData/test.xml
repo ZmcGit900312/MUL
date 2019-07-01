@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Configuration xmlns="http://tempuri.org/ConfigurationTemplate.xsd" xmlns:xsi="http://tempuri.org/ConfigurationTemplate.xsd-instance" Date="2019-04-28T19:52:00">
+<Configuration xmlns="http://tempuri.org/ConfigurationTemplate.xsd" xmlns:xsi="http://tempuri.org/ConfigurationTemplate.xsd-instance" Date="2019-07-01T15:57:46">
   <File>
     <IN Validate="1">
       <Mesh Type="3">
@@ -12,13 +12,13 @@
       </Project>
     </IN>
     <OS Validate="1">
-      <Type>-1</Type>
+      <Type>0</Type>
       <FilePath>E:\ZMC\Code\C_program\MUL\SourceData\test.bf</FilePath>
     </OS>
   </File>
   <Method>
     <TriangleFillingStrategy>1</TriangleFillingStrategy>
-    <AIM Validate="1">
+    <AIM Validate="0">
       <Order>2</Order>
       <Interval>0.05</Interval>
       <Threshold>0.3</Threshold>
@@ -26,7 +26,7 @@
       <Dimension>3</Dimension>
       <VirtualGrid>1</VirtualGrid>
     </AIM>
-    <MoM Validate="0" />
+    <MoM Validate="1" />
   </Method>
   <EMCPara>
     <FR Validate="1">
@@ -65,7 +65,7 @@
       <Iterations>0</Iterations>
       <StopTolerance>10.0</StopTolerance>
       <Residum>1.0e-4</Residum>
-      <Preconditioning>2</Preconditioning>
+      <Preconditioning>1</Preconditioning>
     </CG>
   </Solution>
   <Request>

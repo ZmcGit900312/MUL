@@ -193,7 +193,7 @@ void RWGImpOperator::OperatorL(RWGTriangle* field, RWGTriangle* source, vector<e
 	}
 }
 
-dcomplex RWGImpOperator::SetIncidentFieldVector(RWG * source, Vector3d ki, Vector3d incfield) const
+dcomplex RWGImpOperator::SetIncidentFieldVector(RWG * source, Vector3d ki, Vector3cd incfield) const
 {
 	const short K = 4;
 	complex<double> plus(0),minus(0);
@@ -201,10 +201,27 @@ dcomplex RWGImpOperator::SetIncidentFieldVector(RWG * source, Vector3d ki, Vecto
 	for (int i = 0; i < K; ++i)
 	{//Source Triangle
 		Vector3d pt1 = tplus->Quad4()[i],pt2=tminus->Quad4()[i];
-		plus += _w4[i] * exp(-1i*_k*pt1.dot(ki))*incfield.dot(source->CurrentPlus(pt1));
-		minus+= _w4[i] * exp(-1i*_k*pt2.dot(ki))*incfield.dot(source->CurrentMinus(pt2));
+		plus += _w4[i] * exp(-1i*_k*pt1.dot(ki))*source->CurrentPlus(pt1).dot(incfield);
+		minus+= _w4[i] * exp(-1i*_k*pt2.dot(ki))*source->CurrentMinus(pt2).dot(incfield);
 	}
 	return plus*tplus->Area()+minus*tminus->Area();
+}
+
+dcomplex Core::RWGImpOperator::SetIncidentFieldVector(RWG * source, Vector3d ki, Vector3cd efield, double alpha, double eta) const
+{
+	const short K = 4;
+	complex<double> plus(0), minus(0);
+	Vector3cd hfield(ki.cross(efield));
+	Vector3cd field(alpha*efield + (1 - alpha)*hfield);
+	RWGTriangle* tplus = source->TrianglePlus(), *tminus = source->TriangleMinus();
+	for (int i = 0; i < K; ++i)
+	{//Source Triangle
+		Vector3d pt1 = tplus->Quad4()[i], pt2 = tminus->Quad4()[i];
+		plus += _w4[i] * exp(-1i*_k*pt1.dot(ki))*source->CurrentPlus(pt1).dot(field);
+		minus += _w4[i] * exp(-1i*_k*pt2.dot(ki))*source->CurrentMinus(pt2).dot(field);
+	}
+	return plus * tplus->Area() + minus * tminus->Area();
+
 }
 
 vector<element> Core::RWGImpOperator::OperatorIdentity(RWGTriangle * t) const
@@ -225,12 +242,24 @@ vector<element> Core::RWGImpOperator::OperatorIdentity(RWGTriangle * t) const
 	}
 
 	//only three 
-	if (t->Rn[0] && t->Rn[1])res.push_back({ t->RWGID(0),t->RWGID(1),
-		0.25*t->Edge(0).second*t->Edge(1).second*t->RWGSign[0] * t->RWGSign[1]*Z[0] });
-	if (t->Rn[0] && t->Rn[2])res.push_back({ t->RWGID(0),t->RWGID(2),
-		0.25*t->Edge(0).second*t->Edge(2).second*t->RWGSign[0] * t->RWGSign[2]*Z[1] });
-	if (t->Rn[1] && t->Rn[2])res.push_back({ t->RWGID(1),t->RWGID(2),
-		0.25*t->Edge(1).second*t->Edge(2).second*t->RWGSign[1] * t->RWGSign[2]*Z[2] });
+	if (t->Rn[0] && t->Rn[1])
+	{
+		dcomplex v = 0.5*0.25*t->Edge(0).second*t->Edge(1).second*t->RWGSign[0] * t->RWGSign[1] * Z[0]/t->Area();
+		res.push_back({ t->RWGID(0),t->RWGID(1),v });
+		res.push_back({ t->RWGID(1),t->RWGID(0),-v });
+
+	}
+	if (t->Rn[0] && t->Rn[2])
+	{
+		dcomplex v = 0.5*0.25*t->Edge(0).second*t->Edge(2).second*t->RWGSign[0] * t->RWGSign[2] * Z[1]/t->Area();
+		res.push_back({ t->RWGID(0),t->RWGID(2),v});
+		res.push_back({ t->RWGID(2),t->RWGID(0),-v });
+	}
+	if (t->Rn[1] && t->Rn[2]) {
+		dcomplex v = 0.5*0.25*t->Edge(1).second*t->Edge(2).second*t->RWGSign[1] * t->RWGSign[2] * Z[2]/ t->Area();
+		res.push_back({ t->RWGID(1),t->RWGID(2),v });
+		res.push_back({ t->RWGID(2),t->RWGID(1),-v });
+	}
 
 	return res;
 }
@@ -271,6 +300,90 @@ void Core::RWGImpOperator::OperatorK(RWGTriangle* field, RWGTriangle* source, ve
 	}
 }
 
+vector<element> Core::RWGImpOperator::OperatorCPEC(RWGTriangle * t, double alpha, double eta) const
+{
+	vector<element> Z;
+	Z.push_back({ t->RWGID(0),t->RWGID(0),alpha*t->Z(t->RWGID(0)) });
+	Z.push_back({ t->RWGID(1),t->RWGID(1),alpha*t->Z(t->RWGID(1)) });
+	Z.push_back({ t->RWGID(2),t->RWGID(2),alpha*t->Z(t->RWGID(2)) });
+
+	const short K = 7;
+	dcomplex ZI[3] = { dcomplex(0),dcomplex(0),dcomplex(0) };//Z12,Z13,Z23
+	for (int i = 0; i < K; ++i)
+	{
+		Vector3d quad = t->Quad7()[i];
+		Vector3d rho1(quad - t->Node(0)),
+			rho2(quad - t->Node(1)), rho3(quad - t->Node(2));//场三角形的RHO向量
+		Vector3d nrho1 = t->Normal().cross(rho1),
+			nrho2 = t->Normal().cross(rho2);
+		ZI[0] += _w7[i] * nrho1.dot(rho2);
+		ZI[1] += _w7[i] * nrho1.dot(rho3);
+		ZI[2] += _w7[i] * nrho2.dot(rho3);
+	}
+
+	dcomplex z01 = (1-alpha)*eta*0.5*0.25*t->Edge(0).second*t->Edge(1).second*t->RWGSign[0] * t->RWGSign[1] * ZI[0] / t->Area();
+	Z.push_back({ t->RWGID(0),t->RWGID(1),alpha*t->Z(t->RWGID(0),t->RWGID(1))+z01 });
+	Z.push_back({ t->RWGID(1),t->RWGID(0),alpha*t->Z(t->RWGID(0),t->RWGID(1)) -z01 });
+
+	dcomplex z02 = (1 - alpha)*eta*0.5*0.25*t->Edge(0).second*t->Edge(2).second*t->RWGSign[0] * t->RWGSign[2] * ZI[1] / t->Area();
+	Z.push_back({ t->RWGID(0),t->RWGID(2),alpha*t->Z(t->RWGID(0),t->RWGID(2)) + z02 });
+	Z.push_back({ t->RWGID(2),t->RWGID(0),alpha*t->Z(t->RWGID(0),t->RWGID(2)) - z02 });
+
+	dcomplex z12 = (1 - alpha)*eta*0.5*0.25*t->Edge(1).second*t->Edge(2).second*t->RWGSign[1] * t->RWGSign[2] * ZI[2] / t->Area();
+	Z.push_back({ t->RWGID(1),t->RWGID(2),alpha*t->Z(t->RWGID(1),t->RWGID(2)) + z12 });
+	Z.push_back({ t->RWGID(2),t->RWGID(1),alpha*t->Z(t->RWGID(2),t->RWGID(1)) - z12 });
+	return Z;
+}
+
+void Core::RWGImpOperator::OperatorCPEC(RWGTriangle * field, RWGTriangle * source, vector<element>& val, double alpha, double eta) const
+{
+	const short K = 4;
+
+	dcomplex m1 = 0, m4 = 0, k1 = 0;
+	Vector3cd m2{ 0,0,0 }, m3{ 0,0,0 }, k2{ 0,0,0 }, k3{ 0,0,0 }, k4{ 0,0,0 };
+	//Three vertexes of field and source triangle
+
+	const double Phi = 4.0 / (_k*_k);
+
+	for (int i = 0; i < K; ++i)
+	{//Field Triangle
+		for (int j = 0; j < K; ++j)
+		{//Source Triangle
+			dcomplex gscalar = _w4[i] * _w4[j] * IGreen::GetInstance()->Scalar(field->Quad4()[i], source->Quad4()[j]);
+			
+			Vector3cd gij = _w4[i] * _w4[j] * IGreen::GetInstance()->Gradient(field->Quad4()[i], source->Quad4()[j]);
+
+			m4 += gscalar;
+			m1 += field->Quad4()[i].dot(source->Quad4()[j])*gscalar;
+			m2 += gscalar * field->Quad4()[i];
+			m3 += gscalar * source->Quad4()[j];
+
+			k4 += gij;
+			k1 += source->Quad4()[j].cross(field->Quad4()[i]).dot(gij);
+			k2 += source->Quad4()[j].cross(gij);
+			k3 += gij.cross(field->Quad4()[i]);
+		}
+
+	}
+
+	for (auto i = val.begin(); i != val.end(); ++i)
+	{
+		int& local1 = std::get<0>(*i), &local2 = std::get<1>(*i);
+
+		double effE = alpha * 0.25*_k*_eta*field->Edge(local1).second* source->Edge(local2).second,
+			effH = (1 - alpha)*eta*0.25*field->Edge(local1).second* source->Edge(local2).second;
+		const dcomplex vL = (m1 -
+			field->Node(local1).dot(m3) - source->Node(local2).dot(m2) +
+			(field->Node(local1).dot(source->Node(local2)) - Phi)*m4)*effE*1i;
+		const dcomplex vK = effH*(
+			k1 + k2.dot(field->Node(local1)) + k3.dot(source->Node(local2))
+				+ source->Node(local2).cross(field->Node(local1)).dot(k4));
+		std::get<2>(*i) *= vL-vK;
+		local1 = field->RWGID(local1);
+		local2 = source->RWGID(local2);
+	}
+}
+
 Vector3cd Core::RWGImpOperator::OperatorKScatter(RWGTriangle * source, Vector3d ob, dcomplex current[3]) const
 {
 	const short K = 4;
@@ -293,7 +406,7 @@ Vector3cd Core::RWGImpOperator::OperatorKScatter(RWGTriangle * source, Vector3d 
 	return 0.5 * field;
 }
 
-Vector3cd Core::RWGImpOperator::OperatorLScatter(RWGTriangle* source, Vector3d ob, dcomplex current[3])
+Vector3cd Core::RWGImpOperator::OperatorLScatter(RWGTriangle* source, Vector3d ob, dcomplex current[3])const
 {
 	const short K = 4;
 	Vector3cd efield{ 0,0,0 };

@@ -38,6 +38,11 @@ int Core::ReleaseMemory()
 		delete SystemConfig.SourceConfig;
 		SystemConfig.SourceConfig = nullptr;
 	}
+	if(Core::equation)
+	{
+		delete equation;
+		equation = nullptr;
+	}
 	Console->info("{:-^45}","END");
 	ResultLog->info("{:-^45}", "END");
 	ResultLog->flush();

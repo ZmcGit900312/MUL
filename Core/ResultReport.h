@@ -9,6 +9,7 @@
 #include "RequestConfiguration.h"
 #include "ISolver.h"
 #include "Excitation.h"
+#include "IEKernel.h"
 namespace Core
 {
 
@@ -26,6 +27,7 @@ namespace Core
 		static void WriteSolutionInformation(Solution::SolverConfiguration*config,shared_ptr<spd::logger>log);
 		static void WriteMethodInformation(ImpConfiguration* config, shared_ptr<spd::logger>log);
 		static void WriteRequestInformation(Request::FarFieldConfiguration*config, shared_ptr<spd::logger>log);
+		static void WirteIEInformation(IEConfiguration* config, shared_ptr<spd::logger>log);
 		//void SummaryTime();
 
 	};

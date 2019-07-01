@@ -31,7 +31,7 @@ namespace Core
 		 * \param w Weight of Guass-quadrature
 		 * \param k wavenumber
 		 * \param eta Freespace Impedance
- 		 */
+		 */
 		static void SetSelfTriangleOperatorL(RWGTriangle *t,const double w13[13],double k, double eta=120*3.1415926);
 #pragma region ImpedanceOperator
 		/**
@@ -65,7 +65,7 @@ namespace Core
 		/**
 		 * \brief Identity Operator in a single triangle
 		 * \param t Triangle
-		 * \return Three inner products between n*f and f 
+		 * \return Six 0.5*inner products between n*f and f 
 		 */
 		vector<element> OperatorIdentity(RWGTriangle * t) const;
 		/**
@@ -75,6 +75,19 @@ namespace Core
 		 * \param val The marked RWG basis functions
 		 */
 		void OperatorK(RWGTriangle* field, RWGTriangle* source, vector<element>& val) const;
+		/**
+		 * \brief Fill Impedance Matrix in triangle index(self)
+		 * \param t Specific triangle
+		 * \return The list of self-impedance service for 
+		 */
+		vector<element> OperatorCPEC(RWGTriangle* t,double alpha,double eta) const;
+		/**
+		 * \brief K operator with Different Triangle Pair
+		 * \param field Field Triangle
+		 * \param source Source Triangle
+		 * \param val The marked RWG basis functions
+		 */
+		void OperatorCPEC(RWGTriangle* field, RWGTriangle* source, vector<element>& val, double alpha, double eta) const;
 		/**
 		 * \brief Radiation by Operator K
 		 * \param source Source Triangle
@@ -91,17 +104,26 @@ namespace Core
 		 * \param current surface current or mag
 		 * \return scattering field
 		 */
-		Vector3cd OperatorLScatter(RWGTriangle* source, Vector3d ob, dcomplex current[3]);
+		Vector3cd OperatorLScatter(RWGTriangle* source, Vector3d ob, dcomplex current[3]) const;
 #pragma endregion 
 
 		/**
 		 * \brief Calculate the specific RWG RightHand
 		 * \param source BasisFunction
 		 * \param ki The direction of wave propagation
-		 * \param incfield The direction of E field
+		 * \param incfield The direction of E or H field
 		 * \return
 		 */
-		dcomplex SetIncidentFieldVector(RWG* source, Vector3d ki, Vector3d incfield) const;
+		dcomplex SetIncidentFieldVector(RWG* source, Vector3d ki, Vector3cd incfield) const;
+
+		/**
+		 * \brief Calculate the specific RWG RightHand
+		 * \param source BasisFunction
+		 * \param ki The direction of wave propagation
+		 * \param incfield The direction of E+H field
+		 * \return
+		 */
+		dcomplex SetIncidentFieldVector(RWG* source, Vector3d ki, Vector3cd efield,double alpha,double eta) const;
 	private:
 		/**
 		* \brief Impedance between two different triangles as the RWG index

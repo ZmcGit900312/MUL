@@ -56,11 +56,12 @@ public:
 	}
 };
 
-TEST_F(MoMTest, ImpedanceTest)
+TEST_F(MoMTest, EFIEImpedanceTest)
 {
 	
 	try
 	{
+		if (SystemConfig.IEConfig.type != EFIE)throw spd::spdlog_ex("EFIE is not choosen to test");
 		RWGImpOperator compute(k, W4, W7, eta);
 		//ÑéÖ¤×è¿¹¾ØÕó
 		MatrixXcd& Imp = static_cast<ImpMoM*>(ComponentList::ImpService)->LocalMatrix();
@@ -121,7 +122,44 @@ TEST_F(MoMTest, ImpedanceTest)
 	}
 }
 
+TEST_F(MoMTest, MFIEImpedanceTest)
+{
+	try
+	{
+		if (SystemConfig.IEConfig.type != MFIE)throw spd::spdlog_ex("MFIE is not choosen to test");
+		MatrixXcd& Imp = static_cast<ImpMoM*>(ComponentList::ImpService)->LocalMatrix();
+		auto& bf = ComponentList::BFvector;
+		int row[6] = { 152,229,238,111,28,45 }, col[6] = { 478,95,74,1,33,41 };
 
+		Console->debug("Non overlap Triangle Test:");
+		for (int i = 0; i < 6; ++i)
+		{
+			RWG* field = static_cast<RWG*>(bf[row[i]]),*s= static_cast<RWG*>(bf[col[i]]);
+			Console->debug("FieldRWGID:{0:8d}\tPlusT:{1:8d}\tMinusT:{2:8d}", field->GetID(),field->TrianglePlus()->ID(), field->TriangleMinus()->ID());
+			Console->debug("SourceRWGID:{0:8d}\tPlusT:{1:8d}\tMinusT:{2:8d}", s->GetID(), s->TrianglePlus()->ID(), s->TriangleMinus()->ID());
+			for (int j = 0; j < 6; ++j)
+			{
+				RWG* source = static_cast<RWG*>(bf[col[j]]);
+				
+				dcomplex val1 = Imp(row[i], col[j]), val2 = Imp(col[j], row[i]);
+				EXPECT_NEAR(0, norm(val1 - val2) / norm(val2), 1.0e-3) << "Error in Impedance\t" << row[i] << "," << col[i];
+			}
+		}
+
+		Console->debug("Diagnol Test:");
+		for (int i = 0; i < 6; ++i)
+		{
+			RWG* field = static_cast<RWG*>(bf[row[i]]), *s = static_cast<RWG*>(bf[col[i]]);
+			Console->debug("FieldRWGID:{0:5d}\tPlusT:{1:5d}\tMinusT:{2:5d}\t({3},{4})", field->GetID(), field->TrianglePlus()->ID(), field->TriangleMinus()->ID(),Imp(row[i],row[i]).real(), Imp(row[i], row[i]).imag());
+		}
+	}
+	catch (spd::spdlog_ex&ex)
+	{
+		Console->warn(ex.what());
+		RuntimeLog->warn(ex.what());
+		RuntimeLog->flush();
+	}
+}
 
 TEST_F(MoMTest,SolveTest)
 {

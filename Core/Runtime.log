@@ -8466,3 +8466,2208 @@
 [Wed Jun 26 21:13:05 2019 Wed][info] Release BasicFunction
 [Wed Jun 26 21:13:05 2019 Wed][info] Release Request
 [Wed Jun 26 21:13:05 2019 Wed][info] ---------------------END---------------------
+[Thu Jun 27 10:12:34 2019 Thu][info] *************Read Configuration**************
+[Thu Jun 27 10:12:34 2019 Thu][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 10:12:34 2019 Thu][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Thu Jun 27 10:12:34 2019 Thu][info] Project Name:	test
+[Thu Jun 27 10:12:34 2019 Thu][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Thu Jun 27 10:12:35 2019 Thu][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Jun 27 10:12:35 2019 Thu][info] Frequency:	3.000000e+08
+[Thu Jun 27 10:12:35 2019 Thu][info] ********************Mesh*********************
+[Thu Jun 27 10:12:35 2019 Thu][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 10:12:35 2019 Thu][info] Number of Nodes:			         431
+[Thu Jun 27 10:12:35 2019 Thu][info] Number of Triangles:			         858
+[Thu Jun 27 10:12:35 2019 Thu][info] Number of Segments:			           0
+[Thu Jun 27 10:12:35 2019 Thu][info] Number of Cuboids:			           0
+[Thu Jun 27 10:12:35 2019 Thu][info] Number of Tetrahedras:			           0
+
+[Thu Jun 27 10:12:35 2019 Thu][info] Creat Mesh costs	0.047000 s
+[Thu Jun 27 10:12:35 2019 Thu][info] ****************Geometry Info****************)
+[Thu Jun 27 10:12:35 2019 Thu][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Thu Jun 27 10:12:35 2019 Thu][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Thu Jun 27 10:12:36 2019 Thu][info] Choose RWG Function as BasicFunction
+
+[Thu Jun 27 10:12:36 2019 Thu][info] The number of BasicFuntions is:	1287
+[Thu Jun 27 10:12:36 2019 Thu][info] Load BasicFuntions costs:	     0.011 s
+[Thu Jun 27 10:12:36 2019 Thu][info] Set Green Function
+[Thu Jun 27 10:12:36 2019 Thu][info] Free Space Green Function is choosen
+
+[Thu Jun 27 10:12:36 2019 Thu][info] Begin to pre-compute the SelfTriangle Impedance
+[Thu Jun 27 10:12:36 2019 Thu][info] Initial Solver
+[Thu Jun 27 10:12:36 2019 Thu][info] *********************MoM*********************
+[Thu Jun 27 10:12:36 2019 Thu][info] ************Fill Impedance Matrix************
+[Thu Jun 27 10:13:03 2019 Thu][info] Whole Filling costs	26.354000 s
+[Thu Jun 27 10:13:03 2019 Thu][info] Memory Cost	25.274185 Mb
+[Thu Jun 27 10:13:03 2019 Thu][info] ***************Excitation Info***************
+[Thu Jun 27 10:13:03 2019 Thu][info] Source Type:		PlanewaveLinear
+[Thu Jun 27 10:13:03 2019 Thu][info] Direction:[0.000 0.000 -1.000]
+[Thu Jun 27 10:13:03 2019 Thu][info] Polarization:[0.000 1.000 0.000]
+
+[Thu Jun 27 10:13:03 2019 Thu][info] Set RightHand is cost:	0.017000 s
+[Thu Jun 27 10:13:03 2019 Thu][info] Memory Cost	0.019638 Mb
+[Thu Jun 27 10:13:03 2019 Thu][info] ****************Solution Info****************
+[Thu Jun 27 10:13:03 2019 Thu][info] Solution Type:	BiCGSTAB
+[Thu Jun 27 10:13:03 2019 Thu][info] Preconditioning Type:		Incomplete LU
+[Thu Jun 27 10:13:03 2019 Thu][info] The Maxiteration is:		0
+[Thu Jun 27 10:13:03 2019 Thu][info] The Tolerance is:		1.000000e-04
+[Thu Jun 27 10:13:04 2019 Thu][info] The Final Iteration is:	184
+[Thu Jun 27 10:13:04 2019 Thu][info] The results tolerance is:	9.9214e-05
+[Thu Jun 27 10:13:04 2019 Thu][info] Iteration is cost:	1.177000 s
+[Thu Jun 27 10:13:04 2019 Thu][info] Save BasicFunction in binary type
+[Thu Jun 27 10:13:04 2019 Thu][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Jun 27 10:13:04 2019 Thu][info] Run CalculateRequest()
+[Thu Jun 27 10:13:04 2019 Thu][info] **********Calcuate the FarField RCS**********
+[Thu Jun 27 10:13:04 2019 Thu][info] RCS of Far Field::	Horizon
+[Thu Jun 27 10:13:17 2019 Thu][info] RCS of Far Field::	VerticalPhi0
+[Thu Jun 27 10:13:24 2019 Thu][info] RCS of Far Field::	VerticalPhi90
+[Thu Jun 27 10:13:31 2019 Thu][info] FarField Calculate cost 26.995000 s
+[Thu Jun 27 10:13:31 2019 Thu][info] *************Release the memory**************
+[Thu Jun 27 10:13:31 2019 Thu][info] Release BasicFunction
+[Thu Jun 27 10:13:31 2019 Thu][info] Release Request
+[Thu Jun 27 10:13:31 2019 Thu][info] ---------------------END---------------------
+[Thu Jun 27 10:36:06 2019 Thu][info] *************Read Configuration**************
+[Thu Jun 27 10:36:06 2019 Thu][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 10:36:06 2019 Thu][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Thu Jun 27 10:36:06 2019 Thu][info] Project Name:	test
+[Thu Jun 27 10:36:06 2019 Thu][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Thu Jun 27 10:36:06 2019 Thu][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Jun 27 10:36:06 2019 Thu][info] Frequency:	3.000000e+08
+[Thu Jun 27 10:36:06 2019 Thu][info] ********************Mesh*********************
+[Thu Jun 27 10:36:06 2019 Thu][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 10:36:06 2019 Thu][info] Number of Nodes:			         431
+[Thu Jun 27 10:36:06 2019 Thu][info] Number of Triangles:			         858
+[Thu Jun 27 10:36:06 2019 Thu][info] Number of Segments:			           0
+[Thu Jun 27 10:36:06 2019 Thu][info] Number of Cuboids:			           0
+[Thu Jun 27 10:36:06 2019 Thu][info] Number of Tetrahedras:			           0
+
+[Thu Jun 27 10:36:06 2019 Thu][info] Creat Mesh costs	0.048000 s
+[Thu Jun 27 10:36:06 2019 Thu][info] ****************Geometry Info****************)
+[Thu Jun 27 10:36:06 2019 Thu][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Thu Jun 27 10:36:06 2019 Thu][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Thu Jun 27 10:36:06 2019 Thu][info] Choose RWG Function as BasicFunction
+
+[Thu Jun 27 10:36:06 2019 Thu][info] The number of BasicFuntions is:	1287
+[Thu Jun 27 10:36:06 2019 Thu][info] Load BasicFuntions costs:	     0.014 s
+[Thu Jun 27 10:36:06 2019 Thu][info] Set Green Function
+[Thu Jun 27 10:36:06 2019 Thu][info] Free Space Green Function is choosen
+
+[Thu Jun 27 10:36:11 2019 Thu][info] *************Release the memory**************
+[Thu Jun 27 10:36:11 2019 Thu][info] Release BasicFunction
+[Thu Jun 27 10:36:11 2019 Thu][info] Release Request
+[Thu Jun 27 10:36:11 2019 Thu][info] ---------------------END---------------------
+[Thu Jun 27 10:36:41 2019 Thu][info] *************Read Configuration**************
+[Thu Jun 27 10:36:41 2019 Thu][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 10:36:41 2019 Thu][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Thu Jun 27 10:36:41 2019 Thu][info] Project Name:	test
+[Thu Jun 27 10:36:41 2019 Thu][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Thu Jun 27 10:36:41 2019 Thu][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Jun 27 10:36:41 2019 Thu][info] Frequency:	3.000000e+08
+[Thu Jun 27 10:36:41 2019 Thu][info] ********************Mesh*********************
+[Thu Jun 27 10:36:41 2019 Thu][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 10:36:41 2019 Thu][info] Number of Nodes:			         431
+[Thu Jun 27 10:36:41 2019 Thu][info] Number of Triangles:			         858
+[Thu Jun 27 10:36:41 2019 Thu][info] Number of Segments:			           0
+[Thu Jun 27 10:36:41 2019 Thu][info] Number of Cuboids:			           0
+[Thu Jun 27 10:36:41 2019 Thu][info] Number of Tetrahedras:			           0
+
+[Thu Jun 27 10:36:41 2019 Thu][info] Creat Mesh costs	0.048000 s
+[Thu Jun 27 10:36:41 2019 Thu][info] ****************Geometry Info****************)
+[Thu Jun 27 10:36:41 2019 Thu][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Thu Jun 27 10:36:41 2019 Thu][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Thu Jun 27 10:36:41 2019 Thu][info] Choose RWG Function as BasicFunction
+
+[Thu Jun 27 10:36:41 2019 Thu][info] The number of BasicFuntions is:	1287
+[Thu Jun 27 10:36:41 2019 Thu][info] Load BasicFuntions costs:	     0.011 s
+[Thu Jun 27 10:36:41 2019 Thu][info] Set Green Function
+[Thu Jun 27 10:36:41 2019 Thu][info] Free Space Green Function is choosen
+
+[Thu Jun 27 10:36:41 2019 Thu][info] Begin to pre-compute the SelfTriangle Impedance
+[Thu Jun 27 10:36:42 2019 Thu][info] Initial Solver
+[Thu Jun 27 10:36:42 2019 Thu][info] *********************MoM*********************
+[Thu Jun 27 10:36:42 2019 Thu][info] ************Fill Impedance Matrix************
+[Thu Jun 27 10:37:09 2019 Thu][info] Whole Filling costs	26.507000 s
+[Thu Jun 27 10:37:09 2019 Thu][info] Memory Cost	25.274185 Mb
+[Thu Jun 27 10:37:09 2019 Thu][info] ***************Excitation Info***************
+[Thu Jun 27 10:37:09 2019 Thu][info] Source Type:		PlanewaveLinear
+[Thu Jun 27 10:37:09 2019 Thu][info] Direction:[0.000 0.000 -1.000]
+[Thu Jun 27 10:37:09 2019 Thu][info] Polarization:[0.000 1.000 0.000]
+
+[Thu Jun 27 10:37:09 2019 Thu][info] Set RightHand is cost:	0.023000 s
+[Thu Jun 27 10:37:09 2019 Thu][info] Memory Cost	0.019638 Mb
+[Thu Jun 27 10:37:09 2019 Thu][info] ****************Solution Info****************
+[Thu Jun 27 10:37:09 2019 Thu][info] Solution Type:	BiCGSTAB
+[Thu Jun 27 10:37:09 2019 Thu][info] Preconditioning Type:		Incomplete LU
+[Thu Jun 27 10:37:09 2019 Thu][info] The Maxiteration is:		0
+[Thu Jun 27 10:37:09 2019 Thu][info] The Tolerance is:		1.000000e-04
+[Thu Jun 27 10:37:10 2019 Thu][info] The Final Iteration is:	184
+[Thu Jun 27 10:37:10 2019 Thu][info] The results tolerance is:	9.9214e-05
+[Thu Jun 27 10:37:10 2019 Thu][info] Iteration is cost:	1.101000 s
+[Thu Jun 27 10:37:10 2019 Thu][info] Save BasicFunction in binary type
+[Thu Jun 27 10:37:10 2019 Thu][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Jun 27 10:37:10 2019 Thu][info] Run CalculateRequest()
+[Thu Jun 27 10:37:10 2019 Thu][info] **********Calcuate the FarField RCS**********
+[Thu Jun 27 10:37:10 2019 Thu][info] RCS of Far Field::	Horizon
+[Thu Jun 27 10:37:23 2019 Thu][info] RCS of Far Field::	VerticalPhi0
+[Thu Jun 27 10:37:30 2019 Thu][info] RCS of Far Field::	VerticalPhi90
+[Thu Jun 27 10:37:37 2019 Thu][info] FarField Calculate cost 26.417000 s
+[Thu Jun 27 10:37:37 2019 Thu][info] *************Release the memory**************
+[Thu Jun 27 10:37:37 2019 Thu][info] Release BasicFunction
+[Thu Jun 27 10:37:37 2019 Thu][info] Release Request
+[Thu Jun 27 10:37:37 2019 Thu][info] ---------------------END---------------------
+[Thu Jun 27 10:53:38 2019 Thu][info] *************Read Configuration**************
+[Thu Jun 27 10:53:38 2019 Thu][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 10:53:38 2019 Thu][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Thu Jun 27 10:53:38 2019 Thu][info] Project Name:	test
+[Thu Jun 27 10:53:38 2019 Thu][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Thu Jun 27 10:53:38 2019 Thu][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Jun 27 10:53:38 2019 Thu][info] Frequency:	3.000000e+08
+[Thu Jun 27 10:53:38 2019 Thu][info] ********************Mesh*********************
+[Thu Jun 27 10:53:38 2019 Thu][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 10:53:38 2019 Thu][info] Number of Nodes:			         431
+[Thu Jun 27 10:53:38 2019 Thu][info] Number of Triangles:			         858
+[Thu Jun 27 10:53:38 2019 Thu][info] Number of Segments:			           0
+[Thu Jun 27 10:53:38 2019 Thu][info] Number of Cuboids:			           0
+[Thu Jun 27 10:53:38 2019 Thu][info] Number of Tetrahedras:			           0
+
+[Thu Jun 27 10:53:38 2019 Thu][info] Creat Mesh costs	0.053000 s
+[Thu Jun 27 10:53:38 2019 Thu][info] ****************Geometry Info****************)
+[Thu Jun 27 10:53:38 2019 Thu][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Thu Jun 27 10:53:38 2019 Thu][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Thu Jun 27 10:53:38 2019 Thu][info] Choose RWG Function as BasicFunction
+
+[Thu Jun 27 10:53:38 2019 Thu][info] The number of BasicFuntions is:	1287
+[Thu Jun 27 10:53:38 2019 Thu][info] Load BasicFuntions costs:	     0.009 s
+[Thu Jun 27 10:53:38 2019 Thu][info] Set Green Function
+[Thu Jun 27 10:53:38 2019 Thu][info] Free Space Green Function is choosen
+
+[Thu Jun 27 10:53:38 2019 Thu][info] Begin to pre-compute the SelfTriangle Impedance
+[Thu Jun 27 10:53:39 2019 Thu][info] Initial Solver
+[Thu Jun 27 10:53:39 2019 Thu][info] *********************MoM*********************
+[Thu Jun 27 10:53:39 2019 Thu][info] ************Fill Impedance Matrix************
+[Thu Jun 27 10:54:05 2019 Thu][info] Whole Filling costs	26.092000 s
+[Thu Jun 27 10:54:05 2019 Thu][info] Memory Cost	25.274185 Mb
+[Thu Jun 27 10:54:05 2019 Thu][info] ***************Excitation Info***************
+[Thu Jun 27 10:54:05 2019 Thu][info] Source Type:		PlanewaveLinear
+[Thu Jun 27 10:54:05 2019 Thu][info] Direction:[0.000 0.000 -1.000]
+[Thu Jun 27 10:54:05 2019 Thu][info] Polarization:[0.000 1.000 0.000]
+
+[Thu Jun 27 10:54:05 2019 Thu][info] Set RightHand is cost:	0.023000 s
+[Thu Jun 27 10:54:05 2019 Thu][info] Memory Cost	0.019638 Mb
+[Thu Jun 27 10:54:05 2019 Thu][info] ****************Solution Info****************
+[Thu Jun 27 10:54:05 2019 Thu][info] Solution Type:	BiCGSTAB
+[Thu Jun 27 10:54:05 2019 Thu][info] Preconditioning Type:		Incomplete LU
+[Thu Jun 27 10:54:05 2019 Thu][info] The Maxiteration is:		0
+[Thu Jun 27 10:54:05 2019 Thu][info] The Tolerance is:		1.000000e-04
+[Thu Jun 27 10:54:06 2019 Thu][info] The Final Iteration is:	184
+[Thu Jun 27 10:54:06 2019 Thu][info] The results tolerance is:	9.9214e-05
+[Thu Jun 27 10:54:06 2019 Thu][info] Iteration is cost:	1.089000 s
+[Thu Jun 27 10:54:06 2019 Thu][info] Save BasicFunction in binary type
+[Thu Jun 27 10:54:06 2019 Thu][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Jun 27 10:54:06 2019 Thu][info] Run CalculateRequest()
+[Thu Jun 27 10:54:06 2019 Thu][info] **********Calcuate the FarField RCS**********
+[Thu Jun 27 10:54:06 2019 Thu][info] RCS of Far Field::	Horizon
+[Thu Jun 27 10:54:20 2019 Thu][info] RCS of Far Field::	VerticalPhi0
+[Thu Jun 27 10:54:26 2019 Thu][info] RCS of Far Field::	VerticalPhi90
+[Thu Jun 27 10:54:33 2019 Thu][info] FarField Calculate cost 26.442000 s
+[Thu Jun 27 10:54:33 2019 Thu][info] *************Release the memory**************
+[Thu Jun 27 10:54:33 2019 Thu][info] Release BasicFunction
+[Thu Jun 27 10:54:33 2019 Thu][info] Release Request
+[Thu Jun 27 10:54:33 2019 Thu][info] ---------------------END---------------------
+[Thu Jun 27 11:02:59 2019 Thu][info] *************Read Configuration**************
+[Thu Jun 27 11:02:59 2019 Thu][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 11:02:59 2019 Thu][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Thu Jun 27 11:02:59 2019 Thu][info] Project Name:	test
+[Thu Jun 27 11:02:59 2019 Thu][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Thu Jun 27 11:02:59 2019 Thu][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Jun 27 11:02:59 2019 Thu][info] Frequency:	3.000000e+08
+[Thu Jun 27 11:02:59 2019 Thu][info] ********************Mesh*********************
+[Thu Jun 27 11:02:59 2019 Thu][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 11:02:59 2019 Thu][info] Number of Nodes:			         431
+[Thu Jun 27 11:02:59 2019 Thu][info] Number of Triangles:			         858
+[Thu Jun 27 11:02:59 2019 Thu][info] Number of Segments:			           0
+[Thu Jun 27 11:02:59 2019 Thu][info] Number of Cuboids:			           0
+[Thu Jun 27 11:02:59 2019 Thu][info] Number of Tetrahedras:			           0
+
+[Thu Jun 27 11:02:59 2019 Thu][info] Creat Mesh costs	0.055000 s
+[Thu Jun 27 11:02:59 2019 Thu][info] ****************Geometry Info****************)
+[Thu Jun 27 11:02:59 2019 Thu][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Thu Jun 27 11:02:59 2019 Thu][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Thu Jun 27 11:02:59 2019 Thu][info] Choose RWG Function as BasicFunction
+
+[Thu Jun 27 11:02:59 2019 Thu][info] The number of BasicFuntions is:	1287
+[Thu Jun 27 11:02:59 2019 Thu][info] Load BasicFuntions costs:	      0.01 s
+[Thu Jun 27 11:02:59 2019 Thu][info] Set Green Function
+[Thu Jun 27 11:02:59 2019 Thu][info] Free Space Green Function is choosen
+
+[Thu Jun 27 11:02:59 2019 Thu][info] Begin to pre-compute the SelfTriangle Impedance
+[Thu Jun 27 11:03:00 2019 Thu][info] Initial Solver
+[Thu Jun 27 11:03:00 2019 Thu][info] *********************MoM*********************
+[Thu Jun 27 11:03:00 2019 Thu][info] ************Fill Impedance Matrix************
+[Thu Jun 27 11:03:26 2019 Thu][info] Whole Filling costs	25.721000 s
+[Thu Jun 27 11:03:26 2019 Thu][info] Memory Cost	25.274185 Mb
+[Thu Jun 27 11:03:26 2019 Thu][info] ***************Excitation Info***************
+[Thu Jun 27 11:03:26 2019 Thu][info] Source Type:		PlanewaveLinear
+[Thu Jun 27 11:03:26 2019 Thu][info] Direction:[0.000 0.000 -1.000]
+[Thu Jun 27 11:03:26 2019 Thu][info] Polarization:[0.000 1.000 0.000]
+
+[Thu Jun 27 11:03:36 2019 Thu][info] Set RightHand is cost:	10.075000 s
+[Thu Jun 27 11:03:36 2019 Thu][info] Memory Cost	0.019638 Mb
+[Thu Jun 27 11:03:36 2019 Thu][info] ****************Solution Info****************
+[Thu Jun 27 11:03:36 2019 Thu][info] Solution Type:	BiCGSTAB
+[Thu Jun 27 11:03:36 2019 Thu][info] Preconditioning Type:		Incomplete LU
+[Thu Jun 27 11:03:36 2019 Thu][info] The Maxiteration is:		0
+[Thu Jun 27 11:03:36 2019 Thu][info] The Tolerance is:		1.000000e-04
+[Thu Jun 27 11:03:37 2019 Thu][info] The Final Iteration is:	184
+[Thu Jun 27 11:03:37 2019 Thu][info] The results tolerance is:	9.9214e-05
+[Thu Jun 27 11:03:37 2019 Thu][info] Iteration is cost:	1.145000 s
+[Thu Jun 27 11:03:37 2019 Thu][info] Save BasicFunction in binary type
+[Thu Jun 27 11:03:37 2019 Thu][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Jun 27 11:03:37 2019 Thu][info] Run CalculateRequest()
+[Thu Jun 27 11:03:37 2019 Thu][info] **********Calcuate the FarField RCS**********
+[Thu Jun 27 11:03:37 2019 Thu][info] RCS of Far Field::	Horizon
+[Thu Jun 27 11:03:50 2019 Thu][info] RCS of Far Field::	VerticalPhi0
+[Thu Jun 27 11:03:57 2019 Thu][info] RCS of Far Field::	VerticalPhi90
+[Thu Jun 27 11:04:04 2019 Thu][info] FarField Calculate cost 27.159000 s
+[Thu Jun 27 11:04:04 2019 Thu][info] *************Release the memory**************
+[Thu Jun 27 11:04:04 2019 Thu][info] Release BasicFunction
+[Thu Jun 27 11:04:04 2019 Thu][info] Release Request
+[Thu Jun 27 11:04:04 2019 Thu][info] ---------------------END---------------------
+[Thu Jun 27 11:13:23 2019 Thu][info] *************Read Configuration**************
+[Thu Jun 27 11:13:23 2019 Thu][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 11:13:23 2019 Thu][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Thu Jun 27 11:13:23 2019 Thu][info] Project Name:	test
+[Thu Jun 27 11:13:23 2019 Thu][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Thu Jun 27 11:13:23 2019 Thu][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Jun 27 11:13:23 2019 Thu][info] Frequency:	3.000000e+08
+[Thu Jun 27 11:13:23 2019 Thu][info] ********************Mesh*********************
+[Thu Jun 27 11:13:23 2019 Thu][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 11:13:23 2019 Thu][info] Number of Nodes:			         431
+[Thu Jun 27 11:13:23 2019 Thu][info] Number of Triangles:			         858
+[Thu Jun 27 11:13:23 2019 Thu][info] Number of Segments:			           0
+[Thu Jun 27 11:13:23 2019 Thu][info] Number of Cuboids:			           0
+[Thu Jun 27 11:13:23 2019 Thu][info] Number of Tetrahedras:			           0
+
+[Thu Jun 27 11:13:23 2019 Thu][info] Creat Mesh costs	0.030000 s
+[Thu Jun 27 11:13:23 2019 Thu][info] ****************Geometry Info****************)
+[Thu Jun 27 11:13:23 2019 Thu][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Thu Jun 27 11:13:23 2019 Thu][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Thu Jun 27 11:13:23 2019 Thu][info] Choose RWG Function as BasicFunction
+
+[Thu Jun 27 11:13:23 2019 Thu][info] The number of BasicFuntions is:	1287
+[Thu Jun 27 11:13:23 2019 Thu][info] Load BasicFuntions costs:	     0.007 s
+[Thu Jun 27 11:13:23 2019 Thu][info] Set Green Function
+[Thu Jun 27 11:13:23 2019 Thu][info] Free Space Green Function is choosen
+
+[Thu Jun 27 11:13:23 2019 Thu][info] Begin to pre-compute the SelfTriangle Impedance
+[Thu Jun 27 11:13:24 2019 Thu][info] Initial Solver
+[Thu Jun 27 11:13:24 2019 Thu][info] *********************MoM*********************
+[Thu Jun 27 11:13:24 2019 Thu][info] ************Fill Impedance Matrix************
+[Thu Jun 27 11:13:50 2019 Thu][info] Whole Filling costs	25.884000 s
+[Thu Jun 27 11:13:50 2019 Thu][info] Memory Cost	25.274185 Mb
+[Thu Jun 27 11:13:50 2019 Thu][info] ***************Excitation Info***************
+[Thu Jun 27 11:13:50 2019 Thu][info] Source Type:		PlanewaveLinear
+[Thu Jun 27 11:13:50 2019 Thu][info] Direction:[0.000 0.000 -1.000]
+[Thu Jun 27 11:13:50 2019 Thu][info] Polarization:[0.000 1.000 0.000]
+
+[Thu Jun 27 11:13:50 2019 Thu][info] Set RightHand is cost:	0.023000 s
+[Thu Jun 27 11:13:50 2019 Thu][info] Memory Cost	0.019638 Mb
+[Thu Jun 27 11:13:50 2019 Thu][info] ****************Solution Info****************
+[Thu Jun 27 11:13:50 2019 Thu][info] Solution Type:	BiCGSTAB
+[Thu Jun 27 11:13:50 2019 Thu][info] Preconditioning Type:		Incomplete LU
+[Thu Jun 27 11:13:50 2019 Thu][info] The Maxiteration is:		0
+[Thu Jun 27 11:13:50 2019 Thu][info] The Tolerance is:		1.000000e-04
+[Thu Jun 27 11:13:51 2019 Thu][info] The Final Iteration is:	184
+[Thu Jun 27 11:13:51 2019 Thu][info] The results tolerance is:	9.9214e-05
+[Thu Jun 27 11:13:51 2019 Thu][info] Iteration is cost:	1.105000 s
+[Thu Jun 27 11:13:51 2019 Thu][info] Save BasicFunction in binary type
+[Thu Jun 27 11:13:51 2019 Thu][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Jun 27 11:13:51 2019 Thu][info] Run CalculateRequest()
+[Thu Jun 27 11:13:51 2019 Thu][info] **********Calcuate the FarField RCS**********
+[Thu Jun 27 11:13:51 2019 Thu][info] RCS of Far Field::	Horizon
+[Thu Jun 27 11:14:05 2019 Thu][info] RCS of Far Field::	VerticalPhi0
+[Thu Jun 27 11:14:11 2019 Thu][info] RCS of Far Field::	VerticalPhi90
+[Thu Jun 27 11:14:18 2019 Thu][info] FarField Calculate cost 27.105000 s
+[Thu Jun 27 11:14:18 2019 Thu][info] *************Release the memory**************
+[Thu Jun 27 11:14:18 2019 Thu][info] Release BasicFunction
+[Thu Jun 27 11:14:18 2019 Thu][info] Release Request
+[Thu Jun 27 11:14:18 2019 Thu][info] ---------------------END---------------------
+[Thu Jun 27 13:52:34 2019 Thu][info] *************Read Configuration**************
+[Thu Jun 27 13:52:34 2019 Thu][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 13:52:34 2019 Thu][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Thu Jun 27 13:52:34 2019 Thu][info] Project Name:	test
+[Thu Jun 27 13:52:34 2019 Thu][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Thu Jun 27 13:52:34 2019 Thu][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Jun 27 13:52:34 2019 Thu][info] Frequency:	3.000000e+08
+[Thu Jun 27 13:52:34 2019 Thu][info] ********************Mesh*********************
+[Thu Jun 27 13:52:34 2019 Thu][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 13:52:34 2019 Thu][info] Number of Nodes:			         431
+[Thu Jun 27 13:52:34 2019 Thu][info] Number of Triangles:			         858
+[Thu Jun 27 13:52:34 2019 Thu][info] Number of Segments:			           0
+[Thu Jun 27 13:52:34 2019 Thu][info] Number of Cuboids:			           0
+[Thu Jun 27 13:52:34 2019 Thu][info] Number of Tetrahedras:			           0
+
+[Thu Jun 27 13:52:34 2019 Thu][info] Creat Mesh costs	0.031000 s
+[Thu Jun 27 13:52:34 2019 Thu][info] ****************Geometry Info****************)
+[Thu Jun 27 13:52:34 2019 Thu][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Thu Jun 27 13:52:34 2019 Thu][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Thu Jun 27 13:52:34 2019 Thu][info] Choose RWG Function as BasicFunction
+
+[Thu Jun 27 13:52:34 2019 Thu][info] The number of BasicFuntions is:	1287
+[Thu Jun 27 13:52:34 2019 Thu][info] Load BasicFuntions costs:	      0.01 s
+[Thu Jun 27 13:52:34 2019 Thu][info] Set Green Function
+[Thu Jun 27 13:52:34 2019 Thu][info] Free Space Green Function is choosen
+
+[Thu Jun 27 13:53:04 2019 Thu][info] EFIE is choosen
+
+[Thu Jun 27 13:53:04 2019 Thu][info] Begin to pre-compute the SelfTriangle Impedance
+[Thu Jun 27 13:53:04 2019 Thu][info] Initial Solver
+[Thu Jun 27 13:53:04 2019 Thu][info] *********************MoM*********************
+[Thu Jun 27 13:53:04 2019 Thu][info] ************Fill Impedance Matrix************
+[Thu Jun 27 13:53:31 2019 Thu][info] Whole Filling costs	26.898000 s
+[Thu Jun 27 13:53:31 2019 Thu][info] Memory Cost	25.274185 Mb
+[Thu Jun 27 13:53:31 2019 Thu][info] ***************Excitation Info***************
+[Thu Jun 27 13:53:31 2019 Thu][info] Source Type:		PlanewaveLinear
+[Thu Jun 27 13:53:31 2019 Thu][info] Direction:[0.000 0.000 -1.000]
+[Thu Jun 27 13:53:31 2019 Thu][info] Polarization:[0.000 1.000 0.000]
+
+[Thu Jun 27 13:53:31 2019 Thu][info] Set RightHand is cost:	0.022000 s
+[Thu Jun 27 13:53:31 2019 Thu][info] Memory Cost	0.019638 Mb
+[Thu Jun 27 13:53:31 2019 Thu][info] ****************Solution Info****************
+[Thu Jun 27 13:53:31 2019 Thu][info] Solution Type:	BiCGSTAB
+[Thu Jun 27 13:53:31 2019 Thu][info] Preconditioning Type:		Incomplete LU
+[Thu Jun 27 13:53:31 2019 Thu][info] The Maxiteration is:		0
+[Thu Jun 27 13:53:31 2019 Thu][info] The Tolerance is:		1.000000e-04
+[Thu Jun 27 13:53:32 2019 Thu][info] The Final Iteration is:	184
+[Thu Jun 27 13:53:32 2019 Thu][info] The results tolerance is:	9.9214e-05
+[Thu Jun 27 13:53:32 2019 Thu][info] Iteration is cost:	1.102000 s
+[Thu Jun 27 13:53:32 2019 Thu][info] Save BasicFunction in binary type
+[Thu Jun 27 13:53:32 2019 Thu][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Jun 27 13:53:32 2019 Thu][info] Run CalculateRequest()
+[Thu Jun 27 13:53:32 2019 Thu][info] **********Calcuate the FarField RCS**********
+[Thu Jun 27 13:53:32 2019 Thu][info] RCS of Far Field::	Horizon
+[Thu Jun 27 13:53:46 2019 Thu][info] RCS of Far Field::	VerticalPhi0
+[Thu Jun 27 13:53:53 2019 Thu][info] RCS of Far Field::	VerticalPhi90
+[Thu Jun 27 13:54:00 2019 Thu][info] FarField Calculate cost 27.372000 s
+[Thu Jun 27 13:54:00 2019 Thu][info] *************Release the memory**************
+[Thu Jun 27 13:54:00 2019 Thu][info] Release BasicFunction
+[Thu Jun 27 13:54:00 2019 Thu][info] Release Request
+[Thu Jun 27 13:54:00 2019 Thu][info] ---------------------END---------------------
+[Thu Jun 27 14:17:49 2019 Thu][info] *************Read Configuration**************
+[Thu Jun 27 14:17:49 2019 Thu][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 14:17:49 2019 Thu][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Thu Jun 27 14:17:49 2019 Thu][info] Project Name:	test
+[Thu Jun 27 14:17:49 2019 Thu][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Thu Jun 27 14:17:49 2019 Thu][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Jun 27 14:17:49 2019 Thu][info] Frequency:	3.000000e+08
+[Thu Jun 27 14:17:49 2019 Thu][info] ********************Mesh*********************
+[Thu Jun 27 14:17:49 2019 Thu][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 14:17:49 2019 Thu][info] Number of Nodes:			         431
+[Thu Jun 27 14:17:49 2019 Thu][info] Number of Triangles:			         858
+[Thu Jun 27 14:17:49 2019 Thu][info] Number of Segments:			           0
+[Thu Jun 27 14:17:49 2019 Thu][info] Number of Cuboids:			           0
+[Thu Jun 27 14:17:49 2019 Thu][info] Number of Tetrahedras:			           0
+
+[Thu Jun 27 14:17:49 2019 Thu][info] Creat Mesh costs	0.047000 s
+[Thu Jun 27 14:17:49 2019 Thu][info] ****************Geometry Info****************)
+[Thu Jun 27 14:17:49 2019 Thu][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Thu Jun 27 14:17:49 2019 Thu][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Thu Jun 27 14:17:49 2019 Thu][info] Choose RWG Function as BasicFunction
+
+[Thu Jun 27 14:17:49 2019 Thu][info] The number of BasicFuntions is:	1287
+[Thu Jun 27 14:17:49 2019 Thu][info] Load BasicFuntions costs:	      0.01 s
+[Thu Jun 27 14:17:49 2019 Thu][info] Set Green Function
+[Thu Jun 27 14:17:49 2019 Thu][info] Free Space Green Function is choosen
+
+[Thu Jun 27 14:17:59 2019 Thu][info] MFIE is choosen
+
+[Thu Jun 27 14:18:02 2019 Thu][info] Begin to pre-compute the SelfTriangle Impedance
+[Thu Jun 27 14:18:03 2019 Thu][info] Initial Solver
+[Thu Jun 27 14:18:03 2019 Thu][info] *********************MoM*********************
+[Thu Jun 27 14:18:03 2019 Thu][info] ************Fill Impedance Matrix************
+[Thu Jun 27 14:18:52 2019 Thu][info] Whole Filling costs	48.534000 s
+[Thu Jun 27 14:18:52 2019 Thu][info] Memory Cost	25.274185 Mb
+[Thu Jun 27 14:18:52 2019 Thu][info] ***************Excitation Info***************
+[Thu Jun 27 14:18:52 2019 Thu][info] Source Type:		PlanewaveLinear
+[Thu Jun 27 14:18:52 2019 Thu][info] Direction:[0.000 0.000 -1.000]
+[Thu Jun 27 14:18:52 2019 Thu][info] Polarization:[0.000 1.000 0.000]
+
+[Thu Jun 27 14:18:52 2019 Thu][info] Set RightHand is cost:	0.022000 s
+[Thu Jun 27 14:18:52 2019 Thu][info] Memory Cost	0.019638 Mb
+[Thu Jun 27 14:18:52 2019 Thu][info] ****************Solution Info****************
+[Thu Jun 27 14:18:52 2019 Thu][info] Solution Type:	BiCGSTAB
+[Thu Jun 27 14:18:52 2019 Thu][info] Preconditioning Type:		Incomplete LU
+[Thu Jun 27 14:18:52 2019 Thu][info] The Maxiteration is:		0
+[Thu Jun 27 14:18:52 2019 Thu][info] The Tolerance is:		1.000000e-04
+[Thu Jun 27 14:19:06 2019 Thu][error] The iteration can't converage
+[Thu Jun 27 14:19:07 2019 Thu][info] *************Release the memory**************
+[Thu Jun 27 14:19:07 2019 Thu][info] Release BasicFunction
+[Thu Jun 27 14:19:07 2019 Thu][info] Release Request
+[Thu Jun 27 14:19:07 2019 Thu][info] ---------------------END---------------------
+[Thu Jun 27 14:19:45 2019 Thu][info] *************Read Configuration**************
+[Thu Jun 27 14:19:45 2019 Thu][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 14:19:45 2019 Thu][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Thu Jun 27 14:19:45 2019 Thu][info] Project Name:	test
+[Thu Jun 27 14:19:45 2019 Thu][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Thu Jun 27 14:19:45 2019 Thu][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Jun 27 14:19:45 2019 Thu][info] Frequency:	3.000000e+08
+[Thu Jun 27 14:19:45 2019 Thu][info] ********************Mesh*********************
+[Thu Jun 27 14:19:45 2019 Thu][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 14:19:45 2019 Thu][info] Number of Nodes:			         431
+[Thu Jun 27 14:19:45 2019 Thu][info] Number of Triangles:			         858
+[Thu Jun 27 14:19:45 2019 Thu][info] Number of Segments:			           0
+[Thu Jun 27 14:19:45 2019 Thu][info] Number of Cuboids:			           0
+[Thu Jun 27 14:19:45 2019 Thu][info] Number of Tetrahedras:			           0
+
+[Thu Jun 27 14:19:45 2019 Thu][info] Creat Mesh costs	0.029000 s
+[Thu Jun 27 14:19:45 2019 Thu][info] ****************Geometry Info****************)
+[Thu Jun 27 14:19:45 2019 Thu][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Thu Jun 27 14:19:45 2019 Thu][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Thu Jun 27 14:19:45 2019 Thu][info] Choose RWG Function as BasicFunction
+
+[Thu Jun 27 14:19:45 2019 Thu][info] The number of BasicFuntions is:	1287
+[Thu Jun 27 14:19:45 2019 Thu][info] Load BasicFuntions costs:	     0.009 s
+[Thu Jun 27 14:19:45 2019 Thu][info] Set Green Function
+[Thu Jun 27 14:19:45 2019 Thu][info] Free Space Green Function is choosen
+
+[Thu Jun 27 14:19:56 2019 Thu][info] EFIE is choosen
+
+[Thu Jun 27 14:19:56 2019 Thu][info] Begin to pre-compute the SelfTriangle Impedance
+[Thu Jun 27 14:19:57 2019 Thu][info] Initial Solver
+[Thu Jun 27 14:19:57 2019 Thu][info] *********************MoM*********************
+[Thu Jun 27 14:19:57 2019 Thu][info] ************Fill Impedance Matrix************
+[Thu Jun 27 14:20:22 2019 Thu][info] Whole Filling costs	25.721000 s
+[Thu Jun 27 14:20:22 2019 Thu][info] Memory Cost	25.274185 Mb
+[Thu Jun 27 14:20:22 2019 Thu][info] ***************Excitation Info***************
+[Thu Jun 27 14:20:22 2019 Thu][info] Source Type:		PlanewaveLinear
+[Thu Jun 27 14:20:22 2019 Thu][info] Direction:[0.000 0.000 -1.000]
+[Thu Jun 27 14:20:22 2019 Thu][info] Polarization:[0.000 1.000 0.000]
+
+[Thu Jun 27 14:20:22 2019 Thu][info] Set RightHand is cost:	0.022000 s
+[Thu Jun 27 14:20:22 2019 Thu][info] Memory Cost	0.019638 Mb
+[Thu Jun 27 14:20:22 2019 Thu][info] ****************Solution Info****************
+[Thu Jun 27 14:20:22 2019 Thu][info] Solution Type:	BiCGSTAB
+[Thu Jun 27 14:20:22 2019 Thu][info] Preconditioning Type:		Incomplete LU
+[Thu Jun 27 14:20:22 2019 Thu][info] The Maxiteration is:		0
+[Thu Jun 27 14:20:22 2019 Thu][info] The Tolerance is:		1.000000e-04
+[Thu Jun 27 14:20:24 2019 Thu][info] The Final Iteration is:	184
+[Thu Jun 27 14:20:24 2019 Thu][info] The results tolerance is:	9.9214e-05
+[Thu Jun 27 14:20:24 2019 Thu][info] Iteration is cost:	1.079000 s
+[Thu Jun 27 14:20:24 2019 Thu][info] Save BasicFunction in binary type
+[Thu Jun 27 14:20:24 2019 Thu][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Jun 27 14:20:24 2019 Thu][info] Run CalculateRequest()
+[Thu Jun 27 14:20:24 2019 Thu][info] **********Calcuate the FarField RCS**********
+[Thu Jun 27 14:20:24 2019 Thu][info] RCS of Far Field::	Horizon
+[Thu Jun 27 14:20:37 2019 Thu][info] RCS of Far Field::	VerticalPhi0
+[Thu Jun 27 14:20:44 2019 Thu][info] RCS of Far Field::	VerticalPhi90
+[Thu Jun 27 14:20:50 2019 Thu][info] FarField Calculate cost 26.862000 s
+[Thu Jun 27 14:20:50 2019 Thu][info] *************Release the memory**************
+[Thu Jun 27 14:20:50 2019 Thu][info] Release BasicFunction
+[Thu Jun 27 14:20:50 2019 Thu][info] Release Request
+[Thu Jun 27 14:20:50 2019 Thu][info] ---------------------END---------------------
+[Thu Jun 27 22:00:10 2019 Thu][info] *************Read Configuration**************
+[Thu Jun 27 22:00:10 2019 Thu][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 22:00:10 2019 Thu][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Thu Jun 27 22:00:10 2019 Thu][info] Project Name:	test
+[Thu Jun 27 22:00:10 2019 Thu][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Thu Jun 27 22:00:10 2019 Thu][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Jun 27 22:00:10 2019 Thu][info] Frequency:	3.000000e+08
+[Thu Jun 27 22:00:10 2019 Thu][info] ********************Mesh*********************
+[Thu Jun 27 22:00:10 2019 Thu][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Jun 27 22:00:10 2019 Thu][info] Number of Nodes:			         431
+[Thu Jun 27 22:00:10 2019 Thu][info] Number of Triangles:			         858
+[Thu Jun 27 22:00:10 2019 Thu][info] Number of Segments:			           0
+[Thu Jun 27 22:00:10 2019 Thu][info] Number of Cuboids:			           0
+[Thu Jun 27 22:00:10 2019 Thu][info] Number of Tetrahedras:			           0
+
+[Thu Jun 27 22:00:10 2019 Thu][info] Creat Mesh costs	0.040000 s
+[Thu Jun 27 22:00:10 2019 Thu][info] ****************Geometry Info****************)
+[Thu Jun 27 22:00:10 2019 Thu][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Thu Jun 27 22:00:10 2019 Thu][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Thu Jun 27 22:00:10 2019 Thu][info] Choose RWG Function as BasicFunction
+
+[Thu Jun 27 22:00:10 2019 Thu][info] The number of BasicFuntions is:	1287
+[Thu Jun 27 22:00:10 2019 Thu][info] Load BasicFuntions costs:	     0.008 s
+[Thu Jun 27 22:00:10 2019 Thu][info] Set Green Function
+[Thu Jun 27 22:00:10 2019 Thu][info] Free Space Green Function is choosen
+
+[Thu Jun 27 22:00:10 2019 Thu][info] EFIE is choosen
+
+[Thu Jun 27 22:00:10 2019 Thu][info] Begin to pre-compute the SelfTriangle Impedance
+[Thu Jun 27 22:00:11 2019 Thu][info] Initial Solver
+[Thu Jun 27 22:00:11 2019 Thu][info] *********************MoM*********************
+[Thu Jun 27 22:00:11 2019 Thu][info] ************Fill Impedance Matrix************
+[Thu Jun 27 22:00:37 2019 Thu][info] Whole Filling costs	25.426000 s
+[Thu Jun 27 22:00:37 2019 Thu][info] Memory Cost	25.274185 Mb
+[Thu Jun 27 22:00:37 2019 Thu][info] ***************Excitation Info***************
+[Thu Jun 27 22:00:37 2019 Thu][info] Source Type:		PlanewaveLinear
+[Thu Jun 27 22:00:37 2019 Thu][info] Direction:[0.000 0.000 -1.000]
+[Thu Jun 27 22:00:37 2019 Thu][info] Polarization:[0.000 1.000 0.000]
+
+[Thu Jun 27 22:00:37 2019 Thu][info] Set RightHand is cost:	0.024000 s
+[Thu Jun 27 22:00:37 2019 Thu][info] Memory Cost	0.019638 Mb
+[Thu Jun 27 22:00:37 2019 Thu][info] ****************Solution Info****************
+[Thu Jun 27 22:00:37 2019 Thu][info] Solution Type:	BiCGSTAB
+[Thu Jun 27 22:00:37 2019 Thu][info] Preconditioning Type:		Incomplete LU
+[Thu Jun 27 22:00:37 2019 Thu][info] The Maxiteration is:		0
+[Thu Jun 27 22:00:37 2019 Thu][info] The Tolerance is:		1.000000e-04
+[Thu Jun 27 22:00:38 2019 Thu][info] The Final Iteration is:	184
+[Thu Jun 27 22:00:38 2019 Thu][info] The results tolerance is:	9.9214e-05
+[Thu Jun 27 22:00:38 2019 Thu][info] Iteration is cost:	1.065000 s
+[Thu Jun 27 22:00:38 2019 Thu][info] Save BasicFunction in binary type
+[Thu Jun 27 22:00:38 2019 Thu][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Jun 27 22:00:38 2019 Thu][info] Run CalculateRequest()
+[Thu Jun 27 22:00:38 2019 Thu][info] **********Calcuate the FarField RCS**********
+[Thu Jun 27 22:00:38 2019 Thu][info] RCS of Far Field::	Horizon
+[Thu Jun 27 22:00:51 2019 Thu][info] RCS of Far Field::	VerticalPhi0
+[Thu Jun 27 22:00:58 2019 Thu][info] RCS of Far Field::	VerticalPhi90
+[Thu Jun 27 22:01:04 2019 Thu][info] FarField Calculate cost 26.565000 s
+[Thu Jun 27 22:01:04 2019 Thu][info] *************Release the memory**************
+[Thu Jun 27 22:01:04 2019 Thu][info] Release BasicFunction
+[Thu Jun 27 22:01:04 2019 Thu][info] Release Request
+[Thu Jun 27 22:01:04 2019 Thu][info] ---------------------END---------------------
+[Fri Jun 28 11:31:30 2019 Fri][info] *************Read Configuration**************
+[Fri Jun 28 11:31:30 2019 Fri][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 11:31:30 2019 Fri][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Fri Jun 28 11:31:30 2019 Fri][info] Project Name:	test
+[Fri Jun 28 11:31:30 2019 Fri][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Fri Jun 28 11:31:30 2019 Fri][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Fri Jun 28 11:31:30 2019 Fri][info] Frequency:	3.000000e+08
+[Fri Jun 28 11:31:30 2019 Fri][info] ********************Mesh*********************
+[Fri Jun 28 11:31:30 2019 Fri][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 11:31:30 2019 Fri][info] Number of Nodes:			         431
+[Fri Jun 28 11:31:30 2019 Fri][info] Number of Triangles:			         858
+[Fri Jun 28 11:31:30 2019 Fri][info] Number of Segments:			           0
+[Fri Jun 28 11:31:30 2019 Fri][info] Number of Cuboids:			           0
+[Fri Jun 28 11:31:30 2019 Fri][info] Number of Tetrahedras:			           0
+
+[Fri Jun 28 11:31:30 2019 Fri][info] Creat Mesh costs	0.035000 s
+[Fri Jun 28 11:31:30 2019 Fri][info] ****************Geometry Info****************)
+[Fri Jun 28 11:31:30 2019 Fri][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Fri Jun 28 11:31:30 2019 Fri][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Fri Jun 28 11:31:30 2019 Fri][info] Choose RWG Function as BasicFunction
+
+[Fri Jun 28 11:31:30 2019 Fri][info] The number of BasicFuntions is:	1287
+[Fri Jun 28 11:31:30 2019 Fri][info] Load BasicFuntions costs:	     0.007 s
+[Fri Jun 28 11:31:30 2019 Fri][info] Set Green Function
+[Fri Jun 28 11:31:30 2019 Fri][info] Free Space Green Function is choosen
+
+[Fri Jun 28 11:31:30 2019 Fri][info] MFIE is choosen
+
+[Fri Jun 28 11:31:30 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jun 28 11:31:31 2019 Fri][info] Initial Solver
+[Fri Jun 28 11:31:31 2019 Fri][info] *********************MoM*********************
+[Fri Jun 28 11:31:31 2019 Fri][info] ************Fill Impedance Matrix************
+[Fri Jun 28 11:32:19 2019 Fri][info] Whole Filling costs	47.734000 s
+[Fri Jun 28 11:32:19 2019 Fri][info] Memory Cost	25.274185 Mb
+[Fri Jun 28 11:32:19 2019 Fri][info] ***************Excitation Info***************
+[Fri Jun 28 11:32:19 2019 Fri][info] Source Type:		PlanewaveLinear
+[Fri Jun 28 11:32:19 2019 Fri][info] Direction:[0.000 0.000 -1.000]
+[Fri Jun 28 11:32:19 2019 Fri][info] Polarization:[0.000 1.000 0.000]
+
+[Fri Jun 28 11:32:19 2019 Fri][info] Set RightHand is cost:	0.021000 s
+[Fri Jun 28 11:32:19 2019 Fri][info] Memory Cost	0.019638 Mb
+[Fri Jun 28 11:32:19 2019 Fri][info] ****************Solution Info****************
+[Fri Jun 28 11:32:19 2019 Fri][info] Solution Type:	BiCGSTAB
+[Fri Jun 28 11:32:19 2019 Fri][info] Preconditioning Type:		Incomplete LU
+[Fri Jun 28 11:32:19 2019 Fri][info] The Maxiteration is:		0
+[Fri Jun 28 11:32:19 2019 Fri][info] The Tolerance is:		1.000000e-04
+[Fri Jun 28 11:32:35 2019 Fri][error] The iteration can't converage
+[Fri Jun 28 11:32:35 2019 Fri][info] *************Release the memory**************
+[Fri Jun 28 11:32:35 2019 Fri][info] Release BasicFunction
+[Fri Jun 28 11:32:35 2019 Fri][info] Release Request
+[Fri Jun 28 11:32:35 2019 Fri][info] ---------------------END---------------------
+[Fri Jun 28 11:48:21 2019 Fri][info] *************Read Configuration**************
+[Fri Jun 28 11:48:21 2019 Fri][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 11:48:21 2019 Fri][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Fri Jun 28 11:48:21 2019 Fri][info] Project Name:	test
+[Fri Jun 28 11:48:21 2019 Fri][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Fri Jun 28 11:48:21 2019 Fri][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Fri Jun 28 11:48:21 2019 Fri][info] Frequency:	3.000000e+08
+[Fri Jun 28 11:48:21 2019 Fri][info] ********************Mesh*********************
+[Fri Jun 28 11:48:21 2019 Fri][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 11:48:21 2019 Fri][info] Number of Nodes:			         431
+[Fri Jun 28 11:48:21 2019 Fri][info] Number of Triangles:			         858
+[Fri Jun 28 11:48:21 2019 Fri][info] Number of Segments:			           0
+[Fri Jun 28 11:48:21 2019 Fri][info] Number of Cuboids:			           0
+[Fri Jun 28 11:48:21 2019 Fri][info] Number of Tetrahedras:			           0
+
+[Fri Jun 28 11:48:21 2019 Fri][info] Creat Mesh costs	0.030000 s
+[Fri Jun 28 11:48:21 2019 Fri][info] ****************Geometry Info****************)
+[Fri Jun 28 11:48:21 2019 Fri][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Fri Jun 28 11:48:21 2019 Fri][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Fri Jun 28 11:48:21 2019 Fri][info] Choose RWG Function as BasicFunction
+
+[Fri Jun 28 11:48:21 2019 Fri][info] The number of BasicFuntions is:	1287
+[Fri Jun 28 11:48:21 2019 Fri][info] Load BasicFuntions costs:	     0.007 s
+[Fri Jun 28 11:48:21 2019 Fri][info] Set Green Function
+[Fri Jun 28 11:48:21 2019 Fri][info] Free Space Green Function is choosen
+
+[Fri Jun 28 11:48:21 2019 Fri][info] EFIE is choosen
+
+[Fri Jun 28 11:48:21 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jun 28 11:48:21 2019 Fri][info] *************Release the memory**************
+[Fri Jun 28 11:48:21 2019 Fri][info] Release BasicFunction
+[Fri Jun 28 11:48:21 2019 Fri][info] Release Request
+[Fri Jun 28 11:48:21 2019 Fri][info] ---------------------END---------------------
+[Fri Jun 28 11:52:03 2019 Fri][info] *************Read Configuration**************
+[Fri Jun 28 11:52:03 2019 Fri][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 11:52:03 2019 Fri][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Fri Jun 28 11:52:03 2019 Fri][info] Project Name:	test
+[Fri Jun 28 11:52:03 2019 Fri][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Fri Jun 28 11:52:03 2019 Fri][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Fri Jun 28 11:52:03 2019 Fri][info] Frequency:	3.000000e+08
+[Fri Jun 28 11:52:03 2019 Fri][info] ********************Mesh*********************
+[Fri Jun 28 11:52:03 2019 Fri][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 11:52:03 2019 Fri][info] Number of Nodes:			         431
+[Fri Jun 28 11:52:03 2019 Fri][info] Number of Triangles:			         858
+[Fri Jun 28 11:52:03 2019 Fri][info] Number of Segments:			           0
+[Fri Jun 28 11:52:03 2019 Fri][info] Number of Cuboids:			           0
+[Fri Jun 28 11:52:03 2019 Fri][info] Number of Tetrahedras:			           0
+
+[Fri Jun 28 11:52:03 2019 Fri][info] Creat Mesh costs	0.036000 s
+[Fri Jun 28 11:52:03 2019 Fri][info] ****************Geometry Info****************)
+[Fri Jun 28 11:52:03 2019 Fri][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Fri Jun 28 11:52:03 2019 Fri][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Fri Jun 28 11:52:03 2019 Fri][info] Choose RWG Function as BasicFunction
+
+[Fri Jun 28 11:52:03 2019 Fri][info] The number of BasicFuntions is:	1287
+[Fri Jun 28 11:52:03 2019 Fri][info] Load BasicFuntions costs:	     0.006 s
+[Fri Jun 28 11:52:03 2019 Fri][info] Set Green Function
+[Fri Jun 28 11:52:03 2019 Fri][info] Free Space Green Function is choosen
+
+[Fri Jun 28 11:52:03 2019 Fri][info] EFIE is choosen
+
+[Fri Jun 28 11:52:03 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jun 28 11:54:25 2019 Fri][info] *************Read Configuration**************
+[Fri Jun 28 11:54:25 2019 Fri][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 11:54:25 2019 Fri][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Fri Jun 28 11:54:25 2019 Fri][info] Project Name:	test
+[Fri Jun 28 11:54:25 2019 Fri][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Fri Jun 28 11:54:25 2019 Fri][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Fri Jun 28 11:54:25 2019 Fri][info] Frequency:	3.000000e+08
+[Fri Jun 28 11:54:25 2019 Fri][info] ********************Mesh*********************
+[Fri Jun 28 11:54:25 2019 Fri][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 11:54:25 2019 Fri][info] Number of Nodes:			         431
+[Fri Jun 28 11:54:25 2019 Fri][info] Number of Triangles:			         858
+[Fri Jun 28 11:54:25 2019 Fri][info] Number of Segments:			           0
+[Fri Jun 28 11:54:25 2019 Fri][info] Number of Cuboids:			           0
+[Fri Jun 28 11:54:25 2019 Fri][info] Number of Tetrahedras:			           0
+
+[Fri Jun 28 11:54:25 2019 Fri][info] Creat Mesh costs	0.036000 s
+[Fri Jun 28 11:54:25 2019 Fri][info] ****************Geometry Info****************)
+[Fri Jun 28 11:54:25 2019 Fri][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Fri Jun 28 11:54:25 2019 Fri][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Fri Jun 28 11:54:25 2019 Fri][info] Choose RWG Function as BasicFunction
+
+[Fri Jun 28 11:54:25 2019 Fri][info] The number of BasicFuntions is:	1287
+[Fri Jun 28 11:54:25 2019 Fri][info] Load BasicFuntions costs:	     0.006 s
+[Fri Jun 28 11:54:25 2019 Fri][info] Set Green Function
+[Fri Jun 28 11:54:25 2019 Fri][info] Free Space Green Function is choosen
+
+[Fri Jun 28 11:54:25 2019 Fri][info] EFIE is choosen
+
+[Fri Jun 28 11:54:25 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jun 28 11:54:48 2019 Fri][info] *************Release the memory**************
+[Fri Jun 28 11:54:48 2019 Fri][info] Release BasicFunction
+[Fri Jun 28 11:54:48 2019 Fri][info] Release Request
+[Fri Jun 28 11:54:48 2019 Fri][info] ---------------------END---------------------
+[Fri Jun 28 18:00:29 2019 Fri][info] *************Read Configuration**************
+[Fri Jun 28 18:00:29 2019 Fri][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 18:00:29 2019 Fri][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Fri Jun 28 18:00:29 2019 Fri][info] Project Name:	test
+[Fri Jun 28 18:00:29 2019 Fri][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Fri Jun 28 18:00:29 2019 Fri][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Fri Jun 28 18:00:29 2019 Fri][info] Frequency:	3.000000e+08
+[Fri Jun 28 18:00:29 2019 Fri][info] ********************Mesh*********************
+[Fri Jun 28 18:00:29 2019 Fri][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 18:00:29 2019 Fri][info] Number of Nodes:			         431
+[Fri Jun 28 18:00:29 2019 Fri][info] Number of Triangles:			         858
+[Fri Jun 28 18:00:29 2019 Fri][info] Number of Segments:			           0
+[Fri Jun 28 18:00:29 2019 Fri][info] Number of Cuboids:			           0
+[Fri Jun 28 18:00:29 2019 Fri][info] Number of Tetrahedras:			           0
+
+[Fri Jun 28 18:00:29 2019 Fri][info] Creat Mesh costs	0.028000 s
+[Fri Jun 28 18:00:29 2019 Fri][info] ****************Geometry Info****************)
+[Fri Jun 28 18:00:29 2019 Fri][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Fri Jun 28 18:00:29 2019 Fri][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Fri Jun 28 18:00:29 2019 Fri][info] Choose RWG Function as BasicFunction
+
+[Fri Jun 28 18:00:29 2019 Fri][info] The number of BasicFuntions is:	1287
+[Fri Jun 28 18:00:29 2019 Fri][info] Load BasicFuntions costs:	      0.01 s
+[Fri Jun 28 18:00:29 2019 Fri][info] Set Green Function
+[Fri Jun 28 18:00:29 2019 Fri][info] Free Space Green Function is choosen
+
+[Fri Jun 28 18:00:29 2019 Fri][info] MFIE is choosen
+
+[Fri Jun 28 18:00:29 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jun 28 18:00:30 2019 Fri][info] *************Release the memory**************
+[Fri Jun 28 18:00:30 2019 Fri][info] Release BasicFunction
+[Fri Jun 28 18:00:30 2019 Fri][info] Release Request
+[Fri Jun 28 18:00:30 2019 Fri][info] ---------------------END---------------------
+[Fri Jun 28 18:01:02 2019 Fri][info] *************Read Configuration**************
+[Fri Jun 28 18:01:02 2019 Fri][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 18:01:02 2019 Fri][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Fri Jun 28 18:01:02 2019 Fri][info] Project Name:	test
+[Fri Jun 28 18:01:02 2019 Fri][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Fri Jun 28 18:01:02 2019 Fri][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Fri Jun 28 18:01:02 2019 Fri][info] Frequency:	3.000000e+08
+[Fri Jun 28 18:01:02 2019 Fri][info] ********************Mesh*********************
+[Fri Jun 28 18:01:02 2019 Fri][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 18:01:02 2019 Fri][info] Number of Nodes:			         431
+[Fri Jun 28 18:01:02 2019 Fri][info] Number of Triangles:			         858
+[Fri Jun 28 18:01:02 2019 Fri][info] Number of Segments:			           0
+[Fri Jun 28 18:01:02 2019 Fri][info] Number of Cuboids:			           0
+[Fri Jun 28 18:01:02 2019 Fri][info] Number of Tetrahedras:			           0
+
+[Fri Jun 28 18:01:02 2019 Fri][info] Creat Mesh costs	0.041000 s
+[Fri Jun 28 18:01:02 2019 Fri][info] ****************Geometry Info****************)
+[Fri Jun 28 18:01:02 2019 Fri][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Fri Jun 28 18:01:02 2019 Fri][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Fri Jun 28 18:01:02 2019 Fri][info] Choose RWG Function as BasicFunction
+
+[Fri Jun 28 18:01:02 2019 Fri][info] The number of BasicFuntions is:	1287
+[Fri Jun 28 18:01:02 2019 Fri][info] Load BasicFuntions costs:	     0.008 s
+[Fri Jun 28 18:01:02 2019 Fri][info] Set Green Function
+[Fri Jun 28 18:01:02 2019 Fri][info] Free Space Green Function is choosen
+
+[Fri Jun 28 18:01:02 2019 Fri][info] MFIE is choosen
+
+[Fri Jun 28 18:01:02 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jun 28 18:01:03 2019 Fri][info] Initial Solver
+[Fri Jun 28 18:01:03 2019 Fri][info] *********************MoM*********************
+[Fri Jun 28 18:01:03 2019 Fri][info] ************Fill Impedance Matrix************
+[Fri Jun 28 18:01:53 2019 Fri][info] Whole Filling costs	50.424000 s
+[Fri Jun 28 18:01:53 2019 Fri][info] Memory Cost	25.274185 Mb
+[Fri Jun 28 18:01:53 2019 Fri][info] ***************Excitation Info***************
+[Fri Jun 28 18:01:53 2019 Fri][info] Source Type:		PlanewaveLinear
+[Fri Jun 28 18:01:53 2019 Fri][info] Direction:[0.000 0.000 -1.000]
+[Fri Jun 28 18:01:53 2019 Fri][info] Polarization:[0.000 1.000 0.000]
+
+[Fri Jun 28 18:01:53 2019 Fri][info] Set RightHand is cost:	0.023000 s
+[Fri Jun 28 18:01:53 2019 Fri][info] Memory Cost	0.019638 Mb
+[Fri Jun 28 18:01:53 2019 Fri][info] ****************Solution Info****************
+[Fri Jun 28 18:01:53 2019 Fri][info] Solution Type:	BiCGSTAB
+[Fri Jun 28 18:01:53 2019 Fri][info] Preconditioning Type:		Incomplete LU
+[Fri Jun 28 18:01:53 2019 Fri][info] The Maxiteration is:		0
+[Fri Jun 28 18:01:53 2019 Fri][info] The Tolerance is:		1.000000e-04
+[Fri Jun 28 18:02:09 2019 Fri][error] The iteration can't converage
+[Fri Jun 28 18:02:09 2019 Fri][info] *************Release the memory**************
+[Fri Jun 28 18:02:09 2019 Fri][info] Release BasicFunction
+[Fri Jun 28 18:02:09 2019 Fri][info] Release Request
+[Fri Jun 28 18:02:09 2019 Fri][info] ---------------------END---------------------
+[Fri Jun 28 21:13:27 2019 Fri][info] *************Read Configuration**************
+[Fri Jun 28 21:13:27 2019 Fri][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 21:13:27 2019 Fri][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Fri Jun 28 21:13:27 2019 Fri][info] Project Name:	test
+[Fri Jun 28 21:13:27 2019 Fri][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Fri Jun 28 21:13:27 2019 Fri][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Fri Jun 28 21:13:27 2019 Fri][info] Frequency:	3.000000e+08
+[Fri Jun 28 21:13:27 2019 Fri][info] ********************Mesh*********************
+[Fri Jun 28 21:13:27 2019 Fri][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 21:13:27 2019 Fri][info] Number of Nodes:			         431
+[Fri Jun 28 21:13:27 2019 Fri][info] Number of Triangles:			         858
+[Fri Jun 28 21:13:27 2019 Fri][info] Number of Segments:			           0
+[Fri Jun 28 21:13:27 2019 Fri][info] Number of Cuboids:			           0
+[Fri Jun 28 21:13:27 2019 Fri][info] Number of Tetrahedras:			           0
+
+[Fri Jun 28 21:13:27 2019 Fri][info] Creat Mesh costs	0.047000 s
+[Fri Jun 28 21:13:27 2019 Fri][info] ****************Geometry Info****************)
+[Fri Jun 28 21:13:27 2019 Fri][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Fri Jun 28 21:13:27 2019 Fri][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Fri Jun 28 21:13:27 2019 Fri][info] Choose RWG Function as BasicFunction
+
+[Fri Jun 28 21:13:27 2019 Fri][info] The number of BasicFuntions is:	1287
+[Fri Jun 28 21:13:27 2019 Fri][info] Load BasicFuntions costs:	     0.024 s
+[Fri Jun 28 21:13:27 2019 Fri][info] Set Green Function
+[Fri Jun 28 21:13:27 2019 Fri][info] Free Space Green Function is choosen
+
+[Fri Jun 28 21:13:27 2019 Fri][info] MFIE is choosen
+
+[Fri Jun 28 21:13:27 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jun 28 21:13:28 2019 Fri][info] Initial Solver
+[Fri Jun 28 21:13:28 2019 Fri][info] *********************MoM*********************
+[Fri Jun 28 21:13:28 2019 Fri][info] ************Fill Impedance Matrix************
+[Fri Jun 28 21:14:24 2019 Fri][info] Whole Filling costs	56.253000 s
+[Fri Jun 28 21:14:24 2019 Fri][info] Memory Cost	25.274185 Mb
+[Fri Jun 28 21:16:05 2019 Fri][info] *************Read Configuration**************
+[Fri Jun 28 21:16:05 2019 Fri][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 21:16:05 2019 Fri][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Fri Jun 28 21:16:05 2019 Fri][info] Project Name:	test
+[Fri Jun 28 21:16:05 2019 Fri][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Fri Jun 28 21:16:05 2019 Fri][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Fri Jun 28 21:16:05 2019 Fri][info] Frequency:	3.000000e+08
+[Fri Jun 28 21:16:05 2019 Fri][info] ********************Mesh*********************
+[Fri Jun 28 21:16:05 2019 Fri][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 21:16:05 2019 Fri][info] Number of Nodes:			         431
+[Fri Jun 28 21:16:05 2019 Fri][info] Number of Triangles:			         858
+[Fri Jun 28 21:16:05 2019 Fri][info] Number of Segments:			           0
+[Fri Jun 28 21:16:05 2019 Fri][info] Number of Cuboids:			           0
+[Fri Jun 28 21:16:05 2019 Fri][info] Number of Tetrahedras:			           0
+
+[Fri Jun 28 21:16:05 2019 Fri][info] Creat Mesh costs	0.065000 s
+[Fri Jun 28 21:16:05 2019 Fri][info] ****************Geometry Info****************)
+[Fri Jun 28 21:16:05 2019 Fri][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Fri Jun 28 21:16:05 2019 Fri][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Fri Jun 28 21:16:05 2019 Fri][info] Choose RWG Function as BasicFunction
+
+[Fri Jun 28 21:16:05 2019 Fri][info] The number of BasicFuntions is:	1287
+[Fri Jun 28 21:16:05 2019 Fri][info] Load BasicFuntions costs:	     0.008 s
+[Fri Jun 28 21:16:05 2019 Fri][info] Set Green Function
+[Fri Jun 28 21:16:05 2019 Fri][info] Free Space Green Function is choosen
+
+[Fri Jun 28 21:16:05 2019 Fri][info] MFIE is choosen
+
+[Fri Jun 28 21:16:05 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jun 28 21:16:06 2019 Fri][info] Initial Solver
+[Fri Jun 28 21:16:06 2019 Fri][info] *********************MoM*********************
+[Fri Jun 28 21:16:06 2019 Fri][info] ************Fill Impedance Matrix************
+[Fri Jun 28 21:17:00 2019 Fri][info] Whole Filling costs	54.104000 s
+[Fri Jun 28 21:17:00 2019 Fri][info] Memory Cost	25.274185 Mb
+[Fri Jun 28 21:25:03 2019 Fri][info] *************Read Configuration**************
+[Fri Jun 28 21:25:03 2019 Fri][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 21:25:03 2019 Fri][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Fri Jun 28 21:25:03 2019 Fri][info] Project Name:	test
+[Fri Jun 28 21:25:03 2019 Fri][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Fri Jun 28 21:25:03 2019 Fri][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Fri Jun 28 21:25:03 2019 Fri][info] Frequency:	3.000000e+08
+[Fri Jun 28 21:25:03 2019 Fri][info] ********************Mesh*********************
+[Fri Jun 28 21:25:03 2019 Fri][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 21:25:03 2019 Fri][info] Number of Nodes:			         431
+[Fri Jun 28 21:25:03 2019 Fri][info] Number of Triangles:			         858
+[Fri Jun 28 21:25:03 2019 Fri][info] Number of Segments:			           0
+[Fri Jun 28 21:25:03 2019 Fri][info] Number of Cuboids:			           0
+[Fri Jun 28 21:25:03 2019 Fri][info] Number of Tetrahedras:			           0
+
+[Fri Jun 28 21:25:03 2019 Fri][info] Creat Mesh costs	0.041000 s
+[Fri Jun 28 21:25:03 2019 Fri][info] ****************Geometry Info****************)
+[Fri Jun 28 21:25:03 2019 Fri][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Fri Jun 28 21:25:03 2019 Fri][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Fri Jun 28 21:25:03 2019 Fri][info] Choose RWG Function as BasicFunction
+
+[Fri Jun 28 21:25:03 2019 Fri][info] The number of BasicFuntions is:	1287
+[Fri Jun 28 21:25:03 2019 Fri][info] Load BasicFuntions costs:	     0.007 s
+[Fri Jun 28 21:25:03 2019 Fri][info] Set Green Function
+[Fri Jun 28 21:25:03 2019 Fri][info] Free Space Green Function is choosen
+
+[Fri Jun 28 21:25:03 2019 Fri][info] MFIE is choosen
+
+[Fri Jun 28 21:25:03 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jun 28 21:25:03 2019 Fri][info] Initial Solver
+[Fri Jun 28 21:25:04 2019 Fri][info] *********************MoM*********************
+[Fri Jun 28 21:25:04 2019 Fri][info] ************Fill Impedance Matrix************
+[Fri Jun 28 21:25:56 2019 Fri][info] Whole Filling costs	52.613000 s
+[Fri Jun 28 21:25:56 2019 Fri][info] Memory Cost	25.274185 Mb
+[Fri Jun 28 21:27:35 2019 Fri][info] *************Read Configuration**************
+[Fri Jun 28 21:27:35 2019 Fri][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 21:27:35 2019 Fri][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Fri Jun 28 21:27:35 2019 Fri][info] Project Name:	test
+[Fri Jun 28 21:27:35 2019 Fri][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Fri Jun 28 21:27:35 2019 Fri][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Fri Jun 28 21:27:35 2019 Fri][info] Frequency:	3.000000e+08
+[Fri Jun 28 21:27:35 2019 Fri][info] ********************Mesh*********************
+[Fri Jun 28 21:27:36 2019 Fri][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 21:27:36 2019 Fri][info] Number of Nodes:			         431
+[Fri Jun 28 21:27:36 2019 Fri][info] Number of Triangles:			         858
+[Fri Jun 28 21:27:36 2019 Fri][info] Number of Segments:			           0
+[Fri Jun 28 21:27:36 2019 Fri][info] Number of Cuboids:			           0
+[Fri Jun 28 21:27:36 2019 Fri][info] Number of Tetrahedras:			           0
+
+[Fri Jun 28 21:27:36 2019 Fri][info] Creat Mesh costs	0.039000 s
+[Fri Jun 28 21:27:36 2019 Fri][info] ****************Geometry Info****************)
+[Fri Jun 28 21:27:36 2019 Fri][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Fri Jun 28 21:27:36 2019 Fri][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Fri Jun 28 21:27:36 2019 Fri][info] Choose RWG Function as BasicFunction
+
+[Fri Jun 28 21:27:36 2019 Fri][info] The number of BasicFuntions is:	1287
+[Fri Jun 28 21:27:36 2019 Fri][info] Load BasicFuntions costs:	     0.009 s
+[Fri Jun 28 21:27:36 2019 Fri][info] Set Green Function
+[Fri Jun 28 21:27:36 2019 Fri][info] Free Space Green Function is choosen
+
+[Fri Jun 28 21:27:36 2019 Fri][info] MFIE is choosen
+
+[Fri Jun 28 21:27:36 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jun 28 21:27:36 2019 Fri][info] Initial Solver
+[Fri Jun 28 21:27:36 2019 Fri][info] *********************MoM*********************
+[Fri Jun 28 21:27:36 2019 Fri][info] ************Fill Impedance Matrix************
+[Fri Jun 28 21:28:30 2019 Fri][info] Whole Filling costs	53.896000 s
+[Fri Jun 28 21:28:30 2019 Fri][info] Memory Cost	25.274185 Mb
+[Fri Jun 28 21:31:00 2019 Fri][info] *************Read Configuration**************
+[Fri Jun 28 21:31:00 2019 Fri][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 21:31:00 2019 Fri][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Fri Jun 28 21:31:00 2019 Fri][info] Project Name:	test
+[Fri Jun 28 21:31:00 2019 Fri][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Fri Jun 28 21:31:00 2019 Fri][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Fri Jun 28 21:31:00 2019 Fri][info] Frequency:	3.000000e+08
+[Fri Jun 28 21:31:00 2019 Fri][info] ********************Mesh*********************
+[Fri Jun 28 21:31:00 2019 Fri][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 21:31:00 2019 Fri][info] Number of Nodes:			         431
+[Fri Jun 28 21:31:00 2019 Fri][info] Number of Triangles:			         858
+[Fri Jun 28 21:31:00 2019 Fri][info] Number of Segments:			           0
+[Fri Jun 28 21:31:00 2019 Fri][info] Number of Cuboids:			           0
+[Fri Jun 28 21:31:00 2019 Fri][info] Number of Tetrahedras:			           0
+
+[Fri Jun 28 21:31:00 2019 Fri][info] Creat Mesh costs	0.045000 s
+[Fri Jun 28 21:31:00 2019 Fri][info] ****************Geometry Info****************)
+[Fri Jun 28 21:31:00 2019 Fri][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Fri Jun 28 21:31:00 2019 Fri][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Fri Jun 28 21:31:00 2019 Fri][info] Choose RWG Function as BasicFunction
+
+[Fri Jun 28 21:31:00 2019 Fri][info] The number of BasicFuntions is:	1287
+[Fri Jun 28 21:31:00 2019 Fri][info] Load BasicFuntions costs:	      0.01 s
+[Fri Jun 28 21:31:00 2019 Fri][info] Set Green Function
+[Fri Jun 28 21:31:00 2019 Fri][info] Free Space Green Function is choosen
+
+[Fri Jun 28 21:31:00 2019 Fri][info] MFIE is choosen
+
+[Fri Jun 28 21:31:00 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jun 28 21:31:01 2019 Fri][info] Initial Solver
+[Fri Jun 28 21:31:01 2019 Fri][info] *********************MoM*********************
+[Fri Jun 28 21:31:01 2019 Fri][info] ************Fill Impedance Matrix************
+[Fri Jun 28 21:31:54 2019 Fri][info] Whole Filling costs	53.123000 s
+[Fri Jun 28 21:31:54 2019 Fri][info] Memory Cost	25.274185 Mb
+[Fri Jun 28 21:32:03 2019 Fri][info] *************Release the memory**************
+[Fri Jun 28 21:32:03 2019 Fri][info] Release BasicFunction
+[Fri Jun 28 21:32:03 2019 Fri][info] Release Request
+[Fri Jun 28 21:32:03 2019 Fri][info] ---------------------END---------------------
+[Fri Jun 28 21:33:33 2019 Fri][info] *************Read Configuration**************
+[Fri Jun 28 21:33:33 2019 Fri][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 21:33:33 2019 Fri][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Fri Jun 28 21:33:33 2019 Fri][info] Project Name:	test
+[Fri Jun 28 21:33:33 2019 Fri][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Fri Jun 28 21:33:33 2019 Fri][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Fri Jun 28 21:33:33 2019 Fri][info] Frequency:	3.000000e+08
+[Fri Jun 28 21:33:33 2019 Fri][info] ********************Mesh*********************
+[Fri Jun 28 21:33:33 2019 Fri][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 21:33:33 2019 Fri][info] Number of Nodes:			         431
+[Fri Jun 28 21:33:33 2019 Fri][info] Number of Triangles:			         858
+[Fri Jun 28 21:33:33 2019 Fri][info] Number of Segments:			           0
+[Fri Jun 28 21:33:33 2019 Fri][info] Number of Cuboids:			           0
+[Fri Jun 28 21:33:33 2019 Fri][info] Number of Tetrahedras:			           0
+
+[Fri Jun 28 21:33:33 2019 Fri][info] Creat Mesh costs	0.046000 s
+[Fri Jun 28 21:33:33 2019 Fri][info] ****************Geometry Info****************)
+[Fri Jun 28 21:33:33 2019 Fri][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Fri Jun 28 21:33:33 2019 Fri][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Fri Jun 28 21:33:33 2019 Fri][info] Choose RWG Function as BasicFunction
+
+[Fri Jun 28 21:33:33 2019 Fri][info] The number of BasicFuntions is:	1287
+[Fri Jun 28 21:33:33 2019 Fri][info] Load BasicFuntions costs:	     0.009 s
+[Fri Jun 28 21:33:33 2019 Fri][info] Set Green Function
+[Fri Jun 28 21:33:33 2019 Fri][info] Free Space Green Function is choosen
+
+[Fri Jun 28 21:33:33 2019 Fri][info] MFIE is choosen
+
+[Fri Jun 28 21:33:33 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jun 28 21:33:34 2019 Fri][info] Initial Solver
+[Fri Jun 28 21:33:34 2019 Fri][info] *********************MoM*********************
+[Fri Jun 28 21:33:34 2019 Fri][info] ************Fill Impedance Matrix************
+[Fri Jun 28 21:34:27 2019 Fri][info] Whole Filling costs	52.926000 s
+[Fri Jun 28 21:34:27 2019 Fri][info] Memory Cost	25.274185 Mb
+[Fri Jun 28 21:34:29 2019 Fri][info] *************Release the memory**************
+[Fri Jun 28 21:34:29 2019 Fri][info] Release BasicFunction
+[Fri Jun 28 21:34:29 2019 Fri][info] Release Request
+[Fri Jun 28 21:34:29 2019 Fri][info] ---------------------END---------------------
+[Fri Jun 28 21:39:54 2019 Fri][info] *************Read Configuration**************
+[Fri Jun 28 21:39:54 2019 Fri][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 21:39:54 2019 Fri][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Fri Jun 28 21:39:54 2019 Fri][info] Project Name:	test
+[Fri Jun 28 21:39:54 2019 Fri][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Fri Jun 28 21:39:54 2019 Fri][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Fri Jun 28 21:39:54 2019 Fri][info] Frequency:	3.000000e+08
+[Fri Jun 28 21:39:54 2019 Fri][info] ********************Mesh*********************
+[Fri Jun 28 21:39:54 2019 Fri][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 21:39:54 2019 Fri][info] Number of Nodes:			         431
+[Fri Jun 28 21:39:54 2019 Fri][info] Number of Triangles:			         858
+[Fri Jun 28 21:39:54 2019 Fri][info] Number of Segments:			           0
+[Fri Jun 28 21:39:54 2019 Fri][info] Number of Cuboids:			           0
+[Fri Jun 28 21:39:54 2019 Fri][info] Number of Tetrahedras:			           0
+
+[Fri Jun 28 21:39:54 2019 Fri][info] Creat Mesh costs	0.076000 s
+[Fri Jun 28 21:39:54 2019 Fri][info] ****************Geometry Info****************)
+[Fri Jun 28 21:39:54 2019 Fri][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Fri Jun 28 21:39:54 2019 Fri][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Fri Jun 28 21:39:54 2019 Fri][info] Choose RWG Function as BasicFunction
+
+[Fri Jun 28 21:39:54 2019 Fri][info] The number of BasicFuntions is:	1287
+[Fri Jun 28 21:39:54 2019 Fri][info] Load BasicFuntions costs:	     0.008 s
+[Fri Jun 28 21:39:54 2019 Fri][info] Set Green Function
+[Fri Jun 28 21:39:54 2019 Fri][info] Free Space Green Function is choosen
+
+[Fri Jun 28 21:39:54 2019 Fri][info] MFIE is choosen
+
+[Fri Jun 28 21:39:54 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jun 28 21:39:55 2019 Fri][info] Initial Solver
+[Fri Jun 28 21:39:55 2019 Fri][info] *********************MoM*********************
+[Fri Jun 28 21:39:55 2019 Fri][info] ************Fill Impedance Matrix************
+[Fri Jun 28 21:40:48 2019 Fri][info] Whole Filling costs	52.957000 s
+[Fri Jun 28 21:40:48 2019 Fri][info] Memory Cost	25.274185 Mb
+[Fri Jun 28 21:40:50 2019 Fri][info] *************Release the memory**************
+[Fri Jun 28 21:40:50 2019 Fri][info] Release BasicFunction
+[Fri Jun 28 21:40:50 2019 Fri][info] Release Request
+[Fri Jun 28 21:40:50 2019 Fri][info] ---------------------END---------------------
+[Fri Jun 28 21:46:34 2019 Fri][info] *************Read Configuration**************
+[Fri Jun 28 21:46:34 2019 Fri][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 21:46:34 2019 Fri][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Fri Jun 28 21:46:34 2019 Fri][info] Project Name:	test
+[Fri Jun 28 21:46:34 2019 Fri][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Fri Jun 28 21:46:34 2019 Fri][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Fri Jun 28 21:46:34 2019 Fri][info] Frequency:	3.000000e+08
+[Fri Jun 28 21:46:34 2019 Fri][info] ********************Mesh*********************
+[Fri Jun 28 21:46:35 2019 Fri][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 21:46:35 2019 Fri][info] Number of Nodes:			         431
+[Fri Jun 28 21:46:35 2019 Fri][info] Number of Triangles:			         858
+[Fri Jun 28 21:46:35 2019 Fri][info] Number of Segments:			           0
+[Fri Jun 28 21:46:35 2019 Fri][info] Number of Cuboids:			           0
+[Fri Jun 28 21:46:35 2019 Fri][info] Number of Tetrahedras:			           0
+
+[Fri Jun 28 21:46:35 2019 Fri][info] Creat Mesh costs	0.039000 s
+[Fri Jun 28 21:46:35 2019 Fri][info] ****************Geometry Info****************)
+[Fri Jun 28 21:46:35 2019 Fri][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Fri Jun 28 21:46:35 2019 Fri][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Fri Jun 28 21:46:35 2019 Fri][info] Choose RWG Function as BasicFunction
+
+[Fri Jun 28 21:46:35 2019 Fri][info] The number of BasicFuntions is:	1287
+[Fri Jun 28 21:46:35 2019 Fri][info] Load BasicFuntions costs:	     0.012 s
+[Fri Jun 28 21:46:35 2019 Fri][info] Set Green Function
+[Fri Jun 28 21:46:35 2019 Fri][info] Free Space Green Function is choosen
+
+[Fri Jun 28 21:46:35 2019 Fri][info] MFIE is choosen
+
+[Fri Jun 28 21:46:35 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jun 28 21:46:35 2019 Fri][info] Initial Solver
+[Fri Jun 28 21:46:35 2019 Fri][info] *********************MoM*********************
+[Fri Jun 28 21:46:35 2019 Fri][info] ************Fill Impedance Matrix************
+[Fri Jun 28 21:47:28 2019 Fri][info] Whole Filling costs	52.542000 s
+[Fri Jun 28 21:47:28 2019 Fri][info] Memory Cost	25.274185 Mb
+[Fri Jun 28 21:48:09 2019 Fri][info] *************Release the memory**************
+[Fri Jun 28 21:48:09 2019 Fri][info] Release BasicFunction
+[Fri Jun 28 21:48:09 2019 Fri][info] Release Request
+[Fri Jun 28 21:48:09 2019 Fri][info] ---------------------END---------------------
+[Fri Jun 28 22:01:57 2019 Fri][info] *************Read Configuration**************
+[Fri Jun 28 22:01:57 2019 Fri][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 22:01:57 2019 Fri][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Fri Jun 28 22:01:57 2019 Fri][info] Project Name:	test
+[Fri Jun 28 22:01:57 2019 Fri][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Fri Jun 28 22:01:57 2019 Fri][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Fri Jun 28 22:01:57 2019 Fri][info] Frequency:	3.000000e+08
+[Fri Jun 28 22:01:57 2019 Fri][info] ********************Mesh*********************
+[Fri Jun 28 22:01:57 2019 Fri][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Fri Jun 28 22:01:57 2019 Fri][info] Number of Nodes:			         431
+[Fri Jun 28 22:01:57 2019 Fri][info] Number of Triangles:			         858
+[Fri Jun 28 22:01:57 2019 Fri][info] Number of Segments:			           0
+[Fri Jun 28 22:01:57 2019 Fri][info] Number of Cuboids:			           0
+[Fri Jun 28 22:01:57 2019 Fri][info] Number of Tetrahedras:			           0
+
+[Fri Jun 28 22:01:57 2019 Fri][info] Creat Mesh costs	0.051000 s
+[Fri Jun 28 22:01:57 2019 Fri][info] ****************Geometry Info****************)
+[Fri Jun 28 22:01:57 2019 Fri][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Fri Jun 28 22:01:57 2019 Fri][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Fri Jun 28 22:01:57 2019 Fri][info] Choose RWG Function as BasicFunction
+
+[Fri Jun 28 22:01:58 2019 Fri][info] The number of BasicFuntions is:	1287
+[Fri Jun 28 22:01:58 2019 Fri][info] Load BasicFuntions costs:	      0.02 s
+[Fri Jun 28 22:01:58 2019 Fri][info] Set Green Function
+[Fri Jun 28 22:01:58 2019 Fri][info] Free Space Green Function is choosen
+
+[Fri Jun 28 22:01:58 2019 Fri][info] MFIE is choosen
+
+[Fri Jun 28 22:01:58 2019 Fri][info] Begin to pre-compute the SelfTriangle Impedance
+[Fri Jun 28 22:03:45 2019 Fri][info] *************Release the memory**************
+[Fri Jun 28 22:03:45 2019 Fri][info] Release BasicFunction
+[Fri Jun 28 22:03:45 2019 Fri][info] Release Request
+[Fri Jun 28 22:03:45 2019 Fri][info] ---------------------END---------------------
+[Mon Jul 1 14:30:17 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 14:30:17 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 14:30:17 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 14:30:17 2019 Mon][info] Project Name:	test
+[Mon Jul 1 14:30:17 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 14:30:17 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 14:30:17 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 14:30:17 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 14:30:17 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 14:30:17 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 14:30:17 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 14:30:17 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 14:30:17 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 14:30:17 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 14:30:17 2019 Mon][info] Creat Mesh costs	0.045000 s
+[Mon Jul 1 14:30:17 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 14:30:17 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 14:30:17 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 14:30:17 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 14:30:17 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 14:30:17 2019 Mon][info] Load BasicFuntions costs:	     0.006 s
+[Mon Jul 1 14:30:17 2019 Mon][info] Set Green Function
+[Mon Jul 1 14:30:17 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 14:30:17 2019 Mon][info] MFIE is choosen
+
+[Mon Jul 1 14:30:17 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 14:30:18 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 14:30:18 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 14:30:18 2019 Mon][info] Release Request
+[Mon Jul 1 14:30:18 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 14:34:54 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 14:34:54 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 14:34:54 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 14:34:54 2019 Mon][info] Project Name:	test
+[Mon Jul 1 14:34:54 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 14:34:54 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 14:34:54 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 14:34:54 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 14:34:54 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 14:34:54 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 14:34:54 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 14:34:54 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 14:34:54 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 14:34:54 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 14:34:54 2019 Mon][info] Creat Mesh costs	0.046000 s
+[Mon Jul 1 14:34:54 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 14:34:54 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 14:34:54 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 14:34:54 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 14:34:54 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 14:34:54 2019 Mon][info] Load BasicFuntions costs:	     0.009 s
+[Mon Jul 1 14:34:54 2019 Mon][info] Set Green Function
+[Mon Jul 1 14:34:54 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 14:34:54 2019 Mon][info] MFIE is choosen
+
+[Mon Jul 1 14:34:54 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 14:34:55 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 14:34:55 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 14:34:55 2019 Mon][info] Release Request
+[Mon Jul 1 14:34:55 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 14:35:53 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 14:35:53 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 14:35:53 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 14:35:53 2019 Mon][info] Project Name:	test
+[Mon Jul 1 14:35:53 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 14:35:53 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 14:35:53 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 14:35:53 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 14:35:53 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 14:35:53 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 14:35:53 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 14:35:53 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 14:35:53 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 14:35:53 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 14:35:53 2019 Mon][info] Creat Mesh costs	0.032000 s
+[Mon Jul 1 14:35:53 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 14:35:53 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 14:35:53 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 14:35:53 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 14:35:53 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 14:35:53 2019 Mon][info] Load BasicFuntions costs:	      0.01 s
+[Mon Jul 1 14:35:53 2019 Mon][info] Set Green Function
+[Mon Jul 1 14:35:53 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 14:35:53 2019 Mon][info] MFIE is choosen
+
+[Mon Jul 1 14:35:53 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 14:35:54 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 14:35:54 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 14:35:54 2019 Mon][info] Release Request
+[Mon Jul 1 14:35:54 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 14:36:34 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 14:36:34 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 14:36:34 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 14:36:34 2019 Mon][info] Project Name:	test
+[Mon Jul 1 14:36:34 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 14:36:34 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 14:36:34 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 14:36:34 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 14:36:34 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 14:36:34 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 14:36:34 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 14:36:34 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 14:36:34 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 14:36:34 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 14:36:34 2019 Mon][info] Creat Mesh costs	0.035000 s
+[Mon Jul 1 14:36:34 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 14:36:34 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 14:36:34 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 14:36:34 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 14:36:34 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 14:36:34 2019 Mon][info] Load BasicFuntions costs:	     0.012 s
+[Mon Jul 1 14:36:34 2019 Mon][info] Set Green Function
+[Mon Jul 1 14:36:34 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 14:36:34 2019 Mon][info] MFIE is choosen
+
+[Mon Jul 1 14:36:34 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 14:36:35 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 14:36:35 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 14:36:35 2019 Mon][info] Release Request
+[Mon Jul 1 14:36:35 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 14:40:23 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 14:40:23 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 14:40:23 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 14:40:23 2019 Mon][info] Project Name:	test
+[Mon Jul 1 14:40:23 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 14:40:23 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 14:40:23 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 14:40:23 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 14:40:23 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 14:40:23 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 14:40:23 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 14:40:23 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 14:40:23 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 14:40:23 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 14:40:23 2019 Mon][info] Creat Mesh costs	0.036000 s
+[Mon Jul 1 14:40:23 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 14:40:23 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 14:40:23 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 14:40:23 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 14:40:23 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 14:40:23 2019 Mon][info] Load BasicFuntions costs:	     0.008 s
+[Mon Jul 1 14:40:23 2019 Mon][info] Set Green Function
+[Mon Jul 1 14:40:23 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 14:40:23 2019 Mon][info] MFIE is choosen
+
+[Mon Jul 1 14:40:23 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 14:40:24 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 14:40:24 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 14:40:24 2019 Mon][info] Release Request
+[Mon Jul 1 14:40:24 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 14:41:11 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 14:41:11 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 14:41:11 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 14:41:11 2019 Mon][info] Project Name:	test
+[Mon Jul 1 14:41:11 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 14:41:11 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 14:41:11 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 14:41:11 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 14:41:11 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 14:41:11 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 14:41:11 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 14:41:11 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 14:41:11 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 14:41:11 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 14:41:11 2019 Mon][info] Creat Mesh costs	0.030000 s
+[Mon Jul 1 14:41:11 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 14:41:11 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 14:41:11 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 14:41:11 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 14:41:11 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 14:41:11 2019 Mon][info] Load BasicFuntions costs:	     0.008 s
+[Mon Jul 1 14:41:11 2019 Mon][info] Set Green Function
+[Mon Jul 1 14:41:11 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 14:41:11 2019 Mon][info] MFIE is choosen
+
+[Mon Jul 1 14:41:11 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 14:41:12 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 14:41:12 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 14:41:12 2019 Mon][info] Release Request
+[Mon Jul 1 14:41:12 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 14:42:11 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 14:42:11 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 14:42:11 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 14:42:11 2019 Mon][info] Project Name:	test
+[Mon Jul 1 14:42:11 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 14:42:11 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 14:42:11 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 14:42:11 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 14:42:11 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 14:42:11 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 14:42:11 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 14:42:11 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 14:42:11 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 14:42:11 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 14:42:11 2019 Mon][info] Creat Mesh costs	0.043000 s
+[Mon Jul 1 14:42:11 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 14:42:11 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 14:42:11 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 14:42:11 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 14:42:11 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 14:42:11 2019 Mon][info] Load BasicFuntions costs:	     0.011 s
+[Mon Jul 1 14:42:11 2019 Mon][info] Set Green Function
+[Mon Jul 1 14:42:11 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 14:42:11 2019 Mon][info] MFIE is choosen
+
+[Mon Jul 1 14:42:11 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 14:42:12 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 14:42:12 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 14:42:12 2019 Mon][info] Release Request
+[Mon Jul 1 14:42:12 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 14:42:52 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 14:42:52 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 14:42:52 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 14:42:52 2019 Mon][info] Project Name:	test
+[Mon Jul 1 14:42:52 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 14:42:52 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 14:42:52 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 14:42:52 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 14:42:52 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 14:42:52 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 14:42:52 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 14:42:52 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 14:42:52 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 14:42:52 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 14:42:52 2019 Mon][info] Creat Mesh costs	0.034000 s
+[Mon Jul 1 14:42:52 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 14:42:52 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 14:42:52 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 14:42:52 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 14:42:52 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 14:42:52 2019 Mon][info] Load BasicFuntions costs:	     0.007 s
+[Mon Jul 1 14:42:52 2019 Mon][info] Set Green Function
+[Mon Jul 1 14:42:52 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 14:42:52 2019 Mon][info] MFIE is choosen
+
+[Mon Jul 1 14:42:52 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 14:43:39 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 14:43:39 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 14:43:39 2019 Mon][info] Release Request
+[Mon Jul 1 14:43:39 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 15:00:50 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 15:00:50 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 15:00:50 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 15:00:50 2019 Mon][info] Project Name:	test
+[Mon Jul 1 15:00:50 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 15:00:50 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 15:00:50 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 15:00:50 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 15:00:50 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 15:00:50 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 15:00:50 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 15:00:50 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 15:00:50 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 15:00:50 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 15:00:50 2019 Mon][info] Creat Mesh costs	0.027000 s
+[Mon Jul 1 15:00:50 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 15:00:50 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 15:00:50 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 15:00:50 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 15:00:50 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 15:00:50 2019 Mon][info] Load BasicFuntions costs:	      0.01 s
+[Mon Jul 1 15:00:50 2019 Mon][info] Set Green Function
+[Mon Jul 1 15:00:50 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 15:00:50 2019 Mon][info] MFIE is choosen
+
+[Mon Jul 1 15:00:50 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 15:00:51 2019 Mon][info] Initial Solver
+[Mon Jul 1 15:00:51 2019 Mon][info] *********************MoM*********************
+[Mon Jul 1 15:00:51 2019 Mon][info] ************Fill Impedance Matrix************
+[Mon Jul 1 15:01:39 2019 Mon][info] Whole Filling costs	47.792000 s
+[Mon Jul 1 15:01:39 2019 Mon][info] Memory Cost	25.274185 Mb
+[Mon Jul 1 15:01:39 2019 Mon][info] ***************Excitation Info***************
+[Mon Jul 1 15:01:39 2019 Mon][info] Source Type:		PlanewaveLinear
+[Mon Jul 1 15:01:39 2019 Mon][info] Direction:[0.000 0.000 -1.000]
+[Mon Jul 1 15:01:39 2019 Mon][info] Polarization:[0.000 1.000 0.000]
+
+[Mon Jul 1 15:01:39 2019 Mon][info] Set RightHand is cost:	0.029000 s
+[Mon Jul 1 15:01:39 2019 Mon][info] Memory Cost	0.019638 Mb
+[Mon Jul 1 15:01:39 2019 Mon][info] ****************Solution Info****************
+[Mon Jul 1 15:01:39 2019 Mon][info] Solution Type:	BiCGSTAB
+[Mon Jul 1 15:01:39 2019 Mon][info] Preconditioning Type:		Incomplete LU
+[Mon Jul 1 15:01:39 2019 Mon][info] The Maxiteration is:		0
+[Mon Jul 1 15:01:39 2019 Mon][info] The Tolerance is:		1.000000e-04
+[Mon Jul 1 15:01:54 2019 Mon][error] The iteration can't converage
+[Mon Jul 1 15:01:54 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 15:01:54 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 15:01:54 2019 Mon][info] Release Request
+[Mon Jul 1 15:01:54 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 15:05:25 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 15:05:25 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 15:05:25 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 15:05:25 2019 Mon][info] Project Name:	test
+[Mon Jul 1 15:05:25 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 15:05:25 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 15:05:25 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 15:05:25 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 15:05:25 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 15:05:25 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 15:05:25 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 15:05:25 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 15:05:25 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 15:05:25 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 15:05:25 2019 Mon][info] Creat Mesh costs	0.032000 s
+[Mon Jul 1 15:05:25 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 15:05:25 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 15:05:25 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 15:05:25 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 15:05:25 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 15:05:25 2019 Mon][info] Load BasicFuntions costs:	     0.006 s
+[Mon Jul 1 15:05:25 2019 Mon][info] Set Green Function
+[Mon Jul 1 15:05:25 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 15:05:25 2019 Mon][info] CFIE is choosen
+
+[Mon Jul 1 15:05:25 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 15:05:26 2019 Mon][info] Initial Solver
+[Mon Jul 1 15:05:26 2019 Mon][info] *********************MoM*********************
+[Mon Jul 1 15:05:26 2019 Mon][info] ************Fill Impedance Matrix************
+[Mon Jul 1 15:06:39 2019 Mon][info] Whole Filling costs	73.206000 s
+[Mon Jul 1 15:06:39 2019 Mon][info] Memory Cost	25.274185 Mb
+[Mon Jul 1 15:06:39 2019 Mon][info] ***************Excitation Info***************
+[Mon Jul 1 15:06:39 2019 Mon][info] Source Type:		PlanewaveLinear
+[Mon Jul 1 15:06:39 2019 Mon][info] Direction:[0.000 0.000 -1.000]
+[Mon Jul 1 15:06:39 2019 Mon][info] Polarization:[0.000 1.000 0.000]
+
+[Mon Jul 1 15:06:39 2019 Mon][info] Set RightHand is cost:	0.045000 s
+[Mon Jul 1 15:06:39 2019 Mon][info] Memory Cost	0.019638 Mb
+[Mon Jul 1 15:06:39 2019 Mon][info] ****************Solution Info****************
+[Mon Jul 1 15:06:39 2019 Mon][info] Solution Type:	BiCGSTAB
+[Mon Jul 1 15:06:39 2019 Mon][info] Preconditioning Type:		Incomplete LU
+[Mon Jul 1 15:06:39 2019 Mon][info] The Maxiteration is:		0
+[Mon Jul 1 15:06:39 2019 Mon][info] The Tolerance is:		1.000000e-04
+[Mon Jul 1 15:06:39 2019 Mon][info] The Final Iteration is:	38
+[Mon Jul 1 15:06:39 2019 Mon][info] The results tolerance is:	8.0875e-05
+[Mon Jul 1 15:06:39 2019 Mon][info] Iteration is cost:	0.254000 s
+[Mon Jul 1 15:06:39 2019 Mon][info] Save BasicFunction in binary type
+[Mon Jul 1 15:06:39 2019 Mon][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 15:06:39 2019 Mon][info] Run CalculateRequest()
+[Mon Jul 1 15:06:39 2019 Mon][info] **********Calcuate the FarField RCS**********
+[Mon Jul 1 15:06:39 2019 Mon][info] RCS of Far Field::	Horizon
+[Mon Jul 1 15:06:53 2019 Mon][info] RCS of Far Field::	VerticalPhi0
+[Mon Jul 1 15:06:59 2019 Mon][info] RCS of Far Field::	VerticalPhi90
+[Mon Jul 1 15:07:06 2019 Mon][info] FarField Calculate cost 26.627000 s
+[Mon Jul 1 15:07:06 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 15:07:06 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 15:07:06 2019 Mon][info] Release Request
+[Mon Jul 1 15:07:06 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 15:12:51 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 15:12:51 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 15:12:51 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 15:12:51 2019 Mon][info] Project Name:	test
+[Mon Jul 1 15:12:51 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 15:12:51 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 15:12:51 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 15:12:51 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 15:12:51 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 15:12:51 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 15:12:51 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 15:12:51 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 15:12:51 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 15:12:51 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 15:12:51 2019 Mon][info] Creat Mesh costs	0.028000 s
+[Mon Jul 1 15:12:51 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 15:12:51 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 15:12:51 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 15:12:51 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 15:12:51 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 15:12:51 2019 Mon][info] Load BasicFuntions costs:	     0.007 s
+[Mon Jul 1 15:12:51 2019 Mon][info] Set Green Function
+[Mon Jul 1 15:12:51 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 15:12:51 2019 Mon][info] CFIE is choosen
+
+[Mon Jul 1 15:12:51 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 15:12:52 2019 Mon][info] Initial Solver
+[Mon Jul 1 15:12:52 2019 Mon][info] *********************MoM*********************
+[Mon Jul 1 15:21:14 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 15:21:14 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 15:21:14 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 15:21:14 2019 Mon][info] Project Name:	test
+[Mon Jul 1 15:21:14 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 15:21:14 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 15:21:14 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 15:21:14 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 15:21:14 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 15:21:14 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 15:21:14 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 15:21:14 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 15:21:14 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 15:21:14 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 15:21:14 2019 Mon][info] Creat Mesh costs	0.032000 s
+[Mon Jul 1 15:21:14 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 15:21:14 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 15:21:14 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 15:21:14 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 15:21:14 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 15:21:14 2019 Mon][info] Load BasicFuntions costs:	     0.007 s
+[Mon Jul 1 15:21:14 2019 Mon][info] Set Green Function
+[Mon Jul 1 15:21:14 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 15:21:14 2019 Mon][info] CFIE is choosen
+
+[Mon Jul 1 15:21:14 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 15:21:14 2019 Mon][info] Initial Solver
+[Mon Jul 1 15:21:14 2019 Mon][info] *********************MoM*********************
+[Mon Jul 1 15:24:37 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 15:24:37 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 15:24:37 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 15:24:37 2019 Mon][info] Project Name:	test
+[Mon Jul 1 15:24:37 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 15:24:37 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 15:24:37 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 15:24:37 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 15:24:37 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 15:24:37 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 15:24:37 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 15:24:37 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 15:24:37 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 15:24:37 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 15:24:37 2019 Mon][info] Creat Mesh costs	0.041000 s
+[Mon Jul 1 15:24:37 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 15:24:37 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 15:24:37 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 15:24:37 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 15:24:37 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 15:24:37 2019 Mon][info] Load BasicFuntions costs:	     0.009 s
+[Mon Jul 1 15:24:37 2019 Mon][info] Set Green Function
+[Mon Jul 1 15:24:37 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 15:24:37 2019 Mon][info] CFIE is choosen
+
+[Mon Jul 1 15:24:37 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 15:24:38 2019 Mon][info] Initial Solver
+[Mon Jul 1 15:24:38 2019 Mon][info] *********************MoM*********************
+[Mon Jul 1 15:25:41 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 15:25:41 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 15:25:41 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 15:25:41 2019 Mon][info] Project Name:	test
+[Mon Jul 1 15:25:41 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 15:25:41 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 15:25:41 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 15:25:41 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 15:25:42 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 15:25:42 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 15:25:42 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 15:25:42 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 15:25:42 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 15:25:42 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 15:25:42 2019 Mon][info] Creat Mesh costs	0.035000 s
+[Mon Jul 1 15:25:42 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 15:25:42 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 15:25:42 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 15:25:42 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 15:25:42 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 15:25:42 2019 Mon][info] Load BasicFuntions costs:	     0.022 s
+[Mon Jul 1 15:25:42 2019 Mon][info] Set Green Function
+[Mon Jul 1 15:25:42 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 15:25:42 2019 Mon][info] CFIE is choosen
+
+[Mon Jul 1 15:25:42 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 15:25:42 2019 Mon][info] Initial Solver
+[Mon Jul 1 15:25:43 2019 Mon][info] *********************MoM*********************
+[Mon Jul 1 15:25:43 2019 Mon][info] ************Fill Impedance Matrix************
+[Mon Jul 1 15:27:50 2019 Mon][info] Whole Filling costs	127.205000 s
+[Mon Jul 1 15:27:50 2019 Mon][info] Memory Cost	25.274185 Mb
+[Mon Jul 1 15:27:50 2019 Mon][info] ***************Excitation Info***************
+[Mon Jul 1 15:27:50 2019 Mon][info] Source Type:		PlanewaveLinear
+[Mon Jul 1 15:27:50 2019 Mon][info] Direction:[0.000 0.000 -1.000]
+[Mon Jul 1 15:27:50 2019 Mon][info] Polarization:[0.000 1.000 0.000]
+
+[Mon Jul 1 15:29:53 2019 Mon][info] Set RightHand is cost:	122.813000 s
+[Mon Jul 1 15:29:53 2019 Mon][info] Memory Cost	0.019638 Mb
+[Mon Jul 1 15:29:53 2019 Mon][info] ****************Solution Info****************
+[Mon Jul 1 15:29:53 2019 Mon][info] Solution Type:	BiCGSTAB
+[Mon Jul 1 15:29:53 2019 Mon][info] Preconditioning Type:		Incomplete LU
+[Mon Jul 1 15:29:53 2019 Mon][info] The Maxiteration is:		0
+[Mon Jul 1 15:29:53 2019 Mon][info] The Tolerance is:		1.000000e-04
+[Mon Jul 1 15:29:53 2019 Mon][info] The Final Iteration is:	104
+[Mon Jul 1 15:29:53 2019 Mon][info] The results tolerance is:	9.6542e-05
+[Mon Jul 1 15:29:53 2019 Mon][info] Iteration is cost:	0.680000 s
+[Mon Jul 1 15:29:53 2019 Mon][info] Save BasicFunction in binary type
+[Mon Jul 1 15:29:53 2019 Mon][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 15:29:53 2019 Mon][info] Run CalculateRequest()
+[Mon Jul 1 15:29:53 2019 Mon][info] **********Calcuate the FarField RCS**********
+[Mon Jul 1 15:29:53 2019 Mon][info] RCS of Far Field::	Horizon
+[Mon Jul 1 15:30:07 2019 Mon][info] RCS of Far Field::	VerticalPhi0
+[Mon Jul 1 15:30:13 2019 Mon][info] RCS of Far Field::	VerticalPhi90
+[Mon Jul 1 15:30:20 2019 Mon][info] FarField Calculate cost 26.615000 s
+[Mon Jul 1 15:30:20 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 15:30:20 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 15:30:20 2019 Mon][info] Release Request
+[Mon Jul 1 15:30:20 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 15:31:38 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 15:31:38 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 15:31:38 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 15:31:38 2019 Mon][info] Project Name:	test
+[Mon Jul 1 15:31:38 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 15:31:38 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 15:31:38 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 15:31:38 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 15:31:38 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 15:31:38 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 15:31:38 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 15:31:38 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 15:31:38 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 15:31:38 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 15:31:38 2019 Mon][info] Creat Mesh costs	0.031000 s
+[Mon Jul 1 15:31:38 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 15:31:38 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 15:31:38 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 15:31:38 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 15:31:38 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 15:31:38 2019 Mon][info] Load BasicFuntions costs:	     0.011 s
+[Mon Jul 1 15:31:38 2019 Mon][info] Set Green Function
+[Mon Jul 1 15:31:38 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 15:31:38 2019 Mon][info] CFIE is choosen
+
+[Mon Jul 1 15:31:38 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 15:31:39 2019 Mon][info] Initial Solver
+[Mon Jul 1 15:31:39 2019 Mon][info] *********************MoM*********************
+[Mon Jul 1 15:31:39 2019 Mon][info] ************Fill Impedance Matrix************
+[Mon Jul 1 15:32:53 2019 Mon][info] Whole Filling costs	73.862000 s
+[Mon Jul 1 15:32:53 2019 Mon][info] Memory Cost	25.274185 Mb
+[Mon Jul 1 15:32:53 2019 Mon][info] ***************Excitation Info***************
+[Mon Jul 1 15:32:53 2019 Mon][info] Source Type:		PlanewaveLinear
+[Mon Jul 1 15:32:53 2019 Mon][info] Direction:[0.000 0.000 -1.000]
+[Mon Jul 1 15:32:53 2019 Mon][info] Polarization:[0.000 1.000 0.000]
+
+[Mon Jul 1 15:32:53 2019 Mon][info] Set RightHand is cost:	0.041000 s
+[Mon Jul 1 15:32:53 2019 Mon][info] Memory Cost	0.019638 Mb
+[Mon Jul 1 15:32:53 2019 Mon][info] ****************Solution Info****************
+[Mon Jul 1 15:32:53 2019 Mon][info] Solution Type:	BiCGSTAB
+[Mon Jul 1 15:32:53 2019 Mon][info] Preconditioning Type:		Incomplete LU
+[Mon Jul 1 15:32:53 2019 Mon][info] The Maxiteration is:		0
+[Mon Jul 1 15:32:53 2019 Mon][info] The Tolerance is:		1.000000e-04
+[Mon Jul 1 15:32:54 2019 Mon][info] The Final Iteration is:	110
+[Mon Jul 1 15:32:54 2019 Mon][info] The results tolerance is:	9.6014e-05
+[Mon Jul 1 15:32:54 2019 Mon][info] Iteration is cost:	0.657000 s
+[Mon Jul 1 15:32:54 2019 Mon][info] Save BasicFunction in binary type
+[Mon Jul 1 15:32:54 2019 Mon][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 15:32:54 2019 Mon][info] Run CalculateRequest()
+[Mon Jul 1 15:32:54 2019 Mon][info] **********Calcuate the FarField RCS**********
+[Mon Jul 1 15:32:54 2019 Mon][info] RCS of Far Field::	Horizon
+[Mon Jul 1 15:33:07 2019 Mon][info] RCS of Far Field::	VerticalPhi0
+[Mon Jul 1 15:33:14 2019 Mon][info] RCS of Far Field::	VerticalPhi90
+[Mon Jul 1 15:33:20 2019 Mon][info] FarField Calculate cost 26.774000 s
+[Mon Jul 1 15:33:20 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 15:33:20 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 15:33:20 2019 Mon][info] Release Request
+[Mon Jul 1 15:33:20 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 15:50:20 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 15:50:20 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 15:50:20 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 15:50:20 2019 Mon][info] Project Name:	test
+[Mon Jul 1 15:50:20 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 15:50:20 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 15:50:20 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 15:50:20 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 15:50:20 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 15:50:20 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 15:50:20 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 15:50:20 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 15:50:20 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 15:50:20 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 15:50:20 2019 Mon][info] Creat Mesh costs	0.047000 s
+[Mon Jul 1 15:50:20 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 15:50:20 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 15:50:20 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 15:50:20 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 15:50:20 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 15:50:20 2019 Mon][info] Load BasicFuntions costs:	     0.011 s
+[Mon Jul 1 15:50:20 2019 Mon][info] Set Green Function
+[Mon Jul 1 15:50:20 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 15:50:20 2019 Mon][info] CFIE is choosen
+
+[Mon Jul 1 15:50:20 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 15:50:21 2019 Mon][info] Initial Solver
+[Mon Jul 1 15:50:21 2019 Mon][info] *********************MoM*********************
+[Mon Jul 1 15:50:21 2019 Mon][info] ************Fill Impedance Matrix************
+[Mon Jul 1 15:51:36 2019 Mon][info] Whole Filling costs	74.749000 s
+[Mon Jul 1 15:51:36 2019 Mon][info] Memory Cost	25.274185 Mb
+[Mon Jul 1 15:51:36 2019 Mon][info] ***************Excitation Info***************
+[Mon Jul 1 15:51:36 2019 Mon][info] Source Type:		PlanewaveLinear
+[Mon Jul 1 15:51:36 2019 Mon][info] Direction:[0.000 0.000 -1.000]
+[Mon Jul 1 15:51:36 2019 Mon][info] Polarization:[0.000 1.000 0.000]
+
+[Mon Jul 1 15:51:36 2019 Mon][info] Set RightHand is cost:	0.042000 s
+[Mon Jul 1 15:51:36 2019 Mon][info] Memory Cost	0.019638 Mb
+[Mon Jul 1 15:51:36 2019 Mon][info] ****************Solution Info****************
+[Mon Jul 1 15:51:36 2019 Mon][info] Solution Type:	BiCGSTAB
+[Mon Jul 1 15:51:36 2019 Mon][info] Preconditioning Type:		Incomplete LU
+[Mon Jul 1 15:51:36 2019 Mon][info] The Maxiteration is:		0
+[Mon Jul 1 15:51:36 2019 Mon][info] The Tolerance is:		1.000000e-04
+[Mon Jul 1 15:51:37 2019 Mon][info] The Final Iteration is:	192
+[Mon Jul 1 15:51:37 2019 Mon][info] The results tolerance is:	8.5996e-05
+[Mon Jul 1 15:51:37 2019 Mon][info] Iteration is cost:	1.218000 s
+[Mon Jul 1 15:51:37 2019 Mon][info] Save BasicFunction in binary type
+[Mon Jul 1 15:51:37 2019 Mon][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 15:51:37 2019 Mon][info] Run CalculateRequest()
+[Mon Jul 1 15:51:37 2019 Mon][info] **********Calcuate the FarField RCS**********
+[Mon Jul 1 15:51:37 2019 Mon][info] RCS of Far Field::	Horizon
+[Mon Jul 1 15:51:50 2019 Mon][info] RCS of Far Field::	VerticalPhi0
+[Mon Jul 1 15:51:57 2019 Mon][info] RCS of Far Field::	VerticalPhi90
+[Mon Jul 1 15:52:03 2019 Mon][info] FarField Calculate cost 26.473000 s
+[Mon Jul 1 15:52:03 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 15:52:03 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 15:52:03 2019 Mon][info] Release Request
+[Mon Jul 1 15:52:03 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 17:06:12 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 17:06:12 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 17:06:12 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 17:06:12 2019 Mon][info] Project Name:	test
+[Mon Jul 1 17:06:12 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 17:06:12 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 17:06:12 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 17:06:12 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 17:06:13 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 17:06:13 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 17:06:13 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 17:06:13 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 17:06:13 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 17:06:13 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 17:06:13 2019 Mon][info] Creat Mesh costs	0.045000 s
+[Mon Jul 1 17:06:13 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 17:06:13 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 17:06:13 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 17:06:13 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 17:06:13 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 17:06:13 2019 Mon][info] Load BasicFuntions costs:	      0.01 s
+[Mon Jul 1 17:06:13 2019 Mon][info] Set Green Function
+[Mon Jul 1 17:06:13 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 17:06:13 2019 Mon][info] CFIE is choosen
+
+[Mon Jul 1 17:06:13 2019 Mon][info] Alpha is 0.25
+[Mon Jul 1 17:06:13 2019 Mon][info] Eta is 376.991
+[Mon Jul 1 17:06:13 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 17:06:13 2019 Mon][info] Initial Solver
+[Mon Jul 1 17:06:13 2019 Mon][info] *********************MoM*********************
+[Mon Jul 1 17:06:13 2019 Mon][info] ************Fill Impedance Matrix************
+[Mon Jul 1 17:07:27 2019 Mon][info] Whole Filling costs	73.919000 s
+[Mon Jul 1 17:07:27 2019 Mon][info] Memory Cost	25.274185 Mb
+[Mon Jul 1 17:07:27 2019 Mon][info] ***************Excitation Info***************
+[Mon Jul 1 17:07:27 2019 Mon][info] Source Type:		PlanewaveLinear
+[Mon Jul 1 17:07:27 2019 Mon][info] Direction:[0.000 0.000 -1.000]
+[Mon Jul 1 17:07:27 2019 Mon][info] Polarization:[0.000 1.000 0.000]
+
+[Mon Jul 1 17:07:27 2019 Mon][info] Set RightHand is cost:	0.044000 s
+[Mon Jul 1 17:07:27 2019 Mon][info] Memory Cost	0.019638 Mb
+[Mon Jul 1 17:07:27 2019 Mon][info] ****************Solution Info****************
+[Mon Jul 1 17:07:27 2019 Mon][info] Solution Type:	BiCGSTAB
+[Mon Jul 1 17:07:27 2019 Mon][info] Preconditioning Type:		Jacobi
+[Mon Jul 1 17:07:27 2019 Mon][info] The Maxiteration is:		0
+[Mon Jul 1 17:07:27 2019 Mon][info] The Tolerance is:		1.000000e-04
+[Mon Jul 1 17:07:28 2019 Mon][info] The Final Iteration is:	99
+[Mon Jul 1 17:07:28 2019 Mon][info] The results tolerance is:	7.5621e-05
+[Mon Jul 1 17:07:28 2019 Mon][info] Iteration is cost:	0.632000 s
+[Mon Jul 1 17:07:28 2019 Mon][info] Save BasicFunction in binary type
+[Mon Jul 1 17:07:28 2019 Mon][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 17:07:28 2019 Mon][info] Run CalculateRequest()
+[Mon Jul 1 17:07:28 2019 Mon][info] **********Calcuate the FarField RCS**********
+[Mon Jul 1 17:07:28 2019 Mon][info] RCS of Far Field::	Horizon
+[Mon Jul 1 17:07:42 2019 Mon][info] RCS of Far Field::	VerticalPhi0
+[Mon Jul 1 17:07:48 2019 Mon][info] RCS of Far Field::	VerticalPhi90
+[Mon Jul 1 17:07:55 2019 Mon][info] FarField Calculate cost 26.998000 s
+[Mon Jul 1 17:07:55 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 17:07:55 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 17:07:55 2019 Mon][info] Release Request
+[Mon Jul 1 17:07:55 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 17:12:16 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 17:12:16 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 17:12:16 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 17:12:16 2019 Mon][info] Project Name:	test
+[Mon Jul 1 17:12:16 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 17:12:16 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 17:12:16 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 17:12:16 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 17:12:16 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 17:12:16 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 17:12:16 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 17:12:16 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 17:12:16 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 17:12:16 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 17:12:16 2019 Mon][info] Creat Mesh costs	0.035000 s
+[Mon Jul 1 17:12:16 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 17:12:16 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 17:12:16 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 17:12:16 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 17:12:16 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 17:12:16 2019 Mon][info] Load BasicFuntions costs:	     0.011 s
+[Mon Jul 1 17:12:16 2019 Mon][info] Set Green Function
+[Mon Jul 1 17:12:16 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 17:12:16 2019 Mon][info] CFIE is choosen
+[Mon Jul 1 17:12:16 2019 Mon][info] Alpha is 0.25
+[Mon Jul 1 17:12:16 2019 Mon][info] Eta is 376.991
+[Mon Jul 1 17:12:16 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 17:12:17 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 17:12:17 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 17:12:17 2019 Mon][info] Release Request
+[Mon Jul 1 17:12:17 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 19:53:47 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 19:53:47 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 19:53:47 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 19:53:47 2019 Mon][info] Project Name:	test
+[Mon Jul 1 19:53:47 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 19:53:47 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 19:53:47 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 19:53:47 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 19:53:47 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 19:53:47 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 19:53:47 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 19:53:47 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 19:53:47 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 19:53:47 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 19:53:47 2019 Mon][info] Creat Mesh costs	0.039000 s
+[Mon Jul 1 19:53:47 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 19:53:47 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 19:53:47 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 19:53:47 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 19:53:47 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 19:53:47 2019 Mon][info] Load BasicFuntions costs:	     0.012 s
+[Mon Jul 1 19:53:47 2019 Mon][info] Set Green Function
+[Mon Jul 1 19:53:47 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 19:53:47 2019 Mon][info] EFIE is choosen
+[Mon Jul 1 19:53:47 2019 Mon][info] Alpha is 0.25
+[Mon Jul 1 19:53:47 2019 Mon][info] Eta is 376.991
+[Mon Jul 1 19:53:47 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 19:53:47 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 19:53:47 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 19:53:47 2019 Mon][info] Release Request
+[Mon Jul 1 19:53:47 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 19:54:27 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 19:54:27 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 19:54:27 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 19:54:27 2019 Mon][info] Project Name:	test
+[Mon Jul 1 19:54:27 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 19:54:27 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 19:54:27 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 19:54:27 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 19:54:27 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 19:54:27 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 19:54:27 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 19:54:27 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 19:54:27 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 19:54:27 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 19:54:27 2019 Mon][info] Creat Mesh costs	0.044000 s
+[Mon Jul 1 19:54:27 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 19:54:27 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 19:54:27 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 19:54:27 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 19:54:27 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 19:54:27 2019 Mon][info] Load BasicFuntions costs:	     0.013 s
+[Mon Jul 1 19:54:27 2019 Mon][info] Set Green Function
+[Mon Jul 1 19:54:27 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 19:54:27 2019 Mon][info] EFIE is choosen
+[Mon Jul 1 19:54:27 2019 Mon][info] Alpha is 0.25
+[Mon Jul 1 19:54:27 2019 Mon][info] Eta is 376.991
+[Mon Jul 1 19:54:27 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 19:54:28 2019 Mon][info] Initial Solver
+[Mon Jul 1 19:54:28 2019 Mon][info] *********************MoM*********************
+[Mon Jul 1 19:54:28 2019 Mon][info] ************Fill Impedance Matrix************
+[Mon Jul 1 19:54:53 2019 Mon][info] Whole Filling costs	25.365000 s
+[Mon Jul 1 19:54:53 2019 Mon][info] Memory Cost	25.274185 Mb
+[Mon Jul 1 19:54:53 2019 Mon][info] ***************Excitation Info***************
+[Mon Jul 1 19:54:53 2019 Mon][info] Source Type:		PlanewaveLinear
+[Mon Jul 1 19:54:53 2019 Mon][info] Direction:[0.000 0.000 -1.000]
+[Mon Jul 1 19:54:53 2019 Mon][info] Polarization:[0.000 1.000 0.000]
+
+[Mon Jul 1 19:54:53 2019 Mon][info] Set RightHand is cost:	0.023000 s
+[Mon Jul 1 19:54:53 2019 Mon][info] Memory Cost	0.019638 Mb
+[Mon Jul 1 19:54:53 2019 Mon][info] ****************Solution Info****************
+[Mon Jul 1 19:54:53 2019 Mon][info] Solution Type:	BiCGSTAB
+[Mon Jul 1 19:54:53 2019 Mon][info] Preconditioning Type:		Jacobi
+[Mon Jul 1 19:54:53 2019 Mon][info] The Maxiteration is:		0
+[Mon Jul 1 19:54:53 2019 Mon][info] The Tolerance is:		1.000000e-04
+[Mon Jul 1 19:54:54 2019 Mon][info] The Final Iteration is:	167
+[Mon Jul 1 19:54:54 2019 Mon][info] The results tolerance is:	9.8460e-05
+[Mon Jul 1 19:54:54 2019 Mon][info] Iteration is cost:	0.981000 s
+[Mon Jul 1 19:54:54 2019 Mon][info] Save BasicFunction in binary type
+[Mon Jul 1 19:54:54 2019 Mon][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 19:54:54 2019 Mon][info] Run CalculateRequest()
+[Mon Jul 1 19:54:54 2019 Mon][info] **********Calcuate the FarField RCS**********
+[Mon Jul 1 19:54:54 2019 Mon][info] RCS of Far Field::	Horizon
+[Mon Jul 1 19:55:08 2019 Mon][info] RCS of Far Field::	VerticalPhi0
+[Mon Jul 1 19:55:15 2019 Mon][info] RCS of Far Field::	VerticalPhi90
+[Mon Jul 1 19:55:21 2019 Mon][info] FarField Calculate cost 26.935000 s
+[Mon Jul 1 19:55:21 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 19:55:21 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 19:55:21 2019 Mon][info] Release Request
+[Mon Jul 1 19:55:21 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 19:57:36 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 19:57:36 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 19:57:36 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 19:57:36 2019 Mon][info] Project Name:	test
+[Mon Jul 1 19:57:36 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 19:57:36 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 19:57:36 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 19:57:36 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 19:57:36 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 19:57:36 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 19:57:36 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 19:57:36 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 19:57:36 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 19:57:36 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 19:57:36 2019 Mon][info] Creat Mesh costs	0.036000 s
+[Mon Jul 1 19:57:36 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 19:57:36 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 19:57:36 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 19:57:36 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 19:57:36 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 19:57:36 2019 Mon][info] Load BasicFuntions costs:	     0.008 s
+[Mon Jul 1 19:57:36 2019 Mon][info] Set Green Function
+[Mon Jul 1 19:57:36 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 19:57:36 2019 Mon][info] CFIE is choosen
+[Mon Jul 1 19:57:36 2019 Mon][info] Alpha is 0.25
+[Mon Jul 1 19:57:36 2019 Mon][info] Eta is 376.991
+[Mon Jul 1 19:57:36 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 19:57:37 2019 Mon][info] Initial Solver
+[Mon Jul 1 19:57:37 2019 Mon][info] *********************MoM*********************
+[Mon Jul 1 19:57:37 2019 Mon][info] ************Fill Impedance Matrix************
+[Mon Jul 1 19:58:50 2019 Mon][info] Whole Filling costs	73.034000 s
+[Mon Jul 1 19:58:50 2019 Mon][info] Memory Cost	25.274185 Mb
+[Mon Jul 1 19:58:50 2019 Mon][info] ***************Excitation Info***************
+[Mon Jul 1 19:58:50 2019 Mon][info] Source Type:		PlanewaveLinear
+[Mon Jul 1 19:58:50 2019 Mon][info] Direction:[0.000 0.000 -1.000]
+[Mon Jul 1 19:58:50 2019 Mon][info] Polarization:[0.000 1.000 0.000]
+
+[Mon Jul 1 19:58:50 2019 Mon][info] Set RightHand is cost:	0.047000 s
+[Mon Jul 1 19:58:50 2019 Mon][info] Memory Cost	0.019638 Mb
+[Mon Jul 1 19:58:50 2019 Mon][info] ****************Solution Info****************
+[Mon Jul 1 19:58:50 2019 Mon][info] Solution Type:	BiCGSTAB
+[Mon Jul 1 19:58:50 2019 Mon][info] Preconditioning Type:		Jacobi
+[Mon Jul 1 19:58:50 2019 Mon][info] The Maxiteration is:		0
+[Mon Jul 1 19:58:50 2019 Mon][info] The Tolerance is:		1.000000e-04
+[Mon Jul 1 19:58:51 2019 Mon][info] The Final Iteration is:	99
+[Mon Jul 1 19:58:51 2019 Mon][info] The results tolerance is:	7.5621e-05
+[Mon Jul 1 19:58:51 2019 Mon][info] Iteration is cost:	0.722000 s
+[Mon Jul 1 19:58:51 2019 Mon][info] Save BasicFunction in binary type
+[Mon Jul 1 19:58:51 2019 Mon][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 19:58:51 2019 Mon][info] Run CalculateRequest()
+[Mon Jul 1 19:58:51 2019 Mon][info] **********Calcuate the FarField RCS**********
+[Mon Jul 1 19:58:51 2019 Mon][info] RCS of Far Field::	Horizon
+[Mon Jul 1 19:59:05 2019 Mon][info] RCS of Far Field::	VerticalPhi0
+[Mon Jul 1 19:59:12 2019 Mon][info] RCS of Far Field::	VerticalPhi90
+[Mon Jul 1 19:59:19 2019 Mon][info] FarField Calculate cost 27.980000 s
+[Mon Jul 1 19:59:19 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 19:59:19 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 19:59:19 2019 Mon][info] Release Request
+[Mon Jul 1 19:59:19 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 20:00:45 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 20:00:45 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 20:00:45 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 20:00:45 2019 Mon][info] Project Name:	test
+[Mon Jul 1 20:00:45 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 20:00:45 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 20:00:45 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 20:00:45 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 20:00:45 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 20:00:45 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 20:00:45 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 20:00:45 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 20:00:45 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 20:00:45 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 20:00:45 2019 Mon][info] Creat Mesh costs	0.053000 s
+[Mon Jul 1 20:00:45 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 20:00:45 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 20:00:45 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 20:00:46 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 20:00:46 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 20:00:46 2019 Mon][info] Load BasicFuntions costs:	      0.01 s
+[Mon Jul 1 20:00:46 2019 Mon][info] Set Green Function
+[Mon Jul 1 20:00:46 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 20:00:46 2019 Mon][info] CFIE is choosen
+[Mon Jul 1 20:00:46 2019 Mon][info] Alpha is 0.3
+[Mon Jul 1 20:00:46 2019 Mon][info] Eta is 376.991
+[Mon Jul 1 20:00:46 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 20:00:46 2019 Mon][info] Initial Solver
+[Mon Jul 1 20:00:46 2019 Mon][info] *********************MoM*********************
+[Mon Jul 1 20:00:46 2019 Mon][info] ************Fill Impedance Matrix************
+[Mon Jul 1 20:01:59 2019 Mon][info] Whole Filling costs	72.308000 s
+[Mon Jul 1 20:01:59 2019 Mon][info] Memory Cost	25.274185 Mb
+[Mon Jul 1 20:01:59 2019 Mon][info] ***************Excitation Info***************
+[Mon Jul 1 20:01:59 2019 Mon][info] Source Type:		PlanewaveLinear
+[Mon Jul 1 20:01:59 2019 Mon][info] Direction:[0.000 0.000 -1.000]
+[Mon Jul 1 20:01:59 2019 Mon][info] Polarization:[0.000 1.000 0.000]
+
+[Mon Jul 1 20:01:59 2019 Mon][info] Set RightHand is cost:	0.041000 s
+[Mon Jul 1 20:01:59 2019 Mon][info] Memory Cost	0.019638 Mb
+[Mon Jul 1 20:01:59 2019 Mon][info] ****************Solution Info****************
+[Mon Jul 1 20:01:59 2019 Mon][info] Solution Type:	BiCGSTAB
+[Mon Jul 1 20:01:59 2019 Mon][info] Preconditioning Type:		Jacobi
+[Mon Jul 1 20:01:59 2019 Mon][info] The Maxiteration is:		0
+[Mon Jul 1 20:01:59 2019 Mon][info] The Tolerance is:		1.000000e-04
+[Mon Jul 1 20:01:59 2019 Mon][info] The Final Iteration is:	109
+[Mon Jul 1 20:01:59 2019 Mon][info] The results tolerance is:	8.6727e-05
+[Mon Jul 1 20:01:59 2019 Mon][info] Iteration is cost:	0.643000 s
+[Mon Jul 1 20:01:59 2019 Mon][info] Save BasicFunction in binary type
+[Mon Jul 1 20:01:59 2019 Mon][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 20:01:59 2019 Mon][info] Run CalculateRequest()
+[Mon Jul 1 20:01:59 2019 Mon][info] **********Calcuate the FarField RCS**********
+[Mon Jul 1 20:01:59 2019 Mon][info] RCS of Far Field::	Horizon
+[Mon Jul 1 20:02:13 2019 Mon][info] RCS of Far Field::	VerticalPhi0
+[Mon Jul 1 20:02:20 2019 Mon][info] RCS of Far Field::	VerticalPhi90
+[Mon Jul 1 20:02:26 2019 Mon][info] FarField Calculate cost 27.037000 s
+[Mon Jul 1 20:02:26 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 20:02:26 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 20:02:26 2019 Mon][info] Release Request
+[Mon Jul 1 20:02:26 2019 Mon][info] ---------------------END---------------------
+[Mon Jul 1 21:10:42 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 21:10:42 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 21:10:42 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 21:10:42 2019 Mon][info] Project Name:	test
+[Mon Jul 1 21:10:42 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 21:10:42 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 21:10:42 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 21:10:42 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 21:10:42 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 21:10:42 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 21:10:42 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 21:10:42 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 21:10:42 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 21:10:42 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 21:10:42 2019 Mon][info] Creat Mesh costs	0.035000 s
+[Mon Jul 1 21:10:42 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 21:10:42 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 21:10:42 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 21:10:42 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 21:10:42 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 21:10:42 2019 Mon][info] Load BasicFuntions costs:	     0.009 s
+[Mon Jul 1 21:10:42 2019 Mon][info] Set Green Function
+[Mon Jul 1 21:10:42 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 21:10:42 2019 Mon][info] CFIE is choosen
+[Mon Jul 1 21:10:42 2019 Mon][info] Alpha is 0.3
+[Mon Jul 1 21:10:42 2019 Mon][info] Eta is 376.991
+[Mon Jul 1 21:10:42 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 21:10:43 2019 Mon][info] Initial Solver
+[Mon Jul 1 21:10:43 2019 Mon][info] *********************MoM*********************
+[Mon Jul 1 21:12:50 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 21:12:50 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 21:12:50 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 21:12:50 2019 Mon][info] Project Name:	test
+[Mon Jul 1 21:12:50 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 21:12:50 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 21:12:50 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 21:12:50 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 21:12:50 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 21:12:50 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 21:12:50 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 21:12:50 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 21:12:50 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 21:12:50 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 21:12:50 2019 Mon][info] Creat Mesh costs	0.032000 s
+[Mon Jul 1 21:12:50 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 21:12:50 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 21:12:50 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 21:12:50 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 21:12:50 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 21:12:50 2019 Mon][info] Load BasicFuntions costs:	     0.017 s
+[Mon Jul 1 21:12:50 2019 Mon][info] Set Green Function
+[Mon Jul 1 21:12:50 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 21:12:50 2019 Mon][info] CFIE is choosen
+[Mon Jul 1 21:12:50 2019 Mon][info] Alpha is 0.3
+[Mon Jul 1 21:12:50 2019 Mon][info] Eta is 376.991
+[Mon Jul 1 21:12:50 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 21:12:51 2019 Mon][info] Initial Solver
+[Mon Jul 1 21:12:51 2019 Mon][info] *********************MoM*********************
+[Mon Jul 1 21:13:49 2019 Mon][info] *************Read Configuration**************
+[Mon Jul 1 21:13:49 2019 Mon][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 21:13:49 2019 Mon][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Mon Jul 1 21:13:49 2019 Mon][info] Project Name:	test
+[Mon Jul 1 21:13:49 2019 Mon][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Mon Jul 1 21:13:49 2019 Mon][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 21:13:49 2019 Mon][info] Frequency:	3.000000e+08
+[Mon Jul 1 21:13:49 2019 Mon][info] ********************Mesh*********************
+[Mon Jul 1 21:13:49 2019 Mon][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Mon Jul 1 21:13:49 2019 Mon][info] Number of Nodes:			         431
+[Mon Jul 1 21:13:49 2019 Mon][info] Number of Triangles:			         858
+[Mon Jul 1 21:13:49 2019 Mon][info] Number of Segments:			           0
+[Mon Jul 1 21:13:49 2019 Mon][info] Number of Cuboids:			           0
+[Mon Jul 1 21:13:49 2019 Mon][info] Number of Tetrahedras:			           0
+
+[Mon Jul 1 21:13:49 2019 Mon][info] Creat Mesh costs	0.047000 s
+[Mon Jul 1 21:13:49 2019 Mon][info] ****************Geometry Info****************)
+[Mon Jul 1 21:13:49 2019 Mon][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Mon Jul 1 21:13:49 2019 Mon][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Mon Jul 1 21:13:49 2019 Mon][info] Choose RWG Function as BasicFunction
+
+[Mon Jul 1 21:13:49 2019 Mon][info] The number of BasicFuntions is:	1287
+[Mon Jul 1 21:13:49 2019 Mon][info] Load BasicFuntions costs:	     0.008 s
+[Mon Jul 1 21:13:49 2019 Mon][info] Set Green Function
+[Mon Jul 1 21:13:49 2019 Mon][info] Free Space Green Function is choosen
+
+[Mon Jul 1 21:13:49 2019 Mon][info] CFIE is choosen
+[Mon Jul 1 21:13:49 2019 Mon][info] Alpha is 0.3
+[Mon Jul 1 21:13:49 2019 Mon][info] Eta is 376.991
+[Mon Jul 1 21:13:49 2019 Mon][info] Begin to pre-compute the SelfTriangle Impedance
+[Mon Jul 1 21:13:50 2019 Mon][info] Initial Solver
+[Mon Jul 1 21:13:50 2019 Mon][info] *********************MoM*********************
+[Mon Jul 1 21:13:50 2019 Mon][info] ************Fill Impedance Matrix************
+[Mon Jul 1 21:17:26 2019 Mon][info] Whole Filling costs	216.200000 s
+[Mon Jul 1 21:17:26 2019 Mon][info] Memory Cost	25.274185 Mb
+[Mon Jul 1 21:17:26 2019 Mon][info] ***************Excitation Info***************
+[Mon Jul 1 21:17:26 2019 Mon][info] Source Type:		PlanewaveLinear
+[Mon Jul 1 21:17:26 2019 Mon][info] Direction:[0.000 0.000 -1.000]
+[Mon Jul 1 21:17:26 2019 Mon][info] Polarization:[0.000 1.000 0.000]
+
+[Mon Jul 1 21:17:26 2019 Mon][info] Set RightHand is cost:	0.035000 s
+[Mon Jul 1 21:17:26 2019 Mon][info] Memory Cost	0.019638 Mb
+[Mon Jul 1 21:17:26 2019 Mon][info] ****************Solution Info****************
+[Mon Jul 1 21:17:26 2019 Mon][info] Solution Type:	BiCGSTAB
+[Mon Jul 1 21:17:26 2019 Mon][info] Preconditioning Type:		Jacobi
+[Mon Jul 1 21:17:26 2019 Mon][info] The Maxiteration is:		0
+[Mon Jul 1 21:17:26 2019 Mon][info] The Tolerance is:		1.000000e-04
+[Mon Jul 1 21:17:27 2019 Mon][info] The Final Iteration is:	111
+[Mon Jul 1 21:17:27 2019 Mon][info] The results tolerance is:	8.6646e-05
+[Mon Jul 1 21:17:27 2019 Mon][info] Iteration is cost:	0.715000 s
+[Mon Jul 1 21:17:27 2019 Mon][info] Save BasicFunction in binary type
+[Mon Jul 1 21:17:27 2019 Mon][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Mon Jul 1 21:17:27 2019 Mon][info] Run CalculateRequest()
+[Mon Jul 1 21:17:27 2019 Mon][info] **********Calcuate the FarField RCS**********
+[Mon Jul 1 21:17:27 2019 Mon][info] RCS of Far Field::	Horizon
+[Mon Jul 1 21:17:41 2019 Mon][info] RCS of Far Field::	VerticalPhi0
+[Mon Jul 1 21:17:48 2019 Mon][info] RCS of Far Field::	VerticalPhi90
+[Mon Jul 1 21:17:55 2019 Mon][info] FarField Calculate cost 27.997000 s
+[Mon Jul 1 21:17:55 2019 Mon][info] *************Release the memory**************
+[Mon Jul 1 21:17:55 2019 Mon][info] Release BasicFunction
+[Mon Jul 1 21:17:55 2019 Mon][info] Release Request
+[Mon Jul 1 21:17:55 2019 Mon][info] ---------------------END---------------------

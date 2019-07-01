@@ -12,3 +12,5 @@ Core::SystemConfiguration Core::SystemConfig;
 Core::AIMAssist::TeoplitzAssist* Core::Tools::TeoplitzMultiplicator = nullptr;
 
 Core::Solution::ISolver* Core::Solver=nullptr;
+
+Core::IE* Core::equation = nullptr;

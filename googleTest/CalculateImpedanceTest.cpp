@@ -23,12 +23,12 @@ public:
 		if (!Core::IGreen::GetInstance())EXPECT_EQ(0, Core::SetGreenFunction());
 		ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
 
-		computeCore= new RWGImpOperator(Core::k, Core::W4, Core::W7, Core::eta);
+		computeCore = new RWGImpOperator(Core::k, Core::W4, Core::W7, Core::eta);
 	}
 
 	static void TearDownTestCase()
 	{
-		if(computeCore)
+		if (computeCore)
 		{
 			delete computeCore;
 			computeCore = nullptr;
@@ -303,9 +303,16 @@ TEST_F(CalculateImpedanceTest, MFIETest)
 		}
 		//Identity
 		int Tri[12] = { 152,229,238,111,2,45,450,95,74,1,33,41 };
-		double Ref[3][12] = { 7.30173378194571e-06,-1.27005523304619e-05,-1.10387570063216e-05,-1.07514424294795e-05,9.05976989258280e-06,1.38597894777092e-05,2.05752456726542e-05,-8.74271853371352e-06,1.29003710532479e-05,1.32595371148482e-05,1.50881602388806e-05,8.98318002252817e-06,
-			9.68416383872031e-06,1.14990228010353e-05,9.52911872511644e-06,1.59552361339938e-05,-9.61971313260261e-06 ,-1.17280951262029e-05,1.90320939800705e-05,1.07369745790113e-05,-1.44802810552448e-05,1.60989571265442e-05,-2.03917915075270e-05,1.12277278512948e-05,
-			-8.93344897993791e-06,8.08358881193640e-06,8.87727809580084e-06,1.26107151757301e-05,1.08950766842177e-05,1.17473151251773e-05,-1.86240278373169e-05,1.30789066293079e-05,1.25005597843793e-05,-1.41672123877951e-05,1.51961705806829e-05,-1.10131374134875e-05
+		double Ref[3][12] = {
+			0.00157480639720404,-0.00258728365825092,-0.00220722312235337,-0.00190501834353101,
+			0.00180267873509308,0.00245391421235691,0.00290361437918257,-0.00171148893910253,
+			0.00220520613453045,0.00217637497322464,0.00232324748090940,0.00175497320424492,
+	0.00208863861929583,0.00234251495563825,0.00190536771247727,0.00282706415534408,
+	-0.00191409412241646,-0.00207649180821613,0.00268584213407149,0.00210188777787376,
+	-0.00247527799634194,0.00264242764145906,-0.00313989098081097,0.00219347285417433,
+			-0.00192672768178537,0.00164674233757378,0.00177503078158090,0.00223445773833473,
+			0.00216786113650934,0.00207989476240389,-0.00262825513177719,0.00256034824240274,
+			0.00213686187845252,-0.00232535768134982,0.00233987871696016,-0.00215155000866812
 		};
 		Console->info("OperatorIdentity Test");
 		for (int i = 0; i < 12; ++i)
@@ -318,7 +325,8 @@ TEST_F(CalculateImpedanceTest, MFIETest)
 			{
 				//auto s = std::get<0>(*val), f = std::get<1>(*val);
 				const auto value = std::get<2>(*val);
-				double ref = Ref[count++][i];
+				double ref =0.5* Ref[count++][i];
+				++val;
 				EXPECT_LE(abs((value - ref) / ref), 1.e-2) << "Ref: " << ref << "value: " << value;
 			}
 		}
@@ -332,5 +340,37 @@ TEST_F(CalculateImpedanceTest, MFIETest)
 	}
 }
 
+TEST_F(CalculateImpedanceTest, DataTest)
+{
+	auto mesh = Mesh::GetInstance();
 
+	//OperatorKTest
+	int row[6] = { 65,102,105,49,11,18 }, col[6] = { 227,791,335,358,140,21 }, RWGID[6] = { 152,229,238,111,28,45 };
+	vector<element> Z;
+	for (int i = 0; i < 6; ++i) {
+		auto field = dynamic_cast<RWGTriangle*>(mesh->GetTriangle(row[i]));
+		auto source = dynamic_cast<RWGTriangle*>(mesh->GetTriangle(col[i]));
+		Console->debug("Test Couple between T{0} and T{1}", field->ID(), source->ID());
+
+		Z.clear();
+		for (short i1 = 0; i1 < 3; i1++)
+		{
+			if (!field->RWGSign[i1])continue;
+			for (short j1 = 0; j1 < 3; j1++)
+			{
+				if (!source->RWGSign[j1])continue;
+				Z.push_back({ i1, j1, field->RWGSign[i1] * source->RWGSign[j1] });
+			}
+		}
+
+		computeCore->OperatorK(field, source, Z);
+
+		for (auto val = Z.cbegin();val != Z.cend();++val)
+		{
+			int s = std::get<0>(*val), f = std::get<1>(*val);
+			dcomplex value = std::get<2>(*val);
+			if (s == RWGID[i] && f == RWGID[i])Console->debug("({0},{1})",2*value.real(),2*value.imag());				
+		}
+	}
+}
 #endif

@@ -27,7 +27,7 @@ namespace Core
 	extern double k;
 	extern double Lambda;
 	extern double eta;
-	extern double alpha;//CFIE coefficients
+	//extern double alpha;//CFIE coefficients
 	
 	//Quad
 #pragma region Quad

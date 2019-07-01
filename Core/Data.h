@@ -7,6 +7,7 @@
 #include "TeoplitzAssist.h"
 #include "ISolver.h"
 #include "Excitation.h"
+#include "IEKernel.h"
 namespace Core
 {
 	struct ComponentList 
@@ -25,9 +26,11 @@ namespace Core
 		int BasicFunctionType = 0;
 		ImpConfiguration ImpConfig;
 		GreenConfiguration GreenConfig;
+		IEConfiguration IEConfig;
 		Source::ISource* SourceConfig=nullptr;
-		Solution::SolverConfiguration SolverConfig;
+		Solution::SolverConfiguration SolverConfig;		
 		list<Request::FarFieldConfiguration> PostConfig;
+		
 	};
 	
 	extern SystemConfiguration SystemConfig;
@@ -38,5 +41,6 @@ namespace Core
 	};
 
 	extern Solution::ISolver*Solver;
+	extern IE*equation;
 }
 

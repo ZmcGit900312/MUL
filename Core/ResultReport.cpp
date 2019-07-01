@@ -160,3 +160,22 @@ void Core::ResultReport::WriteRequestInformation(Request::FarFieldConfiguration 
 {
 	log->info("RCS of Far Field::\t" + config->FarFileName);
 }
+
+void Core::ResultReport::WirteIEInformation(IEConfiguration * config, shared_ptr<spd::logger> log)
+{
+	switch (config->type)
+	{
+	case EFIE: log->info("EFIE is choosen");break;
+	case MFIE: log->info("MFIE is choosen");break;
+	case CFIE: log->info("CFIE is choosen");
+		log->info("Alpha is {}", config->Alpha);
+		log->info("Eta is {}", config->Eta);
+		break;
+	case IBCEFIE: throw spdlog::spdlog_ex("IBCEFIE is not developing!");
+	case IBCMFIE: throw spdlog::spdlog_ex("IBCMFIE is not developing!");
+	case IBCCFIE:throw spdlog::spdlog_ex("IBCCFIE is not developing!");
+	default: throw spdlog::spdlog_ex("Other IE is not developing!");
+	}
+	
+
+}

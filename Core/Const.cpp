@@ -12,4 +12,4 @@ double  Core::Omega = 2 * M_PI*Core::Frequency;
 double  Core::k = Core::Omega / c0;
 double  Core::Lambda = c0 / Core::Frequency;
 double  Core::eta = eta0 * Core::Mur / Core::Epr;
-double  Core::alpha = 0.3;
+//double  Core::alpha = 0.25;
