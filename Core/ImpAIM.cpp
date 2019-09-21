@@ -35,7 +35,7 @@ void ImpAIM::FillImpedance()
 			filler.TriangleFillingStrategy(*Mesh::GetInstance(), ComponentList::BFvector);
 	}*/
 
-	IMatrixFiller* filler = IMatrixFiller::FMatrixFiller(SystemConfig.ImpConfig, this);
+	IMatrixFiller* filler = IMatrixFiller::FMatrixFiller(SystemConfig.ImpConfig, this,SystemConfig.IEConfig);
 	Console->info("Mulitpole Expansion");
 	filler->MultipoleExpansion(ComponentList::BFvector);
 	Console->info("Generate the Green Matrix");

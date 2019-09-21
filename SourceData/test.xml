@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Configuration xmlns="http://tempuri.org/ConfigurationTemplate.xsd" xmlns:xsi="http://tempuri.org/ConfigurationTemplate.xsd-instance" Date="2019-07-01T15:57:46">
+<Configuration xmlns="http://tempuri.org/ConfigurationTemplate.xsd" xmlns:xsi="http://tempuri.org/ConfigurationTemplate.xsd-instance" Date="2019-07-08T21:05:34">
   <File>
     <IN Validate="1">
       <Mesh Type="3">
@@ -18,7 +18,7 @@
   </File>
   <Method>
     <TriangleFillingStrategy>1</TriangleFillingStrategy>
-    <AIM Validate="0">
+    <AIM Validate="1">
       <Order>2</Order>
       <Interval>0.05</Interval>
       <Threshold>0.3</Threshold>
@@ -26,7 +26,13 @@
       <Dimension>3</Dimension>
       <VirtualGrid>1</VirtualGrid>
     </AIM>
-    <MoM Validate="1" />
+    <MoM Validate="0" />
+    <IE Validate="1">
+      <Type>0</Type>
+      <Alpha>0.3</Alpha>
+      <Eta>376.991112</Eta>
+      <Zs>376.991112</Zs>
+    </IE>
   </Method>
   <EMCPara>
     <FR Validate="1">
@@ -65,7 +71,7 @@
       <Iterations>0</Iterations>
       <StopTolerance>10.0</StopTolerance>
       <Residum>1.0e-4</Residum>
-      <Preconditioning>1</Preconditioning>
+      <Preconditioning>0</Preconditioning>
     </CG>
   </Solution>
   <Request>

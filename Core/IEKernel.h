@@ -11,7 +11,7 @@ namespace Core
 	struct IEConfiguration
 	{
 		IETYPE type = CFIE;
-		double Alpha = 0.3;
+		double Alpha = 0.2;
 		double Eta = 120 * 3.1415926;
 	};
 	//IE interface

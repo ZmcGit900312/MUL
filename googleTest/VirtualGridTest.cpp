@@ -23,7 +23,8 @@ protected:
 		try
 		{
 			SystemConfig.ImpConfig.impType = AIM;
-			//SystemConfig.SolverConfig.Precond = Solution::ILU;
+			SystemConfig.IEConfig.type = EFIE;
+			SystemConfig.SolverConfig.Precond = Solution::ILU;
 			if (Mesh::GetInstance()->IsLock())
 			{
 				ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
@@ -99,7 +100,7 @@ protected:
 
 TEST_F(VirtualGridTest, MultipoleExpansion)
 {
-	VirtualGrid* fillingTool = new VirtualGrid(SystemConfig.ImpConfig, ComponentList::ImpService);
+	VirtualGrid* fillingTool = new VirtualGrid(SystemConfig.ImpConfig, ComponentList::ImpService,SystemConfig.IEConfig);
 	auto& bf = ComponentList::BFvector;
 	Console->debug("Allocate the MatrixSetting oject");
 	int testNumber[3] = { 1,228,675 };
@@ -120,7 +121,7 @@ TEST_F(VirtualGridTest, MultipoleExpansion)
 
 TEST_F(VirtualGridTest, GreenBase)
 {
-	VirtualGrid* fillingTool = new VirtualGrid(SystemConfig.ImpConfig, ComponentList::ImpService);
+	VirtualGrid* fillingTool = new VirtualGrid(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
 	auto& bf = ComponentList::BFvector;
 	IGreen* green = IGreen::GetInstance();
 
@@ -160,7 +161,7 @@ TEST_F(VirtualGridTest, GreenBase)
 
 TEST_F(VirtualGridTest, ApproximationFarField)
 {
-	VirtualGrid* fillingTool = new VirtualGrid(SystemConfig.ImpConfig, ComponentList::ImpService);
+	VirtualGrid* fillingTool = new VirtualGrid(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
 	auto& bf = ComponentList::BFvector;
 	IGreen* green = IGreen::GetInstance();
 
@@ -201,7 +202,7 @@ TEST_F(VirtualGridTest, ApproximationFarField)
 
 TEST_F(VirtualGridTest,Multiplication)
 {
-	VirtualGrid* fillingTool = new VirtualGrid(SystemConfig.ImpConfig, ComponentList::ImpService);
+	VirtualGrid* fillingTool = new VirtualGrid(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
 	auto& bf = ComponentList::BFvector;
 	Console->debug("Allocate the MatrixSetting oject");
 
@@ -213,7 +214,7 @@ TEST_F(VirtualGridTest,Multiplication)
 		2*SystemConfig.ImpConfig.yNumber-2,
 		2*SystemConfig.ImpConfig.xNumber-2 };
 	_mvptool.Reset(dim, layer);
-	
+		
 	
 	const dcomplex refZ1 = { -0.0080060247635108418 ,-0.0019764567076286750 };//Z(18£¬123)
 	const dcomplex compZ1 = GetImpedance(18, 123);
@@ -241,14 +242,66 @@ TEST_F(VirtualGridTest,Multiplication)
 	EXPECT_NEAR(refZ9.imag(), compZ9.imag(), 1.0e-6) << "Error in (18,654) imag";
 }
 
+TEST_F(VirtualGridTest, NearFieldCompareTest)
+{
+	try
+	{
+		VirtualGrid* fillingTool = new VirtualGrid(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
+		auto& bf = ComponentList::BFvector;
+		IGreen* green = IGreen::GetInstance();
 
+		Console->debug("Allocate the MatrixSetting oject");
+		fillingTool->MultipoleExpansion(bf);
+		fillingTool->GreenMatrixSet(green);
+		VectorXcd gb = fillingTool->GetGreenBase();
+
+		const size_t unknowns = SystemConfig.ImpConfig.ImpSize;
+		const double threshold = SystemConfig.ImpConfig.Threshold*Lambda;
+
+		Console->debug("Matrix Far Field Random Setting Test:");
+
+		ofstream ofs;
+		string filename = SystemConfig.ProjectDir + '\\' + "NearFieldComparison.csv";
+		ofs.open(filename, ios_base::out);
+		if (!ofs.is_open())throw spd::spdlog_ex("Error in " + filename);
+
+		const int row = 256;
+		int count=0;
+		for (int col = 0; col < unknowns;col++)
+		{			
+			const auto source = static_cast<RWG*>(bf[row]);
+			const auto field = static_cast<RWG*>(bf[col]);
+			Vector3d distance = field->Centre() - source->Centre();
+			const double dnorm = distance.norm();
+			if (dnorm < 1.4*Lambda)
+			{
+				const dcomplex ref = _compute.SetImpedanceL(field, source);
+				const dcomplex comp = fillingTool->GetImpAIM(row, col);
+				double error = abs(ref - comp) / abs(ref);
+				if(dnorm<0.4*Lambda)Console->debug("\nNumber:\t{0}\nImpedance:\t({1},{2})\nDistance:\t{3}¦Ë\nreference:\t({4},{5})\nNear:\t\t({6},{7})\nError:\t\t{8}%",
+					++count, row, col, dnorm / Lambda, ref.real(), ref.imag(), comp.real(), comp.imag(),error*100);
+				
+				ofs << dnorm << ',' << distance.x()<<','<< distance.y()<<','<< distance.z() << ',' << error << '\n';
+			}			
+		}
+
+		ofs.flush();
+		ofs.close();
+	}
+	catch (spd::spdlog_ex&ex)
+	{
+		Console->warn(ex.what());
+		RuntimeLog->warn(ex.what());
+		RuntimeLog->flush();
+	}
+}
 TEST_F(VirtualGridTest, Solving)
 {
 	try
 	{
 		//throw spd::spdlog_ex("AIMCalculate is not Testing");
 
-		VirtualGrid* fillingTool = new VirtualGrid(SystemConfig.ImpConfig, ComponentList::ImpService);
+		VirtualGrid* fillingTool = new VirtualGrid(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
 		auto& bf = ComponentList::BFvector;
 		Console->debug("Allocate the MatrixSetting oject");
 

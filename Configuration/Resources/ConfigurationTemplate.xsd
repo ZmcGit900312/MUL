@@ -78,6 +78,7 @@
 				<xs:element name="TriangleFillingStrategy" type="xs:boolean" default="1"/>
 				<xs:element ref="AIM"/>
 				<xs:element ref="MoM"/>
+				<xs:element ref="IE"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -99,6 +100,18 @@
 	<xs:element name="MoM">
 		<xs:complexType>
 			<xs:attribute name="Validate" type="xs:boolean" default="0"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="IE">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Type" type="xs:int" default="0"/>
+				<xs:element name="Alpha" type="xs:double" default="0.3"/>
+				<xs:element name="Eta" type="xs:double" default="376.991112"/>
+				<xs:element name="Zs" type="xs:double" default="376.991112"/>
+			</xs:sequence>
+			<xs:attribute name="Validate" type="xs:boolean" default="1"/>
 		</xs:complexType>
 	</xs:element>
 	

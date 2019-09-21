@@ -15,8 +15,7 @@ int Core::SetGreenFunction()
 		ResultReport::WriteGreenFunctionInformation(&SystemConfig.GreenConfig,ResultLog);
 		ResultReport::WriteGreenFunctionInformation(&SystemConfig.GreenConfig,Console);
 		ResultReport::WriteGreenFunctionInformation(&SystemConfig.GreenConfig, RuntimeLog);
-
-		SystemConfig.IEConfig.type = CFIE;
+		
 		equation = IE::FIE(SystemConfig.IEConfig.type);
 		ResultReport::WirteIEInformation(&SystemConfig.IEConfig, ResultLog);
 		ResultReport::WirteIEInformation(&SystemConfig.IEConfig, Console);

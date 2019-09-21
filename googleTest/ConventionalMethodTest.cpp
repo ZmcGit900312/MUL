@@ -24,7 +24,8 @@ protected:
 		try
 		{
 			SystemConfig.ImpConfig.impType = AIM;
-			//SystemConfig.SolverConfig.Precond = Solution::ILU;
+			SystemConfig.SolverConfig.Precond = Solution::ILU;
+			SystemConfig.IEConfig.type = EFIE;
 			if (Mesh::GetInstance()->IsLock())
 			{
 				ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
@@ -34,12 +35,13 @@ protected:
 			if (!Core::IGreen::GetInstance())EXPECT_EQ(0, Core::SetGreenFunction());
 			ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
 			ASSERT_EQ(0, Core::CreatImpedance()) << "Error in Initial the Impedance class";
+			
 
 			cout << "\n";
 			Console->debug("Allocate the ConventionalMethod oject");
 			//Random initial
 			srand(static_cast<unsigned>(time(nullptr)));
-			aimComputer = new ConventionalMethod(SystemConfig.ImpConfig, ComponentList::ImpService);
+			aimComputer = new ConventionalMethod(SystemConfig.ImpConfig, ComponentList::ImpService,SystemConfig.IEConfig);
 			aimComputer->MultipoleExpansion(ComponentList::BFvector);
 			aimComputer->GreenMatrixSet(IGreen::GetInstance());
 

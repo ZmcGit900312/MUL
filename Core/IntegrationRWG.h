@@ -49,6 +49,13 @@ namespace Core
 		 */
 		vector<element> SetImpedanceL(RWGTriangle*field, RWGTriangle*source) const;
 		/**
+		 * \brief Based on Face-to-Face technology, set all the couple-impedance defined on two different triangles, at most 9 elements
+		 * \param field Test RWG basic function
+		 * \param source Expanded RWG basic function
+		 * \return Impedance element
+		 */
+		dcomplex SetImpedanceK(RWG*field, RWG*source)const;
+		/**
 		 * \brief Fill Impedance Matrix in triangle index(self)
 		 * \param t Specific triangle 
 		 * \return The list of self-impedance service for same  RWG

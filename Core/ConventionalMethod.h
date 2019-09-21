@@ -1,6 +1,5 @@
 #ifndef CONVENTIONALMETHOD_H
 #define CONVENTIONALMETHOD_H
-#include "MultipoleExpansioner.h"
 #include "Teoplitzcd.h"
 #include "Green.h"
 #include "IntegrationRWG.h"
@@ -13,7 +12,7 @@ namespace Core
 	class ConventionalMethod:public IMatrixFiller
 	{
 	public:
-		ConventionalMethod(const ImpConfiguration& configuration, IImpService*impedance);
+		ConventionalMethod(const ImpConfiguration& configuration, IImpService*impedance, const IEConfiguration& ieConfig);
 		~ConventionalMethod();
 		void MultipoleExpansion(vector< IBasicFunction*>&bf)override;
 		void GreenMatrixSet(IGreen*green)override;
@@ -30,23 +29,12 @@ namespace Core
 		//Some Tools
 		AIMAssist::Teoplitzcd VectorTp;
 
-		AIMAssist::MultipoleExpansioner MultiExpTool;
-
 	protected:
 		void GenerateGreenBase(IGreen*green)override;
 
 		dcomplex GetFarFieldImpedacneAIM(const size_t row, const size_t col)override;
-	private:
-		typedef struct {
-			VectorXi index;
-			VectorXcd gamax, gamay, gamaz, gamad;
-		}gama;
-
 		
-		//Temp memory
-		vector<gama> _gama;
-		MatrixXcd _localGreen;
-		
+		ImpAIM* _imp = nullptr;
 	};
 
 

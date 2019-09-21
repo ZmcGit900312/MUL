@@ -5,6 +5,7 @@
 #include "Log.h"
 #include "ModalGeometry.h"
 #include "ResultReport.h"
+#include "ImpArrayAIM.h"
 
 int Core::CreatImpedance()
 {
@@ -37,8 +38,24 @@ int Core::CreatImpedance()
 			ComponentList::ImpService = new ImpAIM(&SystemConfig.ImpConfig);
 		
 			break;
-		case MUL:
-			throw spd::spdlog_ex("Mul Algorithm is not Developing");
+		case Array:
+			//Configuration
+			SystemConfig.ImpConfig.Box[0] =
+				Assist::ModalGeometry::GetInstance()->GetLimitationBoundary(0)
+				- (SystemConfig.ImpConfig.GridOrder - 1)*SystemConfig.ImpConfig.Interval*Vector3d::Ones();
+			SystemConfig.ImpConfig.Box[1] =
+				Assist::ModalGeometry::GetInstance()->GetLimitationBoundary(7)
+				+ (SystemConfig.ImpConfig.GridOrder - 1)* SystemConfig.ImpConfig.Interval*Vector3d::Ones();
+
+			delta = (SystemConfig.ImpConfig.Box[1] - SystemConfig.ImpConfig.Box[0]) /
+				SystemConfig.ImpConfig.Interval;
+
+			SystemConfig.ImpConfig.xNumber = int(round(delta.x())) + 1;
+			SystemConfig.ImpConfig.yNumber = int(round(delta.y())) + 1;
+			SystemConfig.ImpConfig.zNumber = int(round(delta.z())) + 1;
+
+			ComponentList::ImpService = new ImpArrayAIM(&SystemConfig.ImpConfig);
+			break;
 		default:			
 			ComponentList::ImpService = new ImpMoM(SystemConfig.ImpConfig.ImpSize);
 			RuntimeLog->flush();		

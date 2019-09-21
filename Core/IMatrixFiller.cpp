@@ -2,16 +2,29 @@
 #include "IMatrixFiller.h"
 #include "ConventionalMethod.h"
 #include "VirtualGrid.h"
+#include "AIMPECCFIE.h"
+#include "AIMArray.h"
 
-Core::IMatrixFiller::IMatrixFiller(const ImpConfiguration & configuration, IImpService * impedance):
-	_layerNum(Vector3i{ configuration.xNumber,configuration.yNumber,configuration.zNumber }),
-	_compute(k, W4, W7, eta),_interval(configuration.Interval),_unknowns(configuration.ImpSize),
-_threshold(configuration.Threshold*Lambda),_eps(configuration.NearCorrectionEps),
-_imp(static_cast<ImpAIM*>(impedance)){}
-
-IMatrixFiller * Core::IMatrixFiller::FMatrixFiller(const ImpConfiguration & configuration, IImpService * impedance)
+IMatrixFiller * Core::IMatrixFiller::FMatrixFiller(
+	const ImpConfiguration & configuration, 
+	IImpService * impedance,
+	const IEConfiguration& ieConfig)
 {
-	if (configuration.VirtualGridTechnique == 1) return new VirtualGrid(configuration, impedance);
 
-	return new ConventionalMethod(configuration, impedance);
+	if(ieConfig.type==EFIE)
+	{
+		if(configuration.impType==AIM)
+		{
+			if(configuration.VirtualGridTechnique==1)return new VirtualGrid(configuration, impedance, ieConfig);
+			else return new ConventionalMethod(configuration, impedance, ieConfig);
+			
+		}
+		else if(configuration.impType==Array)
+		{
+			return new AIMArray(configuration, impedance, ieConfig);
+		}
+	}
+	else if(ieConfig.type == CFIE)return new AIMPECCFIE(configuration, impedance, ieConfig);
+
+	throw spd::spdlog_ex("Error IMatrixFiller.cpp choose Method!");
 }

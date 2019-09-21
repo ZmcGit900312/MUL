@@ -16,15 +16,17 @@ namespace Core
 		class MultipoleExpansioner
 		{
 		public:
-			MultipoleExpansioner() {};
-			MultipoleExpansioner(const ImpConfiguration& configuration, const double w7[7]) { Reset(configuration, w7); }
-			virtual ~MultipoleExpansioner() {}
+			MultipoleExpansioner(): W7(nullptr)
+			{
+			} ;
+			MultipoleExpansioner(const ImpConfiguration& configuration, size_t layer[3],const double w7[7]) { MultipoleExpansioner::Reset(configuration, layer,w7); }
+			virtual ~MultipoleExpansioner();
 			/**
 			* \brief 初始化多级展开配置
 			* \param configuration AIM配置
 			* \param w7 求积系数
 			*/
-			virtual void Reset(const ImpConfiguration& configuration, const double w7[7]);
+			virtual void Reset(const ImpConfiguration& configuration, size_t layer[3],const double w7[7]);
 
 			/**
 			* \brief Inverse of Vandermon Matrix
@@ -55,45 +57,36 @@ namespace Core
 			*/
 			virtual MatrixXd operator()(RWG*bf);
 			/**
-			 * \brief Get the index
+			 * \brief Index of coefficients
 			 */
-			VectorXi GetIndex() const { return _index; }
+			vector<Vector4i> Index;			
 
 			size_t GetGridNum()const { return _gridNum; }
 		protected:
 			double const* W7;
 			Vector3d _boxStart;
-			VectorXi _index;
 			size_t _order = 2;
 			size_t _dimension = 3;
 			size_t _gridNum = 27;
 			size_t _layer[3];//Layer[3]={xNum,yNum,zNum}
 			double _interval = 0.05;
-		};
-
-		class VirtualME :public MultipoleExpansioner
-		{
-		public:
-			VirtualME() :MultipoleExpansioner() {};
-			~VirtualME();
-			void Reset(const ImpConfiguration& configuration, const double w7[7])override;
-			//Index of coefficients
-			vector<Vector4i> Index;
-
-			MatrixXd operator()(RWG*bf)override;
-			/**
-			* \brief Find the Start Points of Local Box which is nearest for the given Points Centre
-			* \n\b Ps 格点坐标的序号从0开始，每个方向的序号的取值范围为[0,2*LayerXYZ-2]中的整数
-			* \param centre The given points
-			* \return The Start Point of the local box
-			*/
-			Vector3d SearchGrids(const Vector3d& centre)override;
-
-			Vector2d SearchGrids(const Vector2d&centre)override;
-
-		private:
 			size_t _weight1 = 1, _weight2 = 1;
 		};
+
+		//class VirtualME :public MultipoleExpansioner
+		//{
+		//public:
+		//	VirtualME() :MultipoleExpansioner() {};
+		//	~VirtualME();
+		//	//void Reset(const ImpConfiguration& configuration, size_t layer[3],const double w7[7]);		
+
+		//	//MatrixXd operator()(RWG*bf)override;
+	
+		//	//Vector3d SearchGrids(const Vector3d& centre)override;
+
+		//	//Vector2d SearchGrids(const Vector2d&centre)override;
+
+		//};
 	}
 
 }

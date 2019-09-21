@@ -285,49 +285,115 @@ TEST_F(CalculateImpedanceTest, MFIETest)
 {
 	try
 	{
-
+		auto& bf = ComponentList::BFvector;
 		//ÑéÖ¤×è¿¹¾ØÕó
 		auto mesh = Mesh::GetInstance();
 
 		//OperatorKTest
-		int row[6] = { 152,229,238,111,2,45 }, col[6] = { 450,95,74,1,33,41 };
-		Console->info("OperatorK Test");
-		for (int i = 0; i < 6; ++i) {
-			auto field = dynamic_cast<RWGTriangle*>(mesh->GetTriangle(row[i]));
-			for (int j = 0; j < 6; ++j)
-			{
-				auto source = dynamic_cast<RWGTriangle*>(mesh->GetTriangle(col[j]));
-				Console->debug("Test Couple between T{0} and T{1}", field->ID(), source->ID());
-				OperatorKCompare(field, source);
+		{
+			int row[6] = { 152,229,238,111,2,45 }, col[6] = { 450,95,74,1,33,41 };
+			Console->info("OperatorK Test");
+			for (int i = 0; i < 6; ++i) {
+				auto field = dynamic_cast<RWGTriangle*>(mesh->GetTriangle(row[i]));
+				for (int j = 0; j < 6; ++j)
+				{
+					auto source = dynamic_cast<RWGTriangle*>(mesh->GetTriangle(col[j]));
+					Console->debug("Test Couple between T{0} and T{1}", field->ID(), source->ID());
+					OperatorKCompare(field, source);
+				}
 			}
 		}
 		//Identity
-		int Tri[12] = { 152,229,238,111,2,45,450,95,74,1,33,41 };
-		double Ref[3][12] = {
-			0.00157480639720404,-0.00258728365825092,-0.00220722312235337,-0.00190501834353101,
-			0.00180267873509308,0.00245391421235691,0.00290361437918257,-0.00171148893910253,
-			0.00220520613453045,0.00217637497322464,0.00232324748090940,0.00175497320424492,
-	0.00208863861929583,0.00234251495563825,0.00190536771247727,0.00282706415534408,
-	-0.00191409412241646,-0.00207649180821613,0.00268584213407149,0.00210188777787376,
-	-0.00247527799634194,0.00264242764145906,-0.00313989098081097,0.00219347285417433,
-			-0.00192672768178537,0.00164674233757378,0.00177503078158090,0.00223445773833473,
-			0.00216786113650934,0.00207989476240389,-0.00262825513177719,0.00256034824240274,
-			0.00213686187845252,-0.00232535768134982,0.00233987871696016,-0.00215155000866812
-		};
-		Console->info("OperatorIdentity Test");
-		for (int i = 0; i < 12; ++i)
 		{
-			RWGTriangle* tp = dynamic_cast<RWGTriangle*>(mesh->GetTriangle(Tri[i]));
-			auto Zself = computeCore->OperatorIdentity(tp);
-			Console->debug("Test T{} self:", tp->ID());
-			int count = 0;
-			for (auto val = Zself.cbegin();val != Zself.cend();++val)
+			int Tri[12] = { 152,229,238,111,2,45,450,95,74,1,33,41 };
+			double Ref[3][12] = {
+				0.00157480639720404,-0.00258728365825092,-0.00220722312235337,-0.00190501834353101,
+				0.00180267873509308,0.00245391421235691,0.00290361437918257,-0.00171148893910253,
+				0.00220520613453045,0.00217637497322464,0.00232324748090940,0.00175497320424492,
+		0.00208863861929583,0.00234251495563825,0.00190536771247727,0.00282706415534408,
+		-0.00191409412241646,-0.00207649180821613,0.00268584213407149,0.00210188777787376,
+		-0.00247527799634194,0.00264242764145906,-0.00313989098081097,0.00219347285417433,
+				-0.00192672768178537,0.00164674233757378,0.00177503078158090,0.00223445773833473,
+				0.00216786113650934,0.00207989476240389,-0.00262825513177719,0.00256034824240274,
+				0.00213686187845252,-0.00232535768134982,0.00233987871696016,-0.00215155000866812
+			};
+			Console->info("OperatorIdentity Test");
+			for (int i = 0; i < 12; ++i)
 			{
-				//auto s = std::get<0>(*val), f = std::get<1>(*val);
-				const auto value = std::get<2>(*val);
-				double ref =0.5* Ref[count++][i];
-				++val;
-				EXPECT_LE(abs((value - ref) / ref), 1.e-2) << "Ref: " << ref << "value: " << value;
+				RWGTriangle* tp = dynamic_cast<RWGTriangle*>(mesh->GetTriangle(Tri[i]));
+				auto Zself = computeCore->OperatorIdentity(tp);
+				Console->debug("Test T{} self:", tp->ID());
+				int count = 0;
+				for (auto val = Zself.cbegin();val != Zself.cend();++val)
+				{
+					//auto s = std::get<0>(*val), f = std::get<1>(*val);
+					const auto value = std::get<2>(*val);
+					double ref = 0.5* Ref[count++][i];
+					++val;
+					EXPECT_LE(abs((value - ref) / ref), 1.e-2) << "Ref: " << ref << "value: " << value;
+				}
+			}
+		}
+		//Test RWG K
+		{
+			int row[6] = { 152,229,238,111,28,45 }, col[6] = { 478,95,74,1,33,41 };
+			dcomplex Ref[6][6] = {
+				dcomplex(-1.5344169607120470e-05 + 1i * 6.9720167467688652e-06),
+				dcomplex(2.0009151500437996e-05 + 1i * 1.0303835137162787e-07),
+				dcomplex(1.1375882533331283e-05 + 1i * 1.4001683163880105e-05),
+				dcomplex(-1.8597056253501411e-05 - 1i * 1.4739150277117724e-05),
+				dcomplex(5.6917161316137942e-06 - 1i * 1.1798293492538982e-05),
+				dcomplex(-2.3659122441539373e-06 + 1i * 1.3717780692004101e-05),
+
+				dcomplex(-1.3324590369821588e-06 + 1i * 5.4464302346462875e-07),
+				dcomplex(-7.9542624692001017e-06 - 1i * 1.5825694114315072e-05),
+				dcomplex(-1.7228870065633694e-07 + 1i * 2.4438975446577811e-07),
+				dcomplex(-2.5695851642641344e-07 - 1i * 6.4779415194408749e-08),
+				dcomplex(-1.0036981783948487e-05 - 1i * 1.6179659308737138e-05),
+				dcomplex(1.7444608047683572e-06 + 1i * 2.3032402241200420e-05),
+
+				dcomplex(-6.5183873839927453e-06 - 1i * 1.9825651691491367e-06),
+				dcomplex(-8.1197579198928194e-07 - 1i * 2.0313452766578444e-05),
+				dcomplex(-3.0659769156948208e-05 + 1i * 6.7973142739639537e-06),
+				dcomplex(-1.8761240900235516e-05 + 1i * 1.2548050108129552e-05),
+				dcomplex(5.7324693219926419e-06 - 1i * 4.9142288920449555e-07),
+				dcomplex(-1.1075530111519228e-05 - 1i * 1.4574101489268547e-05),
+
+				dcomplex(-7.4481964254151945e-06 - 1i * 2.4350562456428021e-06),
+				dcomplex(1.7563822659120431e-06 + 1i * 9.7533623629463706e-06),
+				dcomplex(4.1547007830819506e-06 + 1i * 2.1813294809715044e-05),
+				dcomplex(2.0207210440717205e-06 + 1i * 4.3462125548727832e-06),
+				dcomplex(1.3954817919779559e-05 + 1i * 9.7358863390894415e-06),
+				dcomplex(-1.3396310335111292e-05 + 1i * 5.3011320695139467e-06),
+
+				dcomplex(8.4617847062567901e-06 + 1i * 3.8334331390695410e-06),
+				dcomplex(-4.1653575418315610e-06 - 1i * 7.9565245304419215e-06),
+				dcomplex(-1.2823405671640212e-06 - 1i * 1.6264030042655886e-05),
+				dcomplex(9.6985694287146106e-06 + 1i * 1.3128606542650160e-06),
+				dcomplex(-2.2500227702138617e-06 - 1i * 5.5010242935043279e-06),
+				dcomplex(1.8121364899303430e-06 - 1i * 6.4924902435979990e-08),
+
+				dcomplex(-1.4532674333425493e-05 - 1i * 1.6336158051133790e-05),
+				dcomplex(2.6389484682088153e-05 + 1i * 6.1931325620103603e-06),
+				dcomplex(1.1529667310697616e-06 + 1i * 1.8533724536722907e-06),
+				dcomplex(-9.4763911400180529e-07 - 1i * 1.7648575884938972e-06),
+				dcomplex(3.8468072886232497e-06 - 1i * 6.6597233832994600e-07),
+				dcomplex(2.4384124442371176e-06 - 1i * 8.8619556820612790e-07) };
+			for (int i = 0; i < 6; ++i)
+			{
+				RWG* field = static_cast<RWG*>(bf[row[i]]);
+				//RWG*s = static_cast<RWG*>(bf[col[i]]);
+				/*Console->debug("FieldRWGID:{0:8d}\tPlusT:{1:8d}\tMinusT:{2:8d}", field->GetID(), field->TrianglePlus()->ID(), field->TriangleMinus()->ID());
+				Console->debug("SourceRWGID:{0:8d}\tPlusT:{1:8d}\tMinusT:{2:8d}", s->GetID(), s->TrianglePlus()->ID(), s->TriangleMinus()->ID());*/
+				for (int j = 0; j < 6; ++j)
+				{
+					RWG* source = static_cast<RWG*>(bf[col[j]]);
+
+					dcomplex val = -computeCore->SetImpedanceK(field, source);
+					dcomplex ref = Ref[i][j];
+					Console->debug("Ref({0},{1})=({2},{3})", row[i],col[j],ref.real(), ref.imag());
+					EXPECT_NEAR(0, abs(val - ref) / abs(ref), 1.0e-3) << "Error in Impedance\t" << row[i] << "," << col[i];
+				}
 			}
 		}
 
@@ -369,7 +435,7 @@ TEST_F(CalculateImpedanceTest, DataTest)
 		{
 			int s = std::get<0>(*val), f = std::get<1>(*val);
 			dcomplex value = std::get<2>(*val);
-			if (s == RWGID[i] && f == RWGID[i])Console->debug("({0},{1})",2*value.real(),2*value.imag());				
+			if (s == RWGID[i] && f == RWGID[i])Console->debug("({0},{1})", 2 * value.real(), 2 * value.imag());
 		}
 	}
 }

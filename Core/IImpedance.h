@@ -12,13 +12,15 @@ using namespace Eigen;
 
 namespace Core
 {
-	enum EImpedance { MoM, AIM, MUL };
+	enum EImpedance { MoM, AIM, Array };
 	struct ImpConfiguration
 	{
 		size_t ImpSize;
 		int GridOrder=2;
 		int Dimension=3;
 		int xNumber, yNumber, zNumber;
+		int numArrayX = 6, numArrayY = 7;
+		double distanceBiasX= 0.47, distanceBiasY = 0.43;
 		double Threshold=0.3,Interval=0.05;
 		double NearCorrectionEps = 1.0e-3;
 		int FillingStrategy = 1;

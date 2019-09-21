@@ -119,6 +119,12 @@ static int SetMethodMod(XMLElement* mod)
 {
 	SystemConfig.ImpConfig.FillingStrategy = mod->FirstChildElement("TriangleFillingStrategy")->IntText();
 	XMLElement* card = mod->FirstChildElement("AIM");
+
+
+	//SystemConfig.IEConfig.type = CFIE;
+	//SystemConfig.IEConfig.Alpha = 0.7;
+	//SystemConfig.IEConfig.Eta = 120* M_PI;
+
 	if (card->FirstAttribute()->BoolValue())
 	{
 		SystemConfig.ImpConfig.GridOrder = card->FirstChildElement("Order")->IntText();
@@ -137,12 +143,22 @@ static int SetMethodMod(XMLElement* mod)
 		Console->debug("Dimension:\t{}", SystemConfig.ImpConfig.Dimension);
 		Console->debug("VirtualGrid:\t{}", SystemConfig.ImpConfig.VirtualGridTechnique);
 		Console->debug("TFS:\t{}", SystemConfig.ImpConfig.FillingStrategy);
-		return 0;
 	}
 
 	card = mod->FirstChildElement("MoM");
 
-	if (card->FirstAttribute()->BoolValue())return 0;
+	if (card->FirstAttribute()->BoolValue())SystemConfig.ImpConfig.impType=EImpedance(MoM);
+
+	card = mod->FirstChildElement("IE");
+
+	if(card->FirstAttribute()->BoolValue())
+	{
+		SystemConfig.IEConfig.type = IETYPE(card->FirstChildElement("Type")->IntText());
+		SystemConfig.IEConfig.Alpha = card->FirstChildElement("Alpha")->DoubleText();
+		SystemConfig.IEConfig.Eta = card->FirstChildElement("Eta")->DoubleText();
+		return 0;
+	}
+
 	return 1;
 	
 }

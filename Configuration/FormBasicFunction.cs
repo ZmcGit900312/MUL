@@ -45,7 +45,7 @@ namespace Configuration
             if (BasicFunctionCheck.Checked && File.Exists(BFFileText.Text))
             {
                 OSCard.SetAttribute("Validate", "1");
-                OSCard.AppendChild(XmlTool.GetInstance.AddElementWithText("Type", RWGRadioButton.Checked?"0":"-1"));
+                OSCard.AppendChild(XmlTool.GetInstance.AddElementWithText("Type", "0"));
                 OSCard.AppendChild(XmlTool.GetInstance.AddElementWithText("FilePath", BFFileText.Text));
             }
             else OSCard.SetAttribute("Validate", "0");

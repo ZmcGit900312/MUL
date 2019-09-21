@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Deployment.Application;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -25,13 +26,41 @@ namespace Configuration
                 if (MethodCard.ChildNodes[1].Attributes?["Validate"].InnerText == "1")
                 {
                     AIMRadioButton.Checked = true;
-                    return;
+                    
                 }
                 if (MethodCard.ChildNodes[2].Attributes?["Validate"].InnerText == "1")
                 {
-                    MoMRadioButton.Checked = true;
-                    return;
+                    MoMRadioButton.Checked = true;                  
                 }
+
+                XmlNode iecard = MethodCard.ChildNodes[3];
+                var ie = int.Parse(iecard.ChildNodes[0].InnerText);
+
+                switch (ie)
+                {
+                    case 1:
+                        MFIEButton.Checked = true;
+                        break;
+                    case 2:
+                        CFIEButton.Checked = true;
+                        break;
+                    case 3:
+                        IBCEFIEButton.Checked = true;
+                        break;
+                    case 4:
+                        IBCMFIEButton.Checked = true;
+                        break;
+                    case 5:
+                        IBCCFIEButton.Checked = true;
+                        break;
+                    default:
+                        EFIEButton.Checked = true;
+                        break;
+                }
+
+                AlphaText.Text = iecard.ChildNodes[1].InnerText;
+                EtaText.Text = iecard.ChildNodes[2].InnerText;
+                ZsText.Text = iecard.ChildNodes[3].InnerText;
             }
         }
 
@@ -64,6 +93,22 @@ namespace Configuration
                 aim.ChildNodes[5].InnerText = VirtualGridTechniqueCheckBox.Checked?"1":"0";
             }
 
+            var type="0";
+
+            if (EFIEButton.Checked) type = "0";
+            if (MFIEButton.Checked) type = "1";
+            if (CFIEButton.Checked) type = "2";
+            if (IBCEFIEButton.Checked) type = "3";
+            if (IBCMFIEButton.Checked) type = "4";
+            if (IBCCFIEButton.Checked) type = "5";
+
+            XmlNode ie = MethodCard.ChildNodes[3];
+            ie.Attributes["Validate"].InnerText = "1";
+            ie.ChildNodes[0].InnerText = type;
+            ie.ChildNodes[1].InnerText = AlphaText.Text;
+            ie.ChildNodes[2].InnerText = EtaText.Text;
+            ie.ChildNodes[3].InnerText = ZsText.Text;
+                
             Close();
         }
 
@@ -105,6 +150,15 @@ namespace Configuration
             card.AppendChild(XmlTool.GetInstance.AddElementWithText("VirtualGrid", "1"));
             MethodCard.AppendChild(card);
             MethodCard.AppendChild(XmlTool.GetInstance.AddElementWithAttribute("MoM", "Validate", "0"));
+
+
+            card = XmlTool.GetInstance.AddElementWithAttribute("IE", "Validate", "1");
+
+            card.AppendChild(XmlTool.GetInstance.AddElementWithText("Type", "0"));
+            card.AppendChild(XmlTool.GetInstance.AddElementWithText("Alpha", "0.3"));
+            card.AppendChild(XmlTool.GetInstance.AddElementWithText("Eta", "376.991112"));
+            card.AppendChild(XmlTool.GetInstance.AddElementWithText("Zs", "376.991112"));
+            MethodCard.AppendChild(card);
 
             return MethodCard;
         }

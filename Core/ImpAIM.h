@@ -104,10 +104,18 @@ class ImpAIM :public EigenBase<ImpAIM>, public IImpService
 	VectorXcd& GetGreen() { return _green; }
 	const VectorXcd& CGetGreen() const { return _green; }
 
+	VectorXcd& GetGreenX() { return _greenGradX; }
+	VectorXcd& GetGreenY() { return _greenGradY; }
+	VectorXcd& GetGreenZ() { return _greenGradZ; }
+
+
 	VectorXcd& GetExcitation() override{ return _rightHand; }
 	void FillImpedance() override;
 
 	void MVP(VectorXcd&res)const { _fftTools->MVP(_green, res); }
+	void MVPGX(VectorXcd&res)const { _fftTools->MVP(_greenGradX, res); }
+	void MVPGY(VectorXcd&res)const { _fftTools->MVP(_greenGradY, res); }
+	void MVPGZ(VectorXcd&res)const { _fftTools->MVP(_greenGradZ, res); }
 
 	AIMAssist::Multiplicator* _fftTools = nullptr;
 #pragma endregion Inherent
@@ -126,7 +134,7 @@ class ImpAIM :public EigenBase<ImpAIM>, public IImpService
 	SparseMatrix<Scalar>_gamay{ _totalNum, static_cast<intptr_t>(_impSize) };
 	SparseMatrix<Scalar>_gamaz{ _totalNum, static_cast<intptr_t>(_impSize) };
 	SparseMatrix<Scalar>_gamad{ _totalNum, static_cast<intptr_t>(_impSize) };
-	VectorXcd _green;
+	VectorXcd _green,_greenGradX,_greenGradY,_greenGradZ;
 	VectorXcd _rightHand{ _impSize,1 };
 };
 
@@ -153,26 +161,69 @@ namespace Eigen
 				// MV to be done?
 				//for (Index i = 0; i<lhs.cols(); ++i)
 				//	dst += rhs(i) * lhs.LocalMatrix().col(i);
-				VectorXcd tempx{ lhs.GammaXMultiplication(rhs) };
-				VectorXcd tempy{ lhs.GammaYMultiplication(rhs) };
-				VectorXcd tempz{ lhs.GammaZMultiplication(rhs) };
-				VectorXcd tempd{ lhs.GammaDMultiplication(rhs) };
+				if (SystemConfig.IEConfig.type == EFIE)
+				{
+					VectorXcd Lx{ lhs.GammaXMultiplication(rhs) };
+					VectorXcd Ly{ lhs.GammaYMultiplication(rhs) };
+					VectorXcd Lz{ lhs.GammaZMultiplication(rhs) };
+					VectorXcd Ld{ lhs.GammaDMultiplication(rhs) };
 
-				/*Tools::TeoplitzMultiplicator->MultiplyTeoplitz(lhs.CGetGreen(),tempx);
-				Tools::TeoplitzMultiplicator->MultiplyTeoplitz(lhs.CGetGreen(), tempy);
-				Tools::TeoplitzMultiplicator->MultiplyTeoplitz(lhs.CGetGreen(), tempz);
-				Tools::TeoplitzMultiplicator->MultiplyTeoplitz(lhs.CGetGreen(), tempd);*/
+					/*Tools::TeoplitzMultiplicator->MultiplyTeoplitz(lhs.CGetGreen(),tempx);
+					Tools::TeoplitzMultiplicator->MultiplyTeoplitz(lhs.CGetGreen(), tempy);
+					Tools::TeoplitzMultiplicator->MultiplyTeoplitz(lhs.CGetGreen(), tempz);
+					Tools::TeoplitzMultiplicator->MultiplyTeoplitz(lhs.CGetGreen(), tempd);*/
 
-				lhs.MVP(tempx);
-				lhs.MVP(tempy);
-				lhs.MVP(tempz);
-				lhs.MVP(tempd);
+					lhs.MVP(Lx);
+					lhs.MVP(Ly);
+					lhs.MVP(Lz);
+					lhs.MVP(Ld);
 
-				tempx = lhs.GammaXMultiplicationT(tempx);
-				tempy = lhs.GammaYMultiplicationT(tempy);
-				tempz = lhs.GammaZMultiplicationT(tempz);
-				tempd = lhs.GammaDMultiplicationT(tempd)/(k*k);
-				dst.noalias() += lhs.LocalMatrix()*rhs+1i*k*eta*(tempx+tempy+tempz-tempd);
+					Lx = lhs.GammaXMultiplicationT(Lx);
+					Ly = lhs.GammaYMultiplicationT(Ly);
+					Lz = lhs.GammaZMultiplicationT(Lz);
+					Ld = lhs.GammaDMultiplicationT(Ld) / (k*k);
+					VectorXcd L = 1i*k*eta*(Lx + Ly + Lz - Ld);
+					dst.noalias() += lhs.LocalMatrix()*rhs + L;
+				}				
+				else
+				{
+					VectorXcd Lx{ lhs.GammaXMultiplication(rhs) };
+					VectorXcd Ly{ lhs.GammaYMultiplication(rhs) };
+					VectorXcd Lz{ lhs.GammaZMultiplication(rhs) };
+					VectorXcd Ld{ lhs.GammaDMultiplication(rhs) };
+
+					VectorXcd Lxz{ Lx }, Lxy{ Lx }, Lyx{ Ly }, Lyz{ Ly }, Lzy{ Lz }, Lzx{ Lz };
+					/*Tools::TeoplitzMultiplicator->MultiplyTeoplitz(lhs.CGetGreen(),tempx);
+					Tools::TeoplitzMultiplicator->MultiplyTeoplitz(lhs.CGetGreen(), tempy);
+					Tools::TeoplitzMultiplicator->MultiplyTeoplitz(lhs.CGetGreen(), tempz);
+					Tools::TeoplitzMultiplicator->MultiplyTeoplitz(lhs.CGetGreen(), tempd);*/
+
+					lhs.MVP(Lx);
+					lhs.MVP(Ly);
+					lhs.MVP(Lz);
+					lhs.MVP(Ld);
+
+					Lx = lhs.GammaXMultiplicationT(Lx);
+					Ly = lhs.GammaYMultiplicationT(Ly);
+					Lz = lhs.GammaZMultiplicationT(Lz);
+					Ld = lhs.GammaDMultiplicationT(Ld) / (k*k);
+					VectorXcd L = 1i*k*eta*(Lx + Ly + Lz - Ld);			
+
+					lhs.MVPGY(Lzy);
+					lhs.MVPGY(Lxy);
+					lhs.MVPGX(Lyx);
+					lhs.MVPGX(Lzx);
+					lhs.MVPGZ(Lyz);
+					lhs.MVPGZ(Lxz);
+
+
+					VectorXcd Kx = lhs.GammaXMultiplicationT(Lzy - Lyz);
+					VectorXcd Ky = lhs.GammaYMultiplicationT(Lxz - Lzx);
+					VectorXcd Kz = lhs.GammaZMultiplicationT(Lyx - Lxy);
+
+					VectorXcd K = Kx + Ky + Kz;
+					dst.noalias() += lhs.LocalMatrix()*rhs + L * SystemConfig.IEConfig.Alpha + (1 - SystemConfig.IEConfig.Alpha)*SystemConfig.IEConfig.Eta*K;
+				}
 				//dst.noalias() += lhs.FarMatrix().transpose()*(lhs.FarMatrix()*rhs);
 				// dst+=lhs.FarMatrix.triansopse*IFFT(Green.*FFT(lhs.FarMatrix*rhs))
 			}

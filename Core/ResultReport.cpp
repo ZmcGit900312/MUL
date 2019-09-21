@@ -148,8 +148,21 @@ void Core::ResultReport::WriteMethodInformation(ImpConfiguration*config, shared_
 			config->Box[1].x(), config->Box[1].y(), config->Box[1].z());
 		log->info("LayerNumber:\t({0},{1},{2})\n", config->xNumber,config->yNumber, config->zNumber);
 		return;
-	case MUL:
-		throw spd::spdlog_ex("Mul Algorithm is not Developing");
+	case Array:
+		log->info("{:*^45}", "AIM Array Parameters");
+		log->info("Order:\t{}", config->GridOrder);
+		log->info("Interval:\t{:4.2f}", config->Interval);
+		log->info("Threshold:\t{:4.2f}", config->Threshold);
+		log->info("NearTolerance:\t{:e}", config->NearCorrectionEps);
+		log->info("Dimension:\t{}", config->Dimension);
+		log->info("VirtualGrid:\t{}", config->VirtualGridTechnique);
+		log->info("TFS:\t{}", config->FillingStrategy);
+		log->info("AIMBox is from ({0:+5.3f},{1:+5.3f},{2:+5.3f}) to ({3:+5.3f},{4:+5.3f},{5:+5.3f})",
+			config->Box[0].x(), config->Box[0].y(), config->Box[0].z(),
+			config->Box[1].x(), config->Box[1].y(), config->Box[1].z());
+		log->info("unitNumber:\t({0},{1},{2})", config->xNumber, config->yNumber, config->zNumber);
+		log->info("ArrayNunber:\tx={0}\ty={1}",config->numArrayX,config->numArrayY);
+		log->info("Distance between Unit:\tXdirection={0}\tYdirection={1}\n", config->distanceBiasX, config->distanceBiasY);
 	default:
 		log->info("{:*^45}", "MoM");
 	}

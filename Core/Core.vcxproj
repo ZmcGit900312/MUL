@@ -223,6 +223,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\googleTest\testMain.h" />
+    <ClInclude Include="AIMArray.h" />
     <ClInclude Include="Const.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="CoreAPI.h" />
@@ -234,11 +235,13 @@
     <ClInclude Include="GmshFile.h" />
     <ClInclude Include="Green.h" />
     <ClInclude Include="IBasicFunction.h" />
+    <ClInclude Include="AIMPECCFIE.h" />
     <ClInclude Include="IEKernel.h" />
     <ClInclude Include="IImpedance.h" />
     <ClInclude Include="IMatrixFiller.h" />
     <ClInclude Include="IMeshRead.h" />
     <ClInclude Include="ImpAIM.h" />
+    <ClInclude Include="ImpArrayAIM.h" />
     <ClInclude Include="ImpMoM.h" />
     <ClInclude Include="IntegrationRWG.h" />
     <ClInclude Include="ISolver.h" />
@@ -265,11 +268,13 @@
     <ClInclude Include="VirtualGrid.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\googleTest\AIMArrayTest.cpp" />
     <ClCompile Include="..\googleTest\BasicFunctionTest.cpp" />
     <ClCompile Include="..\googleTest\ConventionalMethodTest.cpp" />
     <ClCompile Include="..\googleTest\ExcitationTest.cpp" />
     <ClCompile Include="..\googleTest\GreenFunctionTest.cpp" />
     <ClCompile Include="..\googleTest\CalculateImpedanceTest.cpp" />
+    <ClCompile Include="..\googleTest\AIMPECCFIETest.cpp" />
     <ClCompile Include="..\googleTest\IETest.cpp" />
     <ClCompile Include="..\googleTest\RequestTest.cpp" />
     <ClCompile Include="..\googleTest\TeoplitzcdTest.cpp" />
@@ -277,13 +282,16 @@
     <ClCompile Include="..\googleTest\BaseClassTest.cpp" />
     <ClCompile Include="..\googleTest\VirtualGridTest.cpp" />
     <ClCompile Include="..\googleTest\XmlConfigurationTest.cpp" />
+    <ClCompile Include="AIMArray.cpp" />
     <ClCompile Include="AnalysisConfigurationFile.cpp" />
     <ClCompile Include="CalculateRequest.cpp" />
     <ClCompile Include="Const.cpp" />
     <ClCompile Include="Excitation.cpp" />
     <ClCompile Include="FFTmd.cpp" />
     <ClCompile Include="GmshFile.cpp" />
+    <ClCompile Include="AIMPECCFIE.cpp" />
     <ClCompile Include="IMatrixFiller.cpp" />
+    <ClCompile Include="ImpArraryAIM.cpp" />
     <ClCompile Include="ISolver.cpp" />
     <ClCompile Include="IterationSolver.cpp" />
     <ClCompile Include="Log.cpp" />

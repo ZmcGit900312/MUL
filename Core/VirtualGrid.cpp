@@ -1,12 +1,17 @@
 #include "stdafx.h"
 #include "VirtualGrid.h"
 
-Core::VirtualGrid::VirtualGrid(const ImpConfiguration & configuration, IImpService * impedance):IMatrixFiller(configuration,impedance)
+Core::VirtualGrid::VirtualGrid(
+	const ImpConfiguration & configuration, 
+	IImpService * impedance, 
+	const IEConfiguration& ieConfig):
+IMatrixFiller(configuration,impedance,ieConfig), 
+_imp(static_cast<ImpAIM*>(impedance))
 {
-	MultiExpTool.Reset(configuration, W7);
+	size_t layer[3] = {2*configuration.xNumber-2,2 * configuration.yNumber - 2 ,2 * configuration.zNumber - 2 };
+	MultiExpTool.Reset(configuration,layer, W7);
 	_gridNum = MultiExpTool.GetGridNum();
 	_localGreen.resize(_gridNum, _gridNum);
-	_dim = configuration.Dimension;
 	_layerElementSize = 2 * _layerNum.array() - 2;
 	for(int i=0;i<_dim;i++)
 	{
@@ -241,6 +246,7 @@ void Core::VirtualGrid::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFuncti
 			}
 
 		}
+		cout << "Progress:" << setw(10) << 100 * static_cast<double>(col) / _imp->GetNearFieldMatrix().outerSize() << "%\r";
 	}
 	tripletsNearPart.shrink_to_fit();
 	_imp->GetNearFieldMatrix().reserve(tripletsNearPart.size());
@@ -348,7 +354,25 @@ size_t Core::VirtualGrid::gridGreenlocation(const Vector4i & p1,const Vector4i &
 	//return size_t(abs(p1.x() - p2.x()) + abs(p1.y() - p2.y())*_layerNum[0] + abs(p1.z() - p2.z())*_layerNum[0] * _layerNum[1]);
 }
 
-void Core::VirtualGrid::GenerateGreenBase(IGreen * green) 
+void Core::VirtualGrid::GenerateGreenBase2(IGreen * green)
+{
+	Console->debug("Generate Green Base V2");
+	_greenBase.resize(_layerNum.prod());
+	for (size_t zzmc = 0, count = 0;zzmc < _layerNum[2];zzmc++)
+	{
+		for (size_t yzmc = 0;yzmc < _layerNum[1];yzmc++)
+		{
+			for (size_t xzmc = 0;xzmc < _layerNum[0];xzmc++)
+			{
+				if(zzmc<=5&&yzmc<=5&&xzmc<=5)_greenBase(count++) = 0;
+				else _greenBase(count++) = green->Scalar(Vector3d::Zero(), _interval*Vector3d{ xzmc ,yzmc,zzmc });
+
+			}
+		}
+	}
+}
+
+void Core::VirtualGrid::GenerateGreenBase(IGreen * green)
 {
 	Console->debug("Generate Green Base");
 	_greenBase.resize(_layerNum.prod());

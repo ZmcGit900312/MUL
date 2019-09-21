@@ -6,10 +6,17 @@ using namespace std;
 using namespace AIMAssist;
 
 
-ConventionalMethod::ConventionalMethod(const ImpConfiguration& configuration,IImpService*impedance):
-IMatrixFiller(configuration,impedance),VectorTp(Vector3i{ configuration.xNumber,configuration.yNumber,configuration.zNumber })
+ConventionalMethod::ConventionalMethod(
+	const ImpConfiguration& configuration,
+	IImpService*impedance, 
+	const IEConfiguration& ieConfig):
+IMatrixFiller(configuration,impedance,ieConfig),
+VectorTp(Vector3i{ configuration.xNumber,configuration.yNumber,configuration.zNumber }),
+_imp(static_cast<ImpAIM*>(impedance))
 {
-	MultiExpTool.Reset(configuration, W7);
+	//不用虚拟网格技术
+	size_t layer[3] = { configuration.xNumber,configuration.yNumber ,configuration.zNumber};
+	MultiExpTool.Reset(configuration, layer, W7);
 	_gridNum = MultiExpTool.GetGridNum();
 	_localGreen.resize(_gridNum, _gridNum);
 	Console->info("Take the Single Level FFT Method");
@@ -49,15 +56,15 @@ void ConventionalMethod::MultipoleExpansion(vector<IBasicFunction*>&bf)
 	{
 		MatrixXcd coef = MultiExpTool(static_cast<RWG*>(bf[i]));
 
-		gama temp{ MultiExpTool.GetIndex(),coef.col(0),coef.col(1),coef.col(2),coef.col(3) };
+		gama temp{ MultiExpTool.Index,coef.col(0),coef.col(1),coef.col(2),coef.col(3) };
 		const auto gridnum = temp.index.size();
 		for (auto j = 0;j <gridnum; ++j)
 		{
-			//Push
-			tripletsGamaX.push_back(T(temp.index(j), i, temp.gamax(j)));
-			tripletsGamaY.push_back(T(temp.index(j), i, temp.gamay(j)));
-			tripletsGamaZ.push_back(T(temp.index(j), i, temp.gamaz(j)));
-			tripletsGamaD.push_back(T(temp.index(j), i, temp.gamad(j)));
+			auto const pos = temp.index[j].w();
+			tripletsGamaX.push_back(T(pos, i, temp.gamax(j)));
+			tripletsGamaY.push_back(T(pos, i, temp.gamay(j)));
+			tripletsGamaZ.push_back(T(pos, i, temp.gamaz(j)));
+			tripletsGamaD.push_back(T(pos, i, temp.gamad(j)));
 		}
 		_gama.push_back(temp);
 	}
@@ -348,11 +355,14 @@ void ConventionalMethod::GenerateGreenBase(IGreen* green)
 dcomplex ConventionalMethod::GetFarFieldImpedacneAIM(const size_t row, const size_t col)
 {
 	gama& source = _gama[row],field = _gama[col];
+	
 	for (int i = 0; i < _gridNum; ++i)
 	{
 		for (int j = 0; j < _gridNum; ++j)
 		{	
-			_localGreen(i, j) = VectorTp.at(field.index(i),source.index(j));
+			//_localGreen(i, j) = VectorTp.at(field.index(i),source.index(j));
+			_localGreen(i, j) = VectorTp.at(field.index[i].w(), source.index[j].w());
+
 		}
 	}
 
