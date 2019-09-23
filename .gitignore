@@ -17,7 +17,9 @@
 /AIMflowchart.mmap
 /AIMStructure.mmap
 /Temp
+/SourceData
 /MulSecond.EAP
+/Core/Runtime.log
 /SourceData/unused
 /SourceData/Excitation.txt
 /SourceData/RCSVertical.dat
@@ -39,3 +41,6 @@
 /tinyxml2/x64
 /SourceData/Error.xml.bak
 /SourceData/test.xml.bak
+/SourceData/ArrayGreen.dat
+/tinyxml2/My Advisor Results - tinyxml2/e000
+/tinyxml2/My Advisor Results - tinyxml2

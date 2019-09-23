@@ -3,7 +3,6 @@
 
 #include "Green.h"
 #include "IntegrationRWG.h"
-#include "ImpAIM.h"
 #include "IMatrixFiller.h"
 #include "Multiplicator.h"
 #include "ImpArrayAIM.h"
@@ -28,8 +27,9 @@ namespace Core
 		VectorXcd& GetGreenBase() { return _greenBase; }
 		dcomplex GetImpAIM(const size_t row, const size_t col) { return GetFarFieldImpedacneAIM(row, col); }
 
-		VectorXcd constructIterated(unsigned& bias, const unsigned level);
+		VectorXcd ConstructIterated(VectorXi& pos, const unsigned level);
 
+		IGreen* _green = nullptr;
 	protected:
 		//inner api
 		void GenerateGreenBase(IGreen* green)override;
@@ -48,6 +48,8 @@ namespace Core
 		VectorXi _layerGreenSizeAcu{ 5,1 };
 
 		ImpArrayAIM*_imp = nullptr;
+		
+		
 	};
 
 

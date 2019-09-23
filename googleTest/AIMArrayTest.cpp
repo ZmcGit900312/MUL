@@ -23,10 +23,10 @@ protected:
 		try
 		{
 			SystemConfig.ImpConfig.impType = Core::Array;
-			SystemConfig.ImpConfig.numArrayX = 6;
-			SystemConfig.ImpConfig.numArrayY = 7;
-			SystemConfig.ImpConfig.distanceBiasX = 0.47;
-			SystemConfig.ImpConfig.distanceBiasY = 0.43;
+			SystemConfig.ImpConfig.numArrayX = 4;
+			SystemConfig.ImpConfig.numArrayY = 4;
+			SystemConfig.ImpConfig.distanceBiasX = 1.5;
+			SystemConfig.ImpConfig.distanceBiasY = 1.5;
 			SystemConfig.IEConfig.type = EFIE;
 			SystemConfig.SolverConfig.Precond = Solution::ILU;
 			if (Mesh::GetInstance()->IsLock())
@@ -118,40 +118,106 @@ TEST_F(AIMArrayTest, MultipoleExpansion)
 
 TEST_F(AIMArrayTest, GreenBase)
 {
-	//AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
-	//auto& bf = ComponentList::BFvector;
-	//IGreen* green = IGreen::GetInstance();
+	AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
+	auto& bf = ComponentList::BFvector;
 
-	//Console->debug("Allocate the MatrixSetting oject");
-	//fillingTool->GreenMatrixSet(green);
-	//VectorXcd gb = fillingTool->GetGreenBase();
-	////max of xyz=[27 27 27]
-	////Vector3i weight={ SystemConfig.ImpConfig.xNumber,SystemConfig.ImpConfig.xNumber*SystemConfig.ImpConfig.yNumber,1 };
-	//Vector3i weight = { 1,SystemConfig.ImpConfig.xNumber,SystemConfig.ImpConfig.xNumber*SystemConfig.ImpConfig.yNumber };
-	//for (int i = 1;i <= 10;i++)
-	//{
-	//	Vector3i greenBias{ rand() % SystemConfig.ImpConfig.xNumber,rand() % SystemConfig.ImpConfig.yNumber,rand() % SystemConfig.ImpConfig.zNumber };
-	//	Index location = weight.dot(greenBias);
-	//	Console->debug("Green Bias is [{0:5d},{1:5d},{2:5d}]", greenBias.x(), greenBias.y(), greenBias.z());
-	//	dcomplex res = green->Scalar(Vector3d::Zero(), SystemConfig.ImpConfig.Interval*greenBias.cast<double>());
+	char* path = "E:/ZMC/Code/C_program/MUL/SourceData/ArrayGreen.dat";
 
-	//	EXPECT_NEAR(gb(location).real(), res.real(), 1.0e-4) << "Error in %d real", i;
-	//	EXPECT_NEAR(gb(location).imag(), res.imag(), 1.0e-4) << "Error in %d imag", i;
-	//}
+	ifstream ifs(path, ios::in | ios::binary);
+	
+	VectorXcd Green;
+	bool readflag = true;
+	if(ifs.is_open()&&readflag)
+	{
+		Console->debug("Load Green");
+		int length = 0;
+		ifs.read(reinterpret_cast<char*>(&length), sizeof(int));
+		Console->debug("Size of Green is {}",length);
+		Green.resize(length);
+		for (int i = 0; i < length; ++i)
+		{
+			dcomplex val;
+			ifs.read(reinterpret_cast<char*>(&val), sizeof(dcomplex));
+			Green(i) = val;
+		}
+		ifs.clear();
+		ifs.close();
+	}
+	else 
+	{
+		ofstream ofs(path, ios::out | ios::binary);
+		if (ofs.is_open())
+		{
+			Console->debug("ConstructGreen");
+			const clock_t starttime = clock();
+			fillingTool->_green = IGreen::GetInstance();
+			VectorXi position{ VectorXi::Zero(5) };//x-y-z-X-Y
+			Green = fillingTool->ConstructIterated(position, 4);
+			const clock_t endtime = clock();
+			double timecost = double(endtime - starttime) / CLOCKS_PER_SEC;
+			Console->info("ConstructGreen need:\t{}s", timecost);
 
-	////constructedIterated
-	//unsigned bias = 0;
-	//VectorXcd GREEN = fillingTool->constructIterated(bias, 2);
-	//int mid = SystemConfig.ImpConfig.xNumber - 1;
-	//for (int i = 1;i < SystemConfig.ImpConfig.xNumber - 1;++i)
-	//{
-	//	Console->debug("Index{0:5d}: {1:12.7f} {2:12.7f}i", mid + i, GREEN(mid + i).real(), GREEN(mid + i).imag());
-	//	EXPECT_NEAR(GREEN(mid + i).real(), GREEN(mid - i).real(), 1.0e-6) << "Error in %d real", mid + i;
-	//	EXPECT_NEAR(GREEN(mid + i).imag(), GREEN(mid - i).imag(), 1.0e-6) << "Error in %d imag", mid + i;
+			int length = Green.size();
+			ofs.write(reinterpret_cast<char*>(&length), sizeof(int));
+			for (int i = 0; i < length; ++i)
+			{
+				dcomplex val = Green[i];
+				ofs.write(reinterpret_cast<char*>(&val), sizeof(dcomplex));
+			}
+			ofs.flush();
+			ofs.close();
+		}
+		else FAIL();
+		
+	}
+	
+	//Initial Test Parameters
+	
+	VectorXi weight{ VectorXi::Zero(5) }, greenWeight{ weight }, greenWeightAcu{ weight };
+	weight << SystemConfig.ImpConfig.xNumber, 
+	SystemConfig.ImpConfig.yNumber, 
+	SystemConfig.ImpConfig.zNumber,
+	SystemConfig.ImpConfig.numArrayX,
+	SystemConfig.ImpConfig.numArrayX;
+	greenWeight = 2 * weight.array() - 1;
+	greenWeightAcu(0) = 1;
+	for (int i = 1 ;i < greenWeightAcu.size();i++)
+	{
+		greenWeightAcu(i) = greenWeight.head(i).prod();
+	}
 
-	//}
+	//Test the Upper Triangle value 
+	MatrixXi test{ MatrixXi::Zero(7,5) };
+	test.row(0) << 7, 13, 4, 2, 0;
+	test.row(1) << 14, 7, 24, 1, 2;
+	test.row(2) << 9, 11, 1, 1, 1;
+	test.row(3) << 11, 6, 7, 3, 2;
+	test.row(4) << 5, 2, 13, 1, 0;
+	test.row(5) << 15, 0, 19, 3, 2;
+	test.row(6) << 17, 23, 23, 3, 1;
+	for (int caseid = 0; caseid < 7; ++caseid)
+	{
+		Console->info("#Case {5}:\tTest=[{0},{1},{2},{3},{4}]",
+			test(caseid,0),test(caseid,1),test(caseid, 2),test(caseid,3),test(caseid,4), caseid + 1);
 
-	//delete fillingTool;
+		int testid = test.row(caseid).dot(greenWeightAcu);
+		dcomplex greenRef = Green(testid);
+		Vector3d Rb{ SystemConfig.ImpConfig.distanceBiasX * test(caseid,3) ,
+			SystemConfig.ImpConfig.distanceBiasY * test(caseid,4) ,0 };
+		Vector3d Ru{ SystemConfig.ImpConfig.Interval * test(caseid,0) ,
+			SystemConfig.ImpConfig.Interval * test(caseid,1) ,
+			SystemConfig.ImpConfig.Interval * test(caseid, 2) };
+		dcomplex ref = IGreen::GetInstance()->Scalar(Rb + Ru, Vector3d::Zero());
+		Console->debug("ID={0:5d}\tValue=({1:12.7f},{2:12.7f}i)",
+			testid, greenRef.real(), greenRef.imag());
+		EXPECT_NEAR(greenRef.real(), ref.real(), 1.0e-6);
+		EXPECT_NEAR(greenRef.imag(), ref.imag(), 1.0e-6);
+
+	}
+	//Test the Lower Triangle value 
+
+
+	delete fillingTool;
 }
 
 

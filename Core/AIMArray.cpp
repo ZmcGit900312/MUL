@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "AIMArray.h"
+#include "Multiplicator.h"
 
 Core::AIMArray::AIMArray(const ImpConfiguration & configuration, IImpService * impedance, const IEConfiguration & ieConfig) :
 IMatrixFiller(configuration, impedance, ieConfig),
@@ -138,6 +139,21 @@ void Core::AIMArray::MultipoleExpansion(vector<IBasicFunction*>& bf)
 
 void Core::AIMArray::GreenMatrixSet(IGreen * green)
 {
+	//Bind Green Point
+	_green = green;
+
+	AIMAssist::MulFFTMultiplicator *tools = new AIMAssist::MulFFTMultiplicator;
+	MKL_LONG layer[3] = { _layerGreenSize[4] ,_layerGreenSize[3], _layerGreenSizeAcu[2] };
+
+	tools->Reset(3, layer);
+	_imp->GetGreen().resize(tools->Length());
+
+	//Keep the Posization
+	VectorXi position{ VectorXi::Zero(5) };//x-y-z-X-Y
+	_imp->GetGreen() = ConstructIterated(position, position.size()-1);
+
+	tools->fwd(_imp->GetGreen());
+	_imp->_fftTools = tools;
 }
 
 void Core::AIMArray::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFunction*>& bf)
@@ -209,9 +225,53 @@ void Core::AIMArray::NearCorrection(vector<IBasicFunction*>& bf)
 {
 }
 
-VectorXcd Core::AIMArray::constructIterated(unsigned & bias, const unsigned level)
+VectorXcd Core::AIMArray::ConstructIterated(VectorXi& pos, const unsigned level)
 {
-	return VectorXcd();
+	const size_t length = _layerGreenSizeAcu[level];
+	VectorXcd data{ VectorXcd::Zero(length) };
+	const size_t N = (_layerGreenSize[level]+1)/2;
+#ifdef _DEBUG
+	cout << "level="<<level<<"  Location=["<<pos.transpose() << "]\r";
+#endif
+
+	if(level>0)
+	{
+		const int childLength= _layerGreenSizeAcu[level - 1];
+		data.head(childLength)= ConstructIterated(pos, level - 1);
+		for (pos[level]=1; pos[level] < N; ++pos[level])
+		{
+			data.segment(pos[level] * childLength, childLength) = ConstructIterated(pos, level - 1);
+			
+		}
+		for (pos[level] = -1; pos[level] > -N; --pos[level])
+		{
+			data.segment(length + pos[level] * childLength, childLength) = ConstructIterated(pos, level - 1);
+		}
+		pos[level] = 0;
+	}
+	else
+	{
+		if (pos[3]==0&&pos[4] == 0)return data;
+		pos[0] = 0;
+		Vector3d Rb{ _distanceBiasX * pos[3] ,_distanceBiasY * pos[4] ,0 };
+		Vector3d Ru{ _interval * pos[0] ,_interval * pos[1] ,_interval * pos[2] };
+		data[0]= _green->Scalar(Ru + Rb, Vector3d::Zero());
+		//Unpper Triangle of Green Teoplitz Rb+Ru
+		for (pos[0] = 1; pos[0] < N; ++pos[0])
+		{					
+			Ru.x() = _interval * pos[0];
+			data[pos[0]]= _green->Scalar(Ru + Rb,Vector3d::Zero());						
+		}
+		//Lower Triangle of Green Teoplitz Rb-Ru
+		for (pos[0] = -1; pos[0] > -N; --pos[0])
+		{
+			Ru.x() = _interval * pos[0];
+			data[length - pos[0]] = _green->Scalar(Ru + Rb, Vector3d::Zero());
+		}
+		
+		
+	}
+	return data;
 }
 
 void Core::AIMArray::GenerateGreenBase(IGreen * green)
