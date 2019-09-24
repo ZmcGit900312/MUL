@@ -3,44 +3,35 @@
 ################################################################################
 
 /.vs/MUL/v15/Browse.VC.opendb
-/Core/x64
-/Configuration/bin/
-/Configuration/obj/
-/Configuration/CodeGraphData/
-/test/unused
-/x64
 /.vs
-/AIM
-/Bin
-/Temp
-/Debug
+
 /AIMflowchart.mmap
 /AIMStructure.mmap
-/Temp
-/SourceData
-/MulSecond.EAP
+
+/Core/x64
 /Core/Runtime.log
-/SourceData/unused
-/SourceData/Excitation.txt
-/SourceData/RCSVertical.dat
-/SourceData/test.out
-/SourceData/test.bf
-/SourceData/test.hxj
-/SourceData/test.bf
-/SourceData/test.hxj
-/SourceData/test.out
-/SourceData/Horizon_RCS.dat
-/SourceData/RCSTest.dat
-/SourceData/Sphere_RCS.dat
-/include/Eigen
-/include/unsupported
 /Core/My Advisor Results - Core
 /Configuration/My Advisor Results - Configuration
 /Core/My Amplifier Results - Core
+/Core/Core.vcxproj.filters
+/Core/Core.vcxproj.uers
+
+/Configuration/bin/
+/Configuration/obj/
+/Configuration/CodeGraphData/
+/x64
+
+/Bin
+/Debug
+
+/include/Eigen
+/include/unsupported
+
 /MulSecond.ldb
+/MulSecond.EAP
+
+/SourceData/*
+
 /tinyxml2/x64
-/SourceData/Error.xml.bak
-/SourceData/test.xml.bak
-/SourceData/ArrayGreen.dat
 /tinyxml2/My Advisor Results - tinyxml2/e000
 /tinyxml2/My Advisor Results - tinyxml2

@@ -98,6 +98,61 @@ protected:
 		dcomplex tempd = vrowd.dot(vcold);
 		return (tempx + tempy + tempz - tempd / (k*k)) * 1i*k*eta;
 	}
+
+	VectorXcd GetGreenBase(char* path, AIMArray* tool,bool readflag=true) const
+	{
+		VectorXcd Green;
+		ifstream ifs(path, ios::in | ios::binary);
+		if (ifs.is_open() && readflag)
+		{
+			Console->debug("Load Green");
+			const clock_t starttime = clock();
+			int length = 0;
+			ifs.read(reinterpret_cast<char*>(&length), sizeof(int));
+			Console->debug("Size of Green is {}", length);
+			Green.resize(length);
+			for (int i = 0; i < length; ++i)
+			{
+				dcomplex val;
+				ifs.read(reinterpret_cast<char*>(&val), sizeof(dcomplex));
+				Green(i) = val;
+			}
+			ifs.clear();
+			ifs.close();
+
+			const clock_t endtime = clock();
+			double timecost = double(endtime - starttime) / CLOCKS_PER_SEC;
+			Console->info("Read Green need:\t{}s", timecost);
+		}
+		else
+		{
+			ofstream ofs(path, ios::out | ios::binary);
+			if (ofs.is_open())
+			{
+				Console->debug("ConstructGreen");
+				const clock_t starttime = clock();
+
+				VectorXi position{ VectorXi::Zero(5) };//x-y-z-X-Y
+				Green = tool->ConstructIterated(position, 4);
+				const clock_t endtime = clock();
+				double timecost = double(endtime - starttime) / CLOCKS_PER_SEC;
+				Console->info("ConstructGreen need:\t{}s", timecost);
+
+				int length = Green.size();
+				ofs.write(reinterpret_cast<char*>(&length), sizeof(int));
+				for (int i = 0; i < length; ++i)
+				{
+					dcomplex val = Green[i];
+					ofs.write(reinterpret_cast<char*>(&val), sizeof(dcomplex));
+				}
+				ofs.flush();
+				ofs.close();
+			}
+			
+		}
+		return Green;
+	}
+
 	MulFFTMultiplicator _mvptool;
 };
 
@@ -116,70 +171,28 @@ TEST_F(AIMArrayTest, MultipoleExpansion)
 }
 
 
-TEST_F(AIMArrayTest, GreenBase)
+TEST_F(AIMArrayTest, GenerateGreenTest)
 {
 	AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
 	auto& bf = ComponentList::BFvector;
 
 	char* path = "E:/ZMC/Code/C_program/MUL/SourceData/ArrayGreen.dat";
+	fillingTool->_green = IGreen::GetInstance();
 
-	ifstream ifs(path, ios::in | ios::binary);
-	
-	VectorXcd Green;
 	bool readflag = true;
-	if(ifs.is_open()&&readflag)
-	{
-		Console->debug("Load Green");
-		int length = 0;
-		ifs.read(reinterpret_cast<char*>(&length), sizeof(int));
-		Console->debug("Size of Green is {}",length);
-		Green.resize(length);
-		for (int i = 0; i < length; ++i)
-		{
-			dcomplex val;
-			ifs.read(reinterpret_cast<char*>(&val), sizeof(dcomplex));
-			Green(i) = val;
-		}
-		ifs.clear();
-		ifs.close();
-	}
-	else 
-	{
-		ofstream ofs(path, ios::out | ios::binary);
-		if (ofs.is_open())
-		{
-			Console->debug("ConstructGreen");
-			const clock_t starttime = clock();
-			fillingTool->_green = IGreen::GetInstance();
-			VectorXi position{ VectorXi::Zero(5) };//x-y-z-X-Y
-			Green = fillingTool->ConstructIterated(position, 4);
-			const clock_t endtime = clock();
-			double timecost = double(endtime - starttime) / CLOCKS_PER_SEC;
-			Console->info("ConstructGreen need:\t{}s", timecost);
 
-			int length = Green.size();
-			ofs.write(reinterpret_cast<char*>(&length), sizeof(int));
-			for (int i = 0; i < length; ++i)
-			{
-				dcomplex val = Green[i];
-				ofs.write(reinterpret_cast<char*>(&val), sizeof(dcomplex));
-			}
-			ofs.flush();
-			ofs.close();
-		}
-		else FAIL();
-		
-	}
+	//Get Green UnFFT
+	VectorXcd Green = GetGreenBase(path,fillingTool,readflag);
 	
 	//Initial Test Parameters
 	
-	VectorXi weight{ VectorXi::Zero(5) }, greenWeight{ weight }, greenWeightAcu{ weight };
+	VectorXi weight{ VectorXi::Zero(5) }, greenWeightAcu{ weight };
 	weight << SystemConfig.ImpConfig.xNumber, 
 	SystemConfig.ImpConfig.yNumber, 
 	SystemConfig.ImpConfig.zNumber,
 	SystemConfig.ImpConfig.numArrayX,
 	SystemConfig.ImpConfig.numArrayX;
-	greenWeight = 2 * weight.array() - 1;
+	VectorXi greenWeight = 2 * weight.array() - 1;
 	greenWeightAcu(0) = 1;
 	for (int i = 1 ;i < greenWeightAcu.size();i++)
 	{
@@ -195,6 +208,7 @@ TEST_F(AIMArrayTest, GreenBase)
 	test.row(4) << 5, 2, 13, 1, 0;
 	test.row(5) << 15, 0, 19, 3, 2;
 	test.row(6) << 17, 23, 23, 3, 1;
+	Console->info("Test upper triangle green");
 	for (int caseid = 0; caseid < 7; ++caseid)
 	{
 		Console->info("#Case {5}:\tTest=[{0},{1},{2},{3},{4}]",
@@ -214,55 +228,85 @@ TEST_F(AIMArrayTest, GreenBase)
 		EXPECT_NEAR(greenRef.imag(), ref.imag(), 1.0e-6);
 
 	}
-	//Test the Lower Triangle value 
 
+	Console->info("Test lower triangle green");
+	test.row(0) << -7, 13, -4, 2, 0;
+	test.row(1) << 14, -7, -24, -1, 2;
+	test.row(2) << 9, -11, 1, -1, 1;
+	test.row(3) << -11, 6, -7, 3, 2;
+	test.row(4) << 5, -2, -13, 1, 0;
+	test.row(5) << -15, 0, 19, 3, -2;
+	test.row(6) << -17, -23, 23, 3, -1;
+	for (int caseid = 0; caseid < 7; ++caseid)
+	{
+		Console->info("#Case {5}:\tTest=[{0},{1},{2},{3},{4}]",
+			test(caseid, 0), test(caseid, 1), test(caseid, 2), test(caseid, 3), test(caseid, 4), caseid + 1);
+
+		VectorXi lowerId = test.row(caseid);
+		for (int zmc = 0; zmc < test.cols(); ++zmc)
+		{
+			if (test(caseid, zmc) < 0)lowerId(zmc) = greenWeight(zmc) +test(caseid, zmc);
+		}
+		int testid = lowerId.dot(greenWeightAcu);
+		dcomplex greenRef = Green(testid);
+		Vector3d Rb{ SystemConfig.ImpConfig.distanceBiasX * test(caseid,3) ,
+			SystemConfig.ImpConfig.distanceBiasY * test(caseid,4) ,0 };
+		Vector3d Ru{ SystemConfig.ImpConfig.Interval * test(caseid,0) ,
+			SystemConfig.ImpConfig.Interval * test(caseid,1) ,
+			SystemConfig.ImpConfig.Interval * test(caseid, 2) };
+		dcomplex ref = IGreen::GetInstance()->Scalar(Rb + Ru, Vector3d::Zero());
+		Console->debug("ID={0:5d}\tValue=({1:12.7f},{2:12.7f}i)",
+			testid, greenRef.real(), greenRef.imag());
+		EXPECT_NEAR(greenRef.real(), ref.real(), 1.0e-6);
+		EXPECT_NEAR(greenRef.imag(), ref.imag(), 1.0e-6);
+
+	}
+	delete fillingTool;
+}
+
+
+#ifdef _DEBUG
+TEST_F(AIMArrayTest, GetFarFieldApproximateFUNTest)
+{
+	AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
+	auto& bf = ComponentList::BFvector;
+	fillingTool->_green = IGreen::GetInstance();
+
+	Console->debug("Allocate the MatrixSetting oject");
+	fillingTool->MultipoleExpansion(bf);
+	Vector3i arrayBias{ 0,0,0 };
+	//TEST FarField
+
+	const dcomplex refZ1 = { -0.0080060247635108418 ,-0.0019764567076286750 };//Z(18£¬123)
+	const dcomplex compZ1 = fillingTool->GetFarFieldApproximateImpedacne(18, 123, arrayBias);
+	EXPECT_NEAR(refZ1.real(), compZ1.real(), 1.0e-6) << "Error in (18, 123) real";
+	EXPECT_NEAR(refZ1.imag(), compZ1.imag(), 1.0e-6) << "Error in (18, 123) imag";
+
+	const dcomplex refZ2 = { -0.0027595945849962643,0.0059947329121803053 };//Z(647, 22)
+	const dcomplex compZ2 = fillingTool->GetFarFieldApproximateImpedacne(647, 22, arrayBias);
+	EXPECT_NEAR(refZ2.real(), compZ2.real(), 1.0e-6) << "Error in (647, 22) real";
+	EXPECT_NEAR(refZ2.imag(), compZ2.imag(), 1.0e-6) << "Error in (647, 22) imag";
+
+	const dcomplex refZ3 = { 0.0034725828079872414, 0.0047437269001039282 };//Z(38, 123)
+	const dcomplex compZ3 = fillingTool->GetFarFieldApproximateImpedacne(38, 123, arrayBias);
+	EXPECT_NEAR(refZ3.real(), compZ3.real(), 1.0e-6) << "Error in (38, 123) real";
+	EXPECT_NEAR(refZ3.imag(), compZ3.imag(), 1.0e-6) << "Error in (38, 123) imag";
+
+	const dcomplex refZ4 = { -0.0067436242889280231 , 0.0033305745353076361 };//Z(17,653)
+	const dcomplex compZ4 = fillingTool->GetFarFieldApproximateImpedacne(17, 653, arrayBias);
+	EXPECT_NEAR(refZ4.real(), compZ4.real(), 1.0e-6) << "Error in (17,653) real";
+	EXPECT_NEAR(refZ4.imag(), compZ4.imag(), 1.0e-6) << "Error in (17,653) imag";
+
+	const dcomplex refZ9 = { -0.0034002845471970793 , 0.0033173618753603450 };//Z(18,654)
+	const dcomplex compZ9 = fillingTool->GetFarFieldApproximateImpedacne(18, 654, arrayBias);
+	EXPECT_NEAR(refZ9.real(), compZ9.real(), 1.0e-6) << "Error in (18,654) real";
+	EXPECT_NEAR(refZ9.imag(), compZ9.imag(), 1.0e-6) << "Error in (18,654) imag";
 
 	delete fillingTool;
 }
 
 
-
-TEST_F(AIMArrayTest, ApproximationFarField)
-{
-	//AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
-	//auto& bf = ComponentList::BFvector;
-	//IGreen* green = IGreen::GetInstance();
-
-	//Console->debug("Allocate the MatrixSetting oject");
-	//fillingTool->MultipoleExpansion(bf);
-	//fillingTool->GreenMatrixSet(green);
-	//VectorXcd gb = fillingTool->GetGreenBase();
-
-	////TEST FarField
-
-	//const dcomplex refZ1 = { -0.0080060247635108418 ,-0.0019764567076286750 };//Z(18£¬123)
-	//const dcomplex compZ1 = fillingTool->GetImpAIM(18, 123);
-	//EXPECT_NEAR(refZ1.real(), compZ1.real(), 1.0e-6) << "Error in (18, 123) real";
-	//EXPECT_NEAR(refZ1.imag(), compZ1.imag(), 1.0e-6) << "Error in (18, 123) imag";
-
-	//const dcomplex refZ2 = { -0.0027595945849962643,0.0059947329121803053 };//Z(647, 22)
-	//const dcomplex compZ2 = fillingTool->GetImpAIM(647, 22);
-	//EXPECT_NEAR(refZ2.real(), compZ2.real(), 1.0e-6) << "Error in (647, 22) real";
-	//EXPECT_NEAR(refZ2.imag(), compZ2.imag(), 1.0e-6) << "Error in (647, 22) imag";
-
-	//const dcomplex refZ3 = { 0.0034725828079872414, 0.0047437269001039282 };//Z(38, 123)
-	//const dcomplex compZ3 = fillingTool->GetImpAIM(38, 123);
-	//EXPECT_NEAR(refZ3.real(), compZ3.real(), 1.0e-6) << "Error in (38, 123) real";
-	//EXPECT_NEAR(refZ3.imag(), compZ3.imag(), 1.0e-6) << "Error in (38, 123) imag";
-
-	//const dcomplex refZ4 = { -0.0067436242889280231 , 0.0033305745353076361 };//Z(17,653)
-	//const dcomplex compZ4 = fillingTool->GetImpAIM(17, 653);
-	//EXPECT_NEAR(refZ4.real(), compZ4.real(), 1.0e-6) << "Error in (17,653) real";
-	//EXPECT_NEAR(refZ4.imag(), compZ4.imag(), 1.0e-6) << "Error in (17,653) imag";
-
-	//const dcomplex refZ9 = { -0.0034002845471970793 , 0.0033173618753603450 };//Z(18,654)
-	//const dcomplex compZ9 = fillingTool->GetImpAIM(18, 654);
-	//EXPECT_NEAR(refZ9.real(), compZ9.real(), 1.0e-6) << "Error in (18,654) real";
-	//EXPECT_NEAR(refZ9.imag(), compZ9.imag(), 1.0e-6) << "Error in (18,654) imag";
-
-	//delete fillingTool;
-}
-
+#endif
 TEST_F(AIMArrayTest, Multiplication)
 {
 	//AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);

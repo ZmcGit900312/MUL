@@ -47,10 +47,6 @@ namespace Core
 		AIMAssist::MultipoleExpansioner MultiExpTool;
 	protected:
 
-		//inner api
-		virtual void GenerateGreenBase(IGreen* green) = 0;
-		virtual dcomplex GetFarFieldImpedacneAIM(const size_t row, const size_t col)=0;
-
 		//Triplet
 		typedef Triplet<dcomplex> T;
 		typedef struct {

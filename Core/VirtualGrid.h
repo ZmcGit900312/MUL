@@ -34,8 +34,8 @@ namespace Core
 		void GenerateGreenBase2(IGreen* green);
 	protected:
 		//inner api
-		void GenerateGreenBase(IGreen* green)override;
-		dcomplex GetFarFieldImpedacneAIM(const size_t row, const size_t col)override;					
+		void GenerateGreenBase(IGreen* green);
+		dcomplex GetFarFieldImpedacneAIM(const size_t row, const size_t col);					
 		ImpAIM* _imp = nullptr;
 	};
 

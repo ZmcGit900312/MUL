@@ -16,6 +16,11 @@ ImpAIM::ImpAIM(const size_t unknowns,const int xNum, const int yNum,
 
 ImpAIM::~ImpAIM()
 {
+	if (_fftTools)
+	{
+		delete _fftTools;
+		_fftTools = nullptr;
+	}
 }
 
 void ImpAIM::FillImpedance()

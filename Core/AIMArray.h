@@ -24,16 +24,21 @@ namespace Core
 
 
 		//For Test API
-		VectorXcd& GetGreenBase() { return _greenBase; }
-		dcomplex GetImpAIM(const size_t row, const size_t col) { return GetFarFieldImpedacneAIM(row, col); }
+#ifdef _DEBUG
+		dcomplex GetFarFieldApproximateImpedacne(const size_t row, const size_t col,Vector3i arrayBias); 
 
+#endif
 		VectorXcd ConstructIterated(VectorXi& pos, const unsigned level);
 
 		IGreen* _green = nullptr;
+		AIMAssist::MulFFTMultiplicator *_tools = nullptr;
+		ImpArrayAIM*_imp = nullptr;
+
+
+
 	protected:
-		//inner api
-		void GenerateGreenBase(IGreen* green)override;
-		dcomplex GetFarFieldImpedacneAIM(const size_t row, const size_t col)override;
+
+		
 		int _numXArray, _numYArray;
 		double _distanceBiasX, _distanceBiasY;
 		size_t _totalUnknowns;
@@ -45,10 +50,7 @@ namespace Core
 		 _layerGreenSizeAcu[3] is ArrayX Size
 		 _layerGreenSizeAcu[4] is wholeSize
 		 */
-		VectorXi _layerGreenSizeAcu{ 5,1 };
-
-		ImpArrayAIM*_imp = nullptr;
-		
+		VectorXi _layerGreenSizeAcu{ 5,1 };			
 		
 	};
 

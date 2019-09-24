@@ -10,6 +10,11 @@ ImpArrayAIM::ImpArrayAIM(const size_t unitUnknonws, int numUnitX, int numUnitY, 
 
 ImpArrayAIM::~ImpArrayAIM()
 {
+	if(_fftTools)
+	{
+		delete _fftTools;
+		_fftTools = nullptr;
+	}
 }
 
 void ImpArrayAIM::FillImpedance()

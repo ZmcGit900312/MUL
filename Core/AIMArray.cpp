@@ -142,18 +142,18 @@ void Core::AIMArray::GreenMatrixSet(IGreen * green)
 	//Bind Green Point
 	_green = green;
 
-	AIMAssist::MulFFTMultiplicator *tools = new AIMAssist::MulFFTMultiplicator;
+	_tools = new AIMAssist::MulFFTMultiplicator;
 	MKL_LONG layer[3] = { _layerGreenSize[4] ,_layerGreenSize[3], _layerGreenSizeAcu[2] };
 
-	tools->Reset(3, layer);
-	_imp->GetGreen().resize(tools->Length());
+	_tools->Reset(3, layer);
+	_imp->GetGreen().resize(_tools->Length());
 
 	//Keep the Posization
 	VectorXi position{ VectorXi::Zero(5) };//x-y-z-X-Y
 	_imp->GetGreen() = ConstructIterated(position, position.size()-1);
 
-	tools->fwd(_imp->GetGreen());
-	_imp->_fftTools = tools;
+	_tools->fwd(_imp->GetGreen());
+	_imp->_fftTools = _tools;
 }
 
 void Core::AIMArray::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFunction*>& bf)
@@ -225,6 +225,35 @@ void Core::AIMArray::NearCorrection(vector<IBasicFunction*>& bf)
 {
 }
 
+#ifdef _DEBUG
+dcomplex Core::AIMArray::GetFarFieldApproximateImpedacne(const size_t row, const size_t col, Vector3i arrayBias)
+{
+	gama& source = _gama[row], field = _gama[col];
+	
+	Vector3d Rb{ _distanceBiasX*arrayBias.x(),_distanceBiasY*arrayBias.y(),0 };
+
+
+	for (int fieldIndex = 0; fieldIndex < _gridNum; ++fieldIndex)
+	{
+		Vector3d rf{ field.index[fieldIndex].x(),field.index[fieldIndex].y(),field.index[fieldIndex].z() };
+		for (int sourceIndex = 0; sourceIndex < _gridNum; ++sourceIndex)
+		{
+			Vector3d rs{ source.index[sourceIndex].x(), source.index[sourceIndex].y() ,source.index[sourceIndex].z() };
+			
+			Vector3d Ru =  (rf - rs)*_interval;
+			_localGreen(fieldIndex, sourceIndex) = _green->Scalar(Rb+Ru,Vector3d::Zero(3));
+		}
+	}
+
+	const dcomplex tempx = field.gamax.transpose()*(_localGreen*source.gamax);
+	const dcomplex tempy = field.gamay.transpose()*(_localGreen*source.gamay);
+	const dcomplex tempz = field.gamaz.transpose()*(_localGreen*source.gamaz);
+	const dcomplex tempd = field.gamad.transpose()*(_localGreen*source.gamad);
+
+	return (tempx + tempy + tempz - tempd / (k*k)) * 1i*k*eta;
+}
+
+#endif
 VectorXcd Core::AIMArray::ConstructIterated(VectorXi& pos, const unsigned level)
 {
 	const size_t length = _layerGreenSizeAcu[level];
@@ -236,18 +265,17 @@ VectorXcd Core::AIMArray::ConstructIterated(VectorXi& pos, const unsigned level)
 
 	if(level>0)
 	{
+		pos[level] = 0;
 		const int childLength= _layerGreenSizeAcu[level - 1];
 		data.head(childLength)= ConstructIterated(pos, level - 1);
+		VectorXi _pos{ pos };
 		for (pos[level]=1; pos[level] < N; ++pos[level])
 		{
+			_pos[level] = -pos[level];			
 			data.segment(pos[level] * childLength, childLength) = ConstructIterated(pos, level - 1);
+			data.segment(length - pos[level] * childLength, childLength) = ConstructIterated(_pos, level - 1);
 			
 		}
-		for (pos[level] = -1; pos[level] > -N; --pos[level])
-		{
-			data.segment(length + pos[level] * childLength, childLength) = ConstructIterated(pos, level - 1);
-		}
-		pos[level] = 0;
 	}
 	else
 	{
@@ -255,18 +283,15 @@ VectorXcd Core::AIMArray::ConstructIterated(VectorXi& pos, const unsigned level)
 		pos[0] = 0;
 		Vector3d Rb{ _distanceBiasX * pos[3] ,_distanceBiasY * pos[4] ,0 };
 		Vector3d Ru{ _interval * pos[0] ,_interval * pos[1] ,_interval * pos[2] };
+		Vector3d _Ru{ Ru };
 		data[0]= _green->Scalar(Ru + Rb, Vector3d::Zero());
-		//Unpper Triangle of Green Teoplitz Rb+Ru
+		//Green Teoplitz Rb+Ru
 		for (pos[0] = 1; pos[0] < N; ++pos[0])
 		{					
 			Ru.x() = _interval * pos[0];
-			data[pos[0]]= _green->Scalar(Ru + Rb,Vector3d::Zero());						
-		}
-		//Lower Triangle of Green Teoplitz Rb-Ru
-		for (pos[0] = -1; pos[0] > -N; --pos[0])
-		{
-			Ru.x() = _interval * pos[0];
-			data[length - pos[0]] = _green->Scalar(Ru + Rb, Vector3d::Zero());
+			_Ru.x() = -Ru.x();
+			data[pos[0]]= _green->Scalar(Ru + Rb,Vector3d::Zero());
+			data[length - pos[0]] = _green->Scalar(Rb+_Ru , Vector3d::Zero());
 		}
 		
 		
@@ -274,11 +299,3 @@ VectorXcd Core::AIMArray::ConstructIterated(VectorXi& pos, const unsigned level)
 	return data;
 }
 
-void Core::AIMArray::GenerateGreenBase(IGreen * green)
-{
-}
-
-dcomplex Core::AIMArray::GetFarFieldImpedacneAIM(const size_t row, const size_t col)
-{
-	return dcomplex();
-}

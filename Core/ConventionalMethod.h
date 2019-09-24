@@ -30,9 +30,9 @@ namespace Core
 		AIMAssist::Teoplitzcd VectorTp;
 
 	protected:
-		void GenerateGreenBase(IGreen*green)override;
+		void GenerateGreenBase(IGreen*green);
 
-		dcomplex GetFarFieldImpedacneAIM(const size_t row, const size_t col)override;
+		dcomplex GetFarFieldImpedacneAIM(const size_t row, const size_t col);
 		
 		ImpAIM* _imp = nullptr;
 	};
