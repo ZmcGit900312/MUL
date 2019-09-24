@@ -69,7 +69,7 @@ void Core::AIMArray::MultipoleExpansion(vector<IBasicFunction*>& bf)
 
 
 	//MultiExpansion
-	Console->debug("Push all the Gmama Matrix Into Triplets");
+	Console->debug("Push all the Gama Matrix Into Triplets");
 	const clock_t start = clock();
 	for (int i = 0; i < _unknowns; ++i)
 	{
@@ -143,9 +143,11 @@ void Core::AIMArray::GreenMatrixSet(IGreen * green)
 	_green = green;
 
 	_tools = new AIMAssist::MulFFTMultiplicator;
-	MKL_LONG layer[3] = { _layerGreenSize[4] ,_layerGreenSize[3], _layerGreenSizeAcu[2] };
+	//需要5阶FFT才可以
+	MKL_LONG layer[5] = { _layerGreenSize[4] ,_layerGreenSize[3], 
+		_layerGreenSize[2] ,_layerGreenSize[1] ,_layerGreenSize[0]  };
 
-	_tools->Reset(3, layer);
+	_tools->Reset(5, layer);
 	_imp->GetGreen().resize(_tools->Length());
 
 	//Keep the Posization
@@ -284,7 +286,9 @@ VectorXcd Core::AIMArray::ConstructIterated(VectorXi& pos, const unsigned level)
 		Vector3d Rb{ _distanceBiasX * pos[3] ,_distanceBiasY * pos[4] ,0 };
 		Vector3d Ru{ _interval * pos[0] ,_interval * pos[1] ,_interval * pos[2] };
 		Vector3d _Ru{ Ru };
-		data[0]= _green->Scalar(Ru + Rb, Vector3d::Zero());
+
+		//data[0]= pos.sum()?_green->Scalar(Ru + Rb, Vector3d::Zero()):0;
+		data[0] =  _green->Scalar(Ru + Rb, Vector3d::Zero()) ;
 		//Green Teoplitz Rb+Ru
 		for (pos[0] = 1; pos[0] < N; ++pos[0])
 		{					

@@ -60,8 +60,10 @@ int Core::AIMAssist::FFTmd::Reset(const MKL_LONG dim, MKL_LONG layer[])
 	_dim = dim;
 	_layer = layer;
 	if(dim==1)_length = *_layer;
-	else if (dim == 2)_length = layer[0] * layer[1];
-	else _length = layer[0] * layer[1]*layer[2];
+	if (dim == 2)_length = layer[0] * layer[1];
+	if(dim == 3)_length = layer[0] * layer[1]*layer[2];
+	if (dim == 4)_length = layer[0] * layer[1] * layer[2]*layer[3];
+	if (dim == 5)_length = layer[0] * layer[1] * layer[2]*layer[3]*layer[4];
 
 	long status=_dim==1? DftiCreateDescriptor(&_hand, DFTI_DOUBLE, DFTI_COMPLEX, 1, _length):
 		DftiCreateDescriptor(&_hand, DFTI_DOUBLE, DFTI_COMPLEX, _dim, _layer);

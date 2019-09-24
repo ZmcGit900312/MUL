@@ -9,7 +9,7 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Gtest_Debug|x64'">
-    <LocalDebuggerCommandArguments>--gtest_filter=AIMArrayTest.GreenBase</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>--gtest_filter=AIMArrayTest.MultiplicationTest2</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Gtest_Release|x64'">

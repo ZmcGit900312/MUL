@@ -68,6 +68,8 @@ class ImpArrayAIM :public EigenBase<ImpArrayAIM>,public IImpService
 	const MatrixXcd& LocalMatrix()const { return _nearMatrix;}
 	VectorXcd& GetExcitation() override { return _rightHand; }//Storage RightHand
 
+	VectorXcd FarFieldMultiplication(const VectorXcd&val)const;
+	VectorXcd NearFieldMultiplication(const VectorXcd&val)const;
 
 	//FarFiled Visit
 	VectorXcd GammaXMultiplication(const VectorXcd&val)const { return _gamax * val; }
@@ -138,45 +140,7 @@ namespace Eigen
 				// MV to be done?
 				//for (Index i = 0; i<lhs.cols(); ++i)
 				//	dst += rhs(i) * lhs.LocalMatrix().col(i);
-				if (SystemConfig.IEConfig.type == EFIE)
-				{
-					//并行尝试，需要修改的部分
-					VectorXcd Lx{ lhs.cols(),1 };
-					VectorXcd Ly{ Lx }, Lz{ Lx }, Ld{ Lx };
-					VectorXcd Fx{ rhs }, Fy{ rhs }, Fz{ rhs }, Fd{ rhs },Near{rhs};
-					for(Index i=0;i<lhs.cols()/lhs.unitSize();++i)
-					{
-						Lx.segment(lhs.unitGamaSize()*i, lhs.unitGamaSize())=lhs.GammaXMultiplication(rhs.segment(lhs.unitSize()*i, lhs.unitSize()));
-						Ly.segment(lhs.unitGamaSize()*i, lhs.unitGamaSize()) = lhs.GammaYMultiplication(rhs.segment(lhs.unitSize()*i, lhs.unitSize()));
-						Lz.segment(lhs.unitGamaSize()*i, lhs.unitGamaSize()) = lhs.GammaZMultiplication(rhs.segment(lhs.unitSize()*i, lhs.unitSize()));
-						Ld.segment(lhs.unitGamaSize()*i, lhs.unitGamaSize()) = lhs.GammaDMultiplication(rhs.segment(lhs.unitSize()*i, lhs.unitSize()));
-						Near.segment(lhs.unitSize()*i, lhs.unitSize()) = lhs.LocalMatrix()*rhs.segment(lhs.unitSize()*i, lhs.unitSize());
-					}
-
-
-
-					lhs.MVP(Lx);
-					lhs.MVP(Ly);
-					lhs.MVP(Lz);
-					lhs.MVP(Ld);
-
-					for (Index i = 0;i < lhs.cols() / lhs.unitSize();++i)
-					{
-						Fx.segment(lhs.unitSize()*i, lhs.unitSize()) = lhs.GammaXMultiplicationT(Lx.segment(lhs.unitGamaSize()*i, lhs.unitGamaSize()));
-						Fy.segment(lhs.unitSize()*i, lhs.unitSize()) = lhs.GammaYMultiplicationT(Ly.segment(lhs.unitSize()*i, lhs.unitSize()));
-						Fz.segment(lhs.unitSize()*i, lhs.unitSize()) = lhs.GammaZMultiplicationT(Lz.segment(lhs.unitSize()*i, lhs.unitSize()));
-						Fd.segment(lhs.unitSize()*i, lhs.unitSize()) = lhs.GammaDMultiplicationT(Ld.segment(lhs.unitSize()*i, lhs.unitSize()))/(k*k);
-					}
-					
-
-					VectorXcd L = 1i*k*eta*(Fx + Fy + Fz - Fd);
-					
-					dst.noalias() += Near + L;
-				}
-				else
-				{
-					
-				}			
+				dst.noalias() += lhs.NearFieldMultiplication(rhs)+lhs.FarFieldMultiplication(rhs);			
 			}
 		};
 	}

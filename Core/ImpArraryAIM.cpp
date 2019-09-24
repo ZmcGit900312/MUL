@@ -17,6 +17,44 @@ ImpArrayAIM::~ImpArrayAIM()
 	}
 }
 
+VectorXcd ImpArrayAIM::FarFieldMultiplication(const VectorXcd & val) const
+{
+	VectorXcd L;
+	if (SystemConfig.IEConfig.type == EFIE)
+	{
+		//并行尝试，需要修改的部分
+		VectorXcd Lx{ _gamax*val };
+		VectorXcd Ly{ _gamay*val };
+		VectorXcd Lz{ _gamaz*val };
+		VectorXcd Ld{ _gamad*val };
+
+		_fftTools->MVP(_green, Lx);
+		_fftTools->MVP(_green, Ly);
+		_fftTools->MVP(_green, Lz);
+		_fftTools->MVP(_green, Ld);
+		
+		Lx = _gamax.transpose()*Lx;
+		Ly = _gamay.transpose()*Ly;
+		Lz = _gamaz.transpose()*Lz;
+		Ld = _gamad.transpose()*Ld / (k*k);
+		
+		
+		L=1i*k*eta*(Lx + Ly + Lz - Ld);
+	}
+
+	return L;
+}
+
+VectorXcd ImpArrayAIM::NearFieldMultiplication(const VectorXcd & val) const
+{
+	VectorXcd Near{ _wholeSize };
+	for (Index i = 0;i < _wholeSize / _unitSize;++i)
+	{
+		Near.segment(_unitSize*i, _unitSize) = _nearMatrix * val.segment(_unitSize*i, _unitSize);
+	}
+	return Near;
+}
+
 void ImpArrayAIM::FillImpedance()
 {
 	const clock_t start = clock();

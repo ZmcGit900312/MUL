@@ -70,22 +70,22 @@ protected:
 		}
 	}
 
-	dcomplex GetImpedance(size_t row, size_t col)
+	dcomplex GetImpedance(size_t source, size_t field)
 	{
-		ImpAIM* imp = static_cast<ImpAIM*>(ComponentList::ImpService);
+		ImpArrayAIM* imp = static_cast<ImpArrayAIM*>(ComponentList::ImpService);
 
 		const size_t unknowns = SystemConfig.ImpConfig.ImpSize;
 		const double threshold = SystemConfig.ImpConfig.Threshold*Lambda;
 
 
-		VectorXcd vrowx = imp->GetGammaX().col(row);
-		VectorXcd vrowy = imp->GetGammaY().col(row);
-		VectorXcd vrowz = imp->GetGammaZ().col(row);
-		VectorXcd vrowd = imp->GetGammaD().col(row);
-		VectorXcd vcolx = imp->GetGammaX().col(col);
-		VectorXcd vcoly = imp->GetGammaY().col(col);
-		VectorXcd vcolz = imp->GetGammaZ().col(col);
-		VectorXcd vcold = imp->GetGammaD().col(col);
+		VectorXcd vrowx = imp->GetGammaX().col(field);
+		VectorXcd vrowy = imp->GetGammaY().col(field);
+		VectorXcd vrowz = imp->GetGammaZ().col(field);
+		VectorXcd vrowd = imp->GetGammaD().col(field);
+		VectorXcd vcolx = imp->GetGammaX().col(source);
+		VectorXcd vcoly = imp->GetGammaY().col(source);
+		VectorXcd vcolz = imp->GetGammaZ().col(source);
+		VectorXcd vcold = imp->GetGammaD().col(source);
 
 		_mvptool.MVP(imp->CGetGreen(), vcolx);
 		_mvptool.MVP(imp->CGetGreen(), vcoly);
@@ -191,7 +191,7 @@ TEST_F(AIMArrayTest, GenerateGreenTest)
 	SystemConfig.ImpConfig.yNumber, 
 	SystemConfig.ImpConfig.zNumber,
 	SystemConfig.ImpConfig.numArrayX,
-	SystemConfig.ImpConfig.numArrayX;
+	SystemConfig.ImpConfig.numArrayY;
 	VectorXi greenWeight = 2 * weight.array() - 1;
 	greenWeightAcu(0) = 1;
 	for (int i = 1 ;i < greenWeightAcu.size();i++)
@@ -201,8 +201,8 @@ TEST_F(AIMArrayTest, GenerateGreenTest)
 
 	//Test the Upper Triangle value 
 	MatrixXi test{ MatrixXi::Zero(7,5) };
-	test.row(0) << 7, 13, 4, 2, 0;
-	test.row(1) << 14, 7, 24, 1, 2;
+	test.row(0) << 13, 2, 6, 3, 1;
+	test.row(1) << 2, 2, 6, 0, 1;
 	test.row(2) << 9, 11, 1, 1, 1;
 	test.row(3) << 11, 6, 7, 3, 2;
 	test.row(4) << 5, 2, 13, 1, 0;
@@ -215,7 +215,7 @@ TEST_F(AIMArrayTest, GenerateGreenTest)
 			test(caseid,0),test(caseid,1),test(caseid, 2),test(caseid,3),test(caseid,4), caseid + 1);
 
 		int testid = test.row(caseid).dot(greenWeightAcu);
-		dcomplex greenRef = Green(testid);
+		dcomplex greenTest = Green(testid);
 		Vector3d Rb{ SystemConfig.ImpConfig.distanceBiasX * test(caseid,3) ,
 			SystemConfig.ImpConfig.distanceBiasY * test(caseid,4) ,0 };
 		Vector3d Ru{ SystemConfig.ImpConfig.Interval * test(caseid,0) ,
@@ -223,15 +223,15 @@ TEST_F(AIMArrayTest, GenerateGreenTest)
 			SystemConfig.ImpConfig.Interval * test(caseid, 2) };
 		dcomplex ref = IGreen::GetInstance()->Scalar(Rb + Ru, Vector3d::Zero());
 		Console->debug("ID={0:5d}\tValue=({1:12.7f},{2:12.7f}i)",
-			testid, greenRef.real(), greenRef.imag());
-		EXPECT_NEAR(greenRef.real(), ref.real(), 1.0e-6);
-		EXPECT_NEAR(greenRef.imag(), ref.imag(), 1.0e-6);
+			testid, greenTest.real(), greenTest.imag());
+		EXPECT_NEAR(greenTest.real(), ref.real(), 1.0e-6);
+		EXPECT_NEAR(greenTest.imag(), ref.imag(), 1.0e-6);
 
 	}
 
 	Console->info("Test lower triangle green");
-	test.row(0) << -7, 13, -4, 2, 0;
-	test.row(1) << 14, -7, -24, -1, 2;
+	test.row(0) << 2, -2, 6, 3, 1;
+	test.row(1) << -2, 2, -6, -3, -1;
 	test.row(2) << 9, -11, 1, -1, 1;
 	test.row(3) << -11, 6, -7, 3, 2;
 	test.row(4) << 5, -2, -13, 1, 0;
@@ -264,6 +264,109 @@ TEST_F(AIMArrayTest, GenerateGreenTest)
 	delete fillingTool;
 }
 
+
+TEST_F(AIMArrayTest, GreenFFTTest)
+{
+#pragma region Initial Temporary Parameters
+	VectorXi weight{ VectorXi::Zero(5) }, greenWeightAcu{ weight };
+	weight << SystemConfig.ImpConfig.xNumber,
+		SystemConfig.ImpConfig.yNumber,
+		SystemConfig.ImpConfig.zNumber,
+		SystemConfig.ImpConfig.numArrayX,
+		SystemConfig.ImpConfig.numArrayY;
+	VectorXi greenWeight = 2 * weight.array() - 1;
+	greenWeightAcu(0) = 1;
+	for (int i = 1;i < greenWeightAcu.size();i++)
+	{
+		greenWeightAcu(i) = greenWeight.head(i).prod();
+	}
+#pragma endregion 
+
+#pragma region AIMArrayAPI
+	AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
+	auto& bf = ComponentList::BFvector;
+	ImpArrayAIM* imp = static_cast<ImpArrayAIM*>(ComponentList::ImpService);
+
+	//Multipole	
+	//fillingTool->MultipoleExpansion(bf);
+
+	//Get Green UnFFT
+	char* path = "E:/ZMC/Code/C_program/MUL/SourceData/ArrayGreen.dat";
+	fillingTool->_green = IGreen::GetInstance();
+
+	bool readflag = true;
+	VectorXcd GreenBase= GetGreenBase(path, fillingTool, readflag);
+	imp->GetGreen() = GreenBase;
+
+	//Initial multiplicator
+
+	MKL_LONG layer[5] = { greenWeight[4] ,greenWeight[3], greenWeight[2] ,greenWeight[1], greenWeight[0] };
+	_mvptool.Reset(5, layer);
+
+	_mvptool.fwd(imp->GetGreen());//FFT
+#pragma endregion 
+
+
+	Matrix<int, 5, 1> source, field;
+	source<< 20,8,5,0,0 ;
+	field << 22, 6, 11, 3, 1;
+	Matrix<int, 5, 1> dis = field - source;
+	size_t sourceID = source.dot(greenWeightAcu), fieldID = field.dot(greenWeightAcu);
+	size_t L = imp->GetGreen().size();
+
+	VectorXcd sourceVec{ VectorXcd::Zero(L) }, fieldVec{ sourceVec };
+	sourceVec(sourceID) = 1;
+	fieldVec(fieldID) = 1;
+
+	Vector3d Rb{ SystemConfig.ImpConfig.distanceBiasX * dis(3) ,
+			SystemConfig.ImpConfig.distanceBiasY * dis(4) ,0 };
+	Vector3d Ru{ SystemConfig.ImpConfig.Interval * dis(0) ,
+		SystemConfig.ImpConfig.Interval * dis(1) ,
+		SystemConfig.ImpConfig.Interval * dis(2) };
+	dcomplex ref = IGreen::GetInstance()->Scalar(Rb + Ru, Vector3d::Zero());
+	//Info 
+	Console->info("Test FFT Multiplication by selecting Green:");
+	Console->debug("Source({0},{1},{2},{3},{4})\tLocation={5}",
+		source(0), source(1), source(2), source(3), source(4), sourceID);
+	Console->debug("Field({0},{1},{2},{3},{4})\tLocation={5}",
+		field(0), field(1), field(2), field(3), field(4), fieldID);
+	Console->debug("Dis({0},{1},{2},{3},{4})",
+		dis(0), dis(1), dis(2), dis(3), dis(4));
+	
+
+	for (int zmc = 0; zmc < dis.size(); ++zmc)
+	{
+		if (dis(zmc) < 0)dis(zmc) += greenWeight(zmc);
+	}
+	size_t greenID = dis.dot(greenWeightAcu);
+
+	dis = source - field;
+	for (int zmc = 0; zmc < dis.size(); ++zmc)
+	{
+		if (dis(zmc) < 0)dis(zmc) += greenWeight(zmc);
+	}
+	size_t greenID_ = dis.dot(greenWeightAcu);
+	dcomplex GreenRef = GreenBase(greenID),GreenRef_= GreenBase(greenID_);
+
+	//FFT and IFFT
+	_mvptool.MVP(imp->CGetGreen(), sourceVec);
+	dcomplex Val = fieldVec.dot(sourceVec);
+	//Sym
+	sourceVec.setZero();
+	sourceVec(sourceID) = 1;
+	_mvptool.MVP(imp->CGetGreen(), fieldVec);
+	dcomplex Sym = sourceVec.dot(fieldVec);
+
+	Console->debug("GRef=({0},{1})\tID={2}", GreenRef.real(), GreenRef.imag(),greenID);
+	Console->debug("GRefS=({0},{1})\tID={2}", GreenRef_.real(), GreenRef_.imag(), greenID_);
+	Console->debug("Refer=({0},{1})", ref.real(), ref.imag());
+	Console->debug("Value=({0},{1})",Val.real(), Val.imag());
+	Console->debug("Symme=({0},{1})", Sym.real(), Sym.imag());
+	EXPECT_NEAR(Val.real(), ref.real(), 1.0e-6);
+	EXPECT_NEAR(Val.imag(), ref.imag(), 1.0e-6);
+	
+	delete fillingTool;
+}
 
 #ifdef _DEBUG
 TEST_F(AIMArrayTest, GetFarFieldApproximateFUNTest)
@@ -305,49 +408,82 @@ TEST_F(AIMArrayTest, GetFarFieldApproximateFUNTest)
 	delete fillingTool;
 }
 
-
-#endif
-TEST_F(AIMArrayTest, Multiplication)
+TEST_F(AIMArrayTest, MultiplicationTest)
 {
-	//AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
-	//auto& bf = ComponentList::BFvector;
-	//Console->debug("Allocate the MatrixSetting oject");
+#pragma region Initial Temporary Parameters
+	VectorXi weight{ VectorXi::Zero(5) }, greenWeightAcu{ weight };
+	weight << SystemConfig.ImpConfig.xNumber,
+		SystemConfig.ImpConfig.yNumber,
+		SystemConfig.ImpConfig.zNumber,
+		SystemConfig.ImpConfig.numArrayX,
+		SystemConfig.ImpConfig.numArrayY;
+	VectorXi greenWeight = 2 * weight.array() - 1;
+	greenWeightAcu(0) = 1;
+	for (int i = 1;i < greenWeightAcu.size();i++)
+	{
+		greenWeightAcu(i) = greenWeight.head(i).prod();
+	}
+#pragma endregion 
 
-	//fillingTool->MultipoleExpansion(bf);
-	//fillingTool->GreenMatrixSet(IGreen::GetInstance());
+#pragma region AIMArrayAPI
+	AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
+	auto& bf = ComponentList::BFvector;
+	ImpArrayAIM* imp = static_cast<ImpArrayAIM*>(ComponentList::ImpService);
+	
+	//Multipole	
+	fillingTool->MultipoleExpansion(bf);
+	
+	//Get Green UnFFT
+	char* path = "E:/ZMC/Code/C_program/MUL/SourceData/ArrayGreen.dat";
+	fillingTool->_green = IGreen::GetInstance();
 
-	////Initial multiplicator
-	//MKL_LONG dim = 3, layer[3] = { 2 * SystemConfig.ImpConfig.zNumber - 2,
-	//	2 * SystemConfig.ImpConfig.yNumber - 2,
-	//	2 * SystemConfig.ImpConfig.xNumber - 2 };
-	//_mvptool.Reset(dim, layer);
+	bool readflag = true;
+	imp->GetGreen() = GetGreenBase(path, fillingTool, readflag);
 
+	//Initial multiplicator
+	
+	//5-dimension FFT VERY IMPORTANT
+	MKL_LONG layer[5] = { greenWeight[4] ,greenWeight[3], greenWeight[2] ,greenWeight[1], greenWeight[0]};
+	_mvptool.Reset(5, layer);
 
-	//const dcomplex refZ1 = { -0.0080060247635108418 ,-0.0019764567076286750 };//Z(18£¬123)
-	//const dcomplex compZ1 = GetImpedance(18, 123);
-	//EXPECT_NEAR(refZ1.real(), compZ1.real(), 1.0e-6) << "Error in (18, 123) real";
-	//EXPECT_NEAR(refZ1.imag(), compZ1.imag(), 1.0e-6) << "Error in (18, 123) imag";
+	_mvptool.fwd(imp->GetGreen());//FFT
+#pragma endregion 
 
-	//const dcomplex refZ2 = { -0.0027595945849962643,0.0059947329121803053 };//Z(647, 22)
-	//const dcomplex compZ2 = GetImpedance(647, 22);
-	//EXPECT_NEAR(refZ2.real(), compZ2.real(), 1.0e-6) << "Error in (647, 22) real";
-	//EXPECT_NEAR(refZ2.imag(), compZ2.imag(), 1.0e-6) << "Error in (647, 22) imag";
+	Console->info("Test Multiplication of AIMARRAY:");
+	//size_t Row[9] = {18,647,38,47,111,333,478,598,901},Col[9] = {964,825,747,666,532,401,369,267,147};
+	Matrix<int, 3, 16> ArrayBias;
+	ArrayBias.row(0) << 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3;
+	ArrayBias.row(1) << 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3;
+	ArrayBias.row(2).setZero();
+	for(int id=0;id<16;)
+	{
+		Vector3i arrayBias{ rand() % SystemConfig.ImpConfig.numArrayX,
+			rand()% SystemConfig.ImpConfig.numArrayY,0 };
+		if(arrayBias.sum()==0)continue;
+		else id++;
 
-	//const dcomplex refZ3 = { 0.0034725828079872414, 0.0047437269001039282 };//Z(38, 123)
-	//const dcomplex compZ3 = GetImpedance(38, 123);
-	//EXPECT_NEAR(refZ3.real(), compZ3.real(), 1.0e-6) << "Error in (38, 123) real";
-	//EXPECT_NEAR(refZ3.imag(), compZ3.imag(), 1.0e-6) << "Error in (38, 123) imag";
+		size_t row = rand() % SystemConfig.ImpConfig.ImpSize,col = rand() % SystemConfig.ImpConfig.ImpSize, unitCol = col;
+		//Vector3i arrayBias{ ArrayBias.col(id++) };
+		//size_t row = 1227, col = 1022, unitCol = col;
+		
+		const dcomplex refZ1 = fillingTool->GetFarFieldApproximateImpedacne(row, col, arrayBias);
 
-	//const dcomplex refZ4 = { -0.0067436242889280231 , 0.0033305745353076361 };//Z(17,653)
-	//const dcomplex compZ4 = GetImpedance(17, 653);
-	//EXPECT_NEAR(refZ4.real(), compZ4.real(), 1.0e-6) << "Error in (17,653) real";
-	//EXPECT_NEAR(refZ4.imag(), compZ4.imag(), 1.0e-6) << "Error in (17,653) imag";
+		col = col + SystemConfig.ImpConfig.ImpSize*(arrayBias.x() + SystemConfig.ImpConfig.numArrayX*arrayBias.y());
 
-	//const dcomplex refZ9 = { -0.0034002845471970793 , 0.0033173618753603450 };//Z(18,654)
-	//const dcomplex compZ9 = GetImpedance(18, 654);
-	//EXPECT_NEAR(refZ9.real(), compZ9.real(), 1.0e-6) << "Error in (18,654) real";
-	//EXPECT_NEAR(refZ9.imag(), compZ9.imag(), 1.0e-6) << "Error in (18,654) imag";
+		Console->info("Case\t{0}:\tUnit({1},{2})\tImp({3},{4})\tArrayBias({5},{6})", 
+			id, row, unitCol,row,col,arrayBias.x(), arrayBias.y());
+
+		dcomplex compZ1 = GetImpedance(row, col);
+		dcomplex compZ2 = GetImpedance(col, row);
+		Console->debug("Ref=({0},{1})", refZ1.real(), refZ1.imag());
+		Console->debug("Res=({0},{1})", compZ1.real(), compZ1.imag());
+		Console->debug("Sym=({0},{1})", compZ2.real(), compZ2.imag());
+		EXPECT_LT(norm(refZ1-compZ1)/norm(refZ1), 1.0e-6)<<' ';
+	}
+
+	delete fillingTool;
 }
+#endif
 
 TEST_F(AIMArrayTest, NearFieldFilling)
 {
@@ -367,8 +503,89 @@ TEST_F(AIMArrayTest, NearFieldFilling)
 		RuntimeLog->flush();
 	}
 }
-TEST_F(AIMArrayTest, Solving)
+
+TEST_F(AIMArrayTest, MultiplicationTest2)
 {
+#pragma region Initial Temporary Parameters
+	VectorXi weight{ VectorXi::Zero(5) }, greenWeightAcu{ weight };
+	weight << SystemConfig.ImpConfig.xNumber,
+		SystemConfig.ImpConfig.yNumber,
+		SystemConfig.ImpConfig.zNumber,
+		SystemConfig.ImpConfig.numArrayX,
+		SystemConfig.ImpConfig.numArrayY;
+	VectorXi greenWeight = 2 * weight.array() - 1;
+	greenWeightAcu(0) = 1;
+	for (int i = 1;i < greenWeightAcu.size();i++)
+	{
+		greenWeightAcu(i) = greenWeight.head(i).prod();
+	}
+#pragma endregion 
+
+#pragma region AIMArrayAPI
+	AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
+	auto& bf = ComponentList::BFvector;
+	ImpArrayAIM* imp = static_cast<ImpArrayAIM*>(ComponentList::ImpService);
+
+	//Multipole	
+	fillingTool->MultipoleExpansion(bf);
+
+	//Get Green UnFFT
+	char* path = "E:/ZMC/Code/C_program/MUL/SourceData/ArrayGreen.dat";
+	fillingTool->_green = IGreen::GetInstance();
+
+	bool readflag = true;
+	imp->GetGreen() = GetGreenBase(path, fillingTool, readflag);
+
+	//5-dimension FFT VERY IMPORTANT
+	MKL_LONG layer[5] = { greenWeight[4] ,greenWeight[3], greenWeight[2] ,greenWeight[1], greenWeight[0] };
+	imp->_fftTools = new MulFFTMultiplicator;
+	imp->_fftTools->Reset(5, layer);
+	imp->_fftTools->fwd(imp->GetGreen());//FFT
+
+	size_t unknowns = SystemConfig.ImpConfig.numArrayX*SystemConfig.ImpConfig.numArrayX*SystemConfig.ImpConfig.ImpSize;
+
+#pragma endregion 
+	
+	Console->info("Test Multiplication of AIMARRAY:");
+	//size_t Row[9] = {18,647,38,47,111,333,478,598,901},Col[9] = {964,825,747,666,532,401,369,267,147};
+	Matrix<int, 3, 16> ArrayBias;
+	ArrayBias.row(0) << 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3;
+	ArrayBias.row(1) << 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3;
+	ArrayBias.row(2).setZero();
+	for (int id = 0;id < 16;)
+	{
+		Vector3i arrayBias{ rand() % SystemConfig.ImpConfig.numArrayX,
+			rand() % SystemConfig.ImpConfig.numArrayY,0 };
+		if (arrayBias.sum() == 0)continue;
+		else id++;
+
+		size_t row = rand() % SystemConfig.ImpConfig.ImpSize, col = rand() % SystemConfig.ImpConfig.ImpSize, unitCol = col;
+		//Vector3i arrayBias{ ArrayBias.col(id++) };
+		//size_t row = 1227, col = 1022, unitCol = col;
+
+		const dcomplex refZ1 = fillingTool->GetFarFieldApproximateImpedacne(row, col, arrayBias);
+
+		col = col + SystemConfig.ImpConfig.ImpSize*(arrayBias.x() + SystemConfig.ImpConfig.numArrayX*arrayBias.y());
+
+		Console->info("Case\t{0}:\tUnit({1},{2})\tImp({3},{4})\tArrayBias({5},{6})",
+			id, row, unitCol, row, col, arrayBias.x(), arrayBias.y());
+
+		VectorXcd I1{ VectorXcd::Zero(unknowns) }, I2{ I1 };
+		I1(row) = 1;
+		I2(col) = 1;
+
+		VectorXcd Res1= imp->FarFieldMultiplication(I1);
+		VectorXcd Res2= imp->FarFieldMultiplication(I2);
+		dcomplex compZ1 = Res1(col),compZ2 = Res2(row);
+		Console->debug("Ref=({0},{1})", refZ1.real(), refZ1.imag());
+		Console->debug("Res=({0},{1})", compZ1.real(), compZ1.imag());
+		Console->debug("Sym=({0},{1})", compZ2.real(), compZ2.imag());
+		EXPECT_LT(norm(refZ1 - compZ1) / norm(refZ1), 1.0e-6) << ' ';
+	}
+
+	delete fillingTool;
+}
+
 	//try
 	//{
 	//	//throw spd::spdlog_ex("AIMCalculate is not Testing");
@@ -396,5 +613,5 @@ TEST_F(AIMArrayTest, Solving)
 	//	RuntimeLog->warn(ex.what());
 	//	RuntimeLog->flush();
 	//}
-}
+
 #endif
