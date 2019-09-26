@@ -96,18 +96,11 @@ void Core::Solution::ElementCurrent::ReadBinary(ifstream & ifs)
 
 }
 
-Core::Solution::CurrentInfo::~CurrentInfo()
-{
-	if(Current.size()>0)
-	{
-		for (auto current : Current)
-		{
-			delete current;
-		}
-	}
-	Current.clear();
-	Current.shrink_to_fit();
-}
+
+
+//CurrentInfo Initial
+
+Solution::CurrentInfo Solution::CurrentInfo::_instance;
 
 bool Core::Solution::CurrentInfo::ReadCurrent(const char* fileName)
 {
@@ -117,13 +110,7 @@ bool Core::Solution::CurrentInfo::ReadCurrent(const char* fileName)
 	if (ifs.is_open())
 	{
 		
-		int type = -1;
-		ifs.read(reinterpret_cast<char*>(&type), sizeof(int));
-
-		if (type < 0)return false;
-		if (type == 0)category = AIM;
-		if (type == 1)category = Array;
-
+		ifs.read(reinterpret_cast<char*>(&category), sizeof(int));
 		ifs.read(reinterpret_cast<char*>(&_numberOfConfig), sizeof(int));
 
 		const clock_t start = clock();
@@ -141,7 +128,7 @@ bool Core::Solution::CurrentInfo::ReadCurrent(const char* fileName)
 
 		const clock_t end = clock();
 		const double _time = double(end - start) / CLOCKS_PER_SEC;
-		Console->info("Load Current costs:\t{0:10.9} s", _time);
+		Console->info("Read Current costs:\t{0:10.9} s", _time);
 		ifs.clear();
 		ifs.close();
 	}
@@ -158,13 +145,10 @@ bool Core::Solution::CurrentInfo::SaveCurrent(const char* fileName)
 
 	if (ofs.is_open())
 	{
-		Console->info("The Save File Path is\t" + string(fileName));
-		ResultLog->info("The Save File Path is\t" + string(fileName));
+		Console->info("The Current File Path is\t" + string(fileName));
+		ResultLog->info("The Current File Path is\t" + string(fileName));
 		//RWG
-		int ty = -1;
-		if (category == Array)ty = 1;
-		else ty = 0;
-		ofs.write(reinterpret_cast<char*>(&ty), sizeof(int));
+		ofs.write(reinterpret_cast<char*>(&category), sizeof(int));
 	
 		ofs.write(reinterpret_cast<char*>(&_numberOfConfig), sizeof(int));
 
@@ -176,7 +160,7 @@ bool Core::Solution::CurrentInfo::SaveCurrent(const char* fileName)
 
 		const clock_t end = clock();
 		const double _time = double(end - start) / CLOCKS_PER_SEC;
-		Console->info("Load Current costs:\t{0:10.9} s", _time);
+		Console->info("Write Current costs:\t{0:10.9} s",_time);
 
 		ofs.flush();
 		ofs.close();
@@ -189,3 +173,19 @@ bool Core::Solution::CurrentInfo::SaveCurrent(const char* fileName)
 
 	return true;
 }
+
+void Core::Solution::CurrentInfo::Reformat(EImpedance ty)
+{
+	if (Current.size() > 0)
+	{
+		for (auto current : Current)
+		{
+			delete current;
+		}
+	}
+	Current.clear();
+	Current.shrink_to_fit();
+	_numberOfConfig = 0;
+	category = ty;
+}
+

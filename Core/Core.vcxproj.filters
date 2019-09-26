@@ -401,6 +401,9 @@
     <ClCompile Include="Current.cpp">
       <Filter>源文件\Solution</Filter>
     </ClCompile>
+    <ClCompile Include="..\googleTest\CurrentTest.cpp">
+      <Filter>源文件\googleTest</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SourceData\MeshTest.nas">

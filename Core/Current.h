@@ -57,15 +57,23 @@ namespace Core
 		class CurrentInfo
 		{
 		public:
+			static CurrentInfo* GetInstance() { return &_instance; }
+			~CurrentInfo() { this->Reformat(); }
 
-			~CurrentInfo();
-
-			int _numberOfConfig;
-			EImpedance category;
+			int _numberOfConfig=0;
+			EImpedance category=MoM;
 			vector<ElementCurrent*> Current;
 
 			bool ReadCurrent(const char* fileName);
 			bool SaveCurrent(const char* fileName);
+			void Reformat(EImpedance ty=MoM);
+		private:
+			CurrentInfo(){ this->Reformat(); }
+			CurrentInfo operator=(CurrentInfo&) = delete;
+			CurrentInfo(CurrentInfo&) = delete;
+
+			static CurrentInfo _instance;
+			
 		};
 	}
 

@@ -10939,3 +10939,174 @@
 [Thu Sept 26 17:20:57 2019 Thu][info] Release BasicFunction
 [Thu Sept 26 17:20:57 2019 Thu][info] Release Request
 [Thu Sept 26 17:20:57 2019 Thu][info] ---------------------END---------------------
+[Thu Sept 26 22:16:59 2019 Thu][info] *************Read Configuration**************
+[Thu Sept 26 22:16:59 2019 Thu][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Sept 26 22:16:59 2019 Thu][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Thu Sept 26 22:16:59 2019 Thu][info] Project Name:	test
+[Thu Sept 26 22:16:59 2019 Thu][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Thu Sept 26 22:16:59 2019 Thu][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Sept 26 22:16:59 2019 Thu][info] Frequency:	3.000000e+08
+[Thu Sept 26 22:16:59 2019 Thu][info] ********************Mesh*********************
+[Thu Sept 26 22:16:59 2019 Thu][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Sept 26 22:16:59 2019 Thu][info] Number of Nodes:			         431
+[Thu Sept 26 22:16:59 2019 Thu][info] Number of Triangles:			         858
+[Thu Sept 26 22:16:59 2019 Thu][info] Number of Segments:			           0
+[Thu Sept 26 22:16:59 2019 Thu][info] Number of Cuboids:			           0
+[Thu Sept 26 22:16:59 2019 Thu][info] Number of Tetrahedras:			           0
+
+[Thu Sept 26 22:16:59 2019 Thu][info] Creat Mesh costs	0.041000 s
+[Thu Sept 26 22:16:59 2019 Thu][info] ****************Geometry Info****************)
+[Thu Sept 26 22:16:59 2019 Thu][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Thu Sept 26 22:16:59 2019 Thu][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Thu Sept 26 22:16:59 2019 Thu][info] Choose RWG Function as BasicFunction
+
+[Thu Sept 26 22:16:59 2019 Thu][info] The number of BasicFuntions is:	1287
+[Thu Sept 26 22:16:59 2019 Thu][info] Load BasicFuntions costs:	      0.01 s
+[Thu Sept 26 22:16:59 2019 Thu][info] Set Green Function
+[Thu Sept 26 22:16:59 2019 Thu][info] Free Space Green Function is choosen
+
+[Thu Sept 26 22:16:59 2019 Thu][info] EFIE is choosen
+[Thu Sept 26 22:20:06 2019 Thu][info] *************Read Configuration**************
+[Thu Sept 26 22:20:06 2019 Thu][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Sept 26 22:20:06 2019 Thu][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Thu Sept 26 22:20:06 2019 Thu][info] Project Name:	test
+[Thu Sept 26 22:20:06 2019 Thu][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Thu Sept 26 22:20:06 2019 Thu][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Sept 26 22:20:06 2019 Thu][info] Frequency:	3.000000e+08
+[Thu Sept 26 22:20:06 2019 Thu][info] ********************Mesh*********************
+[Thu Sept 26 22:20:06 2019 Thu][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Sept 26 22:20:06 2019 Thu][info] Number of Nodes:			         431
+[Thu Sept 26 22:20:06 2019 Thu][info] Number of Triangles:			         858
+[Thu Sept 26 22:20:06 2019 Thu][info] Number of Segments:			           0
+[Thu Sept 26 22:20:06 2019 Thu][info] Number of Cuboids:			           0
+[Thu Sept 26 22:20:06 2019 Thu][info] Number of Tetrahedras:			           0
+
+[Thu Sept 26 22:20:06 2019 Thu][info] Creat Mesh costs	0.035000 s
+[Thu Sept 26 22:20:06 2019 Thu][info] ****************Geometry Info****************)
+[Thu Sept 26 22:20:06 2019 Thu][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Thu Sept 26 22:20:06 2019 Thu][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Thu Sept 26 22:20:06 2019 Thu][info] Choose RWG Function as BasicFunction
+
+[Thu Sept 26 22:20:06 2019 Thu][info] The number of BasicFuntions is:	1287
+[Thu Sept 26 22:20:06 2019 Thu][info] Load BasicFuntions costs:	     0.008 s
+[Thu Sept 26 22:20:06 2019 Thu][info] Set Green Function
+[Thu Sept 26 22:20:06 2019 Thu][info] Free Space Green Function is choosen
+
+[Thu Sept 26 22:20:06 2019 Thu][info] EFIE is choosen
+[Thu Sept 26 22:52:53 2019 Thu][info] *************Read Configuration**************
+[Thu Sept 26 22:52:53 2019 Thu][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Sept 26 22:52:53 2019 Thu][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Thu Sept 26 22:52:53 2019 Thu][info] Project Name:	test
+[Thu Sept 26 22:52:53 2019 Thu][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Thu Sept 26 22:52:53 2019 Thu][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Sept 26 22:52:53 2019 Thu][info] Frequency:	3.000000e+08
+[Thu Sept 26 22:52:53 2019 Thu][info] ********************Mesh*********************
+[Thu Sept 26 22:52:53 2019 Thu][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Sept 26 22:52:53 2019 Thu][info] Number of Nodes:			         431
+[Thu Sept 26 22:52:53 2019 Thu][info] Number of Triangles:			         858
+[Thu Sept 26 22:52:53 2019 Thu][info] Number of Segments:			           0
+[Thu Sept 26 22:52:53 2019 Thu][info] Number of Cuboids:			           0
+[Thu Sept 26 22:52:53 2019 Thu][info] Number of Tetrahedras:			           0
+
+[Thu Sept 26 22:52:53 2019 Thu][info] Creat Mesh costs	0.043000 s
+[Thu Sept 26 22:52:53 2019 Thu][info] ****************Geometry Info****************)
+[Thu Sept 26 22:52:53 2019 Thu][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Thu Sept 26 22:52:53 2019 Thu][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Thu Sept 26 22:52:53 2019 Thu][info] Choose RWG Function as BasicFunction
+
+[Thu Sept 26 22:52:53 2019 Thu][info] The number of BasicFuntions is:	1287
+[Thu Sept 26 22:52:53 2019 Thu][info] Load BasicFuntions costs:	     0.007 s
+[Thu Sept 26 22:52:53 2019 Thu][info] Set Green Function
+[Thu Sept 26 22:52:53 2019 Thu][info] Free Space Green Function is choosen
+
+[Thu Sept 26 22:52:53 2019 Thu][info] EFIE is choosen
+[Thu Sept 26 22:56:35 2019 Thu][info] *************Read Configuration**************
+[Thu Sept 26 22:56:35 2019 Thu][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Sept 26 22:56:35 2019 Thu][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Thu Sept 26 22:56:35 2019 Thu][info] Project Name:	test
+[Thu Sept 26 22:56:35 2019 Thu][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Thu Sept 26 22:56:35 2019 Thu][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Sept 26 22:56:35 2019 Thu][info] Frequency:	3.000000e+08
+[Thu Sept 26 22:56:35 2019 Thu][info] ********************Mesh*********************
+[Thu Sept 26 22:56:35 2019 Thu][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Sept 26 22:56:35 2019 Thu][info] Number of Nodes:			         431
+[Thu Sept 26 22:56:35 2019 Thu][info] Number of Triangles:			         858
+[Thu Sept 26 22:56:35 2019 Thu][info] Number of Segments:			           0
+[Thu Sept 26 22:56:35 2019 Thu][info] Number of Cuboids:			           0
+[Thu Sept 26 22:56:35 2019 Thu][info] Number of Tetrahedras:			           0
+
+[Thu Sept 26 22:56:35 2019 Thu][info] Creat Mesh costs	0.047000 s
+[Thu Sept 26 22:56:35 2019 Thu][info] ****************Geometry Info****************)
+[Thu Sept 26 22:56:35 2019 Thu][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Thu Sept 26 22:56:35 2019 Thu][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Thu Sept 26 22:56:35 2019 Thu][info] Choose RWG Function as BasicFunction
+
+[Thu Sept 26 22:56:35 2019 Thu][info] The number of BasicFuntions is:	1287
+[Thu Sept 26 22:56:35 2019 Thu][info] Load BasicFuntions costs:	     0.011 s
+[Thu Sept 26 22:56:35 2019 Thu][info] Set Green Function
+[Thu Sept 26 22:56:35 2019 Thu][info] Free Space Green Function is choosen
+
+[Thu Sept 26 22:56:35 2019 Thu][info] EFIE is choosen
+[Thu Sept 26 22:57:51 2019 Thu][error] Read Current File Error
+[Thu Sept 26 22:57:51 2019 Thu][info] *************Release the memory**************
+[Thu Sept 26 22:57:51 2019 Thu][info] Release BasicFunction
+[Thu Sept 26 22:57:51 2019 Thu][info] Release Request
+[Thu Sept 26 22:57:51 2019 Thu][info] ---------------------END---------------------
+[Thu Sept 26 23:10:24 2019 Thu][info] *************Read Configuration**************
+[Thu Sept 26 23:10:24 2019 Thu][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Sept 26 23:10:24 2019 Thu][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Thu Sept 26 23:10:24 2019 Thu][info] Project Name:	test
+[Thu Sept 26 23:10:24 2019 Thu][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Thu Sept 26 23:10:24 2019 Thu][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Sept 26 23:10:24 2019 Thu][info] Frequency:	3.000000e+08
+[Thu Sept 26 23:10:24 2019 Thu][info] ********************Mesh*********************
+[Thu Sept 26 23:10:24 2019 Thu][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Sept 26 23:10:24 2019 Thu][info] Number of Nodes:			         431
+[Thu Sept 26 23:10:24 2019 Thu][info] Number of Triangles:			         858
+[Thu Sept 26 23:10:24 2019 Thu][info] Number of Segments:			           0
+[Thu Sept 26 23:10:24 2019 Thu][info] Number of Cuboids:			           0
+[Thu Sept 26 23:10:24 2019 Thu][info] Number of Tetrahedras:			           0
+
+[Thu Sept 26 23:10:24 2019 Thu][info] Creat Mesh costs	0.039000 s
+[Thu Sept 26 23:10:24 2019 Thu][info] ****************Geometry Info****************)
+[Thu Sept 26 23:10:24 2019 Thu][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Thu Sept 26 23:10:24 2019 Thu][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Thu Sept 26 23:10:24 2019 Thu][info] Choose RWG Function as BasicFunction
+
+[Thu Sept 26 23:10:24 2019 Thu][info] The number of BasicFuntions is:	1287
+[Thu Sept 26 23:10:24 2019 Thu][info] Load BasicFuntions costs:	     0.006 s
+[Thu Sept 26 23:10:24 2019 Thu][info] Set Green Function
+[Thu Sept 26 23:10:24 2019 Thu][info] Free Space Green Function is choosen
+
+[Thu Sept 26 23:10:24 2019 Thu][info] EFIE is choosen
+[Thu Sept 26 23:12:24 2019 Thu][info] *************Read Configuration**************
+[Thu Sept 26 23:12:24 2019 Thu][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Sept 26 23:12:24 2019 Thu][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Thu Sept 26 23:12:24 2019 Thu][info] Project Name:	test
+[Thu Sept 26 23:12:24 2019 Thu][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Thu Sept 26 23:12:24 2019 Thu][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Sept 26 23:12:24 2019 Thu][info] Frequency:	3.000000e+08
+[Thu Sept 26 23:12:24 2019 Thu][info] ********************Mesh*********************
+[Thu Sept 26 23:12:24 2019 Thu][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Sept 26 23:12:24 2019 Thu][info] Number of Nodes:			         431
+[Thu Sept 26 23:12:24 2019 Thu][info] Number of Triangles:			         858
+[Thu Sept 26 23:12:24 2019 Thu][info] Number of Segments:			           0
+[Thu Sept 26 23:12:24 2019 Thu][info] Number of Cuboids:			           0
+[Thu Sept 26 23:12:24 2019 Thu][info] Number of Tetrahedras:			           0
+
+[Thu Sept 26 23:12:24 2019 Thu][info] Creat Mesh costs	0.046000 s
+[Thu Sept 26 23:12:24 2019 Thu][info] ****************Geometry Info****************)
+[Thu Sept 26 23:12:24 2019 Thu][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Thu Sept 26 23:12:24 2019 Thu][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Thu Sept 26 23:12:24 2019 Thu][info] Choose RWG Function as BasicFunction
+
+[Thu Sept 26 23:12:24 2019 Thu][info] The number of BasicFuntions is:	1287
+[Thu Sept 26 23:12:24 2019 Thu][info] Load BasicFuntions costs:	     0.012 s
+[Thu Sept 26 23:12:24 2019 Thu][info] Set Green Function
+[Thu Sept 26 23:12:24 2019 Thu][info] Free Space Green Function is choosen
+
+[Thu Sept 26 23:12:24 2019 Thu][info] EFIE is choosen
+[Thu Sept 26 23:13:10 2019 Thu][info] *************Release the memory**************
+[Thu Sept 26 23:13:10 2019 Thu][info] Release BasicFunction
+[Thu Sept 26 23:13:10 2019 Thu][info] Release Request
+[Thu Sept 26 23:13:10 2019 Thu][info] ---------------------END---------------------
