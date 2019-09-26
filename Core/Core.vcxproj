@@ -228,6 +228,7 @@
     <ClInclude Include="Card.h" />
     <ClInclude Include="CoreAPI.h" />
     <ClInclude Include="Cuboid.h" />
+    <ClInclude Include="Current.h" />
     <ClInclude Include="Data.h" />
     <ClInclude Include="Excitation.h" />
     <ClInclude Include="FarField.h" />
@@ -286,12 +287,13 @@
     <ClCompile Include="AnalysisConfigurationFile.cpp" />
     <ClCompile Include="CalculateRequest.cpp" />
     <ClCompile Include="Const.cpp" />
+    <ClCompile Include="Current.cpp" />
     <ClCompile Include="Excitation.cpp" />
     <ClCompile Include="FFTmd.cpp" />
     <ClCompile Include="GmshFile.cpp" />
     <ClCompile Include="AIMPECCFIE.cpp" />
     <ClCompile Include="IMatrixFiller.cpp" />
-    <ClCompile Include="ImpArraryAIM.cpp" />
+    <ClCompile Include="ImpArrayAIM.cpp" />
     <ClCompile Include="ISolver.cpp" />
     <ClCompile Include="IterationSolver.cpp" />
     <ClCompile Include="Log.cpp" />

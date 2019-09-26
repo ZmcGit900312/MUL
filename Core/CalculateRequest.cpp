@@ -37,7 +37,7 @@ int Core::CalculateRequest(const bool IsReadFromFile)
 			ResultReport::WriteRequestInformation(&value, Console);
 			ResultReport::WriteRequestInformation(&value, RuntimeLog);
 			ResultReport::WriteRequestInformation(&value,ResultLog);
-			post.SetEField(value, ofs);
+			post.CalculateRCS(value, ofs);
 
 			ofs.flush();
 			ofs.close();

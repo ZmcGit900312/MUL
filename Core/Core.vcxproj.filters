@@ -207,6 +207,9 @@
     <ClInclude Include="ImpArrayAIM.h">
       <Filter>头文件\Algebra</Filter>
     </ClInclude>
+    <ClInclude Include="Current.h">
+      <Filter>头文件\Solution</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Data.cpp">
@@ -386,14 +389,17 @@
     <ClCompile Include="..\googleTest\AIMPECCFIETest.cpp">
       <Filter>源文件\googleTest</Filter>
     </ClCompile>
-    <ClCompile Include="ImpArraryAIM.cpp">
-      <Filter>源文件\Impedance</Filter>
-    </ClCompile>
     <ClCompile Include="AIMArray.cpp">
       <Filter>源文件\Assist</Filter>
     </ClCompile>
     <ClCompile Include="..\googleTest\AIMArrayTest.cpp">
       <Filter>源文件\googleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="ImpArrayAIM.cpp">
+      <Filter>源文件\Impedance</Filter>
+    </ClCompile>
+    <ClCompile Include="Current.cpp">
+      <Filter>源文件\Solution</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
