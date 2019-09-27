@@ -16,7 +16,7 @@ namespace Core
 		class ElementCurrent
 		{
 		public:
-			ElementCurrent(size_t unknowns = 0, double fre = 3.0e8, string tag = "Current0");
+			explicit ElementCurrent(size_t unknowns = 0, double fre = 3.0e8, string tag = "Current0");
 
 			virtual ~ElementCurrent() { _data.clear();_data.shrink_to_fit(); }
 

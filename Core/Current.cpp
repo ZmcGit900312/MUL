@@ -88,7 +88,7 @@ Tag(tag),_unknowns(unknowns),_frequency(fre)
 	ElementCurrent::EMCParameterUpdate();
 }
 
-void ElementCurrent::SaveBinary(ofstream & ofs)
+void Core::Solution::ElementCurrent::SaveBinary(ofstream & ofs)
 {
 
 	ofs.write(reinterpret_cast<char*>(&_frequency), sizeof(double) );
@@ -101,7 +101,7 @@ void ElementCurrent::SaveBinary(ofstream & ofs)
 	
 }
 
-void ElementCurrent::ReadBinary(ifstream & ifs)
+void Core::Solution::ElementCurrent::ReadBinary(ifstream & ifs)
 {
 	_data.clear();
 
