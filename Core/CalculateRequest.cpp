@@ -22,8 +22,10 @@ int Core::CalculateRequest(const bool IsReadFromFile)
 			if (CreatBasicFunction(false))throw spd::spdlog_ex("Error in Request");
 			if (SetGreenFunction())throw spd::spdlog_ex("Green Function is null");
 		}*/
-		Request::FarField post(&ComponentList::BFvector, Mesh::GetInstance());
-		
+
+		auto curInfo = Solution::CurrentInfo::GetInstance();
+		if (curInfo->Current.size() == 0)curInfo->ReadCurrent(SystemConfig.CurrentFileName.c_str());
+		Request::FarField post(&ComponentList::BFvector, Mesh::GetInstance(),curInfo);		
 		
 		ofstream ofs;
 		ofs.flags(ios::left);

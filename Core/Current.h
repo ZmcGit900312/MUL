@@ -16,6 +16,8 @@ namespace Core
 		class ElementCurrent
 		{
 		public:
+			ElementCurrent(size_t unknowns = 0, double fre = 3.0e8, string tag = "Current0");
+
 			virtual ~ElementCurrent() { _data.clear();_data.shrink_to_fit(); }
 
 			virtual void SaveBinary(ofstream & ofs);
@@ -24,9 +26,9 @@ namespace Core
 
 			virtual dcomplex GetCurrent(size_t id)const { return _data[id]; }
 
-			string ConfigName;
-			size_t _unknowns;
-			double _frequency;
+			string Tag;
+			size_t _unknowns = 0;
+			double _frequency= 3.0e8;
 			vector<dcomplex> _data;
 		};
 
@@ -36,7 +38,12 @@ namespace Core
 
 		public:
 
-			ArrayCurrent(): _elementUnknowns(0), _numberOfElement(0), _arrayBiasX(0), _arrayBiasY(0){}
+			ArrayCurrent(size_t elementUnknowns = 0,
+				double fre = 3.0e8, 
+				string tag = "Current0",	
+				size_t numberOfElement=0,
+				double biasX=0,
+				double biasY=0);
 
 			~ArrayCurrent() { _array.clear();_array.shrink_to_fit(); }
 			

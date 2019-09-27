@@ -3,7 +3,9 @@
 #include "Data.h"
 #include "RWG.h"
 #include "ResultReport.h"
-#include"Log.h"
+#include "Log.h"
+#include "Current.h"
+#include "IMatrixFiller.h"
 
 int Core::CreatBasicFunction(const bool isCreat)
 {
@@ -41,7 +43,28 @@ int Core::CreatBasicFunction(const bool isCreat)
 			RuntimeLog->info("Creat BasicFuntions costs:\t{0:10.9} s", _time);
 			ResultReport::WriteBasicFunctionInformation(SystemConfig.ImpConfig.ImpSize,ResultLog);
 			ResultLog->info("Creat BasicFuntions costs:\t{0:10.9} s", _time);
-		}		
+		}
+		
+
+		//Initial Current
+		auto curInfo = Solution::CurrentInfo::GetInstance();
+		curInfo->category = SystemConfig.ImpConfig.impType;
+		curInfo->_numberOfConfig = 1;
+		if(SystemConfig.ImpConfig.impType==Core::Array)
+		{
+			curInfo->Current.push_back(new Solution::ArrayCurrent(
+				SystemConfig.ImpConfig.ImpSize,
+				Frequency, 
+				"Current0", 		 
+				SystemConfig.ImpConfig.numArrayX*SystemConfig.ImpConfig.numArrayY,
+				SystemConfig.ImpConfig.distanceBiasX,
+				SystemConfig.ImpConfig.distanceBiasY));
+		}
+		else
+		{
+			curInfo->Current.push_back(new Solution::ElementCurrent
+			(SystemConfig.ImpConfig.ImpSize,Frequency,"Current0"));
+		}
 		return 0;
 			
 	}
@@ -118,8 +141,12 @@ int Core::SaveBasicFunction(const char * saveFileName)
 	
 	//GetCurrentDirectoryA(1000, buff);//
 	ofstream ofs(saveFileName,ios::out|ios::binary| ios::trunc);
+
 	try
 	{
+		if (!Solution::CurrentInfo::GetInstance()->SaveCurrent(SystemConfig.CurrentFileName.c_str()))
+			throw spd::spdlog_ex("Save Current Error in\t" + SystemConfig.CurrentFileName);
+		
 		if (ComponentList::BFvector.size() < 1)throw spd::spdlog_ex("BasicFunction Vector is empty");
 		if (ofs.is_open())
 		{

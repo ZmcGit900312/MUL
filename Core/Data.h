@@ -23,6 +23,7 @@ namespace Core
 		string ReportFileName = "C:/";
 		string MeshFileName;
 		string BasicFunctionFileName= ProjectDir + ProjectName + ".bf";
+		string CurrentFileName = ProjectDir + ProjectName + ".cu";
 		int BasicFunctionType = 0;
 		ImpConfiguration ImpConfig;
 		GreenConfiguration GreenConfig;

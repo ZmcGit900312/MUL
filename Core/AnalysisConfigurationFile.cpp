@@ -105,9 +105,16 @@ static int SetFileMod(XMLElement* mod)
 	{
 		SystemConfig.BasicFunctionType = card->FirstChildElement("Type")->IntText();//RWG Type
 		SystemConfig.BasicFunctionFileName = card->FirstChildElement("FilePath")->GetText();
+		SystemConfig.CurrentFileName= SystemConfig.ProjectDir
+			+ '\\' + SystemConfig.ProjectName + ".cu";//CurrentFileName 需要更改的
 	}
-	else SystemConfig.BasicFunctionFileName = SystemConfig.ProjectDir
-		+ '\\' + SystemConfig.ProjectName + ".bf";
+	else
+	{
+		SystemConfig.BasicFunctionFileName = SystemConfig.ProjectDir
+			+ '\\' + SystemConfig.ProjectName + ".bf";
+		SystemConfig.CurrentFileName = SystemConfig.ProjectDir
+			+ '\\' + SystemConfig.ProjectName + ".cu";
+	}
 
 	Console->info("BasicFunction File Path:\t{}",SystemConfig.BasicFunctionFileName);
 	RuntimeLog->info("BasicFunction File Path:\t{}", SystemConfig.BasicFunctionFileName);

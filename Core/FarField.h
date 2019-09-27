@@ -22,10 +22,11 @@ namespace Core
 		class FarField
 		{
 		public:
-			FarField(vector<IBasicFunction*>*, Mesh*);
-			~FarField() {}
+			FarField(vector<IBasicFunction*>*, Mesh*, 
+				Solution::CurrentInfo* current=Solution::CurrentInfo::GetInstance());
+			~FarField();
 			/**
-			* \brief Calculate RCS of Configuration
+			* \brief 直接调用的主函数
 			*/
 			void CalculateRCS(FarFieldConfiguration& config,ofstream& ofs) const;
 			/**
@@ -34,25 +35,19 @@ namespace Core
 			* \param phi rad
 			* \return Vector3cd Efield
 			*/
-			Vector3cd EField(const double theta, const double phi) const;
-
+			Vector3cd EField(const double theta, const double phi,Solution::ElementCurrent* ec) const;
+			//Array
+			Vector3cd EField(const double theta, const double phi, Solution::ArrayCurrent* ac) const;
 			/**
-			 * \brief 
+			 * \brief 用于测试的标准数据生成函数
 			 * \param theta 
 			 * \param phi 
 			 * \return 
 			 */
-			Vector3cd EFieldBenchMark(const double theta, const double phi)const;
-			
-
-			/**
-			* \brief Calculate the E field of the specific direction(theta,phi)
-			* \param theta rad
-			* \param phi rad
-			* \return Vector3cd Efield
-			*/
-			Vector3cd EFieldArray(const double theta, const double phi) const;
-			Vector3cd EFieldArrayBenchMark(const double theta, const double phi)const;
+			Vector3cd EFieldBenchMark(const double theta, const double phi,VectorXcd& current)const;
+			//Array
+			Vector3cd EFieldBenchMark(const double theta, const double phi, 
+				VectorXcd& current,Solution::ArrayCurrent* ac)const;
 			/**
 			* \brief Radius of farfield observation
 			* \n\b PS: It should be ajust with the size of object

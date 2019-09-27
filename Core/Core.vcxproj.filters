@@ -350,9 +350,6 @@
     <ClCompile Include="ConventionalMethod.cpp">
       <Filter>源文件\Assist</Filter>
     </ClCompile>
-    <ClCompile Include="..\googleTest\ConventionalMethodTest.cpp">
-      <Filter>源文件\googleTest</Filter>
-    </ClCompile>
     <ClCompile Include="IMatrixFiller.cpp">
       <Filter>源文件\Assist</Filter>
     </ClCompile>
@@ -402,6 +399,9 @@
       <Filter>源文件\Solution</Filter>
     </ClCompile>
     <ClCompile Include="..\googleTest\CurrentTest.cpp">
+      <Filter>源文件\googleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\googleTest\ConventionalAIMTest.cpp">
       <Filter>源文件\googleTest</Filter>
     </ClCompile>
   </ItemGroup>

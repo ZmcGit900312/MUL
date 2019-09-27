@@ -271,7 +271,7 @@
   <ItemGroup>
     <ClCompile Include="..\googleTest\AIMArrayTest.cpp" />
     <ClCompile Include="..\googleTest\BasicFunctionTest.cpp" />
-    <ClCompile Include="..\googleTest\ConventionalMethodTest.cpp" />
+    <ClCompile Include="..\googleTest\ConventionalAIMTest.cpp" />
     <ClCompile Include="..\googleTest\CurrentTest.cpp" />
     <ClCompile Include="..\googleTest\ExcitationTest.cpp" />
     <ClCompile Include="..\googleTest\GreenFunctionTest.cpp" />

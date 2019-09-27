@@ -8,10 +8,22 @@
 #include "Current.h"
 
 using Core::Solution::ArrayCurrent;
+using Core::Solution::ElementCurrent;
 using namespace Core;
 using namespace Eigen;
 
-void Core::Solution::ArrayCurrent::SaveBinary(ofstream & ofs)
+
+ArrayCurrent::ArrayCurrent(size_t elementUnknowns, double fre, string tag,  size_t numberOfElement, double biasX, double biasY) : ElementCurrent(elementUnknowns*numberOfElement,fre,tag),
+_elementUnknowns(elementUnknowns), 
+_numberOfElement(numberOfElement), 
+_arrayBiasX(biasX), 
+_arrayBiasY(biasY)
+{
+	_array.clear();
+	_array.reserve(numberOfElement);
+}
+
+void ArrayCurrent::SaveBinary(ofstream & ofs)
 {
 	double infoDouble[3] = { _frequency,_arrayBiasX,_arrayBiasY };
 	size_t infoInt[3] = { _numberOfElement,_elementUnknowns,_unknowns };
@@ -31,7 +43,7 @@ void Core::Solution::ArrayCurrent::SaveBinary(ofstream & ofs)
 
 }
 
-void Core::Solution::ArrayCurrent::ReadBinary(ifstream & ifs)
+void ArrayCurrent::ReadBinary(ifstream & ifs)
 {
 	_array.clear();
 	_data.clear();
@@ -58,16 +70,23 @@ void Core::Solution::ArrayCurrent::ReadBinary(ifstream & ifs)
 	}
 }
 
-dcomplex Core::Solution::ArrayCurrent::GetCurrent(size_t id, int x, int y) const
+dcomplex ArrayCurrent::GetCurrent(size_t id, int x, int y) const
 {
 	for (int i = 0; i < _numberOfElement; ++i)
 	{
-		if (_array[i].x() == x && _array[i].y())return _data[id + i * _elementUnknowns];
+		if (_array[i].x() == x && _array[i].y()==y)return _data[id + i * _elementUnknowns];
 	}
 	return dcomplex(0);
 }
 
-void Core::Solution::ElementCurrent::SaveBinary(ofstream & ofs)
+ElementCurrent::ElementCurrent(size_t unknowns, double fre, string tag):
+Tag(tag),_unknowns(unknowns),_frequency(fre)
+{
+	_data.clear();
+	_data.reserve(unknowns);
+}
+
+void ElementCurrent::SaveBinary(ofstream & ofs)
 {
 
 	ofs.write(reinterpret_cast<char*>(&_frequency), sizeof(double) );
@@ -80,7 +99,7 @@ void Core::Solution::ElementCurrent::SaveBinary(ofstream & ofs)
 	
 }
 
-void Core::Solution::ElementCurrent::ReadBinary(ifstream & ifs)
+void ElementCurrent::ReadBinary(ifstream & ifs)
 {
 	_data.clear();
 
@@ -102,7 +121,7 @@ void Core::Solution::ElementCurrent::ReadBinary(ifstream & ifs)
 
 Solution::CurrentInfo Solution::CurrentInfo::_instance;
 
-bool Core::Solution::CurrentInfo::ReadCurrent(const char* fileName)
+bool Solution::CurrentInfo::ReadCurrent(const char* fileName)
 {
 	ifstream ifs(fileName, ios::in | ios::binary);
 
@@ -120,7 +139,7 @@ bool Core::Solution::CurrentInfo::ReadCurrent(const char* fileName)
 			if (category == Array)current = new ArrayCurrent;
 			else current = new ElementCurrent;
 				
-			current->ConfigName = std::to_string(zmc);
+			current->Tag = std::to_string(zmc);
 			current->ReadBinary(ifs);
 			Current.push_back(current);
 		}
@@ -138,7 +157,7 @@ bool Core::Solution::CurrentInfo::ReadCurrent(const char* fileName)
 
 }
 
-bool Core::Solution::CurrentInfo::SaveCurrent(const char* fileName)
+bool Solution::CurrentInfo::SaveCurrent(const char* fileName)
 {
 	ofstream ofs(fileName, ios::out | ios::binary | ios::trunc);
 
@@ -165,8 +184,6 @@ bool Core::Solution::CurrentInfo::SaveCurrent(const char* fileName)
 		ofs.flush();
 		ofs.close();
 
-		RuntimeLog->flush();
-
 	}
 	else return false;
 
@@ -174,7 +191,7 @@ bool Core::Solution::CurrentInfo::SaveCurrent(const char* fileName)
 	return true;
 }
 
-void Core::Solution::CurrentInfo::Reformat(EImpedance ty)
+void Solution::CurrentInfo::Reformat(EImpedance ty)
 {
 	if (Current.size() > 0)
 	{

@@ -161,7 +161,7 @@ TEST_F(MoMTest, MFIEImpedanceTest)
 	}
 }
 
-TEST_F(MoMTest,SolveTest)
+TEST_F(MoMTest,Solving)
 {
 	try
 	{
