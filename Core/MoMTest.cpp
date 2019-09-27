@@ -17,7 +17,7 @@ public:
 	{
 		try
 		{
-			SystemConfig.ImpConfig.impType = MoM;
+			SystemConfig.ImpConfig.ImpType = MoM;
 			if (Mesh::GetInstance()->IsLock())
 			{
 				ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";

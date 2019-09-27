@@ -23,7 +23,7 @@ protected:
 	{
 		try
 		{
-			SystemConfig.ImpConfig.impType = AIM;
+			SystemConfig.ImpConfig.ImpType = AIM;
 
 			SystemConfig.IEConfig.type = CFIE;
 			SystemConfig.IEConfig.Alpha = 0.25;

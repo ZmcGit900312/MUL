@@ -23,7 +23,7 @@ protected:
 	{
 		try
 		{
-			SystemConfig.ImpConfig.impType = AIM;
+			SystemConfig.ImpConfig.ImpType = AIM;
 			SystemConfig.SolverConfig.Precond = Solution::ILU;
 			SystemConfig.IEConfig.type = EFIE;
 			if (Mesh::GetInstance()->IsLock())

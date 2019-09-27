@@ -6,6 +6,7 @@
 ///////////////////////////////////////////////////////////
 #include "stdafx.h"
 #include "Current.h"
+#include "Const.h"
 
 using Core::Solution::ArrayCurrent;
 using Core::Solution::ElementCurrent;
@@ -84,6 +85,7 @@ Tag(tag),_unknowns(unknowns),_frequency(fre)
 {
 	_data.clear();
 	_data.reserve(unknowns);
+	ElementCurrent::EMCParameterUpdate();
 }
 
 void ElementCurrent::SaveBinary(ofstream & ofs)
@@ -113,6 +115,14 @@ void ElementCurrent::ReadBinary(ifstream & ifs)
 		_data.push_back(val);
 	}
 
+}
+
+void Core::Solution::ElementCurrent::EMCParameterUpdate() const
+{
+	Frequency = _frequency;
+	Omega = 2 * M_PI*Frequency;
+	k = Omega / c0;
+	Lambda = c0 / Frequency;
 }
 
 

@@ -13,13 +13,13 @@ IMatrixFiller * Core::IMatrixFiller::FMatrixFiller(
 
 	if(ieConfig.type==EFIE)
 	{
-		if(configuration.impType==AIM)
+		if(configuration.ImpType==AIM)
 		{
 			if(configuration.VirtualGridTechnique==1)return new VirtualGrid(configuration, impedance, ieConfig);
 			else return new ConventionalMethod(configuration, impedance, ieConfig);
 			
 		}
-		else if(configuration.impType==Array)
+		else if(configuration.ImpType==Array)
 		{
 			return new AIMArray(configuration, impedance, ieConfig);
 		}

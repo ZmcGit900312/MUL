@@ -26,6 +26,7 @@ namespace Core
 
 			virtual dcomplex GetCurrent(size_t id)const { return _data[id]; }
 
+			virtual void EMCParameterUpdate()const;
 			string Tag;
 			size_t _unknowns = 0;
 			double _frequency= 3.0e8;

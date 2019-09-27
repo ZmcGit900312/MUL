@@ -48,9 +48,9 @@ int Core::CreatBasicFunction(const bool isCreat)
 
 		//Initial Current
 		auto curInfo = Solution::CurrentInfo::GetInstance();
-		curInfo->category = SystemConfig.ImpConfig.impType;
+		curInfo->category = SystemConfig.ImpConfig.ImpType;
 		curInfo->_numberOfConfig = 1;
-		if(SystemConfig.ImpConfig.impType==Core::Array)
+		if(SystemConfig.ImpConfig.ImpType==Core::Array)
 		{
 			curInfo->Current.push_back(new Solution::ArrayCurrent(
 				SystemConfig.ImpConfig.ImpSize,

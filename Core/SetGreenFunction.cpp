@@ -3,6 +3,7 @@
 #include "Data.h"
 #include "Log.h"
 #include "ResultReport.h"
+#include "Current.h"
 
 int Core::SetGreenFunction()
 {
@@ -16,6 +17,9 @@ int Core::SetGreenFunction()
 		ResultReport::WriteGreenFunctionInformation(&SystemConfig.GreenConfig,Console);
 		ResultReport::WriteGreenFunctionInformation(&SystemConfig.GreenConfig, RuntimeLog);
 		
+		//Updata Const
+		Solution::CurrentInfo::GetInstance()->Current[0]->EMCParameterUpdate();
+
 		equation = IE::FIE(SystemConfig.IEConfig.type);
 		ResultReport::WirteIEInformation(&SystemConfig.IEConfig, ResultLog);
 		ResultReport::WirteIEInformation(&SystemConfig.IEConfig, Console);

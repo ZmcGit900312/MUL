@@ -11,6 +11,7 @@ int Core::PreCalculateSelfTriangleImpedance()
 	cout << '\n';
 	Console->info("Begin to pre-compute the SelfTriangle Impedance");
 	RuntimeLog->info("Begin to pre-compute the SelfTriangle Impedance");
+
 	const clock_t start = clock();
 #pragma region RWGSET
 	for (auto i = Mesh::GetInstance()->TriangleVector.begin(),

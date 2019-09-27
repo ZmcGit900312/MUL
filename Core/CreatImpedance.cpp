@@ -16,8 +16,8 @@ int Core::CreatImpedance()
 		//Initial Solver
 		Console->info("Initial Solver");
 		RuntimeLog->info("Initial Solver");
-		Solver = FSolver(SystemConfig.SolverConfig, SystemConfig.ImpConfig.impType);
-		switch (SystemConfig.ImpConfig.impType)
+		Solver = FSolver(SystemConfig.SolverConfig, SystemConfig.ImpConfig.ImpType);
+		switch (SystemConfig.ImpConfig.ImpType)
 		{
 		case AIM:
 			//Configuration

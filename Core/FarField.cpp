@@ -81,7 +81,8 @@ void Request::FarField::CalculateRCS(FarFieldConfiguration& config, ofstream& of
 	for (int zmc = 0; zmc < _current->_numberOfConfig; ++zmc)
 	{
 		MatrixXd rcs{ thetaNum, phiNum };
-		//Update Const related with Frequency UNFINISH
+		//Update Const
+		_current->Current[zmc]->EMCParameterUpdate();
 		if(_current->category==Core::Array)
 		{
 			for (int th = 0; th < thetaNum; ++th)

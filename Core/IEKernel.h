@@ -38,11 +38,10 @@ namespace Core
 		 * \param source BasisFunction
 		 * \param ki The direction of wave propagation
 		 * \param efield The direction of E field
-		 * \param hfield The direction of H field
 		 * \return Righthand 
 		 */
-		virtual dcomplex SetRight(RWG* source, Vector3d ki, Vector3cd efield,Vector3cd hfield=Vector3d::Zero()) const {
-			return _computerCore.SetIncidentFieldVector(source, ki, efield);
+		virtual dcomplex SetRight(RWG* source, Vector3d ki, Vector3cd efield, Vector3d bias) const {
+			return _computerCore.SetIncidentFieldVector(source, ki, efield,bias);
 		}
 		/**
 		 * \brief Radiation by Operator K
@@ -89,10 +88,11 @@ namespace Core
 
 		EFIEPEC(const double k, double const w4[], double const w7[],
 			const double eta = 120 * 3.1415926) :IE(k, w4, w7, eta) {}
-		inline vector<element> Set(RWGTriangle*t)override {
+		vector<element> Set(RWGTriangle*t)override {
 			return _computerCore.OperatorL(t);
 		}
-		inline void Set(RWGTriangle*field, RWGTriangle*source, vector<element>& val)override {
+
+		void Set(RWGTriangle*field, RWGTriangle*source, vector<element>& val)override {
 			_computerCore.OperatorL(field, source, val);
 		}
 		
@@ -106,11 +106,12 @@ namespace Core
 
 		MFIEPEC(const double k, double const w4[], double const w7[],
 			const double eta = 120 * 3.1415926) :IE(k, w4, w7, eta) {}
-		inline vector<element> Set(RWGTriangle*t)override {
+
+		vector<element> Set(RWGTriangle*t)override {
 			return _computerCore.OperatorIdentity(t);
 		}
 
-		inline void Set(RWGTriangle*field, RWGTriangle*source, vector<element>& res)override {
+		void Set(RWGTriangle*field, RWGTriangle*source, vector<element>& res)override {
 			_computerCore.OperatorK(field, source, res);
 			for (auto val = res.begin();val != res.end();++val)
 			{
@@ -130,10 +131,19 @@ namespace Core
 
 		CFIEPEC(const double alpha,const double k, double const w4[], double const w7[], const double eta = 120 * 3.1415926);
 		virtual ~CFIEPEC();
-		inline vector<element> Set(RWGTriangle*t)override;
-		inline void Set(RWGTriangle*field, RWGTriangle*source, vector<element>& val)override;
 
-		dcomplex SetRight(RWG* source, Vector3d ki, Vector3cd efield, Vector3cd hfield) const override;
+		vector<element> Set(RWGTriangle*t)override{
+			return _computerCore.OperatorCPEC(t, Alpha, Eta);
+		}
+
+		void Set(RWGTriangle*field, RWGTriangle*source, vector<element>& val)override{
+			return _computerCore.OperatorCPEC(field, source, val, Alpha, Eta);
+		}
+
+		dcomplex SetRight(RWG* source, Vector3d ki, Vector3cd efield, Vector3d bias) const override
+		{
+			return _computerCore.SetIncidentFieldVector(source, ki, efield, Alpha, Eta, bias);
+		}
 
 		IETYPE GetType()const override { return CFIE; }
 		double Eta = 0, Alpha = 0;

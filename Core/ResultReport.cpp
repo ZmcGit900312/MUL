@@ -132,7 +132,7 @@ void Core::ResultReport::WriteSolutionInformation(Solution::SolverConfiguration 
 
 void Core::ResultReport::WriteMethodInformation(ImpConfiguration*config, shared_ptr<spd::logger>log)
 {
-	switch (config->impType)
+	switch (config->ImpType)
 	{
 	case AIM:
 		log->info("{:*^45}","AIM Parameters");

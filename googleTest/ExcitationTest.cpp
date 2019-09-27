@@ -16,6 +16,7 @@ public:
 	{
 		try
 		{
+			SystemConfig.ImpConfig.ImpType = MoM;
 			if (Mesh::GetInstance()->IsLock())ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
 			if (ComponentList::BFvector.size() < 1)ASSERT_EQ(0, Core::CreatBasicFunction(false)) << "Error in Load BasicFunction";
 			if (!Core::IGreen::GetInstance())EXPECT_EQ(0, Core::SetGreenFunction());
@@ -102,7 +103,8 @@ TEST_F(ExcitationTest, PlanewaveTest)
 		//Console->info("Polarization:[{0} {1} {2}]", SystemConfig.SourceConfig.Ei.x(), SystemConfig.SourceConfig.Ei.y(), SystemConfig.SourceConfig.Ei.z());
 		
 		//Source::Planewave source(&SystemConfig.SourceConfig);
-		VectorXcd comp = SystemConfig.SourceConfig->SetExcitation(ComponentList::BFvector);
+		VectorXcd comp = SystemConfig.SourceConfig->SetExcitation(ComponentList::BFvector, 
+			SystemConfig.ImpConfig);
 		for (auto i = 0; i < size; ++i)
 		{
 			EXPECT_NEAR(0, norm(ref(i) - comp(i)) / norm(ref(i)), 0.005) << "Error in Excitation term\t" << i;

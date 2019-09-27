@@ -119,18 +119,22 @@ namespace Core
 		 * \param source BasisFunction
 		 * \param ki The direction of wave propagation
 		 * \param incfield The direction of E or H field
+		 * \param bias optinal for Array
 		 * \return
 		 */
-		dcomplex SetIncidentFieldVector(RWG* source, Vector3d ki, Vector3cd incfield) const;
+		dcomplex SetIncidentFieldVector(RWG* source, Vector3d ki, Vector3cd incfield,
+			Vector3d bias=Vector3d::Zero()) const;
 
 		/**
 		 * \brief Calculate the specific RWG RightHand
 		 * \param source BasisFunction
 		 * \param ki The direction of wave propagation
 		 * \param incfield The direction of E+H field
+		 * \param bias optinal for Array
 		 * \return
 		 */
-		dcomplex SetIncidentFieldVector(RWG* source, Vector3d ki, Vector3cd efield,double alpha,double eta) const;
+		dcomplex SetIncidentFieldVector(RWG* source, Vector3d ki, Vector3cd efield,double alpha,double eta,
+			Vector3d bias = Vector3d::Zero()) const;
 	private:
 		/**
 		* \brief Impedance between two different triangles as the RWG index

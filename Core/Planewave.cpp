@@ -28,66 +28,79 @@ Core::Source::Planewave::Planewave(std::string name, unsigned thn, unsigned phn,
 
 }
 
-VectorXcd Core::Source::PlaneWaveLinear::SetExcitation(const vector<IBasicFunction*>& bfVector) const
+VectorXcd Core::Source::PlaneWaveLinear::SetExcitation(const vector<IBasicFunction*>& bfVector, ImpConfiguration& impconfig) const
 {
-	//RWGImpOperator compute(k, W4, W7, eta);
+	if(impconfig.ImpType==Core::Array)
+	{
+		size_t elementUnknowns = impconfig.ImpSize;
+		int arrayX = impconfig.numArrayX, arrayY = impconfig.numArrayY;
+		int numOfElement = arrayX * arrayY;
+		VectorXcd righthand{ numOfElement *elementUnknowns };
+		righthand.setZero();
 
-	const size_t unknowns = bfVector.size();
-	VectorXcd righthand{ unknowns };
+		size_t zmc = 0;
+		for (int zmcy = 0; zmcy < SystemConfig.ImpConfig.numArrayY; ++zmcy)
+		{
+			for (int zmcx = 0; zmcx < SystemConfig.ImpConfig.numArrayX; ++zmcx)
+			{
+				Vector3d bias{ zmcx*impconfig.distanceBiasX,zmcy*impconfig.distanceBiasY,0 };
+				righthand.segment(elementUnknowns*zmc++,elementUnknowns) = 
+					SetElementExcitation(bfVector, bias);
+			}
+		}
+		return righthand;
+	}
+	else
+	{
+		return SetElementExcitation(bfVector, Vector3d::Zero());
+	}
+
+}
+
+VectorXcd Core::Source::PlaneWaveLinear::SetElementExcitation(
+	const vector<IBasicFunction*>& bfVector, Vector3d bias) const
+{
+	VectorXcd righthand{ bfVector.size() };
 	size_t zmc = 0;
+	auto ty = equation->GetType();
 
-	switch (equation->GetType())
+	if (ty == IBCEFIE)throw spd::spdlog_ex("IBCEFIE is not developmented");
+	if (ty == IBCMFIE)throw spd::spdlog_ex("IBCMFIE is not developmented");
+	if (ty == IBCCFIE)throw spd::spdlog_ex("IBCCFIE is not developmented");
+
+	if(ty==EFIE||ty==MFIE||ty==CFIE)
+	{
+		for (auto val : bfVector)
+		{
+			righthand(zmc++) = equation->SetRight(static_cast<RWG*>(val), Ki, E0*Ei, bias);
+		}
+		return righthand;
+	}
+
+	throw spd::spdlog_ex("Error in PlanewaveLinear");
+
+
+	/*switch (equation->GetType())
 	{
 	case EFIE:
 		for (auto val : bfVector)
-		{			
-			righthand(zmc++) = equation->SetRight(static_cast<RWG*>(val), Ki, E0*Ei);
+		{
+			righthand(zmc++) = equation->SetRight(static_cast<RWG*>(val), Ki, E0*Ei, bias);
 		}break;
 	case MFIE:
 		for (auto val : bfVector)
-		{			
-			righthand(zmc++) = equation->SetRight(static_cast<RWG*>(val), Ki, H0*Hi);
+		{
+			righthand(zmc++) = equation->SetRight(static_cast<RWG*>(val), Ki, H0*Hi, bias);
 		}break;
-	case CFIE: 
+	case CFIE:
 		for (auto val : bfVector)
-		{			
-			righthand(zmc++) = equation->SetRight(static_cast<RWG*>(val), Ki, E0*Ei,H0*Hi);
+		{
+			righthand(zmc++) = equation->SetRight(static_cast<RWG*>(val), Ki, E0*Ei, bias);
 		}break;
 	case IBCEFIE:  throw spd::spdlog_ex("IBCEFIE is not developmented");
 	case IBCMFIE:  throw spd::spdlog_ex("IBCMFIE is not developmented");
 	case IBCCFIE:  throw spd::spdlog_ex("IBCCFIE is not developmented");
 	default: throw spd::spdlog_ex("Error in PlanewaveLinear");
 	}
-
-	return righthand;
+	return righthand;*/
 }
-
-/**
-* \brief Set Exciation(righthand)//Don't use
-*/
-/*
-VectorXcd Source::Planewave::SetExcitation(IGreen* green,const vector<IBasicFunction*>&bfVector)const
-{
-	EquationKernel integral1(green, 0), integral2(green, 0), integral3(green, 0), integral4(green, 0);
-	const size_t unknowns = bfVector.size();
-	const size_t limit = unknowns - unknowns % 4;
-
-	VectorXcd righthand{ unknowns };
-
-	//Unrolling expanding
-	for (size_t row = 0; row < limit; row+=4)
-	{
-		righthand(row) = integral1.SetIncidentFieldVector(bfVector[row]);
-		righthand(row+1)= integral2.SetIncidentFieldVector(bfVector[row+1]);
-		righthand(row+2) = integral3.SetIncidentFieldVector(bfVector[row+2]);
-		righthand(row + 3) = integral4.SetIncidentFieldVector(bfVector[row+3]);
-	}
-	for (size_t row =limit ; row < unknowns; ++row)
-	{
-		righthand(row) = integral1.SetIncidentFieldVector(bfVector[row]);
-	}
-
-
-	return righthand*E0;
-}
-*/

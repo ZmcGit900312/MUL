@@ -223,7 +223,8 @@ void RWGImpOperator::OperatorL(RWGTriangle* field, RWGTriangle* source, vector<e
 	}
 }
 
-dcomplex RWGImpOperator::SetIncidentFieldVector(RWG * source, Vector3d ki, Vector3cd incfield) const
+dcomplex RWGImpOperator::SetIncidentFieldVector(RWG * source, Vector3d ki, Vector3cd incfield,
+	Vector3d bias) const
 {
 	const short K = 4;
 	complex<double> plus(0), minus(0);
@@ -231,13 +232,14 @@ dcomplex RWGImpOperator::SetIncidentFieldVector(RWG * source, Vector3d ki, Vecto
 	for (int i = 0; i < K; ++i)
 	{//Source Triangle
 		Vector3d pt1 = tplus->Quad4()[i], pt2 = tminus->Quad4()[i];
-		plus += _w4[i] * exp(-1i*_k*pt1.dot(ki))*source->CurrentPlus(pt1).dot(incfield);
-		minus += _w4[i] * exp(-1i*_k*pt2.dot(ki))*source->CurrentMinus(pt2).dot(incfield);
+		Vector3d arrayPt1 = pt1 + bias, arrayPt2 = pt2 + bias;
+		plus += _w4[i] * exp(-1i*_k*arrayPt1.dot(ki))*source->CurrentPlus(pt1).dot(incfield);
+		minus += _w4[i] * exp(-1i*_k*arrayPt2.dot(ki))*source->CurrentMinus(pt2).dot(incfield);
 	}
 	return plus * tplus->Area() + minus * tminus->Area();
 }
 
-dcomplex Core::RWGImpOperator::SetIncidentFieldVector(RWG * source, Vector3d ki, Vector3cd efield, double alpha, double eta) const
+dcomplex Core::RWGImpOperator::SetIncidentFieldVector(RWG * source, Vector3d ki, Vector3cd efield, double alpha, double eta,Vector3d bias) const
 {
 	const short K = 4;
 	complex<double> plus(0), minus(0);
@@ -247,8 +249,9 @@ dcomplex Core::RWGImpOperator::SetIncidentFieldVector(RWG * source, Vector3d ki,
 	for (int i = 0; i < K; ++i)
 	{//Source Triangle
 		Vector3d pt1 = tplus->Quad4()[i], pt2 = tminus->Quad4()[i];
-		plus += _w4[i] * exp(-1i*_k*pt1.dot(ki))*source->CurrentPlus(pt1).dot(field);
-		minus += _w4[i] * exp(-1i*_k*pt2.dot(ki))*source->CurrentMinus(pt2).dot(field);
+		Vector3d arrayPt1 = pt1 + bias, arrayPt2 = pt2 + bias;
+		plus += _w4[i] * exp(-1i*_k*arrayPt1.dot(ki))*source->CurrentPlus(pt1).dot(field);
+		minus += _w4[i] * exp(-1i*_k*arrayPt2.dot(ki))*source->CurrentMinus(pt2).dot(field);
 	}
 	return plus * tplus->Area() + minus * tminus->Area();
 

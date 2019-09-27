@@ -16,7 +16,7 @@ public:
 	{
 		try
 		{
-			SystemConfig.ImpConfig.impType = Core::Array;
+			SystemConfig.ImpConfig.ImpType = Core::Array;
 			SystemConfig.ImpConfig.numArrayX = 4;
 			SystemConfig.ImpConfig.numArrayY = 4;
 			SystemConfig.ImpConfig.distanceBiasX = 1.5;

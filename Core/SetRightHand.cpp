@@ -14,7 +14,7 @@ int Core::SetRightHand()
 	ResultReport::WriteExcitationInformation(SystemConfig.SourceConfig, RuntimeLog);
 
 	const clock_t start = clock();
-	ComponentList::ImpService->GetExcitation() = SystemConfig.SourceConfig->SetExcitation(ComponentList::BFvector);
+	ComponentList::ImpService->GetExcitation() = SystemConfig.SourceConfig->SetExcitation(ComponentList::BFvector,SystemConfig.ImpConfig);
 	const clock_t end = clock();
 
 	ResultReport::WriteExcitationInformation(SystemConfig.SourceConfig,ResultLog);

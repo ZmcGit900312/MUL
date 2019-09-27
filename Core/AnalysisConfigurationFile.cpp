@@ -106,7 +106,7 @@ static int SetFileMod(XMLElement* mod)
 		SystemConfig.BasicFunctionType = card->FirstChildElement("Type")->IntText();//RWG Type
 		SystemConfig.BasicFunctionFileName = card->FirstChildElement("FilePath")->GetText();
 		SystemConfig.CurrentFileName= SystemConfig.ProjectDir
-			+ '\\' + SystemConfig.ProjectName + ".cu";//CurrentFileName ÐèÒª¸ü¸ÄµÄ
+			+ '\\' + SystemConfig.ProjectName + ".cu";//CurrentFileName ï¿½ï¿½Òªï¿½ï¿½ï¿½Äµï¿½
 	}
 	else
 	{
@@ -139,7 +139,7 @@ static int SetMethodMod(XMLElement* mod)
 		SystemConfig.ImpConfig.Threshold = card->FirstChildElement("Threshold")->DoubleText();
 		SystemConfig.ImpConfig.NearCorrectionEps = card->FirstChildElement("NearTolerance")->DoubleText();
 		SystemConfig.ImpConfig.Dimension = card->FirstChildElement("Dimension")->IntText();
-		SystemConfig.ImpConfig.impType = EImpedance(AIM);
+		SystemConfig.ImpConfig.ImpType = EImpedance(AIM);
 		SystemConfig.ImpConfig.VirtualGridTechnique = card->FirstChildElement("VirtualGrid")->IntText();
 
 		Console->debug("{:*^45}", "AIM Parameters::");
@@ -154,7 +154,7 @@ static int SetMethodMod(XMLElement* mod)
 
 	card = mod->FirstChildElement("MoM");
 
-	if (card->FirstAttribute()->BoolValue())SystemConfig.ImpConfig.impType=EImpedance(MoM);
+	if (card->FirstAttribute()->BoolValue())SystemConfig.ImpConfig.ImpType=EImpedance(MoM);
 
 	card = mod->FirstChildElement("IE");
 

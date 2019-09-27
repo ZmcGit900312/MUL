@@ -22,7 +22,8 @@ Core::Source::VoltageGap::~VoltageGap()
 
 }
 //针对RWG基函数，采用Delta函数近似Voltage,NeedMesh
-VectorXcd Core::Source::VoltageGap::SetExcitation(const vector<IBasicFunction*>& bfVector) const
+VectorXcd Core::Source::VoltageGap::SetExcitation(const vector<IBasicFunction*>& bfVector, 
+	ImpConfiguration& impconfig) const
 {
 	RWGImpOperator compute(k, W4, W7, eta);
 	const size_t unknowns = bfVector.size();
