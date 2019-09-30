@@ -12508,3 +12508,13 @@
 [Sat Sept 28 04:43:13 2019 Sat][info] Release BasicFunction
 [Sat Sept 28 04:43:13 2019 Sat][info] Release Request
 [Sat Sept 28 04:43:13 2019 Sat][info] ---------------------END---------------------
+[Tue Oct 1 06:06:49 2019 Tue][info] *************Read Configuration**************
+[Tue Oct 1 06:06:49 2019 Tue][info] Mesh File Path:	E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Tue Oct 1 06:06:49 2019 Tue][info] Project Directory:	E:\ZMC\Code\C_program\MUL\SourceData
+[Tue Oct 1 06:06:49 2019 Tue][info] Project Name:	test
+[Tue Oct 1 06:06:49 2019 Tue][info] Output FileName:	E:\ZMC\Code\C_program\MUL\SourceData\test.out
+[Tue Oct 1 06:06:49 2019 Tue][info] BasicFunction File Path:	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Tue Oct 1 06:06:49 2019 Tue][info] Frequency:	3.000000e+08
+[Tue Oct 1 06:06:49 2019 Tue][info] *************Release the memory**************
+[Tue Oct 1 06:06:49 2019 Tue][info] Release Request
+[Tue Oct 1 06:06:49 2019 Tue][info] ---------------------END---------------------

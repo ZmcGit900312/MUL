@@ -404,6 +404,9 @@
     <ClCompile Include="..\googleTest\ConventionalAIMTest.cpp">
       <Filter>源文件\googleTest</Filter>
     </ClCompile>
+    <ClCompile Include="..\googleTest\JsonIOTest.cpp">
+      <Filter>源文件\googleTest</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SourceData\MeshTest.nas">

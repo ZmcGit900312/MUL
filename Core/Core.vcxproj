@@ -278,6 +278,7 @@
     <ClCompile Include="..\googleTest\CalculateImpedanceTest.cpp" />
     <ClCompile Include="..\googleTest\AIMPECCFIETest.cpp" />
     <ClCompile Include="..\googleTest\IETest.cpp" />
+    <ClCompile Include="..\googleTest\JsonIOTest.cpp" />
     <ClCompile Include="..\googleTest\RequestTest.cpp" />
     <ClCompile Include="..\googleTest\TeoplitzcdTest.cpp" />
     <ClCompile Include="..\googleTest\testMain.cpp" />
