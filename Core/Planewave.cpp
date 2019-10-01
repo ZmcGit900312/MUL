@@ -33,17 +33,17 @@ VectorXcd Core::Source::PlaneWaveLinear::SetExcitation(const vector<IBasicFuncti
 	if(impconfig.ImpType==Core::Array)
 	{
 		size_t elementUnknowns = impconfig.ImpSize;
-		int arrayX = impconfig.numArrayX, arrayY = impconfig.numArrayY;
+		int arrayX = impconfig.ArrayNumX, arrayY = impconfig.ArrayNumY;
 		int numOfElement = arrayX * arrayY;
 		VectorXcd righthand{ numOfElement *elementUnknowns };
 		righthand.setZero();
 
 		size_t zmc = 0;
-		for (int zmcy = 0; zmcy < SystemConfig.ImpConfig.numArrayY; ++zmcy)
+		for (int zmcy = 0; zmcy < SystemConfig.ImpConfig.ArrayNumY; ++zmcy)
 		{
-			for (int zmcx = 0; zmcx < SystemConfig.ImpConfig.numArrayX; ++zmcx)
+			for (int zmcx = 0; zmcx < SystemConfig.ImpConfig.ArrayNumX; ++zmcx)
 			{
-				Vector3d bias{ zmcx*impconfig.distanceBiasX,zmcy*impconfig.distanceBiasY,0 };
+				Vector3d bias{ zmcx*impconfig.ArrayIntervalX,zmcy*impconfig.ArrayIntervalY,0 };
 				righthand.segment(elementUnknowns*zmc++,elementUnknowns) = 
 					SetElementExcitation(bfVector, bias);
 			}

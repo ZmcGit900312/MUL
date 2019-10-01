@@ -17,10 +17,10 @@ _imp(static_cast<ImpArrayAIM*>(impedance))
 		_layerElementSizeAcu(i) = _layerElementSize.head(i + 1).prod();
 	}
 	//Array Information
-	_numXArray = configuration.numArrayX;
-	_numYArray = configuration.numArrayY;
-	_distanceBiasX = configuration.distanceBiasX;
-	_distanceBiasY = configuration.distanceBiasY;
+	_numXArray = configuration.ArrayNumX;
+	_numYArray = configuration.ArrayNumY;
+	_distanceBiasX = configuration.ArrayIntervalX;
+	_distanceBiasY = configuration.ArrayIntervalY;
 	_totalUnknowns = _numXArray * _numYArray*_unknowns;
 
 	//Layer Size

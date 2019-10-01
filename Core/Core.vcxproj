@@ -316,6 +316,7 @@
     <ClCompile Include="Multiplicator.cpp" />
     <ClCompile Include="MultipoleExpansioner.cpp" />
     <ClCompile Include="NasRead.cpp" />
+    <ClCompile Include="ParseConfigurationFile.cpp" />
     <ClCompile Include="Planewave.cpp" />
     <ClCompile Include="ReleaseMemory.cpp" />
     <ClCompile Include="IntegrationRWG.cpp" />

@@ -16,7 +16,7 @@ int Core::Solution::BiCGStabAIMIdentity::Precondition(IImpService *imp)
 int Core::Solution::BiCGStabAIMIdentity::Solve(VectorXcd & sol, VectorXcd & right)
 {
 	if (_config->Maxiteration>0)_bicg.setMaxIterations(_config->Maxiteration);
-	if (_config->Tolerance>0 && _config->Tolerance<1)_bicg.setTolerance(_config->Tolerance);
+	if (_config->Residum>0 && _config->Residum<1)_bicg.setTolerance(_config->Residum);
 
 	const clock_t start = clock();
 	sol = _bicg.solve(right);
@@ -45,7 +45,7 @@ int Core::Solution::BiCGStabAIMILU::Solve(VectorXcd & sol, VectorXcd & right)
 {
 
 	if (_config->Maxiteration>0)_bicg.setMaxIterations(_config->Maxiteration);
-	if (_config->Tolerance>0 && _config->Tolerance<1)_bicg.setTolerance(_config->Tolerance);
+	if (_config->Residum>0 && _config->Residum<1)_bicg.setTolerance(_config->Residum);
 
 	const clock_t start = clock();
 	sol = _bicg.solve(right);
@@ -73,7 +73,7 @@ int Core::Solution::BiCGStabMoMJacobi::Precondition(IImpService *imp)
 int Core::Solution::BiCGStabMoMJacobi::Solve(VectorXcd & sol, VectorXcd & right)
 {
 	if (_config->Maxiteration>0)_bicg.setMaxIterations(_config->Maxiteration);
-	if (_config->Tolerance>0 && _config->Tolerance<1)_bicg.setTolerance(_config->Tolerance);
+	if (_config->Residum>0 && _config->Residum<1)_bicg.setTolerance(_config->Residum);
 
 	const clock_t start = clock();
 	sol = _bicg.solve(right);

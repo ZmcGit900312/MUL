@@ -8,7 +8,7 @@ Core::Solution::ISolver * Core::Solution::FSolver(SolverConfiguration & config, 
 {
 	if(imptype==MoM)
 	{
-		switch (config.Sol)
+		switch (config.SolutionType)
 		{
 		case LU:
 			Console->warn("MoM with LU decomposition is not developed");

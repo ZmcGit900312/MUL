@@ -54,7 +54,7 @@ class ImpArrayAIM :public EigenBase<ImpArrayAIM>,public IImpService
 #pragma region Custom API
 	ImpArrayAIM(ImpConfiguration*config) :
 	ImpArrayAIM(config->ImpSize, config->xNumber, config->yNumber,config->zNumber, config->GridOrder, 
-		config->numArrayX,config->numArrayY,config->Threshold) {
+		config->ArrayNumX,config->ArrayNumY,config->Threshold) {
 		_fillingStrategy = config->FillingStrategy;
 	}
 	

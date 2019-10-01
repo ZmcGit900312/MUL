@@ -23,10 +23,10 @@ protected:
 		try
 		{
 			SystemConfig.ImpConfig.ImpType = Core::Array;
-			SystemConfig.ImpConfig.numArrayX = 4;
-			SystemConfig.ImpConfig.numArrayY = 4;
-			SystemConfig.ImpConfig.distanceBiasX = 1.5;
-			SystemConfig.ImpConfig.distanceBiasY = 1.5;
+			SystemConfig.ImpConfig.ArrayNumX = 4;
+			SystemConfig.ImpConfig.ArrayNumY = 4;
+			SystemConfig.ImpConfig.ArrayIntervalX = 1.5;
+			SystemConfig.ImpConfig.ArrayIntervalY = 1.5;
 			SystemConfig.IEConfig.type = EFIE;
 			SystemConfig.SolverConfig.Precond = Solution::ILU;
 			if (Mesh::GetInstance()->IsLock())
@@ -190,8 +190,8 @@ TEST_F(AIMArrayTest, GenerateGreenTest)
 	weight << SystemConfig.ImpConfig.xNumber, 
 	SystemConfig.ImpConfig.yNumber, 
 	SystemConfig.ImpConfig.zNumber,
-	SystemConfig.ImpConfig.numArrayX,
-	SystemConfig.ImpConfig.numArrayY;
+	SystemConfig.ImpConfig.ArrayNumX,
+	SystemConfig.ImpConfig.ArrayNumY;
 	VectorXi greenWeight = 2 * weight.array() - 1;
 	greenWeightAcu(0) = 1;
 	for (int i = 1 ;i < greenWeightAcu.size();i++)
@@ -216,8 +216,8 @@ TEST_F(AIMArrayTest, GenerateGreenTest)
 
 		int testid = test.row(caseid).dot(greenWeightAcu);
 		dcomplex greenTest = Green(testid);
-		Vector3d Rb{ SystemConfig.ImpConfig.distanceBiasX * test(caseid,3) ,
-			SystemConfig.ImpConfig.distanceBiasY * test(caseid,4) ,0 };
+		Vector3d Rb{ SystemConfig.ImpConfig.ArrayIntervalX * test(caseid,3) ,
+			SystemConfig.ImpConfig.ArrayIntervalY * test(caseid,4) ,0 };
 		Vector3d Ru{ SystemConfig.ImpConfig.Interval * test(caseid,0) ,
 			SystemConfig.ImpConfig.Interval * test(caseid,1) ,
 			SystemConfig.ImpConfig.Interval * test(caseid, 2) };
@@ -249,8 +249,8 @@ TEST_F(AIMArrayTest, GenerateGreenTest)
 		}
 		int testid = lowerId.dot(greenWeightAcu);
 		dcomplex greenRef = Green(testid);
-		Vector3d Rb{ SystemConfig.ImpConfig.distanceBiasX * test(caseid,3) ,
-			SystemConfig.ImpConfig.distanceBiasY * test(caseid,4) ,0 };
+		Vector3d Rb{ SystemConfig.ImpConfig.ArrayIntervalX * test(caseid,3) ,
+			SystemConfig.ImpConfig.ArrayIntervalY * test(caseid,4) ,0 };
 		Vector3d Ru{ SystemConfig.ImpConfig.Interval * test(caseid,0) ,
 			SystemConfig.ImpConfig.Interval * test(caseid,1) ,
 			SystemConfig.ImpConfig.Interval * test(caseid, 2) };
@@ -272,8 +272,8 @@ TEST_F(AIMArrayTest, GreenFFTTest)
 	weight << SystemConfig.ImpConfig.xNumber,
 		SystemConfig.ImpConfig.yNumber,
 		SystemConfig.ImpConfig.zNumber,
-		SystemConfig.ImpConfig.numArrayX,
-		SystemConfig.ImpConfig.numArrayY;
+		SystemConfig.ImpConfig.ArrayNumX,
+		SystemConfig.ImpConfig.ArrayNumY;
 	VectorXi greenWeight = 2 * weight.array() - 1;
 	greenWeightAcu(0) = 1;
 	for (int i = 1;i < greenWeightAcu.size();i++)
@@ -318,8 +318,8 @@ TEST_F(AIMArrayTest, GreenFFTTest)
 	sourceVec(sourceID) = 1;
 	fieldVec(fieldID) = 1;
 
-	Vector3d Rb{ SystemConfig.ImpConfig.distanceBiasX * dis(3) ,
-			SystemConfig.ImpConfig.distanceBiasY * dis(4) ,0 };
+	Vector3d Rb{ SystemConfig.ImpConfig.ArrayIntervalX * dis(3) ,
+			SystemConfig.ImpConfig.ArrayIntervalY * dis(4) ,0 };
 	Vector3d Ru{ SystemConfig.ImpConfig.Interval * dis(0) ,
 		SystemConfig.ImpConfig.Interval * dis(1) ,
 		SystemConfig.ImpConfig.Interval * dis(2) };
@@ -415,8 +415,8 @@ TEST_F(AIMArrayTest, MultiplicationTest)
 	weight << SystemConfig.ImpConfig.xNumber,
 		SystemConfig.ImpConfig.yNumber,
 		SystemConfig.ImpConfig.zNumber,
-		SystemConfig.ImpConfig.numArrayX,
-		SystemConfig.ImpConfig.numArrayY;
+		SystemConfig.ImpConfig.ArrayNumX,
+		SystemConfig.ImpConfig.ArrayNumY;
 	VectorXi greenWeight = 2 * weight.array() - 1;
 	greenWeightAcu(0) = 1;
 	for (int i = 1;i < greenWeightAcu.size();i++)
@@ -457,8 +457,8 @@ TEST_F(AIMArrayTest, MultiplicationTest)
 	ArrayBias.row(2).setZero();
 	for(int id=0;id<16;)
 	{
-		Vector3i arrayBias{ rand() % SystemConfig.ImpConfig.numArrayX,
-			rand()% SystemConfig.ImpConfig.numArrayY,0 };
+		Vector3i arrayBias{ rand() % SystemConfig.ImpConfig.ArrayNumX,
+			rand()% SystemConfig.ImpConfig.ArrayNumY,0 };
 		if(arrayBias.sum()==0)continue;
 		else id++;
 
@@ -468,7 +468,7 @@ TEST_F(AIMArrayTest, MultiplicationTest)
 		
 		const dcomplex refZ1 = fillingTool->GetFarFieldApproximateImpedacne(row, col, arrayBias);
 
-		col = col + SystemConfig.ImpConfig.ImpSize*(arrayBias.x() + SystemConfig.ImpConfig.numArrayX*arrayBias.y());
+		col = col + SystemConfig.ImpConfig.ImpSize*(arrayBias.x() + SystemConfig.ImpConfig.ArrayNumX*arrayBias.y());
 
 		Console->info("Case\t{0}:\tUnit({1},{2})\tImp({3},{4})\tArrayBias({5},{6})", 
 			id, row, unitCol,row,col,arrayBias.x(), arrayBias.y());
@@ -511,8 +511,8 @@ TEST_F(AIMArrayTest, MultiplicationTest2)
 	weight << SystemConfig.ImpConfig.xNumber,
 		SystemConfig.ImpConfig.yNumber,
 		SystemConfig.ImpConfig.zNumber,
-		SystemConfig.ImpConfig.numArrayX,
-		SystemConfig.ImpConfig.numArrayY;
+		SystemConfig.ImpConfig.ArrayNumX,
+		SystemConfig.ImpConfig.ArrayNumY;
 	VectorXi greenWeight = 2 * weight.array() - 1;
 	greenWeightAcu(0) = 1;
 	for (int i = 1;i < greenWeightAcu.size();i++)
@@ -542,7 +542,7 @@ TEST_F(AIMArrayTest, MultiplicationTest2)
 	imp->_fftTools->Reset(5, layer);
 	imp->_fftTools->fwd(imp->GetGreen());//FFT
 
-	size_t unknowns = SystemConfig.ImpConfig.numArrayX*SystemConfig.ImpConfig.numArrayX*SystemConfig.ImpConfig.ImpSize;
+	size_t unknowns = SystemConfig.ImpConfig.ArrayNumX*SystemConfig.ImpConfig.ArrayNumX*SystemConfig.ImpConfig.ImpSize;
 
 #pragma endregion 
 	
@@ -554,8 +554,8 @@ TEST_F(AIMArrayTest, MultiplicationTest2)
 	ArrayBias.row(2).setZero();
 	for (int id = 0;id < 16;)
 	{
-		Vector3i arrayBias{ rand() % SystemConfig.ImpConfig.numArrayX,
-			rand() % SystemConfig.ImpConfig.numArrayY,0 };
+		Vector3i arrayBias{ rand() % SystemConfig.ImpConfig.ArrayNumX,
+			rand() % SystemConfig.ImpConfig.ArrayNumY,0 };
 		if (arrayBias.sum() == 0)continue;
 		else id++;
 
@@ -565,7 +565,7 @@ TEST_F(AIMArrayTest, MultiplicationTest2)
 
 		const dcomplex refZ1 = fillingTool->GetFarFieldApproximateImpedacne(row, col, arrayBias);
 
-		col = col + SystemConfig.ImpConfig.ImpSize*(arrayBias.x() + SystemConfig.ImpConfig.numArrayX*arrayBias.y());
+		col = col + SystemConfig.ImpConfig.ImpSize*(arrayBias.x() + SystemConfig.ImpConfig.ArrayNumX*arrayBias.y());
 
 		Console->info("Case\t{0}:\tUnit({1},{2})\tImp({3},{4})\tArrayBias({5},{6})",
 			id, row, unitCol, row, col, arrayBias.x(), arrayBias.y());
@@ -603,7 +603,7 @@ TEST_F(AIMArrayTest, MultiplicationTest2)
 	//	EXPECT_EQ(0, info) << "Error in Solve Matrix with BicgStab";
 	//	if (info == 0)
 	//	{
-	//		EXPECT_EQ(0, Core::SaveBasicFunction(SystemConfig.BasicFunctionFileName.c_str())) << "Error in save BasicFunction";
+	//		EXPECT_EQ(0, Core::SaveBasicFunction(SystemConfig.BasisFunctionFilePath.c_str())) << "Error in save BasicFunction";
 	//		EXPECT_EQ(0, Core::CalculateRequest()) << "Error in Calculate the FarField";
 	//	}
 	//}

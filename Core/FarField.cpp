@@ -178,7 +178,7 @@ Vector3cd Core::Request::FarField::EField(const double theta, const double phi, 
 		Vector3cd subEfield{ 0,0,0 };
 		RWGTriangle* temp = dynamic_cast<RWGTriangle*>(*zmc);
 
-		for (Matrix<int, 2, 1, 0> loc : sol->_array)
+		for (Matrix<int, 2, 1, 0> loc : sol->_arrayLocation)
 		{
 			Vector3d Rb{ loc.x()*sol->_arrayBiasX,loc.y()*sol->_arrayBiasY,0 };
 			current[0] = temp->RWGSign[0] ? sol->GetCurrent(temp->RWGID(0), loc.x(), loc.y()) : 0;
@@ -239,7 +239,7 @@ Vector3cd Core::Request::FarField::EFieldBenchMark(const double theta, const dou
 		RWGTriangle* tplus = zmc->TrianglePlus();
 		RWGTriangle* tminus = zmc->TriangleMinus();
 
-		for (Matrix<int, 2, 1, 0> loc : sol->_array)
+		for (Matrix<int, 2, 1, 0> loc : sol->_arrayLocation)
 		{
 			Vector3d Rb{ loc.x()*sol->_arrayBiasX,loc.y()*sol->_arrayBiasY,0 };
 			Vector3d ArrayOb = ob - Rb;

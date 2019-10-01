@@ -17,10 +17,10 @@ public:
 		try
 		{
 			SystemConfig.ImpConfig.ImpType = Core::AIM;
-			SystemConfig.ImpConfig.numArrayX = 4;
-			SystemConfig.ImpConfig.numArrayY = 4;
-			SystemConfig.ImpConfig.distanceBiasX = 1.5;
-			SystemConfig.ImpConfig.distanceBiasY = 1.5;
+			SystemConfig.ImpConfig.ArrayNumX = 4;
+			SystemConfig.ImpConfig.ArrayNumY = 4;
+			SystemConfig.ImpConfig.ArrayIntervalX = 1.5;
+			SystemConfig.ImpConfig.ArrayIntervalY = 1.5;
 			SystemConfig.IEConfig.type = EFIE;
 			SystemConfig.SolverConfig.Precond = Solution::ILU;
 
@@ -207,7 +207,7 @@ TEST_F(RequestTest, FarFieldArrayTest)
 		//Current Initial
 		string tag = "ArrayCurrent";
 		int num = 1;
-		double bx = SystemConfig.ImpConfig.distanceBiasX, by = SystemConfig.ImpConfig.distanceBiasY;
+		double bx = SystemConfig.ImpConfig.ArrayIntervalX, by = SystemConfig.ImpConfig.ArrayIntervalY;
 		size_t numE = 12;//Sparse Array
 
 		Matrix<bool, 4, 4> arrayConfig;
@@ -230,13 +230,13 @@ TEST_F(RequestTest, FarFieldArrayTest)
 
 		Console->debug("Generate the current from bf...");
 
-		for (int zmcy = 0; zmcy < SystemConfig.ImpConfig.numArrayY; ++zmcy)
+		for (int zmcy = 0; zmcy < SystemConfig.ImpConfig.ArrayNumY; ++zmcy)
 		{
-			for (int zmcx = 0; zmcx < SystemConfig.ImpConfig.numArrayX; ++zmcx)
+			for (int zmcx = 0; zmcx < SystemConfig.ImpConfig.ArrayNumX; ++zmcx)
 			{
 				if (arrayConfig(zmcx, zmcy))
 				{
-					current->_array.push_back({ zmcx,zmcy });
+					current->_arrayLocation.push_back({ zmcx,zmcy });
 					for (size_t zmc = 0;zmc < CurrentBenchMark.size();zmc++)
 						current->_data.push_back(CurrentBenchMark[zmc]);
 				}

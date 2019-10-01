@@ -19,7 +19,7 @@ int Core::CreatBasicFunction(const bool isCreat)
 		if (Mesh::GetInstance()->IsLock())throw spdlog::spdlog_ex("Mesh is lock!");
 		Console->info("Initial BasicFunction");
 
-		switch (SystemConfig.BasicFunctionType)
+		switch (SystemConfig.BasisFunctionType)
 		{
 		case 1:
 			throw spdlog::spdlog_ex("Other BasicFunction is not developing!");
@@ -30,7 +30,7 @@ int Core::CreatBasicFunction(const bool isCreat)
 			
 		}
 
-		if (isCreat||LoadBasicFunction(SystemConfig.BasicFunctionFileName.c_str()))
+		if (isCreat||LoadBasicFunction(SystemConfig.BasisFunctionFilePath.c_str()))
 		{
 			const clock_t start = clock();
 			SystemConfig.ImpConfig.ImpSize =
@@ -56,9 +56,9 @@ int Core::CreatBasicFunction(const bool isCreat)
 				SystemConfig.ImpConfig.ImpSize,
 				Frequency, 
 				"Current0", 		 
-				SystemConfig.ImpConfig.numArrayX*SystemConfig.ImpConfig.numArrayY,
-				SystemConfig.ImpConfig.distanceBiasX,
-				SystemConfig.ImpConfig.distanceBiasY));
+				SystemConfig.ImpConfig.ArrayNumX*SystemConfig.ImpConfig.ArrayNumY,
+				SystemConfig.ImpConfig.ArrayIntervalX,
+				SystemConfig.ImpConfig.ArrayIntervalY));
 		}
 		else
 		{
@@ -144,8 +144,8 @@ int Core::SaveBasicFunction(const char * saveFileName)
 
 	try
 	{
-		if (!Solution::CurrentInfo::GetInstance()->SaveCurrent(SystemConfig.CurrentFileName.c_str()))
-			throw spd::spdlog_ex("Save Current Error in\t" + SystemConfig.CurrentFileName);
+		if (!Solution::CurrentInfo::GetInstance()->SaveCurrent(SystemConfig.CurrentFilePath.c_str()))
+			throw spd::spdlog_ex("Save Current Error in\t" + SystemConfig.CurrentFilePath);
 		
 		if (ComponentList::BFvector.size() < 1)throw spd::spdlog_ex("BasicFunction Vector is empty");
 		if (ofs.is_open())

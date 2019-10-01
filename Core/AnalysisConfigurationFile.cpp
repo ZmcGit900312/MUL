@@ -79,45 +79,45 @@ static int SetFileMod(XMLElement* mod)
 	{
 		XMLElement* leaf = card->FirstChildElement("Mesh");
 		//Meshtype
-		SystemConfig.MeshFileName = leaf->FirstChildElement("FilePath")->GetText();
+		SystemConfig.MeshFilePath = leaf->FirstChildElement("FilePath")->GetText();
 
 		leaf = card->FirstChildElement("Project");
 		SystemConfig.ProjectName = leaf->FirstChildElement("Name")->GetText();
 		SystemConfig.ProjectDir = leaf->FirstChildElement("Directory")->GetText();
-		SystemConfig.ReportFileName = leaf->FirstChildElement("Report")->GetText();
+		SystemConfig.ReportFilePath = leaf->FirstChildElement("Report")->GetText();
 
-		Console->info("Mesh File Path:\t{}", SystemConfig.MeshFileName);
+		Console->info("Mesh File Path:\t{}", SystemConfig.MeshFilePath);
 		Console->info("Project Directory:\t{}", SystemConfig.ProjectDir);
 		Console->info("Project Name:\t{}", SystemConfig.ProjectName);
-		Console->info("Output FileName:\t"+ SystemConfig.ReportFileName);
+		Console->info("Output FileName:\t"+ SystemConfig.ReportFilePath);
 
-		RuntimeLog->info("Mesh File Path:\t{}", SystemConfig.MeshFileName);
+		RuntimeLog->info("Mesh File Path:\t{}", SystemConfig.MeshFilePath);
 		RuntimeLog->info("Project Directory:\t{}", SystemConfig.ProjectDir);
 		RuntimeLog->info("Project Name:\t{}", SystemConfig.ProjectName);
-		RuntimeLog->info("Output FileName:\t" + SystemConfig.ReportFileName);
+		RuntimeLog->info("Output FileName:\t" + SystemConfig.ReportFilePath);
 		//ResultLog
-		ResultReport::InitialWriter(SystemConfig.ReportFileName);
+		ResultReport::InitialWriter(SystemConfig.ReportFilePath);
 	}
 
 	card = mod->FirstChildElement("OS");
 
 	if (card->FirstAttribute()->BoolValue())
 	{
-		SystemConfig.BasicFunctionType = card->FirstChildElement("Type")->IntText();//RWG Type
-		SystemConfig.BasicFunctionFileName = card->FirstChildElement("FilePath")->GetText();
-		SystemConfig.CurrentFileName= SystemConfig.ProjectDir
-			+ '\\' + SystemConfig.ProjectName + ".cu";//CurrentFileName ��Ҫ���ĵ�
+		SystemConfig.BasisFunctionType = card->FirstChildElement("Type")->IntText();//RWG Type
+		SystemConfig.BasisFunctionFilePath = card->FirstChildElement("FilePath")->GetText();
+		SystemConfig.CurrentFilePath= SystemConfig.ProjectDir
+			+ '\\' + SystemConfig.ProjectName + ".cu";//CurrentFilePath
 	}
 	else
 	{
-		SystemConfig.BasicFunctionFileName = SystemConfig.ProjectDir
+		SystemConfig.BasisFunctionFilePath = SystemConfig.ProjectDir
 			+ '\\' + SystemConfig.ProjectName + ".bf";
-		SystemConfig.CurrentFileName = SystemConfig.ProjectDir
+		SystemConfig.CurrentFilePath = SystemConfig.ProjectDir
 			+ '\\' + SystemConfig.ProjectName + ".cu";
 	}
 
-	Console->info("BasicFunction File Path:\t{}",SystemConfig.BasicFunctionFileName);
-	RuntimeLog->info("BasicFunction File Path:\t{}", SystemConfig.BasicFunctionFileName);
+	Console->info("BasicFunction File Path:\t{}",SystemConfig.BasisFunctionFilePath);
+	RuntimeLog->info("BasicFunction File Path:\t{}", SystemConfig.BasisFunctionFilePath);
 	return 0;
 }
 
@@ -234,7 +234,7 @@ static int SetExcitationMod(XMLElement* mod)
 			{
 				unsigned long ns=leaf->FirstChildElement("NegativeSide")->Int64Text(),
 				ps=leaf->FirstChildElement("PositiveSide")->Int64Text();				
-				double mag = leaf->FirstChildElement("Magenitude")->DoubleText(),
+				double mag = leaf->FirstChildElement("Magnitude")->DoubleText(),
 					phase = leaf->FirstChildElement("Phase")->DoubleText();
 				vg->VoltageVector.push_back({ns,ps,mag*exp(1i*phase)});
 			}
@@ -249,11 +249,11 @@ static int SetSolutionMod(XMLElement* mod)
 	XMLElement* card = mod->FirstChildElement("CG");
 	if (card->FirstAttribute()->BoolValue())
 	{
-		SystemConfig.SolverConfig.Sol = Solution::BiCGStab;
+		SystemConfig.SolverConfig.SolutionType = Solution::BiCGStab;
 		SystemConfig.SolverConfig.Precond = Solution::EPreconditionerType(card->FirstChildElement("Preconditioning")->IntText());
 		SystemConfig.SolverConfig.Maxiteration = card->FirstChildElement("Iterations")->IntText();
-		SystemConfig.SolverConfig.Tolerance = card->FirstChildElement("Residum")->DoubleText();
-		SystemConfig.SolverConfig.MaxStopTolerance = card->FirstChildElement("StopTolerance")->DoubleText();
+		SystemConfig.SolverConfig.Residum = card->FirstChildElement("Residum")->DoubleText();
+		SystemConfig.SolverConfig.StopTolerance = card->FirstChildElement("StopTolerance")->DoubleText();
 
 		Console->debug("{:*^45}", "Solution Type::\tBiCG");
 		return 0;

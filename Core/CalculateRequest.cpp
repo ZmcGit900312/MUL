@@ -24,7 +24,7 @@ int Core::CalculateRequest(const bool IsReadFromFile)
 		}*/
 
 		auto curInfo = Solution::CurrentInfo::GetInstance();
-		if (curInfo->Current.size() == 0)curInfo->ReadCurrent(SystemConfig.CurrentFileName.c_str());
+		if (curInfo->Current.size() == 0)curInfo->ReadCurrent(SystemConfig.CurrentFilePath.c_str());
 		Request::FarField post(&ComponentList::BFvector, Mesh::GetInstance(),curInfo);		
 		
 		ofstream ofs;

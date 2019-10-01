@@ -19,8 +19,8 @@ namespace Core
 		int GridOrder=2;
 		int Dimension=3;
 		int xNumber, yNumber, zNumber;
-		int numArrayX = 6, numArrayY = 7;
-		double distanceBiasX= 0.47, distanceBiasY = 0.43;
+		int ArrayNumX = 6, ArrayNumY = 7;
+		double ArrayIntervalX= 0.47, ArrayIntervalY = 0.43;
 		double Threshold=0.3,Interval=0.05;
 		double NearCorrectionEps = 1.0e-3;
 		int FillingStrategy = 1;

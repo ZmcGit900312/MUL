@@ -118,15 +118,15 @@ TEST_F(JsonIO,File)
 	{
 		
 		//Project
-		if(rj::Value* jfile=rj::GetValueByPointer(doc,"/File/Project"))
+		if(rj::Value* jpro=rj::GetValueByPointer(doc,"/File/Project"))
 		{
-			auto val = jfile->HasMember("Name") ? jfile->FindMember("Name") : throw exception();
+			auto val = jpro->HasMember("Name") ? jpro->FindMember("Name") : throw exception();
 			string name=val->value.GetString();
 
-			val= jfile->HasMember("Directory") ? jfile->FindMember("Directory") : throw exception();
+			val= jpro->HasMember("Directory") ? jpro->FindMember("Directory") : throw exception();
 			string directory = val->value.GetString();
 
-			val= jfile->HasMember("Report") ? jfile->FindMember("Report") : throw exception();
+			val= jpro->HasMember("Report") ? jpro->FindMember("Report") : throw exception();
 			string report = val->value.GetString();
 
 
@@ -199,7 +199,7 @@ TEST_F(JsonIO, Impedance)
 			val = jimp->HasMember("TriangleFillingStrategy") ? jimp->FindMember("TriangleFillingStrategy") : throw;
 			tfs = val->value.GetBool();
 
-			val = jimp->HasMember("VirtrualGridTechnique") ? jimp->FindMember("VirtrualGridTechnique") : throw;
+			val = jimp->HasMember("VirtualGridTechnique") ? jimp->FindMember("VirtualGridTechnique") : throw;
 			vgt = val->value.GetBool();
 
 			
@@ -446,21 +446,19 @@ TEST_F(JsonIO, Excitation)
 {
 	try
 	{
-		enum ISource { A0, A1, A2 };
-		enum POL { Linear, Left, Right };
 
 		if(rj::Value* jsp=rj::GetValueByPointer(doc,"/Excitation"))
 		{
 			rj::Value& jsource = *jsp;
 
-			ISource category = ISource(jsource["Category"].GetInt64());
+			Source::SourceType category = Source::SourceType(jsource["Category"].GetInt64());
 			string name = jsource["Name"].GetString();
-			POL pol = POL(jsource["Polarisation"].GetInt64());
+			Source::SourceType pol = Source::SourceType(jsource["Polarisation"].GetInt64());
 
 
 			EXPECT_EQ("T0P270", name);
-			EXPECT_EQ(A0, category);
-			EXPECT_EQ(Linear, pol);
+			EXPECT_EQ(Source::EXCITATION_LINEAR, category);
+			EXPECT_EQ(Source::EXCITATION_CIRC_RIGHT, pol);
 			cout << "Name:\t" << name << endl;
 			cout << "Category:\tA0" << endl;
 			cout << "Polarisation:\tLinear" << endl;
@@ -520,5 +518,13 @@ TEST_F(JsonIO, Excitation)
 		cout << ex.what() << endl;
 		FAIL();
 	}
+}
+
+
+TEST_F(JsonIO,ParseConfig)
+{
+	char* filename="E:\\ZMC\\Code\\C_program\\MUL\\SourceData\\test.json";
+	//Result Report Is Not Initialization
+	//EXPECT_EQ(0, ParseConfiguratoinFile(filename));
 }
 #endif

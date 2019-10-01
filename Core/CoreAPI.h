@@ -90,7 +90,7 @@ namespace Core
 	* \return 0 Success
 	*/
 	int AnalysisConfigurationFile(char* filename);
-
+	int ParseConfiguratoinFile(char* filename);
 	/**
 	* \brief Release the static data in ComponentList
 	* \return 0 Success

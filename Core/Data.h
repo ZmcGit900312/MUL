@@ -20,11 +20,11 @@ namespace Core
 	{	
 		string ProjectName = "SourceData";
 		string ProjectDir = "C:/";
-		string ReportFileName = "C:/";
-		string MeshFileName;
-		string BasicFunctionFileName= ProjectDir + ProjectName + ".bf";
-		string CurrentFileName = ProjectDir + ProjectName + ".cu";
-		int BasicFunctionType = 0;
+		string ReportFilePath = "C:/";
+		string MeshFilePath;
+		string BasisFunctionFilePath= ProjectDir + ProjectName + ".bf";
+		string CurrentFilePath = ProjectDir + ProjectName + ".cu";
+		int BasisFunctionType = 0;
 		ImpConfiguration ImpConfig;
 		GreenConfiguration GreenConfig;
 		IEConfiguration IEConfig;

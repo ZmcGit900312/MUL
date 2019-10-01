@@ -18,11 +18,11 @@ namespace Core
 		enum EPreconditionerType{Identity,Jacobi,ILU};
 		struct SolverConfiguration
 		{
-			ESolutionType Sol = BiCGStab;
+			ESolutionType SolutionType = BiCGStab;
 			EPreconditionerType Precond = ILU;
 			unsigned Maxiteration = 0;
-			double Tolerance = -1.0;
-			double MaxStopTolerance = 10.0;
+			double Residum = -1.0;
+			double StopTolerance = 10.0;
 		};
 
 		__interface ISolver

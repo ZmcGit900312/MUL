@@ -20,14 +20,14 @@ int Core::CreatMesh()
 		Mesh* mesh = Mesh::GetInstance();
 
 		const clock_t start = clock();
-		if (!reader->Read(SystemConfig.MeshFileName.c_str(), mesh))
+		if (!reader->Read(SystemConfig.MeshFilePath.c_str(), mesh))
 			throw spdlog::spdlog_ex("Initial Mesh Failure!");
 		const clock_t end = clock();
 		double time = double(end - start) / CLOCKS_PER_SEC;
 
-		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFileName, Console);
-		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFileName, RuntimeLog);		
-		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFileName,ResultLog);
+		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFilePath, Console);
+		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFilePath, RuntimeLog);		
+		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFilePath,ResultLog);
 		Console->info("Creat Mesh costs\t{:f} s", time);
 		RuntimeLog->info("Creat Mesh costs\t{:f} s", time);
 		ResultLog->info("Creat Mesh costs\t{:f} s\n", time);

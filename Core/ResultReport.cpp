@@ -104,7 +104,7 @@ void Core::ResultReport::WriteSolutionInformation(Solution::SolverConfiguration 
 {
 	log->info("{:*^45}", "Solution Info");
 
-	switch (config->Sol)
+	switch (config->SolutionType)
 	{
 	case Solution::LU: throw spd::spdlog_ex("LU solver is not developed");
 	case Solution::BiCGStab: 
@@ -127,7 +127,7 @@ void Core::ResultReport::WriteSolutionInformation(Solution::SolverConfiguration 
 	default:throw spd::spdlog_ex("Precondition is error");
 	}
 	log->info("The Maxiteration is:\t\t{:d}", config->Maxiteration);
-	log->info("The Tolerance is:\t\t{:e}", config->Tolerance);
+	log->info("The Residum is:\t\t{:e}", config->Residum);
 }
 
 void Core::ResultReport::WriteMethodInformation(ImpConfiguration*config, shared_ptr<spd::logger>log)
@@ -161,8 +161,8 @@ void Core::ResultReport::WriteMethodInformation(ImpConfiguration*config, shared_
 			config->Box[0].x(), config->Box[0].y(), config->Box[0].z(),
 			config->Box[1].x(), config->Box[1].y(), config->Box[1].z());
 		log->info("unitNumber:\t({0},{1},{2})", config->xNumber, config->yNumber, config->zNumber);
-		log->info("ArrayNunber:\tx={0}\ty={1}",config->numArrayX,config->numArrayY);
-		log->info("Distance between Unit:\tXdirection={0}\tYdirection={1}\n", config->distanceBiasX, config->distanceBiasY);
+		log->info("ArrayNunber:\tx={0}\ty={1}",config->ArrayNumX,config->ArrayNumY);
+		log->info("Distance between Unit:\tXdirection={0}\tYdirection={1}\n", config->ArrayIntervalX, config->ArrayIntervalY);
 	default:
 		log->info("{:*^45}", "MoM");
 	}

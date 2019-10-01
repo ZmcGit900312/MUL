@@ -46,12 +46,12 @@ namespace Core
 				double biasX=0,
 				double biasY=0);
 
-			~ArrayCurrent() { _array.clear();_array.shrink_to_fit(); }
+			~ArrayCurrent() { _arrayLocation.clear();_arrayLocation.shrink_to_fit(); }
 			
 			size_t _elementUnknowns;
 			size_t _numberOfElement;
 			double _arrayBiasX, _arrayBiasY;
-			vector<Vector2i> _array;
+			vector<Vector2i> _arrayLocation;
 
 			void SaveBinary(ofstream & ofs)override;			
 

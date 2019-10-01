@@ -17,10 +17,10 @@ public:
 		try
 		{
 			SystemConfig.ImpConfig.ImpType = Core::Array;
-			SystemConfig.ImpConfig.numArrayX = 4;
-			SystemConfig.ImpConfig.numArrayY = 4;
-			SystemConfig.ImpConfig.distanceBiasX = 1.5;
-			SystemConfig.ImpConfig.distanceBiasY = 1.5;
+			SystemConfig.ImpConfig.ArrayNumX = 4;
+			SystemConfig.ImpConfig.ArrayNumY = 4;
+			SystemConfig.ImpConfig.ArrayIntervalX = 1.5;
+			SystemConfig.ImpConfig.ArrayIntervalY = 1.5;
 			SystemConfig.IEConfig.type = EFIE;
 			SystemConfig.SolverConfig.Precond = Solution::ILU;
 			if (Mesh::GetInstance()->IsLock())ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
@@ -107,7 +107,7 @@ TEST_F(CurrentTest, ElementCurrentTest)
 
 		Solution::ElementCurrent* current = new Solution::ElementCurrent(unknowns,Frequency,tag);
 
-		string filename = SystemConfig.CurrentFileName;
+		string filename = SystemConfig.CurrentFilePath;
 
 		Console->debug("Generate the current from bf...");
 
@@ -164,8 +164,8 @@ TEST_F(CurrentTest, ArrayCurrentTest)
 		//Current Initial
 		string tag1 = "ArrayCurrentTest1",tag2="ArrayCurrentTest2";
 		int num = 2;
-		double bx = SystemConfig.ImpConfig.distanceBiasX, by = SystemConfig.ImpConfig.distanceBiasY;
-		size_t numE1 = SystemConfig.ImpConfig.numArrayX*SystemConfig.ImpConfig.numArrayY;
+		double bx = SystemConfig.ImpConfig.ArrayIntervalX, by = SystemConfig.ImpConfig.ArrayIntervalY;
+		size_t numE1 = SystemConfig.ImpConfig.ArrayNumX*SystemConfig.ImpConfig.ArrayNumY;
 		size_t unknowns1 = elementUnknowns * numE1;
 		size_t numE2 = 12;//Sparse Array
 		size_t unknowns2 = elementUnknowns * numE2;
@@ -193,15 +193,15 @@ TEST_F(CurrentTest, ArrayCurrentTest)
 
 
 		//string filename = SystemConfig.ProjectDir + "\\" + SystemConfig.ProjectName + ".cu";
-		string filename = SystemConfig.CurrentFileName;
+		string filename = SystemConfig.CurrentFilePath;
 		Console->debug("Generate the current from bf...");
 
-		for (int zmcy = 0; zmcy < SystemConfig.ImpConfig.numArrayY; ++zmcy)
+		for (int zmcy = 0; zmcy < SystemConfig.ImpConfig.ArrayNumY; ++zmcy)
 		{
-			for (int zmcx = 0; zmcx < SystemConfig.ImpConfig.numArrayX; ++zmcx)
+			for (int zmcx = 0; zmcx < SystemConfig.ImpConfig.ArrayNumX; ++zmcx)
 			{
-				current1->_array.push_back({ zmcx,zmcy });
-				if (arrayConfig(zmcx, zmcy))current2->_array.push_back({ zmcx,zmcy });
+				current1->_arrayLocation.push_back({ zmcx,zmcy });
+				if (arrayConfig(zmcx, zmcy))current2->_arrayLocation.push_back({ zmcx,zmcy });
 
 				for (size_t zmc = 0;zmc < CurrentBenchMark.size();zmc++)
 				{
@@ -238,17 +238,17 @@ TEST_F(CurrentTest, ArrayCurrentTest)
 				ASSERT_EQ(elementUnknowns, current2->_elementUnknowns);
 				ASSERT_EQ(numE1, current1->_numberOfElement);
 				ASSERT_EQ(numE2, current2->_numberOfElement);
-				ASSERT_EQ(numE1, current1->_array.size());
-				ASSERT_EQ(numE2, current2->_array.size());
+				ASSERT_EQ(numE1, current1->_arrayLocation.size());
+				ASSERT_EQ(numE2, current2->_arrayLocation.size());
 				ASSERT_LT(abs(current1->_arrayBiasX - bx) / bx, 1.0e-8);
 				ASSERT_LT(abs(current1->_arrayBiasY - by) / by, 1.0e-8);
 				ASSERT_LT(abs(current2->_arrayBiasX - bx) / bx, 1.0e-8);
 				ASSERT_LT(abs(current2->_arrayBiasY - by) / by, 1.0e-8);
 
 				
-				for (int zmcy = 0; zmcy < SystemConfig.ImpConfig.numArrayY; ++zmcy)
+				for (int zmcy = 0; zmcy < SystemConfig.ImpConfig.ArrayNumY; ++zmcy)
 				{
-					for (int zmcx = 0; zmcx < SystemConfig.ImpConfig.numArrayX; ++zmcx)
+					for (int zmcx = 0; zmcx < SystemConfig.ImpConfig.ArrayNumX; ++zmcx)
 					{
 						for (auto zmc = 0; zmc < elementUnknowns; ++zmc)
 						{

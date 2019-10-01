@@ -16,8 +16,8 @@ namespace Configuration
             InitializeComponent();
 #if HXJ
             MaxIterationsText.Text = Sol.Maxiteration.ToString();
-            StopCriterionText.Text = Sol.Tolerance.ToString();
-            StopMaxText.Text = Sol.MaxStopTolerance.ToString();
+            StopCriterionText.Text = Sol.Residum.ToString();
+            StopMaxText.Text = Sol.StopTolerance.ToString();
             SolutionTypeComboBox.SelectedIndex = Sol.SolutionType;
             PreconditionComboBox.SelectedIndex = Sol.PreConditionType;
 #else
@@ -41,8 +41,8 @@ namespace Configuration
             if (Sol.SolutionType == 0)
             {
                 Sol.Maxiteration = int.Parse(MaxIterationsText.Text);
-                Sol.Tolerance = double.Parse(StopCriterionText.Text);
-                Sol.MaxStopTolerance = double.Parse(StopMaxText.Text);
+                Sol.Residum = double.Parse(StopCriterionText.Text);
+                Sol.StopTolerance = double.Parse(StopMaxText.Text);
                 Sol.PreConditionType = PreconditionComboBox.SelectedIndex;
             }
 #else

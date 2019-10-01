@@ -20,7 +20,7 @@ int main(int argc,char* argv[])
 #else
 	char* configurationFileName = "E://ZMC//Code//C_program//MUL//SourceData//test.xml";
 #endif
-	//const char* bfFileName = SystemConfig.BasicFunctionFileName.c_str();
+	//const char* bfFileName = SystemConfig.BasisFunctionFilePath.c_str();
 	argc = 2;
 	cout	<< "**********************************\n"
 			<< "*    THIS IS Under DEBUG MODE    *\n" 
@@ -53,7 +53,7 @@ int main(int argc,char* argv[])
 				if (Core::FillImpedance())throw runtime_error("Error in Fill Impedance");
 				if (Core::SetRightHand())throw runtime_error("Error in Set RightHand");
 				if (Core::Solve())throw runtime_error("Error in Solve Matrix with BicgStab");
-				if (Core::SaveBasicFunction(SystemConfig.BasicFunctionFileName.c_str()))throw runtime_error("Error in save BasicFunction");
+				if (Core::SaveBasicFunction(SystemConfig.BasisFunctionFilePath.c_str()))throw runtime_error("Error in save BasicFunction");
 			}
 			
 			if (Core::CalculateRequest())throw runtime_error("Error in Calculate the FarField");

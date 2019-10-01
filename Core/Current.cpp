@@ -20,8 +20,8 @@ _numberOfElement(numberOfElement),
 _arrayBiasX(biasX), 
 _arrayBiasY(biasY)
 {
-	_array.clear();
-	_array.reserve(numberOfElement);
+	_arrayLocation.clear();
+	_arrayLocation.reserve(numberOfElement);
 }
 
 void ArrayCurrent::SaveBinary(ofstream & ofs)
@@ -34,7 +34,7 @@ void ArrayCurrent::SaveBinary(ofstream & ofs)
 
 	for (size_t zmc = 0; zmc < _numberOfElement; ++zmc)
 	{
-		size_t arrayloc[2] = { _array[zmc].x(), _array[zmc].y() };
+		size_t arrayloc[2] = { _arrayLocation[zmc].x(), _arrayLocation[zmc].y() };
 		ofs.write(reinterpret_cast<char*>(arrayloc), sizeof(size_t) * 2);
 		for (size_t num = 0;num < _elementUnknowns;num++)
 		{
@@ -46,7 +46,7 @@ void ArrayCurrent::SaveBinary(ofstream & ofs)
 
 void ArrayCurrent::ReadBinary(ifstream & ifs)
 {
-	_array.clear();
+	_arrayLocation.clear();
 	_data.clear();
 
 	ifs.read(reinterpret_cast<char*>(&_frequency), sizeof(double));
@@ -61,7 +61,7 @@ void ArrayCurrent::ReadBinary(ifstream & ifs)
 	{
 		size_t loc[2];
 		ifs.read(reinterpret_cast<char*>(loc), sizeof(size_t) * 2);
-		_array.push_back(Vector2i{ loc[0],loc[1] });
+		_arrayLocation.push_back(Vector2i{ loc[0],loc[1] });
 		for (size_t num = 0;num < _elementUnknowns;num++)
 		{
 			dcomplex val = 0;
@@ -75,7 +75,7 @@ dcomplex ArrayCurrent::GetCurrent(size_t id, int x, int y) const
 {
 	for (int i = 0; i < _numberOfElement; ++i)
 	{
-		if (_array[i].x() == x && _array[i].y()==y)return _data[id + i * _elementUnknowns];
+		if (_arrayLocation[i].x() == x && _arrayLocation[i].y()==y)return _data[id + i * _elementUnknowns];
 	}
 	return dcomplex(0);
 }

@@ -2,11 +2,12 @@
 #include "Data.h"
 #include "IntegrationRWG.h"
 #include "ImpMoM.h"
+#include "Current.h"
 #ifdef GTEST
 #include "gtest/gtest.h"
 #include "CoreAPI.h"
 #include "Const.h"
-
+#include "Current.h"
 using namespace Core;
 using namespace Eigen;
 
@@ -18,6 +19,10 @@ public:
 		try
 		{
 			SystemConfig.ImpConfig.ImpType = MoM;
+			/*Solution::CurrentInfo::GetInstance()->Reformat();
+			Solution::CurrentInfo::GetInstance()->_numberOfConfig=1;
+
+			Solution::CurrentInfo::GetInstance()->Current[0]->EMCParameterUpdate();*/
 			if (Mesh::GetInstance()->IsLock())
 			{
 				ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
@@ -170,7 +175,7 @@ TEST_F(MoMTest,Solving)
 		ASSERT_EQ(0, info) << "Error in Solve Matrix with BicgStab";
 		if (info == 0)
 		{
-			EXPECT_EQ(0, Core::SaveBasicFunction(SystemConfig.BasicFunctionFileName.c_str())) << "Error in save BasicFunction";
+			EXPECT_EQ(0, Core::SaveBasicFunction(SystemConfig.BasisFunctionFilePath.c_str())) << "Error in save BasicFunction";
 			EXPECT_EQ(0, Core::CalculateRequest()) << "Error in Calculate the FarField";
 		}
 	}
