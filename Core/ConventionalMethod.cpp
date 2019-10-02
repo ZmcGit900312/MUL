@@ -112,6 +112,7 @@ void ConventionalMethod::NearCorrection(vector< IBasicFunction*>&bf)
 	vector<T> tripletsNearPart;
 	tripletsNearPart.reserve(estimatedSize);
 
+	double fillTimeCost=0, nearCorrectTimeCost = 0;
 	//Set Near Field Triplets
 	const clock_t start = clock();
 
@@ -123,12 +124,25 @@ void ConventionalMethod::NearCorrection(vector< IBasicFunction*>&bf)
 			const auto source = static_cast<RWG*>(bf[col]);
 			Vector3d distance = field->Centre() - source->Centre();
 			if (distance.norm()>_threshold)continue;
-			const dcomplex comp = GetFarFieldImpedacneAIM(row, col);
+
+			//Filling Time Cost
+			clock_t fillStart = clock();
 			const dcomplex ref = _compute.SetImpedanceL(field, source);
+			clock_t fillEnd = clock();
+			fillTimeCost += double(fillEnd - fillStart) / CLOCKS_PER_SEC;
+
+			//Near Correction Time Cost
+			clock_t nearCorrectStart = clock();
+			const dcomplex comp = GetFarFieldImpedacneAIM(row, col);			
 			const dcomplex difvalue = ref - comp;
+			clock_t nearCorrectEnd = clock();
+			nearCorrectTimeCost += double(nearCorrectEnd - nearCorrectStart) / CLOCKS_PER_SEC;
+
 			if (norm(difvalue) / norm(ref)<_eps)continue;
 			tripletsNearPart.push_back(T(row, col, difvalue));
 			tripletsNearPart.push_back(T(col, row, difvalue));
+
+
 			/*_imp->GetNearFieldMatrix().insert(row, col) = difvalue;
 			_imp->GetNearFieldMatrix().insert(col, row) = difvalue;*/
 		}
@@ -148,9 +162,13 @@ void ConventionalMethod::NearCorrection(vector< IBasicFunction*>&bf)
 	const clock_t end = clock();
 	const double timecost = double (end - start) / CLOCKS_PER_SEC;
 	cout << "\r";
-	Console->info("Near Field FillingTime is:\t{}s", timecost);
-	RuntimeLog->info("Near Field FillingTime is:\t{}s", timecost);
-	ResultLog->info("Near Field FillingTime is:\t{}s", timecost);
+	Console->info("Near Field Filling Time is:\t{}s", fillTimeCost);
+	ResultLog->info("Near Field Filling Time is:\t{}s", fillTimeCost);
+	Console->info("Near Field Correction Time is:\t{}s", nearCorrectTimeCost);
+	ResultLog->info("Near Field Correction Time is:\t{}s", nearCorrectTimeCost);
+
+	Console->info("Near Field Whole Time is:\t{}s", timecost);
+	ResultLog->info("Near Field Whole Time is:\t{}s", timecost);
 	Console->info("Triplet and NearField have {0} and {1} elements.", tripletsNearPart.size(), _imp->GetNearFieldMatrix().nonZeros());
 	Console->info("Nonzeros have {0} and take {1}%.", _imp->GetNearFieldMatrix().nonZeros(),
 		100 * (double)_imp->GetNearFieldMatrix().nonZeros() / (_unknowns*_unknowns));
@@ -307,6 +325,7 @@ void Core::ConventionalMethod::TriangleFillingStrategy(Mesh & mesh, vector<IBasi
 			}
 
 		}
+		cout << "Progress:" << setw(10) << 100 * static_cast<double>(col) / _imp->GetNearFieldMatrix().outerSize() << "%\r";
 	}
 	tripletsNearPart.shrink_to_fit();
 	_imp->GetNearFieldMatrix().reserve(tripletsNearPart.size());

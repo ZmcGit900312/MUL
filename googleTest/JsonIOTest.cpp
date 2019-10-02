@@ -22,7 +22,7 @@ protected:
 	//TestSuite
 	static void SetUpTestCase()
 	{
-		doc = ReadJson("E:\\ZMC\\Code\\C_program\\MUL\\SourceData\\test.json");
+		doc = ReadJson(SourceFilePath + "\\" + SourceName);
 	}
 
 	static void TearDownTestCase()
@@ -73,21 +73,25 @@ protected:
 	//	return true;
 	//}
 
-	string sourceFilePath = "E:\\ZMC\\Code\\C_program\\MUL\\SourceData";
+	static string SourceFilePath;
 
-	string sourceName = "test.json";
-	string destName = "new.json";
+	static string SourceName;
+	static string DestName;
 	
 	static rj::Document doc;
 };
 
 
 rj::Document JsonIO::doc;
+string JsonIO::SourceFilePath  = "E:\\ZMC\\Code\\C_program\\MUL\\SourceData";
+string JsonIO::SourceName = "JsonParseTest.json";
+string JsonIO::DestName = "new.json";
+
 
 TEST_F(JsonIO, IOTest)
 {
-	string readFileName = sourceFilePath + "\\" + sourceName;
-	string saveFileName = sourceFilePath + "\\" + destName;
+	string readFileName = SourceFilePath + "\\" + SourceName;
+	string saveFileName = SourceFilePath + "\\" + DestName;
 
 
 	rj::Document jd= ReadJson(readFileName);	
@@ -453,12 +457,14 @@ TEST_F(JsonIO, Excitation)
 
 			Source::SourceType category = Source::SourceType(jsource["Category"].GetInt64());
 			string name = jsource["Name"].GetString();
-			Source::SourceType pol = Source::SourceType(jsource["Polarisation"].GetInt64());
+			
 
 
 			EXPECT_EQ("T0P270", name);
 			EXPECT_EQ(Source::EXCITATION_LINEAR, category);
-			EXPECT_EQ(Source::EXCITATION_CIRC_RIGHT, pol);
+
+			//Source::SourceType pol = Source::SourceType(jsource["Polarisation"].GetInt64());
+			//EXPECT_EQ(Source::EXCITATION_CIRC_RIGHT, pol);
 			cout << "Name:\t" << name << endl;
 			cout << "Category:\tA0" << endl;
 			cout << "Polarisation:\tLinear" << endl;

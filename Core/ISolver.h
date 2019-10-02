@@ -14,11 +14,11 @@ namespace Core
 {
 	namespace Solution
 	{
-		enum ESolutionType{BiCGStab, LU};
+		enum ESolutionType{BICGSTAB, LU};
 		enum EPreconditionerType{Identity,Jacobi,ILU};
 		struct SolverConfiguration
 		{
-			ESolutionType SolutionType = BiCGStab;
+			ESolutionType SolutionType = BICGSTAB;
 			EPreconditionerType Precond = ILU;
 			unsigned Maxiteration = 0;
 			double Residum = -1.0;
@@ -34,7 +34,28 @@ namespace Core
 			double GetSolveTime()const = 0;
 		};
 
-		ISolver* FSolver(SolverConfiguration&config, EImpedance imptype); 
+		ISolver* FSolver(SolverConfiguration&config, EImpedance imptype);
+
+		inline extern string GetSolutionTypeString(ESolutionType st)
+		{
+			switch(st)
+			{
+			case BICGSTAB: return "BICGSTAB";
+			case LU: return "LU Decomposition";
+			default: throw exception("error SolutionType");
+			}
+		}
+
+		inline extern string GetPrecondionTypeString(EPreconditionerType pt)
+		{
+			switch(pt)
+			{
+			case Identity: return "Identity";
+			case Jacobi: return "Jacobi";
+			case ILU: return "Incomplete LU";
+			default: throw exception("error PreconditioningType");
+			}
+		}
 	}
 }
 

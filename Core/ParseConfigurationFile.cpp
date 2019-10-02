@@ -16,10 +16,13 @@ using namespace std;
 namespace rj = rapidjson;
 
 
+/**
+ * \brief Read a JSON file
+ * \param filename 
+ * \return document
+ */
 static rj::Document ReadJson(string filename)
 {
-	// read a JSON file
-
 	std::ifstream ifs(filename);
 
 	if (ifs.is_open())
@@ -37,22 +40,70 @@ static rj::Document ReadJson(string filename)
 
 }
 
+/**
+ * \brief Show Json Version and Date
+ * \param jd json document
+ * \return status 0 is ok, others is bad
+ */
 static int JsonInfo(rj::Document& jd);
+/**
+ * \brief Initial File Part
+ * \param jd json document
+ * \return status 0 is ok, others is bad
+ */
 static int SetFileMod(rj::Document& jd);
+/**
+ * \brief Initial Impedance Part
+ * \param jd json document
+ * \return status 0 is ok, others is bad
+ */
 static int SetImpedanceMod(rj::Document& jd);
+/**
+ * \brief Initial Integral Equation Part
+ * \param jd json document
+ * \return status 0 is ok, others is bad
+ */
 static int SetIEMod(rj::Document&jd);
+/**
+ * \brief Initial Solver Part
+ * \param jd json document
+ * \return status 0 is ok, others is bad
+ */
 static int SetSolverMod(rj::Document&jd);
+/**
+ * \brief Initial RightHand Part
+ * \param jd json document
+ * \return status 0 is ok, others is bad
+ */
 static int SetExcitationMod(rj::Document&jd);
+/**
+ * \brief Initial Request Part
+ * \param jd json document
+ * \return status 0 is ok, others is bad
+ */
 static int SetRequestMod(rj::Document & jd);
+/**
+ * \brief Initial Sweep Part
+ * \param jd json document
+ * \return status 0 is ok, others is bad
+ */
 static int SetSweepMod(rj::Document& jd);
 
-//The main function of read configuration
+
+/**
+ * \brief The COREAPI for parsing json file, the main function of read configuration
+ * \param filename json file name=*.json
+ * \return status 0 is ok, others is bad
+ */
 int Core::ParseConfiguratoinFile(char* filename)
 {
+	RuntimeLog->info("Call ParseConfiguratoinFile()");
 	int status = 0;
 	try
 	{
 		rj::Document jd = ReadJson(filename);
+
+		Console->info("{0:*^80}", "CONFIGURATION INFO");
 
 		status+= JsonInfo(jd);
 
@@ -70,13 +121,14 @@ int Core::ParseConfiguratoinFile(char* filename)
 
 		status += SetRequestMod(jd);
 
+		Console->info("{0:*^80}", "END CONFIGURATION");
+
 		MKL_Set_Dynamic(true);
 	}
 	catch(spdlog::spdlog_ex&ex)
 	{
 		Assist::LogException(ex);
-		status = 1;
-		
+		status = 1;	
 	}
 	return status;
 }
@@ -88,7 +140,6 @@ int static JsonInfo(rj::Document& jd)
 	
 	if(jd["version"].IsString()&& jd["date"].IsString())
 	{
-
 		Console->info("version:\t{0:<10}", jd["version"].GetString());
 		Console->info("date:   \t{0:<10}",jd["date"].GetString());
 
@@ -101,7 +152,7 @@ int static JsonInfo(rj::Document& jd)
 int SetFileMod(rj::Document & jd)
 {
 
-	Console->info("{:*^45}", "File Input");
+	Console->info("{:*^70}", "File Input");
 	if(jd.HasMember("File"))
 	{
 		rj::Value& jfile = jd["File"];
@@ -203,7 +254,7 @@ int SetFileMod(rj::Document & jd)
 
 int SetImpedanceMod(rj::Document & jd)
 {
-	Console->debug("{:*^45}", "IMPEDANCE PARAMETERS");
+	Console->info("{:*^70}", "IMPEDANCE PARAMETERS");
 	if(jd.HasMember("Impedance"))
 	{
 		rj::Value& jimp = jd["Impedance"];
@@ -274,31 +325,32 @@ int SetImpedanceMod(rj::Document & jd)
 		else throw spdlog::spdlog_ex("Error in json:\t./Impedance/ArrayIntervalY");
 
 		
-		Console->debug("ImpedanceType: \t{:>10}",SystemConfig.ImpConfig.ImpType);
-		Console->debug("VGT:           \t{:>10}", SystemConfig.ImpConfig.VirtualGridTechnique);
-		Console->debug("TFS:           \t{:>10}", SystemConfig.ImpConfig.FillingStrategy);
-		Console->debug("Order:         \t{:>10}", SystemConfig.ImpConfig.GridOrder);
-		Console->debug("Interval:      \t{:>10}", SystemConfig.ImpConfig.Interval);
-		Console->debug("Threshold:     \t{:>10}", SystemConfig.ImpConfig.Threshold);
-		Console->debug("NearTolerance: \t{:>10}", SystemConfig.ImpConfig.NearCorrectionEps);
-		Console->debug("Dimension:     \t{:>10}", SystemConfig.ImpConfig.Dimension);
-		Console->debug("ArrayNumX:     \t{:>10}", SystemConfig.ImpConfig.ArrayNumX);
-		Console->debug("ArrayNumY:     \t{:>10}", SystemConfig.ImpConfig.ArrayNumY);
-		Console->debug("ArrayIntervalX:\t{:>10}", SystemConfig.ImpConfig.ArrayIntervalX);
-		Console->debug("ArrayIntervalY:\t{:>10}", SystemConfig.ImpConfig.ArrayIntervalY);
+		Console->info("ImpedanceType: \t{:>10}",SystemConfig.ImpConfig.GetImpedanceTypeString());
+		Console->info("VGT:           \t{:>10}", 
+			SystemConfig.ImpConfig.VirtualGridTechnique?true:false);
+		Console->info("TFS:           \t{:>10}", 
+			SystemConfig.ImpConfig.FillingStrategy ? true : false);
+		Console->info("Order:         \t{:>10}", SystemConfig.ImpConfig.GridOrder);
+		Console->info("Interval:      \t{:>10}", SystemConfig.ImpConfig.Interval);
+		Console->info("Threshold:     \t{:>10}", SystemConfig.ImpConfig.Threshold);
+		Console->info("NearTolerance: \t{:>10}", SystemConfig.ImpConfig.NearCorrectionEps);
+		Console->info("Dimension:     \t{:>10}", SystemConfig.ImpConfig.Dimension);
+		Console->info("ArrayNumX:     \t{:>10}", SystemConfig.ImpConfig.ArrayNumX);
+		Console->info("ArrayNumY:     \t{:>10}", SystemConfig.ImpConfig.ArrayNumY);
+		Console->info("ArrayIntervalX:\t{:>10}", SystemConfig.ImpConfig.ArrayIntervalX);
+		Console->info("ArrayIntervalY:\t{:>10}", SystemConfig.ImpConfig.ArrayIntervalY);
 
 		
 	}
 	else throw spdlog::spdlog_ex("Error in json:\t./Impedance");
 	return 0;
 
-
 }
 
 int SetIEMod(rj::Document & jd)
 {
 
-	Console->debug("{:*^45}", "INTEGRAL EQUATION");
+	Console->info("{:*^70}", "INTEGRAL EQUATION");
 
 	if(jd.HasMember("IE"))
 	{
@@ -328,9 +380,9 @@ int SetIEMod(rj::Document & jd)
 		}
 		else throw spdlog::spdlog_ex("Error in json:\t./IE/Zs");
 
-		Console->debug("Integral Equation:\t{:>10}",SystemConfig.IEConfig.type);
-		Console->debug("Alpha:            \t{:>10}", SystemConfig.IEConfig.Alpha);
-		Console->debug("Eta:              \t{:>10}", SystemConfig.IEConfig.Eta);
+		Console->info("Integral Equation:\t{:>15.8}",IE::GetTypeString(SystemConfig.IEConfig.type));
+		Console->info("Alpha:            \t{:>15.8}", SystemConfig.IEConfig.Alpha);
+		Console->info("Eta:              \t{:>15.8}", SystemConfig.IEConfig.Eta);
 	}
 	else throw spdlog::spdlog_ex("Error in json:\t./IE");
 	return 0;
@@ -338,7 +390,7 @@ int SetIEMod(rj::Document & jd)
 
 int SetSolverMod(rj::Document& jd)
 {
-	Console->debug("{:*^45}", "SOLVER");
+	Console->info("{:*^70}", "SOLVER");
 	if(jd.HasMember("Solver"))
 	{
 		rj::Value& jsolver = jd["Solver"];
@@ -373,11 +425,13 @@ int SetSolverMod(rj::Document& jd)
 		}
 		else throw spdlog::spdlog_ex("Error in json:\t./Solver/Category");
 
-		Console->debug("Solution Type:     \t{:>10}", SystemConfig.SolverConfig.SolutionType);
-		Console->debug("Precondition Type: \t{:>10}", SystemConfig.SolverConfig.Precond);
-		Console->debug("StopTolerance:     \t{:>10}", SystemConfig.SolverConfig.StopTolerance);
-		Console->debug("Residum:           \t{:>10}", SystemConfig.SolverConfig.Residum);
-		Console->debug("Maxiteration:      \t{:>10}", SystemConfig.SolverConfig.Maxiteration);
+		Console->info("Solution Type:     \t{:>10}", 
+			GetSolutionTypeString(SystemConfig.SolverConfig.SolutionType));
+		Console->info("Precondition Type: \t{:>10}", 
+			Solution::GetPrecondionTypeString(SystemConfig.SolverConfig.Precond));
+		Console->info("StopTolerance:     \t{:>10}", SystemConfig.SolverConfig.StopTolerance);
+		Console->info("Residum:           \t{:>10}", SystemConfig.SolverConfig.Residum);
+		Console->info("Maxiteration:      \t{:>10}", SystemConfig.SolverConfig.Maxiteration);
 	}
 	else throw spdlog::spdlog_ex("Error in json:\t./Solver");
 	
@@ -386,7 +440,7 @@ int SetSolverMod(rj::Document& jd)
 
 int SetExcitationMod(rj::Document& jd)
 {
-	Console->debug("{:*^45}", "EXCITATION");
+	Console->info("{:*^70}", "EXCITATION");
 	if (jd.HasMember("Excitation"))
 	{
 		Source::SourceType category;
@@ -414,12 +468,13 @@ int SetExcitationMod(rj::Document& jd)
 			double rx = 0, ry = 0, rz = 0;
 			double eta = 0.0, mag = 1.0, phase = 0.0, ell = 0.0;
 
+			/* No Pol used
 			if (jsource.HasMember("Polarisation"))
 			{//NEED ADD PROPERTY IN ISOURCE
 				pol = jsource["Polarisation"].GetInt64();
 			}
 			else throw spdlog::spdlog_ex("Error in json:\t./Excitation/Polarisation");
-
+			*/
 			//Theta
 			rj::Value& theta = jsource["Theta"];
 			if (theta.IsArray())
@@ -463,16 +518,16 @@ int SetExcitationMod(rj::Document& jd)
 			SystemConfig.SourceConfig = new Source::PlaneWaveLinear
 			(name, nt, np, st, sp, it, ip, mag, phase, eta, rx, ry, rz);
 			
-			Console->debug("{:-^45}", SystemConfig.SourceConfig->Name);
-			Console->debug("Theta:\tNum={0:<10} \tStart={1:<10}\tIncrement={2:<10}",
+			Console->info("{:-^45}", SystemConfig.SourceConfig->Name);
+			Console->info("Theta:\tNum={0:<10} \tStart={1:<10}\tIncrement={2:<10}",
 				nt, st, it);
-			Console->debug("Phi:  \tNum={0:<10} \tStart={1:<10}\tIncrement={2:<10}",
+			Console->info("Phi:  \tNum={0:<10} \tStart={1:<10}\tIncrement={2:<10}",
 				np, sp, ip);
-			Console->debug("Rotation:    \t({0},{1},{2})", rx, ry, rz);
-			Console->debug("Eta:         \t{0}", eta);
-			Console->debug("Magnitude:   \t{0}", mag);
-			Console->debug("Phase:       \t{0}", phase);
-			Console->debug("Ellipticity: \t{0}", ell);
+			Console->info("Rotation:    \t({0},{1},{2})", rx, ry, rz);
+			Console->info("Eta:         \t{0}", eta);
+			Console->info("Magnitude:   \t{0}", mag);
+			Console->info("Phase:       \t{0}", phase);
+			Console->info("Ellipticity: \t{0}", ell);
 			return 0;
 		}
 
@@ -516,7 +571,7 @@ int SetExcitationMod(rj::Document& jd)
 
 int SetRequestMod(rj::Document& jd)
 {
-	Console->debug("{:*^45}", "REQUEST");
+	Console->info("{:*^70}", "REQUEST");
 
 	if(jd.HasMember("Request"))
 	{
@@ -549,10 +604,10 @@ int SetRequestMod(rj::Document& jd)
 				ff.PhiIncrement = phi[2].GetDouble();
 			}
 
-			Console->debug("{:-^45}", ff.FarFileName);
-			Console->debug("Theta:\tNum={0:<10} \tStart={1:<10}\tIncrement={2:<10}", 
+			Console->info("{:-^45}", ff.FarFileName);
+			Console->info("Theta:\tNum={0:<10} \tStart={1:<10}\tIncrement={2:<10}", 
 				ff.ThetaNum, ff.ThetaStart, ff.ThetaIncrement);
-			Console->debug("Phi:  \tNum={0:<10} \tStart={1:<10}\tIncrement={2:<10}",
+			Console->info("Phi:  \tNum={0:<10} \tStart={1:<10}\tIncrement={2:<10}",
 				ff.PhiNum, ff.PhiStart, ff.PhiIncrement);
 			SystemConfig.PostConfig.push_back(ff);
 		}
@@ -564,7 +619,7 @@ int SetRequestMod(rj::Document& jd)
 
 int SetSweepMod(rj::Document& jd)
 {
-	Console->debug("{0:*^45}", "SWEEP");
+	Console->info("{0:*^70}", "SWEEP");
 
 	if (jd.HasMember("Sweep"))
 	{
@@ -604,8 +659,8 @@ int SetSweepMod(rj::Document& jd)
 				break;
 			default: throw spdlog::spdlog_ex("Not developing Impedance Method among AIM|MoM|Array");
 			}	
-			Console->debug("Tag:      \t{0:<15}", info->Current.back()->Tag);
-			Console->debug("Frequency:\t{0:<15}", info->Current.back()->_frequency);
+			Console->info("Tag:      \t{0:<15}", info->Current.back()->Tag);
+			Console->info("Frequency:\t{0:<15}", info->Current.back()->_frequency);
 		}
 		info->_numberOfConfig = info->Current.size();
 

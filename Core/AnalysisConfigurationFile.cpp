@@ -18,7 +18,6 @@ static int SetExcitationMod(XMLElement* mod);
 static int SetSolutionMod(XMLElement* mod);
 static int SetRequestMod(XMLElement* mod);
 
-
 //Major Function to Analysis the file
 int Core::AnalysisConfigurationFile(char* filename)
 {
@@ -37,8 +36,6 @@ int Core::AnalysisConfigurationFile(char* filename)
 		Console->info("Read Configuration");
 		RuntimeLog->info("{:*^45}", "Read Configuration");
 		Console->debug("{0} = {1}", root->FirstAttribute()->Name(), root->FirstAttribute()->Value());
-
-		
 
 		status = SetFileMod(root->FirstChildElement("File"));
 		if(status)throw spd::spdlog_ex("Error in Read File Module");
@@ -70,12 +67,13 @@ int Core::AnalysisConfigurationFile(char* filename)
 	
 }
 
-//Assist Functions---------------------------------------------------------------
+//Assist Functions
+#pragma region AssisFun
 static int SetFileMod(XMLElement* mod)
 {
 	XMLElement* card = mod->FirstChildElement("IN");
 	Console->info("{:*^45}", "File Input");
-	if(card->FirstAttribute()->BoolValue())
+	if (card->FirstAttribute()->BoolValue())
 	{
 		XMLElement* leaf = card->FirstChildElement("Mesh");
 		//Meshtype
@@ -89,7 +87,7 @@ static int SetFileMod(XMLElement* mod)
 		Console->info("Mesh File Path:\t{}", SystemConfig.MeshFilePath);
 		Console->info("Project Directory:\t{}", SystemConfig.ProjectDir);
 		Console->info("Project Name:\t{}", SystemConfig.ProjectName);
-		Console->info("Output FileName:\t"+ SystemConfig.ReportFilePath);
+		Console->info("Output FileName:\t" + SystemConfig.ReportFilePath);
 
 		RuntimeLog->info("Mesh File Path:\t{}", SystemConfig.MeshFilePath);
 		RuntimeLog->info("Project Directory:\t{}", SystemConfig.ProjectDir);
@@ -105,7 +103,7 @@ static int SetFileMod(XMLElement* mod)
 	{
 		SystemConfig.BasisFunctionType = card->FirstChildElement("Type")->IntText();//RWG Type
 		SystemConfig.BasisFunctionFilePath = card->FirstChildElement("FilePath")->GetText();
-		SystemConfig.CurrentFilePath= SystemConfig.ProjectDir
+		SystemConfig.CurrentFilePath = SystemConfig.ProjectDir
 			+ '\\' + SystemConfig.ProjectName + ".cu";//CurrentFilePath
 	}
 	else
@@ -116,21 +114,14 @@ static int SetFileMod(XMLElement* mod)
 			+ '\\' + SystemConfig.ProjectName + ".cu";
 	}
 
-	Console->info("BasicFunction File Path:\t{}",SystemConfig.BasisFunctionFilePath);
+	Console->info("BasicFunction File Path:\t{}", SystemConfig.BasisFunctionFilePath);
 	RuntimeLog->info("BasicFunction File Path:\t{}", SystemConfig.BasisFunctionFilePath);
 	return 0;
 }
-
-
 static int SetMethodMod(XMLElement* mod)
 {
 	SystemConfig.ImpConfig.FillingStrategy = mod->FirstChildElement("TriangleFillingStrategy")->IntText();
 	XMLElement* card = mod->FirstChildElement("AIM");
-
-
-	//SystemConfig.IEConfig.type = CFIE;
-	//SystemConfig.IEConfig.Alpha = 0.7;
-	//SystemConfig.IEConfig.Eta = 120* M_PI;
 
 	if (card->FirstAttribute()->BoolValue())
 	{
@@ -154,23 +145,26 @@ static int SetMethodMod(XMLElement* mod)
 
 	card = mod->FirstChildElement("MoM");
 
-	if (card->FirstAttribute()->BoolValue())SystemConfig.ImpConfig.ImpType=EImpedance(MoM);
+	if (card->FirstAttribute()->BoolValue())SystemConfig.ImpConfig.ImpType = EImpedance(MoM);
 
 	card = mod->FirstChildElement("IE");
 
-	if(card->FirstAttribute()->BoolValue())
+	if (card->FirstAttribute()->BoolValue())
 	{
 		SystemConfig.IEConfig.type = IETYPE(card->FirstChildElement("Type")->IntText());
 		SystemConfig.IEConfig.Alpha = card->FirstChildElement("Alpha")->DoubleText();
 		SystemConfig.IEConfig.Eta = card->FirstChildElement("Eta")->DoubleText();
+
+
+		Console->debug("Integral Equation:\t{:>10}", SystemConfig.IEConfig.type);
+		Console->debug("Alpha:            \t{:>10}", SystemConfig.IEConfig.Alpha);
+		Console->debug("Eta:              \t{:>10}", SystemConfig.IEConfig.Eta);
 		return 0;
 	}
 
 	return 1;
-	
+
 }
-
-
 static int SetEMCParameterMod(XMLElement* mod)
 {
 	XMLElement* card = mod->FirstChildElement("FR");
@@ -194,8 +188,8 @@ static int SetExcitationMod(XMLElement* mod)
 
 	for (XMLElement* card = mod->FirstChildElement();card != nullptr;card = card->NextSiblingElement())
 	{
-		string name=card->FindAttribute("Name")->Value();
-		if (card->Name() == string{ "A0" } )
+		string name = card->FindAttribute("Name")->Value();
+		if (card->Name() == string{ "A0" })
 		{
 			int pol = card->FirstChildElement("Polarisation")->IntText();
 			XMLElement* leaf = card->FirstChildElement("Theta");
@@ -215,33 +209,33 @@ static int SetExcitationMod(XMLElement* mod)
 				rz = leaf->FirstChildElement("z")->DoubleText();
 
 			leaf = card->FirstChildElement("EField");
-			
+
 			double mag = leaf->FirstChildElement("Magenitude")->DoubleText(),
 				phase = leaf->FirstChildElement("Phase")->DoubleText(),
 				eta = leaf->FirstChildElement("Eta")->DoubleText(),
 				ell = leaf->FirstChildElement("Ellipticity")->DoubleText();
 			//Source::SourceType st = pol > 0 ? Source::SourceType::EXCITATION_CIRC_RIGHT : pol < 0 ? Source::SourceType::EXCITATION_CIRC_LEFT : Source::SourceType::EXCITATION_LINEAR;
 
-			SystemConfig.SourceConfig= new Source::PlaneWaveLinear(name, thn, phn, ths, phs,thi,  phi, mag,  phase,  eta, rx,  ry, rz);
+			SystemConfig.SourceConfig = new Source::PlaneWaveLinear(name, thn, phn, ths, phs, thi, phi, mag, phase, eta, rx, ry, rz);
 			return 0;
 		}
-		
-		if(card->Name()== string{ "AE" })
+
+		if (card->Name() == string{ "AE" })
 		{
 
-			auto vg = new Source::VoltageGap(name);			
+			auto vg = new Source::VoltageGap(name);
 			for (XMLElement* leaf = card->FirstChildElement();leaf != nullptr;leaf = leaf->NextSiblingElement())
 			{
-				unsigned long ns=leaf->FirstChildElement("NegativeSide")->Int64Text(),
-				ps=leaf->FirstChildElement("PositiveSide")->Int64Text();				
+				unsigned long ns = leaf->FirstChildElement("NegativeSide")->Int64Text(),
+					ps = leaf->FirstChildElement("PositiveSide")->Int64Text();
 				double mag = leaf->FirstChildElement("Magnitude")->DoubleText(),
 					phase = leaf->FirstChildElement("Phase")->DoubleText();
-				vg->VoltageVector.push_back({ns,ps,mag*exp(1i*phase)});
+				vg->VoltageVector.push_back({ ns,ps,mag*exp(1i*phase) });
 			}
 			SystemConfig.SourceConfig = vg;
 			return 0;
 		}
-	}	
+	}
 	return 4;
 }
 static int SetSolutionMod(XMLElement* mod)
@@ -249,7 +243,7 @@ static int SetSolutionMod(XMLElement* mod)
 	XMLElement* card = mod->FirstChildElement("CG");
 	if (card->FirstAttribute()->BoolValue())
 	{
-		SystemConfig.SolverConfig.SolutionType = Solution::BiCGStab;
+		SystemConfig.SolverConfig.SolutionType = Solution::BICGSTAB;
 		SystemConfig.SolverConfig.Precond = Solution::EPreconditionerType(card->FirstChildElement("Preconditioning")->IntText());
 		SystemConfig.SolverConfig.Maxiteration = card->FirstChildElement("Iterations")->IntText();
 		SystemConfig.SolverConfig.Residum = card->FirstChildElement("Residum")->DoubleText();
@@ -265,9 +259,9 @@ static int SetSolutionMod(XMLElement* mod)
 static int SetRequestMod(XMLElement* mod)
 {
 	Console->debug("{:*^45}", "Request");
-	for(XMLElement* card=mod->FirstChildElement();card != nullptr;card = card->NextSiblingElement())
+	for (XMLElement* card = mod->FirstChildElement();card != nullptr;card = card->NextSiblingElement())
 	{
-		if(string{ "FF" }==card->Name())
+		if (string{ "FF" } == card->Name())
 		{
 			Request::FarFieldConfiguration ff;
 
@@ -292,3 +286,4 @@ static int SetRequestMod(XMLElement* mod)
 
 	return 0;
 }
+#pragma endregion

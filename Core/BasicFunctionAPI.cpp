@@ -49,21 +49,31 @@ int Core::CreatBasicFunction(const bool isCreat)
 		//Initial Current
 		auto curInfo = Solution::CurrentInfo::GetInstance();
 		curInfo->category = SystemConfig.ImpConfig.ImpType;
-		curInfo->_numberOfConfig = 1;
-		if(SystemConfig.ImpConfig.ImpType==Core::Array)
+		if(curInfo->Current.size()==0)
 		{
-			curInfo->Current.push_back(new Solution::ArrayCurrent(
-				SystemConfig.ImpConfig.ImpSize,
-				Frequency, 
-				"Current0", 		 
-				SystemConfig.ImpConfig.ArrayNumX*SystemConfig.ImpConfig.ArrayNumY,
-				SystemConfig.ImpConfig.ArrayIntervalX,
-				SystemConfig.ImpConfig.ArrayIntervalY));
+			curInfo->_numberOfConfig = 1;
+			if (SystemConfig.ImpConfig.ImpType == Core::Array)
+			{
+				curInfo->Current.push_back(new Solution::ArrayCurrent(
+					SystemConfig.ImpConfig.ImpSize,
+					Frequency,
+					"Current0",
+					SystemConfig.ImpConfig.ArrayNumX*SystemConfig.ImpConfig.ArrayNumY,
+					SystemConfig.ImpConfig.ArrayIntervalX,
+					SystemConfig.ImpConfig.ArrayIntervalY));
+			}
+			else
+			{
+				curInfo->Current.push_back(new Solution::ElementCurrent
+				(SystemConfig.ImpConfig.ImpSize, Frequency, "Current0"));
+			}
 		}
 		else
 		{
-			curInfo->Current.push_back(new Solution::ElementCurrent
-			(SystemConfig.ImpConfig.ImpSize,Frequency,"Current0"));
+			for(auto val:curInfo->Current)
+			{
+				val->_unknowns = SystemConfig.ImpConfig.ImpSize*val->_numberOfElement;
+			}
 		}
 		return 0;
 			

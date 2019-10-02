@@ -30,6 +30,7 @@ namespace Core
 			string Tag;
 			size_t _unknowns = 0;
 			double _frequency= 3.0e8;
+			size_t _numberOfElement=1;
 			vector<dcomplex> _data;
 		};
 
@@ -49,7 +50,7 @@ namespace Core
 			~ArrayCurrent() { _arrayLocation.clear();_arrayLocation.shrink_to_fit(); }
 			
 			size_t _elementUnknowns;
-			size_t _numberOfElement;
+			
 			double _arrayBiasX, _arrayBiasY;
 			vector<Vector2i> _arrayLocation;
 

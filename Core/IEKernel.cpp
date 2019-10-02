@@ -27,6 +27,20 @@ IE * Core::IE::FIE(IETYPE ty)
 	
 }
 
+string Core::IE::GetTypeString(IETYPE ty)
+{
+	switch (ty)
+	{
+	case EFIE: return "EFIE";
+	case MFIE: return "MFIE";
+	case CFIE: return "CFIE";
+	case IBCEFIE: return "IBCEFIE";
+	case IBCMFIE: return "IBCMFIE";
+	case IBCCFIE: return "IBCCFIE";
+	default: throw exception("error equation");
+	}
+}
+
 
 Core::CFIEPEC::CFIEPEC(const double alpha,const double k, double const w4[], double const w7[], const double eta):IE(k, w4, w7, eta),Eta(eta), Alpha(alpha){}
 

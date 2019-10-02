@@ -19,10 +19,6 @@ public:
 		try
 		{
 			SystemConfig.ImpConfig.ImpType = MoM;
-			/*Solution::CurrentInfo::GetInstance()->Reformat();
-			Solution::CurrentInfo::GetInstance()->_numberOfConfig=1;
-
-			Solution::CurrentInfo::GetInstance()->Current[0]->EMCParameterUpdate();*/
 			if (Mesh::GetInstance()->IsLock())
 			{
 				ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";

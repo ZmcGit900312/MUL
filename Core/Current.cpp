@@ -16,10 +16,10 @@ using namespace Eigen;
 
 ArrayCurrent::ArrayCurrent(size_t elementUnknowns, double fre, string tag,  size_t numberOfElement, double biasX, double biasY) : ElementCurrent(elementUnknowns*numberOfElement,fre,tag),
 _elementUnknowns(elementUnknowns), 
-_numberOfElement(numberOfElement), 
 _arrayBiasX(biasX), 
 _arrayBiasY(biasY)
 {
+	_numberOfElement=numberOfElement,
 	_arrayLocation.clear();
 	_arrayLocation.reserve(numberOfElement);
 }

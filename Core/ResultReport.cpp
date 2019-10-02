@@ -107,7 +107,7 @@ void Core::ResultReport::WriteSolutionInformation(Solution::SolverConfiguration 
 	switch (config->SolutionType)
 	{
 	case Solution::LU: throw spd::spdlog_ex("LU solver is not developed");
-	case Solution::BiCGStab: 
+	case Solution::BICGSTAB: 
 		log->info("Solution Type:\tBiCGSTAB");break;
 	default:
 		throw spd::spdlog_ex("Solution Type is error");

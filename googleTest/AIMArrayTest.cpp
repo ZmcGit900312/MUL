@@ -483,26 +483,6 @@ TEST_F(AIMArrayTest, MultiplicationTest)
 
 	delete fillingTool;
 }
-#endif
-
-TEST_F(AIMArrayTest, NearFieldFilling)
-{
-	try
-	{
-		AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
-		auto& bf = ComponentList::BFvector;
-
-		fillingTool->TriangleFillingStrategy(*Mesh::GetInstance(), bf);
-
-		delete fillingTool;
-	}
-	catch (spd::spdlog_ex&ex)
-	{
-		Console->warn(ex.what());
-		RuntimeLog->warn(ex.what());
-		RuntimeLog->flush();
-	}
-}
 
 TEST_F(AIMArrayTest, MultiplicationTest2)
 {
@@ -545,7 +525,7 @@ TEST_F(AIMArrayTest, MultiplicationTest2)
 	size_t unknowns = SystemConfig.ImpConfig.ArrayNumX*SystemConfig.ImpConfig.ArrayNumX*SystemConfig.ImpConfig.ImpSize;
 
 #pragma endregion 
-	
+
 	Console->info("Test Multiplication of AIMARRAY:");
 	//size_t Row[9] = {18,647,38,47,111,333,478,598,901},Col[9] = {964,825,747,666,532,401,369,267,147};
 	Matrix<int, 3, 16> ArrayBias;
@@ -574,9 +554,9 @@ TEST_F(AIMArrayTest, MultiplicationTest2)
 		I1(row) = 1;
 		I2(col) = 1;
 
-		VectorXcd Res1= imp->FarFieldMultiplication(I1);
-		VectorXcd Res2= imp->FarFieldMultiplication(I2);
-		dcomplex compZ1 = Res1(col),compZ2 = Res2(row);
+		VectorXcd Res1 = imp->FarFieldMultiplication(I1);
+		VectorXcd Res2 = imp->FarFieldMultiplication(I2);
+		dcomplex compZ1 = Res1(col), compZ2 = Res2(row);
 		Console->debug("Ref=({0},{1})", refZ1.real(), refZ1.imag());
 		Console->debug("Res=({0},{1})", compZ1.real(), compZ1.imag());
 		Console->debug("Sym=({0},{1})", compZ2.real(), compZ2.imag());
@@ -585,6 +565,28 @@ TEST_F(AIMArrayTest, MultiplicationTest2)
 
 	delete fillingTool;
 }
+#endif
+
+TEST_F(AIMArrayTest, NearFieldFilling)
+{
+	try
+	{
+		AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
+		auto& bf = ComponentList::BFvector;
+
+		fillingTool->TriangleFillingStrategy(*Mesh::GetInstance(), bf);
+
+		delete fillingTool;
+	}
+	catch (spd::spdlog_ex&ex)
+	{
+		Console->warn(ex.what());
+		RuntimeLog->warn(ex.what());
+		RuntimeLog->flush();
+	}
+}
+
+
 
 	//try
 	//{

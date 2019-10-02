@@ -72,7 +72,7 @@ namespace Core
 		 * \return IE*
 		 */
 		static IE* FIE(IETYPE ty);
-
+		string static GetTypeString(IETYPE ty);
 		virtual IETYPE GetType()const = 0;
 	protected:
 		IE(const double k, double const w4[], double const w7[],

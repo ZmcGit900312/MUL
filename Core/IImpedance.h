@@ -28,6 +28,17 @@ namespace Core
 		Matrix<bool, Dynamic, Dynamic> ArrayConfiguraiton;
 		Vector3d Box[2];
 		EImpedance ImpType=MoM ;
+
+		inline string GetImpedanceTypeString()const
+		{
+			switch (ImpType)
+			{
+			case MoM: return "MoM";
+			case AIM: return "AIM";
+			case Array: return "AIM-ARRAY";
+			default: throw exception("error Impdance Type");
+			}
+		}
 	};
 
 	class IImpService
