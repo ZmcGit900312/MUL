@@ -6,14 +6,14 @@
 ///////////////////////////////////////////////////////////
 #ifndef RWG_H
 #define RWG_H
-#include "IBasicFunction.h"
+#include "IBasisFunction.h"
 #include "RWGTriangle.h"
 #include "Mesh.h"
 using namespace std;
 
 namespace Core {
 
-	class RWG :public IBasicFunction
+	class RWG :public IBasisFunction
 	{
 	public:
 		RWG(const size_t id,const pair<int, Vector3d> node[4], Triangle* tplus, Triangle* tminus);
@@ -48,7 +48,7 @@ namespace Core {
 		* \param RWGList 基函数序列
 		* \return 基函数个数
 		*/
-		static size_t CreatRWGBasicFunctionList(Mesh* mesh,vector<IBasicFunction*>*RWGList);
+		static size_t CreatRWGBasisFunctionList(Mesh* mesh,vector<IBasisFunction*>*RWGList);
 
 	private:	
 		size_t _id = 0;

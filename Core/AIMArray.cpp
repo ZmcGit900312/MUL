@@ -44,7 +44,7 @@ Core::AIMArray::~AIMArray()
 	_imp = nullptr;
 }
 
-void Core::AIMArray::MultipoleExpansion(vector<IBasicFunction*>& bf)
+void Core::AIMArray::MultipoleExpansion(vector<IBasisFunction*>& bf)
 {
 	Console->debug("Mulitpole Expansion");
 	_gama.clear();
@@ -158,7 +158,7 @@ void Core::AIMArray::GreenMatrixSet(IGreen * green)
 	_imp->_fftTools = _tools;
 }
 
-void Core::AIMArray::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFunction*>& bf)
+void Core::AIMArray::TriangleFillingStrategy(Mesh & mesh, vector<IBasisFunction*>& bf)
 {
 	Console->info("Unit MoM Impedance Under TFS");
 	vector<element> coupleList;
@@ -223,7 +223,7 @@ void Core::AIMArray::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFunction*
 	ResultLog->info("Near-Matrix Setting by TFS Time is:\t{}s", timecost);
 }
 
-void Core::AIMArray::NearCorrection(vector<IBasicFunction*>& bf)
+void Core::AIMArray::NearCorrection(vector<IBasisFunction*>& bf)
 {
 }
 

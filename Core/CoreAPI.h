@@ -13,7 +13,7 @@ namespace Core
 	* \param isCreat Load or Creat BasicFunction. Default is true
 	* \return 0 is Success; 1 is Fail to construct BasicFunction.dat
 	*/
-	int CreatBasicFunction(const bool isCreat=false);
+	int CreatBasisFunction(const bool isCreat=false);
 	/**
 	* \brief Based on the binary file of BasicFunction.dat construct BasicFunction暂时只有RWG基函数
 	* \param loadFileName The filename to be load
@@ -22,13 +22,13 @@ namespace Core
 	* \n RWGFormat is [ID trianglePlusID triangleMinusID nodePlusID nodeMinusID nodeLeftID nodeRightID current]
 	* \return 0 is Success; 1 is Fail to read BasicFunction.dat
 	*/
-	static int LoadBasicFunction(const char* loadFileName);
+	static int LoadBasisFunction(const char* loadFileName);
 	/**
 	* \brief Write Information of BasicFuntion in to binary File: BasicFunction.dat
 	* \param saveFileName The filename to be saved
 	* \return 0 is Success; 1 is Fail to save BasicFunction.dat; 2 BasicFunctions are empty
 	*/
-	int SaveBasicFunction(const char* saveFileName);
+	int SaveBasisFunction(const char* saveFileName);
 
 	/**
 	* \brief Select the type of Green Function，目前只有自由空间格林函数

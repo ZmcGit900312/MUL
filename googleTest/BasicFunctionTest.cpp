@@ -82,9 +82,9 @@ TEST_F(ComponentListTest, BasicFunctionSetTest)
 	const int refTriangleID[5][2] = { 1,2, 2,118, 19,22, 55,751, 157,159 };
 	const int refRWGID[5] = { 0,4,45,127,332 };
 
-	ASSERT_EQ(0, CreatBasicFunction(true)) << "Error in Creat BasicFunction";
+	ASSERT_EQ(0, CreatBasisFunction(true)) << "Error in Creat BasicFunction";
 
-	vector<IBasicFunction*>& bfptr = ComponentList::BFvector;
+	vector<IBasisFunction*>& bfptr = ComponentList::BFvector;
 
 	EXPECT_EQ(1287, bfptr.size());
 
@@ -96,7 +96,7 @@ TEST_F(ComponentListTest, BasicFunctionSetTest)
 		//Minus TriangleID
 		EXPECT_EQ(refTriangleID[i][1] - 1, bfptr[refRWGID[i]]->LimitMinus()) << "Minus Triangle error in RWG id\t" << refRWGID[i];
 	}
-	EXPECT_EQ(0, Core::SaveBasicFunction(SystemConfig.BasisFunctionFilePath.c_str())) << "Error in save BasicFunction";
+	EXPECT_EQ(0, Core::SaveBasisFunction(SystemConfig.BasisFunctionFilePath.c_str())) << "Error in save BasicFunction";
 }
 
 TEST_F(ComponentListTest, BasicFunctionLoadTest)
@@ -104,9 +104,9 @@ TEST_F(ComponentListTest, BasicFunctionLoadTest)
 	const int refTriangleID[5][2] = { 1,2, 2,118, 19,22, 55,751, 157,159 };
 	const int refRWGID[5] = { 0,4,45,127,332 };
 
-	ASSERT_EQ(0, CreatBasicFunction(false)) << "Error in Load BasicFunction";
+	ASSERT_EQ(0, CreatBasisFunction(false)) << "Error in Load BasicFunction";
 
-	vector<IBasicFunction*>& bfptr = ComponentList::BFvector;
+	vector<IBasisFunction*>& bfptr = ComponentList::BFvector;
 
 	EXPECT_EQ(1287, bfptr.size());
 
@@ -118,6 +118,6 @@ TEST_F(ComponentListTest, BasicFunctionLoadTest)
 		//Minus TriangleID
 		EXPECT_EQ(refTriangleID[i][1] - 1, bfptr[refRWGID[i]]->LimitMinus()) << "Minus Triangle error in RWG id\t" << refRWGID[i];
 	}
-	EXPECT_EQ(0, Core::SaveBasicFunction(SystemConfig.BasisFunctionFilePath.c_str())) << "Error in save BasicFunction";
+	EXPECT_EQ(0, Core::SaveBasisFunction(SystemConfig.BasisFunctionFilePath.c_str())) << "Error in save BasicFunction";
 }
 #endif

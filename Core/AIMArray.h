@@ -15,12 +15,12 @@ namespace Core
 	public:
 		AIMArray(const ImpConfiguration& configuration, IImpService*impedance, const IEConfiguration& ieConfig);
 		~AIMArray();
-		void MultipoleExpansion(vector< IBasicFunction*>&bf)override;
+		void MultipoleExpansion(vector< IBasisFunction*>&bf)override;
 		//Filling AIM Green Matrix in multilevel FFT
 		void GreenMatrixSet(IGreen* green)override;
 		//Near Matrix Setting
-		void TriangleFillingStrategy(Mesh& mesh, vector<IBasicFunction*>&bf)override;
-		void NearCorrection(vector<IBasicFunction*>&bf)override;
+		void TriangleFillingStrategy(Mesh& mesh, vector<IBasisFunction*>&bf)override;
+		void NearCorrection(vector<IBasisFunction*>&bf)override;
 
 
 		//For Test API

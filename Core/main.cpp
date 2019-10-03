@@ -43,7 +43,7 @@ int main(int argc,char* argv[])
 				throw runtime_error("Error in CoreAPI AnalysisConfigurationFile");
 #endif
 			if (Core::CreatMesh())throw runtime_error("Error in Creat Mesh");
-			if (Core::CreatBasicFunction())throw runtime_error("Error in Creat BasicFunction");
+			if (Core::CreatBasisFunction())throw runtime_error("Error in Creat BasicFunction");
 			if (Core::SetGreenFunction())throw runtime_error("Error in set Green Function");
 			if(argc<3)
 			{
@@ -53,7 +53,7 @@ int main(int argc,char* argv[])
 				if (Core::FillImpedance())throw runtime_error("Error in Fill Impedance");
 				if (Core::SetRightHand())throw runtime_error("Error in Set RightHand");
 				if (Core::Solve())throw runtime_error("Error in Solve Matrix with BicgStab");
-				if (Core::SaveBasicFunction(SystemConfig.BasisFunctionFilePath.c_str()))throw runtime_error("Error in save BasicFunction");
+				if (Core::SaveBasisFunction(SystemConfig.BasisFunctionFilePath.c_str()))throw runtime_error("Error in save BasicFunction");
 			}
 			
 			if (Core::CalculateRequest())throw runtime_error("Error in Calculate the FarField");

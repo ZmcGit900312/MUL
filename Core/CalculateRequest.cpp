@@ -19,7 +19,7 @@ int Core::CalculateRequest(const bool IsReadFromFile)
 		/*if (IsReadFromFile)
 		{
 			if (CreatMesh())throw spd::spdlog_ex("Error in Request");
-			if (CreatBasicFunction(false))throw spd::spdlog_ex("Error in Request");
+			if (CreatBasisFunction(false))throw spd::spdlog_ex("Error in Request");
 			if (SetGreenFunction())throw spd::spdlog_ex("Green Function is null");
 		}*/
 

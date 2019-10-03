@@ -1,5 +1,5 @@
 #pragma once
-#include "IBasicFunction.h"
+#include "IBasisFunction.h"
 #include "IImpedance.h"
 #include "Green.h"
 #include "RequestConfiguration.h"
@@ -12,7 +12,7 @@ namespace Core
 {
 	struct ComponentList 
 	{
-		static vector<IBasicFunction*> BFvector;//手动释放资源
+		static vector<IBasisFunction*> BFvector;//手动释放资源
 		static IImpService* ImpService;
 	};
 

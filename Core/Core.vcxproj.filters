@@ -102,9 +102,6 @@
     <ClInclude Include="Mesh.h">
       <Filter>头文件\Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="IBasicFunction.h">
-      <Filter>头文件\BasicFunction</Filter>
-    </ClInclude>
     <ClInclude Include="IImpedance.h">
       <Filter>头文件\Algebra</Filter>
     </ClInclude>
@@ -209,6 +206,9 @@
     </ClInclude>
     <ClInclude Include="Current.h">
       <Filter>头文件\Solution</Filter>
+    </ClInclude>
+    <ClInclude Include="IBasisFunction.h">
+      <Filter>头文件\BasicFunction</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

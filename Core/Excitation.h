@@ -1,6 +1,6 @@
 #pragma once
 #include <Eigen/Core>
-#include "IBasicFunction.h"
+#include "IBasisFunction.h"
 #include <vector>
 #include "IImpedance.h"
 
@@ -35,7 +35,7 @@ namespace Core
 			 * \param bfVector
 			 * \return Excitation
 			 */
-			virtual VectorXcd SetExcitation(const vector<IBasicFunction*>&bfVector
+			virtual VectorXcd SetExcitation(const vector<IBasisFunction*>&bfVector
 				,ImpConfiguration& impconfig)const=0;
 			inline virtual SourceType GetSourceType()const = 0;
 		};
@@ -62,9 +62,9 @@ namespace Core
 			
 			SourceType GetSourceType()const override {return EXCITATION_LINEAR;}						
 			//Operation
-			VectorXcd SetExcitation(const vector<IBasicFunction*>&bfVector, ImpConfiguration& impconfig)const override;
+			VectorXcd SetExcitation(const vector<IBasisFunction*>&bfVector, ImpConfiguration& impconfig)const override;
 
-			VectorXcd SetElementExcitation(const vector<IBasicFunction*>&bfVector, Vector3d bias) const;
+			VectorXcd SetElementExcitation(const vector<IBasisFunction*>&bfVector, Vector3d bias) const;
 		};
 
 		class PlaneWaveRight :public Planewave
@@ -74,7 +74,7 @@ namespace Core
 			double Ellipticity = 1.0;
 			SourceType GetSourceType()const override { return EXCITATION_CIRC_RIGHT; }
 			//Operation
-			VectorXcd SetExcitation(const vector<IBasicFunction*>&bfVector, ImpConfiguration& impconfig)const override{};
+			VectorXcd SetExcitation(const vector<IBasisFunction*>&bfVector, ImpConfiguration& impconfig)const override{};
 		};
 
 		class PlaneWaveLeft :public Planewave
@@ -84,7 +84,7 @@ namespace Core
 			double Ellipticity = 1.0;
 			SourceType GetSourceType()const override { return EXCITATION_CIRC_LEFT; }
 			//Operation
-			VectorXcd SetExcitation(const vector<IBasicFunction*>&bfVector, ImpConfiguration& impconfig)const override {};
+			VectorXcd SetExcitation(const vector<IBasisFunction*>&bfVector, ImpConfiguration& impconfig)const override {};
 		};
 #pragma endregion 
 		class VoltageGap :public ISource
@@ -103,7 +103,7 @@ namespace Core
 			vector<Vol> VoltageVector;
 			dcomplex Admitance{50.0,0.0};
 
-			VectorXcd SetExcitation(const vector<IBasicFunction*>&bfVector, ImpConfiguration& impconfig)const override;
+			VectorXcd SetExcitation(const vector<IBasisFunction*>&bfVector, ImpConfiguration& impconfig)const override;
 		};
 
 		//struct ExcitationConfiguration

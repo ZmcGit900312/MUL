@@ -30,7 +30,7 @@ VirtualGrid::~VirtualGrid()
 }
 
 
-void VirtualGrid::MultipoleExpansion(vector<IBasicFunction*>&bf)
+void VirtualGrid::MultipoleExpansion(vector<IBasisFunction*>&bf)
 {
 	Console->debug("Mulitpole Expansion");
 	_gama.clear();
@@ -103,7 +103,7 @@ void VirtualGrid::MultipoleExpansion(vector<IBasicFunction*>&bf)
 	tripletsGamaD.clear(); tripletsGamaD.shrink_to_fit();
 }
 
-void Core::VirtualGrid::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFunction*>& bf)
+void Core::VirtualGrid::TriangleFillingStrategy(Mesh & mesh, vector<IBasisFunction*>& bf)
 {
 	Console->info("Near Field Set under TFS");
 	if (_gama.size() < 1 || _layerElementSizeAcu(_dim - 1) < 1)
@@ -263,7 +263,7 @@ void Core::VirtualGrid::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFuncti
 	Console->debug("Nonzeros have {0} and take {1}%.", _imp->GetNearFieldMatrix().nonZeros(), 100 * sparsity);
 }
 
-void Core::VirtualGrid::NearCorrection(vector<IBasicFunction*>& bf)
+void Core::VirtualGrid::NearCorrection(vector<IBasisFunction*>& bf)
 {
 	Console->info("Near Field Set under Traditional Way");
 	if (_gama.size() < 1 )

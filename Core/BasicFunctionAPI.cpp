@@ -7,7 +7,7 @@
 #include "Current.h"
 #include "IMatrixFiller.h"
 
-int Core::CreatBasicFunction(const bool isCreat)
+int Core::CreatBasisFunction(const bool isCreat)
 {
 	
 	try
@@ -17,32 +17,32 @@ int Core::CreatBasicFunction(const bool isCreat)
 		Mesh* mesh = Mesh::GetInstance();
 
 		if (Mesh::GetInstance()->IsLock())throw spdlog::spdlog_ex("Mesh is lock!");
-		Console->info("Initial BasicFunction");
+		Console->info("Initial BasisFunction");
 
 		switch (SystemConfig.BasisFunctionType)
 		{
 		case 1:
-			throw spdlog::spdlog_ex("Other BasicFunction is not developing!");
+			throw spdlog::spdlog_ex("Other BasisFunction is not developing!");
 		default:
-			Console->info("Choose RWG Function as BasicFunction\n");
-			RuntimeLog->info("Choose RWG Function as BasicFunction\n");
+			Console->info("Choose RWG Function as BasisFunction\n");
+			RuntimeLog->info("Choose RWG Function as BasisFunction\n");
 			
 			
 		}
 
-		if (isCreat||LoadBasicFunction(SystemConfig.BasisFunctionFilePath.c_str()))
+		if (isCreat||LoadBasisFunction(SystemConfig.BasisFunctionFilePath.c_str()))
 		{
 			const clock_t start = clock();
 			SystemConfig.ImpConfig.ImpSize =
-				RWG::CreatRWGBasicFunctionList(mesh, &ComponentList::BFvector);
+				RWG::CreatRWGBasisFunctionList(mesh, &ComponentList::BFvector);
 			const clock_t end = clock();
 			const double _time = double(end - start) / CLOCKS_PER_SEC;
-			Console->info("The number of BasicFuntions is:\t{0:d}", SystemConfig.ImpConfig.ImpSize);
-			Console->info("Creat BasicFuntions costs:\t{0:10.9} s", _time);
-			RuntimeLog->info("The number of BasicFuntions is:\t{0:d}", SystemConfig.ImpConfig.ImpSize);
-			RuntimeLog->info("Creat BasicFuntions costs:\t{0:10.9} s", _time);
-			ResultReport::WriteBasicFunctionInformation(SystemConfig.ImpConfig.ImpSize,ResultLog);
-			ResultLog->info("Creat BasicFuntions costs:\t{0:10.9} s", _time);
+			Console->info("The number of BasisFuntions is:\t{0:d}", SystemConfig.ImpConfig.ImpSize);
+			Console->info("Creat BasisFuntions costs:\t{0:10.9} s", _time);
+			RuntimeLog->info("The number of BasisFuntions is:\t{0:d}", SystemConfig.ImpConfig.ImpSize);
+			RuntimeLog->info("Creat BasisFuntions costs:\t{0:10.9} s", _time);
+			ResultReport::WriteBasisFunctionInformation(SystemConfig.ImpConfig.ImpSize,ResultLog);
+			ResultLog->info("Creat BasisFuntions costs:\t{0:10.9} s", _time);
 		}
 		
 
@@ -85,7 +85,7 @@ int Core::CreatBasicFunction(const bool isCreat)
 	}
 }
 
-int Core::LoadBasicFunction(const char* loadFileName)
+int Core::LoadBasisFunction(const char* loadFileName)
 {
 	//GetCurrentDirectoryA(1000, buff);//
 	
@@ -122,18 +122,18 @@ int Core::LoadBasicFunction(const char* loadFileName)
 			//SystemConfig.ImpConfig.ImpSize = ComponentList::BFList.size();
 			const clock_t end = clock();
 			const double _time = double(end - start) / CLOCKS_PER_SEC;
-			Console->info("The number of BasicFuntions is:\t{0:d}", unknowns);
-			Console->info("Load BasicFuntions costs:\t{0:10.9} s", _time);
-			ResultReport::WriteBasicFunctionInformation(unknowns,ResultLog);
-			ResultLog->info("Load BasicFuntions costs:\t{0:10.9} s", _time);
-			RuntimeLog->info("The number of BasicFuntions is:\t{0:d}", unknowns);
-			RuntimeLog->info("Load BasicFuntions costs:\t{0:10.9} s", _time);
+			Console->info("The number of BasisFuntions is:\t{0:d}", unknowns);
+			Console->info("Load BasisFuntions costs:\t{0:10.9} s", _time);
+			ResultReport::WriteBasisFunctionInformation(unknowns,ResultLog);
+			ResultLog->info("Load BasisFuntions costs:\t{0:10.9} s", _time);
+			RuntimeLog->info("The number of BasisFuntions is:\t{0:d}", unknowns);
+			RuntimeLog->info("Load BasisFuntions costs:\t{0:10.9} s", _time);
 			RuntimeLog->flush();
-			/*cout << "The number of BasicFuntions is\t=\t" << unknowns << "\n";
-			cout << "Finish!\nLoad BasicFuntions costs\t" << _time << " s\n";*/
+			/*cout << "The number of BasisFuntions is\t=\t" << unknowns << "\n";
+			cout << "Finish!\nLoad BasisFuntions costs\t" << _time << " s\n";*/
 			return 0;
 		}
-		throw spd::spdlog_ex("Load BasicFunction Error in Finding "+string(loadFileName));
+		throw spd::spdlog_ex("Load BasisFunction Error in Finding "+string(loadFileName));
 	}
 	catch (spd::spdlog_ex&ex)
 	{
@@ -143,11 +143,11 @@ int Core::LoadBasicFunction(const char* loadFileName)
 	
 }
 
-int Core::SaveBasicFunction(const char * saveFileName)
+int Core::SaveBasisFunction(const char * saveFileName)
 {
 	cout << '\n';
-	Console->info("Save BasicFunction in binary type");
-	RuntimeLog->info("Save BasicFunction in binary type");
+	Console->info("Save BasisFunction in binary type");
+	RuntimeLog->info("Save BasisFunction in binary type");
 	
 	//GetCurrentDirectoryA(1000, buff);//
 	ofstream ofs(saveFileName,ios::out|ios::binary| ios::trunc);
@@ -157,7 +157,7 @@ int Core::SaveBasicFunction(const char * saveFileName)
 		if (!Solution::CurrentInfo::GetInstance()->SaveCurrent(SystemConfig.CurrentFilePath.c_str()))
 			throw spd::spdlog_ex("Save Current Error in\t" + SystemConfig.CurrentFilePath);
 		
-		if (ComponentList::BFvector.size() < 1)throw spd::spdlog_ex("BasicFunction Vector is empty");
+		if (ComponentList::BFvector.size() < 1)throw spd::spdlog_ex("BasisFunction Vector is empty");
 		if (ofs.is_open())
 		{
 			Console->info("The Save File Path is\t"+string(saveFileName));
@@ -176,7 +176,7 @@ int Core::SaveBasicFunction(const char * saveFileName)
 			RuntimeLog->flush();
 			return 0;
 		}
-		throw spd::spdlog_ex("Save BasicFunction Error in Finding\t" + string(saveFileName));
+		throw spd::spdlog_ex("Save BasisFunction Error in Finding\t" + string(saveFileName));
 	}
 	catch (spd::spdlog_ex&ex)
 	{

@@ -32,7 +32,7 @@ Core::AIMPECCFIE::~AIMPECCFIE()
 	_imp = nullptr;
 }
 
-void Core::AIMPECCFIE::MultipoleExpansion(vector<IBasicFunction*>& bf)
+void Core::AIMPECCFIE::MultipoleExpansion(vector<IBasisFunction*>& bf)
 {
 	Console->debug("Mulitpole Expansion");
 	_gama.clear();
@@ -152,7 +152,7 @@ void Core::AIMPECCFIE::GreenMatrixSet(IGreen * green)
 
 }
 
-void Core::AIMPECCFIE::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFunction*>& bf)
+void Core::AIMPECCFIE::TriangleFillingStrategy(Mesh & mesh, vector<IBasisFunction*>& bf)
 {
 	Console->info("IBC Near Field Set under TFS");
 	if (_gama.size() < 1 || _layerElementSizeAcu(_dim - 1) < 1)
@@ -298,7 +298,7 @@ void Core::AIMPECCFIE::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFunctio
 	Console->debug("Nonzeros have {0} and take {1}%.", _imp->GetNearFieldMatrix().nonZeros(), 100 * sparsity);
 }
 
-void Core::AIMPECCFIE::NearCorrection(vector<IBasicFunction*>& bf)
+void Core::AIMPECCFIE::NearCorrection(vector<IBasisFunction*>& bf)
 {
 
 }

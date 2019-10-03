@@ -33,7 +33,7 @@ void Core::ResultReport::WriteGeometeryInformation(Assist::ModalGeometry *geo, s
 		geo->GetLimitationBoundary(7).z());
 }
 
-void Core::ResultReport::WriteBasicFunctionInformation(size_t unknowns, shared_ptr<spd::logger>log)
+void Core::ResultReport::WriteBasisFunctionInformation(size_t unknowns, shared_ptr<spd::logger>log)
 {
 	log->info("{:*^45})", "Basic Function Info");
 	log->info("Type:\t\t\tRWG");

@@ -25,6 +25,8 @@ int Core::CreatMesh()
 		const clock_t end = clock();
 		double time = double(end - start) / CLOCKS_PER_SEC;
 
+		delete reader;
+
 		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFilePath, Console);
 		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFilePath, RuntimeLog);		
 		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFilePath,ResultLog);

@@ -4,7 +4,7 @@
 
 #pragma region ComponentList
 
-vector<Core::IBasicFunction*> Core::ComponentList::BFvector;
+vector<Core::IBasisFunction*> Core::ComponentList::BFvector;
 Core::IImpService* Core::ComponentList::ImpService = nullptr;
 Core::SystemConfiguration Core::SystemConfig;
 #pragma endregion 

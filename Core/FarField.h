@@ -7,7 +7,7 @@
 
 #pragma once
 #include "RequestConfiguration.h"
-#include "IBasicFunction.h"
+#include "IBasisFunction.h"
 #include "Mesh.h"
 #include "Current.h"
 namespace Core
@@ -22,7 +22,7 @@ namespace Core
 		class FarField
 		{
 		public:
-			FarField(vector<IBasicFunction*>*, Mesh*, 
+			FarField(vector<IBasisFunction*>*, Mesh*, 
 				Solution::CurrentInfo* current=Solution::CurrentInfo::GetInstance());
 			~FarField();
 			/**
@@ -58,7 +58,7 @@ namespace Core
 		private:
 
 			Mesh* _mesh;
-			vector<IBasicFunction*>*_bf;
+			vector<IBasisFunction*>*_bf;
 			//Integration Kernel and Integration
 			
 			Vector3cd _theta0, _theta180;

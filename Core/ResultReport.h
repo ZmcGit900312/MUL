@@ -21,7 +21,7 @@ namespace Core
 		static void InitialWriter(string filename);
 		static void WriteMeshInformation(Mesh*mesh,string filename, shared_ptr<spd::logger>log);
 		static void WriteGeometeryInformation(Assist::ModalGeometry *geo, shared_ptr<spd::logger>log);
-		static void WriteBasicFunctionInformation(size_t unknowns, shared_ptr<spd::logger>log);
+		static void WriteBasisFunctionInformation(size_t unknowns, shared_ptr<spd::logger>log);
 		static void WriteGreenFunctionInformation(GreenConfiguration *config, shared_ptr<spd::logger>log);
 		static void WriteExcitationInformation(Source::ISource*config, shared_ptr<spd::logger>log);
 		static void WriteSolutionInformation(Solution::SolverConfiguration*config,shared_ptr<spd::logger>log);

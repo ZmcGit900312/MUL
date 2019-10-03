@@ -235,7 +235,7 @@
     <ClInclude Include="FFTmd.h" />
     <ClInclude Include="GmshFile.h" />
     <ClInclude Include="Green.h" />
-    <ClInclude Include="IBasicFunction.h" />
+    <ClInclude Include="IBasisFunction.h" />
     <ClInclude Include="AIMPECCFIE.h" />
     <ClInclude Include="IEKernel.h" />
     <ClInclude Include="IImpedance.h" />

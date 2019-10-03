@@ -15038,3 +15038,58 @@
 [Wed Oct 2 23:32:42 2019 Wed][info] Release BasicFunction
 [Wed Oct 2 23:32:42 2019 Wed][info] Release Request
 [Wed Oct 2 23:32:42 2019 Wed][info] ---------------------END---------------------
+[Thu Oct 3 23:35:26 2019 Thu][info] Call ParseConfiguratoinFile()
+[Thu Oct 3 23:35:26 2019 Thu][info] ********************Mesh*********************
+[Thu Oct 3 23:35:27 2019 Thu][info] E:\ZMC\Code\C_program\MUL\SourceData\MeshTest.nas
+[Thu Oct 3 23:35:27 2019 Thu][info] Number of Nodes:			         431
+[Thu Oct 3 23:35:27 2019 Thu][info] Number of Triangles:			         858
+[Thu Oct 3 23:35:27 2019 Thu][info] Number of Segments:			           0
+[Thu Oct 3 23:35:27 2019 Thu][info] Number of Cuboids:			           0
+[Thu Oct 3 23:35:27 2019 Thu][info] Number of Tetrahedras:			           0
+
+[Thu Oct 3 23:35:27 2019 Thu][info] Creat Mesh costs	0.037000 s
+[Thu Oct 3 23:35:27 2019 Thu][info] ****************Geometry Info****************)
+[Thu Oct 3 23:35:27 2019 Thu][info] Lower Point of Box is (-0.599,-0.599,-0.600)
+[Thu Oct 3 23:35:27 2019 Thu][info] Upper Point of Box is (+0.599,+0.598,+0.600)
+[Thu Oct 3 23:35:27 2019 Thu][info] Choose RWG Function as BasisFunction
+
+[Thu Oct 3 23:35:27 2019 Thu][info] The number of BasisFuntions is:	1287
+[Thu Oct 3 23:35:27 2019 Thu][info] Load BasisFuntions costs:	      0.01 s
+[Thu Oct 3 23:35:27 2019 Thu][info] Set Green Function
+[Thu Oct 3 23:35:27 2019 Thu][info] Free Space Green Function is choosen
+
+[Thu Oct 3 23:35:27 2019 Thu][info] EFIE is choosen
+[Thu Oct 3 23:35:27 2019 Thu][info] Begin to pre-compute the SelfTriangle Impedance
+[Thu Oct 3 23:35:27 2019 Thu][info] Initial Solver
+[Thu Oct 3 23:35:27 2019 Thu][info] *********************MoM*********************
+[Thu Oct 3 23:35:27 2019 Thu][info] ************Fill Impedance Matrix************
+[Thu Oct 3 23:35:54 2019 Thu][info] Whole Filling costs	26.576000 s
+[Thu Oct 3 23:35:54 2019 Thu][info] Memory Cost	25.274185 Mb
+[Thu Oct 3 23:35:55 2019 Thu][warning] MFIE is not choosen to test
+[Thu Oct 3 23:35:55 2019 Thu][info] ***************Excitation Info***************
+[Thu Oct 3 23:35:55 2019 Thu][info] Source Type:		PlanewaveLinear
+[Thu Oct 3 23:35:55 2019 Thu][info] Direction:[0.000 0.000 -1.000]
+[Thu Oct 3 23:35:55 2019 Thu][info] Polarization:[0.000 1.000 0.000]
+
+[Thu Oct 3 23:35:55 2019 Thu][info] Set RightHand is cost:	0.029000 s
+[Thu Oct 3 23:35:55 2019 Thu][info] Memory Cost	0.019638 Mb
+[Thu Oct 3 23:35:55 2019 Thu][info] ****************Solution Info****************
+[Thu Oct 3 23:35:55 2019 Thu][info] Solution Type:	BiCGSTAB
+[Thu Oct 3 23:35:55 2019 Thu][info] Preconditioning Type:		No
+[Thu Oct 3 23:35:55 2019 Thu][info] The Maxiteration is:		0
+[Thu Oct 3 23:35:55 2019 Thu][info] The Residum is:		1.000000e-04
+[Thu Oct 3 23:35:56 2019 Thu][info] The Final Iteration is:	187
+[Thu Oct 3 23:35:56 2019 Thu][info] The results tolerance is:	9.7990e-05
+[Thu Oct 3 23:35:56 2019 Thu][info] Iteration is cost:	1.138000 s
+[Thu Oct 3 23:35:56 2019 Thu][info] Save BasisFunction in binary type
+[Thu Oct 3 23:35:56 2019 Thu][info] The Save File Path is	E:\ZMC\Code\C_program\MUL\SourceData\test.bf
+[Thu Oct 3 23:35:56 2019 Thu][info] Run CalculateRequest()
+[Thu Oct 3 23:35:56 2019 Thu][info] **********Calcuate the FarField RCS**********
+[Thu Oct 3 23:35:56 2019 Thu][info] RCS of Far Field::	Horizon
+[Thu Oct 3 23:36:10 2019 Thu][info] RCS of Far Field::	VerticalPhi0
+[Thu Oct 3 23:36:16 2019 Thu][info] RCS of Far Field::	VerticalPhi90
+[Thu Oct 3 23:36:23 2019 Thu][info] FarField Calculate cost 26.836000 s
+[Thu Oct 3 23:36:23 2019 Thu][info] *************Release the memory**************
+[Thu Oct 3 23:36:23 2019 Thu][info] Release BasicFunction
+[Thu Oct 3 23:36:23 2019 Thu][info] Release Request
+[Thu Oct 3 23:36:23 2019 Thu][info] ---------------------END---------------------

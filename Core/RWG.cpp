@@ -60,7 +60,7 @@ void RWG::SaveBinary(ofstream & ofs)
  * \param RWGList 基函数序列
  * \return 基函数个数
  */
-size_t RWG::CreatRWGBasicFunctionList(Mesh* mesh, vector<IBasicFunction*>* RWGList)
+size_t RWG::CreatRWGBasisFunctionList(Mesh* mesh, vector<IBasisFunction*>* RWGList)
 {
 	int T1[3] = { 0 }, T2[3] = { 0 };
 	pair<int, Vector3d> tempNode[4];

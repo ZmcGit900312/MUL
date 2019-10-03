@@ -32,10 +32,10 @@ namespace Core
 
 		virtual ~IMatrixFiller(){}
 
-		virtual void MultipoleExpansion(vector<IBasicFunction*>&bf)=0;
+		virtual void MultipoleExpansion(vector<IBasisFunction*>&bf)=0;
 		virtual void GreenMatrixSet(IGreen* green) = 0;
-		virtual void TriangleFillingStrategy(Mesh&mesh, vector<IBasicFunction*>&bf)=0;
-		virtual void NearCorrection(vector<IBasicFunction*>&bf)=0;
+		virtual void TriangleFillingStrategy(Mesh&mesh, vector<IBasisFunction*>&bf)=0;
+		virtual void NearCorrection(vector<IBasisFunction*>&bf)=0;
 		
 		//Factory Function
 		static IMatrixFiller* FMatrixFiller(

@@ -28,7 +28,7 @@ Core::Source::Planewave::Planewave(std::string name, unsigned thn, unsigned phn,
 
 }
 
-VectorXcd Core::Source::PlaneWaveLinear::SetExcitation(const vector<IBasicFunction*>& bfVector, ImpConfiguration& impconfig) const
+VectorXcd Core::Source::PlaneWaveLinear::SetExcitation(const vector<IBasisFunction*>& bfVector, ImpConfiguration& impconfig) const
 {
 	if(impconfig.ImpType==Core::Array)
 	{
@@ -58,7 +58,7 @@ VectorXcd Core::Source::PlaneWaveLinear::SetExcitation(const vector<IBasicFuncti
 }
 
 VectorXcd Core::Source::PlaneWaveLinear::SetElementExcitation(
-	const vector<IBasicFunction*>& bfVector, Vector3d bias) const
+	const vector<IBasisFunction*>& bfVector, Vector3d bias) const
 {
 	VectorXcd righthand{ bfVector.size() };
 	size_t zmc = 0;

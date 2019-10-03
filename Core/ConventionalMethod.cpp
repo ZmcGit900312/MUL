@@ -32,7 +32,7 @@ ConventionalMethod::~ConventionalMethod()
 	_imp = nullptr;
 }
 
-void ConventionalMethod::MultipoleExpansion(vector<IBasicFunction*>&bf)
+void ConventionalMethod::MultipoleExpansion(vector<IBasisFunction*>&bf)
 {
 	Console->debug("Mulitpole Expansion");
 	_gama.clear();
@@ -98,7 +98,7 @@ void ConventionalMethod::MultipoleExpansion(vector<IBasicFunction*>&bf)
 	tripletsGamaD.clear(); tripletsGamaD.shrink_to_fit();
 }
 
-void ConventionalMethod::NearCorrection(vector< IBasicFunction*>&bf)
+void ConventionalMethod::NearCorrection(vector< IBasisFunction*>&bf)
 {
 	Console->info("Near Field Set under Traditional Way");
 	if (_gama.size() < 1 || VectorTp.Length() < 1)
@@ -182,7 +182,7 @@ void ConventionalMethod::NearCorrection(vector< IBasicFunction*>&bf)
 	
 }
 
-void Core::ConventionalMethod::TriangleFillingStrategy(Mesh & mesh, vector<IBasicFunction*>&bf)
+void Core::ConventionalMethod::TriangleFillingStrategy(Mesh & mesh, vector<IBasisFunction*>&bf)
 {
 	Console->info("Near Field Set under TFS");
 	if (_gama.size() < 1 || VectorTp.Length() < 1)

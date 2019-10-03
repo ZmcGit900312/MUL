@@ -18,7 +18,7 @@ public:
 		{
 			SystemConfig.ImpConfig.ImpType = MoM;
 			if (Mesh::GetInstance()->IsLock())ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
-			if (ComponentList::BFvector.size() < 1)ASSERT_EQ(0, Core::CreatBasicFunction(false)) << "Error in Load BasicFunction";
+			if (ComponentList::BFvector.size() < 1)ASSERT_EQ(0, Core::CreatBasisFunction(false)) << "Error in Load BasicFunction";
 			if (!Core::IGreen::GetInstance())EXPECT_EQ(0, Core::SetGreenFunction());
 			//srand(static_cast<unsigned>(time(nullptr)));
 		}

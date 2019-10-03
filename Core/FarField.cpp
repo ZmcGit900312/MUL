@@ -15,7 +15,7 @@
 using namespace std;
 using namespace placeholders;
 
-Request::FarField::FarField(vector<IBasicFunction*>*bf, Mesh *mesh, Solution::CurrentInfo* current) :
+Request::FarField::FarField(vector<IBasisFunction*>*bf, Mesh *mesh, Solution::CurrentInfo* current) :
 	_mesh(mesh), _bf(bf), _current(current)
 {
 	Vector3d D{ Assist::ModalGeometry::GetInstance()->GetLimitationBoundary(7) - Assist::ModalGeometry::GetInstance()->GetLimitationBoundary(0) };
