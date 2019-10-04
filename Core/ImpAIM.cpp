@@ -65,10 +65,10 @@ void ImpAIM::FillImpedance()
 	Console->info("Nonzeros of NearField Element:\t{0} in {1}", _imp.nonZeros(), _impSize*_impSize);
 	Console->info("Impedance Sparsity:\t{:f}%",100*_sparsity);
 
-	RuntimeLog->info("There are total {} in GamaMatrix", _gamax.nonZeros()*(_dimension + 1));
-	RuntimeLog->info("There are total {} in GreenMatrix", _green.size());
-	RuntimeLog->info("Nonzeros of NearField Element:\t{0} in {1}", _imp.nonZeros(), _impSize*_impSize);
-	RuntimeLog->info("Impedance Sparsity:\t{:f}%", 100 * _sparsity);
+	Runtime->info("There are total {} in GamaMatrix", _gamax.nonZeros()*(_dimension + 1));
+	Runtime->info("There are total {} in GreenMatrix", _green.size());
+	Runtime->info("Nonzeros of NearField Element:\t{0} in {1}", _imp.nonZeros(), _impSize*_impSize);
+	Runtime->info("Impedance Sparsity:\t{:f}%", 100 * _sparsity);
 
 	ResultLog->info("There are total {} in GamaMatrix", _gamax.nonZeros()*(_dimension + 1));
 	ResultLog->info("There are total {} in GreenMatrix", _green.size());

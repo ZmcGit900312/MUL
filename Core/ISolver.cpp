@@ -18,6 +18,7 @@ Core::Solution::ISolver * Core::Solution::FSolver(SolverConfiguration & config, 
 				case Identity:Console->warn("MoM with Identity is not recommand");
 				default:
 					Console->info("Preconditioning chooses Jacobi");
+					SystemConfig.SolverConfig.Precond = Jacobi;
 				return new BiCGStabMoMJacobi(config);
 			}
 		}

@@ -1,6 +1,5 @@
 ﻿#include "stdafx.h"
 #include "CoreAPI.h"
-#include "Const.h"
 #include "Data.h"
 #include "FarField.h"
 #include "Log.h"
@@ -9,7 +8,6 @@
 #include "rapidjson/document.h"
 #include <rapidjson/istreamwrapper.h>
 #include <iostream>
-#include "rapidjson/pointer.h"
 
 
 using namespace std;
@@ -97,7 +95,7 @@ static int SetSweepMod(rj::Document& jd);
  */
 int Core::ParseConfiguratoinFile(char* filename)
 {
-	RuntimeLog->info("Call ParseConfiguratoinFile()");
+	Runtime->info("Call ParseConfiguratoinFile()");
 	int status = 0;
 	try
 	{
@@ -576,7 +574,7 @@ int SetRequestMod(rj::Document& jd)
 	if(jd.HasMember("Request"))
 	{
 		rj::Value& jrequest = jd["Request"];
-
+		SystemConfig.PostConfig.clear();
 		for (rj::Value::ValueIterator vp = jrequest.Begin();vp != jrequest.End();++vp)
 		{
 			rj::Value& val = *vp;

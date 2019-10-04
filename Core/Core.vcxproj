@@ -279,6 +279,7 @@
     <ClCompile Include="..\googleTest\AIMPECCFIETest.cpp" />
     <ClCompile Include="..\googleTest\IETest.cpp" />
     <ClCompile Include="..\googleTest\JsonIOTest.cpp" />
+    <ClCompile Include="..\googleTest\NewFlowTest.cpp" />
     <ClCompile Include="..\googleTest\RequestTest.cpp" />
     <ClCompile Include="..\googleTest\TeoplitzcdTest.cpp" />
     <ClCompile Include="..\googleTest\testMain.cpp" />
@@ -287,9 +288,11 @@
     <ClCompile Include="..\googleTest\XmlConfigurationTest.cpp" />
     <ClCompile Include="AIMArray.cpp" />
     <ClCompile Include="AnalysisConfigurationFile.cpp" />
+    <ClCompile Include="CalculatedMissionCentre.cpp" />
     <ClCompile Include="CalculateRequest.cpp" />
     <ClCompile Include="Const.cpp" />
     <ClCompile Include="Current.cpp" />
+    <ClCompile Include="DataInitialization.cpp" />
     <ClCompile Include="Excitation.cpp" />
     <ClCompile Include="FFTmd.cpp" />
     <ClCompile Include="GmshFile.cpp" />
@@ -312,6 +315,7 @@
     <ClCompile Include="Green.cpp" />
     <ClCompile Include="ImpAIM.cpp" />
     <ClCompile Include="ImpMoM.cpp" />
+    <ClCompile Include="MatrixSolving.cpp" />
     <ClCompile Include="MeshTest.cpp" />
     <ClCompile Include="Multiplicator.cpp" />
     <ClCompile Include="MultipoleExpansioner.cpp" />
@@ -328,6 +332,8 @@
     <ClCompile Include="ResultReport.cpp" />
     <ClCompile Include="RWG.cpp" />
     <ClCompile Include="RWGTriangle.cpp" />
+    <ClCompile Include="SaveResults.cpp" />
+    <ClCompile Include="SetCurrent.cpp" />
     <ClCompile Include="SetGreenFunction.cpp" />
     <ClCompile Include="SetRightHand.cpp" />
     <ClCompile Include="Solve.cpp" />

@@ -410,6 +410,24 @@
     <ClCompile Include="ParseConfigurationFile.cpp">
       <Filter>源文件\CoreAPI</Filter>
     </ClCompile>
+    <ClCompile Include="..\googleTest\NewFlowTest.cpp">
+      <Filter>源文件\googleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="CalculatedMissionCentre.cpp">
+      <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="MatrixSolving.cpp">
+      <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveResults.cpp">
+      <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="SetCurrent.cpp">
+      <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="DataInitialization.cpp">
+      <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SourceData\MeshTest.nas">

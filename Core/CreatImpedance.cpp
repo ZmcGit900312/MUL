@@ -15,7 +15,7 @@ int Core::CreatImpedance()
 	{		
 		//Initial Solver
 		Console->info("Initial Solver");
-		RuntimeLog->info("Initial Solver");
+		Runtime->info("Initial Solver");
 		Solver = FSolver(SystemConfig.SolverConfig, SystemConfig.ImpConfig.ImpType);
 		switch (SystemConfig.ImpConfig.ImpType)
 		{
@@ -58,12 +58,12 @@ int Core::CreatImpedance()
 			break;
 		default:			
 			ComponentList::ImpService = new ImpMoM(SystemConfig.ImpConfig.ImpSize);
-			RuntimeLog->flush();		
+			Runtime->flush();		
 		}
 
 		ResultReport::WriteMethodInformation(&SystemConfig.ImpConfig, Console);
-		ResultReport::WriteMethodInformation(&SystemConfig.ImpConfig, RuntimeLog);
-		RuntimeLog->flush();
+		ResultReport::WriteMethodInformation(&SystemConfig.ImpConfig, Runtime);
+		Runtime->flush();
 		ResultReport::WriteMethodInformation(&SystemConfig.ImpConfig,ResultLog);
 		return 0;
 	}

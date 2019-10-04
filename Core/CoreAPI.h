@@ -2,7 +2,46 @@
 namespace Core
 {
 #pragma region MAINAPI
-	//*****************************************Main API**************************************************
+
+	/**
+	* \brief Read Initial Information and Initial the SystemConfiguration
+	* \param filename The name of configuration  *.hxj
+	* \return 0 Success
+	*/
+	//int EMCParameterInitialization(char* filename);
+
+	/**
+	* \brief Read Initial Information and Initial the SystemConfiguration
+	* \param filename The name of configuration  *.xml
+	* \return 0 Success
+	*/
+	int AnalysisConfigurationFile(char* filename);
+	int ParseConfiguratoinFile(char* filename);
+	
+
+	int DataInitialization();
+
+	/**
+	 * \brief The mission centre to control the flow of calculations for matrix and request
+	 * \param requestonly true: only calculate request and false: calculate matrix and request
+	 * \return 
+	 */
+	int CalculatedMissionCentre(bool requestonly = false);
+
+	/**
+	 * \brief Save Current, Basisfunction and RCS Results into Files
+	 * \return 0 Success
+	 */
+	int SaveResults(bool requestonly = false);
+	/**
+	* \brief Release the static data in ComponentList
+	* \return 0 Success
+	*/
+	int ReleaseMemory();
+#pragma endregion MAINAPI
+
+
+#pragma region CompositeAPI
 	/**
 	* \brief Read the nas file to construct mesh
 	* \return 0 is Success; 1 is Fail to read mesh.nas
@@ -13,11 +52,11 @@ namespace Core
 	* \param isCreat Load or Creat BasicFunction. Default is true
 	* \return 0 is Success; 1 is Fail to construct BasicFunction.dat
 	*/
-	int CreatBasisFunction(const bool isCreat=false);
+	int CreatBasisFunction(const bool isCreat = false);
 	/**
 	* \brief Based on the binary file of BasicFunction.dat construct BasicFunction暂时只有RWG基函数
 	* \param loadFileName The filename to be load
-	* \n \b PS: It need the mesh construction before 
+	* \n \b PS: It need the mesh construction before
 	* \n BasicFunction.dat first and second terms are [BasicFuctionTypte Unknowns]
 	* \n RWGFormat is [ID trianglePlusID triangleMinusID nodePlusID nodeMinusID nodeLeftID nodeRightID current]
 	* \return 0 is Success; 1 is Fail to read BasicFunction.dat
@@ -70,32 +109,30 @@ namespace Core
 	* \n 0 Success
 	*/
 	int CalculateRequest(const bool IsReadFromFile = false);
+	/**
+	 * \brief Generate and Solve Impedance Matrix, including set RightHand
+	 * \param configIndex The index of sweep
+	 * \return 0 Success
+	 */
+	int MatrixSolving(int configIndex);
 
-#pragma endregion MAINAPI
+	/**
+	 * \brief Initial Current
+	 * \param read default=false creat
+	 * \return 0 Success
+	 */
+	int SetCurrent(bool read = false);
 
-#pragma region OTHERAPI
-	//**********************************************OtherAPI*******************************************************
+	/**
+	 * \brief Calculate the far field RCS with specific current
+	 * \param zmc 
+	 * \return 0 Success
+	 */
+	int CalculateRequest(int zmc);
+#pragma endregion
 
+#pragma region OTHERAPI	
 	
-	/**
-	* \brief Read Initial Information and Initial the SystemConfiguration 
-	* \param filename The name of configuration  *.hxj
-	* \return 0 Success
-	*/
-	//int EMCParameterInitialization(char* filename);
-
-	/**
-	* \brief Read Initial Information and Initial the SystemConfiguration
-	* \param filename The name of configuration  *.xml
-	* \return 0 Success
-	*/
-	int AnalysisConfigurationFile(char* filename);
-	int ParseConfiguratoinFile(char* filename);
-	/**
-	* \brief Release the static data in ComponentList
-	* \return 0 Success
-	*/
-	int ReleaseMemory();
 #pragma endregion OTHERAPI
 }
 

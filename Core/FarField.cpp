@@ -15,6 +15,15 @@
 using namespace std;
 using namespace placeholders;
 
+//Static RCS Keep
+/*
+ * RCS =		\		Request1	Requst2		Request3
+ *			Current1	RCS11		RCS12		RCS13
+ *			Curernt2	RCS21		RCS22		RCS23
+ *			Current3	RCS31		RCS32		RCS33
+ */
+Matrix<Request::FarField::RCSData, Dynamic, Dynamic> Request::FarField::RCS;
+
 Request::FarField::FarField(vector<IBasisFunction*>*bf, Mesh *mesh, Solution::CurrentInfo* current) :
 	_mesh(mesh), _bf(bf), _current(current)
 {
@@ -76,8 +85,8 @@ void Request::FarField::CalculateRCS(FarFieldConfiguration& config, ofstream& of
 	VectorXd Theta{ VectorXd::LinSpaced(thetaNum,thetaS,thetaS + thetaI * (thetaNum - 1)) };
 	VectorXd Phi{ VectorXd::LinSpaced(phiNum,phiS,phiS + phiI * (phiNum - 1)) };
 
-	vector<MatrixXd> RCS;
-	RCS.reserve(_current->_numberOfConfig);
+	vector<MatrixXd> _RCS;
+	_RCS.reserve(_current->_numberOfConfig);
 	for (int zmc = 0; zmc < _current->_numberOfConfig; ++zmc)
 	{
 		MatrixXd rcs{ thetaNum, phiNum };
@@ -111,7 +120,7 @@ void Request::FarField::CalculateRCS(FarFieldConfiguration& config, ofstream& of
 				}
 			}
 		}				
-		RCS.push_back(rcs);
+		_RCS.push_back(rcs);
 	}
 
 
@@ -126,7 +135,7 @@ void Request::FarField::CalculateRCS(FarFieldConfiguration& config, ofstream& of
 		for (int ph = 0; ph < phiNum; ++ph)
 		{
 			ofs << Theta(th) << ',' << Phi(ph);
-			for(auto mx:RCS)
+			for(auto mx:_RCS)
 			{
 				ofs << ',' << mx(th, ph);
 			}			
@@ -134,6 +143,53 @@ void Request::FarField::CalculateRCS(FarFieldConfiguration& config, ofstream& of
 		}
 	}
 
+}
+
+void Core::Request::FarField::CalculateRCS(FarFieldConfiguration & config, int row, int col) const
+{
+	const int thetaNum = config.ThetaNum;
+	const int phiNum = config.PhiNum;
+	const double thetaS = config.ThetaStart;
+	const double phiS = config.PhiStart;
+	const double thetaI = config.ThetaIncrement;
+	const double phiI = config.PhiIncrement;
+	const double Sum = 0.01*thetaNum * phiNum;
+
+
+	VectorXd Theta{ VectorXd::LinSpaced(thetaNum,thetaS,thetaS + thetaI * (thetaNum - 1)) };
+	VectorXd Phi{ VectorXd::LinSpaced(phiNum,phiS,phiS + phiI * (phiNum - 1)) };
+
+
+	MatrixXd rcs{ thetaNum, phiNum };
+	//Update Const
+	if (_current->category == Core::Array)
+	{
+		for (int th = 0; th < thetaNum; ++th)
+		{
+			for (int ph = 0; ph < phiNum; ++ph)
+			{
+					Vector3cd temp{ EField(Theta(th)*M_PI_180, Phi(ph)*M_PI_180,
+						static_cast<Solution::ArrayCurrent*>(_current->Current[row])) };
+					rcs(th, ph) = Coef * temp.squaredNorm();
+					cout << "Progress:" << setw(10) << (th*phiNum + ph + 1) / Sum << "%\r";
+				}
+			}
+	}
+	else
+	{
+		for (int th = 0; th < thetaNum; ++th)
+		{
+			for (int ph = 0; ph < phiNum; ++ph)
+			{
+					Vector3cd temp{ EField(Theta(th)*M_PI_180, Phi(ph)*M_PI_180,
+						_current->Current[row]) };
+					rcs(th, ph) = Coef * temp.squaredNorm();
+					cout << "Progress:" << setw(10) << (th*phiNum + ph + 1) / Sum << "%\r";
+			}
+		}
+	}
+
+	RCS(row, col) = rcs;
 }
 
 Vector3cd Request::FarField::EField(const double theta, const double phi, 
@@ -259,4 +315,33 @@ Vector3cd Core::Request::FarField::EFieldBenchMark(const double theta, const dou
 		efield += subEfield;
 	}
 	return efield;
+}
+
+void Core::Request::FarField::SaveRCS(ofstream & ofs, FarFieldConfiguration & config, int zmc)
+{
+	const int thetaNum = config.ThetaNum;
+	const int phiNum = config.PhiNum;
+	const double thetaS = config.ThetaStart;
+	const double phiS = config.PhiStart;
+	const double thetaI = config.ThetaIncrement;
+	const double phiI = config.PhiIncrement;
+
+
+	VectorXd Theta{ VectorXd::LinSpaced(thetaNum,thetaS,thetaS + thetaI * (thetaNum - 1)) };
+	VectorXd Phi{ VectorXd::LinSpaced(phiNum,phiS,phiS + phiI * (phiNum - 1)) };
+
+
+	for (int th = 0; th < thetaNum; ++th)
+	{
+		for (int ph = 0; ph < phiNum; ++ph)
+		{
+			ofs << Theta(th) << ',' << Phi(ph);
+
+			for(int row=0;row<RCS.rows();++row)
+			{
+				ofs << ',' << RCS(row, zmc)(th, ph);
+			}
+			ofs << '\n';
+		}
+	}
 }

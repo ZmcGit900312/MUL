@@ -50,8 +50,8 @@ protected:
 		{
 
 			Console->warn(ex.what());
-			RuntimeLog->warn(ex.what());
-			RuntimeLog->flush();
+			Runtime->warn(ex.what());
+			Runtime->flush();
 		}
 	}
 
@@ -149,8 +149,8 @@ TEST_F(ConventionalAIMTest, Multiplication)
 	catch (spd::spdlog_ex&ex)
 	{
 		Console->warn(ex.what());
-		RuntimeLog->warn(ex.what());
-		RuntimeLog->flush();
+		Runtime->warn(ex.what());
+		Runtime->flush();
 	}
 
 }
@@ -193,8 +193,8 @@ TEST_F(ConventionalAIMTest, Multiplication2)
 	catch (spd::spdlog_ex&ex)
 	{
 		Console->warn(ex.what());
-		RuntimeLog->warn(ex.what());
-		RuntimeLog->flush();
+		Runtime->warn(ex.what());
+		Runtime->flush();
 	}
 }
 
@@ -225,8 +225,8 @@ TEST_F(ConventionalAIMTest, FarField)
 	catch (spd::spdlog_ex&ex)
 	{
 		Console->warn(ex.what());
-		RuntimeLog->warn(ex.what());
-		RuntimeLog->flush();
+		Runtime->warn(ex.what());
+		Runtime->flush();
 	}
 }
 
@@ -254,8 +254,8 @@ TEST_F(ConventionalAIMTest, NearField)
 	catch (spd::spdlog_ex&ex)
 	{
 		Console->warn(ex.what());
-		RuntimeLog->warn(ex.what());
-		RuntimeLog->flush();
+		Runtime->warn(ex.what());
+		Runtime->flush();
 	}
 
 }
@@ -316,7 +316,7 @@ TEST_F(ConventionalAIMTest, TFSNearFieldSet)
 						Vector3d edgeDistance = field->Centre() - source->Centre();
 						if (edgeDistance.norm() > threshold)
 						{
-							//RuntimeLog->debug("BasisFunction {0} and {1} with distance:{2}", field->GetID(), source->GetID(), edgeDistance.norm());
+							//Runtime->debug("BasisFunction {0} and {1} with distance:{2}", field->GetID(), source->GetID(), edgeDistance.norm());
 							continue;
 						}
 						Z.push_back({ i, j, row->RWGSign[i] * col->RWGSign[j] });
@@ -391,7 +391,7 @@ TEST_F(ConventionalAIMTest, TFSNearFieldSet)
 				double eps = norm(ref - it.value()) / norm(it.value());
 				if (eps > 1.0e-9)
 				{
-					RuntimeLog->error("Eps of ({0},{1}) in TFSNearCorrection is:{2}", it.row(), it.col(), eps);
+					Runtime->error("Eps of ({0},{1}) in TFSNearCorrection is:{2}", it.row(), it.col(), eps);
 					throw spd::spdlog_ex("TFS has some error in MatrixSettingTest.cpp 402"); 
 				}
 					
@@ -403,8 +403,8 @@ TEST_F(ConventionalAIMTest, TFSNearFieldSet)
 	{
 		
 		Console->warn(ex.what());
-		RuntimeLog->warn(ex.what());
-		RuntimeLog->flush();
+		Runtime->warn(ex.what());
+		Runtime->flush();
 	}
 }
 
@@ -431,8 +431,8 @@ TEST_F(ConventionalAIMTest, Solving)
 	catch (spd::spdlog_ex&ex)
 	{
 		Console->warn(ex.what());
-		RuntimeLog->warn(ex.what());
-		RuntimeLog->flush();
+		Runtime->warn(ex.what());
+		Runtime->flush();
 	}
 }
 

@@ -51,8 +51,8 @@ protected:
 		{
 
 			Console->warn(ex.what());
-			RuntimeLog->warn(ex.what());
-			RuntimeLog->flush();
+			Runtime->warn(ex.what());
+			Runtime->flush();
 		}
 	}
 
@@ -366,8 +366,8 @@ TEST_F(AIMPECCFIETest, Solving)
 	catch (spd::spdlog_ex&ex)
 	{
 		Console->warn(ex.what());
-		RuntimeLog->warn(ex.what());
-		RuntimeLog->flush();
+		Runtime->warn(ex.what());
+		Runtime->flush();
 	}
 }
 #endif

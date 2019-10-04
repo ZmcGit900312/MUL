@@ -33,7 +33,7 @@ _imp(static_cast<ImpArrayAIM*>(impedance))
 	}
 
 	Console->info("Take the Array AIM");
-	RuntimeLog->info("Take the Array AIM");
+	Runtime->info("Take the Array AIM");
 	ResultLog->info("Take the Array AIM");
 }
 
@@ -126,8 +126,8 @@ void Core::AIMArray::MultipoleExpansion(vector<IBasisFunction*>& bf)
 	const double timecost = static_cast<double>(end - start) / CLOCKS_PER_SEC;
 	Console->info("Multipole Expansion costs whole time:\t{:12.7f}s", timecost);
 	Console->info("Multipole Expansion for unit time:\t{:12.7}s", unitExpTime);
-	RuntimeLog->info("Multipole Expansion costs whole time:\t{:12.7f}s", timecost);
-	RuntimeLog->info("Multipole Expansion for unit time:\t{:12.7f}s", unitExpTime);
+	Runtime->info("Multipole Expansion costs whole time:\t{:12.7f}s", timecost);
+	Runtime->info("Multipole Expansion for unit time:\t{:12.7f}s", unitExpTime);
 	ResultLog->info("Multipole Expansion costs whole time:\t{:12.7f}s", timecost);
 	ResultLog->info("Multipole Expansion for unit time:\t{:12.7f}s", unitExpTime);
 
@@ -219,7 +219,7 @@ void Core::AIMArray::TriangleFillingStrategy(Mesh & mesh, vector<IBasisFunction*
 	double timecost = double(end - start) / CLOCKS_PER_SEC;
 	cout << "\r";
 	Console->info("Near-Matrix Setting by TFS Time is:\t{}s", timecost);
-	RuntimeLog->info("Near-Matrix Setting by TFS Time is:\t{}s", timecost);
+	Runtime->info("Near-Matrix Setting by TFS Time is:\t{}s", timecost);
 	ResultLog->info("Near-Matrix Setting by TFS Time is:\t{}s", timecost);
 }
 

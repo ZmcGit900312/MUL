@@ -12,7 +12,7 @@ int Core::CreatMesh()
 {
 	cout << "\n";
 	Console->info("{:*^45}", "Mesh");
-	RuntimeLog->info("{:*^45}", "Mesh");
+	Runtime->info("{:*^45}", "Mesh");
 	try
 	{
 #pragma region Mesh
@@ -28,19 +28,19 @@ int Core::CreatMesh()
 		delete reader;
 
 		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFilePath, Console);
-		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFilePath, RuntimeLog);		
+		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFilePath, Runtime);		
 		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFilePath,ResultLog);
 		Console->info("Creat Mesh costs\t{:f} s", time);
-		RuntimeLog->info("Creat Mesh costs\t{:f} s", time);
+		Runtime->info("Creat Mesh costs\t{:f} s", time);
 		ResultLog->info("Creat Mesh costs\t{:f} s\n", time);
 #pragma endregion 
-
+		cout << '\n';
 #pragma region Geometry
 		//Initial Geometry
 		Assist::ModalGeometry::GetInstance()->SetLimitationBoundary(mesh);
 				
 		ResultReport::WriteGeometeryInformation(Assist::ModalGeometry::GetInstance(), Console);
-		ResultReport::WriteGeometeryInformation(Assist::ModalGeometry::GetInstance(), RuntimeLog);
+		ResultReport::WriteGeometeryInformation(Assist::ModalGeometry::GetInstance(), Runtime);
 		ResultReport::WriteGeometeryInformation(Assist::ModalGeometry::GetInstance(),ResultLog);
 #pragma endregion 
 		Console->info("Calculate the quadratrue for each triangles...");
@@ -49,7 +49,7 @@ int Core::CreatMesh()
 			throw spdlog::spdlog_ex("Calcuate the Quadrature Error,Please check the TriagnleQuad");	
 		/*Console->info("Memory Cost\t{:f} Mb", GetMemoryCost());	
 		ResultLog->info("Memory Cost\t{:f} Mb", GetMemoryCost());*/
-		RuntimeLog->flush();
+		Runtime->flush();
 		
 		return 0;
 	}

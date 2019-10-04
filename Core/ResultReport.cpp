@@ -17,12 +17,12 @@ void Core::ResultReport::WriteMeshInformation(Mesh * mesh, string filename, shar
 	log->info("Number of Triangles:\t\t\t{:12d}", mesh->TriangleSize());
 	log->info("Number of Segments:\t\t\t{:12d}", mesh->SegmentSize());
 	log->info("Number of Cuboids:\t\t\t{:12d}", mesh->CuboidSize());
-	log->info("Number of Tetrahedras:\t\t\t{:12d}\n", mesh->TetrahedraSize());
+	log->info("Number of Tetrahedras:\t\t\t{:12d}", mesh->TetrahedraSize());
 }
 
 void Core::ResultReport::WriteGeometeryInformation(Assist::ModalGeometry *geo, shared_ptr<spd::logger>log)
 {
-	log->info("{:*^45})", "Geometry Info");
+	log->info("{:*^45}", "Geometry Info");
 	log->info("Lower Point of Box is ({0:+5.3f},{1:+5.3f},{2:+5.3f})", 
 		geo->GetLimitationBoundary(0).x(), 
 		geo->GetLimitationBoundary(0).y(),
@@ -35,7 +35,7 @@ void Core::ResultReport::WriteGeometeryInformation(Assist::ModalGeometry *geo, s
 
 void Core::ResultReport::WriteBasisFunctionInformation(size_t unknowns, shared_ptr<spd::logger>log)
 {
-	log->info("{:*^45})", "Basic Function Info");
+	log->info("{:-^45})", "Basic Function Info");
 	log->info("Type:\t\t\tRWG");
 	log->info("Number of Unknowns:\t\t\t{:12d}\n",unknowns);
 }
@@ -54,7 +54,7 @@ void Core::ResultReport::WriteGreenFunctionInformation(GreenConfiguration * conf
 
 void Core::ResultReport::WriteExcitationInformation(Source::ISource * config, shared_ptr<spd::logger>log)
 {
-	log->info("{:*^45}", "Excitation Info");
+	log->info("{:-^60}", "Excitation Info");
 	switch (config->GetSourceType())
 	{
 	case Source::SourceType::EXCITATION_LINEAR:
@@ -63,7 +63,7 @@ void Core::ResultReport::WriteExcitationInformation(Source::ISource * config, sh
 			static_cast<Source::Planewave*>(config)->Ki.x(), 
 			static_cast<Source::Planewave*>(config)->Ki.y(), 
 			static_cast<Source::Planewave*>(config)->Ki.z());
-		log->info("Polarization:[{0:5.3f} {1:5.3f} {2:5.3f}]\n",
+		log->info("Polarization:[{0:5.3f} {1:5.3f} {2:5.3f}]",
 			static_cast<Source::Planewave*>(config)->Ei.x(), 
 			static_cast<Source::Planewave*>(config)->Ei.y(), 
 			static_cast<Source::Planewave*>(config)->Ei.z());
@@ -74,7 +74,7 @@ void Core::ResultReport::WriteExcitationInformation(Source::ISource * config, sh
 			static_cast<Source::Planewave*>(config)->Ki.x(),
 			static_cast<Source::Planewave*>(config)->Ki.y(),
 			static_cast<Source::Planewave*>(config)->Ki.z());
-		log->info("Polarization:[{0:5.3f} {1:5.3f} {2:5.3f}]\n",
+		log->info("Polarization:[{0:5.3f} {1:5.3f} {2:5.3f}]",
 			static_cast<Source::Planewave*>(config)->Ei.x(),
 			static_cast<Source::Planewave*>(config)->Ei.y(),
 			static_cast<Source::Planewave*>(config)->Ei.z());
@@ -85,7 +85,7 @@ void Core::ResultReport::WriteExcitationInformation(Source::ISource * config, sh
 			static_cast<Source::Planewave*>(config)->Ki.x(),
 			static_cast<Source::Planewave*>(config)->Ki.y(),
 			static_cast<Source::Planewave*>(config)->Ki.z());
-		log->info("Polarization:[{0:5.3f} {1:5.3f} {2:5.3f}]\n",
+		log->info("Polarization:[{0:5.3f} {1:5.3f} {2:5.3f}]",
 			static_cast<Source::Planewave*>(config)->Ei.x(),
 			static_cast<Source::Planewave*>(config)->Ei.y(),
 			static_cast<Source::Planewave*>(config)->Ei.z());
@@ -102,7 +102,7 @@ void Core::ResultReport::WriteExcitationInformation(Source::ISource * config, sh
 
 void Core::ResultReport::WriteSolutionInformation(Solution::SolverConfiguration * config, shared_ptr<spd::logger>log)
 {
-	log->info("{:*^45}", "Solution Info");
+	log->info("{:-^60}", "Solution Info");
 
 	switch (config->SolutionType)
 	{
@@ -135,7 +135,7 @@ void Core::ResultReport::WriteMethodInformation(ImpConfiguration*config, shared_
 	switch (config->ImpType)
 	{
 	case AIM:
-		log->info("{:*^45}","AIM Parameters");
+		log->info("{:-^60}","AIM Parameters");
 		log->info("Order:\t{}", config->GridOrder);
 		log->info("Interval:\t{:4.2f}", config->Interval);
 		log->info("Threshold:\t{:4.2f}", config->Threshold);
@@ -149,7 +149,7 @@ void Core::ResultReport::WriteMethodInformation(ImpConfiguration*config, shared_
 		log->info("LayerNumber:\t({0},{1},{2})\n", config->xNumber,config->yNumber, config->zNumber);
 		return;
 	case Array:
-		log->info("{:*^45}", "AIM Array Parameters");
+		log->info("{:-^60}", "AIM Array Parameters");
 		log->info("Order:\t{}", config->GridOrder);
 		log->info("Interval:\t{:4.2f}", config->Interval);
 		log->info("Threshold:\t{:4.2f}", config->Threshold);
@@ -164,7 +164,7 @@ void Core::ResultReport::WriteMethodInformation(ImpConfiguration*config, shared_
 		log->info("ArrayNunber:\tx={0}\ty={1}",config->ArrayNumX,config->ArrayNumY);
 		log->info("Distance between Unit:\tXdirection={0}\tYdirection={1}\n", config->ArrayIntervalX, config->ArrayIntervalY);
 	default:
-		log->info("{:*^45}", "MoM");
+		log->info("{:-^60}", "MoM");
 	}
 	
 }

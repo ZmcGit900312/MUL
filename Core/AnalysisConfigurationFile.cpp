@@ -34,7 +34,7 @@ int Core::AnalysisConfigurationFile(char* filename)
 		XMLElement* root = doc.FirstChildElement();
 
 		Console->info("Read Configuration");
-		RuntimeLog->info("{:*^45}", "Read Configuration");
+		Runtime->info("{:*^45}", "Read Configuration");
 		Console->debug("{0} = {1}", root->FirstAttribute()->Name(), root->FirstAttribute()->Value());
 
 		status = SetFileMod(root->FirstChildElement("File"));
@@ -89,10 +89,10 @@ static int SetFileMod(XMLElement* mod)
 		Console->info("Project Name:\t{}", SystemConfig.ProjectName);
 		Console->info("Output FileName:\t" + SystemConfig.ReportFilePath);
 
-		RuntimeLog->info("Mesh File Path:\t{}", SystemConfig.MeshFilePath);
-		RuntimeLog->info("Project Directory:\t{}", SystemConfig.ProjectDir);
-		RuntimeLog->info("Project Name:\t{}", SystemConfig.ProjectName);
-		RuntimeLog->info("Output FileName:\t" + SystemConfig.ReportFilePath);
+		Runtime->info("Mesh File Path:\t{}", SystemConfig.MeshFilePath);
+		Runtime->info("Project Directory:\t{}", SystemConfig.ProjectDir);
+		Runtime->info("Project Name:\t{}", SystemConfig.ProjectName);
+		Runtime->info("Output FileName:\t" + SystemConfig.ReportFilePath);
 		//ResultLog
 		ResultReport::InitialWriter(SystemConfig.ReportFilePath);
 	}
@@ -115,7 +115,7 @@ static int SetFileMod(XMLElement* mod)
 	}
 
 	Console->info("BasicFunction File Path:\t{}", SystemConfig.BasisFunctionFilePath);
-	RuntimeLog->info("BasicFunction File Path:\t{}", SystemConfig.BasisFunctionFilePath);
+	Runtime->info("BasicFunction File Path:\t{}", SystemConfig.BasisFunctionFilePath);
 	return 0;
 }
 static int SetMethodMod(XMLElement* mod)
@@ -175,7 +175,7 @@ static int SetEMCParameterMod(XMLElement* mod)
 		k = Omega / c0;
 		Lambda = c0 / Frequency;
 		Console->info("Frequency:\t{:e}", Frequency);
-		RuntimeLog->info("Frequency:\t{:e}", Frequency);
+		Runtime->info("Frequency:\t{:e}", Frequency);
 		ResultLog->info("Frequency:\t{:e}", Frequency);
 	}
 

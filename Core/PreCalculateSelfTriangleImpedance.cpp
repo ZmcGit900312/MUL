@@ -10,7 +10,7 @@ int Core::PreCalculateSelfTriangleImpedance()
 	//特化RWG填充策略使用，预先计算三角形的自阻抗
 	cout << '\n';
 	Console->info("Begin to pre-compute the SelfTriangle Impedance");
-	RuntimeLog->info("Begin to pre-compute the SelfTriangle Impedance");
+	Runtime->info("Begin to pre-compute the SelfTriangle Impedance");
 
 	const clock_t start = clock();
 #pragma region RWGSET
@@ -25,7 +25,7 @@ int Core::PreCalculateSelfTriangleImpedance()
 	Console->info("Pre-compute SelfTriangle Impedance costs:\t{} s", time);
 	ResultLog->info("Pre-compute SelfTriangle Impedance costs:\t{} s", time);
 	
-	RuntimeLog->flush();
+	Runtime->flush();
 #pragma endregion 
 	return 0;
 }

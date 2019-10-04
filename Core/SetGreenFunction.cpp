@@ -9,23 +9,13 @@ int Core::SetGreenFunction()
 {
 	cout << "\n";
 	Console->info("Set Green Function");
-	RuntimeLog->info("Set Green Function");
+	Runtime->info("Call SetGreenFunction()");
 	try
 	{
 		IGreen::FactoryGreen(&SystemConfig.GreenConfig);
 		ResultReport::WriteGreenFunctionInformation(&SystemConfig.GreenConfig,ResultLog);
-		ResultReport::WriteGreenFunctionInformation(&SystemConfig.GreenConfig,Console);
-		ResultReport::WriteGreenFunctionInformation(&SystemConfig.GreenConfig, RuntimeLog);
-		
-		//Updata Const
-		Solution::CurrentInfo::GetInstance()->Current[0]->EMCParameterUpdate();
-
-		equation = IE::FIE(SystemConfig.IEConfig.type);
-		ResultReport::WirteIEInformation(&SystemConfig.IEConfig, ResultLog);
-		ResultReport::WirteIEInformation(&SystemConfig.IEConfig, Console);
-		ResultReport::WirteIEInformation(&SystemConfig.IEConfig, RuntimeLog);
-
-		RuntimeLog->flush();
+		ResultReport::WriteGreenFunctionInformation(&SystemConfig.GreenConfig,Console);		
+		Runtime->flush();
 
 		return 0;
 	}

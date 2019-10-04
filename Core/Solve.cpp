@@ -11,7 +11,7 @@ int Core::Solve()
 	cout << '\n';
 
 	ResultReport::WriteSolutionInformation(&SystemConfig.SolverConfig, Console);
-	ResultReport::WriteSolutionInformation(&SystemConfig.SolverConfig, RuntimeLog);
+	ResultReport::WriteSolutionInformation(&SystemConfig.SolverConfig, Runtime);
 	ResultReport::WriteSolutionInformation(&SystemConfig.SolverConfig,ResultLog);
 
 	auto& bf = ComponentList::BFvector;
@@ -41,10 +41,10 @@ int Core::Solve()
 		ResultLog->info("The results tolerance is:\t{:5.4e}", sol->GetTolerance());
 		ResultLog->info("Iteration is cost:\t{:f} s", sol->GetSolveTime());		
 		
-		RuntimeLog->info("The Final Iteration is:\t{}", sol->GetIteration());
-		RuntimeLog->info("The results tolerance is:\t{:5.4e}", sol->GetTolerance());
-		RuntimeLog->info("Iteration is cost:\t{:f} s", sol->GetSolveTime());
-		RuntimeLog->flush();
+		Runtime->info("The Final Iteration is:\t{}", sol->GetIteration());
+		Runtime->info("The results tolerance is:\t{:5.4e}", sol->GetTolerance());
+		Runtime->info("Iteration is cost:\t{:f} s", sol->GetSolveTime());
+		Runtime->flush();
 		
 		if (Solver) {
 			Console->info("Release Solver");

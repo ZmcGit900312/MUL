@@ -25,8 +25,8 @@ public:
 		catch (spd::spdlog_ex&ex)
 		{
 			Console->warn(ex.what());
-			RuntimeLog->warn(ex.what());
-			RuntimeLog->flush();
+			Runtime->warn(ex.what());
+			Runtime->flush();
 		}
 	}
 
@@ -113,8 +113,8 @@ TEST_F(ExcitationTest, PlanewaveTest)
 	catch (spd::spdlog_ex&ex)
 	{
 		Console->warn(ex.what());
-		RuntimeLog->warn(ex.what());
-		RuntimeLog->flush();
+		Runtime->warn(ex.what());
+		Runtime->flush();
 		FAIL();
 	}
 }

@@ -7,12 +7,12 @@
 
 int Core::CalculateRequest(const bool IsReadFromFile)
 {
-	RuntimeLog->info("Run CalculateRequest()");
+	Runtime->info("Run CalculateRequest()");
 	//TODO It should be changed for a new version, this function is not well
 
 	cout << "\n";
 	Console->info("{:*^45}", "Calcuate the FarField RCS");
-	RuntimeLog->info("{:*^45}", "Calcuate the FarField RCS");
+	Runtime->info("{:*^45}", "Calcuate the FarField RCS");
 	ResultLog->info("{:*^45}", "FarField");
 	try
 	{
@@ -37,7 +37,7 @@ int Core::CalculateRequest(const bool IsReadFromFile)
 			ofs.open(savename, ios_base::out);
 			if (!ofs.is_open())throw spd::spdlog_ex("Save RCS Directory Error in " + savename);			
 			ResultReport::WriteRequestInformation(&value, Console);
-			ResultReport::WriteRequestInformation(&value, RuntimeLog);
+			ResultReport::WriteRequestInformation(&value, Runtime);
 			ResultReport::WriteRequestInformation(&value,ResultLog);
 			post.CalculateRCS(value, ofs);
 
@@ -47,9 +47,9 @@ int Core::CalculateRequest(const bool IsReadFromFile)
 		const clock_t end = clock();
 		double timecost = double(end - start) / CLOCKS_PER_SEC;
 		Console->info("FarField Calculate cost {:f} s", timecost);
-		RuntimeLog->info("FarField Calculate cost {:f} s", timecost);
+		Runtime->info("FarField Calculate cost {:f} s", timecost);
 		ResultLog->info("FarField Calculate cost {:f} s", timecost);
-		RuntimeLog->flush();
+		Runtime->flush();
 		return 0;
 	}
 	catch (spd::spdlog_ex&ex)
@@ -59,4 +59,44 @@ int Core::CalculateRequest(const bool IsReadFromFile)
 	}
 
 	
+}
+
+
+int Core::CalculateRequest(int row)
+{
+	Runtime->info("Run CalculateRequest(int ={0})",row);
+
+
+	Console->info("{:*^45}", "Calcuate the FarField RCS");
+	ResultLog->info("{:*^45}", "FarField");
+	try
+	{
+		Request::FarField post(&ComponentList::BFvector, Mesh::GetInstance(),
+			Solution::CurrentInfo::GetInstance());
+
+
+		const clock_t start = clock();
+		for (int col = 0;col < SystemConfig.PostConfig.size();++col)
+		{
+			auto value = SystemConfig.PostConfig[col];
+		
+			ResultReport::WriteRequestInformation(&value, Console);
+			ResultReport::WriteRequestInformation(&value, ResultLog);
+			post.CalculateRCS(value, row,col);//添加FarField类对于单一Current支持，结果保存在RCS
+		}
+		const clock_t end = clock();
+		double timecost = double(end - start) / CLOCKS_PER_SEC;
+		Console->info("FarField Calculate cost {:f} s", timecost);
+		ResultLog->info("FarField Calculate cost {:f} s", timecost);
+		Runtime->flush();
+
+		Console->info("Finish Calculating {0}/{1} Mission",
+			row + 1, Solution::CurrentInfo::GetInstance()->_numberOfConfig);
+		return 0;
+	}
+	catch (spd::spdlog_ex&ex)
+	{
+		Assist::LogException(ex);
+		return 1;
+	}
 }

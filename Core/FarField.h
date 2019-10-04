@@ -15,6 +15,7 @@ namespace Core
 	
 	namespace Request
 	{
+
 		/**
 		* \brief 远场Sphere版本 计算效率太低
 		* 优化更好，提供GetEField和GetRCS来给出RCS和电场
@@ -22,6 +23,8 @@ namespace Core
 		class FarField
 		{
 		public:
+			typedef MatrixXd RCSData;
+
 			FarField(vector<IBasisFunction*>*, Mesh*, 
 				Solution::CurrentInfo* current=Solution::CurrentInfo::GetInstance());
 			~FarField();
@@ -29,6 +32,7 @@ namespace Core
 			* \brief 直接调用的主函数
 			*/
 			void CalculateRCS(FarFieldConfiguration& config,ofstream& ofs) const;
+			void CalculateRCS(FarFieldConfiguration& config, int row,int col)const;
 			/**
 			* \brief Calculate the E field of the specific direction(theta,phi)
 			* \param theta rad
@@ -48,6 +52,9 @@ namespace Core
 			//Array
 			Vector3cd EFieldBenchMark(const double theta, const double phi, 
 				VectorXcd& current,Solution::ArrayCurrent* ac)const;
+			
+			static void SaveRCS(ofstream&ofs, FarFieldConfiguration& config,int zmc);
+
 			/**
 			* \brief Radius of farfield observation
 			* \n\b PS: It should be ajust with the size of object
@@ -55,6 +62,8 @@ namespace Core
 			double Radius = 10000;//
 			double Coef;
 			Solution::CurrentInfo* _current = nullptr;
+					
+			static Matrix<RCSData,Dynamic, Dynamic> RCS;
 		private:
 
 			Mesh* _mesh;

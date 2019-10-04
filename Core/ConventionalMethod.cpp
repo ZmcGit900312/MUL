@@ -20,7 +20,7 @@ _imp(static_cast<ImpAIM*>(impedance))
 	_gridNum = MultiExpTool.GetGridNum();
 	_localGreen.resize(_gridNum, _gridNum);
 	Console->info("Take the Single Level FFT Method");
-	RuntimeLog->info("Take the Single Level FFT Method");
+	Runtime->info("Take the Single Level FFT Method");
 	ResultLog->info("Take the Single Level FFT Method");
 	//Tools::TeoplitzMultiplicator = new TeoplitzAssist(VectorTp);
 }
@@ -89,7 +89,7 @@ void ConventionalMethod::MultipoleExpansion(vector<IBasisFunction*>&bf)
 	const clock_t end = clock();
 	const double timecost =static_cast<double>(end - start) / CLOCKS_PER_SEC;
 	Console->info("Multipole Expansion costs time:\t{}s", timecost);
-	RuntimeLog->info("Multipole Expansion costs time:\t{}s", timecost);
+	Runtime->info("Multipole Expansion costs time:\t{}s", timecost);
 	ResultLog->info("Multipole Expansion costs time:\t{}s", timecost);
 
 	tripletsGamaX.clear(); tripletsGamaX.shrink_to_fit();
@@ -178,7 +178,7 @@ void ConventionalMethod::NearCorrection(vector< IBasisFunction*>&bf)
 	Solver->Precondition(_imp);
 	Console->info("Precondition cost:\t{}s", Solver->GetPreconditionTime());
 	ResultLog->info("Precondition cost:\t{}s", Solver->GetPreconditionTime());
-	RuntimeLog->info("Precondition cost:\t{}s", Solver->GetPreconditionTime());
+	Runtime->info("Precondition cost:\t{}s", Solver->GetPreconditionTime());
 	
 }
 
@@ -289,8 +289,8 @@ void Core::ConventionalMethod::TriangleFillingStrategy(Mesh & mesh, vector<IBasi
 	cout << "\r";
 	Console->info("Near-Matrix Setting by TFS Time is:\t{}s", timecost);
 	Console->info("Triplet and NearField have {0} and {1} elements.", tripletsNearPart.size(), _imp->GetNearFieldMatrix().nonZeros());
-	RuntimeLog->info("Near-Matrix Setting by TFS Time is:\t{}s", timecost);
-	RuntimeLog->info("Triplet and NearField have {0} and {1} elements.", tripletsNearPart.size(), _imp->GetNearFieldMatrix().nonZeros());
+	Runtime->info("Near-Matrix Setting by TFS Time is:\t{}s", timecost);
+	Runtime->info("Triplet and NearField have {0} and {1} elements.", tripletsNearPart.size(), _imp->GetNearFieldMatrix().nonZeros());
 	ResultLog->info("Near-Matrix Setting by TFS Time is:\t{}s", timecost);
 	ResultLog->info("Triplet and NearField have {0} and {1} elements.", tripletsNearPart.size(), _imp->GetNearFieldMatrix().nonZeros());
 
@@ -301,7 +301,7 @@ void Core::ConventionalMethod::TriangleFillingStrategy(Mesh & mesh, vector<IBasi
 	Solver->Precondition(_imp);
 	Console->info("Precondition cost:\t{}s", Solver->GetPreconditionTime());
 	ResultLog->info("Precondition cost:\t{}s", Solver->GetPreconditionTime());
-	RuntimeLog->info("Precondition cost:\t{}s", Solver->GetPreconditionTime());
+	Runtime->info("Precondition cost:\t{}s", Solver->GetPreconditionTime());
 	
 	//Near Correction
 	Console->debug("Begin to Correction");
@@ -337,7 +337,7 @@ void Core::ConventionalMethod::TriangleFillingStrategy(Mesh & mesh, vector<IBasi
 	cout << "\r";
 	const double sparsity = static_cast<double>(_imp->GetNearFieldMatrix().nonZeros()) / _unknowns / _unknowns;
 	Console->info("Near Field by TFS TotalTime is:\t{}s", timecost);
-	RuntimeLog->info("Near Field by TFS TotalTime is:\t{}s", timecost);
+	Runtime->info("Near Field by TFS TotalTime is:\t{}s", timecost);
 	ResultLog->info("Near Field by TFS TotalTime is:\t{}s", timecost);
 	Console->debug("Nonzeros have {0} and take {1}%.", _imp->GetNearFieldMatrix().nonZeros(), 100* sparsity);
 }

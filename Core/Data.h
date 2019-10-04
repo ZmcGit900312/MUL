@@ -30,7 +30,7 @@ namespace Core
 		IEConfiguration IEConfig;
 		Source::ISource* SourceConfig=nullptr;
 		Solution::SolverConfiguration SolverConfig;		
-		list<Request::FarFieldConfiguration> PostConfig;
+		vector<Request::FarFieldConfiguration> PostConfig;
 		
 	};
 	

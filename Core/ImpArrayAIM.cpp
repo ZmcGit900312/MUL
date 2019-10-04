@@ -70,9 +70,9 @@ void ImpArrayAIM::FillImpedance()
 	Console->info("There are total {} in GreenMatrix", _green.size());
 	Console->info("Size of Unit Element:\t{0}", _unitSize);
 
-	RuntimeLog->info("There are total {} in GamaMatrix", _gamax.nonZeros()*(_dimension + 1));
-	RuntimeLog->info("There are total {} in GreenMatrix", _green.size());
-	RuntimeLog->info("Size of Unit Element:\t{0}", _unitSize);
+	Runtime->info("There are total {} in GamaMatrix", _gamax.nonZeros()*(_dimension + 1));
+	Runtime->info("There are total {} in GreenMatrix", _green.size());
+	Runtime->info("Size of Unit Element:\t{0}", _unitSize);
 
 	ResultLog->info("There are total {} in GamaMatrix", _gamax.nonZeros()*(_dimension + 1));
 	ResultLog->info("There are total {} in GreenMatrix", _green.size());

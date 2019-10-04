@@ -11,7 +11,7 @@ int Core::SetRightHand()
 	cout << '\n';
 
 	ResultReport::WriteExcitationInformation(SystemConfig.SourceConfig, Console);
-	ResultReport::WriteExcitationInformation(SystemConfig.SourceConfig, RuntimeLog);
+	ResultReport::WriteExcitationInformation(SystemConfig.SourceConfig, Runtime);
 
 	const clock_t start = clock();
 	ComponentList::ImpService->GetExcitation() = SystemConfig.SourceConfig->SetExcitation(ComponentList::BFvector,SystemConfig.ImpConfig);
@@ -24,13 +24,13 @@ int Core::SetRightHand()
 
 	
 	Console->info("Set RightHand is cost:\t{:f} s", time);
-	RuntimeLog->info("Set RightHand is cost:\t{:f} s",time);
+	Runtime->info("Set RightHand is cost:\t{:f} s",time);
 	ResultLog->info("Set RightHand is cost:\t{:f} s", time);
 
 	Console->info("Memory Cost\t{0:f} Mb", memory);
-	RuntimeLog->info("Memory Cost\t{0:f} Mb", memory);
+	Runtime->info("Memory Cost\t{0:f} Mb", memory);
 	ResultLog->info("Memory Cost\t{0:f} Mb", memory);
 
-	RuntimeLog->flush();
+	Runtime->flush();
 	return 0;
 }
