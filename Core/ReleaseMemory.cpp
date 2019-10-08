@@ -7,8 +7,8 @@ int Core::ReleaseMemory()
 {
 	
 	cout << "\n";
-	Console->info("{:*^45}","Release the memory");
-	Runtime->info("{:*^45}", "Release the memory");
+	Console->info("{:*^70}","Release the memory");
+	Runtime->info("Release the memory");
 	if (ComponentList::BFvector.size()>0)
 	{
 		for (auto element : ComponentList::BFvector) { delete element; }
@@ -45,10 +45,15 @@ int Core::ReleaseMemory()
 		equation = nullptr;
 		Runtime->debug("Release IE");
 	}
-	Console->info("{:-^45}","END");
-	ResultLog->info("{:-^45}", "END");
-	ResultLog->flush();
-	Runtime->info("{:-^45}", "END");
+	Console->info("{:-^80}","END");
+	
+	if(ResultLog)
+	{
+		ResultLog->info("{:-^80}", "END");
+		ResultLog->flush();
+	}
+	
+	Runtime->info("{:-^80}\n", "END");
 	Runtime->flush();
 	return 0;
 }

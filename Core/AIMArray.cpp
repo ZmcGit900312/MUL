@@ -88,6 +88,7 @@ void Core::AIMArray::MultipoleExpansion(vector<IBasisFunction*>& bf)
 			{
 				for(int unitX=0;unitX<_numXArray;unitX++)
 				{
+					//Use MatrixLocations for Sparisity
 					size_t cols = _unknowns * (unitX+unitY* _numXArray)+i;
 					size_t rows = pos + unitY * _layerGreenSizeAcu[3] + unitX * _layerGreenSizeAcu[2];
 					tripletsGamaX.push_back(T(rows, cols, temp.gamax(j)));
@@ -141,7 +142,7 @@ void Core::AIMArray::GreenMatrixSet(IGreen * green)
 {
 	//Bind Green Point
 	_green = green;
-
+	const clock_t start = clock();
 	_tools = new AIMAssist::MulFFTMultiplicator;
 	//需要5阶FFT才可以
 	MKL_LONG layer[5] = { _layerGreenSize[4] ,_layerGreenSize[3], 
@@ -156,6 +157,11 @@ void Core::AIMArray::GreenMatrixSet(IGreen * green)
 
 	_tools->fwd(_imp->GetGreen());
 	_imp->_fftTools = _tools;
+	const clock_t end = clock();
+	double timecost = double(end - start) / CLOCKS_PER_SEC;
+
+	Console->info("Creat Teoplitz Green cost:\t{0} s", timecost);
+	ResultLog->info("Creat Teoplitz Green cost:\t{0} s", timecost);
 }
 
 void Core::AIMArray::TriangleFillingStrategy(Mesh & mesh, vector<IBasisFunction*>& bf)
@@ -166,7 +172,7 @@ void Core::AIMArray::TriangleFillingStrategy(Mesh & mesh, vector<IBasisFunction*
 
 	const auto beginTriangle = Mesh::GetInstance()->TriangleVector.begin();
 	const auto endTriangle = Mesh::GetInstance()->TriangleVector.cend();
-
+	_imp->LocalMatrix().setZero();
 
 	const clock_t start = clock();
 	//Face-to-Face Set Impedance
@@ -221,6 +227,8 @@ void Core::AIMArray::TriangleFillingStrategy(Mesh & mesh, vector<IBasisFunction*
 	Console->info("Near-Matrix Setting by TFS Time is:\t{}s", timecost);
 	Runtime->info("Near-Matrix Setting by TFS Time is:\t{}s", timecost);
 	ResultLog->info("Near-Matrix Setting by TFS Time is:\t{}s", timecost);
+	//Preconditioning
+	Solver->Precondition(_imp);
 }
 
 void Core::AIMArray::NearCorrection(vector<IBasisFunction*>& bf)

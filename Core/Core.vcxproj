@@ -270,7 +270,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\googleTest\AIMArrayTest.cpp" />
-    <ClCompile Include="..\googleTest\BasicFunctionTest.cpp" />
+    <ClCompile Include="..\googleTest\BasisFunctionTest.cpp" />
     <ClCompile Include="..\googleTest\ConventionalAIMTest.cpp" />
     <ClCompile Include="..\googleTest\CurrentTest.cpp" />
     <ClCompile Include="..\googleTest\ExcitationTest.cpp" />
@@ -305,7 +305,7 @@
     <ClCompile Include="main.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Gtest_Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="BasicFunctionAPI.cpp" />
+    <ClCompile Include="BasisFunctionAPI.cpp" />
     <ClCompile Include="CreatImpedance.cpp" />
     <ClCompile Include="CreatMesh.cpp" />
     <ClCompile Include="Data.cpp" />

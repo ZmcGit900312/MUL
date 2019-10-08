@@ -80,10 +80,10 @@ namespace Core
 	*/
 	int PreCalculateSelfTriangleImpedance();
 	/**
-	* \brief Initial the Impedance Matrix，有MoM和AIM可选
+	* \brief Initial the Solver and Impedance Matrix，有MoM和AIM可选
 	* \return 0 Success
 	*/
-	int CreatImpedance();
+	int InitialSolverAndImpedance();
 	/**
 	* \brief Set Excitation: Only have plane wave
 	* \return 0 Success
@@ -101,14 +101,8 @@ namespace Core
 	* \n 1 Failure
 	* \n 2 No-converage
 	*/
-	int Solve();
-	/**
-	* \brief Calculate the far field RCS and write in RCS.txt
-	* \param IsReadFromFile Whether read the basicfunction from file. Default is false
-	* \return State of Calculation
-	* \n 0 Success
-	*/
-	int CalculateRequest(const bool IsReadFromFile = false);
+	int Solve(int currentIndex=0);
+	
 	/**
 	 * \brief Generate and Solve Impedance Matrix, including set RightHand
 	 * \param configIndex The index of sweep

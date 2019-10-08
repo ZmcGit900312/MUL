@@ -25,7 +25,7 @@ namespace Core
 		double NearCorrectionEps = 1.0e-3;
 		int FillingStrategy = 1;
 		int VirtualGridTechnique = 1;
-		Matrix<bool, Dynamic, Dynamic> ArrayConfiguraiton;
+		Matrix<bool, Dynamic, Dynamic> ArrayLocation;
 		Vector3d Box[2];
 		EImpedance ImpType=MoM ;
 

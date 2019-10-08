@@ -233,9 +233,6 @@
     <ClCompile Include="Mesh.cpp">
       <Filter>源文件\Mesh</Filter>
     </ClCompile>
-    <ClCompile Include="BasicFunctionAPI.cpp">
-      <Filter>源文件\CoreAPI</Filter>
-    </ClCompile>
     <ClCompile Include="ImpAIM.cpp">
       <Filter>源文件\Impedance</Filter>
     </ClCompile>
@@ -338,9 +335,6 @@
     <ClCompile Include="MeshTest.cpp">
       <Filter>源文件\googleTest</Filter>
     </ClCompile>
-    <ClCompile Include="..\googleTest\BasicFunctionTest.cpp">
-      <Filter>源文件\googleTest</Filter>
-    </ClCompile>
     <ClCompile Include="RWGTriangle.cpp">
       <Filter>源文件\BasicFunction</Filter>
     </ClCompile>
@@ -427,6 +421,12 @@
     </ClCompile>
     <ClCompile Include="DataInitialization.cpp">
       <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="BasisFunctionAPI.cpp">
+      <Filter>源文件\CoreAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\googleTest\BasisFunctionTest.cpp">
+      <Filter>源文件\googleTest</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

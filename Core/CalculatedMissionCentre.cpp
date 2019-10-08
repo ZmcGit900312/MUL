@@ -23,7 +23,7 @@ int Core::CalculatedMissionCentre(bool requestonly)
 		for (int zmc = 0; zmc < curInfo->_numberOfConfig; ++zmc)
 		{
 			Solution::ElementCurrent& valcurrent = *curInfo->Current[zmc];
-			cout << "\n";
+			
 			Console->info("{0:#^70}", valcurrent.Tag);
 			Console->info("Frequency:    \t{0:<15}", valcurrent._frequency);
 			Console->info("Unknowns:     \t{0:<15}", valcurrent._unknowns);
@@ -56,8 +56,7 @@ int Core::CalculatedMissionCentre(bool requestonly)
 				equation = nullptr;
 				Console->debug("Release IE");
 			}
-		}
-		
+		}		
 
 		Runtime->info("End CalculatedMissionCentre(requestonly = {0})", requestonly ? "true" : "false");
 		Runtime->flush();

@@ -101,7 +101,8 @@ TEST_F(JsonIO, IOTest)
 	
 	//cout<< std::setw(4) << j << std::endl;
 
-	cout << "version\t" << jd["version"].GetString() << '\n' << "date\t" << jd["date"].GetString() << endl;
+	Console->info("version:\t{0:<10}", jd["version"].GetString());
+	Console->info("date:   \t{0:<10}", jd["date"].GetString());
 	
 	//! Type of JSON value
 	//enum Type {
@@ -359,7 +360,7 @@ TEST_F(JsonIO, Request)
 			rj::Value& val = *vp;
 
 			string name = val["Name"].GetString();
-			cout << "Name:\t" << name << endl;
+			Console->info("Name:\t{0}", name);
 
 			int numt=-1, nump = -1;
 			double sth = -1, ith = -1, sph = -1, iph = -1;
@@ -380,9 +381,8 @@ TEST_F(JsonIO, Request)
 				nump = phi[0].GetInt64();
 				sph = phi[1].GetDouble(), iph = phi[2].GetDouble();
 			}
-
-			cout << std::left << "Theta:\tNum=" << numt << "\tStart=" << sth << "\tIncrement=" << ith << endl;
-			cout << std::left << "Phi:\tNum=" << nump << "\tStart=" << sph << "\tIncrement=" << iph << endl;
+			Console->info("Theta:\tNum={0:<10} \tStart={1:<10}\tIncrement={2:<10}", numt, sth, ith);
+			Console->info("Phi:  \tNum={0:<10} \tStart={1:<10}\tIncrement={2:<10}", nump,sph,iph);	
 		}
 	}
 	catch(...)
@@ -434,17 +434,16 @@ TEST_F(JsonIO, Sweep)
 
 		for (auto val : sweep)
 		{
-			cout << "Tag:\t" << val.Tag << endl;
-			cout << "Frequency:\t" << val.Frequency << endl;
-			cout << "Number:\t" << val.NumberOfElement << endl;
-			cout << "Size of ArrayLocatioin:\t" << val.ArrayLocation.size() << endl;
+			Console->info("Tag:                   \t{0}", val.Tag);
+			Console->info("Frequency:             \t{0}", val.Frequency);
+			Console->info("Number:                \t{0}", val.NumberOfElement);
+			Console->info("Size of ArrayLocatioin:\t{0}", val.ArrayLocation.size());
 		}
 	}
 	catch (...)
 	{
 	}	
 }
-
 
 TEST_F(JsonIO, Excitation)
 {
@@ -465,9 +464,9 @@ TEST_F(JsonIO, Excitation)
 
 			//Source::SourceType pol = Source::SourceType(jsource["Polarisation"].GetInt64());
 			//EXPECT_EQ(Source::EXCITATION_CIRC_RIGHT, pol);
-			cout << "Name:\t" << name << endl;
-			cout << "Category:\tA0" << endl;
-			cout << "Polarisation:\tLinear" << endl;
+			Console->info("Name:        \t{0}", name);
+			Console->info("Category:    \tA0");
+			Console->info("Polarisation:\tLinear");
 
 			//Theta
 			rj::Value& theta = jsource["Theta"];
@@ -526,11 +525,9 @@ TEST_F(JsonIO, Excitation)
 	}
 }
 
-
 TEST_F(JsonIO,ParseConfig)
 {
 	char* filename="E:\\ZMC\\Code\\C_program\\MUL\\SourceData\\test.json";
-	//Result Report Is Not Initialization
-	//EXPECT_EQ(0, ParseConfiguratoinFile(filename));
+	if(!ResultLog)EXPECT_EQ(0, ParseConfiguratoinFile(filename));
 }
 #endif

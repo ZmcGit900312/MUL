@@ -12,17 +12,18 @@ void Core::ResultReport::InitialWriter(string filename)
 
 void Core::ResultReport::WriteMeshInformation(Mesh * mesh, string filename, shared_ptr<spd::logger>log)
 {
-	log->info("{:*^45}", filename);
-	log->info("Number of Nodes:\t\t\t{:12d}", mesh->NodeSize());
-	log->info("Number of Triangles:\t\t\t{:12d}", mesh->TriangleSize());
-	log->info("Number of Segments:\t\t\t{:12d}", mesh->SegmentSize());
-	log->info("Number of Cuboids:\t\t\t{:12d}", mesh->CuboidSize());
-	log->info("Number of Tetrahedras:\t\t\t{:12d}", mesh->TetrahedraSize());
+	log->info("{:-^60}", "Mesh");
+	log->info("Mesh File Path       : {:<40}", filename);
+	log->info("Number of Nodes      : {:<40d}", mesh->NodeSize());
+	log->info("Number of Triangles  : {:<40d}", mesh->TriangleSize());
+	log->info("Number of Segments   : {:<40d}", mesh->SegmentSize());
+	log->info("Number of Cuboids    : {:<40d}", mesh->CuboidSize());
+	log->info("Number of Tetrahedras: {:<40d}", mesh->TetrahedraSize());
 }
 
 void Core::ResultReport::WriteGeometeryInformation(Assist::ModalGeometry *geo, shared_ptr<spd::logger>log)
 {
-	log->info("{:*^45}", "Geometry Info");
+	log->info("{:-^60}", "Geometry Info");
 	log->info("Lower Point of Box is ({0:+5.3f},{1:+5.3f},{2:+5.3f})", 
 		geo->GetLimitationBoundary(0).x(), 
 		geo->GetLimitationBoundary(0).y(),
@@ -35,9 +36,9 @@ void Core::ResultReport::WriteGeometeryInformation(Assist::ModalGeometry *geo, s
 
 void Core::ResultReport::WriteBasisFunctionInformation(size_t unknowns, shared_ptr<spd::logger>log)
 {
-	log->info("{:-^45})", "Basic Function Info");
-	log->info("Type:\t\t\tRWG");
-	log->info("Number of Unknowns:\t\t\t{:12d}\n",unknowns);
+	log->info("{:-^60}", "Basis Function Info");
+	log->info("Type              : RWG");
+	log->info("Number of Unknowns: {:12d}",unknowns);
 }
 
 void Core::ResultReport::WriteGreenFunctionInformation(GreenConfiguration * config, shared_ptr<spd::logger>log)
@@ -47,7 +48,7 @@ void Core::ResultReport::WriteGreenFunctionInformation(GreenConfiguration * conf
 	case 1:
 		throw spdlog::spdlog_ex("Other GreenFunction is not developing!");
 	default:
-		log->info("Free Space Green Function is choosen\n");
+		log->info("Free Space Green Function is choosen");
 
 	}
 }
@@ -163,6 +164,7 @@ void Core::ResultReport::WriteMethodInformation(ImpConfiguration*config, shared_
 		log->info("unitNumber:\t({0},{1},{2})", config->xNumber, config->yNumber, config->zNumber);
 		log->info("ArrayNunber:\tx={0}\ty={1}",config->ArrayNumX,config->ArrayNumY);
 		log->info("Distance between Unit:\tXdirection={0}\tYdirection={1}\n", config->ArrayIntervalX, config->ArrayIntervalY);
+		return;
 	default:
 		log->info("{:-^60}", "MoM");
 	}

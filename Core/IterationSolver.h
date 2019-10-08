@@ -6,6 +6,7 @@
 #include "Log.h"
 #include "ImpMoM.h"
 #include "ImpAIM.h"
+#include "AIMArray.h"
 using namespace Eigen;
 
 
@@ -45,7 +46,16 @@ namespace Core
 			BiCGSTAB<ImpAIM, IdentityPreconditioner> _bicg;
 		};
 
-
+		//Array Identity
+		class BiCGStabArrayIdentity :public IterativeSolver
+		{
+		public:
+			BiCGStabArrayIdentity(SolverConfiguration&config) :IterativeSolver(config) {}
+			int Precondition(IImpService*)override;
+			int Solve(VectorXcd& sol, VectorXcd& right)override;
+		private:
+			BiCGSTAB<ImpArrayAIM, IdentityPreconditioner> _bicg;
+		};
 
 		//AIM ILU
 		class BiCGStabAIMILU :public IterativeSolver
@@ -70,6 +80,7 @@ namespace Core
 			BiCGSTAB<MatrixXcd, DiagonalPreconditioner<dcomplex>> _bicg;
 		};
 
+		
 	}
 }
 

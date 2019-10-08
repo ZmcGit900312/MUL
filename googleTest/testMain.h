@@ -17,10 +17,10 @@ public:
 
 		/*char* configurationFileName = "E:/ZMC/Code/C_program/MUL/SourceData/test.xml";
 		ASSERT_EQ(0, Core::AnalysisConfigurationFile(configurationFileName)) << "Error in API InitializationConfiguration";*/
-
 		char* configurationFileName = "E:/ZMC/Code/C_program/MUL/SourceData/test.json";
-		ASSERT_EQ(0, Core::ParseConfiguratoinFile(configurationFileName)) 
-		<< "Error in API InitializationConfiguration";
+		ASSERT_EQ(0, Core::ParseConfiguratoinFile(configurationFileName))
+			<< "Error in API InitializationConfiguration";
+		
 #endif
 	}
 

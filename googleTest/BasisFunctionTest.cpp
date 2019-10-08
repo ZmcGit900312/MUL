@@ -11,13 +11,14 @@ using namespace Eigen;
 using namespace std;
 
 
-class ComponentListTest :public testing::Test
+class BasisFunctionTest :public testing::Test
 {
 protected:
 
 	//TestSuite
 	static void SetUpTestCase()
 	{
+		
 		if(Mesh::GetInstance()->IsLock())ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
 		if (ComponentList::BFvector.size() > 0)
 		{
@@ -49,14 +50,15 @@ protected:
 };
 
 
-TEST_F(ComponentListTest, RWGTriangleTest)
+TEST_F(BasisFunctionTest, RWGTriangleTest)
 {
 	const int id = 2, nodeId1 = 4568, nodeId2 = 3, nodeId3 = 9, material = 4, entity = 12;
 	Vector3d t1(1.0, 1.0, 1.0), t2(4.5, 2.3, -6.8), t3(5.2, -4.8, 9.9);
 	RWGTriangle rt(t1, t2, t3, 2, 4568, 3, 9,4,12);
-	Console->debug("Construct RWGTriangle with (t1,t2,t3,id,nodeId1,nodeId2,nodeId3,material,entity):\n"
-		"t1=\t({0},{1},{2})\nt2=\t({3},{4},{5})\nt3=\t({6},{7},{8})",
-		t1.x(), t1.y(), t1.z(), t2.x(), t2.y(), t2.z(), t3.x(), t3.y(), t3.z());
+	Console->debug("Construct RWGTriangle with (t1,t2,t3,id,nodeId1,nodeId2,nodeId3,material,entity):");
+	Console->debug("t1=\t({0},{1},{2})", t1.x(), t1.y(), t1.z());
+	Console->debug("t2=\t({0},{1},{2})", t2.x(), t2.y(), t2.z());
+	Console->debug("t3=\t({0},{1},{2})", t3.x(), t3.y(), t3.z());
 	Console->debug("Three node ID test");
 
 	EXPECT_EQ(nodeId1, rt.NodeID(0)) << "Error in rt.ID(0)";
@@ -77,7 +79,7 @@ TEST_F(ComponentListTest, RWGTriangleTest)
 
 }
 
-TEST_F(ComponentListTest, BasicFunctionSetTest)
+TEST_F(BasisFunctionTest, BasisFunctionSetTest)
 {
 	const int refTriangleID[5][2] = { 1,2, 2,118, 19,22, 55,751, 157,159 };
 	const int refRWGID[5] = { 0,4,45,127,332 };
@@ -99,7 +101,7 @@ TEST_F(ComponentListTest, BasicFunctionSetTest)
 	EXPECT_EQ(0, Core::SaveBasisFunction(SystemConfig.BasisFunctionFilePath.c_str())) << "Error in save BasicFunction";
 }
 
-TEST_F(ComponentListTest, BasicFunctionLoadTest)
+TEST_F(BasisFunctionTest, BasisFunctionLoadTest)
 {
 	const int refTriangleID[5][2] = { 1,2, 2,118, 19,22, 55,751, 157,159 };
 	const int refRWGID[5] = { 0,4,45,127,332 };

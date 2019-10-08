@@ -20,6 +20,7 @@ class NewFlowTest:public testing::Test
 protected:
 	static void SetUpTestCase()
 	{
+		
 		ASSERT_EQ(0, Core::DataInitialization()) << "Error in Initialization";
 		
 	}

@@ -33,9 +33,6 @@ namespace Core
 		IGreen* _green = nullptr;
 		AIMAssist::MulFFTMultiplicator *_tools = nullptr;
 		ImpArrayAIM*_imp = nullptr;
-
-
-
 	protected:
 
 		

@@ -24,10 +24,9 @@ public:
 			SystemConfig.IEConfig.type = EFIE;
 			SystemConfig.SolverConfig.Precond = Solution::ILU;
 
-			if (Mesh::GetInstance()->IsLock())ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
-			if(ComponentList::BFvector.size()<1)ASSERT_EQ(0, Core::CreatBasisFunction(false)) << "Error in Load BasicFunction";
-			if (!Core::IGreen::GetInstance())EXPECT_EQ(0, Core::SetGreenFunction());
-
+			ASSERT_EQ(0, Core::DataInitialization()) << "Error in Initialization";
+			
+			srand(static_cast<unsigned>(time(nullptr)));
 
 			LoadCurrentBenchMarkBinary();
 		}
@@ -39,8 +38,13 @@ public:
 		}
 	}
 
-	static void TearDownTestCase()
+	//Update Frequency before IE
+	static void EMCParameterUpdate(double fre)
 	{
+		Frequency = fre;
+		Omega = 2 * M_PI*Frequency;
+		k = Omega / c0;
+		Lambda = c0 / Frequency;
 	}
 
 	static void LoadCurrentBenchMarkBinary()
@@ -87,15 +91,34 @@ public:
 		}
 	}
 
+	static void TearDownTestCase()
+	{
+		
+	}
+
+	void TearDown()override
+	{
+		//Release IE
+		if (Core::equation)
+		{
+			delete equation;
+			equation = nullptr;
+			Console->debug("Release IE");
+		}
+	}
+
+
 	static VectorXcd CurrentBenchMark;
 };
 
 VectorXcd RequestTest::CurrentBenchMark;
 
-
 TEST_F(RequestTest, BenchMarkTest)
 {
 	
+	EMCParameterUpdate(3.0e8);
+	equation = IE::FIE(EFIE);
+
 	Request::FarField post(&ComponentList::BFvector, Mesh::GetInstance());
 	const double coef = post.Coef;
 	const int thetaNum = 181, phiNum = 1;
@@ -148,6 +171,10 @@ TEST_F(RequestTest, FarFieldTest)
 		Cinfo->Reformat(AIM);
 		Cinfo->_numberOfConfig = 1;
 		Cinfo->Current.push_back(current);
+
+		current->EMCParameterUpdate();
+		equation = IE::FIE(EFIE);
+
 #pragma endregion
 
 		//Request Part
@@ -193,7 +220,6 @@ TEST_F(RequestTest, FarFieldTest)
 		FAIL();
 	}
 }
-
 
 TEST_F(RequestTest, FarFieldArrayTest)
 {
@@ -244,6 +270,10 @@ TEST_F(RequestTest, FarFieldArrayTest)
 			}
 		}
 		info->Current.push_back(current);
+
+
+		current->EMCParameterUpdate();
+		equation = IE::FIE(EFIE);
 #pragma endregion
 
 		//RequestArray Test
@@ -288,7 +318,6 @@ TEST_F(RequestTest, FarFieldArrayTest)
 	
 }
 
-
 TEST_F(RequestTest, RCSGetTest)
 {
 
@@ -300,20 +329,20 @@ TEST_F(RequestTest, RCSGetTest)
 
 #pragma region GenerateCurrent
 		//Current Initial
-		string tag1 = "MoMCurrent1", tag2 = "MoMCurrent2",tag3="MoMCurrent3";
+		string tag1 = "AIM3e8", tag2 = "AIM2e8",tag3="AIM1e8";
 		int num = 3;	
 		size_t unknowns1 = elementUnknowns;		
 		size_t unknowns2 = elementUnknowns;
 		size_t unknowns3 = elementUnknowns;
 
-		Solution::ElementCurrent* current1 = new Solution::ElementCurrent(unknowns1, Frequency, tag1);
-		Solution::ElementCurrent* current2 = new Solution::ElementCurrent(unknowns2, Frequency, tag2);
-		Solution::ElementCurrent* current3 = new Solution::ElementCurrent(unknowns3, Frequency, tag3);
+		Solution::ElementCurrent* current1 = new Solution::ElementCurrent(unknowns1, 3.0e8, tag1);
+		Solution::ElementCurrent* current2 = new Solution::ElementCurrent(unknowns2, 2.0e8, tag2);
+		Solution::ElementCurrent* current3 = new Solution::ElementCurrent(unknowns3, 1.0e8, tag3);
 
 		info->Reformat(Core::AIM);
 		info->_numberOfConfig = num;
 
-		string filename = SystemConfig.ProjectDir + "\\" + SystemConfig.ProjectName + ".cu";
+		//string filename = SystemConfig.ProjectDir + "\\" + SystemConfig.ProjectName + ".cu";
 
 		Console->debug("Generate the current from bf...");
 
@@ -327,32 +356,13 @@ TEST_F(RequestTest, RCSGetTest)
 		info->Current.push_back(current1);
 		info->Current.push_back(current2);
 		info->Current.push_back(current3);
+#pragma endregion	
+
+		//MissionCentre
+		ASSERT_EQ(0,CalculatedMissionCentre(true));
+		//SaveRCS
+		EXPECT_EQ(0,SaveResults(true));
 #pragma endregion
-
-		//RequestArray Test
-
-		Request::FarField post(&ComponentList::BFvector, Mesh::GetInstance(), info);
-
-		ofstream ofs;
-		ofs.flags(ios::left);
-
-		const clock_t start = clock();
-		for (auto value : SystemConfig.PostConfig)
-		{
-			const string savename = SystemConfig.ProjectDir + '\\' + value.FarFileName + "_RCS.csv";
-			ofs.open(savename, ios_base::out);
-			if (!ofs.is_open())throw spd::spdlog_ex("Save RCS Directory Error in " + savename);
-
-			Console->info("RCS of Far Field::\t" + value.FarFileName);
-			post.CalculateRCS(value, ofs);
-
-			ofs.flush();
-			ofs.close();
-		}
-		const clock_t end = clock();
-		double timecost = double(end - start) / CLOCKS_PER_SEC;
-		Console->info("FarField Calculate cost {:f} s", timecost);
-
 	}
 	catch (spd::spdlog_ex& message)
 	{

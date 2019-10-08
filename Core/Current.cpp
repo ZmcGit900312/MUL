@@ -85,7 +85,6 @@ Tag(tag),_unknowns(unknowns),_frequency(fre)
 {
 	_data.clear();
 	_data.reserve(unknowns);
-	ElementCurrent::EMCParameterUpdate();
 }
 
 void Core::Solution::ElementCurrent::SaveBinary(ofstream & ofs)

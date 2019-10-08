@@ -11,8 +11,8 @@
 int Core::CreatMesh()
 {
 	cout << "\n";
-	Console->info("{:*^45}", "Mesh");
-	Runtime->info("{:*^45}", "Mesh");
+	
+	Runtime->info("Call CreatMesh()");
 	try
 	{
 #pragma region Mesh
@@ -27,20 +27,17 @@ int Core::CreatMesh()
 
 		delete reader;
 
-		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFilePath, Console);
-		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFilePath, Runtime);		
+		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFilePath, Console);		
 		ResultReport::WriteMeshInformation(mesh, SystemConfig.MeshFilePath,ResultLog);
-		Console->info("Creat Mesh costs\t{:f} s", time);
-		Runtime->info("Creat Mesh costs\t{:f} s", time);
+		Console->info("Creat Mesh costs\t{:f} s\n", time);
 		ResultLog->info("Creat Mesh costs\t{:f} s\n", time);
 #pragma endregion 
-		cout << '\n';
+
 #pragma region Geometry
 		//Initial Geometry
 		Assist::ModalGeometry::GetInstance()->SetLimitationBoundary(mesh);
 				
 		ResultReport::WriteGeometeryInformation(Assist::ModalGeometry::GetInstance(), Console);
-		ResultReport::WriteGeometeryInformation(Assist::ModalGeometry::GetInstance(), Runtime);
 		ResultReport::WriteGeometeryInformation(Assist::ModalGeometry::GetInstance(),ResultLog);
 #pragma endregion 
 		Console->info("Calculate the quadratrue for each triangles...");

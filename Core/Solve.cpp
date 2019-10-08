@@ -6,17 +6,15 @@
 #include "ResultReport.h"
 #include "Current.h"
 
-int Core::Solve()
+int Core::Solve(int currentIndex)
 {	
-	cout << '\n';
-
+	Runtime->info("Solve Matrix");
 	ResultReport::WriteSolutionInformation(&SystemConfig.SolverConfig, Console);
-	ResultReport::WriteSolutionInformation(&SystemConfig.SolverConfig, Runtime);
-	ResultReport::WriteSolutionInformation(&SystemConfig.SolverConfig,ResultLog);
+	ResultReport::WriteSolutionInformation(&SystemConfig.SolverConfig, ResultLog);
 
 	auto& bf = ComponentList::BFvector;
-	const auto unknowns = bf.size();
-	VectorXcd current{ unknowns };
+
+	VectorXcd current{ ComponentList::ImpService->GetExcitation().size() };
 	auto curInfo = Solution::CurrentInfo::GetInstance();
 	int info = 0;
 	try
@@ -24,15 +22,10 @@ int Core::Solve()
 		
 		if(curInfo->Current.size()==0)throw spd::spdlog_ex("Current is not Initialization!");
 
-
 		info = Solver->Solve(current, ComponentList::ImpService->GetExcitation());
 		if (info > 1)throw spd::spdlog_ex("The iteration can't converage");
 		if (info == 1)throw spd::spdlog_ex("Reach the max iteration");
 		
-		//这个地方用来调取配置
-		auto individualCurrent = curInfo->Current[0];
-		for (int zmc = 0; zmc<unknowns; ++zmc)
-			individualCurrent->_data.push_back(current[zmc]);
 
 		const auto sol = static_cast<Solution::IterativeSolver*>(Solver);
 		Console->info("Iteration is cost:\t{:f} s", sol->GetSolveTime());
@@ -41,16 +34,11 @@ int Core::Solve()
 		ResultLog->info("The results tolerance is:\t{:5.4e}", sol->GetTolerance());
 		ResultLog->info("Iteration is cost:\t{:f} s", sol->GetSolveTime());		
 		
-		Runtime->info("The Final Iteration is:\t{}", sol->GetIteration());
-		Runtime->info("The results tolerance is:\t{:5.4e}", sol->GetTolerance());
-		Runtime->info("Iteration is cost:\t{:f} s", sol->GetSolveTime());
-		Runtime->flush();
-		
-		if (Solver) {
-			Console->info("Release Solver");
-			delete Solver;
-			Solver = nullptr;
-		}
+		auto individualCurrent = Solution::CurrentInfo::GetInstance()->Current[currentIndex];
+		for (int zmc = 0; zmc < current.size(); ++zmc)
+			individualCurrent->_data.push_back(current[zmc]);
+
+		Runtime->flush();		
 
 		return info;
 	}

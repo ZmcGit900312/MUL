@@ -4,8 +4,6 @@
 #include "RWG.h"
 #include "ResultReport.h"
 #include "Log.h"
-#include "Current.h"
-#include "IMatrixFiller.h"
 
 int Core::CreatBasisFunction(const bool isCreat)
 {
@@ -24,10 +22,7 @@ int Core::CreatBasisFunction(const bool isCreat)
 		case 1:
 			throw spdlog::spdlog_ex("Other BasisFunction is not developing!");
 		default:
-			Console->info("Choose RWG Function as BasisFunction\n");
-			Runtime->info("Choose RWG Function as BasisFunction\n");
-			
-			
+			Console->info("Choose RWG Function as BasisFunction");					
 		}
 
 		if (isCreat||LoadBasisFunction(SystemConfig.BasisFunctionFilePath.c_str()))
@@ -39,42 +34,11 @@ int Core::CreatBasisFunction(const bool isCreat)
 			const double _time = double(end - start) / CLOCKS_PER_SEC;
 			Console->info("The number of BasisFuntions is:\t{0:d}", SystemConfig.ImpConfig.ImpSize);
 			Console->info("Creat BasisFuntions costs:\t{0:10.9} s", _time);
-			Runtime->info("The number of BasisFuntions is:\t{0:d}", SystemConfig.ImpConfig.ImpSize);
-			Runtime->info("Creat BasisFuntions costs:\t{0:10.9} s", _time);
+			
 			ResultReport::WriteBasisFunctionInformation(SystemConfig.ImpConfig.ImpSize,ResultLog);
 			ResultLog->info("Creat BasisFuntions costs:\t{0:10.9} s", _time);
 		}
 		
-
-		//Initial Current
-		/*auto curInfo = Solution::CurrentInfo::GetInstance();
-		curInfo->category = SystemConfig.ImpConfig.ImpType;
-		if(curInfo->Current.size()==0)
-		{
-			curInfo->_numberOfConfig = 1;
-			if (SystemConfig.ImpConfig.ImpType == Core::Array)
-			{
-				curInfo->Current.push_back(new Solution::ArrayCurrent(
-					SystemConfig.ImpConfig.ImpSize,
-					Frequency,
-					"Current0",
-					SystemConfig.ImpConfig.ArrayNumX*SystemConfig.ImpConfig.ArrayNumY,
-					SystemConfig.ImpConfig.ArrayIntervalX,
-					SystemConfig.ImpConfig.ArrayIntervalY));
-			}
-			else
-			{
-				curInfo->Current.push_back(new Solution::ElementCurrent
-				(SystemConfig.ImpConfig.ImpSize, Frequency, "Current0"));
-			}
-		}
-		else
-		{
-			for(auto val:curInfo->Current)
-			{
-				val->_unknowns = SystemConfig.ImpConfig.ImpSize*val->_numberOfElement;
-			}
-		}*/
 		return 0;
 			
 	}
@@ -124,11 +88,9 @@ int Core::LoadBasisFunction(const char* loadFileName)
 			const double _time = double(end - start) / CLOCKS_PER_SEC;
 			Console->info("The number of BasisFuntions is:\t{0:d}", unknowns);
 			Console->info("Load BasisFuntions costs:\t{0:10.9} s", _time);
+			
 			ResultReport::WriteBasisFunctionInformation(unknowns,ResultLog);
 			ResultLog->info("Load BasisFuntions costs:\t{0:10.9} s", _time);
-			Runtime->info("The number of BasisFuntions is:\t{0:d}", unknowns);
-			Runtime->info("Load BasisFuntions costs:\t{0:10.9} s", _time);
-			Runtime->flush();
 			/*cout << "The number of BasisFuntions is\t=\t" << unknowns << "\n";
 			cout << "Finish!\nLoad BasisFuntions costs\t" << _time << " s\n";*/
 			return 0;
@@ -147,7 +109,6 @@ int Core::SaveBasisFunction(const char * saveFileName)
 {
 	cout << '\n';
 	Console->info("Save BasisFunction in binary type");
-	Runtime->info("Save BasisFunction in binary type");
 	
 	//GetCurrentDirectoryA(1000, buff);//
 	ofstream ofs(saveFileName,ios::out|ios::binary| ios::trunc);
@@ -161,8 +122,8 @@ int Core::SaveBasisFunction(const char * saveFileName)
 		if (ofs.is_open())
 		{
 			Console->info("The Save File Path is\t"+string(saveFileName));
-			Runtime->info("The Save File Path is\t" + string(saveFileName));
 			ResultLog->info("The Save File Path is\t" + string(saveFileName));
+
 			//RWG
 			int RWG = 0;
 			int unknown = (int)ComponentList::BFvector.size();

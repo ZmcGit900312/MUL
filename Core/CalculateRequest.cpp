@@ -4,8 +4,13 @@
 #include "FarField.h"
 #include "Log.h"
 #include "ResultReport.h"
-
-int Core::CalculateRequest(const bool IsReadFromFile)
+/**
+	* \brief Calculate the far field RCS and write in RCS.txt
+	* \param IsReadFromFile Whether read the basicfunction from file. Default is false
+	* \return State of Calculation
+	* \n 0 Success
+*/
+int static CalculateRequest(const bool IsReadFromFile)//Not used
 {
 	Runtime->info("Run CalculateRequest()");
 	//TODO It should be changed for a new version, this function is not well
@@ -67,8 +72,8 @@ int Core::CalculateRequest(int row)
 	Runtime->info("Run CalculateRequest(int ={0})",row);
 
 
-	Console->info("{:*^45}", "Calcuate the FarField RCS");
-	ResultLog->info("{:*^45}", "FarField");
+	Console->info("{:-^60}", "Calcuate the FarField RCS");
+	ResultLog->info("{:-^60}", "FarField");
 	try
 	{
 		Request::FarField post(&ComponentList::BFvector, Mesh::GetInstance(),

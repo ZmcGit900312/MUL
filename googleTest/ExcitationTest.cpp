@@ -4,7 +4,7 @@
 #include "gtest/gtest.h"
 #include "CoreAPI.h"
 #include "Data.h"
-#include "IntegrationRWG.h"
+#include "Const.h"
 #include "Excitation.h"
 using namespace Core;
 using namespace Eigen;
@@ -17,10 +17,11 @@ public:
 		try
 		{
 			SystemConfig.ImpConfig.ImpType = MoM;
-			if (Mesh::GetInstance()->IsLock())ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
-			if (ComponentList::BFvector.size() < 1)ASSERT_EQ(0, Core::CreatBasisFunction(false)) << "Error in Load BasicFunction";
-			if (!Core::IGreen::GetInstance())EXPECT_EQ(0, Core::SetGreenFunction());
-			//srand(static_cast<unsigned>(time(nullptr)));
+			ASSERT_EQ(0, Core::DataInitialization()) << "Error in Initialization";
+			EMCParameterUpdate(3.0e8);
+
+			equation = IE::FIE(EFIE);
+			srand(static_cast<unsigned>(time(nullptr)));
 		}
 		catch (spd::spdlog_ex&ex)
 		{
@@ -30,8 +31,24 @@ public:
 		}
 	}
 
+	//Update Frequency before IE
+	static void EMCParameterUpdate(double fre)
+	{
+		Frequency = fre;
+		Omega = 2 * M_PI*Frequency;
+		k = Omega / c0;
+		Lambda = c0 / Frequency;
+	}
+
 	static void TearDownTestCase()
 	{
+		//Release IE
+		if (Core::equation)
+		{
+			delete equation;
+			equation = nullptr;
+			Console->debug("Release IE");
+		}
 	}
 };
 

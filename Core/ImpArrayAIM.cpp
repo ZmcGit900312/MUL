@@ -3,6 +3,7 @@
 #define EIGEN_MKL_USE_ALL
 #include <time.h>
 #include "Data.h"
+#include "AIMArray.h"
 
 ImpArrayAIM::ImpArrayAIM(const size_t unitUnknonws, int numUnitX, int numUnitY, int numUnitZ, int order,int numArrayX, int numArrayY, double threhold):_unitSize(unitUnknonws),_gridOrder(order+1),_threshold(threhold),_gridNum({ numUnitX,numUnitY,numUnitZ }), _arrayNumX(numArrayX), _arrayNumY(numArrayY)
 {
@@ -59,6 +60,13 @@ void ImpArrayAIM::FillImpedance()
 {
 	const clock_t start = clock();
 	//unfinish code
+	AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
+	auto& bf = ComponentList::BFvector;
+	fillingTool->MultipoleExpansion(bf);
+	fillingTool->GreenMatrixSet(IGreen::GetInstance());
+
+	fillingTool->TriangleFillingStrategy(*Mesh::GetInstance(), ComponentList::BFvector);
+
 	const clock_t end = clock();
 	_time = double(end - start) / CLOCKS_PER_SEC;
 
@@ -69,10 +77,6 @@ void ImpArrayAIM::FillImpedance()
 	Console->info("There are total {} in GamaMatrix", _gamax.nonZeros()*(_dimension + 1));
 	Console->info("There are total {} in GreenMatrix", _green.size());
 	Console->info("Size of Unit Element:\t{0}", _unitSize);
-
-	Runtime->info("There are total {} in GamaMatrix", _gamax.nonZeros()*(_dimension + 1));
-	Runtime->info("There are total {} in GreenMatrix", _green.size());
-	Runtime->info("Size of Unit Element:\t{0}", _unitSize);
 
 	ResultLog->info("There are total {} in GamaMatrix", _gamax.nonZeros()*(_dimension + 1));
 	ResultLog->info("There are total {} in GreenMatrix", _green.size());

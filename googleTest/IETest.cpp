@@ -16,15 +16,15 @@ public:
 
 	static void SetUpTestCase()
 	{
-		if (Mesh::GetInstance()->IsLock())ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
-		if (ComponentList::BFvector.size() < 1)ASSERT_EQ(0, Core::CreatBasisFunction(false)) << "Error in Load BasicFunction";
-		if (!Core::IGreen::GetInstance())EXPECT_EQ(0, Core::SetGreenFunction());
-		ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
+		ASSERT_EQ(0, Core::DataInitialization()) << "Error in Initialization";
+		
+		EMCParameterUpdate(3.0e8);
 
 		efie = new EFIEPEC(k, W4, W7, SystemConfig.IEConfig.Eta);
 		mfie = new MFIEPEC(k, W4, W7, SystemConfig.IEConfig.Eta);
 		cfie = new CFIEPEC(SystemConfig.IEConfig.Alpha, k, W4, W7, SystemConfig.IEConfig.Eta);
 
+		ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
 	}
 
 	static void TearDownTestCase()
@@ -48,8 +48,16 @@ public:
 		}
 	}
 
+	//Update Frequency before IE
+	static void EMCParameterUpdate(double fre)
+	{
+		Frequency = fre;
+		Omega = 2 * M_PI*Frequency;
+		k = Omega / c0;
+		Lambda = c0 / Frequency;
+	}
 protected:
-	void OperatorKCompare(RWGTriangle* field, RWGTriangle* source)
+	void OperatorKCompare(RWGTriangle* field, RWGTriangle* source) const
 	{
 		//Reference
 		dcomplex ZK[9] = { 0 };

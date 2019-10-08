@@ -19,18 +19,10 @@ public:
 		try
 		{
 			SystemConfig.ImpConfig.ImpType = MoM;
-			if (Mesh::GetInstance()->IsLock())
-			{
-				ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
-				ASSERT_EQ(0, Core::CreatBasisFunction(false)) << "Error in Load BasicFunction";
-			}
-			if (ComponentList::BFvector.size() < 1)ASSERT_EQ(0, Core::CreatBasisFunction(false)) << "Error in Load BasicFunction";
-			if (!Core::IGreen::GetInstance())EXPECT_EQ(0, Core::SetGreenFunction());
-			ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
-			ASSERT_EQ(0, Core::CreatImpedance()) << "Error in Initial the Impedance class";
-			ASSERT_EQ(0, Core::FillImpedance()) << "Error in Fill Impedance";
+			ASSERT_EQ(0, Core::DataInitialization()) << "Error in Initialization";
+
+			srand(static_cast<unsigned>(time(nullptr)));				
 			
-			srand(static_cast<unsigned>(time(nullptr)));
 		}
 		catch (spd::spdlog_ex&ex)
 		{
@@ -40,14 +32,37 @@ public:
 		}
 	}
 
+	//Update Frequency before IE
+	static void EMCParameterUpdate(double fre)
+	{
+		Frequency = fre;
+		Omega = 2 * M_PI*Frequency;
+		k = Omega / c0;
+		Lambda = c0 / Frequency;
+	}
+
 	static void TearDownTestCase()
 	{
+		
+	}
+
+	void TearDown()override
+	{
+		//Release IE
+		if (Core::equation)
+		{
+			delete equation;
+			equation = nullptr;
+			Console->debug("Release IE");
+		}
+
 		if (ComponentList::ImpService)
 		{
 			delete ComponentList::ImpService;
 			ComponentList::ImpService = nullptr;
 			Console->debug("Release Matrix");
 		}
+
 		if (Solver)
 		{
 			delete Solver;
@@ -62,7 +77,14 @@ TEST_F(MoMTest, EFIEImpedanceTest)
 	
 	try
 	{
-		if (SystemConfig.IEConfig.type != EFIE)throw spd::spdlog_ex("EFIE is not choosen to test");
+		SystemConfig.IEConfig.type = EFIE;
+		EMCParameterUpdate(3.0e8);
+
+		equation = IE::FIE(SystemConfig.IEConfig.type);
+		ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";		
+		ASSERT_EQ(0, Core::InitialSolverAndImpedance()) << "Error in Initial the Impedance class";
+		ASSERT_EQ(0, Core::FillImpedance()) << "Error in Fill Impedance";
+		
 		RWGImpOperator compute(k, W4, W7, eta);
 		//ÑéÖ¤×è¿¹¾ØÕó
 		MatrixXcd& Imp = static_cast<ImpMoM*>(ComponentList::ImpService)->LocalMatrix();
@@ -117,9 +139,8 @@ TEST_F(MoMTest, EFIEImpedanceTest)
 	}
 	catch (spd::spdlog_ex&ex)
 	{
-		Console->warn(ex.what());
-		Runtime->warn(ex.what());
-		Runtime->flush();
+		Assist::LogException(ex);
+		FAIL();
 	}
 }
 
@@ -127,7 +148,14 @@ TEST_F(MoMTest, MFIEImpedanceTest)
 {
 	try
 	{
-		if (SystemConfig.IEConfig.type != MFIE)throw spd::spdlog_ex("MFIE is not choosen to test");
+		SystemConfig.IEConfig.type = MFIE;
+		EMCParameterUpdate(3.0e8);
+
+		equation = IE::FIE(SystemConfig.IEConfig.type);
+		ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
+		ASSERT_EQ(0, Core::InitialSolverAndImpedance()) << "Error in Initial the Impedance class";
+		ASSERT_EQ(0, Core::FillImpedance()) << "Error in Fill Impedance";
+
 		MatrixXcd& Imp = static_cast<ImpMoM*>(ComponentList::ImpService)->LocalMatrix();
 		auto& bf = ComponentList::BFvector;
 		int row[6] = { 152,229,238,111,28,45 }, col[6] = { 478,95,74,1,33,41 };
@@ -156,9 +184,8 @@ TEST_F(MoMTest, MFIEImpedanceTest)
 	}
 	catch (spd::spdlog_ex&ex)
 	{
-		Console->warn(ex.what());
-		Runtime->warn(ex.what());
-		Runtime->flush();
+		Assist::LogException(ex);
+		FAIL();
 	}
 }
 
@@ -166,20 +193,21 @@ TEST_F(MoMTest,Solving)
 {
 	try
 	{
-		ASSERT_EQ(0, Core::SetRightHand()) << "Error in Set RightHand";
-		auto info = Core::Solve();
-		ASSERT_EQ(0, info) << "Error in Solve Matrix with BicgStab";
-		if (info == 0)
-		{
-			EXPECT_EQ(0, Core::SaveBasisFunction(SystemConfig.BasisFunctionFilePath.c_str())) << "Error in save BasicFunction";
-			EXPECT_EQ(0, Core::CalculateRequest()) << "Error in Calculate the FarField";
-		}
+		SystemConfig.IEConfig.type = EFIE;
+
+		auto curInfo = Solution::CurrentInfo::GetInstance();
+		curInfo->Reformat();
+		curInfo->Current.push_back(
+			new Solution::ElementCurrent(ComponentList::BFvector.size(), 3.0e8, "MoMTest"));
+		curInfo->_numberOfConfig = curInfo->Current.size();
+
+		ASSERT_EQ(0, Core::CalculatedMissionCentre()) << "Error in MissionCentre";
+		ASSERT_EQ(0, Core::SaveResults()) << "Error in Save Results";
 	}
 	catch (spd::spdlog_ex&ex)
 	{
-		Console->warn(ex.what());
-		Runtime->warn(ex.what());
-		Runtime->flush();
+		Assist::LogException(ex);
+		FAIL();
 	}
 }
 

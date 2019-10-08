@@ -8,14 +8,13 @@
 int Core::PreCalculateSelfTriangleImpedance()
 {
 	//特化RWG填充策略使用，预先计算三角形的自阻抗
-	cout << '\n';
 	Console->info("Begin to pre-compute the SelfTriangle Impedance");
-	Runtime->info("Begin to pre-compute the SelfTriangle Impedance");
+	Runtime->info("Pre-compute the SelfTriangle Impedance");
 
 	const clock_t start = clock();
 #pragma region RWGSET
 	for (auto i = Mesh::GetInstance()->TriangleVector.begin(),
-		e= Mesh::GetInstance()->TriangleVector.end(); i != e; ++i)
+		e = Mesh::GetInstance()->TriangleVector.end(); i != e; ++i)
 	{
 		RWGImpOperator::SetSelfTriangleOperatorL(dynamic_cast<RWGTriangle*>(*i), W13, k, eta);
 	}

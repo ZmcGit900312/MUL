@@ -7,36 +7,40 @@
 #include "ResultReport.h"
 #include "ImpArrayAIM.h"
 
-int Core::CreatImpedance()
+int Core::InitialSolverAndImpedance()
 {
-	Vector3d delta;
+	
 	cout << "\n";
 	try
 	{		
-		//Initial Solver
-		Console->info("Initial Solver");
+		//Initial  Solver
+		Console->info("{0:-^60}", "Initial Solver");
 		Runtime->info("Initial Solver");
 		Solver = FSolver(SystemConfig.SolverConfig, SystemConfig.ImpConfig.ImpType);
+
+		//Initial Impedance
+		Runtime->info("Generate Impedance");
+		Vector3d delta;
 		switch (SystemConfig.ImpConfig.ImpType)
 		{
 		case AIM:
 			//Configuration
-			SystemConfig.ImpConfig.Box[0] = 
+			SystemConfig.ImpConfig.Box[0] =
 				Assist::ModalGeometry::GetInstance()->GetLimitationBoundary(0)
-			- (SystemConfig.ImpConfig.GridOrder - 1)*SystemConfig.ImpConfig.Interval*Vector3d::Ones();
-			SystemConfig.ImpConfig.Box[1] = 
+				- (SystemConfig.ImpConfig.GridOrder - 1)*SystemConfig.ImpConfig.Interval*Vector3d::Ones();
+			SystemConfig.ImpConfig.Box[1] =
 				Assist::ModalGeometry::GetInstance()->GetLimitationBoundary(7)
 				+ (SystemConfig.ImpConfig.GridOrder - 1)* SystemConfig.ImpConfig.Interval*Vector3d::Ones();
 
 			delta = (SystemConfig.ImpConfig.Box[1] - SystemConfig.ImpConfig.Box[0]) /
-				SystemConfig.ImpConfig.Interval;		
+				SystemConfig.ImpConfig.Interval;
 
 			SystemConfig.ImpConfig.xNumber = int(round(delta.x())) + 1;
 			SystemConfig.ImpConfig.yNumber = int(round(delta.y())) + 1;
 			SystemConfig.ImpConfig.zNumber = int(round(delta.z())) + 1;
 
 			ComponentList::ImpService = new ImpAIM(&SystemConfig.ImpConfig);
-		
+
 			break;
 		case Array:
 			//Configuration
@@ -54,17 +58,18 @@ int Core::CreatImpedance()
 			SystemConfig.ImpConfig.yNumber = int(round(delta.y())) + 1;
 			SystemConfig.ImpConfig.zNumber = int(round(delta.z())) + 1;
 
+			SystemConfig.ImpConfig.ArrayLocation.resize(SystemConfig.ImpConfig.ArrayNumX, SystemConfig.ImpConfig.ArrayNumY);
+			SystemConfig.ImpConfig.ArrayLocation.array() = false;
+
 			ComponentList::ImpService = new ImpArrayAIM(&SystemConfig.ImpConfig);
 			break;
-		default:			
+		default:
 			ComponentList::ImpService = new ImpMoM(SystemConfig.ImpConfig.ImpSize);
-			Runtime->flush();		
 		}
 
 		ResultReport::WriteMethodInformation(&SystemConfig.ImpConfig, Console);
-		ResultReport::WriteMethodInformation(&SystemConfig.ImpConfig, Runtime);
+		ResultReport::WriteMethodInformation(&SystemConfig.ImpConfig, ResultLog);
 		Runtime->flush();
-		ResultReport::WriteMethodInformation(&SystemConfig.ImpConfig,ResultLog);
 		return 0;
 	}
 	catch (spd::spdlog_ex&ex)

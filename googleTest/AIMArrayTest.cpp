@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "Current.h"
+#include "FarField.h"
 
 #ifdef GTEST
 #include "gtest/gtest.h"
@@ -28,18 +30,23 @@ protected:
 			SystemConfig.ImpConfig.ArrayIntervalX = 1.5;
 			SystemConfig.ImpConfig.ArrayIntervalY = 1.5;
 			SystemConfig.IEConfig.type = EFIE;
-			SystemConfig.SolverConfig.Precond = Solution::ILU;
-			if (Mesh::GetInstance()->IsLock())
-			{
-				ASSERT_EQ(0, Core::CreatMesh()) << "Error in Creat Mesh";
-				ASSERT_EQ(0, Core::CreatBasisFunction(false)) << "Error in Load BasicFunction";
-			}
-			if (ComponentList::BFvector.size() < 1)ASSERT_EQ(0, Core::CreatBasisFunction(false)) << "Error in Load BasicFunction";
-			if (!Core::IGreen::GetInstance())EXPECT_EQ(0, Core::SetGreenFunction());
-			ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
-			ASSERT_EQ(0, Core::CreatImpedance()) << "Error in Initial the Impedance class";
+			SystemConfig.SolverConfig.Precond = Solution::Identity;
+			ASSERT_EQ(0, Core::DataInitialization()) << "Error in Initialization";
+			srand(static_cast<unsigned>(time(nullptr)));
+			
+			//Initial Current
+			auto curInfo = Solution::CurrentInfo::GetInstance();
+			curInfo->Reformat(SystemConfig.ImpConfig.ImpType);
+			curInfo->Current.push_back(new Solution::ArrayCurrent(ComponentList::BFvector.size(), 3.0e8, "AIMArrayTest", 16, SystemConfig.ImpConfig.ArrayIntervalX, SystemConfig.ImpConfig.ArrayIntervalY));
+			Solution::ArrayCurrent* ac = static_cast<Solution::ArrayCurrent*>(curInfo->Current.back());
+			ac->EMCParameterUpdate();
+			SystemConfig.ImpConfig.ArrayLocation.array() = true;
+			curInfo->_numberOfConfig = curInfo->Current.size();
+			//Initial IE Impedance and solver
 
-			cout << "\n";
+			
+			ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
+			ASSERT_EQ(0, Core::InitialSolverAndImpedance()) << "Error in Initial the Impedance class";
 
 			//Random initial
 			srand(static_cast<unsigned>(time(nullptr)));
@@ -48,10 +55,8 @@ protected:
 		}
 		catch (spd::spdlog_ex&ex)
 		{
-
-			Console->warn(ex.what());
-			Runtime->warn(ex.what());
-			Runtime->flush();
+			Assist::LogException(ex);
+			FAIL();
 		}
 	}
 
@@ -67,6 +72,12 @@ protected:
 		{
 			delete Core::Solver;
 			Core::Solver = nullptr;
+		}
+		if (Core::equation)
+		{
+			delete equation;
+			equation = nullptr;
+			Console->debug("Release IE");
 		}
 	}
 
@@ -159,6 +170,8 @@ protected:
 
 TEST_F(AIMArrayTest, MultipoleExpansion)
 {
+
+	
 	AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
 	auto& bf = ComponentList::BFvector;
 	Console->debug("Allocate the MatrixSetting oject");
@@ -171,8 +184,9 @@ TEST_F(AIMArrayTest, MultipoleExpansion)
 }
 
 
-TEST_F(AIMArrayTest, GenerateGreenTest)
-{
+TEST_F(AIMArrayTest, GenerateGreen)
+{	
+	//Initial AIMArray
 	AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
 	auto& bf = ComponentList::BFvector;
 
@@ -264,8 +278,7 @@ TEST_F(AIMArrayTest, GenerateGreenTest)
 	delete fillingTool;
 }
 
-
-TEST_F(AIMArrayTest, GreenFFTTest)
+TEST_F(AIMArrayTest, GreenFFT)
 {
 #pragma region Initial Temporary Parameters
 	VectorXi weight{ VectorXi::Zero(5) }, greenWeightAcu{ weight };
@@ -340,11 +353,6 @@ TEST_F(AIMArrayTest, GreenFFTTest)
 	}
 	size_t greenID = dis.dot(greenWeightAcu);
 
-	dis = source - field;
-	for (int zmc = 0; zmc < dis.size(); ++zmc)
-	{
-		if (dis(zmc) < 0)dis(zmc) += greenWeight(zmc);
-	}
 	size_t greenID_ = dis.dot(greenWeightAcu);
 	dcomplex GreenRef = GreenBase(greenID),GreenRef_= GreenBase(greenID_);
 
@@ -357,11 +365,11 @@ TEST_F(AIMArrayTest, GreenFFTTest)
 	_mvptool.MVP(imp->CGetGreen(), fieldVec);
 	dcomplex Sym = sourceVec.dot(fieldVec);
 
-	Console->debug("GRef=({0},{1})\tID={2}", GreenRef.real(), GreenRef.imag(),greenID);
-	Console->debug("GRefS=({0},{1})\tID={2}", GreenRef_.real(), GreenRef_.imag(), greenID_);
-	Console->debug("Refer=({0},{1})", ref.real(), ref.imag());
-	Console->debug("Value=({0},{1})",Val.real(), Val.imag());
-	Console->debug("Symme=({0},{1})", Sym.real(), Sym.imag());
+	Console->debug("GRef     =({0},{1})\tID={2}", GreenRef.real(), GreenRef.imag(),greenID);
+	Console->debug("GRefSym  =({0},{1})\tID={2}", GreenRef_.real(), GreenRef_.imag(), greenID_);
+	Console->debug("Reference=({0},{1})", ref.real(), ref.imag());
+	Console->debug("Value    =({0},{1})",Val.real(), Val.imag());
+	Console->debug("Symmetry =({0},{1})", Sym.real(), Sym.imag());
 	EXPECT_NEAR(Val.real(), ref.real(), 1.0e-6);
 	EXPECT_NEAR(Val.imag(), ref.imag(), 1.0e-6);
 	
@@ -369,8 +377,9 @@ TEST_F(AIMArrayTest, GreenFFTTest)
 }
 
 #ifdef _DEBUG
-TEST_F(AIMArrayTest, GetFarFieldApproximateFUNTest)
+TEST_F(AIMArrayTest, GetFarFieldApproximateFunction)
 {
+	equation = IE::FIE(SystemConfig.IEConfig.type);
 	AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
 	auto& bf = ComponentList::BFvector;
 	fillingTool->_green = IGreen::GetInstance();
@@ -408,7 +417,7 @@ TEST_F(AIMArrayTest, GetFarFieldApproximateFUNTest)
 	delete fillingTool;
 }
 
-TEST_F(AIMArrayTest, MultiplicationTest)
+TEST_F(AIMArrayTest, Multiplication)
 {
 #pragma region Initial Temporary Parameters
 	VectorXi weight{ VectorXi::Zero(5) }, greenWeightAcu{ weight };
@@ -426,6 +435,7 @@ TEST_F(AIMArrayTest, MultiplicationTest)
 #pragma endregion 
 
 #pragma region AIMArrayAPI
+	equation = IE::FIE(SystemConfig.IEConfig.type);
 	AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
 	auto& bf = ComponentList::BFvector;
 	ImpArrayAIM* imp = static_cast<ImpArrayAIM*>(ComponentList::ImpService);
@@ -484,7 +494,7 @@ TEST_F(AIMArrayTest, MultiplicationTest)
 	delete fillingTool;
 }
 
-TEST_F(AIMArrayTest, MultiplicationTest2)
+TEST_F(AIMArrayTest, Multiplication2)
 {
 #pragma region Initial Temporary Parameters
 	VectorXi weight{ VectorXi::Zero(5) }, greenWeightAcu{ weight };
@@ -502,6 +512,7 @@ TEST_F(AIMArrayTest, MultiplicationTest2)
 #pragma endregion 
 
 #pragma region AIMArrayAPI
+	equation = IE::FIE(SystemConfig.IEConfig.type);
 	AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
 	auto& bf = ComponentList::BFvector;
 	ImpArrayAIM* imp = static_cast<ImpArrayAIM*>(ComponentList::ImpService);
@@ -571,6 +582,7 @@ TEST_F(AIMArrayTest, NearFieldFilling)
 {
 	try
 	{
+		equation = IE::FIE(SystemConfig.IEConfig.type);
 		AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
 		auto& bf = ComponentList::BFvector;
 
@@ -580,40 +592,85 @@ TEST_F(AIMArrayTest, NearFieldFilling)
 	}
 	catch (spd::spdlog_ex&ex)
 	{
-		Console->warn(ex.what());
-		Runtime->warn(ex.what());
-		Runtime->flush();
+		Assist::LogException(ex);
+		FAIL();
 	}
 }
 
 
+TEST_F(AIMArrayTest, Solving)
+{
+	try
+	{
+#pragma region Initial Temporary Parameters
+		VectorXi weight{ VectorXi::Zero(5) }, greenWeightAcu{ weight };
+		weight << SystemConfig.ImpConfig.xNumber,
+			SystemConfig.ImpConfig.yNumber,
+			SystemConfig.ImpConfig.zNumber,
+			SystemConfig.ImpConfig.ArrayNumX,
+			SystemConfig.ImpConfig.ArrayNumY;
+		VectorXi greenWeight = 2 * weight.array() - 1;
+		greenWeightAcu(0) = 1;
+		for (int i = 1;i < greenWeightAcu.size();i++)
+		{
+			greenWeightAcu(i) = greenWeight.head(i).prod();
+		}
 
-	//try
-	//{
-	//	//throw spd::spdlog_ex("AIMCalculate is not Testing");
+		Solution::ArrayCurrent* cu = static_cast<Solution::ArrayCurrent*>(
+			Solution::CurrentInfo::GetInstance()->Current[0]);
+		
+#pragma endregion 
+		equation = IE::FIE(SystemConfig.IEConfig.type);
+		AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
+		auto& bf = ComponentList::BFvector;
+		fillingTool->MultipoleExpansion(bf);
 
-	//	AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
-	//	auto& bf = ComponentList::BFvector;
-	//	Console->debug("Allocate the MatrixSetting oject");
+		cu->_arrayLocation.clear();
+		for(int rowx=0;rowx<SystemConfig.ImpConfig.ArrayNumX;rowx++)
+		{
+			for (int coly = 0;coly < SystemConfig.ImpConfig.ArrayNumY;coly++)
+			{
+				cu->_arrayLocation.push_back({ rowx,coly });
+			}
+		}
+		Console->info("Size of ArrayLocation={0}", cu->_arrayLocation.size());
+		
 
-	//	fillingTool->MultipoleExpansion(bf);
-	//	fillingTool->GreenMatrixSet(IGreen::GetInstance());
-	//	fillingTool->TriangleFillingStrategy(*Mesh::GetInstance(), ComponentList::BFvector);
+		bool GreenExist = false;
+		if(GreenExist)
+		{
+			char* path = "E:/ZMC/Code/C_program/MUL/SourceData/ArrayGreen.dat";
+			fillingTool->_green = IGreen::GetInstance();
 
-	//	ASSERT_EQ(0, Core::SetRightHand()) << "Error in Set RightHand";
-	//	auto info = Core::Solve();
-	//	EXPECT_EQ(0, info) << "Error in Solve Matrix with BicgStab";
-	//	if (info == 0)
-	//	{
-	//		EXPECT_EQ(0, Core::SaveBasisFunction(SystemConfig.BasisFunctionFilePath.c_str())) << "Error in save BasicFunction";
-	//		EXPECT_EQ(0, Core::CalculateRequest()) << "Error in Calculate the FarField";
-	//	}
-	//}
-	//catch (spd::spdlog_ex&ex)
-	//{
-	//	Console->warn(ex.what());
-	//	Runtime->warn(ex.what());
-	//	Runtime->flush();
-	//}
+			bool readflag = true;
+			ImpArrayAIM* imp = static_cast<ImpArrayAIM*>(ComponentList::ImpService);
+			imp->GetGreen() = GetGreenBase(path, fillingTool, readflag);
 
+			//5-dimension FFT VERY IMPORTANT
+			MKL_LONG layer[5] = { greenWeight[4] ,greenWeight[3], greenWeight[2] ,greenWeight[1], greenWeight[0] };
+			imp->_fftTools = new MulFFTMultiplicator;
+			imp->_fftTools->Reset(5, layer);
+			imp->_fftTools->fwd(imp->GetGreen());//FFT
+		}
+		else fillingTool->GreenMatrixSet(IGreen::GetInstance());
+		
+		fillingTool->TriangleFillingStrategy(*Mesh::GetInstance(), ComponentList::BFvector);
+
+		ASSERT_EQ(0, Core::SetRightHand()) << "Error in Set RightHand";
+		auto info = Core::Solve();
+		ASSERT_EQ(0, info) << "Error in Solve Matrix with BicgStab";
+		delete fillingTool;
+
+		Request::FarField::RCS.resize(
+			Solution::CurrentInfo::GetInstance()->_numberOfConfig, SystemConfig.PostConfig.size());
+		ASSERT_EQ(0, CalculateRequest(0));
+		ASSERT_EQ(0, Core::SaveResults()) << "Error in Save Results";
+		
+	}
+	catch (spd::spdlog_ex&ex)
+	{
+		Assist::LogException(ex);
+		FAIL();
+	}
+}
 #endif

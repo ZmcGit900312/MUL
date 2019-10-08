@@ -4,9 +4,9 @@
 #include "Data.h"
 #include "CoreAPI.h"
 
-TEST(CoreAPITEST,GreenFunctionTest)
+TEST(GreenFunctionTest,Scalar)
 {
-	if(!Core::IGreen::GetInstance())EXPECT_EQ(0,Core::SetGreenFunction());
+	if(!Core::IGreen::GetInstance())ASSERT_EQ(0,Core::SetGreenFunction());
 
 	auto func = Core::IGreen::GetInstance();
 

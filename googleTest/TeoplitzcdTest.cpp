@@ -19,7 +19,7 @@ TEST(TeoplitzcdTest,SingleLevelInitial)
 
 	Teoplitzcd tp1;
 	Teoplitzcd tp2(layerNum);
-	Console->debug("***Single Level Teoplitz Test***");
+	Console->debug("Single Level Teoplitz Test");
 
 	//tp1 Test
 	Console->debug("Empty Construct Test:");
@@ -48,7 +48,7 @@ TEST(TeoplitzcdTest,SingleLevelInitial)
 //Multilevel
 TEST(TeoplitzcdTest,MultiLevelTeoplitzInitial)
 {
-	Console->debug("***MultiLevel Teoplitz Test***");
+	Console->debug("MultiLevel Teoplitz Test");
 	Vector3i layerNum{2,3,2};
 	Teoplitzcd tp(layerNum);
 	const unsigned row = layerNum.prod();
@@ -63,7 +63,7 @@ TEST(TeoplitzcdTest,MultiLevelTeoplitzInitial)
 //Construction
 TEST(TeoplitzcdTest,ConstrctFunction)
 {
-	Console->debug("***Single level Construct Function Test***");
+	Console->debug("Single level Construct Function Test");
 	{
 		const int L1 = 6;
 		VectorXi layerNum{1};
@@ -99,7 +99,7 @@ TEST(TeoplitzcdTest,ConstrctFunction)
 		EXPECT_DOUBLE_EQ(abs(v(3)), abs(tp1.at(4, 1))) << "Error in Get(4,1)";
 		EXPECT_DOUBLE_EQ(abs(v(4)), abs(tp1.at(4, 0))) << "Error in Get(4,0)";
 	}
-	Console->debug("***Multilevel Construct Function Test***");
+	Console->debug("Multilevel Construct Function Test");
 	{//Multilevel
 		Console->debug("Case3: Three Levels [2,2,2]=8 Real elemets Test:");
 		const Vector3i layerNum{ 2,2,2 };
