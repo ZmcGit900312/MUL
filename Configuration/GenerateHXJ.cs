@@ -20,11 +20,6 @@ namespace Configuration
             InitializeComponent();         
             _root= Directory.GetCurrentDirectory();
             XmlTool.GetInstance.Initialization(@"E:\ZMC\Code\C_program\MUL\Configuration\Resources\ConfigurationTemplate.xsd");
-#if DEBUG
-            TestButton.Enabled = true;
-#else
-            TestButton.Enabled=false;
-#endif
         }
 
         private void Start_Load(object sender, EventArgs e)
@@ -128,7 +123,6 @@ namespace Configuration
 
         private void LoadButton_Click(object sender, EventArgs e)
         {
-
             OpenFileDialog configFileDialog = new OpenFileDialog { Filter = @"配置文件 |*.xml" }; //定义新的文件打开位置控件
             if (configFileDialog.ShowDialog() == DialogResult.OK)//如果有选择打开的文件
             {
@@ -149,8 +143,8 @@ namespace Configuration
                
                 HxjLocation.Text =configFileDialog.FileName;
             }
-
         }
+
 
         //Insert in the dictionary if not exist
 
@@ -175,7 +169,7 @@ namespace Configuration
                 p.Close();
                 if (File.Exists(BatDir)) File.Delete(BatDir);
             }
-            ResultButton.Enabled = true;
+            //ResultButton.Enabled = true;
         }
 
         private void PostButton_Click(object sender, EventArgs e)
@@ -272,9 +266,19 @@ namespace Configuration
 
         private void TestButton_Click(object sender, EventArgs e)
         {
-            if (File.Exists(ConfigurationFullName))
-                Process.Start("D:/Program Files/Softwares/UltraEdit/uedit64.exe", ConfigurationFullName);
-            else InformationText.Text = @"Not exist file:\n" + ConfigurationFullName;
+            OpenFileDialog configFileDialog = new OpenFileDialog { Filter = @"配置文件 |*.json" }; //定义新的文件打开位置控件
+            if (configFileDialog.ShowDialog() == DialogResult.OK) //如果有选择打开的文件
+            {
+                InformationText.Clear();
+                InformationText.AppendText("Load json File:\n" + configFileDialog.FileName + "\n");
+                ConfigurationFullName = configFileDialog.FileName;
+                RunButton.Enabled = true;
+                InformationText.Text = @"Load json Successfully!";
+                LoadButton.BackColor = Color.MistyRose;
+            }
+            //if (File.Exists(ConfigurationFullName))
+            //    Process.Start("D:/Program Files/Softwares/UltraEdit/uedit64.exe", ConfigurationFullName);
+            //else InformationText.Text = @"Not exist file:\n" + ConfigurationFullName;
 
         }
 #endregion

@@ -639,21 +639,22 @@ int SetSweepMod(rj::Document& jd)
 				info->Current.push_back(new Solution::ElementCurrent(0, rsp["Frequency"].GetDouble(), rsp["Tag"].GetString()));
 				break;
 			case EImpedance::Array: 
-				zmc_config = new Solution::ArrayCurrent(
-					0, 
-					rsp["Frequency"].GetDouble(), 
-					rsp["Tag"].GetString(), 
+				info->Current.push_back(new Solution::ArrayCurrent(
+					0,
+					rsp["Frequency"].GetDouble(),
+					rsp["Tag"].GetString(),
 					rsp["Number"].GetInt64(),
 					SystemConfig.ImpConfig.ArrayIntervalX,
-					SystemConfig.ImpConfig.ArrayIntervalY);
+					SystemConfig.ImpConfig.ArrayIntervalY));
 
+				zmc_config = static_cast<Solution::ArrayCurrent*>(info->Current.back());
 				for (rj::Value::ValueIterator ap = rsp["ArrayLocation"].Begin();
 					ap != rsp["ArrayLocation"].End();++ap)
 				{
 					Vector2i al{ (*ap)[0].GetInt64(), (*ap)[1].GetInt64() };
 					zmc_config->_arrayLocation.push_back(al);
 				}
-				info->Current.push_back(zmc_config);
+				
 				break;
 			default: throw spdlog::spdlog_ex("Not developing Impedance Method among AIM|MoM|Array");
 			}	

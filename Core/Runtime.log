@@ -16515,3 +16515,517 @@
 [Mon Oct 7 23:58:59 2019 Mon][info] Pre-compute the SelfTriangle Impedance
 [Mon Oct 7 23:59:00 2019 Mon][info] Initial Solver
 [Mon Oct 7 23:59:00 2019 Mon][info] Generate Impedance
+[Tue Oct 8 19:40:55 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 19:40:55 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 19:40:56 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 19:40:56 2019 Tue][info] Release the memory
+[Tue Oct 8 19:40:56 2019 Tue][debug] Release BasicFunction
+[Tue Oct 8 19:40:56 2019 Tue][debug] Release Request
+[Tue Oct 8 19:40:56 2019 Tue][debug] Release Source
+[Tue Oct 8 19:40:56 2019 Tue][info] --------------------------------------END---------------------------------------
+
+[Tue Oct 8 19:41:27 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 19:41:27 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 19:41:27 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 19:42:04 2019 Tue][info] Release the memory
+[Tue Oct 8 19:42:04 2019 Tue][debug] Release BasicFunction
+[Tue Oct 8 19:42:04 2019 Tue][debug] Release Request
+[Tue Oct 8 19:42:04 2019 Tue][debug] Release Source
+[Tue Oct 8 19:42:04 2019 Tue][info] --------------------------------------END---------------------------------------
+
+[Tue Oct 8 19:42:07 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 19:42:07 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 19:42:07 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 19:42:07 2019 Tue][info] Release the memory
+[Tue Oct 8 19:42:07 2019 Tue][debug] Release BasicFunction
+[Tue Oct 8 19:42:07 2019 Tue][debug] Release Request
+[Tue Oct 8 19:42:07 2019 Tue][debug] Release Source
+[Tue Oct 8 19:42:07 2019 Tue][info] --------------------------------------END---------------------------------------
+
+[Tue Oct 8 20:20:46 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 20:20:46 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 20:20:47 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 20:21:58 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 20:21:58 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 20:21:58 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 20:28:18 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 20:28:18 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 20:28:18 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 20:28:27 2019 Tue][info] Release the memory
+[Tue Oct 8 20:28:27 2019 Tue][debug] Release BasicFunction
+[Tue Oct 8 20:28:27 2019 Tue][debug] Release Request
+[Tue Oct 8 20:28:27 2019 Tue][debug] Release Source
+[Tue Oct 8 20:28:27 2019 Tue][info] --------------------------------------END---------------------------------------
+
+[Tue Oct 8 20:31:10 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 20:31:10 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 20:31:10 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 20:31:10 2019 Tue][info] Release the memory
+[Tue Oct 8 20:31:10 2019 Tue][debug] Release BasicFunction
+[Tue Oct 8 20:31:10 2019 Tue][debug] Release Request
+[Tue Oct 8 20:31:10 2019 Tue][debug] Release Source
+[Tue Oct 8 20:31:10 2019 Tue][info] --------------------------------------END---------------------------------------
+
+[Tue Oct 8 21:34:26 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 21:34:26 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 21:34:26 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 21:34:26 2019 Tue][info] Pre-compute the SelfTriangle Impedance
+[Tue Oct 8 21:34:27 2019 Tue][info] Initial Solver
+[Tue Oct 8 21:34:27 2019 Tue][info] Generate Impedance
+[Tue Oct 8 21:35:39 2019 Tue][info] Take the Array AIM
+[Tue Oct 8 21:36:48 2019 Tue][info] Multipole Expansion costs whole time:	  46.4830000s
+[Tue Oct 8 21:36:48 2019 Tue][info] Multipole Expansion for unit time:	   1.1410000s
+[Tue Oct 8 21:38:19 2019 Tue][info] Near-Matrix Setting by TFS Time is:	27.017s
+[Tue Oct 8 21:38:27 2019 Tue][info] Set RightHand
+[Tue Oct 8 21:39:41 2019 Tue][info] Solve Matrix
+[Tue Oct 8 21:40:44 2019 Tue][info] Run CalculateRequest(int =0)
+[Tue Oct 8 21:41:19 2019 Tue][info] Release the memory
+[Tue Oct 8 21:41:19 2019 Tue][debug] Release BasicFunction
+[Tue Oct 8 21:41:19 2019 Tue][debug] Release Request
+[Tue Oct 8 21:41:19 2019 Tue][debug] Release Source
+[Tue Oct 8 21:41:19 2019 Tue][info] --------------------------------------END---------------------------------------
+
+[Tue Oct 8 21:58:51 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 21:58:52 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 21:58:52 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 21:58:52 2019 Tue][info] Pre-compute the SelfTriangle Impedance
+[Tue Oct 8 21:58:52 2019 Tue][info] Initial Solver
+[Tue Oct 8 21:58:52 2019 Tue][info] Generate Impedance
+[Tue Oct 8 21:58:55 2019 Tue][info] Take the Array AIM
+[Tue Oct 8 21:58:57 2019 Tue][info] Multipole Expansion costs whole time:	   1.7140000s
+[Tue Oct 8 21:58:57 2019 Tue][info] Multipole Expansion for unit time:	   0.9350000s
+[Tue Oct 8 21:59:34 2019 Tue][info] Near-Matrix Setting by TFS Time is:	26.386s
+[Tue Oct 8 21:59:34 2019 Tue][info] Set RightHand
+[Tue Oct 8 21:59:40 2019 Tue][info] Solve Matrix
+[Tue Oct 8 22:04:00 2019 Tue][info] Run CalculateRequest(int =0)
+[Tue Oct 8 22:05:03 2019 Tue][info] Release the memory
+[Tue Oct 8 22:05:03 2019 Tue][debug] Release BasicFunction
+[Tue Oct 8 22:05:03 2019 Tue][debug] Release Request
+[Tue Oct 8 22:05:03 2019 Tue][debug] Release Source
+[Tue Oct 8 22:05:03 2019 Tue][info] --------------------------------------END---------------------------------------
+
+[Tue Oct 8 22:40:21 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 22:40:21 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 22:40:21 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 22:40:21 2019 Tue][info] Pre-compute the SelfTriangle Impedance
+[Tue Oct 8 22:40:22 2019 Tue][info] Initial Solver
+[Tue Oct 8 22:40:22 2019 Tue][info] Generate Impedance
+[Tue Oct 8 22:40:22 2019 Tue][info] Take the Array AIM
+[Tue Oct 8 22:40:24 2019 Tue][info] Multipole Expansion costs whole time:	   1.6730000s
+[Tue Oct 8 22:40:24 2019 Tue][info] Multipole Expansion for unit time:	   0.8940000s
+[Tue Oct 8 22:40:56 2019 Tue][info] Near-Matrix Setting by TFS Time is:	25.69s
+[Tue Oct 8 22:40:56 2019 Tue][info] Set RightHand
+[Tue Oct 8 22:40:56 2019 Tue][info] Solve Matrix
+[Tue Oct 8 22:44:10 2019 Tue][info] Run CalculateRequest(int =0)
+[Tue Oct 8 22:45:07 2019 Tue][info] Release the memory
+[Tue Oct 8 22:45:07 2019 Tue][debug] Release BasicFunction
+[Tue Oct 8 22:45:07 2019 Tue][debug] Release Request
+[Tue Oct 8 22:45:07 2019 Tue][debug] Release Source
+[Tue Oct 8 22:45:07 2019 Tue][info] --------------------------------------END---------------------------------------
+
+[Tue Oct 8 22:51:01 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 22:51:02 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 22:51:02 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 22:51:02 2019 Tue][info] Pre-compute the SelfTriangle Impedance
+[Tue Oct 8 22:51:02 2019 Tue][info] Initial Solver
+[Tue Oct 8 22:51:02 2019 Tue][info] Generate Impedance
+[Tue Oct 8 22:51:02 2019 Tue][info] Take the Array AIM
+[Tue Oct 8 22:51:04 2019 Tue][info] Multipole Expansion costs whole time:	   1.8650000s
+[Tue Oct 8 22:51:04 2019 Tue][info] Multipole Expansion for unit time:	   1.0620000s
+[Tue Oct 8 22:51:37 2019 Tue][info] Near-Matrix Setting by TFS Time is:	26.643s
+[Tue Oct 8 22:51:37 2019 Tue][info] Set RightHand
+[Tue Oct 8 22:51:37 2019 Tue][info] Solve Matrix
+[Tue Oct 8 22:54:49 2019 Tue][info] Run CalculateRequest(int =0)
+[Tue Oct 8 22:55:46 2019 Tue][info] Release the memory
+[Tue Oct 8 22:55:46 2019 Tue][debug] Release BasicFunction
+[Tue Oct 8 22:55:46 2019 Tue][debug] Release Request
+[Tue Oct 8 22:55:46 2019 Tue][debug] Release Source
+[Tue Oct 8 22:55:46 2019 Tue][info] --------------------------------------END---------------------------------------
+
+[Tue Oct 8 22:58:56 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 22:58:56 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 22:58:56 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 22:58:56 2019 Tue][info] Pre-compute the SelfTriangle Impedance
+[Tue Oct 8 22:58:57 2019 Tue][info] Initial Solver
+[Tue Oct 8 22:58:57 2019 Tue][info] Generate Impedance
+[Tue Oct 8 22:58:57 2019 Tue][info] Take the Array AIM
+[Tue Oct 8 22:58:59 2019 Tue][info] Multipole Expansion costs whole time:	   1.6390000s
+[Tue Oct 8 22:58:59 2019 Tue][info] Multipole Expansion for unit time:	   0.8840000s
+[Tue Oct 8 22:59:31 2019 Tue][info] Near-Matrix Setting by TFS Time is:	25.74s
+[Tue Oct 8 22:59:31 2019 Tue][info] Set RightHand
+[Tue Oct 8 22:59:31 2019 Tue][info] Solve Matrix
+[Tue Oct 8 23:03:14 2019 Tue][info] Run CalculateRequest(int =0)
+[Tue Oct 8 23:04:36 2019 Tue][info] Release the memory
+[Tue Oct 8 23:04:36 2019 Tue][debug] Release BasicFunction
+[Tue Oct 8 23:04:36 2019 Tue][debug] Release Request
+[Tue Oct 8 23:04:36 2019 Tue][debug] Release Source
+[Tue Oct 8 23:04:36 2019 Tue][info] --------------------------------------END---------------------------------------
+
+[Tue Oct 8 23:07:03 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 23:07:03 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 23:07:04 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 23:07:04 2019 Tue][info] Pre-compute the SelfTriangle Impedance
+[Tue Oct 8 23:07:04 2019 Tue][info] Initial Solver
+[Tue Oct 8 23:07:04 2019 Tue][info] Generate Impedance
+[Tue Oct 8 23:07:04 2019 Tue][info] Call CalculatedMissionCentre(requestonly = false)
+[Tue Oct 8 23:07:04 2019 Tue][info] Call MatrixSolving(currentIndex=0)
+[Tue Oct 8 23:07:04 2019 Tue][info] Pre-compute the SelfTriangle Impedance
+[Tue Oct 8 23:07:05 2019 Tue][info] Initial Solver
+[Tue Oct 8 23:07:05 2019 Tue][info] Generate Impedance
+[Tue Oct 8 23:07:05 2019 Tue][info] Take the Array AIM
+[Tue Oct 8 23:07:07 2019 Tue][info] Multipole Expansion costs whole time:	   1.7690000s
+[Tue Oct 8 23:07:07 2019 Tue][info] Multipole Expansion for unit time:	   0.9630000s
+[Tue Oct 8 23:07:41 2019 Tue][info] Near-Matrix Setting by TFS Time is:	26.92s
+[Tue Oct 8 23:07:41 2019 Tue][info] Set RightHand
+[Tue Oct 8 23:07:41 2019 Tue][info] Solve Matrix
+[Tue Oct 8 23:10:59 2019 Tue][info] Release SOlver and ImpService
+[Tue Oct 8 23:10:59 2019 Tue][info] End MatrixSolving(currentIndex=0)
+[Tue Oct 8 23:10:59 2019 Tue][info] Run CalculateRequest(int =0)
+[Tue Oct 8 23:11:59 2019 Tue][info] End CalculatedMissionCentre(requestonly = false)
+[Tue Oct 8 23:11:59 2019 Tue][info] Release the memory
+[Tue Oct 8 23:11:59 2019 Tue][debug] Release BasicFunction
+[Tue Oct 8 23:11:59 2019 Tue][debug] Release Request
+[Tue Oct 8 23:11:59 2019 Tue][debug] Release Source
+[Tue Oct 8 23:11:59 2019 Tue][info] --------------------------------------END---------------------------------------
+
+[Tue Oct 8 23:20:57 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 23:20:57 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 23:20:57 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 23:20:57 2019 Tue][info] Pre-compute the SelfTriangle Impedance
+[Tue Oct 8 23:20:57 2019 Tue][info] Initial Solver
+[Tue Oct 8 23:20:57 2019 Tue][info] Generate Impedance
+[Tue Oct 8 23:20:57 2019 Tue][info] Call CalculatedMissionCentre(requestonly = false)
+[Tue Oct 8 23:20:57 2019 Tue][info] Call MatrixSolving(currentIndex=0)
+[Tue Oct 8 23:20:57 2019 Tue][info] Pre-compute the SelfTriangle Impedance
+[Tue Oct 8 23:20:58 2019 Tue][info] Initial Solver
+[Tue Oct 8 23:20:58 2019 Tue][info] Generate Impedance
+[Tue Oct 8 23:20:58 2019 Tue][info] Take the Array AIM
+[Tue Oct 8 23:21:00 2019 Tue][info] Multipole Expansion costs whole time:	   1.6870000s
+[Tue Oct 8 23:21:00 2019 Tue][info] Multipole Expansion for unit time:	   0.8900000s
+[Tue Oct 8 23:21:33 2019 Tue][info] Near-Matrix Setting by TFS Time is:	26.359s
+[Tue Oct 8 23:21:33 2019 Tue][info] Set RightHand
+[Tue Oct 8 23:21:33 2019 Tue][info] Solve Matrix
+[Tue Oct 8 23:25:02 2019 Tue][info] Release SOlver and ImpService
+[Tue Oct 8 23:25:02 2019 Tue][info] End MatrixSolving(currentIndex=0)
+[Tue Oct 8 23:25:02 2019 Tue][info] Run CalculateRequest(int =0)
+[Tue Oct 8 23:25:03 2019 Tue][info] End CalculatedMissionCentre(requestonly = false)
+[Tue Oct 8 23:34:34 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 23:34:34 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 23:34:34 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 23:34:34 2019 Tue][info] Pre-compute the SelfTriangle Impedance
+[Tue Oct 8 23:34:35 2019 Tue][info] Initial Solver
+[Tue Oct 8 23:34:35 2019 Tue][info] Generate Impedance
+[Tue Oct 8 23:34:45 2019 Tue][info] Call CalculatedMissionCentre(requestonly = false)
+[Tue Oct 8 23:34:45 2019 Tue][info] Call MatrixSolving(currentIndex=0)
+[Tue Oct 8 23:34:45 2019 Tue][info] Pre-compute the SelfTriangle Impedance
+[Tue Oct 8 23:34:45 2019 Tue][info] Initial Solver
+[Tue Oct 8 23:34:45 2019 Tue][info] Generate Impedance
+[Tue Oct 8 23:34:45 2019 Tue][info] Take the Array AIM
+[Tue Oct 8 23:34:47 2019 Tue][info] Multipole Expansion costs whole time:	   1.7140000s
+[Tue Oct 8 23:34:47 2019 Tue][info] Multipole Expansion for unit time:	   0.9210000s
+[Tue Oct 8 23:35:23 2019 Tue][info] Near-Matrix Setting by TFS Time is:	27.754s
+[Tue Oct 8 23:35:23 2019 Tue][info] Set RightHand
+[Tue Oct 8 23:35:23 2019 Tue][info] Solve Matrix
+[Tue Oct 8 23:39:03 2019 Tue][info] Release SOlver and ImpService
+[Tue Oct 8 23:39:03 2019 Tue][info] End MatrixSolving(currentIndex=0)
+[Tue Oct 8 23:39:03 2019 Tue][info] Run CalculateRequest(int =0)
+[Tue Oct 8 23:40:20 2019 Tue][info] End CalculatedMissionCentre(requestonly = false)
+[Tue Oct 8 23:41:07 2019 Tue][info] Release the memory
+[Tue Oct 8 23:41:07 2019 Tue][debug] Release BasicFunction
+[Tue Oct 8 23:41:07 2019 Tue][debug] Release Request
+[Tue Oct 8 23:41:07 2019 Tue][debug] Release Source
+[Tue Oct 8 23:41:07 2019 Tue][info] --------------------------------------END---------------------------------------
+
+[Tue Oct 8 23:44:07 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 23:44:07 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 23:44:07 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 23:44:07 2019 Tue][info] Pre-compute the SelfTriangle Impedance
+[Tue Oct 8 23:44:08 2019 Tue][info] Initial Solver
+[Tue Oct 8 23:44:08 2019 Tue][info] Generate Impedance
+[Tue Oct 8 23:44:08 2019 Tue][info] Call CalculatedMissionCentre(requestonly = false)
+[Tue Oct 8 23:44:08 2019 Tue][info] Call MatrixSolving(currentIndex=0)
+[Tue Oct 8 23:44:08 2019 Tue][info] Pre-compute the SelfTriangle Impedance
+[Tue Oct 8 23:44:08 2019 Tue][info] Initial Solver
+[Tue Oct 8 23:44:08 2019 Tue][info] Generate Impedance
+[Tue Oct 8 23:44:08 2019 Tue][info] Take the Array AIM
+[Tue Oct 8 23:44:10 2019 Tue][info] Multipole Expansion costs whole time:	   1.5860000s
+[Tue Oct 8 23:44:10 2019 Tue][info] Multipole Expansion for unit time:	   0.8430000s
+[Tue Oct 8 23:44:43 2019 Tue][info] Near-Matrix Setting by TFS Time is:	25.952s
+[Tue Oct 8 23:44:43 2019 Tue][info] Set RightHand
+[Tue Oct 8 23:48:10 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 23:48:10 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 23:48:10 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 23:48:10 2019 Tue][info] Pre-compute the SelfTriangle Impedance
+[Tue Oct 8 23:48:11 2019 Tue][info] Initial Solver
+[Tue Oct 8 23:48:11 2019 Tue][info] Generate Impedance
+[Tue Oct 8 23:48:11 2019 Tue][info] Call CalculatedMissionCentre(requestonly = false)
+[Tue Oct 8 23:48:11 2019 Tue][info] Call MatrixSolving(currentIndex=0)
+[Tue Oct 8 23:48:11 2019 Tue][info] Pre-compute the SelfTriangle Impedance
+[Tue Oct 8 23:48:12 2019 Tue][info] Initial Solver
+[Tue Oct 8 23:48:12 2019 Tue][info] Generate Impedance
+[Tue Oct 8 23:51:06 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 23:51:06 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 23:51:06 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 23:51:06 2019 Tue][info] Pre-compute the SelfTriangle Impedance
+[Tue Oct 8 23:51:07 2019 Tue][info] Initial Solver
+[Tue Oct 8 23:51:07 2019 Tue][info] Generate Impedance
+[Tue Oct 8 23:53:51 2019 Tue][info] Call ParseConfiguratoinFile()
+[Tue Oct 8 23:55:09 2019 Tue][info] Call CreatMesh()
+[Tue Oct 8 23:55:09 2019 Tue][info] Call SetGreenFunction()
+[Tue Oct 8 23:55:09 2019 Tue][info] Pre-compute the SelfTriangle Impedance
+[Tue Oct 8 23:55:09 2019 Tue][info] Initial Solver
+[Tue Oct 8 23:55:09 2019 Tue][info] Generate Impedance
+[Wed Oct 9 00:00:03 2019 Wed][info] Call ParseConfiguratoinFile()
+[Wed Oct 9 00:00:29 2019 Wed][info] Call CreatMesh()
+[Wed Oct 9 00:00:29 2019 Wed][info] Call SetGreenFunction()
+[Wed Oct 9 00:00:29 2019 Wed][info] Pre-compute the SelfTriangle Impedance
+[Wed Oct 9 00:00:30 2019 Wed][info] Initial Solver
+[Wed Oct 9 00:00:30 2019 Wed][info] Generate Impedance
+[Wed Oct 9 00:07:22 2019 Wed][info] Call ParseConfiguratoinFile()
+[Wed Oct 9 00:07:32 2019 Wed][info] Call CreatMesh()
+[Wed Oct 9 00:07:32 2019 Wed][info] Call SetGreenFunction()
+[Wed Oct 9 00:07:45 2019 Wed][info] Call CalculatedMissionCentre(requestonly = false)
+[Wed Oct 9 00:07:45 2019 Wed][info] Call MatrixSolving(currentIndex=0)
+[Wed Oct 9 00:07:45 2019 Wed][info] Pre-compute the SelfTriangle Impedance
+[Wed Oct 9 00:07:46 2019 Wed][info] Initial Solver
+[Wed Oct 9 00:07:46 2019 Wed][info] Generate Impedance
+[Wed Oct 9 00:07:46 2019 Wed][info] Take the Array AIM
+[Wed Oct 9 00:07:48 2019 Wed][info] Multipole Expansion costs whole time:	   1.6930000s
+[Wed Oct 9 00:07:48 2019 Wed][info] Multipole Expansion for unit time:	   0.9180000s
+[Wed Oct 9 00:08:21 2019 Wed][info] Near-Matrix Setting by TFS Time is:	26.45s
+[Wed Oct 9 00:08:21 2019 Wed][info] Set RightHand
+[Wed Oct 9 00:08:21 2019 Wed][info] Solve Matrix
+[Wed Oct 9 00:11:47 2019 Wed][info] Release SOlver and ImpService
+[Wed Oct 9 00:11:47 2019 Wed][info] End MatrixSolving(currentIndex=0)
+[Wed Oct 9 00:11:47 2019 Wed][info] Run CalculateRequest(int =0)
+[Wed Oct 9 00:12:53 2019 Wed][info] End CalculatedMissionCentre(requestonly = false)
+[Wed Oct 9 00:12:54 2019 Wed][info] Release the memory
+[Wed Oct 9 00:12:54 2019 Wed][debug] Release BasicFunction
+[Wed Oct 9 00:12:54 2019 Wed][debug] Release Request
+[Wed Oct 9 00:12:54 2019 Wed][debug] Release Source
+[Wed Oct 9 00:12:54 2019 Wed][info] --------------------------------------END---------------------------------------
+
+[Wed Oct 9 16:10:32 2019 Wed][info] Call ParseConfiguratoinFile()
+[Wed Oct 9 16:10:32 2019 Wed][info] Call CreatMesh()
+[Wed Oct 9 16:10:33 2019 Wed][info] Call SetGreenFunction()
+[Wed Oct 9 16:10:33 2019 Wed][info] Pre-compute the SelfTriangle Impedance
+[Wed Oct 9 16:10:33 2019 Wed][info] Initial Solver
+[Wed Oct 9 16:10:33 2019 Wed][info] Generate Impedance
+[Wed Oct 9 16:10:33 2019 Wed][info] Take the Array AIM
+[Wed Oct 9 16:10:35 2019 Wed][info] Multipole Expansion costs whole time:	   1.6920000s
+[Wed Oct 9 16:10:35 2019 Wed][info] Multipole Expansion for unit time:	   0.9450000s
+[Wed Oct 9 16:11:08 2019 Wed][info] Near-Matrix Setting by TFS Time is:	26.692s
+[Wed Oct 9 16:11:08 2019 Wed][info] Set RightHand
+[Wed Oct 9 16:11:08 2019 Wed][info] Solve Matrix
+[Wed Oct 9 16:14:46 2019 Wed][info] Run CalculateRequest(int =0)
+[Wed Oct 9 16:15:50 2019 Wed][info] Release the memory
+[Wed Oct 9 16:15:50 2019 Wed][debug] Release BasicFunction
+[Wed Oct 9 16:15:50 2019 Wed][debug] Release Request
+[Wed Oct 9 16:15:50 2019 Wed][debug] Release Source
+[Wed Oct 9 16:15:50 2019 Wed][info] --------------------------------------END---------------------------------------
+
+[Wed Oct 9 16:17:30 2019 Wed][info] Call ParseConfiguratoinFile()
+[Wed Oct 9 16:17:30 2019 Wed][info] Call CreatMesh()
+[Wed Oct 9 16:17:30 2019 Wed][info] Call SetGreenFunction()
+[Wed Oct 9 16:18:08 2019 Wed][info] Call ParseConfiguratoinFile()
+[Wed Oct 9 16:18:12 2019 Wed][info] Call CreatMesh()
+[Wed Oct 9 16:18:12 2019 Wed][info] Call SetGreenFunction()
+[Wed Oct 9 16:18:36 2019 Wed][info] Call CalculatedMissionCentre(requestonly = true)
+[Wed Oct 9 16:18:36 2019 Wed][info] Run CalculateRequest(int =0)
+[Wed Oct 9 16:19:47 2019 Wed][info] End CalculatedMissionCentre(requestonly = true)
+[Wed Oct 9 16:19:58 2019 Wed][info] Release the memory
+[Wed Oct 9 16:19:58 2019 Wed][debug] Release BasicFunction
+[Wed Oct 9 16:19:58 2019 Wed][debug] Release Request
+[Wed Oct 9 16:19:58 2019 Wed][debug] Release Source
+[Wed Oct 9 16:19:58 2019 Wed][info] --------------------------------------END---------------------------------------
+
+[Wed Oct 9 16:24:39 2019 Wed][info] Call ParseConfiguratoinFile()
+[Wed Oct 9 16:24:39 2019 Wed][info] Call CreatMesh()
+[Wed Oct 9 16:24:39 2019 Wed][info] Call SetGreenFunction()
+[Wed Oct 9 16:24:39 2019 Wed][info] Release the memory
+[Wed Oct 9 16:24:39 2019 Wed][debug] Release BasicFunction
+[Wed Oct 9 16:24:39 2019 Wed][debug] Release Request
+[Wed Oct 9 16:24:39 2019 Wed][debug] Release Source
+[Wed Oct 9 16:24:39 2019 Wed][info] --------------------------------------END---------------------------------------
+
+[Wed Oct 9 17:27:28 2019 Wed][info] Call ParseConfiguratoinFile()
+[Wed Oct 9 17:27:32 2019 Wed][info] Call CreatMesh()
+[Wed Oct 9 17:27:32 2019 Wed][info] Call SetGreenFunction()
+[Wed Oct 9 17:27:53 2019 Wed][info] Call CalculatedMissionCentre(requestonly = true)
+[Wed Oct 9 17:27:53 2019 Wed][info] Run CalculateRequest(int =0)
+[Wed Oct 9 17:29:02 2019 Wed][info] End CalculatedMissionCentre(requestonly = true)
+[Wed Oct 9 17:29:02 2019 Wed][info] Release the memory
+[Wed Oct 9 17:29:02 2019 Wed][debug] Release BasicFunction
+[Wed Oct 9 17:29:02 2019 Wed][debug] Release Request
+[Wed Oct 9 17:29:02 2019 Wed][debug] Release Source
+[Wed Oct 9 17:29:02 2019 Wed][info] --------------------------------------END---------------------------------------
+
+[Wed Oct 9 17:34:52 2019 Wed][info] Call ParseConfiguratoinFile()
+[Wed Oct 9 17:34:52 2019 Wed][info] Call CreatMesh()
+[Wed Oct 9 17:34:52 2019 Wed][info] Call SetGreenFunction()
+[Wed Oct 9 17:34:52 2019 Wed][info] Pre-compute the SelfTriangle Impedance
+[Wed Oct 9 17:34:53 2019 Wed][info] Initial Solver
+[Wed Oct 9 17:34:53 2019 Wed][info] Generate Impedance
+[Wed Oct 9 17:34:53 2019 Wed][info] Take the Array AIM
+[Wed Oct 9 17:34:54 2019 Wed][info] Multipole Expansion costs whole time:	   1.7700000s
+[Wed Oct 9 17:34:54 2019 Wed][info] Multipole Expansion for unit time:	   0.9690000s
+[Wed Oct 9 17:35:26 2019 Wed][info] Near-Matrix Setting by TFS Time is:	24.947s
+[Wed Oct 9 17:35:26 2019 Wed][info] Set RightHand
+[Wed Oct 9 17:35:26 2019 Wed][info] Solve Matrix
+[Wed Oct 9 17:38:38 2019 Wed][info] Run CalculateRequest(int =0)
+[Wed Oct 9 17:39:33 2019 Wed][info] Release the memory
+[Wed Oct 9 17:39:33 2019 Wed][debug] Release BasicFunction
+[Wed Oct 9 17:39:33 2019 Wed][debug] Release Request
+[Wed Oct 9 17:39:33 2019 Wed][debug] Release Source
+[Wed Oct 9 17:39:33 2019 Wed][info] --------------------------------------END---------------------------------------
+
+[Wed Oct 9 17:43:36 2019 Wed][info] Call ParseConfiguratoinFile()
+[Wed Oct 9 17:43:36 2019 Wed][info] Call CreatMesh()
+[Wed Oct 9 17:43:36 2019 Wed][info] Call SetGreenFunction()
+[Wed Oct 9 17:43:36 2019 Wed][info] Call CalculatedMissionCentre(requestonly = false)
+[Wed Oct 9 17:43:36 2019 Wed][info] Call MatrixSolving(currentIndex=0)
+[Wed Oct 9 17:43:36 2019 Wed][info] Pre-compute the SelfTriangle Impedance
+[Wed Oct 9 17:43:37 2019 Wed][info] Initial Solver
+[Wed Oct 9 17:43:37 2019 Wed][info] Generate Impedance
+[Wed Oct 9 17:43:37 2019 Wed][info] Take the Array AIM
+[Wed Oct 9 17:43:39 2019 Wed][info] Multipole Expansion costs whole time:	   1.6820000s
+[Wed Oct 9 17:43:39 2019 Wed][info] Multipole Expansion for unit time:	   0.9380000s
+[Wed Oct 9 17:44:11 2019 Wed][info] Near-Matrix Setting by TFS Time is:	25.549s
+[Wed Oct 9 17:44:11 2019 Wed][info] Set RightHand
+[Wed Oct 9 17:44:11 2019 Wed][info] Solve Matrix
+[Wed Oct 9 17:47:36 2019 Wed][info] Release SOlver and ImpService
+[Wed Oct 9 17:47:36 2019 Wed][info] End MatrixSolving(currentIndex=0)
+[Wed Oct 9 17:47:36 2019 Wed][info] Run CalculateRequest(int =0)
+[Wed Oct 9 17:48:37 2019 Wed][info] End CalculatedMissionCentre(requestonly = false)
+[Wed Oct 9 17:48:37 2019 Wed][info] Release the memory
+[Wed Oct 9 17:48:37 2019 Wed][debug] Release BasicFunction
+[Wed Oct 9 17:48:37 2019 Wed][debug] Release Request
+[Wed Oct 9 17:48:37 2019 Wed][debug] Release Source
+[Wed Oct 9 17:48:37 2019 Wed][info] --------------------------------------END---------------------------------------
+
+[Wed Oct 9 17:51:33 2019 Wed][info] Call ParseConfiguratoinFile()
+[Wed Oct 9 17:51:52 2019 Wed][info] Call CreatMesh()
+[Wed Oct 9 17:51:53 2019 Wed][info] Call SetGreenFunction()
+[Wed Oct 9 17:52:12 2019 Wed][info] Call CalculatedMissionCentre(requestonly = false)
+[Wed Oct 9 17:52:12 2019 Wed][info] Call MatrixSolving(currentIndex=0)
+[Wed Oct 9 17:52:12 2019 Wed][info] Pre-compute the SelfTriangle Impedance
+[Wed Oct 9 17:52:12 2019 Wed][info] Initial Solver
+[Wed Oct 9 17:52:12 2019 Wed][info] Generate Impedance
+[Wed Oct 9 17:52:12 2019 Wed][info] Take the Array AIM
+[Wed Oct 9 17:52:14 2019 Wed][info] Multipole Expansion costs whole time:	   1.6950000s
+[Wed Oct 9 17:52:14 2019 Wed][info] Multipole Expansion for unit time:	   0.9250000s
+[Wed Oct 9 17:52:48 2019 Wed][info] Near-Matrix Setting by TFS Time is:	26.643s
+[Wed Oct 9 17:52:48 2019 Wed][info] Set RightHand
+[Wed Oct 9 17:52:48 2019 Wed][info] Solve Matrix
+[Wed Oct 9 17:56:20 2019 Wed][info] Release SOlver and ImpService
+[Wed Oct 9 17:56:20 2019 Wed][info] End MatrixSolving(currentIndex=0)
+[Wed Oct 9 17:56:20 2019 Wed][info] Run CalculateRequest(int =0)
+[Wed Oct 9 17:57:46 2019 Wed][info] End CalculatedMissionCentre(requestonly = false)
+[Wed Oct 9 17:57:48 2019 Wed][info] Release the memory
+[Wed Oct 9 17:57:48 2019 Wed][debug] Release BasicFunction
+[Wed Oct 9 17:57:48 2019 Wed][debug] Release Request
+[Wed Oct 9 17:57:48 2019 Wed][debug] Release Source
+[Wed Oct 9 17:57:48 2019 Wed][info] --------------------------------------END---------------------------------------
+
+[Wed Oct 9 18:01:08 2019 Wed][info] Call ParseConfiguratoinFile()
+[Wed Oct 9 18:01:08 2019 Wed][info] Call CreatMesh()
+[Wed Oct 9 18:01:08 2019 Wed][info] Call SetGreenFunction()
+[Wed Oct 9 18:01:08 2019 Wed][info] Call CalculatedMissionCentre(requestonly = false)
+[Wed Oct 9 18:01:08 2019 Wed][info] Call MatrixSolving(currentIndex=0)
+[Wed Oct 9 18:01:08 2019 Wed][info] Pre-compute the SelfTriangle Impedance
+[Wed Oct 9 18:01:09 2019 Wed][info] Initial Solver
+[Wed Oct 9 18:01:09 2019 Wed][info] Generate Impedance
+[Wed Oct 9 18:01:09 2019 Wed][info] Take the Array AIM
+[Wed Oct 9 18:01:11 2019 Wed][info] Multipole Expansion costs whole time:	   1.7850000s
+[Wed Oct 9 18:01:11 2019 Wed][info] Multipole Expansion for unit time:	   0.9800000s
+[Wed Oct 9 18:01:45 2019 Wed][info] Near-Matrix Setting by TFS Time is:	27.111s
+[Wed Oct 9 18:01:45 2019 Wed][info] Set RightHand
+[Wed Oct 9 18:01:45 2019 Wed][info] Solve Matrix
+[Wed Oct 9 18:05:05 2019 Wed][info] Release SOlver and ImpService
+[Wed Oct 9 18:05:05 2019 Wed][info] End MatrixSolving(currentIndex=0)
+[Wed Oct 9 18:05:05 2019 Wed][info] Run CalculateRequest(int =0)
+[Wed Oct 9 18:06:07 2019 Wed][info] End CalculatedMissionCentre(requestonly = false)
+[Wed Oct 9 18:06:07 2019 Wed][info] Release the memory
+[Wed Oct 9 18:06:07 2019 Wed][debug] Release BasicFunction
+[Wed Oct 9 18:06:07 2019 Wed][debug] Release Request
+[Wed Oct 9 18:06:07 2019 Wed][debug] Release Source
+[Wed Oct 9 18:06:07 2019 Wed][info] --------------------------------------END---------------------------------------
+
+[Wed Oct 9 18:09:09 2019 Wed][info] Call ParseConfiguratoinFile()
+[Wed Oct 9 18:09:09 2019 Wed][info] Call CreatMesh()
+[Wed Oct 9 18:09:09 2019 Wed][info] Call SetGreenFunction()
+[Wed Oct 9 18:09:09 2019 Wed][info] Call CalculatedMissionCentre(requestonly = false)
+[Wed Oct 9 18:09:09 2019 Wed][info] Call MatrixSolving(currentIndex=0)
+[Wed Oct 9 18:09:09 2019 Wed][info] Pre-compute the SelfTriangle Impedance
+[Wed Oct 9 18:09:09 2019 Wed][info] Initial Solver
+[Wed Oct 9 18:09:09 2019 Wed][info] Generate Impedance
+[Wed Oct 9 18:09:09 2019 Wed][info] Take the Array AIM
+[Wed Oct 9 18:09:11 2019 Wed][info] Multipole Expansion costs whole time:	   1.7480000s
+[Wed Oct 9 18:09:11 2019 Wed][info] Multipole Expansion for unit time:	   0.9380000s
+[Wed Oct 9 18:09:46 2019 Wed][info] Near-Matrix Setting by TFS Time is:	27.318s
+[Wed Oct 9 18:09:46 2019 Wed][info] Set RightHand
+[Wed Oct 9 18:09:46 2019 Wed][info] Solve Matrix
+[Wed Oct 9 18:13:12 2019 Wed][info] Release SOlver and ImpService
+[Wed Oct 9 18:13:12 2019 Wed][info] End MatrixSolving(currentIndex=0)
+[Wed Oct 9 18:13:12 2019 Wed][info] Run CalculateRequest(int =0)
+[Wed Oct 9 18:14:10 2019 Wed][info] End CalculatedMissionCentre(requestonly = false)
+[Wed Oct 9 18:14:10 2019 Wed][info] Release the memory
+[Wed Oct 9 18:14:10 2019 Wed][debug] Release BasicFunction
+[Wed Oct 9 18:14:10 2019 Wed][debug] Release Request
+[Wed Oct 9 18:14:10 2019 Wed][debug] Release Source
+[Wed Oct 9 18:14:10 2019 Wed][info] --------------------------------------END---------------------------------------
+
+[Wed Oct 9 19:54:55 2019 Wed][info] Call ParseConfiguratoinFile()
+[Wed Oct 9 19:56:22 2019 Wed][info] Call CreatMesh()
+[Wed Oct 9 19:56:22 2019 Wed][info] Call SetGreenFunction()
+[Wed Oct 9 20:06:13 2019 Wed][info] Call ParseConfiguratoinFile()
+[Wed Oct 9 20:06:20 2019 Wed][info] Call CreatMesh()
+[Wed Oct 9 20:06:20 2019 Wed][info] Call SetGreenFunction()
+[Wed Oct 9 20:10:04 2019 Wed][info] Call ParseConfiguratoinFile()
+[Wed Oct 9 20:10:04 2019 Wed][info] Call CreatMesh()
+[Wed Oct 9 20:10:04 2019 Wed][info] Call SetGreenFunction()
+[Wed Oct 9 20:10:04 2019 Wed][info] Call CalculatedMissionCentre(requestonly = false)
+[Wed Oct 9 20:10:04 2019 Wed][info] Call MatrixSolving(currentIndex=0)
+[Wed Oct 9 20:10:04 2019 Wed][info] Pre-compute the SelfTriangle Impedance
+[Wed Oct 9 20:10:04 2019 Wed][info] Initial Solver
+[Wed Oct 9 20:10:04 2019 Wed][info] Generate Impedance
+[Wed Oct 9 20:10:04 2019 Wed][info] Take the Array AIM
+[Wed Oct 9 20:10:06 2019 Wed][info] Multipole Expansion costs whole time:	   1.6390000s
+[Wed Oct 9 20:10:06 2019 Wed][info] Multipole Expansion for unit time:	   0.8810000s
+[Wed Oct 9 20:10:38 2019 Wed][info] Near-Matrix Setting by TFS Time is:	25.593s
+[Wed Oct 9 20:10:38 2019 Wed][info] Set RightHand
+[Wed Oct 9 20:10:39 2019 Wed][info] Solve Matrix
+[Wed Oct 9 20:14:00 2019 Wed][info] Release SOlver and ImpService
+[Wed Oct 9 20:14:00 2019 Wed][info] End MatrixSolving(currentIndex=0)
+[Wed Oct 9 20:14:00 2019 Wed][info] Run CalculateRequest(int =0)
+[Wed Oct 9 20:14:57 2019 Wed][info] End CalculatedMissionCentre(requestonly = false)
+[Wed Oct 9 20:14:57 2019 Wed][info] Release the memory
+[Wed Oct 9 20:14:57 2019 Wed][debug] Release BasicFunction
+[Wed Oct 9 20:14:57 2019 Wed][debug] Release Request
+[Wed Oct 9 20:14:57 2019 Wed][debug] Release Source
+[Wed Oct 9 20:14:57 2019 Wed][info] --------------------------------------END---------------------------------------
+
+[Wed Oct 9 20:17:42 2019 Wed][info] Call ParseConfiguratoinFile()
+[Wed Oct 9 20:17:42 2019 Wed][info] Call CreatMesh()
+[Wed Oct 9 20:17:42 2019 Wed][info] Call SetGreenFunction()
+[Wed Oct 9 20:17:42 2019 Wed][info] Call CalculatedMissionCentre(requestonly = false)
+[Wed Oct 9 20:17:42 2019 Wed][info] Call MatrixSolving(currentIndex=0)
+[Wed Oct 9 20:17:42 2019 Wed][info] Pre-compute the SelfTriangle Impedance
+[Wed Oct 9 20:17:43 2019 Wed][info] Initial Solver
+[Wed Oct 9 20:17:43 2019 Wed][info] Generate Impedance
+[Wed Oct 9 20:17:43 2019 Wed][info] Take the Array AIM
+[Wed Oct 9 20:17:45 2019 Wed][info] Multipole Expansion costs whole time:	   1.7000000s
+[Wed Oct 9 20:17:45 2019 Wed][info] Multipole Expansion for unit time:	   0.9010000s
+[Wed Oct 9 20:18:17 2019 Wed][info] Near-Matrix Setting by TFS Time is:	25.804s
+[Wed Oct 9 20:18:17 2019 Wed][info] Set RightHand
+[Wed Oct 9 20:18:17 2019 Wed][info] Solve Matrix
+[Wed Oct 9 20:21:40 2019 Wed][info] Release SOlver and ImpService
+[Wed Oct 9 20:21:40 2019 Wed][info] End MatrixSolving(currentIndex=0)
+[Wed Oct 9 20:21:40 2019 Wed][info] Run CalculateRequest(int =0)
+[Wed Oct 9 20:22:38 2019 Wed][info] End CalculatedMissionCentre(requestonly = false)
+[Wed Oct 9 20:22:38 2019 Wed][info] Release the memory
+[Wed Oct 9 20:22:38 2019 Wed][debug] Release BasicFunction
+[Wed Oct 9 20:22:38 2019 Wed][debug] Release Request
+[Wed Oct 9 20:22:38 2019 Wed][debug] Release Source
+[Wed Oct 9 20:22:38 2019 Wed][info] --------------------------------------END---------------------------------------
+

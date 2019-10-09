@@ -59,7 +59,7 @@ int Core::InitialSolverAndImpedance()
 			SystemConfig.ImpConfig.zNumber = int(round(delta.z())) + 1;
 
 			SystemConfig.ImpConfig.ArrayLocation.resize(SystemConfig.ImpConfig.ArrayNumX, SystemConfig.ImpConfig.ArrayNumY);
-			SystemConfig.ImpConfig.ArrayLocation.array() = false;
+			SystemConfig.ImpConfig.ArrayLocation.array() = true;
 
 			ComponentList::ImpService = new ImpArrayAIM(&SystemConfig.ImpConfig);
 			break;

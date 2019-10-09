@@ -74,6 +74,7 @@ void ImpArrayAIM::FillImpedance()
 
 	_memory = double(sizeof(dcomplex) * num) / 1048576;
 
+	delete fillingTool;
 	Console->info("There are total {} in GamaMatrix", _gamax.nonZeros()*(_dimension + 1));
 	Console->info("There are total {} in GreenMatrix", _green.size());
 	Console->info("Size of Unit Element:\t{0}", _unitSize);

@@ -17,7 +17,7 @@ int Core::SetRightHand()
 	const clock_t end = clock();
 
 	const double time = double(end - start) / CLOCKS_PER_SEC;
-	const double memory = double(16*ComponentList::BFvector.size()) / 1048576;
+	const double memory = double(16* ComponentList::ImpService->GetExcitation().size()) / 1048576;
 	
 	Console->info("Set RightHand is cost:\t{:f} s", time);
 	ResultLog->info("Set RightHand is cost:\t{:f} s", time);

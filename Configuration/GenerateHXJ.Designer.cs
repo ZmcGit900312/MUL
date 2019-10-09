@@ -84,6 +84,7 @@
             // ValidateButton
             // 
             this.ValidateButton.BackColor = System.Drawing.Color.MistyRose;
+            this.ValidateButton.Enabled = false;
             this.ValidateButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ValidateButton.Location = new System.Drawing.Point(281, 27);
             this.ValidateButton.Margin = new System.Windows.Forms.Padding(4);
@@ -111,6 +112,7 @@
             // LoadButton
             // 
             this.LoadButton.BackColor = System.Drawing.Color.MistyRose;
+            this.LoadButton.Enabled = false;
             this.LoadButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoadButton.Location = new System.Drawing.Point(19, 27);
             this.LoadButton.Margin = new System.Windows.Forms.Padding(4);
@@ -146,6 +148,7 @@
             // FileButton
             // 
             this.FileButton.BackColor = System.Drawing.Color.MistyRose;
+            this.FileButton.Enabled = false;
             this.FileButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FileButton.Location = new System.Drawing.Point(19, 32);
             this.FileButton.Name = "FileButton";
@@ -173,6 +176,7 @@
             // ImpedanceButton
             // 
             this.ImpedanceButton.BackColor = System.Drawing.Color.MistyRose;
+            this.ImpedanceButton.Enabled = false;
             this.ImpedanceButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.ImpedanceButton.Location = new System.Drawing.Point(281, 32);
             this.ImpedanceButton.Name = "ImpedanceButton";
@@ -185,6 +189,7 @@
             // FRButton
             // 
             this.FRButton.BackColor = System.Drawing.Color.MistyRose;
+            this.FRButton.Enabled = false;
             this.FRButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FRButton.Location = new System.Drawing.Point(281, 92);
             this.FRButton.Name = "FRButton";
@@ -197,6 +202,7 @@
             // ExcitationButton
             // 
             this.ExcitationButton.BackColor = System.Drawing.Color.MistyRose;
+            this.ExcitationButton.Enabled = false;
             this.ExcitationButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExcitationButton.Location = new System.Drawing.Point(412, 32);
             this.ExcitationButton.Name = "ExcitationButton";
@@ -209,6 +215,7 @@
             // SolutionButton
             // 
             this.SolutionButton.BackColor = System.Drawing.Color.MistyRose;
+            this.SolutionButton.Enabled = false;
             this.SolutionButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SolutionButton.Location = new System.Drawing.Point(19, 92);
             this.SolutionButton.Name = "SolutionButton";
@@ -221,6 +228,7 @@
             // RequestButton
             // 
             this.RequestButton.BackColor = System.Drawing.Color.MistyRose;
+            this.RequestButton.Enabled = false;
             this.RequestButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RequestButton.Location = new System.Drawing.Point(412, 92);
             this.RequestButton.Name = "RequestButton";
@@ -246,6 +254,7 @@
             // ResultButton
             // 
             this.ResultButton.BackColor = System.Drawing.Color.MistyRose;
+            this.ResultButton.Enabled = false;
             this.ResultButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ResultButton.Location = new System.Drawing.Point(412, 85);
             this.ResultButton.Name = "ResultButton";
@@ -258,6 +267,7 @@
             // BFButton
             // 
             this.BFButton.BackColor = System.Drawing.Color.MistyRose;
+            this.BFButton.Enabled = false;
             this.BFButton.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.BFButton.Location = new System.Drawing.Point(150, 32);
             this.BFButton.Name = "BFButton";
@@ -293,7 +303,7 @@
             this.TestButton.Name = "TestButton";
             this.TestButton.Size = new System.Drawing.Size(125, 50);
             this.TestButton.TabIndex = 41;
-            this.TestButton.Text = "NotUse";
+            this.TestButton.Text = "LoadJson";
             this.TestButton.UseVisualStyleBackColor = false;
             this.TestButton.Click += new System.EventHandler(this.TestButton_Click);
             // 
