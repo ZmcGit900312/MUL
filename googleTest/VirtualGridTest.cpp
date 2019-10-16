@@ -41,13 +41,9 @@ protected:
 
 			ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
 			ASSERT_EQ(0, Core::InitialSolverAndImpedance()) << "Error in Initial the Impedance class";
-
-			cout << "\n";
 			
 			//Random initial
-			srand(static_cast<unsigned>(time(nullptr)));
-			
-
+			srand(static_cast<unsigned>(time(nullptr)));		
 		}
 		catch (spd::spdlog_ex&ex)
 		{

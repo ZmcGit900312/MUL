@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "ISolver.h"
+#include "Log.h"
 #include "IImpedance.h"
+#include "ImpAIM.h"
+#include "AIMArray.h"
+#include "ImpMoM.h"
 #include "IterationSolver.h"
 
 
@@ -18,8 +22,8 @@ Core::Solution::ISolver * Core::Solution::FSolver(SolverConfiguration & config, 
 				case Identity:Console->warn("MoM with Identity is not recommand");
 				default:
 					Console->info("Preconditioning chooses Jacobi");
-					SystemConfig.SolverConfig.Precond = Jacobi;
-				return new BiCGStabMoMJacobi(config);
+					config.Precond = Jacobi;
+					return new BiCGSTABEMC<ImpMoM, DiagonalPreconditioner<dcomplex>>(config);
 			}
 		}
 	}
@@ -30,12 +34,13 @@ Core::Solution::ISolver * Core::Solution::FSolver(SolverConfiguration & config, 
 		{
 		case ILU:
 			Console->info("Preconditioning chooses IncompletLU Decomposition");
-			return new BiCGStabAIMILU(config);
+			return new BiCGSTABEMC<ImpAIM, AIMIncompleteLUT<ImpAIM::Scalar>>(config);
 		case Jacobi:
 			Console->warn("AIM with Jacobi is not Developed and replaced by Identity");
 		default:
+			config.Precond = Identity;
 			Console->info("Preconditioning chooses Identity");
-			return new BiCGStabAIMIdentity(config);
+			return new BiCGSTABEMC<ImpAIM, IdentityPreconditioner>(config);
 		}
 	}
 	
@@ -48,8 +53,9 @@ Core::Solution::ISolver * Core::Solution::FSolver(SolverConfiguration & config, 
 		case Jacobi:
 			Console->warn("ArrayAIMwith Jacobi is not Developed and replaced by Identity");
 		default:
+			config.Precond = Identity;
 			Console->info("Preconditioning chooses Identity");
-			return new BiCGStabArrayIdentity(config);
+			return new BiCGSTABEMC<ImpArrayAIM, IdentityPreconditioner>(config);
 		}
 	}
 

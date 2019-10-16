@@ -1,6 +1,4 @@
 #include "stdafx.h"
-#include "Current.h"
-#include "FarField.h"
 
 #ifdef GTEST
 #include "gtest/gtest.h"
@@ -8,6 +6,7 @@
 #include "CoreAPI.h"
 #include "Const.h"
 #include "Data.h"
+#include "Current.h"
 
 using namespace Core;
 using namespace Eigen;
@@ -61,6 +60,32 @@ protected:
 			equation = nullptr;
 			Console->debug("Release IE");
 		}
+	}
+
+	static void InitialImpConfig()
+	{
+		//Initial Current
+		auto curInfo = Solution::CurrentInfo::GetInstance();
+		curInfo->Reformat(SystemConfig.ImpConfig.ImpType);
+		curInfo->Current.push_back(new Solution::ArrayCurrent(ComponentList::BFvector.size(), 3.0e8, "AIMArrayTest", 16, SystemConfig.ImpConfig.ArrayIntervalX, SystemConfig.ImpConfig.ArrayIntervalY));
+		Solution::ArrayCurrent* ac = static_cast<Solution::ArrayCurrent*>(curInfo->Current.back());
+		ac->EMCParameterUpdate();
+		SystemConfig.ImpConfig.ArrayNumX = 4;
+		SystemConfig.ImpConfig.ArrayNumY = 4;
+		for (int zmcy = 0;zmcy < SystemConfig.ImpConfig.ArrayNumY;zmcy++)
+		{
+			for (int zmcx = 0; zmcx < SystemConfig.ImpConfig.ArrayNumX; ++zmcx)
+			{
+				ac->_arrayLocation.push_back({ zmcx,zmcy });
+			}
+		}
+
+		curInfo->_numberOfConfig = curInfo->Current.size();
+		//Initial IE Impedance and solver
+		equation = IE::FIE(SystemConfig.IEConfig.type);
+
+		ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
+		ASSERT_EQ(0, Core::InitialSolverAndImpedance()) << "Error in Initial the Impedance class";
 	}
 
 	dcomplex GetImpedance(size_t source, size_t field)
@@ -152,19 +177,7 @@ protected:
 
 TEST_F(AIMArrayTest, MultipoleExpansion)
 {
-	//Initial Current
-	auto curInfo = Solution::CurrentInfo::GetInstance();
-	curInfo->Reformat(SystemConfig.ImpConfig.ImpType);
-	curInfo->Current.push_back(new Solution::ArrayCurrent(ComponentList::BFvector.size(), 3.0e8, "AIMArrayTest", 16, SystemConfig.ImpConfig.ArrayIntervalX, SystemConfig.ImpConfig.ArrayIntervalY));
-	Solution::ArrayCurrent* ac = static_cast<Solution::ArrayCurrent*>(curInfo->Current.back());
-	ac->EMCParameterUpdate();
-	SystemConfig.ImpConfig.ArrayLocation.array() = true;
-	curInfo->_numberOfConfig = curInfo->Current.size();
-	//Initial IE Impedance and solver
-	equation = IE::FIE(SystemConfig.IEConfig.type);
-
-	ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
-	ASSERT_EQ(0, Core::InitialSolverAndImpedance()) << "Error in Initial the Impedance class";
+	InitialImpConfig();
 	
 	AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
 	auto& bf = ComponentList::BFvector;
@@ -181,19 +194,7 @@ TEST_F(AIMArrayTest, MultipoleExpansion)
 TEST_F(AIMArrayTest, GenerateGreen)
 {	
 
-	//Initial Current
-	auto curInfo = Solution::CurrentInfo::GetInstance();
-	curInfo->Reformat(SystemConfig.ImpConfig.ImpType);
-	curInfo->Current.push_back(new Solution::ArrayCurrent(ComponentList::BFvector.size(), 3.0e8, "AIMArrayTest", 16, SystemConfig.ImpConfig.ArrayIntervalX, SystemConfig.ImpConfig.ArrayIntervalY));
-	Solution::ArrayCurrent* ac = static_cast<Solution::ArrayCurrent*>(curInfo->Current.back());
-	ac->EMCParameterUpdate();
-	SystemConfig.ImpConfig.ArrayLocation.array() = true;
-	curInfo->_numberOfConfig = curInfo->Current.size();
-	//Initial IE Impedance and solver
-	equation = IE::FIE(SystemConfig.IEConfig.type);
-
-	ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
-	ASSERT_EQ(0, Core::InitialSolverAndImpedance()) << "Error in Initial the Impedance class";
+	InitialImpConfig();
 
 	//Initial AIMArray
 	AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
@@ -290,18 +291,7 @@ TEST_F(AIMArrayTest, GenerateGreen)
 TEST_F(AIMArrayTest, GreenFFT)
 {
 	//Initial Current
-	auto curInfo = Solution::CurrentInfo::GetInstance();
-	curInfo->Reformat(SystemConfig.ImpConfig.ImpType);
-	curInfo->Current.push_back(new Solution::ArrayCurrent(ComponentList::BFvector.size(), 3.0e8, "AIMArrayTest", 16, SystemConfig.ImpConfig.ArrayIntervalX, SystemConfig.ImpConfig.ArrayIntervalY));
-	Solution::ArrayCurrent* ac = static_cast<Solution::ArrayCurrent*>(curInfo->Current.back());
-	ac->EMCParameterUpdate();
-	SystemConfig.ImpConfig.ArrayLocation.array() = true;
-	curInfo->_numberOfConfig = curInfo->Current.size();
-	//Initial IE Impedance and solver
-	equation = IE::FIE(SystemConfig.IEConfig.type);
-
-	ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
-	ASSERT_EQ(0, Core::InitialSolverAndImpedance()) << "Error in Initial the Impedance class";
+	InitialImpConfig();
 
 #pragma region Initial Temporary Parameters
 	VectorXi weight{ VectorXi::Zero(5) }, greenWeightAcu{ weight };
@@ -403,20 +393,8 @@ TEST_F(AIMArrayTest, GreenFFT)
 TEST_F(AIMArrayTest, GetFarFieldApproximateFunction)
 {
 	//Initial Current
-	auto curInfo = Solution::CurrentInfo::GetInstance();
-	curInfo->Reformat(SystemConfig.ImpConfig.ImpType);
-	curInfo->Current.push_back(new Solution::ArrayCurrent(ComponentList::BFvector.size(), 3.0e8, "AIMArrayTest", 16, SystemConfig.ImpConfig.ArrayIntervalX, SystemConfig.ImpConfig.ArrayIntervalY));
-	Solution::ArrayCurrent* ac = static_cast<Solution::ArrayCurrent*>(curInfo->Current.back());
-	ac->EMCParameterUpdate();
-	SystemConfig.ImpConfig.ArrayLocation.array() = true;
-	curInfo->_numberOfConfig = curInfo->Current.size();
-	//Initial IE Impedance and solver
+	InitialImpConfig();
 
-
-	ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
-	ASSERT_EQ(0, Core::InitialSolverAndImpedance()) << "Error in Initial the Impedance class";
-
-	equation = IE::FIE(SystemConfig.IEConfig.type);
 	AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
 	auto& bf = ComponentList::BFvector;
 	fillingTool->_green = IGreen::GetInstance();
@@ -457,20 +435,7 @@ TEST_F(AIMArrayTest, GetFarFieldApproximateFunction)
 TEST_F(AIMArrayTest, Multiplication)
 {
 	//Initial Current
-	auto curInfo = Solution::CurrentInfo::GetInstance();
-	curInfo->Reformat(SystemConfig.ImpConfig.ImpType);
-	curInfo->Current.push_back(new Solution::ArrayCurrent(ComponentList::BFvector.size(), 3.0e8, "AIMArrayTest", 16, SystemConfig.ImpConfig.ArrayIntervalX, SystemConfig.ImpConfig.ArrayIntervalY));
-	Solution::ArrayCurrent* ac = static_cast<Solution::ArrayCurrent*>(curInfo->Current.back());
-	ac->EMCParameterUpdate();
-	SystemConfig.ImpConfig.ArrayLocation.array() = true;
-	curInfo->_numberOfConfig = curInfo->Current.size();
-	//Initial IE Impedance and solver
-
-
-	ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
-	ASSERT_EQ(0, Core::InitialSolverAndImpedance()) << "Error in Initial the Impedance class";
-
-	equation = IE::FIE(SystemConfig.IEConfig.type);
+	InitialImpConfig();
 
 #pragma region Initial Temporary Parameters
 	VectorXi weight{ VectorXi::Zero(5) }, greenWeightAcu{ weight };
@@ -550,20 +515,7 @@ TEST_F(AIMArrayTest, Multiplication)
 TEST_F(AIMArrayTest, Multiplication2)
 {
 	//Initial Current
-	auto curInfo = Solution::CurrentInfo::GetInstance();
-	curInfo->Reformat(SystemConfig.ImpConfig.ImpType);
-	curInfo->Current.push_back(new Solution::ArrayCurrent(ComponentList::BFvector.size(), 3.0e8, "AIMArrayTest", 16, SystemConfig.ImpConfig.ArrayIntervalX, SystemConfig.ImpConfig.ArrayIntervalY));
-	Solution::ArrayCurrent* ac = static_cast<Solution::ArrayCurrent*>(curInfo->Current.back());
-	ac->EMCParameterUpdate();
-	SystemConfig.ImpConfig.ArrayLocation.array() = true;
-	curInfo->_numberOfConfig = curInfo->Current.size();
-	//Initial IE Impedance and solver
-
-
-	ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
-	ASSERT_EQ(0, Core::InitialSolverAndImpedance()) << "Error in Initial the Impedance class";
-
-	equation = IE::FIE(SystemConfig.IEConfig.type);
+	InitialImpConfig();
 
 #pragma region Initial Temporary Parameters
 	VectorXi weight{ VectorXi::Zero(5) }, greenWeightAcu{ weight };
@@ -581,7 +533,6 @@ TEST_F(AIMArrayTest, Multiplication2)
 #pragma endregion 
 
 #pragma region AIMArrayAPI
-	equation = IE::FIE(SystemConfig.IEConfig.type);
 	AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
 	auto& bf = ComponentList::BFvector;
 	ImpArrayAIM* imp = static_cast<ImpArrayAIM*>(ComponentList::ImpService);
@@ -653,20 +604,7 @@ TEST_F(AIMArrayTest, NearFieldFilling)
 	{
 
 		//Initial Current
-		auto curInfo = Solution::CurrentInfo::GetInstance();
-		curInfo->Reformat(SystemConfig.ImpConfig.ImpType);
-		curInfo->Current.push_back(new Solution::ArrayCurrent(ComponentList::BFvector.size(), 3.0e8, "AIMArrayTest", 16, SystemConfig.ImpConfig.ArrayIntervalX, SystemConfig.ImpConfig.ArrayIntervalY));
-		Solution::ArrayCurrent* ac = static_cast<Solution::ArrayCurrent*>(curInfo->Current.back());
-		ac->EMCParameterUpdate();
-		SystemConfig.ImpConfig.ArrayLocation.array() = true;
-		curInfo->_numberOfConfig = curInfo->Current.size();
-		//Initial IE Impedance and solver
-
-
-		ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
-		ASSERT_EQ(0, Core::InitialSolverAndImpedance()) << "Error in Initial the Impedance class";
-
-		equation = IE::FIE(SystemConfig.IEConfig.type);
+		InitialImpConfig();
 		AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
 		auto& bf = ComponentList::BFvector;
 
