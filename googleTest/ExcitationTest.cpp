@@ -152,6 +152,9 @@ TEST_F(ExcitationTest, PlanewaveArray)
 		SystemConfig.ImpConfig.ArrayNumY = 4;
 		SystemConfig.ImpConfig.ArrayIntervalX = 1.5;
 		SystemConfig.ImpConfig.ArrayIntervalY = 1.5;
+		SystemConfig.ImpConfig.NumOfElement = 16;
+		SystemConfig.ImpConfig.ArrayLocation.resize(SystemConfig.ImpConfig.ArrayNumX, SystemConfig.ImpConfig.ArrayNumY);
+		SystemConfig.ImpConfig.ArrayLocation.array() = true;
 		//IE
 		EMCParameterUpdate(3.0e8);
 		equation = IE::FIE(EFIE);

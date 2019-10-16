@@ -30,7 +30,35 @@ Core::Source::Planewave::Planewave(std::string name, unsigned thn, unsigned phn,
 
 VectorXcd Core::Source::PlaneWaveLinear::SetExcitation(const vector<IBasisFunction*>& bfVector, ImpConfiguration& impconfig) const
 {
+	VectorXcd rightHandBase= SetElementExcitation(bfVector, Vector3d::Zero());
+	//Patch Method
 	if(impconfig.ImpType==Core::Array)
+	{
+		size_t elementUnknowns = impconfig.ImpSize;
+		VectorXcd righthand{ impconfig.NumOfElement *elementUnknowns };
+		righthand.setZero();
+
+		size_t zmc = 0;
+		for (int zmcy = 0; zmcy < impconfig.ArrayNumY; ++zmcy)
+		{
+			for (int zmcx = 0; zmcx < impconfig.ArrayNumX; ++zmcx)
+			{
+				if(impconfig.ArrayLocation(zmcx,zmcy))
+				{
+					Vector3d bias{ zmcx*impconfig.ArrayIntervalX,zmcy*impconfig.ArrayIntervalY,0 };
+					dcomplex patch = exp(-1i*k*bias.dot(Ki));
+					righthand.segment(elementUnknowns*zmc++, elementUnknowns) =rightHandBase*patch;
+				}
+				
+			}
+		}
+		return righthand;
+	}
+	else return rightHandBase;
+
+
+
+	/*if(impconfig.ImpType==Core::Array)
 	{
 		size_t elementUnknowns = impconfig.ImpSize;
 		int arrayX = impconfig.ArrayNumX, arrayY = impconfig.ArrayNumY;
@@ -39,9 +67,9 @@ VectorXcd Core::Source::PlaneWaveLinear::SetExcitation(const vector<IBasisFuncti
 		righthand.setZero();
 
 		size_t zmc = 0;
-		for (int zmcy = 0; zmcy < SystemConfig.ImpConfig.ArrayNumY; ++zmcy)
+		for (int zmcy = 0; zmcy < impconfig.ArrayNumY; ++zmcy)
 		{
-			for (int zmcx = 0; zmcx < SystemConfig.ImpConfig.ArrayNumX; ++zmcx)
+			for (int zmcx = 0; zmcx < impconfig.ArrayNumX; ++zmcx)
 			{
 				Vector3d bias{ zmcx*impconfig.ArrayIntervalX,zmcy*impconfig.ArrayIntervalY,0 };
 				righthand.segment(elementUnknowns*zmc++,elementUnknowns) = 
@@ -53,7 +81,7 @@ VectorXcd Core::Source::PlaneWaveLinear::SetExcitation(const vector<IBasisFuncti
 	else
 	{
 		return SetElementExcitation(bfVector, Vector3d::Zero());
-	}
+	}*/
 
 }
 
@@ -61,6 +89,7 @@ VectorXcd Core::Source::PlaneWaveLinear::SetElementExcitation(
 	const vector<IBasisFunction*>& bfVector, Vector3d bias) const
 {
 	VectorXcd righthand{ bfVector.size() };
+	righthand.setZero();
 	size_t zmc = 0;
 	auto ty = equation->GetType();
 

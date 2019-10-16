@@ -21,7 +21,7 @@ int Core::MatrixSolving(int currentIndex)
 		status+=Core::PreCalculateSelfTriangleImpedance();
 
 		//Initial Solver And Matrix
-		status += Core::InitialSolverAndImpedance();
+		status += Core::InitialSolverAndImpedance(currentIndex);
 		//Filling
 		status += Core::FillImpedance();		
 

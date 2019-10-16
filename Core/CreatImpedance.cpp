@@ -6,8 +6,9 @@
 #include "ModalGeometry.h"
 #include "ResultReport.h"
 #include "ImpArrayAIM.h"
+#include "Current.h"
 
-int Core::InitialSolverAndImpedance()
+int Core::InitialSolverAndImpedance(int currentIndex)
 {
 	
 	cout << "\n";
@@ -58,8 +59,17 @@ int Core::InitialSolverAndImpedance()
 			SystemConfig.ImpConfig.yNumber = int(round(delta.y())) + 1;
 			SystemConfig.ImpConfig.zNumber = int(round(delta.z())) + 1;
 
+			//Initial ArrayLocation for sparse
+
 			SystemConfig.ImpConfig.ArrayLocation.resize(SystemConfig.ImpConfig.ArrayNumX, SystemConfig.ImpConfig.ArrayNumY);
-			SystemConfig.ImpConfig.ArrayLocation.array() = true;
+			SystemConfig.ImpConfig.ArrayLocation.array() = false;
+			for(Vector2i loc:static_cast<Solution::ArrayCurrent*>
+				(Solution::CurrentInfo::GetInstance()->Current[currentIndex])->_arrayLocation)
+			{
+				SystemConfig.ImpConfig.ArrayLocation(loc.x(), loc.y()) = true;
+			}
+			SystemConfig.ImpConfig.NumOfElement = 
+				Solution::CurrentInfo::GetInstance()->Current[currentIndex]->_numberOfElement;
 
 			ComponentList::ImpService = new ImpArrayAIM(&SystemConfig.ImpConfig);
 			break;

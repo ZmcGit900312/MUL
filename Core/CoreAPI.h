@@ -83,7 +83,7 @@ namespace Core
 	* \brief Initial the Solver and Impedance Matrix，有MoM和AIM可选
 	* \return 0 Success
 	*/
-	int InitialSolverAndImpedance();
+	int InitialSolverAndImpedance(int currentIndex = 0);
 	/**
 	* \brief Set Excitation: Only have plane wave
 	* \return 0 Success

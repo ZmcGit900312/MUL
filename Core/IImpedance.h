@@ -20,6 +20,7 @@ namespace Core
 		int Dimension=3;
 		int xNumber, yNumber, zNumber;
 		int ArrayNumX = 6, ArrayNumY = 7;
+		int NumOfElement = 1;
 		double ArrayIntervalX= 0.47, ArrayIntervalY = 0.43;
 		double Threshold=0.3,Interval=0.05;
 		double NearCorrectionEps = 1.0e-3;
