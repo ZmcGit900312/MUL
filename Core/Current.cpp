@@ -71,14 +71,14 @@ void ArrayCurrent::ReadBinary(ifstream & ifs)
 	}
 }
 
-dcomplex ArrayCurrent::GetCurrent(size_t id, int x, int y) const
-{
-	for (int i = 0; i < _numberOfElement; ++i)
-	{
-		if (_arrayLocation[i].x() == x && _arrayLocation[i].y()==y)return _data[id + i * _elementUnknowns];
-	}
-	return dcomplex(0);
-}
+//dcomplex ArrayCurrent::GetCurrent(size_t id, int x, int y) const
+//{
+//	for (int i = 0; i < _numberOfElement; ++i)
+//	{
+//		if (_arrayLocation[i].x() == x && _arrayLocation[i].y()==y)return _data[id + i * _elementUnknowns];
+//	}
+//	return dcomplex(0);
+//}
 
 ElementCurrent::ElementCurrent(size_t unknowns, double fre, string tag):
 Tag(tag),_unknowns(unknowns),_frequency(fre)

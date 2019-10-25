@@ -296,7 +296,7 @@ TEST_F(RequestTest, FarFieldArrayTest)
 				newTimeCost += double(newEnd - newStart) / CLOCKS_PER_SEC;
 
 				clock_t oldStart = clock();
-				Vector3cd efieldRef(post.EFieldBenchMark(theta*M_PI_180, phi*M_PI_180, CurrentBenchMark,current));
+				Vector3cd efieldRef(post.EFieldBenchMark(theta*M_PI_180, phi*M_PI_180, current));
 				clock_t oldEnd = clock();
 				oldTimeCost += double(oldEnd - oldStart) / CLOCKS_PER_SEC;
 

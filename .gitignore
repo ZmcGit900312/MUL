@@ -27,9 +27,6 @@
 /include/Eigen
 /include/unsupported
 
-/MulSecond.ldb
-/MulSecond.EAP
-
 /SourceData/*
 
 /tinyxml2/x64

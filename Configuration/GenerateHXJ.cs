@@ -151,6 +151,7 @@ namespace Configuration
         private void RunButton_Click(object sender, EventArgs e)
         {
             RunButton.Enabled = false;
+            PostButton.Enabled = false;
             using (Process p = new Process())
             {
                 string command = CoreFullname + " " + ConfigurationFullName;
@@ -175,9 +176,10 @@ namespace Configuration
         private void PostButton_Click(object sender, EventArgs e)
         {
             PostButton.Enabled = false;
+            RunButton.Enabled = false;
             using (Process p = new Process())
             {
-                string command = CoreFullname + " " + ConfigurationFullName+" P";
+                string command = CoreFullname + " " + ConfigurationFullName+" -readonly";
                 Generate_BatFile(command);
 
                 p.StartInfo.FileName = BatDir;
@@ -273,6 +275,7 @@ namespace Configuration
                 InformationText.AppendText("Load json File:\n" + configFileDialog.FileName + "\n");
                 ConfigurationFullName = configFileDialog.FileName;
                 RunButton.Enabled = true;
+                PostButton.Enabled = true;
                 InformationText.Text = @"Load json Successfully!";
                 LoadButton.BackColor = Color.MistyRose;
             }

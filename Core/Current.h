@@ -58,7 +58,10 @@ namespace Core
 
 			void ReadBinary(ifstream &ifs)override;
 			
-			dcomplex GetCurrent(size_t id, int x, int y)const;
+			dcomplex GetCurrent(size_t id, size_t elementId)const
+			{
+				return elementId < _elementUnknowns ? _data[id + elementId * _elementUnknowns] : dcomplex{ 0 };
+			}
 			
 		};
 		

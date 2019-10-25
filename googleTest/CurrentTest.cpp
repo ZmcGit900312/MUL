@@ -243,20 +243,19 @@ TEST_F(CurrentTest, ArrayCurrentTest)
 				ASSERT_LT(abs(current2->_arrayBiasX - bx) / bx, 1.0e-8);
 				ASSERT_LT(abs(current2->_arrayBiasY - by) / by, 1.0e-8);
 
-				
-				for (int zmcy = 0; zmcy < SystemConfig.ImpConfig.ArrayNumY; ++zmcy)
+				for (int eleId = 0;eleId < current1->_numberOfElement;++eleId)
 				{
-					for (int zmcx = 0; zmcx < SystemConfig.ImpConfig.ArrayNumX; ++zmcx)
+					for (auto zmc = 0; zmc < elementUnknowns; ++zmc)
 					{
-						for (auto zmc = 0; zmc < elementUnknowns; ++zmc)
-						{
-							EXPECT_LT(norm(current1->GetCurrent(zmc,zmcx,zmcy) - CurrentBenchMark[zmc]) / norm(CurrentBenchMark[zmc]), 1.0e-7);
-							if (arrayConfig(zmcx, zmcy))
-							{
-								EXPECT_LT(norm(current2->GetCurrent(zmc, zmcx, zmcy) - CurrentBenchMark[zmc]) / norm(CurrentBenchMark[zmc]), 1.0e-7);
-							}
-						}
-						
+						EXPECT_LT(norm(current1->GetCurrent(zmc, eleId) - CurrentBenchMark[zmc]) / norm(CurrentBenchMark[zmc]), 1.0e-7);
+					}
+				}
+
+				for (int eleId = 0;eleId < current2->_numberOfElement;++eleId)
+				{
+					for (auto zmc = 0; zmc < elementUnknowns; ++zmc)
+					{
+						EXPECT_LT(norm(current2->GetCurrent(zmc, eleId) - CurrentBenchMark[zmc]) / norm(CurrentBenchMark[zmc]), 1.0e-7);
 					}
 				}
 				

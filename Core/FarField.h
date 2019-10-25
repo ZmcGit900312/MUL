@@ -50,9 +50,9 @@ namespace Core
 			 */
 			Vector3cd EFieldBenchMark(const double theta, const double phi,VectorXcd& current)const;
 			//Array
-			Vector3cd EFieldBenchMark(const double theta, const double phi, 
-				VectorXcd& current,Solution::ArrayCurrent* ac)const;
+			Vector3cd EFieldBenchMark(const double theta, const double phi, Solution::ArrayCurrent* ac)const;
 			
+			Vector3cd EFieldArrayFactor(const double theta, const double phi, Solution::ArrayCurrent* ac)const;
 			static void SaveRCS(ofstream&ofs, FarFieldConfiguration& config,int zmc);
 
 			/**
