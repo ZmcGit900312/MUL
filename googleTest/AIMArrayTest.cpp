@@ -596,6 +596,96 @@ TEST_F(AIMArrayTest, Multiplication2)
 
 	delete fillingTool;
 }
+
+//The reference is generate by AIM
+TEST_F(AIMArrayTest, Multiplication3)
+{
+	//Initial Current
+	InitialImpConfig();
+
+#pragma region Initial Temporary Parameters
+	VectorXi weight{ VectorXi::Zero(5) }, greenWeightAcu{ weight };
+	weight << SystemConfig.ImpConfig.xNumber,
+		SystemConfig.ImpConfig.yNumber,
+		SystemConfig.ImpConfig.zNumber,
+		SystemConfig.ImpConfig.ArrayNumX,
+		SystemConfig.ImpConfig.ArrayNumY;
+	VectorXi greenWeight = 2 * weight.array() - 1;
+	greenWeightAcu(0) = 1;
+	for (int i = 1;i < greenWeightAcu.size();i++)
+	{
+		greenWeightAcu(i) = greenWeight.head(i).prod();
+	}
+#pragma endregion 
+
+#pragma region AIMArrayAPI
+	AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
+	auto& bf = ComponentList::BFvector;
+	ImpArrayAIM* imp = static_cast<ImpArrayAIM*>(ComponentList::ImpService);
+
+	//Multipole	
+	fillingTool->MultipoleExpansion(bf);
+
+	//Get Green UnFFT
+	char* path = "E:/ZMC/Code/C_program/MUL/SourceData/ArrayGreen.dat";
+	fillingTool->_green = IGreen::GetInstance();
+
+	bool readflag = true;
+	imp->GetGreen() = GetGreenBase(path, fillingTool, readflag);
+
+	//5-dimension FFT VERY IMPORTANT
+	MKL_LONG layer[5] = { greenWeight[4] ,greenWeight[3], greenWeight[2] ,greenWeight[1], greenWeight[0] };
+	imp->_fftTools = new MulFFTMultiplicator;
+	imp->_fftTools->Reset(5, layer);
+	imp->_fftTools->fwd(imp->GetGreen());//FFT
+
+	size_t unknowns = SystemConfig.ImpConfig.ArrayNumX*SystemConfig.ImpConfig.ArrayNumX*SystemConfig.ImpConfig.ImpSize;
+
+#pragma endregion 
+
+	Console->info("Test Multiplication of AIMARRAY:");
+	const int caseNumber = 8;
+
+	dcomplex ref[caseNumber] = { 
+		{ 7.024342841097068e-4 ,4.86778088171797493e-4 } ,
+		{ -0.00198523818259815 , 0.0001943953480662 } ,
+		{ -2.835549495623030e-4 , 8.776372358514541e-4 },
+		{ 1.800335213199756210e-4, -1.987342215550e-5 },
+		{- 0.000261240097484, - 0.000014773865777},
+		{-0.00058854624654025155, 0.00088312561335019844},
+		{0.00000326365681676402099, 0.00024518681434900944},
+		{0.000265717449299 ,0.000076798402286663676}
+	};
+	Vector2i loc[caseNumber]= {{18,123},{647,22},{38,123},{17,653},
+	{29,713},{192,441},{238,561},{408,916}};
+	Vector3i ArrayBias[caseNumber] = { { 0,2,0 } ,{ 1,1,0 } ,{ 2,2,0 } ,{ 1,2,0 },
+	{3,3,0},{0,3,0},{2,3,0},{1,3,0}};
+
+
+	for(int id=0;id<caseNumber;id++)
+	{
+		Vector3i arrayBias{ ArrayBias[id] };
+		int row = loc[id].x(), unitCol = loc[id].y();
+		int col = unitCol + SystemConfig.ImpConfig.ImpSize*(arrayBias.x() + SystemConfig.ImpConfig.ArrayNumX*arrayBias.y());
+		Console->info("Case\t{0}:\tUnit({1},{2})\tImp({3},{4})\tArrayBias({5},{6})",
+			id+1, row, unitCol, row, col, arrayBias.x(), arrayBias.y());
+
+		VectorXcd I1{ VectorXcd::Zero(unknowns) }, I2{ I1 };
+		I1(row) = 1;
+		I2(col) = 1;
+
+		VectorXcd Res1 = imp->FarFieldMultiplication(I1);
+		VectorXcd Res2 = imp->FarFieldMultiplication(I2);
+		dcomplex compZ = Res1(col), compZs = Res2(row);
+		Console->debug("Ref=({0},{1})", ref[id].real(), ref[id].imag());
+		Console->debug("Res=({0},{1})", compZ.real(), compZ.imag());
+		Console->debug("Sym=({0},{1})", compZs.real(), compZs.imag());
+		EXPECT_LT(norm(ref[id] - compZ) / norm(ref[id]), 1.0e-2) << ' ';
+	}
+	
+
+	delete fillingTool;
+}
 #endif
 
 TEST_F(AIMArrayTest, NearFieldFilling)

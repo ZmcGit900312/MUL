@@ -39,6 +39,7 @@ namespace Core
 		int _numXArray, _numYArray;
 		double _distanceBiasX, _distanceBiasY;
 		size_t _totalUnknowns;
+		Matrix<bool, Dynamic, Dynamic> _loc;
 
 		VectorXi _layerGreenSize{ 5,1 };
 		/**

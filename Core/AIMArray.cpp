@@ -21,7 +21,8 @@ _imp(static_cast<ImpArrayAIM*>(impedance))
 	_numYArray = configuration.ArrayNumY;
 	_distanceBiasX = configuration.ArrayIntervalX;
 	_distanceBiasY = configuration.ArrayIntervalY;
-	_totalUnknowns = _numXArray * _numYArray*_unknowns;
+	_totalUnknowns = configuration.NumOfElement *_unknowns;
+	_loc = configuration.ArrayLocation;
 
 	//Layer Size
 	_layerGreenSize.head(3)= 2 * _layerNum.array() - 1;
@@ -84,17 +85,28 @@ void Core::AIMArray::MultipoleExpansion(vector<IBasisFunction*>& bf)
 		{
 			//Push
 			auto const pos = temp.index[j].w();
+			int zmc = 0;//Used for Sparisity
 			for(int unitY=0;unitY<_numYArray;unitY++)
 			{
 				for(int unitX=0;unitX<_numXArray;unitX++)
 				{
 					//Use MatrixLocations for Sparisity
-					size_t cols = _unknowns * (unitX+unitY* _numXArray)+i;
+					if(_loc(unitX,unitY))
+					{
+						size_t cols = i+_unknowns * zmc++;
+						size_t rows = pos + unitY * _layerGreenSizeAcu[3] + unitX * _layerGreenSizeAcu[2];
+						tripletsGamaX.push_back(T(rows, cols, temp.gamax(j)));
+						tripletsGamaY.push_back(T(rows, cols, temp.gamay(j)));
+						tripletsGamaZ.push_back(T(rows, cols, temp.gamaz(j)));
+						tripletsGamaD.push_back(T(rows, cols, temp.gamad(j)));
+					}
+					
+					/*size_t cols = _unknowns * (unitX+unitY* _numXArray)+i;
 					size_t rows = pos + unitY * _layerGreenSizeAcu[3] + unitX * _layerGreenSizeAcu[2];
 					tripletsGamaX.push_back(T(rows, cols, temp.gamax(j)));
 					tripletsGamaY.push_back(T(rows, cols, temp.gamay(j)));
 					tripletsGamaZ.push_back(T(rows, cols, temp.gamaz(j)));
-					tripletsGamaD.push_back(T(rows, cols, temp.gamad(j)));
+					tripletsGamaD.push_back(T(rows, cols, temp.gamad(j)));*/
 				}
 			}
 			
