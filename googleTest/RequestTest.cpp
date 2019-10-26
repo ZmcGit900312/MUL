@@ -113,7 +113,7 @@ public:
 
 VectorXcd RequestTest::CurrentBenchMark;
 
-TEST_F(RequestTest, BenchMarkTest)
+TEST_F(RequestTest, BenchMark)
 {
 	
 	EMCParameterUpdate(3.0e8);
@@ -150,7 +150,7 @@ TEST_F(RequestTest, BenchMarkTest)
 
 }
 
-TEST_F(RequestTest, FarFieldTest)
+TEST_F(RequestTest, FarField)
 {
 	try
 	{
@@ -221,7 +221,7 @@ TEST_F(RequestTest, FarFieldTest)
 	}
 }
 
-TEST_F(RequestTest, FarFieldArrayTest)
+TEST_F(RequestTest, FarFieldArray)
 {
 	try
 	{
@@ -280,7 +280,7 @@ TEST_F(RequestTest, FarFieldArrayTest)
 		Request::FarField post(&ComponentList::BFvector, Mesh::GetInstance(), info);
 		const double coef = post.Coef;
 		const int thetaNum = 181, phiNum = 1;
-		double newTimeCost = 0.0, oldTimeCost = 0.0;
+		double newTimeCost = 0.0, oldTimeCost = 0.0,dipoleTimeCost=0.0;
 
 		for (int ph = 0; ph < phiNum; ++ph)
 		{
@@ -295,20 +295,27 @@ TEST_F(RequestTest, FarFieldArrayTest)
 				clock_t newEnd = clock();
 				newTimeCost += double(newEnd - newStart) / CLOCKS_PER_SEC;
 
+				clock_t dipoleStart = clock();
+				Vector3cd dipoleEfield(post.EFieldDipole(theta*M_PI_180, phi*M_PI_180, current));
+				clock_t dipoleEnd = clock();
+				dipoleTimeCost += double(dipoleEnd - dipoleStart) / CLOCKS_PER_SEC;
+
 				clock_t oldStart = clock();
 				Vector3cd efieldRef(post.EFieldBenchMark(theta*M_PI_180, phi*M_PI_180, current));
 				clock_t oldEnd = clock();
 				oldTimeCost += double(oldEnd - oldStart) / CLOCKS_PER_SEC;
 
 				EXPECT_NEAR(efieldRef.norm(), efield.norm(), 1.0e-5) << "error in FarField Request (th,phi)=" << theta << phi;
-				Console->debug("({0},{1}) = {2:12.7e} m^2,{3:12.7e} m^2", theta, phi,
-					coef * efieldRef.squaredNorm(), coef * efield.squaredNorm());
+				Console->debug("({0},{1}): Ref = {2:12.7e} m^2, Gauss = {3:12.7e} m^2, Dipole = {4:12.7e} m^2", 
+					theta, phi,coef * efieldRef.squaredNorm(),
+					coef * efield.squaredNorm(),coef*dipoleEfield.squaredNorm());
 				
 			}
 		}
 
 		Console->info("New method of FarField Calculate cost {}s", newTimeCost);
 		Console->info("Old method of FarField Calculate cost {}s", oldTimeCost);
+		Console->info("Dipole of FarField Calculate cost {}s", dipoleTimeCost);
 	}
 	catch (spd::spdlog_ex& message)
 	{
@@ -316,6 +323,81 @@ TEST_F(RequestTest, FarFieldArrayTest)
 		FAIL();
 	}
 	
+}
+
+
+TEST_F(RequestTest, DipoleMoment)
+{
+	try
+	{
+#pragma region GenerateCurrent
+		//Current Initial
+		auto Cinfo = Solution::CurrentInfo::GetInstance();
+		auto* bf = &ComponentList::BFvector;
+		size_t unknowns = ComponentList::BFvector.size();
+		string tag = "ElementCurrent";
+
+		Solution::ElementCurrent* current = new Solution::ElementCurrent(unknowns, Frequency, tag);
+
+		Console->debug("Generate the current from bf...");
+
+		for (size_t zmc = 0;zmc < CurrentBenchMark.size();zmc++)
+			current->_data.push_back(CurrentBenchMark[zmc]);
+
+		Cinfo->Reformat(AIM);
+		Cinfo->_numberOfConfig = 1;
+		Cinfo->Current.push_back(current);
+
+		current->EMCParameterUpdate();
+		equation = IE::FIE(EFIE);
+
+#pragma endregion
+
+		//Request Part
+		Request::FarField post(bf, Mesh::GetInstance(), Cinfo);
+		const double coef = post.Coef;
+		const int thetaNum = 181, phiNum = 1;
+		double newTimeCost = 0.0, oldTimeCost = 0.0;
+
+		Console->debug("Vertical RCS Node={0}*{1}={2}", thetaNum, phiNum, thetaNum*phiNum);
+
+		for (int ph = 0; ph < phiNum; ++ph)
+		{
+			for (int th = 0;th < thetaNum; ++th)
+			{
+				const double theta = (0 + th * 1)*M_PI_180;
+				const double phi = (0 + ph * 1)*M_PI_180;
+
+				clock_t newStart = clock();
+				// µ¥Ôª·øÉä³¡
+
+				Vector3cd efield = post.EFieldDipole(theta, phi, current);
+
+				clock_t newEnd = clock();
+				newTimeCost += double(newEnd - newStart) / CLOCKS_PER_SEC;
+
+				clock_t oldStart = clock();
+				Vector3cd efieldRef(post.EFieldBenchMark(theta, phi, CurrentBenchMark));
+				clock_t oldEnd = clock();
+				oldTimeCost += double(oldEnd - oldStart) / CLOCKS_PER_SEC;
+
+				EXPECT_NEAR(efieldRef.norm(), efield.norm(), 1.0e-5) << "error in FarField Request (th,phi)=" << th << ph;
+				//cout << "Ref:\t" << efieldRef.transpose() << '\n' << "Cal:\t" << efield.transpose() << endl;
+				Console->debug("({0},{1}) in Ref={2:12.7e} m^2,Test={3:12.7e} m^2", th, ph,
+					coef * efieldRef.squaredNorm(), coef * efield.squaredNorm());
+
+			}
+		}
+
+
+		Console->info("Dipole moment of FarField Calculate cost {}s", newTimeCost);
+		Console->info("Old method of FarField Calculate cost {}s", oldTimeCost);
+	}
+	catch (spd::spdlog_ex& message)
+	{
+		Assist::LogException(message);
+		FAIL();
+	}
 }
 
 TEST_F(RequestTest, RCSGetTest)

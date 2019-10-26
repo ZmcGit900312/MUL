@@ -17623,3 +17623,110 @@
 [Sat Oct 26 00:02:15 2019 Sat][debug] Release Source
 [Sat Oct 26 00:02:15 2019 Sat][info] --------------------------------------END---------------------------------------
 
+[Sat Oct 26 15:39:31 2019 Sat][info] Call ParseConfiguratoinFile()
+[Sat Oct 26 15:39:31 2019 Sat][info] Call CreatMesh()
+[Sat Oct 26 15:39:31 2019 Sat][info] Call SetGreenFunction()
+[Sat Oct 26 15:45:05 2019 Sat][info] Call ParseConfiguratoinFile()
+[Sat Oct 26 15:45:05 2019 Sat][info] Call CreatMesh()
+[Sat Oct 26 15:45:05 2019 Sat][info] Call SetGreenFunction()
+[Sat Oct 26 15:51:12 2019 Sat][info] Call ParseConfiguratoinFile()
+[Sat Oct 26 15:51:12 2019 Sat][info] Call CreatMesh()
+[Sat Oct 26 15:51:12 2019 Sat][info] Call SetGreenFunction()
+[Sat Oct 26 16:31:12 2019 Sat][info] Call ParseConfiguratoinFile()
+[Sat Oct 26 16:31:12 2019 Sat][info] Call CreatMesh()
+[Sat Oct 26 16:31:12 2019 Sat][info] Call SetGreenFunction()
+[Sat Oct 26 16:35:08 2019 Sat][info] Call ParseConfiguratoinFile()
+[Sat Oct 26 16:35:08 2019 Sat][info] Call CreatMesh()
+[Sat Oct 26 16:35:08 2019 Sat][info] Call SetGreenFunction()
+[Sat Oct 26 16:45:53 2019 Sat][info] Call ParseConfiguratoinFile()
+[Sat Oct 26 16:45:53 2019 Sat][info] Call CreatMesh()
+[Sat Oct 26 16:45:53 2019 Sat][info] Call SetGreenFunction()
+[Sat Oct 26 16:49:18 2019 Sat][info] Call ParseConfiguratoinFile()
+[Sat Oct 26 16:49:18 2019 Sat][info] Call CreatMesh()
+[Sat Oct 26 16:49:18 2019 Sat][info] Call SetGreenFunction()
+[Sat Oct 26 16:49:37 2019 Sat][info] Release the memory
+[Sat Oct 26 16:49:37 2019 Sat][debug] Release BasicFunction
+[Sat Oct 26 16:49:37 2019 Sat][debug] Release Request
+[Sat Oct 26 16:49:37 2019 Sat][debug] Release Source
+[Sat Oct 26 16:49:37 2019 Sat][info] --------------------------------------END---------------------------------------
+
+[Sat Oct 26 16:51:36 2019 Sat][info] Call ParseConfiguratoinFile()
+[Sat Oct 26 16:51:36 2019 Sat][info] Call CreatMesh()
+[Sat Oct 26 16:51:36 2019 Sat][info] Call SetGreenFunction()
+[Sat Oct 26 16:51:57 2019 Sat][info] Release the memory
+[Sat Oct 26 16:51:57 2019 Sat][debug] Release BasicFunction
+[Sat Oct 26 16:51:57 2019 Sat][debug] Release Request
+[Sat Oct 26 16:51:57 2019 Sat][debug] Release Source
+[Sat Oct 26 16:51:57 2019 Sat][info] --------------------------------------END---------------------------------------
+
+[Sat Oct 26 16:53:32 2019 Sat][info] Call ParseConfiguratoinFile()
+[Sat Oct 26 16:53:32 2019 Sat][info] Call CreatMesh()
+[Sat Oct 26 16:53:32 2019 Sat][info] Call SetGreenFunction()
+[Sat Oct 26 16:53:52 2019 Sat][info] Release the memory
+[Sat Oct 26 16:53:52 2019 Sat][debug] Release BasicFunction
+[Sat Oct 26 16:53:52 2019 Sat][debug] Release Request
+[Sat Oct 26 16:53:52 2019 Sat][debug] Release Source
+[Sat Oct 26 16:53:52 2019 Sat][info] --------------------------------------END---------------------------------------
+
+[Sat Oct 26 16:55:02 2019 Sat][info] Call ParseConfiguratoinFile()
+[Sat Oct 26 16:55:03 2019 Sat][info] Call CreatMesh()
+[Sat Oct 26 16:55:03 2019 Sat][info] Call SetGreenFunction()
+[Sat Oct 26 17:00:38 2019 Sat][info] Call ParseConfiguratoinFile()
+[Sat Oct 26 17:00:38 2019 Sat][info] Call CreatMesh()
+[Sat Oct 26 17:00:38 2019 Sat][info] Call SetGreenFunction()
+[Sat Oct 26 17:02:07 2019 Sat][info] Call ParseConfiguratoinFile()
+[Sat Oct 26 17:02:07 2019 Sat][info] Call CreatMesh()
+[Sat Oct 26 17:02:07 2019 Sat][info] Call SetGreenFunction()
+[Sat Oct 26 17:06:27 2019 Sat][info] Release the memory
+[Sat Oct 26 17:06:27 2019 Sat][debug] Release BasicFunction
+[Sat Oct 26 17:06:27 2019 Sat][debug] Release Request
+[Sat Oct 26 17:06:27 2019 Sat][debug] Release Source
+[Sat Oct 26 17:06:27 2019 Sat][info] --------------------------------------END---------------------------------------
+
+[Sat Oct 26 17:25:26 2019 Sat][info] Call ParseConfiguratoinFile()
+[Sat Oct 26 17:25:26 2019 Sat][info] Call CreatMesh()
+[Sat Oct 26 17:25:26 2019 Sat][info] Call SetGreenFunction()
+[Sat Oct 26 17:25:46 2019 Sat][info] Release the memory
+[Sat Oct 26 17:25:46 2019 Sat][debug] Release BasicFunction
+[Sat Oct 26 17:25:46 2019 Sat][debug] Release Request
+[Sat Oct 26 17:25:46 2019 Sat][debug] Release Source
+[Sat Oct 26 17:25:46 2019 Sat][info] --------------------------------------END---------------------------------------
+
+[Sat Oct 26 17:33:41 2019 Sat][info] Call ParseConfiguratoinFile()
+[Sat Oct 26 17:33:41 2019 Sat][info] Call CreatMesh()
+[Sat Oct 26 17:33:42 2019 Sat][info] Call SetGreenFunction()
+[Sat Oct 26 17:33:42 2019 Sat][info] Call CalculatedMissionCentre(requestonly = true)
+[Sat Oct 26 17:33:42 2019 Sat][info] Run CalculateRequest(int =0)
+[Sat Oct 26 17:34:01 2019 Sat][info] Run CalculateRequest(int =1)
+[Sat Oct 26 17:34:20 2019 Sat][info] Run CalculateRequest(int =2)
+[Sat Oct 26 17:34:38 2019 Sat][info] End CalculatedMissionCentre(requestonly = true)
+[Sat Oct 26 17:34:39 2019 Sat][info] Release the memory
+[Sat Oct 26 17:34:39 2019 Sat][debug] Release BasicFunction
+[Sat Oct 26 17:34:39 2019 Sat][debug] Release Request
+[Sat Oct 26 17:34:39 2019 Sat][debug] Release Source
+[Sat Oct 26 17:34:39 2019 Sat][info] --------------------------------------END---------------------------------------
+
+[Sat Oct 26 17:38:15 2019 Sat][info] Call ParseConfiguratoinFile()
+[Sat Oct 26 17:38:15 2019 Sat][info] Call CreatMesh()
+[Sat Oct 26 17:38:15 2019 Sat][info] Call SetGreenFunction()
+[Sat Oct 26 17:38:15 2019 Sat][info] Call CalculatedMissionCentre(requestonly = false)
+[Sat Oct 26 17:38:15 2019 Sat][info] Call MatrixSolving(currentIndex=0)
+[Sat Oct 26 17:38:15 2019 Sat][info] Pre-compute the SelfTriangle Impedance
+[Sat Oct 26 17:38:16 2019 Sat][info] Initial Solver
+[Sat Oct 26 17:38:16 2019 Sat][info] Generate Impedance
+[Sat Oct 26 17:38:16 2019 Sat][info] Take the Array AIM
+[Sat Oct 26 17:38:18 2019 Sat][info] Multipole Expansion costs whole time:	   1.9150000s
+[Sat Oct 26 17:38:18 2019 Sat][info] Multipole Expansion for unit time:	   0.9450000s
+[Sat Oct 26 17:38:52 2019 Sat][info] Near-Matrix Setting by TFS Time is:	26.698s
+[Sat Oct 26 17:38:52 2019 Sat][info] Set RightHand
+[Sat Oct 26 17:38:52 2019 Sat][info] Solve Matrix
+[Sat Oct 26 17:42:05 2019 Sat][info] Release SOlver and ImpService
+[Sat Oct 26 17:42:05 2019 Sat][info] End MatrixSolving(currentIndex=0)
+[Sat Oct 26 17:42:05 2019 Sat][info] Run CalculateRequest(int =0)
+[Sat Oct 26 17:42:27 2019 Sat][info] End CalculatedMissionCentre(requestonly = false)
+[Sat Oct 26 17:42:27 2019 Sat][info] Release the memory
+[Sat Oct 26 17:42:27 2019 Sat][debug] Release BasicFunction
+[Sat Oct 26 17:42:27 2019 Sat][debug] Release Request
+[Sat Oct 26 17:42:27 2019 Sat][debug] Release Source
+[Sat Oct 26 17:42:27 2019 Sat][info] --------------------------------------END---------------------------------------
+

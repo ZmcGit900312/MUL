@@ -714,6 +714,7 @@ TEST_F(AIMArrayTest, Solving)
 {
 	try
 	{
+#pragma region Initial Current
 		auto curInfo = Solution::CurrentInfo::GetInstance();
 		ASSERT_EQ(0, Core::SetCurrent());
 		Console->info("{0:*^40}","OLD Current");
@@ -740,81 +741,9 @@ TEST_F(AIMArrayTest, Solving)
 			
 			
 		}
-
-		
-#pragma region Initial Current
-		
-		//curInfo->Reformat(SystemConfig.ImpConfig.ImpType);
-		//curInfo->Current.push_back(new Solution::ArrayCurrent(ComponentList::BFvector.size(), 3.0e8, "AIMArrayTest", 2, SystemConfig.ImpConfig.ArrayIntervalX, SystemConfig.ImpConfig.ArrayIntervalY));
-		//Solution::ArrayCurrent* cu = static_cast<Solution::ArrayCurrent*>(curInfo->Current.back());
-		//
-		//
-		////SystemConfig.ImpConfig.ArrayLocation.array() = true;
-		//curInfo->_numberOfConfig = curInfo->Current.size();
-
-		//
-		//cu->_arrayLocation.clear();
-		//for (int rowx = 0;rowx < SystemConfig.ImpConfig.ArrayNumX;rowx++)
-		//{
-		//	for (int coly = 0;coly < SystemConfig.ImpConfig.ArrayNumY;coly++)
-		//	{
-		//		cu->_arrayLocation.push_back({ rowx,coly });
-		//	}
-		//}
-		//Console->info("Size of ArrayLocation={0}", cu->_arrayLocation.size());
-		//
-		//Console->info("{0:*^40}", "New Current");
-		//Console->info("Category:\t{0}", curInfo->category);
-		//Console->info("NumOfConfig:\t{0}", curInfo->_numberOfConfig);
-		//Console->info("Size of Current:\t{0}", curInfo->Current.size());
-		//for (auto val : curInfo->Current)
-		//{
-		//	auto current = static_cast<Solution::ArrayCurrent*>(val);
-		//	Console->info("{0:-^30}", current->Tag);
-		//	Console->info("Frequency:\t{0}", current->_frequency);
-		//	Console->info("NumOfElements:\t{0}", current->_numberOfElement);
-		//	Console->info("ElementUnknowns:\t{0}", current->_elementUnknowns);
-		//	Console->info("TotalUnknowns:\t{0}", current->_unknowns);
-		//	Console->info("ArrayIntervalX:\t{0}", current->_arrayBiasX);
-		//	Console->info("ArrayIntervalY:\t{0}", current->_arrayBiasY);
-		//	Console->info("DataSize:\t{0}", current->_data.size());
-		//	Console->info("DataCapacity:\t{0}", current->_data.capacity());
-		//	Console->info("{0:&^20}", "ARRAYLOCATION");
-		//	for (Vector2i loc : current->_arrayLocation)
-		//	{
-		//		Console->info("Location:\t({0},{1})", loc.x(), loc.y());
-		//	}
-
-
-		//}
 #pragma endregion 
 		
 		ASSERT_EQ(0, Core::CalculatedMissionCentre());
-
-		//cu->EMCParameterUpdate();
-		//equation = IE::FIE(SystemConfig.IEConfig.type);
-		//
-		//ASSERT_EQ(0, Core::PreCalculateSelfTriangleImpedance()) << "Error in Pre-compute the SelfTriangle Impedance";
-		//ASSERT_EQ(0, Core::InitialSolverAndImpedance()) << "Error in Initial the Impedance class";
-
-		//ComponentList::ImpService->FillImpedance();
-
-		/////*AIMArray* fillingTool = new AIMArray(SystemConfig.ImpConfig, ComponentList::ImpService, SystemConfig.IEConfig);
-		////auto& bf = ComponentList::BFvector;
-		////fillingTool->MultipoleExpansion(bf);	
-		////fillingTool->GreenMatrixSet(IGreen::GetInstance());	
-		////fillingTool->TriangleFillingStrategy(*Mesh::GetInstance(), ComponentList::BFvector);
-		////delete fillingTool;*/
-
-		//ASSERT_EQ(0, Core::SetRightHand()) << "Error in Set RightHand";
-		//auto info = Core::Solve();
-		//ASSERT_EQ(0, info) << "Error in Solve Matrix with BicgStab";
-		//
-
-		//Request::FarField::RCS.resize(
-		//	Solution::CurrentInfo::GetInstance()->_numberOfConfig, SystemConfig.PostConfig.size());
-		//ASSERT_EQ(0, CalculateRequest(0));
-
 		ASSERT_EQ(0, Core::SaveResults()) << "Error in Save Results";
 		
 	}

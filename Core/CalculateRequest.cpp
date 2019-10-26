@@ -87,7 +87,7 @@ int Core::CalculateRequest(int row)
 		
 			ResultReport::WriteRequestInformation(&value, Console);
 			ResultReport::WriteRequestInformation(&value, ResultLog);
-			post.CalculateRCS(value, row,col);//添加FarField类对于单一Current支持，结果保存在RCS
+			post.CalculateDipoleRCS(value, row,col);//结果保存在RCS
 		}
 		const clock_t end = clock();
 		double timecost = double(end - start) / CLOCKS_PER_SEC;

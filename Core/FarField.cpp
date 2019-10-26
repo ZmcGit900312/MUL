@@ -152,7 +152,7 @@ void Core::Request::FarField::CalculateRCS(FarFieldConfiguration & config, int r
 			{
 					Vector3cd temp{ EField(Theta(th)*M_PI_180, Phi(ph)*M_PI_180,
 						static_cast<Solution::ArrayCurrent*>(_current->Current[row])) };
-					/*Vector3cd temp{ EFieldArrayFactor(Theta(th)*M_PI_180, Phi(ph)*M_PI_180,
+					/*Vector3cd temp{ EFieldDipole(Theta(th)*M_PI_180, Phi(ph)*M_PI_180,
 							static_cast<Solution::ArrayCurrent*>(_current->Current[row])) };*/
 					rcs(th, ph) = Coef * temp.squaredNorm();
 					cout << "Progress:" << setw(10) << (th*phiNum + ph + 1) / Sum << "%\r";
@@ -173,6 +173,36 @@ void Core::Request::FarField::CalculateRCS(FarFieldConfiguration & config, int r
 		}
 	}
 
+	RCS(row, col) = rcs;
+}
+
+void Core::Request::FarField::CalculateDipoleRCS(FarFieldConfiguration & config, int row, int col) const
+{
+	const int thetaNum = config.ThetaNum;
+	const int phiNum = config.PhiNum;
+	const double thetaS = config.ThetaStart;
+	const double phiS = config.PhiStart;
+	const double thetaI = config.ThetaIncrement;
+	const double phiI = config.PhiIncrement;
+	const double Sum = 0.01*thetaNum * phiNum;
+
+	VectorXd Theta{ VectorXd::LinSpaced(thetaNum,thetaS,thetaS + thetaI * (thetaNum - 1)) };
+	VectorXd Phi{ VectorXd::LinSpaced(phiNum,phiS,phiS + phiI * (phiNum - 1)) };
+
+	MatrixXd rcs{ thetaNum, phiNum };
+	//Update Const
+	for (int th = 0; th < thetaNum; ++th)
+	{
+		for (int ph = 0; ph < phiNum; ++ph)
+		{
+			Vector3cd temp = _current->category == Core::Array ?
+				EFieldDipole(Theta(th)*M_PI_180, Phi(ph)*M_PI_180,
+						static_cast<Solution::ArrayCurrent*>(_current->Current[row])) :
+				EFieldDipole(Theta(th)*M_PI_180, Phi(ph)*M_PI_180,_current->Current[row]);
+			rcs(th, ph) = Coef * temp.squaredNorm();
+			cout << "Progress:" << setw(10) << (th*phiNum + ph + 1) / Sum << "%\r";
+		}
+	}
 	RCS(row, col) = rcs;
 }
 
@@ -240,6 +270,30 @@ Vector3cd Core::Request::FarField::EField(const double theta, const double phi, 
 		efield += subEfield;
 	}
 
+	return efield;
+}
+
+Vector3cd Core::Request::FarField::EFieldDipole(const double theta, const double phi, Solution::ElementCurrent * sol) const
+{
+	const Vector3d ob(Radius*cos(phi)*sin(theta), Radius*sin(phi)*sin(theta), Radius*cos(theta));
+
+	Vector3cd efield{ 0,0,0 };
+
+	for (auto bf = _bf->begin(), ed = _bf->end(); bf != ed; ++bf)
+	{
+		//计算单元因子
+		auto zmc = static_cast<RWG*>(*bf);
+		RWGTriangle* tplus = zmc->TrianglePlus();
+		RWGTriangle* tminus = zmc->TriangleMinus();
+
+		const Vector3d dipoleCenter = 0.5*(tminus->Centre() + tplus->Centre());
+		const Vector3d dipoleMoment = zmc->Length()*(tminus->Centre() - tplus->Centre());
+
+		Vector3cd E0 = DipoleEfiled(ob, dipoleMoment, dipoleCenter, eta0, k);
+
+		//叠加电场
+		efield += E0 * sol->GetCurrent(zmc->GetID());
+	}
 	return efield;
 }
 
@@ -312,44 +366,61 @@ Vector3cd Core::Request::FarField::EFieldBenchMark(const double theta, const dou
 	return efield;
 }
 
-Vector3cd Core::Request::FarField::EFieldArrayFactor(const double theta, const double phi, Solution::ArrayCurrent * sol) const
+Vector3cd Core::Request::FarField::EFieldDipole(const double theta, const double phi, Solution::ArrayCurrent * sol) const
 {
 	const Vector3d ob(Radius*cos(phi)*sin(theta), Radius*sin(phi)*sin(theta), Radius*cos(theta));
+	
 	Vector3cd efield{ 0,0,0 };
-	auto _green = IGreen::GetInstance();
 
 	for (auto bf = _bf->begin(), ed = _bf->end(); bf != ed; ++bf)
 	{
 		//计算单元因子
 		auto zmc = static_cast<RWG*>(*bf);
-		const short K = 4;
 		RWGTriangle* tplus = zmc->TrianglePlus();
 		RWGTriangle* tminus = zmc->TriangleMinus();
-		Vector3cd E0{ 0,0,0 };
-		for (int i = 0; i < K; ++i)
-		{//Source Triangle
-			Vector3d pt1 = tplus->Quad4()[i], pt2 = tminus->Quad4()[i];
-			Vector3cd eplus = -1i*Omega*Mu*_green->Scalar(pt1, ob)*zmc->CurrentPlus(pt1) +
-				1i / (Omega*Epsilon)*zmc->ChargePlus(pt1)*_green->Gradient(pt1, ob);
-			Vector3cd eminus = -1i*Omega*Mu*_green->Scalar(pt2, ob)*zmc->CurrentMinus(pt2) +
-				1i / (Omega*Epsilon)*zmc->ChargeMinus(pt2)*_green->Gradient(pt2, ob);
-			E0 += W4[i] * eplus* tplus->Area() + W4[i] * eminus* tminus->Area();
-		}
 
-		//计算阵因子
-		dcomplex af(0);
-		for (int eleId = 0;eleId < sol->_numberOfElement;++eleId)
-		{
-			auto loc = sol->_arrayLocation[eleId];
-			Vector3d Rb{ loc.x()*sol->_arrayBiasX,loc.y()*sol->_arrayBiasY,0 };
+		const Vector3d dipoleCenter =0.5*(tminus->Centre() + tplus->Centre());
+		const Vector3d dipoleMoment = zmc->Length()*(tminus->Centre()-tplus->Centre());
 
-			double d = -(loc.x()*sol->_arrayBiasX*cos(phi) + loc.y()*sol->_arrayBiasY*sin(phi))*sin(theta);
-			af += sol->GetCurrent(zmc->GetID(), eleId)*exp(-1i*k*d);
-		}
+		Vector3cd E0= DipoleEfiled(ob, dipoleMoment, dipoleCenter, eta0, k);
+
 		//叠加电场
-		efield += E0 * af;
+		efield += E0 * ArrayFactor(zmc->GetID(),theta,phi, sol);
 	}
 	return efield;
+}
+
+Vector3cd Core::Request::FarField::DipoleEfiled(const Vector3d ob, const Vector3d dipoleMoment, const Vector3d dipoleCenter, const double eta, const double k)const
+{
+	const Vector3d dis = ob - dipoleCenter;
+	const double R = dis.stableNorm();
+	const Vector3d direction = dis / R;
+
+	const dcomplex C = (1.0 + 1.0 / (1i*k*R)) / (R*R);
+	//efield
+	Vector3d M = direction.dot(dipoleMoment)*direction;	
+	Vector3cd efield0 = (M - dipoleMoment)*(1i*k / R + C) + 2.0*C*M;
+	const dcomplex ConstantE = 0.25 * eta*M_1_PI*exp(-1i*k*R); 
+	efield0 *= ConstantE;
+	//hfield
+	/*Vector3cd hfield0 = dipoleMoment.cross(dis)*C;
+	const dcomplex ConstantH = 0.25*1i *k *M_1_PI*exp(-1i*k*R);
+	hfield0 *= ConstantH;*/
+	return efield0;
+}
+
+dcomplex Core::Request::FarField::ArrayFactor(const size_t id, const double theta, const double phi, Solution::ArrayCurrent * sol) const
+{
+	dcomplex af(0);
+	for (int eleId = 0;eleId < sol->_numberOfElement;++eleId)
+	{
+		auto loc = sol->_arrayLocation[eleId];
+		Vector3d Rb{ loc.x()*sol->_arrayBiasX,loc.y()*sol->_arrayBiasY,0 };
+
+		double d = -(loc.x()*sol->_arrayBiasX*cos(phi) + loc.y()*sol->_arrayBiasY*sin(phi))*sin(theta);
+		af += sol->GetCurrent(id, eleId)*exp(-1i*k*d);
+	}
+	return af;
 }
 
 void Core::Request::FarField::SaveRCS(ofstream & ofs, FarFieldConfiguration & config, int zmc)

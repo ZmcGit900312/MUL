@@ -33,6 +33,7 @@ namespace Core
 			*/
 			void CalculateRCS(FarFieldConfiguration& config,ofstream& ofs) const;
 			void CalculateRCS(FarFieldConfiguration& config, int row,int col)const;
+			void CalculateDipoleRCS(FarFieldConfiguration& config, int row, int col)const;
 			/**
 			* \brief Calculate the E field of the specific direction(theta,phi)
 			* \param theta rad
@@ -42,6 +43,10 @@ namespace Core
 			Vector3cd EField(const double theta, const double phi,Solution::ElementCurrent* ec) const;
 			//Array
 			Vector3cd EField(const double theta, const double phi, Solution::ArrayCurrent* ac) const;
+
+			Vector3cd EFieldDipole(const double theta, const double phi, Solution::ElementCurrent* ec)const;
+			//Array
+			Vector3cd EFieldDipole(const double theta, const double phi, Solution::ArrayCurrent* ac)const;
 			/**
 			 * \brief 用于测试的标准数据生成函数
 			 * \param theta 
@@ -52,7 +57,12 @@ namespace Core
 			//Array
 			Vector3cd EFieldBenchMark(const double theta, const double phi, Solution::ArrayCurrent* ac)const;
 			
-			Vector3cd EFieldArrayFactor(const double theta, const double phi, Solution::ArrayCurrent* ac)const;
+			
+			//dipole moment radiation
+			Vector3cd DipoleEfiled(const Vector3d ob, const Vector3d dipoleMoment, const Vector3d dipoleCenter, const double eta, const double k)const;
+			//Array Factor
+			dcomplex ArrayFactor(const size_t id, const double theta, const double phi, Solution::ArrayCurrent* sol)const;
+
 			static void SaveRCS(ofstream&ofs, FarFieldConfiguration& config,int zmc);
 
 			/**
