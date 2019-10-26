@@ -13,7 +13,7 @@ int Core::SetRightHand()
 	ResultReport::WriteExcitationInformation(SystemConfig.SourceConfig, ResultLog);
 
 	const clock_t start = clock();
-	ComponentList::ImpService->GetExcitation() = SystemConfig.SourceConfig->SetExcitation(ComponentList::BFvector,SystemConfig.ImpConfig);
+	ComponentList::ImpService->SetExcitation(SystemConfig.SourceConfig->SetExcitation(ComponentList::BFvector, SystemConfig.ImpConfig));
 	const clock_t end = clock();
 
 	const double time = double(end - start) / CLOCKS_PER_SEC;

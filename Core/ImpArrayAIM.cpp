@@ -18,6 +18,12 @@ ImpArrayAIM::~ImpArrayAIM()
 	}
 }
 
+void ImpArrayAIM::SetExcitation(const VectorXcd & val)
+{
+	if(diagflag)_rightHand = PrecondDiagnoalMultiplication(val);
+	else _rightHand = val;
+}
+
 VectorXcd ImpArrayAIM::FarFieldMultiplication(const VectorXcd & val) const
 {
 	VectorXcd L;
@@ -54,6 +60,16 @@ VectorXcd ImpArrayAIM::NearFieldMultiplication(const VectorXcd & val) const
 		Near.segment(_unitSize*i, _unitSize) = _nearMatrix * val.segment(_unitSize*i, _unitSize);
 	}
 	return Near;
+}
+
+VectorXcd ImpArrayAIM::PrecondDiagnoalMultiplication(const VectorXcd & val) const
+{
+	VectorXcd diag{ _wholeSize };
+	for (Index i = 0;i < _wholeSize / _unitSize;++i)
+	{
+		diag.segment(_unitSize*i, _unitSize) = _nearMatrix*val.segment(_unitSize*i, _unitSize);
+	}
+	return diag;
 }
 
 void ImpArrayAIM::FillImpedance()

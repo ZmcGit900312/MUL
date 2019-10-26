@@ -3,6 +3,7 @@
 
 #include <Eigen\Core>
 #include <Eigen\Sparse>
+#include <Eigen/LU>
 #include "IImpedance.h"
 #include "Data.h"
 #include "Const.h"
@@ -23,6 +24,18 @@ namespace Eigen
 		{};
 	}
 }
+
+class ArrayAIMJacobi:public IdentityPreconditioner
+{
+public:
+
+	ArrayAIMJacobi():IdentityPreconditioner(){}
+
+	template<typename MatrixType>
+	explicit ArrayAIMJacobi(const MatrixType&) {}
+
+};
+
 
 class ImpArrayAIM :public EigenBase<ImpArrayAIM>,public IImpService
 {
@@ -67,10 +80,12 @@ class ImpArrayAIM :public EigenBase<ImpArrayAIM>,public IImpService
 	MatrixXcd& LocalMatrix() { return _nearMatrix; }//Impedance Matrix
 	const MatrixXcd& LocalMatrix()const { return _nearMatrix;}
 	VectorXcd& GetExcitation() override { return _rightHand; }//Storage RightHand
+	void SetExcitation(const VectorXcd& val) override;
 
 	VectorXcd FarFieldMultiplication(const VectorXcd&val)const;
 	VectorXcd NearFieldMultiplication(const VectorXcd&val)const;
-
+	VectorXcd PrecondDiagnoalMultiplication(const VectorXcd&val)const;
+	
 	//FarFiled Visit
 	VectorXcd GammaXMultiplication(const VectorXcd&val)const { return _gamax * val; }
 	VectorXcd GammaYMultiplication(const VectorXcd&val)const { return _gamay * val; }
@@ -94,6 +109,8 @@ class ImpArrayAIM :public EigenBase<ImpArrayAIM>,public IImpService
 
 	void MVP(VectorXcd&res)const { _fftTools->MVP(_green, res); }
 	AIMAssist::Multiplicator* _fftTools = nullptr;
+
+	bool diagflag = false;
 #pragma endregion
 	private:
 	
@@ -140,7 +157,9 @@ namespace Eigen
 				// MV to be done?
 				//for (Index i = 0; i<lhs.cols(); ++i)
 				//	dst += rhs(i) * lhs.LocalMatrix().col(i);
-				dst.noalias() += lhs.NearFieldMultiplication(rhs)+lhs.FarFieldMultiplication(rhs);			
+				if(lhs.diagflag)dst.noalias() += rhs + lhs.PrecondDiagnoalMultiplication(lhs.FarFieldMultiplication(rhs));
+				else 
+					dst.noalias() += lhs.NearFieldMultiplication(rhs)+lhs.FarFieldMultiplication(rhs);			
 			}
 		};
 	}

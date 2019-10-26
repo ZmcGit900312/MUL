@@ -53,5 +53,6 @@ namespace Core
 		virtual double GetTime()const = 0;
 		virtual double GetMemoryCost()const = 0;
 		virtual VectorXcd& GetExcitation() = 0;
+		virtual void SetExcitation(const VectorXcd&) = 0;
 	};
 }

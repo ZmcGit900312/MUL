@@ -29,7 +29,7 @@ protected:
 			SystemConfig.ImpConfig.ArrayIntervalX = 1.5;
 			SystemConfig.ImpConfig.ArrayIntervalY = 1.5;
 			SystemConfig.IEConfig.type = EFIE;
-			SystemConfig.SolverConfig.Precond = Solution::Identity;
+			SystemConfig.SolverConfig.Precond = Solution::Jacobi;
 			ASSERT_EQ(0, Core::DataInitialization()) << "Error in Initialization";
 			srand(static_cast<unsigned>(time(nullptr)));
 

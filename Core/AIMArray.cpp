@@ -239,8 +239,12 @@ void Core::AIMArray::TriangleFillingStrategy(Mesh & mesh, vector<IBasisFunction*
 	Console->info("Near-Matrix Setting by TFS Time is:\t{}s", timecost);
 	Runtime->info("Near-Matrix Setting by TFS Time is:\t{}s", timecost);
 	ResultLog->info("Near-Matrix Setting by TFS Time is:\t{}s", timecost);
-	//Preconditioning
+
+	//PreCondition
+	Console->info("Calculate Preconditioning...");
 	Solver->Precondition(_imp);
+	Console->info("Precondition cost:\t{}s", Solver->GetPreconditionTime());
+	ResultLog->info("Precondition cost:\t{}s", Solver->GetPreconditionTime());
 }
 
 void Core::AIMArray::NearCorrection(vector<IBasisFunction*>& bf)

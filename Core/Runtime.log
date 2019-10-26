@@ -17730,3 +17730,64 @@
 [Sat Oct 26 17:42:27 2019 Sat][debug] Release Source
 [Sat Oct 26 17:42:27 2019 Sat][info] --------------------------------------END---------------------------------------
 
+[Sat Oct 26 22:01:12 2019 Sat][info] Call ParseConfiguratoinFile()
+[Sat Oct 26 22:01:12 2019 Sat][info] Call CreatMesh()
+[Sat Oct 26 22:01:12 2019 Sat][info] Call SetGreenFunction()
+[Sat Oct 26 22:01:12 2019 Sat][info] Call CalculatedMissionCentre(requestonly = false)
+[Sat Oct 26 22:01:12 2019 Sat][info] Call MatrixSolving(currentIndex=0)
+[Sat Oct 26 22:01:12 2019 Sat][info] Pre-compute the SelfTriangle Impedance
+[Sat Oct 26 22:01:13 2019 Sat][info] Initial Solver
+[Sat Oct 26 22:01:26 2019 Sat][info] Generate Impedance
+[Sat Oct 26 22:01:26 2019 Sat][info] Take the Array AIM
+[Sat Oct 26 22:01:29 2019 Sat][info] Multipole Expansion costs whole time:	   2.3920000s
+[Sat Oct 26 22:01:29 2019 Sat][info] Multipole Expansion for unit time:	   1.3800000s
+[Sat Oct 26 22:02:03 2019 Sat][info] Near-Matrix Setting by TFS Time is:	27.345s
+[Sat Oct 26 22:02:44 2019 Sat][info] Set RightHand
+[Sat Oct 26 22:06:04 2019 Sat][info] Call ParseConfiguratoinFile()
+[Sat Oct 26 22:06:04 2019 Sat][info] Call CreatMesh()
+[Sat Oct 26 22:06:04 2019 Sat][info] Call SetGreenFunction()
+[Sat Oct 26 22:06:04 2019 Sat][info] Call CalculatedMissionCentre(requestonly = false)
+[Sat Oct 26 22:06:04 2019 Sat][info] Call MatrixSolving(currentIndex=0)
+[Sat Oct 26 22:06:04 2019 Sat][info] Pre-compute the SelfTriangle Impedance
+[Sat Oct 26 22:06:05 2019 Sat][info] Initial Solver
+[Sat Oct 26 22:06:11 2019 Sat][info] Generate Impedance
+[Sat Oct 26 22:06:11 2019 Sat][info] Take the Array AIM
+[Sat Oct 26 22:06:13 2019 Sat][info] Multipole Expansion costs whole time:	   1.7730000s
+[Sat Oct 26 22:06:13 2019 Sat][info] Multipole Expansion for unit time:	   0.9860000s
+[Sat Oct 26 22:06:46 2019 Sat][info] Near-Matrix Setting by TFS Time is:	27.027s
+[Sat Oct 26 22:06:54 2019 Sat][info] Set RightHand
+[Sat Oct 26 22:07:04 2019 Sat][info] Solve Matrix
+[Sat Oct 26 22:08:28 2019 Sat][info] Release SOlver and ImpService
+[Sat Oct 26 22:08:28 2019 Sat][info] End MatrixSolving(currentIndex=0)
+[Sat Oct 26 22:08:28 2019 Sat][info] Run CalculateRequest(int =0)
+[Sat Oct 26 22:08:51 2019 Sat][info] End CalculatedMissionCentre(requestonly = false)
+[Sat Oct 26 22:08:53 2019 Sat][info] Release the memory
+[Sat Oct 26 22:08:53 2019 Sat][debug] Release BasicFunction
+[Sat Oct 26 22:08:53 2019 Sat][debug] Release Request
+[Sat Oct 26 22:08:53 2019 Sat][debug] Release Source
+[Sat Oct 26 22:08:53 2019 Sat][info] --------------------------------------END---------------------------------------
+
+[Sat Oct 26 22:11:57 2019 Sat][info] Call ParseConfiguratoinFile()
+[Sat Oct 26 22:11:57 2019 Sat][info] Call CreatMesh()
+[Sat Oct 26 22:11:57 2019 Sat][info] Call SetGreenFunction()
+[Sat Oct 26 22:11:57 2019 Sat][info] Call CalculatedMissionCentre(requestonly = false)
+[Sat Oct 26 22:11:57 2019 Sat][info] Call MatrixSolving(currentIndex=0)
+[Sat Oct 26 22:11:57 2019 Sat][info] Pre-compute the SelfTriangle Impedance
+[Sat Oct 26 22:11:58 2019 Sat][info] Initial Solver
+[Sat Oct 26 22:11:58 2019 Sat][info] Generate Impedance
+[Sat Oct 26 22:11:58 2019 Sat][info] Take the Array AIM
+[Sat Oct 26 22:12:00 2019 Sat][info] Multipole Expansion costs whole time:	   1.8300000s
+[Sat Oct 26 22:12:00 2019 Sat][info] Multipole Expansion for unit time:	   0.9600000s
+[Sat Oct 26 22:12:34 2019 Sat][info] Near-Matrix Setting by TFS Time is:	27.535s
+[Sat Oct 26 22:12:35 2019 Sat][info] Set RightHand
+[Sat Oct 26 22:12:35 2019 Sat][info] Solve Matrix
+[Sat Oct 26 22:12:37 2019 Sat][info] Release SOlver and ImpService
+[Sat Oct 26 22:12:37 2019 Sat][info] End MatrixSolving(currentIndex=0)
+[Sat Oct 26 22:12:37 2019 Sat][info] Run CalculateRequest(int =0)
+[Sat Oct 26 22:12:59 2019 Sat][info] End CalculatedMissionCentre(requestonly = false)
+[Sat Oct 26 22:12:59 2019 Sat][info] Release the memory
+[Sat Oct 26 22:12:59 2019 Sat][debug] Release BasicFunction
+[Sat Oct 26 22:12:59 2019 Sat][debug] Release Request
+[Sat Oct 26 22:12:59 2019 Sat][debug] Release Source
+[Sat Oct 26 22:12:59 2019 Sat][info] --------------------------------------END---------------------------------------
+

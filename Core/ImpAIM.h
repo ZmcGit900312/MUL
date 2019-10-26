@@ -110,6 +110,7 @@ class ImpAIM :public EigenBase<ImpAIM>, public IImpService
 
 
 	VectorXcd& GetExcitation() override{ return _rightHand; }
+	void SetExcitation(const VectorXcd& val) override { _rightHand = val; }
 	void FillImpedance() override;
 
 	void MVP(VectorXcd&res)const { _fftTools->MVP(_green, res); }

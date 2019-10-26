@@ -3,7 +3,6 @@
 #include "Log.h"
 #include "IImpedance.h"
 #include "ImpAIM.h"
-#include "AIMArray.h"
 #include "ImpMoM.h"
 #include "IterationSolver.h"
 
@@ -51,7 +50,9 @@ Core::Solution::ISolver * Core::Solution::FSolver(SolverConfiguration & config, 
 		case ILU:
 			Console->warn("ArrayAIM with ILU decomposition is not developed");
 		case Jacobi:
-			Console->warn("ArrayAIMwith Jacobi is not Developed and replaced by Identity");
+			config.Precond = Jacobi;
+			Console->info("Preconditioning chooses Jacobi");
+			return new BiCGSTABEMC<ImpArrayAIM, ArrayAIMJacobi>(config);
 		default:
 			config.Precond = Identity;
 			Console->info("Preconditioning chooses Identity");

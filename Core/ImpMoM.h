@@ -25,6 +25,7 @@ class ImpMoM :public IImpService
 
 	MatrixXcd& LocalMatrix() { return _imp; }//Impedance Matrix
 	VectorXcd& GetExcitation() override{ return _rightHand; }//Storage RightHand
+	void SetExcitation(const VectorXcd& val) override { _rightHand = val; }
 	
 	void FillImpedance() override;
 	private:
