@@ -32,20 +32,22 @@ int Core::SaveResults(bool requestonly)
 		for (int zmc=0;zmc< SystemConfig.PostConfig.size();++zmc)
 		{
 			auto value = SystemConfig.PostConfig[zmc];
-			const string saveFilePath = SystemConfig.ProjectDir + '\\' + value.FarFileName + "_RCS.csv";
+
+			const string saveFilePath = SystemConfig.ProjectDir + '\\' + value.FarFileName + "_"+value.GetImpedanceTypeString()+".csv";
 			ofs.open(saveFilePath, ios_base::out);
-			if (!ofs.is_open())throw spd::spdlog_ex("Save RCS Directory Error in " + saveFilePath);
-			
+			if (!ofs.is_open())throw spd::spdlog_ex("Save Directory Error in " + saveFilePath);
+
 			//Title
 			ofs << "Theta" << ',' << "Phi";
 			for (auto val : Solution::CurrentInfo::GetInstance()->Current)
-				ofs << ',' << val->Tag + " RCS(m2)";
+				ofs << ',' << val->Tag + " "+ value.GetImpedanceTypeString();
 			ofs << '\n';
-			Request::FarField::SaveRCS(ofs,value,zmc);
+			Request::FarField::SaveRCS(ofs, value, zmc);
 
 			ofs.flush();
 			ofs.close();
-			Console->info("Save RCSFile into:\t" + saveFilePath);
+			Console->info("Save File into:\t" + saveFilePath);
+					
 		}
 	}
 	catch(spdlog::spdlog_ex&ex)

@@ -580,9 +580,10 @@ int SetRequestMod(rj::Document& jd)
 			rj::Value& val = *vp;
 
 			Request::FarFieldConfiguration ff;
-			ff.FieldType = 0;//RCS
+			
 			ff.FarFileName = val["Name"].GetString();
 
+			ff.FieldType = Request::EFarField(val["Category"].GetInt64());
 			//Theta
 			rj::Value& theta = val["Theta"];
 			if (theta.IsArray())

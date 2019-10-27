@@ -173,7 +173,7 @@ void Core::ResultReport::WriteMethodInformation(ImpConfiguration*config, shared_
 
 void Core::ResultReport::WriteRequestInformation(Request::FarFieldConfiguration * config, shared_ptr<spd::logger>log)
 {
-	log->info("RCS of Far Field::\t" + config->FarFileName);
+	log->info("Far Field::\t" + config->FarFileName);
 }
 
 void Core::ResultReport::WirteIEInformation(IEConfiguration * config, shared_ptr<spd::logger> log)

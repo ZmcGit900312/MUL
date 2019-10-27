@@ -41,7 +41,7 @@ Request::FarField::FarField(vector<IBasisFunction*>*bf, Mesh *mesh, Solution::Cu
 		Vector3d arrayScale{ ac->_arrayBiasX*xNum,ac->_arrayBiasY*yNum,0 };
 		D += arrayScale;
 	}
-	Radius = 1000*D.squaredNorm() /Lambda;//2D^2/lam
+	Radius = 100000*D.squaredNorm() /Lambda;//2D^2/lam
 	Coef = 4 * M_PI*Radius*Radius;
 }
 
@@ -176,7 +176,7 @@ void Core::Request::FarField::CalculateRCS(FarFieldConfiguration & config, int r
 	RCS(row, col) = rcs;
 }
 
-void Core::Request::FarField::CalculateDipoleRCS(FarFieldConfiguration & config, int row, int col) const
+void Core::Request::FarField::CalculateDipoleFF(FarFieldConfiguration & config, int row, int col) const
 {
 	const int thetaNum = config.ThetaNum;
 	const int phiNum = config.PhiNum;
@@ -203,7 +203,9 @@ void Core::Request::FarField::CalculateDipoleRCS(FarFieldConfiguration & config,
 			cout << "Progress:" << setw(10) << (th*phiNum + ph + 1) / Sum << "%\r";
 		}
 	}
-	RCS(row, col) = rcs;
+
+	RCS(row, col) = config.FieldType == Request::Pattern?
+		10 * Eigen::log10(rcs.array() / rcs.maxCoeff()):rcs;
 }
 
 Vector3cd Request::FarField::EField(const double theta, const double phi, 

@@ -104,6 +104,8 @@ namespace Core
 			dcomplex Admitance{50.0,0.0};
 
 			VectorXcd SetExcitation(const vector<IBasisFunction*>&bfVector, ImpConfiguration& impconfig)const override;
+
+			VectorXcd SetElementExcitation(const vector<IBasisFunction*>&bfVector) const;
 		};
 
 		//struct ExcitationConfiguration

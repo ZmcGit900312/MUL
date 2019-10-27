@@ -33,7 +33,7 @@ namespace Core
 			*/
 			void CalculateRCS(FarFieldConfiguration& config,ofstream& ofs) const;
 			void CalculateRCS(FarFieldConfiguration& config, int row,int col)const;
-			void CalculateDipoleRCS(FarFieldConfiguration& config, int row, int col)const;
+			void CalculateDipoleFF(FarFieldConfiguration& config, int row, int col)const;
 			/**
 			* \brief Calculate the E field of the specific direction(theta,phi)
 			* \param theta rad

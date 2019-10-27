@@ -277,7 +277,7 @@ static int SetRequestMod(XMLElement* mod)
 			ff.PhiStart = leaf->FirstChildElement("PhiStart")->DoubleText();
 			ff.PhiIncrement = leaf->FirstChildElement("PhiIncrement")->DoubleText();
 
-			ff.FieldType = 0;//RCS
+			ff.FieldType = Request::RCS;//RCS
 
 			SystemConfig.PostConfig.push_back(ff);
 			Console->debug("Far Field Request::\t" + ff.FarFileName);

@@ -11,14 +11,25 @@ namespace Core
 {
 	namespace Request
 	{
+		enum EFarField{RCS=0,Pattern=1};
+
 		class FarFieldConfiguration
 		{
 		public:
-			unsigned FieldType = 0;//RCS
+			EFarField FieldType = RCS;//RCS 0 Pattern 1
 			unsigned ThetaNum = 1, PhiNum = 1;
 			double ThetaStart = 0, PhiStart = 0;
 			double ThetaIncrement = 1, PhiIncrement = 1;
 			std::string FarFileName;
+
+			std::string GetImpedanceTypeString()const
+			{
+				switch (FieldType)
+				{
+				case Pattern: return "Pattern";
+				default: return "RCS";
+				}
+			}
 		};
 	}
 }

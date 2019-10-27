@@ -87,7 +87,7 @@ int Core::CalculateRequest(int row)
 		
 			ResultReport::WriteRequestInformation(&value, Console);
 			ResultReport::WriteRequestInformation(&value, ResultLog);
-			post.CalculateDipoleRCS(value, row,col);//结果保存在RCS
+			post.CalculateDipoleFF(value, row,col);//结果保存在RCS
 		}
 		const clock_t end = clock();
 		double timecost = double(end - start) / CLOCKS_PER_SEC;
