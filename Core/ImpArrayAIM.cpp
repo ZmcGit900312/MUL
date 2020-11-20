@@ -86,16 +86,17 @@ void ImpArrayAIM::FillImpedance()
 	const clock_t end = clock();
 	_time = double(end - start) / CLOCKS_PER_SEC;
 
-	const auto num = _unitSize*_unitSize + _gamax.nonZeros() + _gamay.nonZeros() + _gamaz.nonZeros() + _gamad.nonZeros() + _green.size();
+	const auto numGamma = (_dimension + 1)*_gamax.nonZeros() / (_wholeSize / _unitSize);
+	const auto num = _unitSize*_unitSize   + _green.size();
 
-	_memory = double(sizeof(dcomplex) * num) / 1048576;
+	_memory = double(sizeof(dcomplex) * num+ sizeof(double) * numGamma) / 1048576;
 
 	delete fillingTool;
-	Console->info("There are total {} in GamaMatrix", _gamax.nonZeros()*(_dimension + 1));
+	Console->info("There are total {} in GamaMatrix", numGamma);
 	Console->info("There are total {} in GreenMatrix", _green.size());
 	Console->info("Size of Unit Element:\t{0}", _unitSize);
 
-	ResultLog->info("There are total {} in GamaMatrix", _gamax.nonZeros()*(_dimension + 1));
+	ResultLog->info("There are total {} in GamaMatrix", numGamma);
 	ResultLog->info("There are total {} in GreenMatrix", _green.size());
 	ResultLog->info("Size of Unit Element:\t{0}", _unitSize);
 }

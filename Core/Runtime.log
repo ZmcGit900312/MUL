@@ -17839,3 +17839,73 @@
 [Sun Oct 27 18:13:12 2019 Sun][debug] Release Source
 [Sun Oct 27 18:13:12 2019 Sun][info] --------------------------------------END---------------------------------------
 
+[Thu Nov 19 08:48:36 2020 Thu][info] Call ParseConfiguratoinFile()
+[Thu Nov 19 08:48:36 2020 Thu][info] Call CreatMesh()
+[Thu Nov 19 08:48:37 2020 Thu][info] Call SetGreenFunction()
+[Thu Nov 19 08:48:37 2020 Thu][info] Pre-compute the SelfTriangle Impedance
+[Thu Nov 19 08:48:37 2020 Thu][info] Initial Solver
+[Thu Nov 19 08:48:37 2020 Thu][info] Generate Impedance
+[Thu Nov 19 08:48:38 2020 Thu][info] Take the Single Level FFT Method
+[Thu Nov 19 08:48:39 2020 Thu][info] Multipole Expansion costs time:	1.096s
+[Thu Nov 19 08:48:43 2020 Thu][info] Near-Matrix Setting by TFS Time is:	3.757s
+[Thu Nov 19 08:48:43 2020 Thu][info] Triplet and NearField have 420508 and 105127 elements.
+[Thu Nov 19 08:49:18 2020 Thu][info] Precondition cost:	20.46s
+[Thu Nov 19 08:49:38 2020 Thu][info] Near Field by TFS TotalTime is:	23.757s
+[Thu Nov 19 08:49:38 2020 Thu][info] Set RightHand
+[Thu Nov 19 08:49:38 2020 Thu][info] Solve Matrix
+[Thu Nov 19 08:49:50 2020 Thu][info] Run CalculateRequest(int =0)
+[Thu Nov 19 08:50:20 2020 Thu][info] Release the memory
+[Thu Nov 19 08:50:20 2020 Thu][debug] Release BasicFunction
+[Thu Nov 19 08:50:20 2020 Thu][debug] Release Request
+[Thu Nov 19 08:50:20 2020 Thu][debug] Release Source
+[Thu Nov 19 08:50:20 2020 Thu][info] --------------------------------------END---------------------------------------
+
+[Thu Nov 19 08:56:13 2020 Thu][info] Call ParseConfiguratoinFile()
+[Thu Nov 19 08:56:13 2020 Thu][info] Call CreatMesh()
+[Thu Nov 19 08:56:13 2020 Thu][info] Call SetGreenFunction()
+[Thu Nov 19 08:56:13 2020 Thu][info] Pre-compute the SelfTriangle Impedance
+[Thu Nov 19 08:56:14 2020 Thu][info] Initial Solver
+[Thu Nov 19 08:56:14 2020 Thu][info] Generate Impedance
+[Thu Nov 19 08:56:14 2020 Thu][info] Take the Single Level FFT Method
+[Thu Nov 19 08:56:15 2020 Thu][info] Multipole Expansion costs time:	1.077s
+[Thu Nov 19 08:56:53 2020 Thu][info] Precondition cost:	2.994s
+[Thu Nov 19 08:56:53 2020 Thu][info] Set RightHand
+[Thu Nov 19 08:58:59 2020 Thu][info] Call ParseConfiguratoinFile()
+[Thu Nov 19 08:58:59 2020 Thu][info] Call CreatMesh()
+[Thu Nov 19 08:58:59 2020 Thu][info] Call SetGreenFunction()
+[Thu Nov 19 08:58:59 2020 Thu][info] Pre-compute the SelfTriangle Impedance
+[Thu Nov 19 08:59:00 2020 Thu][info] Initial Solver
+[Thu Nov 19 08:59:00 2020 Thu][info] Generate Impedance
+[Thu Nov 19 08:59:00 2020 Thu][info] Take the Single Level FFT Method
+[Thu Nov 19 08:59:01 2020 Thu][info] Multipole Expansion costs time:	1.098s
+[Thu Nov 19 08:59:29 2020 Thu][info] Precondition cost:	0s
+[Thu Nov 19 08:59:29 2020 Thu][info] Set RightHand
+[Thu Nov 19 08:59:29 2020 Thu][info] Solve Matrix
+[Thu Nov 19 09:01:03 2020 Thu][info] Run CalculateRequest(int =0)
+[Thu Nov 19 09:01:24 2020 Thu][info] Release the memory
+[Thu Nov 19 09:01:24 2020 Thu][debug] Release BasicFunction
+[Thu Nov 19 09:01:24 2020 Thu][debug] Release Request
+[Thu Nov 19 09:01:24 2020 Thu][debug] Release Source
+[Thu Nov 19 09:01:24 2020 Thu][info] --------------------------------------END---------------------------------------
+
+[Thu Nov 19 09:14:27 2020 Thu][info] Call ParseConfiguratoinFile()
+[Thu Nov 19 09:14:27 2020 Thu][info] Call CreatMesh()
+[Thu Nov 19 09:14:27 2020 Thu][info] Call SetGreenFunction()
+[Thu Nov 19 09:14:27 2020 Thu][info] Pre-compute the SelfTriangle Impedance
+[Thu Nov 19 09:14:28 2020 Thu][info] Initial Solver
+[Thu Nov 19 09:14:28 2020 Thu][info] Generate Impedance
+[Thu Nov 19 09:14:29 2020 Thu][info] Take the Single Level FFT Method
+[Thu Nov 19 09:14:30 2020 Thu][info] Multipole Expansion costs time:	1.097s
+[Thu Nov 19 09:14:34 2020 Thu][info] Near-Matrix Setting by TFS Time is:	3.711s
+[Thu Nov 19 09:14:34 2020 Thu][info] Triplet and NearField have 420508 and 105127 elements.
+[Thu Nov 19 09:14:54 2020 Thu][info] Precondition cost:	20.085s
+[Thu Nov 19 09:15:13 2020 Thu][info] Near Field by TFS TotalTime is:	23.413s
+[Thu Nov 19 09:15:13 2020 Thu][info] Set RightHand
+[Thu Nov 19 09:15:13 2020 Thu][info] Solve Matrix
+[Thu Nov 19 09:15:25 2020 Thu][info] Run CalculateRequest(int =0)
+[Thu Nov 19 09:15:45 2020 Thu][info] Release the memory
+[Thu Nov 19 09:15:45 2020 Thu][debug] Release BasicFunction
+[Thu Nov 19 09:15:45 2020 Thu][debug] Release Request
+[Thu Nov 19 09:15:45 2020 Thu][debug] Release Source
+[Thu Nov 19 09:15:45 2020 Thu][info] --------------------------------------END---------------------------------------
+

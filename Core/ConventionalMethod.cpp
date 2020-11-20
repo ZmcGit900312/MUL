@@ -162,8 +162,8 @@ void ConventionalMethod::NearCorrection(vector< IBasisFunction*>&bf)
 	const clock_t end = clock();
 	const double timecost = double (end - start) / CLOCKS_PER_SEC;
 	cout << "\r";
-	Console->info("Near Field Filling Time is:\t{}s", fillTimeCost);
-	ResultLog->info("Near Field Filling Time is:\t{}s", fillTimeCost);
+	Console->info("Near Field Filling Time is:\t{}s", timecost- nearCorrectTimeCost);
+	ResultLog->info("Near Field Filling Time is:\t{}s", timecost- nearCorrectTimeCost);
 	Console->info("Near Field Correction Time is:\t{}s", nearCorrectTimeCost);
 	ResultLog->info("Near Field Correction Time is:\t{}s", nearCorrectTimeCost);
 
@@ -305,27 +305,32 @@ void Core::ConventionalMethod::TriangleFillingStrategy(Mesh & mesh, vector<IBasi
 	
 	//Near Correction
 	Console->debug("Begin to Correction");
+	double nearCorrectTimeCost = 0;
 	start = clock();
 	for (int col = 0; col < _imp->GetNearFieldMatrix().outerSize(); ++col)
 	{
 		for (SparseMatrix<dcomplex>::InnerIterator it(_imp->GetNearFieldMatrix(), col); it; ++it)
 		{
-			if (it.row() < it.col())continue;
+			if (it.row() <=it.col())continue;
+			clock_t nearCorrectStart = clock();
 			const dcomplex comp = GetFarFieldImpedacneAIM(it.row(), it.col());
 			const dcomplex difvalue = it.value() - comp;
-			if (it.row() == it.col())
+			clock_t nearCorrectEnd = clock();
+			nearCorrectTimeCost += double(nearCorrectEnd - nearCorrectStart) / CLOCKS_PER_SEC;
+
+			/*if (it.row() == it.col())
 			{
 				tripletsNearPart.push_back(T(it.row(), it.col(), difvalue));
 				continue;
-			}
-			if (norm(difvalue) / norm(it.value()) > _eps)
-			{
-				tripletsNearPart.push_back(T(it.row(), it.col(), difvalue));
-				tripletsNearPart.push_back(T(it.col(), it.row(), difvalue));
-			}
-
+			}*/
+			if (norm(difvalue) / norm(it.value()) < _eps) continue;
+			tripletsNearPart.push_back(T(it.row(), it.col(), difvalue));
+			tripletsNearPart.push_back(T(it.col(), it.row(), difvalue));
 		}
-		cout << "Progress:" << setw(10) << 100 * static_cast<double>(col) / _imp->GetNearFieldMatrix().outerSize() << "%\r";
+		const dcomplex comp = GetFarFieldImpedacneAIM(col, col);
+		tripletsNearPart.push_back(T(col, col, _imp->GetNearFieldMatrix().coeffRef(col,col) - comp));
+		if(!(col%100))
+			cout << "Progress:" << setw(10) << 100 * static_cast<double>(col) / _imp->GetNearFieldMatrix().outerSize() << "%\r";
 	}
 	tripletsNearPart.shrink_to_fit();
 	_imp->GetNearFieldMatrix().reserve(tripletsNearPart.size());
@@ -336,6 +341,8 @@ void Core::ConventionalMethod::TriangleFillingStrategy(Mesh & mesh, vector<IBasi
 	timecost += double(end - start) / CLOCKS_PER_SEC;
 	cout << "\r";
 	const double sparsity = static_cast<double>(_imp->GetNearFieldMatrix().nonZeros()) / _unknowns / _unknowns;
+	Console->info("Near Field Correction Time is:\t{}s", nearCorrectTimeCost);
+	ResultLog->info("Near Field Correction Time is:\t{}s", nearCorrectTimeCost);
 	Console->info("Near Field by TFS TotalTime is:\t{}s", timecost);
 	Runtime->info("Near Field by TFS TotalTime is:\t{}s", timecost);
 	ResultLog->info("Near Field by TFS TotalTime is:\t{}s", timecost);

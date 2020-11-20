@@ -184,7 +184,11 @@ namespace Eigen
 					Lz = lhs.GammaZMultiplicationT(Lz);
 					Ld = lhs.GammaDMultiplicationT(Ld) / (k*k);
 					VectorXcd L = 1i*k*eta*(Lx + Ly + Lz - Ld);
+					//const clock_t start = clock();
 					dst.noalias() += lhs.LocalMatrix()*rhs + L;
+					//const clock_t end = clock();
+					//double time = double(end - start) / CLOCKS_PER_SEC;
+					//cout << time << endl;
 				}				
 				else
 				{
